@@ -1,0 +1,41 @@
+{
+  "_README": [
+    "Nutrition values for ingredients that Thai FCD has NO entry for.",
+    "",
+    "Kept in a separate file from data/thaifcd_cache.json on purpose: that file is",
+    "'what INMU published', and mixing a second source into it would make its",
+    "provenance a lie. Anything here is explicitly not Thai FCD, and every recipe",
+    "that uses one of these says so in its nutrition_source.",
+    "",
+    "See concern.md C12. Two of the 20 detectable YOLO classes are affected:",
+    "broccoli, which appears here, and onion, which does not need an entry because",
+    "it only ever appears in direct-lookup recipes where the whole dish is measured.",
+    "",
+    "IMPORTANT -- the two databases do not define carbohydrate the same way.",
+    "USDA 'Carbohydrate, by difference' INCLUDES dietary fibre.",
+    "Thai FCD 'CHOAVLDF' (carbohydrate, available) EXCLUDES it.",
+    "Summing them as-is would overstate carbs, which is enough to flip a keto tag.",
+    "So 'carb' below is stored on the Thai FCD basis: by-difference minus fibre.",
+    "Both raw numbers are kept alongside it so the subtraction is checkable."
+  ],
+  "EXT:usda-broccoli-raw": {
+    "food_code": "USDA 11090 / FDC 170379",
+    "name_en": "Broccoli, raw",
+    "name_th": "บรอกโคลี, ดิบ",
+    "source": "USDA FoodData Central, SR Legacy",
+    "source_date": "2020-10-30",
+    "retrieved": "2026-08-05",
+    "basis": "per 100 g edible portion",
+    "kcal": 34.0,
+    "protein": 2.82,
+    "fat": 0.37,
+    "carb": 4.04,
+    "carb_derivation": {
+      "carbohydrate_by_difference": 6.64,
+      "fiber_total_dietary": 2.6,
+      "available_carbohydrate": 4.04,
+      "note": "6.64 - 2.6 = 4.04, converting the USDA figure onto Thai FCD's available-carbohydrate basis so the two sources can be summed in one recipe."
+    },
+    "citation": "\"Broccoli, raw.\" FoodData Central, 30 Oct. 2020, U.S.D.A., Agricultural Research Service, fdc.nal.usda.gov."
+  }
+}

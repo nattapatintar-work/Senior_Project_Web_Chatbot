@@ -1,0 +1,1523 @@
+[
+  {
+    "id": "th_001",
+    "name_th": "ไข่เจียว",
+    "main_ingredients": [
+      "egg"
+    ],
+    "optional_ingredients": [
+      "green_onion"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 70,
+    "cook_time_min": 5,
+    "nutrition": {
+      "kcal": 253.0,
+      "protein": 9.8,
+      "fat": 23.0,
+      "carb": 1.7
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1270",
+    "nutrition_source": "Thai FCD (INMU), food code H4",
+    "notes": "70 g = about two eggs. NOT tagged clean: the source record is 32.9 g fat per 100 g, which tells you a Thai omelette is shallow-fried in a lot of oil, not pan-fried. Excluded for vegetarians because of the fish sauce, which is the mistake Claude.md:429 warns about."
+  },
+  {
+    "id": "th_002",
+    "name_th": "ไข่ต้ม",
+    "main_ingredients": [
+      "egg"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [],
+    "health_tags": [
+      "clean",
+      "keto",
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 50,
+    "cook_time_min": 12,
+    "nutrition": {
+      "kcal": 69.0,
+      "protein": 6.6,
+      "fat": 4.2,
+      "carb": 1.4
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1271",
+    "nutrition_source": "Thai FCD (INMU), food code H18",
+    "notes": "50 g = one egg. Tagged vegetarian but excluded for vegan: eggs are fine for vegetarians, not for vegans. This is the only difference between the two tags, and it is why they cannot be one rule."
+  },
+  {
+    "id": "th_003",
+    "name_th": "ไข่ตุ๋น",
+    "main_ingredients": [
+      "egg"
+    ],
+    "optional_ingredients": [
+      "green_onion",
+      "carrot"
+    ],
+    "seasonings": [
+      "fish_sauce"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 150,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 92.0,
+      "protein": 7.4,
+      "fat": 5.0,
+      "carb": 4.4
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1272",
+    "nutrition_source": "Thai FCD (INMU), food code H6",
+    "notes": "150 g because steamed egg has water added, so a bowl weighs far more than the egg in it — the source is only 61 kcal/100 g for that reason. Clean: steamed, no sugar, no coconut milk."
+  },
+  {
+    "id": "th_004",
+    "name_th": "มันฝรั่งทอด",
+    "main_ingredients": [
+      "potato"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "vegetable_oil",
+      "salt"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 100,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 345.0,
+      "protein": 4.1,
+      "fat": 19.2,
+      "carb": 36.1
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1439",
+    "nutrition_source": "Thai FCD (INMU), food code S37",
+    "notes": "Vegan and vegetarian — nothing animal-derived — but deliberately NOT clean, because it is deep-fried. A dish can be perfectly fine for a diet and still not be 'clean'; the four tags answer different questions."
+  },
+  {
+    "id": "th_005",
+    "name_th": "แกงเขียวหวานไก่",
+    "main_ingredients": [
+      "chicken",
+      "eggplant"
+    ],
+    "optional_ingredients": [
+      "thai_basil"
+    ],
+    "seasonings": [
+      "green_curry_paste",
+      "coconut_milk",
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 200,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 202.0,
+      "protein": 15.8,
+      "fat": 12.1,
+      "carb": 6.1
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1456",
+    "nutrition_source": "Thai FCD (INMU), food code T184",
+    "notes": "200 g is the curry only — rice is counted as its own dish. That is why a curry can pass the 10 g carb keto rule; see the warning in RECIPES_NOTES.md. Not clean: coconut milk and sugar both disqualify it."
+  },
+  {
+    "id": "th_006",
+    "name_th": "แกงเผ็ดไก่",
+    "main_ingredients": [
+      "chicken"
+    ],
+    "optional_ingredients": [
+      "thai_basil",
+      "eggplant"
+    ],
+    "seasonings": [
+      "red_curry_paste",
+      "coconut_milk",
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 200,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 336.0,
+      "protein": 18.4,
+      "fat": 24.9,
+      "carb": 7.3
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1464",
+    "nutrition_source": "Thai FCD (INMU), food code T187",
+    "notes": "Eggplant is optional rather than main: red curry is defined by the paste and coconut milk, not by which vegetable goes in. Putting it in main would wrongly require it for a match."
+  },
+  {
+    "id": "th_007",
+    "name_th": "แกงพะแนงไก่",
+    "main_ingredients": [
+      "chicken"
+    ],
+    "optional_ingredients": [
+      "kaffir_lime_leaf"
+    ],
+    "seasonings": [
+      "red_curry_paste",
+      "coconut_milk",
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 200,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 408.0,
+      "protein": 29.5,
+      "fat": 26.5,
+      "carb": 11.6
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1467",
+    "nutrition_source": "Thai FCD (INMU), food code T188",
+    "notes": "No tags at all, and that is a real answer rather than a gap: 11.6 g carb per serving just misses the 10 g keto limit, and the sugar rules out clean. Panang is thicker and sweeter than red curry, which the numbers show."
+  },
+  {
+    "id": "th_008",
+    "name_th": "แกงมัสมั่นไก่",
+    "main_ingredients": [
+      "chicken",
+      "potato",
+      "onion"
+    ],
+    "optional_ingredients": [
+      "peanut"
+    ],
+    "seasonings": [
+      "massaman_curry_paste",
+      "coconut_milk",
+      "fish_sauce",
+      "sugar",
+      "tamarind_paste"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 200,
+    "cook_time_min": 40,
+    "nutrition": {
+      "kcal": 388.0,
+      "protein": 20.6,
+      "fat": 22.0,
+      "carb": 25.3
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1468",
+    "nutrition_source": "Thai FCD (INMU), food code T189",
+    "notes": "Potato and onion are main, not optional — a massaman without them is not a massaman. Both are detectable classes, so this dish can be triggered by a photo of chicken and potatoes."
+  },
+  {
+    "id": "th_009",
+    "name_th": "แกงกะหรี่ไก่",
+    "main_ingredients": [
+      "chicken",
+      "potato",
+      "onion"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "yellow_curry_paste",
+      "coconut_milk",
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 200,
+    "cook_time_min": 35,
+    "nutrition": {
+      "kcal": 234.0,
+      "protein": 18.5,
+      "fat": 11.3,
+      "carb": 13.0
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1451",
+    "nutrition_source": "Thai FCD (INMU), food code T179",
+    "notes": "yellow_curry_paste had to be added to ingredients.json for this dish — the dictionary only had green, red and massaman. Leaving it out would have described the dish wrongly."
+  },
+  {
+    "id": "th_010",
+    "name_th": "แกงซุปไก่",
+    "main_ingredients": [
+      "chicken",
+      "onion",
+      "potato",
+      "tomato"
+    ],
+    "optional_ingredients": [
+      "carrot"
+    ],
+    "seasonings": [
+      "salt",
+      "pepper"
+    ],
+    "health_tags": [
+      "clean"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 200,
+    "cook_time_min": 40,
+    "nutrition": {
+      "kcal": 82.0,
+      "protein": 12.9,
+      "fat": 1.4,
+      "carb": 3.3
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1460",
+    "nutrition_source": "Thai FCD (INMU), food code T186",
+    "notes": "Clean but NOT keto, even though it is only ~3.3 g carb: potato is in main_ingredients, and the keto rule blocks starch staples regardless of the arithmetic. Four of its five ingredients are detectable classes, making this one of the best photo-driven matches in the database."
+  },
+  {
+    "id": "th_011",
+    "name_th": "ไก่อบซอส",
+    "main_ingredients": [
+      "chicken"
+    ],
+    "optional_ingredients": [
+      "onion"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "oyster_sauce",
+      "sugar",
+      "pepper"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 150,
+    "cook_time_min": 45,
+    "nutrition": {
+      "kcal": 190.0,
+      "protein": 12.9,
+      "fat": 6.6,
+      "carb": 18.1
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1481",
+    "nutrition_source": "Thai FCD (INMU), food code T193",
+    "notes": "Baked, not fried, but the sauce carries enough sugar (12.1 g carb per 100 g) to rule out both clean and keto. Oyster sauce also makes it non-vegetarian even though no seafood is visible."
+  },
+  {
+    "id": "th_012",
+    "name_th": "ซุปมะเขือ",
+    "main_ingredients": [
+      "eggplant"
+    ],
+    "optional_ingredients": [
+      "green_onion",
+      "coriander"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "salt",
+      "pepper"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 200,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 126.0,
+      "protein": 15.2,
+      "fat": 4.2,
+      "carb": 3.8
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1484",
+    "nutrition_source": "Thai FCD (INMU), food code T299",
+    "notes": "Fish sauce is listed deliberately. The source record shows 7.6 g protein per 100 g, which is far too high for eggplant alone — the analysed dish clearly contains a fermented fish or meat element, as Isan-style ซุปมะเขือ normally does. Calling it vegan because the name lists a vegetable would have been wrong."
+  },
+  {
+    "id": "th_013",
+    "name_th": "ผัดเปรี้ยวหวานไก่",
+    "main_ingredients": [
+      "chicken",
+      "tomato",
+      "cucumber",
+      "onion",
+      "bell_pepper"
+    ],
+    "optional_ingredients": [
+      "green_onion"
+    ],
+    "seasonings": [
+      "vegetable_oil",
+      "sugar",
+      "vinegar",
+      "soy_sauce"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 150,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 142.0,
+      "protein": 6.7,
+      "fat": 2.8,
+      "carb": 21.2
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1502",
+    "nutrition_source": "Thai FCD (INMU), food code T222",
+    "notes": "Five of its main ingredients are detectable classes — the strongest photo-driven match in the database. Sweet-and-sour means sugar, so neither clean nor keto."
+  },
+  {
+    "id": "th_014",
+    "name_th": "ผัดเผ็ดไก่",
+    "main_ingredients": [
+      "chicken"
+    ],
+    "optional_ingredients": [
+      "thai_basil",
+      "bell_pepper"
+    ],
+    "seasonings": [
+      "red_curry_paste",
+      "vegetable_oil",
+      "fish_sauce"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 150,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 200.0,
+      "protein": 20.7,
+      "fat": 8.3,
+      "carb": 6.6
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1503",
+    "nutrition_source": "Thai FCD (INMU), food code T224",
+    "notes": "Clean and keto: stir-fried rather than deep-fried, no sugar, and no coconut milk — this version uses paste and oil only, which is what the source describes."
+  },
+  {
+    "id": "th_015",
+    "name_th": "แกงเขียวหวานหมู",
+    "main_ingredients": [
+      "pork",
+      "eggplant"
+    ],
+    "optional_ingredients": [
+      "thai_basil"
+    ],
+    "seasonings": [
+      "green_curry_paste",
+      "coconut_milk",
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 200,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 186.0,
+      "protein": 12.6,
+      "fat": 12.4,
+      "carb": 5.8
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1459",
+    "nutrition_source": "Thai FCD (INMU), food code T285",
+    "notes": "The pork counterpart to th_005. Pork is text-only, so this dish can never be triggered by a photo — it needs the user to type หมู. That is exactly what the NLP side exists for."
+  },
+  {
+    "id": "th_016",
+    "name_th": "แกงป่าฟักทองใส่หมู",
+    "main_ingredients": [
+      "pork",
+      "pumpkin"
+    ],
+    "optional_ingredients": [
+      "thai_basil",
+      "long_bean"
+    ],
+    "seasonings": [
+      "red_curry_paste",
+      "fish_sauce"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 200,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 94.0,
+      "protein": 11.2,
+      "fat": 1.6,
+      "carb": 6.6
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1463",
+    "nutrition_source": "Thai FCD (INMU), food code T290",
+    "notes": "แกงป่า is the jungle curry — no coconut milk, which is what makes it the one curry here that qualifies as clean. Only 0.8 g fat per 100 g, against 6.05 for green curry."
+  },
+  {
+    "id": "th_017",
+    "name_th": "แกงส้มผักรวม",
+    "main_ingredients": [
+      "fish",
+      "cauliflower",
+      "cabbage"
+    ],
+    "optional_ingredients": [
+      "carrot",
+      "long_bean"
+    ],
+    "seasonings": [
+      "sour_curry_paste",
+      "tamarind_paste",
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 200,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 62.0,
+      "protein": 5.1,
+      "fat": 0.3,
+      "carb": 7.9
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1471",
+    "nutrition_source": "Thai FCD (INMU), food code T191",
+    "notes": "sour_curry_paste was the second addition to ingredients.json. At 31 kcal and 0.16 g fat per 100 g this is the lightest dish in the database — แกงส้ม has no coconut milk and no oil at all."
+  },
+  {
+    "id": "th_018",
+    "name_th": "ต้มข่าไก่",
+    "main_ingredients": [
+      "chicken",
+      "mushroom",
+      "galangal",
+      "lemongrass"
+    ],
+    "optional_ingredients": [
+      "kaffir_lime_leaf",
+      "lime",
+      "coriander"
+    ],
+    "seasonings": [
+      "coconut_milk",
+      "fish_sauce"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 200,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 184.0,
+      "protein": 15.6,
+      "fat": 11.8,
+      "carb": 2.8
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1489",
+    "nutrition_source": "Thai FCD (INMU), food code T211",
+    "notes": "Galangal and lemongrass are main, not optional — remove either and it stops being ต้มข่า. Both are text-only, so despite the chicken this dish needs typed input to match well."
+  },
+  {
+    "id": "th_019",
+    "name_th": "ต้มยำกุ้ง",
+    "main_ingredients": [
+      "shrimp",
+      "mushroom",
+      "lemongrass",
+      "galangal"
+    ],
+    "optional_ingredients": [
+      "kaffir_lime_leaf",
+      "lime",
+      "coriander",
+      "chili"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "chili_paste"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 200,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 88.0,
+      "protein": 9.3,
+      "fat": 2.9,
+      "carb": 5.7
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1491",
+    "nutrition_source": "Thai FCD (INMU), food code T212",
+    "notes": "Chili is in optional_ingredients, not seasonings — it is flagged is_seasoning: false in the dictionary, and a test enforces the split. น้ำพริกเผา contains sugar and oil, so clean was not applied even though the dish looks light."
+  },
+  {
+    "id": "th_020",
+    "name_th": "ต้มยำไก่",
+    "main_ingredients": [
+      "chicken",
+      "mushroom",
+      "lemongrass",
+      "galangal"
+    ],
+    "optional_ingredients": [
+      "lime",
+      "chili",
+      "coriander"
+    ],
+    "seasonings": [
+      "fish_sauce"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 200,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 82.0,
+      "protein": 16.4,
+      "fat": 0.7,
+      "carb": 1.0
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1492",
+    "nutrition_source": "Thai FCD (INMU), food code T213",
+    "notes": "The clear version, without chilli paste — 0.37 g fat and 0.5 g carb per 100 g, the leanest dish in the database. That is why this one is clean and th_019 is not."
+  },
+  {
+    "id": "th_021",
+    "name_th": "ต้มพะโล้",
+    "main_ingredients": [
+      "pork",
+      "egg"
+    ],
+    "optional_ingredients": [
+      "tofu"
+    ],
+    "seasonings": [
+      "dark_soy_sauce",
+      "sugar",
+      "salt",
+      "pepper"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 200,
+    "cook_time_min": 60,
+    "nutrition": {
+      "kcal": 266.0,
+      "protein": 17.8,
+      "fat": 8.5,
+      "carb": 28.3
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1490",
+    "nutrition_source": "Thai FCD (INMU), food code T226",
+    "notes": "Palm sugar is essential to พะโล้, so clean is out, and 28 g carb per serving puts keto well out of reach."
+  },
+  {
+    "id": "th_022",
+    "name_th": "ทอดมันกุ้ง",
+    "main_ingredients": [
+      "shrimp"
+    ],
+    "optional_ingredients": [
+      "long_bean"
+    ],
+    "seasonings": [
+      "red_curry_paste",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 100,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 247.0,
+      "protein": 14.8,
+      "fat": 16.8,
+      "carb": 9.2
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1494",
+    "nutrition_source": "Thai FCD (INMU), food code T215",
+    "notes": "Keto at 9.2 g carb — just inside the 10 g limit — but deep-fried, so not clean. A good illustration that the two tags are independent."
+  },
+  {
+    "id": "th_023",
+    "name_th": "ผัดพริกขิงไก่ใส่ถั่วฝักยาว",
+    "main_ingredients": [
+      "chicken",
+      "long_bean"
+    ],
+    "optional_ingredients": [
+      "kaffir_lime_leaf"
+    ],
+    "seasonings": [
+      "red_curry_paste",
+      "vegetable_oil",
+      "fish_sauce"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 150,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 195.0,
+      "protein": 15.8,
+      "fat": 10.7,
+      "carb": 4.0
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1505",
+    "nutrition_source": "Thai FCD (INMU), food code T225",
+    "notes": "Long bean is text-only, so a photo of chicken alone would not match this well — the user has to mention ถั่วฝักยาว."
+  },
+  {
+    "id": "th_024",
+    "name_th": "ยำรวมมิตรทะเล",
+    "main_ingredients": [
+      "shrimp",
+      "squid",
+      "onion",
+      "tomato"
+    ],
+    "optional_ingredients": [
+      "coriander",
+      "mint",
+      "lime",
+      "chili"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "sugar",
+      "chili_paste"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 120,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 98.0,
+      "protein": 11.7,
+      "fat": 1.5,
+      "carb": 9.0
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1506",
+    "nutrition_source": "Thai FCD (INMU), food code T227",
+    "notes": "120 g is a yum portion — a shared side, not a main plate. Onion and tomato are detectable, so a photo can partly reach this dish even though the seafood cannot be seen."
+  },
+  {
+    "id": "th_025",
+    "name_th": "ลาบเนื้อ",
+    "main_ingredients": [
+      "beef",
+      "green_onion",
+      "mint",
+      "coriander"
+    ],
+    "optional_ingredients": [
+      "lime",
+      "chili"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "roasted_rice_powder"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 120,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 146.0,
+      "protein": 14.9,
+      "fat": 5.2,
+      "carb": 9.4
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1508",
+    "nutrition_source": "Thai FCD (INMU), food code T101",
+    "notes": "The only beef dish in the database. ข้าวคั่ว is a seasoning here, not a staple — it is a spoonful of toasted ground rice for aroma, which is why it does not disqualify the keto tag the way ข้าว would."
+  },
+  {
+    "id": "th_026",
+    "name_th": "ส้มตำไทย",
+    "main_ingredients": [
+      "green_papaya",
+      "tomato",
+      "dried_shrimp",
+      "peanut"
+    ],
+    "optional_ingredients": [
+      "long_bean",
+      "lime",
+      "chili",
+      "garlic"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 120,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 126.0,
+      "protein": 5.1,
+      "fat": 3.2,
+      "carb": 17.2
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1513",
+    "nutrition_source": "Thai FCD (INMU), food code T231",
+    "notes": "Often assumed to be a vegan salad. It is not — dried shrimp and fish sauce are both animal products, and palm sugar rules out clean. A good worked example of why the vegan rule is derived from is_animal_product rather than from how a dish looks."
+  },
+  {
+    "id": "th_027",
+    "name_th": "ก๋วยเตี๋ยวผัดขี้เมา",
+    "main_ingredients": [
+      "rice_noodle",
+      "pork",
+      "holy_basil",
+      "chili"
+    ],
+    "optional_ingredients": [
+      "bell_pepper",
+      "long_bean",
+      "garlic"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "oyster_sauce",
+      "vegetable_oil"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 300,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 648.0,
+      "protein": 58.5,
+      "fat": 29.4,
+      "carb": 37.5
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1524",
+    "nutrition_source": "Thai FCD (INMU), food code T8",
+    "notes": "300 g is a one-plate meal, unlike the 200 g curry portions which assume rice alongside. Rice noodle in main_ingredients rules out keto outright."
+  },
+  {
+    "id": "th_028",
+    "name_th": "ผัดไทยกุ้ง",
+    "main_ingredients": [
+      "rice_noodle",
+      "shrimp",
+      "egg",
+      "tofu",
+      "bean_sprout"
+    ],
+    "optional_ingredients": [
+      "peanut",
+      "lime",
+      "green_onion"
+    ],
+    "seasonings": [
+      "tamarind_paste",
+      "fish_sauce",
+      "sugar",
+      "vegetable_oil"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 300,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 513.0,
+      "protein": 20.5,
+      "fat": 19.0,
+      "carb": 62.0
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1525",
+    "nutrition_source": "Thai FCD (INMU), food code T9",
+    "notes": "Tofu is here but the dish is still not vegetarian — the shrimp, egg and fish sauce see to that. Swapping in a vegetarian version would need its own record, not a re-tag."
+  },
+  {
+    "id": "th_029",
+    "name_th": "ก๋วยเตี๋ยวเส้นใหญ่ผัดซีอิ๊วหมู",
+    "main_ingredients": [
+      "rice_noodle",
+      "pork",
+      "egg",
+      "chinese_broccoli"
+    ],
+    "optional_ingredients": [
+      "garlic"
+    ],
+    "seasonings": [
+      "dark_soy_sauce",
+      "soy_sauce",
+      "oyster_sauce",
+      "vegetable_oil"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 300,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 663.0,
+      "protein": 20.5,
+      "fat": 37.0,
+      "carb": 62.2
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1529",
+    "nutrition_source": "Thai FCD (INMU), food code T11",
+    "notes": "คะน้า is chinese_broccoli, a separate dictionary entry from broccoli — different plants that a detector would also see differently. Keeping them apart matters more than it looks."
+  },
+  {
+    "id": "th_030",
+    "name_th": "ข้าวซอยไก่",
+    "main_ingredients": [
+      "egg_noodle",
+      "chicken"
+    ],
+    "optional_ingredients": [
+      "onion",
+      "lime",
+      "coriander"
+    ],
+    "seasonings": [
+      "yellow_curry_paste",
+      "coconut_milk",
+      "fish_sauce"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 300,
+    "cook_time_min": 40,
+    "nutrition": {
+      "kcal": 453.0,
+      "protein": 17.4,
+      "fat": 31.8,
+      "carb": 21.9
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1550",
+    "nutrition_source": "Thai FCD (INMU), food code T310",
+    "notes": "Northern Thai. egg_noodle is flagged is_animal_product because บะหมี่ contains egg — so this excludes vegans through the noodles as well as the chicken."
+  },
+  {
+    "id": "th_031",
+    "name_th": "ข้าวราดไก่ผัดใบกะเพรา",
+    "main_ingredients": [
+      "rice",
+      "chicken",
+      "holy_basil",
+      "chili"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "long_bean"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "oyster_sauce",
+      "soy_sauce",
+      "vegetable_oil"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 300,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 564.0,
+      "protein": 25.8,
+      "fat": 19.6,
+      "carb": 70.8
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1561",
+    "nutrition_source": "Thai FCD (INMU), food code T54",
+    "notes": "The dish that exposed concern C1 — recommend.py already claimed 'missing: holy_basil' months before the dictionary could hold it. Holy basil is main, not optional: without it this is just chicken on rice."
+  },
+  {
+    "id": "th_032",
+    "name_th": "ข้าวผัดหมู",
+    "main_ingredients": [
+      "rice",
+      "pork",
+      "egg"
+    ],
+    "optional_ingredients": [
+      "onion",
+      "green_onion",
+      "tomato",
+      "carrot"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "oyster_sauce",
+      "vegetable_oil",
+      "pepper"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 300,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 432.0,
+      "protein": 17.2,
+      "fat": 19.0,
+      "carb": 47.7
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1554",
+    "nutrition_source": "Thai FCD (INMU), food code T56",
+    "notes": "Generous optional list on purpose — fried rice absorbs whatever is in the fridge, which is exactly the situation this whole project is built for."
+  },
+  {
+    "id": "th_033",
+    "name_th": "ผัดผักรวมมิตร",
+    "main_ingredients": [
+      "cabbage",
+      "carrot",
+      "cauliflower",
+      "garlic"
+    ],
+    "optional_ingredients": [
+      "broccoli",
+      "bell_pepper"
+    ],
+    "seasonings": [
+      "vegetable_oil",
+      "oyster_sauce",
+      "soy_sauce"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 213,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 167.0,
+      "protein": 3.9,
+      "fat": 12.4,
+      "carb": 8.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "cabbage": 80,
+      "carrot": 40,
+      "cauliflower": 60,
+      "garlic": 6,
+      "vegetable_oil": 12,
+      "oyster_sauce": 10,
+      "soy_sauce": 5
+    },
+    "basis_refs": {
+      "cabbage": "STD:409",
+      "carrot": "STD:429",
+      "cauliflower": "STD:408",
+      "garlic": "STD:226",
+      "vegetable_oil": "STD:1368",
+      "oyster_sauce": "STD:270",
+      "soy_sauce": "STD:273"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from D10, D27, D9, N2, K34, N60, N136",
+    "notes": "Gram amounts are mine, not INMU's — see concern C14. 12 g of oil is about one tablespoon; oil is the single biggest lever on the calorie count here, which is why it is stated rather than folded in. Excluded for vegetarians because of the oyster sauce, not because of anything visible."
+  },
+  {
+    "id": "th_034",
+    "name_th": "ผัดกะหล่ำปลีน้ำปลา",
+    "main_ingredients": [
+      "cabbage",
+      "garlic",
+      "chili"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "vegetable_oil",
+      "fish_sauce"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 181,
+    "cook_time_min": 8,
+    "nutrition": {
+      "kcal": 153.0,
+      "protein": 2.4,
+      "fat": 12.3,
+      "carb": 6.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "cabbage": 150,
+      "garlic": 8,
+      "chili": 3,
+      "vegetable_oil": 12,
+      "fish_sauce": 8
+    },
+    "basis_refs": {
+      "cabbage": "STD:409",
+      "garlic": "STD:226",
+      "chili": "STD:545",
+      "vegetable_oil": "STD:1368",
+      "fish_sauce": "STD:291"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from D10, N2, D335, K34, N71",
+    "notes": "Thai FCD has no entry for any simple stir-fried vegetable dish, which is why this is computed. Protein is understated by roughly 0.4 g: the fish sauce record (N71) has no protein value, and it is summed as zero rather than invented."
+  },
+  {
+    "id": "th_035",
+    "name_th": "ไก่ผัดขิง",
+    "main_ingredients": [
+      "chicken",
+      "ginger",
+      "green_onion",
+      "garlic"
+    ],
+    "optional_ingredients": [
+      "mushroom",
+      "onion"
+    ],
+    "seasonings": [
+      "vegetable_oil",
+      "soy_sauce",
+      "oyster_sauce"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 172,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 299.0,
+      "protein": 18.5,
+      "fat": 22.6,
+      "carb": 5.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "chicken": 100,
+      "ginger": 25,
+      "green_onion": 15,
+      "garlic": 6,
+      "vegetable_oil": 10,
+      "soy_sauce": 8,
+      "oyster_sauce": 8
+    },
+    "basis_refs": {
+      "chicken": "STD:895",
+      "ginger": "STD:233",
+      "green_onion": "STD:436",
+      "garlic": "STD:226",
+      "vegetable_oil": "STD:1368",
+      "soy_sauce": "STD:273",
+      "oyster_sauce": "STD:270"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from F25, N16, D30, N2, K34, N136, N60",
+    "notes": "Chicken is priced from the raw record (F25), so cooking loss is not modelled — the real cooked portion weighs less and is slightly more calorie-dense per gram. 25 g of ginger is a generous thumb; this dish is defined by it."
+  },
+  {
+    "id": "th_036",
+    "name_th": "ผัดผักโขมกระเทียม",
+    "main_ingredients": [
+      "spinach",
+      "garlic"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "vegetable_oil",
+      "soy_sauce"
+    ],
+    "health_tags": [
+      "clean",
+      "keto",
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 176,
+    "cook_time_min": 8,
+    "nutrition": {
+      "kcal": 132.0,
+      "protein": 5.2,
+      "fat": 10.5,
+      "carb": 1.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "spinach": 150,
+      "garlic": 8,
+      "vegetable_oil": 10,
+      "soy_sauce": 8
+    },
+    "basis_refs": {
+      "spinach": "STD:489",
+      "garlic": "STD:226",
+      "vegetable_oil": "STD:1368",
+      "soy_sauce": "STD:273"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from D80, N2, K34, N136",
+    "notes": "Seasoned with soy sauce rather than the more usual oyster sauce, specifically so the database has a genuinely vegan stir-fry. That is a real cooking choice, not a relabelling — one drop of oyster sauce would make the vegan tag false. Note D80 reports 0.0 g available carbohydrate for amaranth, which is the source's own figure, not a missing value."
+  },
+  {
+    "id": "th_037",
+    "name_th": "สลัดผักสด",
+    "main_ingredients": [
+      "lettuce",
+      "tomato",
+      "cucumber",
+      "carrot"
+    ],
+    "optional_ingredients": [
+      "bell_pepper"
+    ],
+    "seasonings": [],
+    "health_tags": [
+      "clean",
+      "keto",
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 200,
+    "cook_time_min": 5,
+    "nutrition": {
+      "kcal": 39.0,
+      "protein": 2.3,
+      "fat": 0.4,
+      "carb": 5.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "lettuce": 60,
+      "tomato": 50,
+      "cucumber": 60,
+      "carrot": 30
+    },
+    "basis_refs": {
+      "lettuce": "STD:484",
+      "tomato": "STD:571",
+      "cucumber": "STD:441",
+      "carrot": "STD:429"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from D77, D118, D34, D27",
+    "notes": "Dressing is deliberately NOT counted — it is served on the side, and 30 g of a creamy dressing would roughly triple the calories of this dish. Anyone using these numbers should know the salad alone is what was measured. The only recipe with an empty seasonings list."
+  },
+  {
+    "id": "th_038",
+    "name_th": "ผัดฟักทองใส่ไข่",
+    "main_ingredients": [
+      "pumpkin",
+      "egg",
+      "garlic"
+    ],
+    "optional_ingredients": [
+      "green_onion"
+    ],
+    "seasonings": [
+      "vegetable_oil",
+      "fish_sauce"
+    ],
+    "health_tags": [
+      "clean"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 228,
+    "cook_time_min": 12,
+    "nutrition": {
+      "kcal": 265.0,
+      "protein": 9.1,
+      "fat": 17.1,
+      "carb": 17.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "pumpkin": 150,
+      "egg": 55,
+      "garlic": 5,
+      "vegetable_oil": 12,
+      "fish_sauce": 6
+    },
+    "basis_refs": {
+      "pumpkin": "STD:561",
+      "egg": "STD:1274",
+      "garlic": "STD:226",
+      "vegetable_oil": "STD:1368",
+      "fish_sauce": "STD:291"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from D108, H19, N2, K34, N71",
+    "notes": "Clean but not keto: pumpkin brings about 15 g of carbohydrate, well over the 10 g limit. A dish being wholesome and being low-carb are different questions, and the rules are set up to answer them separately."
+  },
+  {
+    "id": "th_039",
+    "name_th": "มันเทศนึ่ง",
+    "main_ingredients": [
+      "sweet_potato"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [],
+    "health_tags": [
+      "clean",
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 150,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 183.0,
+      "protein": 1.4,
+      "fat": 0.1,
+      "carb": 41.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "sweet_potato": 150
+    },
+    "basis_refs": {
+      "sweet_potato": "STD:1926"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from B9",
+    "notes": "The one computed recipe with no modelling in it at all — B9 is already the steamed value, so the only assumption is the 150 g portion. Not keto: 41 g of carbohydrate, and sweet potato is a starch staple regardless."
+  },
+  {
+    "id": "th_040",
+    "name_th": "ไก่ผัดบรอกโคลี",
+    "main_ingredients": [
+      "chicken",
+      "broccoli",
+      "garlic"
+    ],
+    "optional_ingredients": [
+      "carrot",
+      "mushroom"
+    ],
+    "seasonings": [
+      "vegetable_oil",
+      "oyster_sauce",
+      "soy_sauce"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 251,
+    "cook_time_min": 12,
+    "nutrition": {
+      "kcal": 328.0,
+      "protein": 21.3,
+      "fat": 22.9,
+      "carb": 8.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "chicken": 100,
+      "broccoli": 120,
+      "garlic": 6,
+      "vegetable_oil": 10,
+      "oyster_sauce": 10,
+      "soy_sauce": 5
+    },
+    "basis_refs": {
+      "chicken": "STD:895",
+      "broccoli": "EXT:usda-broccoli-raw",
+      "garlic": "STD:226",
+      "vegetable_oil": "STD:1368",
+      "oyster_sauce": "STD:270",
+      "soy_sauce": "STD:273"
+    },
+    "nutrition_source": "Thai FCD (INMU) except broccoli: USDA FoodData Central, 'Broccoli, raw', 30 Oct 2020 (FDC 170379) — see data/external_nutrition.json",
+    "notes": "The only recipe drawing on a second database. Thai FCD has no broccoli entry at all (concern C12), so USDA was used, and its carbohydrate figure was converted onto Thai FCD's basis first: 6.64 g by difference minus 2.6 g fibre = 4.04 g available. Summing the two sources without that correction would have overstated the carbs by 2.6 g and pushed this dish over the keto limit."
+  }
+]

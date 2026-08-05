@@ -428,6 +428,20 @@
     "is_animal_product": false,
     "synonyms": ["พริกแกงมัสมั่น", "น้ำพริกแกงมัสมั่น", "massaman curry paste"]
   },
+  "yellow_curry_paste": {
+    "name_th": "พริกแกงกะหรี่",
+    "yolo_class_id": null,
+    "is_seasoning": true,
+    "is_animal_product": false,
+    "synonyms": ["พริกแกงกะหรี่", "น้ำพริกแกงกะหรี่", "ผงกะหรี่", "yellow curry paste", "curry powder"]
+  },
+  "sour_curry_paste": {
+    "name_th": "พริกแกงส้ม",
+    "yolo_class_id": null,
+    "is_seasoning": true,
+    "is_animal_product": false,
+    "synonyms": ["พริกแกงส้ม", "น้ำพริกแกงส้ม", "พริกแกงเหลือง", "น้ำพริกแกงเหลือง", "sour curry paste"]
+  },
   "chili_paste": {
     "name_th": "น้ำพริกเผา",
     "yolo_class_id": null,

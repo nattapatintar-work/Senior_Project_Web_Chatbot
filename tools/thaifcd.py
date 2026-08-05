@@ -46,18 +46,28 @@ import re
 import sys
 import time
 from dataclasses import dataclass, asdict
+from pathlib import Path
 
 import requests
 from pypdf import PdfReader
 
 BASE = "https://inmu.mahidol.ac.th/thaifcd/"
 
+# Every food ever fetched, keyed by "DBCODE:food_id". Committed to the repo on
+# purpose: recipe work reads from here instead of the network, so the numbers
+# are reviewable in a diff and the server gets hit once per food, ever.
+CACHE_PATH = Path(__file__).parent.parent / "data" / "thaifcd_cache.json"
+
 # The site hands out a session cookie on any page load and rejects requests
 # without one, so every lookup goes through a warmed-up session.
 _SESSION: requests.Session | None = None
 
 # Be a polite scraper. This is someone's academic server, not an API we pay for.
-REQUEST_DELAY_SECONDS = 1.0
+# The server drops connections when pushed -- it reset twice and timed out once
+# during a single enumeration run -- so this delay is doing real work, not just
+# being courteous.
+REQUEST_DELAY_SECONDS = 1.5
+MAX_RETRIES = 4
 
 # The four macros the recipe schema needs, keyed by the row anchor that finds
 # them in the PDF: the printed nutrient label followed by its INFOODS tag.
@@ -72,6 +82,7 @@ REQUEST_DELAY_SECONDS = 1.0
 #   PROTCNT   protein, total (Kjeldahl method)
 #   FAT       fat, total
 #   CHOAVLDF  carbohydrate, available, by difference
+#
 # Each field lists its anchors in preference order, because the database fills
 # different tags for different kinds of food:
 #
@@ -145,6 +156,46 @@ def _session() -> requests.Session:
     return _SESSION
 
 
+def _fetch(path: str, params: dict) -> requests.Response:
+    """
+    GET a path, retrying with backoff on the server's habit of dropping us.
+
+    A reset connection is not a permanent failure here, but it does invalidate
+    the session cookie, so each retry throws the session away and starts a new
+    one. Retrying on the same dead session just fails again more slowly.
+    """
+    global _SESSION
+    last: Exception | None = None
+    for attempt in range(MAX_RETRIES):
+        try:
+            response = _session().get(BASE + path, params=params, timeout=60)
+            response.raise_for_status()
+            time.sleep(REQUEST_DELAY_SECONDS)
+            return response
+        except (requests.RequestException, OSError) as exc:
+            last = exc
+            _SESSION = None
+            # Back off further each time rather than hammering a struggling
+            # server: 3s, 6s, 12s.
+            time.sleep(3 * 2**attempt)
+    raise RuntimeError(f"{path} failed after {MAX_RETRIES} attempts") from last
+
+
+def load_cache() -> dict:
+    """Read the fetched-food cache, or an empty one if nothing is cached yet."""
+    if not CACHE_PATH.exists():
+        return {}
+    return json.loads(CACHE_PATH.read_text(encoding="utf-8"))
+
+
+def save_cache(cache: dict) -> None:
+    """Write the cache back, sorted so diffs stay readable."""
+    CACHE_PATH.write_text(
+        json.dumps(cache, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+
 def search(term: str, food_group_id: str = "") -> list[FoodMatch]:
     """
     Look up foods whose name contains `term`.
@@ -154,17 +205,14 @@ def search(term: str, food_group_id: str = "") -> list[FoodMatch]:
     "Mixed foods: ready-to-eat" -- the group that holds composed dishes like
     ข้าวราดไก่ผัดใบกะเพรา, as opposed to raw ingredients.
     """
-    response = _session().get(
-        BASE + "appassistant/get_json_food_name",
-        params={"food_group_id": food_group_id, "term": term},
-        timeout=30,
+    response = _fetch(
+        "appassistant/get_json_food_name",
+        {"food_group_id": food_group_id, "term": term},
     )
-    response.raise_for_status()
 
     # The response opens with a UTF-8 BOM, which json.loads rejects. Decoding as
     # utf-8-sig strips it; response.json() would raise here.
     rows = json.loads(response.content.decode("utf-8-sig"))
-    time.sleep(REQUEST_DELAY_SECONDS)
     return [FoodMatch(r["dbcode"], r["id"], r["name"]) for r in rows]
 
 
@@ -217,13 +265,10 @@ def get(dbcode: str, food_id: str) -> FoodRecord:
     100 g of edible portion -- converting to a per-serving figure is the
     caller's job, and data/NUTRITION_SOURCE.md documents how recipes do it.
     """
-    response = _session().get(
-        BASE + "foodsearch/food_name_result_std_pdf/",
-        params={"dbcode": dbcode, "food_id": food_id},
-        timeout=60,
+    response = _fetch(
+        "foodsearch/food_name_result_std_pdf/",
+        {"dbcode": dbcode, "food_id": food_id},
     )
-    response.raise_for_status()
-    time.sleep(REQUEST_DELAY_SECONDS)
 
     # The response carries a UTF-8 BOM before "%PDF", which pypdf complains
     # about. Stripping it up front keeps the console clean.
@@ -242,6 +287,24 @@ def get(dbcode: str, food_id: str) -> FoodRecord:
         tags_used={field: tag for field, (_, tag) in parsed.items()},
         **{field: value for field, (value, _) in parsed.items()},
     )
+
+
+def get_cached(dbcode: str, food_id: str, cache: dict | None = None) -> dict:
+    """
+    Return a food's record, fetching it only if it is not already cached.
+
+    Pass a `cache` dict to batch many lookups without rewriting the file each
+    time; the caller is then responsible for calling save_cache() at the end.
+    """
+    own_cache = cache is None
+    cache = load_cache() if own_cache else cache
+
+    key = f"{dbcode}:{food_id}"
+    if key not in cache:
+        cache[key] = asdict(get(dbcode, food_id))
+        if own_cache:
+            save_cache(cache)
+    return cache[key]
 
 
 if __name__ == "__main__":

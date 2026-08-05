@@ -17,18 +17,44 @@ Things to watch on the Ingredient-to-Recipe Chatbot project. Unlike the dated fi
 
 # ------- Week 1 -------
 
-- **C1** — Dictionary can't hold seasonings/aromatics, and 4 tests forbid adding them → 🔴 **impacts Week 3–4**
+- ~~**C1** — Dictionary can't hold seasonings/aromatics, and 4 tests forbid adding them~~ → ✅ **CLOSED 2026-08-05**
 - **C2** — 20 classes ≈ 4,000 instances to label, not 3,000 → 🟡 **impacts Week 3–4**
 - ~~**C3** — PyThaiNLP unverified on Python 3.13~~ → ✅ **CLOSED 2026-08-05**
-- **C4** — Thai prefix collisions break naive matching → 🟡 **impacts Week 5**
-- **C5** — No git repo; AGPL-3.0 obligation unmet → 🟡 **impacts ongoing** *(partly addressed: `.gitignore` now exists)*
+- **C4** — Thai prefix collisions break naive matching → 🟡 **impacts Week 5** *(worse since Week 3: 40 new entries added more collisions)*
+- ~~**C5** — No git repo; AGPL-3.0 obligation unmet~~ → ✅ **CLOSED 2026-08-05**
 - **C6** — ปวยเล้ง synonym is my guess, not your decision → 🟢 **impacts Week 2**
 - **C7** — `rapidfuzz` / `pyyaml` missing from requirements → 🟢 **impacts Week 5, 8**
 - **C8** — cp874 encoding crash will recur on Person 1's PC → 🟢 **impacts anytime**
 
 ---
 
-## C1 — The dictionary has no room for ingredients YOLO can't see
+## ~~C1 — The dictionary has no room for ingredients YOLO can't see~~ ✅ CLOSED
+
+> ✅ **Closed 2026-08-05 (Week 3)** — Option A implemented. Detail below kept because
+> Weeks 11–12 need the reasoning.
+>
+> **Resolution:** the dictionary now has two tiers in one file. The 20 detectable
+> ingredients keep `yolo_class_id` 0–19, completely unchanged; 40 text-only entries were
+> added with `yolo_class_id: null` (proteins, herbs, staples, seasonings). Because no
+> existing key moved and no existing ID changed, the joint lock with Person 1 holds.
+>
+> The four tests were relaxed as predicted, and **two new ones added** that guard the
+> lock better than the originals did:
+>
+> - `test_the_detectable_tier_is_still_the_agreed_twenty` — checks identity *and order*
+>   of the 20, so a rename or reorder fails even though a count would still look right
+> - `test_seasonings_are_never_detectable` — no seasoning may carry a class ID
+>
+> Two fields were added to every entry while the file was open: `is_seasoning` (basic
+> seasonings must not affect matching, `Claude.md:427`) and `is_animal_product`, which
+> lets the vegan rule be **derived from the data** instead of remembered. That second one
+> matters more than it looks — see the note at the end of this entry.
+>
+> ⚠️ **Still owed to Person 1:** they have not yet been told. The message is short —
+> *IDs 0–19 and all 20 keys are untouched; only entries YOLO will never see were added.*
+> Tell them before they next pull, not after.
+
+**Original entry follows.**
 
 > 🔴 **High** · **Impacts: Week 3–4** (recipe entry) · Owner: You + Person 1
 
@@ -86,8 +112,15 @@ non-detectable items in a second file.
 ID, so the joint lock with Person 1 holds. But it *is* a schema change to a file you
 agreed together — tell them before doing it, not after.
 
-**Next action:** Decide A or B with Person 1 **before** starting recipe entry in Week 3.
-Doing it after 40 recipes are written means editing all 40.
+**Next action:** ~~Decide A or B with Person 1 before starting recipe entry in Week 3.~~
+Done — Option A. Remaining action is only to **tell Person 1**, which has not happened yet.
+
+> 💡 **Worth carrying forward:** the fix that closed this concern also removed a whole
+> class of future bug. `is_animal_product` means the vegan rule lives in exactly one
+> place — the dictionary — rather than being restated in the recipe file, the test file,
+> and Week 7's health filter. The trade is that **a wrongly flagged ingredient is now
+> wrong everywhere at once, and every test will cheerfully agree with it.** That flag is
+> the one field in `ingredients.json` worth double-checking by hand.
 
 ---
 
@@ -141,17 +174,56 @@ Several names in the locked 20 are prefixes of others:
 | มันฝรั่ง (potato) | มันเทศ (sweet potato) | both start มัน |
 | หอมใหญ่ (onion) | ต้นหอม (green onion) | both contain หอม |
 
+**Updated 2026-08-05 (Week 3): the 40 text-only entries made this materially worse.**
+The dictionary went from 20 entries to 60, and the new ones collide with each other and
+with the original 20:
+
+| Short | Longer | Risk |
+|---|---|---|
+| พริก (chili) | พริกไทย (pepper) | "พริกไทย" matches as **chili** — a seasoning read as a main ingredient |
+| กุ้ง (shrimp) | กุ้งแห้ง (dried shrimp) | wrong ingredient, and both are animal products so the vegan filter still holds |
+| ซีอิ๊ว (soy sauce) | ซีอิ๊วดำ (dark soy sauce) | wrong seasoning |
+| ข้าว (rice) | ข้าวคั่ว (roasted rice powder) | staple confused with a seasoning — flips a keto tag |
+| มะเขือ- | มะเขือเทศ / มะเขือยาว | tomato vs eggplant, entirely different dishes |
+| ถั่ว- | ถั่วงอก / ถั่วลิสง / ถั่วฝักยาว | bean sprout vs peanut vs long bean |
+| น้ำมัน (oil) | น้ำมันหอย (oyster sauce) | **vegan-relevant** — oyster sauce is an animal product, oil is not |
+
 A first-match-wins loop over the synonym lists gets these wrong, and the failure is silent
 — the user asks for bell pepper and the bot recommends a chili dish. Nothing crashes, so
 no test catches it unless one is written for it.
 
+> ⚠️ The น้ำมัน / น้ำมันหอย pair is the one that actually hurts. A mismatch there does not
+> just pick the wrong dish — it can let a dish containing oyster sauce pass a vegan
+> filter, because the matcher recorded plain oil instead. A correctness bug wearing a
+> ranking bug's clothes.
+
 **Next action:** In Week 5, sort synonyms by length **descending** before matching, so the
-longest candidate is tried first. Add a test asserting `"พริกหวาน" → bell_pepper` and
-`"กะหล่ำดอก" → cauliflower`. Write that test *before* the matcher.
+longest candidate is tried first. Add tests asserting `"พริกหวาน" → bell_pepper`,
+`"กะหล่ำดอก" → cauliflower`, `"พริกไทย" → pepper`, and `"น้ำมันหอย" → oyster_sauce`.
+Write those tests *before* the matcher.
 
 ---
 
-## C5 — No git repo, and AGPL-3.0 is a real obligation
+## ~~C5 — No git repo, and AGPL-3.0 is a real obligation~~ ✅ CLOSED
+
+> ✅ **Closed 2026-08-05 (Week 3).**
+>
+> - `git init` on branch `main`, three commits so far. Baseline was committed *before*
+>   the `ingredients.json` schema change, so the riskiest edit of the week is the first
+>   thing that can be undone.
+> - `.env` confirmed absent from the staged file list before the first commit — checked,
+>   not assumed.
+> - `LICENSE` added: verbatim AGPL-3.0 text (34,523 bytes) from gnu.org.
+>
+> **Not yet done:** the repo is local only. Pushing it public is still required for AGPL
+> compliance and still needs a README. Tracked separately rather than reopening this.
+>
+> One thing to know before pushing: git is normalising LF → CRLF on checkout on this
+> machine. Harmless locally, but if Person 1's machine is configured differently it will
+> produce whole-file diffs that hide the real changes. A one-line `.gitattributes`
+> (`* text=auto eol=lf`) fixes it, and is cheapest to add before anyone else clones.
+
+**Original entry follows.**
 
 > 🟡 **Medium** · **Impacts: ongoing**, hard deadline at submission · Owner: You + Person 1
 
@@ -288,6 +360,160 @@ threads rather than one after another. Also check quota with
 
 ---
 
+# ------- Week 3 -------
+
+- ~~**C12** — `broccoli` and `onion` have no nutrition data anywhere~~ → ✅ **CLOSED 2026-08-05**
+- ~~**C13** — Test suite is red~~ → ✅ **CLOSED 2026-08-05** (53 passing)
+- **C14** — Computed recipes' gram amounts are our assumption, not reference data → 🟡 **impacts Weeks 11–12**
+- **C15** — The keto tag is true of the dish and misleading about the meal → 🟡 **impacts Week 7**
+
+---
+
+## ~~C12 — Two of the 20 detectable classes have no nutrition data at all~~ ✅ CLOSED
+
+> ✅ **Closed 2026-08-05 (Week 3).**
+>
+> - **broccoli** → USDA FoodData Central, "Broccoli, raw", 30 Oct 2020 (FDC 170379), in
+>   `data/external_nutrition.json`, used by `th_040`. Cited in that recipe's
+>   `nutrition_source` rather than silently blended into the Thai FCD numbers.
+> - **onion** → no external source needed after all. It appears only in *direct* recipes
+>   (`th_008`, `th_009`, `th_010`, `th_013`), where INMU analysed the whole dish, so its
+>   contribution is already inside a measured value.
+>
+> **The part worth remembering** is not the gap but what closing it exposed: USDA
+> "Carbohydrate, by difference" *includes* dietary fibre and Thai FCD `CHOAVLDF` *excludes*
+> it. Summing the two as-published would have overstated broccoli's carbohydrate by 2.6 g
+> per 100 g — enough to push `th_040` over the keto threshold and flip a health tag, with
+> no error and nothing to notice. Broccoli is stored as 6.64 − 2.6 = 4.04 g on the Thai FCD
+> basis, with both raw figures kept so the subtraction is checkable.
+>
+> ⚠️ **Any future second-database addition needs the same check before its values are
+> summed with INMU's.** Two tables can both be correct and still not be addable.
+
+**Original entry follows.**
+
+> 🟡 **Medium** · **Impacts: Weeks 3–4 (recipe entry), Week 7 (recommender)** · Owner: You
+
+Thai FCD has **no entry** for `broccoli` (บรอกโคลี) or `onion` (หอมใหญ่ / หัวหอม).
+Searches return nothing — not a near-miss, not a differently-named variant, nothing.
+
+Both are in the locked 20 that Person 1 is training on. So the detector will be able to
+see them, users will type them, and the recipe database will have nothing sourced to say
+about them.
+
+Why this is awkward rather than fatal: a recipe can still *list* broccoli as an
+ingredient, and matching works fine — the dictionary is what matching reads, not the
+nutrition table. What breaks is only Method B (computing a dish's macros by summing its
+ingredients), where an unaccounted ingredient means part of the dish's weight contributes
+nothing to the total. The result is a plausible-looking underestimate.
+
+**Next action:** avoid leaning on broccoli or onion as *significant* ingredients in
+computed recipes — use them where they are garnish-scale, or prefer a direct-lookup dish.
+Where that is not possible, state the omission in the recipe's `nutrition_basis` rather
+than quietly dropping it. Revisit in Week 7 if these two turn out to be common in real
+photos.
+
+---
+
+## ~~C13 — The test suite is red, and that is a slower problem than it looks~~ ✅ CLOSED
+
+> ✅ **Closed 2026-08-05 (Week 3)** — `53 passed` (20 contract + 12 session + 21 recipe).
+> `data/recipes.json` exists, so the 21 recipe tests have data to check.
+>
+> The habit the entry was really about still stands: green is the completion criterion for
+> a piece of work, not a follow-up task.
+
+**Original entry follows.**
+
+> 🟡 **Medium** · **Impacts: now** · Owner: You
+
+```
+21 failed, 32 passed in 3.22s
+```
+
+All 21 failures are `tests/test_recipes.py` hitting `FileNotFoundError` on a
+`data/recipes.json` that does not exist yet. The validator was written before the data on
+purpose — it defines what the data must satisfy — so this is expected.
+
+The concern is not the failure. It is the habit. A suite that is *known* to be red stops
+being read, and the moment it stops being read it stops catching the thing it was written
+to catch. Between now and the moment `recipes.json` lands, a real regression in the 32
+passing tests would be invisible, because the summary line is already red.
+
+**Next action:** treat green as the completion criterion for Weeks 3–4, not an optional
+follow-up. Until then, run `pytest tests/test_contract.py tests/test_session.py` to get a
+signal that still means something. Do not commit `recipes.json` in a partially-filled
+state that leaves the suite red overnight.
+
+---
+
+## C14 — Half the recipes rest on gram amounts we invented
+
+> 🟡 **Medium** · **Impacts: Weeks 11–12 (report)** · Owner: You
+
+`Claude.md:430` forbids estimated nutrition, and this project honours that for **nutrient
+values** — every one comes from Thai FCD. But roughly a third of the 40 recipes have no
+composed-dish entry in the database, so their macros are summed from per-ingredient
+values, and the **gram amount of each ingredient is a choice made by this project**.
+
+That is a legitimate method — it is how recipe formulation normally works — but it is not
+the same epistemic status as a laboratory-analysed dish, and the two must not be presented
+as if they were. Cooking losses and oil absorption are not modelled either.
+
+Concretely: `แกงเขียวหวานไก่` at 101 kcal/100 g is a measurement. `ไข่เจียว` computed from
+egg + oil + fish sauce is a model, and its accuracy depends entirely on whether the
+assumed oil quantity resembles what a real cook uses — and oil is the single biggest lever
+on the calorie count.
+
+**Next action:** every recipe already records `nutrition_method` as `direct` or `computed`,
+and computed ones must fill `nutrition_basis` with their gram amounts —
+`tests/test_recipes.py` enforces this. In the report, state the split (how many of each)
+and name the limitation explicitly rather than letting the reader assume all 40 are
+equally sourced. This is a limitation to *declare*, not to hide; declaring it costs
+nothing and finding it undeclared costs credibility.
+
+**Updated 2026-08-05 — the split is now known: 32 `direct`, 8 `computed`.** So four fifths
+of the database is fully measured and one fifth carries assumed proportions. Two
+conventions were used in the computed eight, both stated in `data/RECIPES_NOTES.md`:
+oil is always listed explicitly at 10–12 g (it is the largest single lever on the calorie
+count), and ingredients are priced at **raw** weight, so cooking loss and oil absorption
+are not modelled.
+
+---
+
+## C15 — The keto tag is true of the dish and misleading about the meal
+
+> 🟡 **Medium** · **Impacts: Week 7 (recommender), Weeks 11–12 (report)** · Owner: You
+
+23 of the 40 recipes carry `keto`. That is far more than a Thai recipe database should
+plausibly produce, and the cause is a portion convention rather than a bug.
+
+Curry servings are **200 g of curry, with rice counted as a separate dish**. So
+แกงเขียวหวานไก่ comes to 6.1 g of carbohydrate and passes the ≤10 g rule in
+`HEALTH_TAGS.md` cleanly. But nobody eats green curry without rice, and adding a normal
+200 g serving of rice puts the real meal nearer 60 g.
+
+The tag is therefore **accurate about what was measured and misleading about what gets
+eaten** — which is the more dangerous kind of wrong, because every individual number
+checks out.
+
+**Why the rule was not simply changed:** the tagging was done by applying
+`HEALTH_TAGS.md` exactly as written. Rewriting a definition *after* seeing that it
+produced an unflattering answer is how a definition stops meaning anything. The honest
+move is to leave the rule intact and record that it is producing a bad result.
+
+**Next action:** in Week 7, either
+
+- have the recommender qualify the tag in the reply template — "keto, without rice" — or
+- add a third clause to the keto rule ("not conventionally served with rice") and retag,
+  documenting that the rule changed and why.
+
+Either way it needs a sentence in the report. The underlying point is a good one to make:
+a health tag is meaningless without a stated portion, and portion conventions are exactly
+where a nutrition database quietly encodes an assumption.
+
+---
+
 # Closed
 
 Don't delete closed concerns — the reasoning is worth keeping, and Weeks 11–12 need it for
@@ -296,7 +522,12 @@ the report.
 | ID | Raised | Closed | Resolution |
 |---|---|---|---|
 | C3 | Week 1 | 2026-08-05 (Week 2) | PyThaiNLP 5.3.5 verified working on Python 3.13.2; no fallback venv needed |
+| C1 | Week 1 | 2026-08-05 (Week 3) | Two-tier dictionary (Option A): 40 text-only entries with `yolo_class_id: null`, 20 detectable untouched. 4 tests relaxed, 2 stricter ones added. **Person 1 not yet told** |
+| C5 | Week 1 | 2026-08-05 (Week 3) | `git init` + 3 commits + verbatim AGPL-3.0 `LICENSE`. `.env` verified excluded before first commit. Public push + README still outstanding |
+| C12 | Week 3 | 2026-08-05 (Week 3) | broccoli via USDA FDC 170379 in `data/external_nutrition.json`, converted onto Thai FCD's available-carbohydrate basis; onion needed no source, appearing only in direct recipes |
+| C13 | Week 3 | 2026-08-05 (Week 3) | `data/recipes.json` written; 53 tests passing |
 
 ---
 
-*Last updated: 2026-08-05, after Week 2 (LINE webhook).*
+*Last updated: 2026-08-05, after Week 3 (40-recipe database written and verified; Weeks
+3–4 deliverable complete, Week 2 photo shoot still outstanding).*
