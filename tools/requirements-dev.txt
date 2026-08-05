@@ -1,0 +1,14 @@
+# Dependencies for the scripts in tools/ ONLY.
+#
+# Kept separate from the project's requirements.txt on purpose: the chatbot
+# never imports anything in this file. tools/thaifcd.py is run by hand while
+# building data/recipes.json, and once the recipe database is written the bot
+# reads it straight off disk. Person 1 does not need any of this to run the
+# system.
+#
+# Install with:
+#     pip install -r tools/requirements-dev.txt
+
+# Reads the nutrient PDFs served by the Thai Food Composition Database, which
+# publishes no JSON API and no bulk download.
+pypdf>=6.0.0

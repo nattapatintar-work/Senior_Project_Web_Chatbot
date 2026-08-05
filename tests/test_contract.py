@@ -35,6 +35,25 @@ from recommender.recommend import recommend
 # if anyone edits ingredients.json without the team agreeing, a test fails and
 # says so. YOLO class IDs are baked into the trained model weights, so a
 # silent renumbering after training would quietly corrupt every prediction.
+#
+# THE DICTIONARY HAS TWO TIERS (added Week 3, concern C1)
+# -------------------------------------------------------
+# Tier 1 -- DETECTABLE: these 20, with yolo_class_id 0-19. Unchanged, and the
+#           tests below still pin them exactly. This is the locked agreement.
+# Tier 2 -- TEXT-ONLY: everything with yolo_class_id null. Ingredients a camera
+#           will never usefully identify -- fish sauce in a bottle, pork in a
+#           freezer bag, holy basil buried under other leaves -- but which the
+#           40 recipes need and which users type all the time. They reach the
+#           system through extract(), never through YOLO.
+#
+# The second tier was added because the recipe database could not be written
+# without it: the project's own worked example, "มีกุ้งกับไข่ อยากกินคลีน
+# ไม่เอาหมู" (Claude.md:122), uses two ingredients the locked 20 do not contain.
+#
+# Adding a tier does NOT reopen the lock. No existing key moved, no existing ID
+# changed, and test_the_detectable_tier_is_still_the_agreed_twenty below proves
+# it on every run -- which matters more to Person 1's training than the total
+# count of entries in the file ever did.
 EXPECTED_INGREDIENTS = [
     "chicken", "egg", "cabbage", "lettuce", "spinach",
     "tomato", "cucumber", "eggplant", "pumpkin", "cauliflower",
@@ -51,39 +70,77 @@ def test_ingredients_file_loads():
     """The file must be valid JSON and must not be empty."""
     data = load_ingredients()
     assert isinstance(data, dict)
-    assert len(data) == 20
+    # Not "== 20" any more: the text-only tier is free to grow as recipes need
+    # it. What must not change is the detectable tier, pinned two tests below.
+    assert len(data) >= 20
 
 
-def test_ingredients_are_the_agreed_twenty():
-    """Exactly the 20 agreed keys — no extras, nothing missing, right order."""
-    assert list(load_ingredients().keys()) == EXPECTED_INGREDIENTS
+def test_the_detectable_tier_is_still_the_agreed_twenty():
+    """
+    The 20 YOLO classes, in order, unchanged.
+
+    This is the test that actually guards the lock with Person 1, and it is
+    stricter than a count of the file's entries: it checks identity and order,
+    so renaming "green_onion" or reordering the file fails here even though the
+    total would still look right.
+    """
+    detectable = [k for k, v in load_ingredients().items() if v["yolo_class_id"] is not None]
+    assert detectable == EXPECTED_INGREDIENTS
 
 
 def test_every_ingredient_has_the_required_fields():
-    """Each entry needs name_th, yolo_class_id, and synonyms, correctly typed."""
+    """Each entry needs the five agreed fields, correctly typed."""
     for key, entry in load_ingredients().items():
         # The f-string message only prints when a check fails, and it names the
         # guilty ingredient — much faster to debug than a bare "assert failed".
         assert "name_th" in entry, f"{key} is missing name_th"
         assert "yolo_class_id" in entry, f"{key} is missing yolo_class_id"
         assert "synonyms" in entry, f"{key} is missing synonyms"
+        assert "is_seasoning" in entry, f"{key} is missing is_seasoning"
+        assert "is_animal_product" in entry, f"{key} is missing is_animal_product"
 
         assert isinstance(entry["name_th"], str) and entry["name_th"], f"{key}: bad name_th"
-        assert isinstance(entry["yolo_class_id"], int), f"{key}: yolo_class_id must be an int"
+        # None is allowed now, and means "YOLO will never detect this one".
+        assert entry["yolo_class_id"] is None or isinstance(entry["yolo_class_id"], int), (
+            f"{key}: yolo_class_id must be an int or null"
+        )
         assert isinstance(entry["synonyms"], list), f"{key}: synonyms must be a list"
         assert len(entry["synonyms"]) > 0, f"{key} has no synonyms"
+        assert isinstance(entry["is_seasoning"], bool), f"{key}: is_seasoning must be true/false"
+        assert isinstance(entry["is_animal_product"], bool), (
+            f"{key}: is_animal_product must be true/false"
+        )
 
 
 def test_yolo_class_ids_are_sequential_from_zero():
     """
-    IDs must be exactly 0-19 with no gaps and no duplicates.
+    The non-null IDs must be exactly 0-19, no gaps and no duplicates.
 
     YOLO identifies classes by number, not name. A gap or a repeat means the
     trained model and this dictionary disagree about what class 7 is, and every
     downstream lookup silently returns the wrong ingredient.
+
+    Text-only ingredients are skipped rather than counted: they have no ID
+    because they are never predicted, and including their nulls here would
+    raise TypeError while sorting instead of reporting anything useful.
     """
-    ids = [entry["yolo_class_id"] for entry in load_ingredients().values()]
+    ids = [e["yolo_class_id"] for e in load_ingredients().values() if e["yolo_class_id"] is not None]
     assert sorted(ids) == list(range(20)), f"class IDs are wrong: {sorted(ids)}"
+
+
+def test_seasonings_are_never_detectable():
+    """
+    No seasoning may carry a YOLO class ID.
+
+    Two independent reasons, and both matter. Person 1 is not training on
+    bottles of fish sauce, so an ID here would point at a class that does not
+    exist in the weights. And Claude.md:427 says basic seasonings must not
+    affect ingredient matching — everyone has them at home — so a seasoning
+    arriving from the detector would skew every recommendation it touched.
+    """
+    for key, entry in load_ingredients().items():
+        if entry["is_seasoning"]:
+            assert entry["yolo_class_id"] is None, f"{key} is a seasoning but has a YOLO class ID"
 
 
 def test_ingredient_names_use_snake_case():
