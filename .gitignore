@@ -1,0 +1,42 @@
+# ---------------------------------------------------------------------------
+# SECRETS — the most important lines in this file
+# ---------------------------------------------------------------------------
+# .env holds your real LINE channel token and secret. Anyone who gets that
+# token can send messages as your bot. Once a secret is committed to git it
+# stays in the history forever, even if you delete the file in a later commit,
+# and this repo has to be PUBLIC because YOLO is AGPL-3.0.
+#
+# .env.example is the opposite: it contains only placeholders, so it IS
+# committed — that is how a teammate knows which variables they need.
+.env
+.env.local
+*.key
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# ---------------------------------------------------------------------------
+# Project data
+# ---------------------------------------------------------------------------
+# Photos users send to the bot. Not source code, potentially private (people
+# photograph their own kitchens), and they pile up quickly.
+data/incoming/
+
+# Trained YOLO weights from Person 1 — often 50MB+, too big for git.
+*.pt
+
+# ---------------------------------------------------------------------------
+# Editors / OS
+# ---------------------------------------------------------------------------
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini

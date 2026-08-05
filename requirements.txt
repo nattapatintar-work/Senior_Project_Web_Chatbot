@@ -1,0 +1,25 @@
+# Python dependencies for the Ingredient-to-Recipe Chatbot (Person 2 side)
+#
+# Install everything with:
+#     pip install -r requirements.txt
+#
+# ">=" means "this version or newer". Loose pins are fine for a student
+# project. Before the final demo, run `pip freeze > requirements.lock.txt` to
+# capture the exact versions that are known to work.
+
+# --- Web / LINE ------------------------------------------------------------
+flask>=3.0.0             # web server that receives the LINE webhook (Week 2)
+line-bot-sdk>=3.11.0     # official LINE client: verify signatures, send replies
+python-dotenv>=1.0.0     # load secrets from a .env file instead of hardcoding
+                         # them — a leaked channel token lets anyone post as
+                         # your bot, so .env must never be committed to git
+
+# --- NLP (Week 5) ----------------------------------------------------------
+pythainlp>=5.0.0         # Thai word segmentation; Thai has no spaces between
+                         # words, so text must be tokenized before matching
+
+# --- Recommender (Week 7) --------------------------------------------------
+scikit-learn>=1.4.0      # TfidfVectorizer + cosine_similarity, both built in
+
+# --- Testing ---------------------------------------------------------------
+pytest>=8.0.0            # runs tests/test_contract.py

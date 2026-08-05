@@ -1,0 +1,231 @@
+"""
+tests/test_contract.py
+======================
+Contract tests.
+
+A contract test does not ask "is this answer correct?" It asks "is this answer
+the right SHAPE?" — does the dict have the agreed keys, is score really a
+number between 0 and 1, is every field a list where a list was promised.
+
+That distinction is why these tests are useful right now, while extract() and
+recommend() are still returning hardcoded mock data. The mock values are
+meaningless, but the shape is real, and the shape is what Person 1's code will
+be written against. If someone later renames "health_tags" to "tags", these
+tests fail immediately instead of the bug surfacing in Week 9 when the two
+halves of the project are joined.
+
+Run them with:
+    pytest -v
+
+pytest finds these automatically by looking for files named test_*.py and,
+inside them, functions named test_*. There is nothing to register by hand.
+"""
+
+import json
+import sys
+from pathlib import Path
+
+# Let the tests import from nlp/ and recommender/, which live one level up.
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from nlp.extract import extract, load_ingredients
+from recommender.recommend import recommend
+
+# The 20 ingredients locked in with Person 1. Written out here on purpose:
+# if anyone edits ingredients.json without the team agreeing, a test fails and
+# says so. YOLO class IDs are baked into the trained model weights, so a
+# silent renumbering after training would quietly corrupt every prediction.
+EXPECTED_INGREDIENTS = [
+    "chicken", "egg", "cabbage", "lettuce", "spinach",
+    "tomato", "cucumber", "eggplant", "pumpkin", "cauliflower",
+    "broccoli", "carrot", "onion", "garlic", "ginger",
+    "potato", "sweet_potato", "green_onion", "chili", "bell_pepper",
+]
+
+
+# ---------------------------------------------------------------------------
+# ingredients.json — the shared dictionary
+# ---------------------------------------------------------------------------
+
+def test_ingredients_file_loads():
+    """The file must be valid JSON and must not be empty."""
+    data = load_ingredients()
+    assert isinstance(data, dict)
+    assert len(data) == 20
+
+
+def test_ingredients_are_the_agreed_twenty():
+    """Exactly the 20 agreed keys — no extras, nothing missing, right order."""
+    assert list(load_ingredients().keys()) == EXPECTED_INGREDIENTS
+
+
+def test_every_ingredient_has_the_required_fields():
+    """Each entry needs name_th, yolo_class_id, and synonyms, correctly typed."""
+    for key, entry in load_ingredients().items():
+        # The f-string message only prints when a check fails, and it names the
+        # guilty ingredient — much faster to debug than a bare "assert failed".
+        assert "name_th" in entry, f"{key} is missing name_th"
+        assert "yolo_class_id" in entry, f"{key} is missing yolo_class_id"
+        assert "synonyms" in entry, f"{key} is missing synonyms"
+
+        assert isinstance(entry["name_th"], str) and entry["name_th"], f"{key}: bad name_th"
+        assert isinstance(entry["yolo_class_id"], int), f"{key}: yolo_class_id must be an int"
+        assert isinstance(entry["synonyms"], list), f"{key}: synonyms must be a list"
+        assert len(entry["synonyms"]) > 0, f"{key} has no synonyms"
+
+
+def test_yolo_class_ids_are_sequential_from_zero():
+    """
+    IDs must be exactly 0-19 with no gaps and no duplicates.
+
+    YOLO identifies classes by number, not name. A gap or a repeat means the
+    trained model and this dictionary disagree about what class 7 is, and every
+    downstream lookup silently returns the wrong ingredient.
+    """
+    ids = [entry["yolo_class_id"] for entry in load_ingredients().values()]
+    assert sorted(ids) == list(range(20)), f"class IDs are wrong: {sorted(ids)}"
+
+
+def test_ingredient_names_use_snake_case():
+    """Canonical keys must be lowercase ASCII with underscores, e.g. sweet_potato."""
+    for key in load_ingredients():
+        assert key.islower(), f"{key} is not lowercase"
+        assert " " not in key, f"{key} contains a space — use an underscore"
+        assert key.replace("_", "").isalpha(), f"{key} has unexpected characters"
+
+
+def test_ingredient_includes_its_own_thai_name_as_a_synonym():
+    """
+    name_th must also appear in synonyms.
+
+    Lookup only ever searches the synonym list, so a Thai name that lives only
+    in name_th would never actually be matchable.
+    """
+    for key, entry in load_ingredients().items():
+        assert entry["name_th"] in entry["synonyms"], (
+            f"{key}: name_th '{entry['name_th']}' is missing from its own synonyms"
+        )
+
+
+def test_no_synonym_is_shared_by_two_ingredients():
+    """
+    A given synonym may only point at one ingredient.
+
+    If "พริก" mapped to both chili and bell_pepper, which one wins would depend
+    on dictionary ordering — the kind of bug that works on your machine and
+    fails on your teammate's.
+    """
+    seen: dict[str, str] = {}  # synonym -> the ingredient that claimed it
+    for key, entry in load_ingredients().items():
+        for synonym in entry["synonyms"]:
+            assert synonym not in seen, (
+                f"'{synonym}' is claimed by both '{seen[synonym]}' and '{key}'"
+            )
+            seen[synonym] = key
+
+
+def test_file_is_saved_as_utf8():
+    """
+    The file must be readable as UTF-8.
+
+    Some Windows editors save as TIS-620 or CP874 instead, which turns every
+    Thai character into mojibake the moment a teammate on another machine
+    opens it.
+    """
+    path = Path(__file__).parent.parent / "data" / "ingredients.json"
+    with open(path, encoding="utf-8") as f:
+        json.load(f)  # raises if the encoding or the JSON is wrong
+
+
+# ---------------------------------------------------------------------------
+# extract() — Handoff #2 to Person 1
+# ---------------------------------------------------------------------------
+
+def test_extract_returns_the_three_agreed_keys():
+    result = extract("มีไก่กับไข่")
+    assert isinstance(result, dict)
+    assert set(result.keys()) == {"ingredients", "health_tags", "excluded"}
+
+
+def test_extract_values_are_all_lists_of_strings():
+    result = extract("มีไก่กับไข่")
+    for key, value in result.items():
+        assert isinstance(value, list), f"{key} should be a list"
+        assert all(isinstance(item, str) for item in value), f"{key} must hold strings"
+
+
+def test_extract_survives_empty_and_junk_input():
+    """
+    Must not crash on rubbish.
+
+    Real users send stickers, single emoji, and blank messages. Returning empty
+    lists is a fine answer; raising an exception kills the whole reply.
+    """
+    for junk in ["", "   ", "?????", "12345", "😀"]:
+        result = extract(junk)
+        assert set(result.keys()) == {"ingredients", "health_tags", "excluded"}
+
+
+# ---------------------------------------------------------------------------
+# recommend() — the final deliverable of Person 2's side
+# ---------------------------------------------------------------------------
+
+def test_recommend_returns_a_list():
+    assert isinstance(recommend(["chicken", "egg"]), list)
+
+
+def test_recommend_respects_top_k():
+    """Never return more dishes than asked for. LINE replies must stay short."""
+    assert len(recommend(["chicken"], top_k=3)) <= 3
+    assert len(recommend(["chicken"], top_k=1)) <= 1
+
+
+def test_each_recommendation_has_the_required_keys():
+    required = {"id", "name_th", "score", "have", "missing", "nutrition"}
+    for dish in recommend(["chicken", "garlic"]):
+        assert required.issubset(dish.keys()), f"missing keys: {required - dish.keys()}"
+
+
+def test_score_is_a_number_between_zero_and_one():
+    """
+    Cosine similarity is defined on 0.0-1.0.
+
+    A score outside that range means the maths is wrong, and since results are
+    sorted by score it would also scramble the ranking.
+    """
+    for dish in recommend(["chicken", "garlic"]):
+        score = dish["score"]
+        assert isinstance(score, (int, float)), "score must be numeric"
+        assert 0.0 <= score <= 1.0, f"score {score} is outside 0.0-1.0"
+
+
+def test_have_and_missing_are_lists_of_strings():
+    for dish in recommend(["chicken", "garlic"]):
+        for field in ("have", "missing"):
+            assert isinstance(dish[field], list), f"{field} must be a list"
+            assert all(isinstance(x, str) for x in dish[field])
+
+
+def test_nutrition_has_all_four_macros():
+    """kcal, protein, fat, carb — all four, all numeric."""
+    for dish in recommend(["chicken"]):
+        nutrition = dish["nutrition"]
+        for macro in ("kcal", "protein", "fat", "carb"):
+            assert macro in nutrition, f"nutrition is missing {macro}"
+            assert isinstance(nutrition[macro], (int, float)), f"{macro} must be numeric"
+
+
+def test_results_are_sorted_best_first():
+    """The user reads top to bottom, so rank 1 must be the strongest match."""
+    scores = [dish["score"] for dish in recommend(["chicken", "garlic", "egg"])]
+    assert scores == sorted(scores, reverse=True), f"not sorted: {scores}"
+
+
+def test_recommend_handles_empty_ingredients():
+    """
+    An empty ingredient list must return a list, not raise.
+
+    This happens for real whenever YOLO detects nothing in a photo and the user
+    sent no text alongside it.
+    """
+    assert isinstance(recommend([]), list)

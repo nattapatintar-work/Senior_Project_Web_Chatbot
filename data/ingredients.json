@@ -1,0 +1,102 @@
+{
+  "chicken": {
+    "name_th": "ไก่",
+    "yolo_class_id": 0,
+    "synonyms": ["ไก่", "เนื้อไก่", "อกไก่", "สะโพกไก่", "น่องไก่", "ไก่สด", "chicken"]
+  },
+  "egg": {
+    "name_th": "ไข่",
+    "yolo_class_id": 1,
+    "synonyms": ["ไข่", "ไข่ไก่", "ไข่เป็ด", "ไข่สด", "egg", "eggs"]
+  },
+  "cabbage": {
+    "name_th": "กะหล่ำปลี",
+    "yolo_class_id": 2,
+    "synonyms": ["กะหล่ำปลี", "กะหล่ำ", "กระหล่ำปลี", "กะหล่ำปลีขาว", "กะหล่ำปลีม่วง", "cabbage"]
+  },
+  "lettuce": {
+    "name_th": "ผักกาดหอม",
+    "yolo_class_id": 3,
+    "synonyms": ["ผักกาดหอม", "ผักสลัด", "ผักกาดแก้ว", "สลัด", "lettuce"]
+  },
+  "spinach": {
+    "name_th": "ผักโขม",
+    "yolo_class_id": 4,
+    "synonyms": ["ผักโขม", "ผักขม", "ปวยเล้ง", "ผักปวยเล้ง", "spinach"]
+  },
+  "tomato": {
+    "name_th": "มะเขือเทศ",
+    "yolo_class_id": 5,
+    "synonyms": ["มะเขือเทศ", "มะเขือเทศราชินี", "มะเขือเทศสีดา", "tomato", "tomatoes"]
+  },
+  "cucumber": {
+    "name_th": "แตงกวา",
+    "yolo_class_id": 6,
+    "synonyms": ["แตงกวา", "แตงร้าน", "แตงกวาญี่ปุ่น", "cucumber"]
+  },
+  "eggplant": {
+    "name_th": "มะเขือยาว",
+    "yolo_class_id": 7,
+    "synonyms": ["มะเขือยาว", "มะเขือม่วง", "eggplant", "aubergine"]
+  },
+  "pumpkin": {
+    "name_th": "ฟักทอง",
+    "yolo_class_id": 8,
+    "synonyms": ["ฟักทอง", "ฟักทองญี่ปุ่น", "ฟักทองไทย", "pumpkin"]
+  },
+  "cauliflower": {
+    "name_th": "กะหล่ำดอก",
+    "yolo_class_id": 9,
+    "synonyms": ["กะหล่ำดอก", "ดอกกะหล่ำ", "กระหล่ำดอก", "กะหล่ำดอกขาว", "cauliflower"]
+  },
+  "broccoli": {
+    "name_th": "บรอกโคลี",
+    "yolo_class_id": 10,
+    "synonyms": ["บรอกโคลี", "บรอกโคลี่", "บล็อคโคลี่", "บล็อกโคลี", "บรอคโคลี", "broccoli"]
+  },
+  "carrot": {
+    "name_th": "แครอท",
+    "yolo_class_id": 11,
+    "synonyms": ["แครอท", "แครรอท", "แคร์รอท", "carrot", "carrots"]
+  },
+  "onion": {
+    "name_th": "หัวหอม",
+    "yolo_class_id": 12,
+    "synonyms": ["หัวหอม", "หอมใหญ่", "หัวหอมใหญ่", "หอมหัวใหญ่", "onion"]
+  },
+  "garlic": {
+    "name_th": "กระเทียม",
+    "yolo_class_id": 13,
+    "synonyms": ["กระเทียม", "กระเทียมสด", "กระเทียมกลีบ", "หัวกระเทียม", "garlic"]
+  },
+  "ginger": {
+    "name_th": "ขิง",
+    "yolo_class_id": 14,
+    "synonyms": ["ขิง", "ขิงสด", "ขิงแก่", "ขิงอ่อน", "ginger"]
+  },
+  "potato": {
+    "name_th": "มันฝรั่ง",
+    "yolo_class_id": 15,
+    "synonyms": ["มันฝรั่ง", "หัวมันฝรั่ง", "มันฝรั่งสด", "potato", "potatoes"]
+  },
+  "sweet_potato": {
+    "name_th": "มันเทศ",
+    "yolo_class_id": 16,
+    "synonyms": ["มันเทศ", "มันหวาน", "มันญี่ปุ่น", "sweet potato", "sweetpotato"]
+  },
+  "green_onion": {
+    "name_th": "ต้นหอม",
+    "yolo_class_id": 17,
+    "synonyms": ["ต้นหอม", "ใบหอม", "หอมซอย", "ต้นหอมซอย", "green onion", "spring onion", "scallion"]
+  },
+  "chili": {
+    "name_th": "พริก",
+    "yolo_class_id": 18,
+    "synonyms": ["พริก", "พริกขี้หนู", "พริกชี้ฟ้า", "พริกแดง", "พริกเขียว", "chili", "chilli"]
+  },
+  "bell_pepper": {
+    "name_th": "พริกหวาน",
+    "yolo_class_id": 19,
+    "synonyms": ["พริกหวาน", "พริกหยวก", "พริกยักษ์", "bell pepper", "capsicum", "paprika"]
+  }
+}
