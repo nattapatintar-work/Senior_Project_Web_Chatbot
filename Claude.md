@@ -364,10 +364,10 @@ Build the "central dictionary" that connects CV (YOLO), NLP, and Recommender.
 > This is the single most common failure point — if CV says "chicken egg" and NLP says "egg" with no synonym link, the recommender can't recognize them as the same ingredient.
 
 **Checklist:**
-- [ ] Draft a list of 12-15 ingredients (coordinate with Person 1 to match what they'll train YOLO on)
-- [ ] Day 4: 🔒 **Lock the ingredient list jointly with Person 1** (should not change easily after this)
-- [ ] Days 5-7: write the skeleton for all files + understand Person 1's contract tests
-- [ ] 📤 **Deliverable:** hand `ingredients.json` to Person 1 this week (if late, Person 1 can't merge the dataset)
+- [x] Draft a list of 12-15 ingredients (coordinate with Person 1 to match what they'll train YOLO on)
+- [x] Day 4: 🔒 **Lock the ingredient list jointly with Person 1** (should not change easily after this)
+- [x] Days 5-7: write the skeleton for all files + understand Person 1's contract tests
+- [x] 📤 **Deliverable:** hand `ingredients.json` to Person 1 this week (if late, Person 1 can't merge the dataset)
 
 > 💡 **Beginner note — what's a contract test?** A test suite that checks whether your function returns data in the agreed shape (does it have the right keys, is confidence between 0-1, etc). If it fails, you're blocked from pushing to main. It's a checkpoint that prevents things from breaking later when everyone's code comes together.
 
@@ -388,8 +388,8 @@ Goal by end of Week 2: send a message to the LINE Bot and get a real reply back 
 - Agree on the labeling guideline with Person 1 before shooting: does >70% occlusion count? does an item cut off at the frame edge count? etc.
 
 **Checklist:**
-- [ ] LINE Bot replies successfully with mock data
-- [ ] Contract tests pass
+- [x] LINE Bot replies successfully with mock data
+- [x] Contract tests pass
 - [ ] batch_B fully shot (30 images) + metadata logged (filename, ingredients, lighting, scene_type, occlusion)
 - [ ] Cross-check: label 10 of Person 1's images to align standards
 
@@ -418,10 +418,10 @@ Goal by end of Week 2: send a message to the LINE Bot and get a real reply back 
 - The Recipe DB must **not be split with anyone else** — differing standards (one person considers Pad Kra Pao "clean," the other doesn't) creates the hardest-to-find bug of all. Do it solo, start to finish.
 
 **Checklist:**
-- [ ] Find a reliable nutrition source before you start filling data
-- [ ] Fill in all 40 menus (mix of authentic Thai + international dishes commonly cooked by Thais, e.g. fried rice, spaghetti)
-- [ ] Define health tags so they're verifiable (clean/keto/vegetarian/vegan)
-- [ ] Wait for the 🔒 canonical ingredient list window to close (Day 4 of Week 1) before you start filling — never fill before it's locked
+- [x] Find a reliable nutrition source before you start filling data
+- [x] Fill in all 40 menus (mix of authentic Thai + international dishes commonly cooked by Thais, e.g. fried rice, spaghetti)
+- [x] Define health tags so they're verifiable (clean/keto/vegetarian/vegan)
+- [x] Wait for the 🔒 canonical ingredient list window to close (Day 4 of Week 1) before you start filling — never fill before it's locked
 
 ## Week 5 — NLP Comes Alive
 

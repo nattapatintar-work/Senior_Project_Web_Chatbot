@@ -449,6 +449,14 @@ state that leaves the suite red overnight.
 
 ## C14 — Half the recipes rest on gram amounts we invented
 
+> **Update 2026-08-08:** 3 recipes spot-checked against the *live* Thai FCD site
+> (`th_001`, `th_010`, `th_031` — all `direct`), not just the committed cache. All three
+> scaled-to-serving values matched the recipe's `nutrition` block exactly, and matched the
+> cached values in `data/thaifcd_cache.json` exactly — no drift between source, cache, and
+> recipe. This verifies the `direct` two-thirds of the database; it says nothing about the
+> `computed` third, where the concern below still applies in full — the gram amounts are
+> still ours, not INMU's, no matter how faithfully the arithmetic runs.
+
 > 🟡 **Medium** · **Impacts: Weeks 11–12 (report)** · Owner: You
 
 `Claude.md:430` forbids estimated nutrition, and this project honours that for **nutrient
@@ -529,5 +537,20 @@ the report.
 
 ---
 
-*Last updated: 2026-08-05, after Week 3 (40-recipe database written and verified; Weeks
-3–4 deliverable complete, Week 2 photo shoot still outstanding).*
+# ------- Week 4 (session 4, 2026-08-08) -------
+
+Nothing new opened. One verification note added to C14 above (live spot-check of 3
+`direct` recipes against the Thai FCD site — all exact). No concerns closed; C14 and C15
+still stand as written, since the spot-check only covers the `direct` two-thirds.
+
+Also worth a line even though it isn't a project concern: `Claude.md`'s working copy had
+picked up an accidental full duplication of its own content (552 → 1656 lines, no new
+information) sometime between session 3 and this one. Discarded with `git checkout --
+Claude.md`; nothing was lost, since the committed version was the correct, non-duplicated
+one throughout.
+
+---
+
+*Last updated: 2026-08-08 (session 4). Weeks 3–4 deliverable complete and now spot-checked
+against the live source for the `direct` recipes. Still outstanding: Week 2 photo shoot
+(batch_B), telling Person 1 about the C1 schema change, and everything from Week 5 on.*
