@@ -672,7 +672,15 @@ concern originally prescribed). New files: `tests/test_extract.py` (correctness 
 separate from `test_contract.py`'s shape tests), `data/health_terms.json` (Thai/English
 diet-tag vocabulary — did not exist anywhere before this session), `data/nlp_dev_set.json`
 (22 sentences, mine to tune, Person 1's test set untouched). `recommender/` and `api/` not
-touched. All 69 prior tests plus 16 new ones pass (85 total).
+touched. All 53 prior tests plus 16 new ones pass (69 total).
+
+> ⚠️ **Correction, same session:** this section originally said "85 total" — an
+> arithmetic error caught while writing up the session (69 prior + 16 new was miscounted
+> as 69+16; the real prior count was 53, not 69). Confirmed by re-running
+> `python -m pytest tests/ -q`, which prints 69. The commit message for `09f210e` repeats
+> the same wrong number and was not amended — new commits are preferred over rewriting
+> history here, and the number is corrected in the places anyone will actually read next
+> (this file, the Summarization entry).
 
 **Two design decisions made this session, both driven by evidence gathered during
 planning, not by preference:**
@@ -705,6 +713,6 @@ sour. See C4's closure note for detail.
 ---
 
 *Last updated: 2026-08-08 (session 6). Week 5's real task — `nlp/extract.py::extract()` —
-is now implemented and tested (85 tests passing). C4 closed. Still outstanding: Week 2
+is now implemented and tested (69 tests passing). C4 closed. Still outstanding: Week 2
 photo shoot (batch_B), telling Person 1 about the C1 schema change, the suspected
 `sour_curry_paste`/`พริกแกงเหลือง` mis-assignment, and everything from Week 6 on.*
