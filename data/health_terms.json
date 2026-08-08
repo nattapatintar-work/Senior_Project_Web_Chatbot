@@ -1,0 +1,21 @@
+{
+  "_comment": "Thai/English vocabulary for detecting a user's stated diet from free text. Mirrors ingredients.json's shape ({tag: {synonyms: [...]}}) on purpose, so this vocabulary lives in data and is reviewable in a diff, same reasoning as HEALTH_TAGS.md:88-97 gives for deriving vegan/vegetarian from is_animal_product rather than restating a rule in code. The four tags themselves are defined in data/HEALTH_TAGS.md as RECIPE-side rules (carb <= 10g, no coconut milk, ...); this file is the separate, previously-nonexistent USER-UTTERANCE side -- what a person actually types to mean 'keto', not what makes a dish keto.",
+
+  "clean": {
+    "synonyms": ["คลีน", "กินคลีน", "อาหารคลีน", "clean"]
+  },
+
+  "keto": {
+    "_comment": "โลว์คาร์บ (low-carb) is an approximation, not a strict synonym -- keto is a stricter subset of low-carb -- but it is what people commonly type when they mean keto, and HEALTH_TAGS.md's own keto rule (carb <= 10g) is itself a specific low-carb threshold.",
+    "synonyms": ["คีโต", "คีโตเจนิค", "โลว์คาร์บ", "keto", "ketogenic", "low carb"]
+  },
+
+  "vegetarian": {
+    "synonyms": ["มังสวิรัติ", "vegetarian"]
+  },
+
+  "vegan": {
+    "_comment": "เจ (the Thai Buddhist vegetarian-fasting diet) maps here, not to vegetarian, because เจ forbids all animal products including fish sauce and shrimp paste -- same as this project's vegan definition (HEALTH_TAGS.md's vegan trap). This is an approximation in the other direction: เจ also forbids alliums (garlic, onion, chives), which this project's vegan tag does not exclude, so เจ->vegan is a slight over-match, not an exact one. Deliberately NOT including a bare 'เจ' synonym -- 'เจ' alone is a substring of ordinary words like เจอ (to meet) and เจ็ด (seven), and matching it bare would fire on sentences that have nothing to do with diet. Only the real compound phrases are listed, and both already tokenize as single tokens under PyThaiNLP's default dictionary, confirmed during Week 5 planning.",
+    "synonyms": ["วีแกน", "กินเจ", "อาหารเจ", "vegan"]
+  }
+}

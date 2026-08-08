@@ -20,7 +20,7 @@ Things to watch on the Ingredient-to-Recipe Chatbot project. Unlike the dated fi
 - ~~**C1** — Dictionary can't hold seasonings/aromatics, and 4 tests forbid adding them~~ → ✅ **CLOSED 2026-08-05**
 - **C2** — 20 classes ≈ 4,000 instances to label, not 3,000 → 🟡 **impacts Week 3–4**
 - ~~**C3** — PyThaiNLP unverified on Python 3.13~~ → ✅ **CLOSED 2026-08-05**
-- **C4** — Thai prefix collisions break naive matching → 🟡 **impacts Week 5** *(worse since Week 3: 49 new entries added more collisions, not yet fully audited)*
+- ~~**C4** — Thai prefix collisions break naive matching~~ → ✅ **CLOSED 2026-08-08** (real cause was the tokenizer, not sort order — see closure note)
 - ~~**C5** — No git repo; AGPL-3.0 obligation unmet~~ → ✅ **CLOSED 2026-08-05**
 - **C6** — ปวยเล้ง synonym is my guess, not your decision → 🟢 **impacts Week 2**
 - ~~**C7** — `rapidfuzz` / `pyyaml` missing from requirements~~ → ✅ **CLOSED 2026-08-08**
@@ -165,7 +165,52 @@ not the library.)*
 
 ---
 
-## C4 — Thai prefix collisions will break naive matching
+## ~~C4 — Thai prefix collisions will break naive matching~~ ✅ CLOSED
+
+> ✅ **Closed 2026-08-08 (session 6, Week 5).** `nlp/extract.py::extract()` implemented for
+> real. Detail below kept because Weeks 11–12 need the reasoning, and because this concern's
+> "next action" turned out to name the wrong fix.
+>
+> **The root cause was not what this concern originally diagnosed.** The prescribed fix —
+> sort synonyms by length descending, then first-match-wins — assumes matching happens
+> against the raw string. It doesn't: `extract()` tokenizes with PyThaiNLP first, and
+> **PyThaiNLP's default tokenizer destroys the evidence before any synonym list is ever
+> consulted.** Confirmed directly: `word_tokenize("ไม่เอาน้ำมันหอย")` with no custom
+> dictionary returns `['ไม่', 'เอา', 'น้ำมัน', 'หอย']` — "น้ำมันหอย" is already split into
+> "น้ำมัน" + "หอย" by the tokenizer itself, so no amount of synonym-sorting downstream can
+> recover it. The actual fix is a `pythainlp.util.Trie` built from every dictionary synonym,
+> passed as `custom_dict` to `word_tokenize()`, so compounds survive as single tokens.
+> Verified live before and after: `น้ำมันหอย` and `คลีน` (this project's own worked example,
+> `Claude.md:122`, also silently breaks under the default tokenizer) both stay whole with
+> the custom dict; nothing that was already correct (`พริกไทย`, `กุ้งแห้ง`, `น้ำปลา`) got
+> disturbed.
+>
+> **A full audit found 56 collision pairs, not the 11 documented below** — including 18
+> English pairs (`egg`/`eggplant`, `fish`/`fish sauce`, `onion`/`green onion`, …) this
+> concern never considered, and several more Thai pairs from the curry-paste synonyms added
+> while writing `recipes.json` (`พริกแกงเขียวหวาน`/`พริก`, `พริกแกงกะหรี่`/`พริก`, …). All 56
+> resolve correctly under the tokenizer fix; representative cases from the audit are now
+> pinned in `tests/test_extract.py`'s `COLLISION_CASES`, not just the four originally named
+> here.
+>
+> **Four pairs this concern listed were never real collisions.** `มะเขือ-`, `ถั่ว-`,
+> `มันฝรั่ง`/`มันเทศ`, and `หอมใหญ่`/`ต้นหอม` are *sibling* prefixes — neither is a substring
+> of the other, since no bare `มะเขือ`/`ถั่ว`/`มัน`/`หอม` synonym exists in the dictionary.
+> Longest-match-first was never going to break on these; they're a risk for *fuzzy*
+> matching instead, where a loose similarity threshold could conflate look-alikes. They now
+> have their own test category (`SIBLING_CASES`) rather than living inside the collision
+> table, because they're a different bug with a different fix (the fuzzy cutoff, not
+> tokenization).
+>
+> **New, smaller finding, flagged not fixed:** `sour_curry_paste`'s synonym list includes
+> `พริกแกงเหลือง`/`น้ำพริกแกงเหลือง`, which in common Thai usage names the *yellow* curry
+> paste, not sour — `yellow_curry_paste` separately claims `พริกแกงกะหรี่`. Possibly a
+> mis-assignment from when the curry-paste entries were added while writing `recipes.json`.
+> Left as-is per instruction — neither ingredient is camera-detectable, both are seasonings,
+> and fixing `ingredients.json` mid-NLP-work would mix two unrelated changes in one commit.
+> Worth a look before the report is written.
+
+**Original entry follows.**
 
 > 🟡 **Medium** · **Impacts: Week 5** · Owner: You
 
@@ -209,10 +254,11 @@ no test catches it unless one is written for it.
 > filter, because the matcher recorded plain oil instead. A correctness bug wearing a
 > ranking bug's clothes.
 
-**Next action:** In Week 5, sort synonyms by length **descending** before matching, so the
-longest candidate is tried first. Add tests asserting `"พริกหวาน" → bell_pepper`,
-`"กะหล่ำดอก" → cauliflower`, `"พริกไทย" → pepper`, and `"น้ำมันหอย" → oyster_sauce`.
-Write those tests *before* the matcher.
+**Next action:** ~~In Week 5, sort synonyms by length descending before matching, so the
+longest candidate is tried first. Add tests asserting "พริกหวาน" → bell_pepper,
+"กะหล่ำดอก" → cauliflower, "พริกไทย" → pepper, and "น้ำมันหอย" → oyster_sauce. Write those
+tests before the matcher.~~ Done, but the actual fix was a custom tokenizer dictionary, not
+just sort order — see the closure note above.
 
 ---
 
@@ -560,6 +606,7 @@ the report.
 | C12 | Week 3 | 2026-08-05 (Week 3) | broccoli via USDA FDC 170379 in `data/external_nutrition.json`, converted onto Thai FCD's available-carbohydrate basis; onion needed no source, appearing only in direct recipes |
 | C13 | Week 3 | 2026-08-05 (Week 3) | `data/recipes.json` written; 53 tests passing |
 | C7 | Week 1 | 2026-08-08 (session 5) | `rapidfuzz` and `pyyaml` added to `requirements.txt`; both installed and verified clean |
+| C4 | Week 1 | 2026-08-08 (session 6) | Real fix was a `pythainlp.util.Trie` custom dictionary, not sort order — the tokenizer was destroying compounds before matching ever ran. Full 56-pair audit in `tests/test_extract.py`; 4 originally-listed "collisions" reclassified as non-colliding siblings |
 
 ---
 
@@ -617,7 +664,47 @@ file is touched. Not urgent enough to justify a solo edit for one line.
 
 ---
 
-*Last updated: 2026-08-08 (session 5). Week 5 NLP build (`nlp/extract.py`) confirmed not
-started — still the pure Week 1-2 mock. Pre-Week-5 prep done: C7 closed, C16 opened, C1/C4
-counts corrected to the real 69-entry dictionary. Still outstanding: Week 2 photo shoot
-(batch_B), telling Person 1 about the C1 schema change, and the Week 5 build itself.*
+# ------- Week 5 (session 6, 2026-08-08) -------
+
+`nlp/extract.py::extract()` implemented for real — no longer the mock. **C4 closed** (see
+above; the real fix was a tokenizer-level custom dictionary, not the sort-order fix this
+concern originally prescribed). New files: `tests/test_extract.py` (correctness tests,
+separate from `test_contract.py`'s shape tests), `data/health_terms.json` (Thai/English
+diet-tag vocabulary — did not exist anywhere before this session), `data/nlp_dev_set.json`
+(22 sentences, mine to tune, Person 1's test set untouched). `recommender/` and `api/` not
+touched. All 69 prior tests plus 16 new ones pass (85 total).
+
+**Two design decisions made this session, both driven by evidence gathered during
+planning, not by preference:**
+
+- **เจ → `vegan`**, accepted only inside the compound phrases `กินเจ`/`อาหารเจ`, never as a
+  bare `เจ` synonym — `เจ` alone is a substring of ordinary words (`เจอ`, `เจ็ด`) and would
+  false-positive constantly. Both compounds already tokenize as single tokens under
+  PyThaiNLP's own default dictionary, confirmed directly, so no custom-dict entry was even
+  needed for them specifically. เจ excludes alliums where this project's `vegan` tag does
+  not, so the mapping is a deliberate slight over-match, documented inline in
+  `health_terms.json`.
+- **Thai typo recovery via rapidfuzz is a documented gap, not a solved problem.** English
+  typos recover reliably (`"chiken"` → `"chicken"`, 92% similarity). Thai typos mostly do
+  not, because a misspelled Thai word is rarely in the custom dictionary, so the tokenizer
+  shatters it into syllable fragments *before* rapidfuzz ever sees it — confirmed directly:
+  `"มะเขือเทดด้วย"` (typo of `มะเขือเทศ`) tokenizes to `['มี', 'มะเขือ', 'เท', 'ด', 'ด้วย']`,
+  and the surviving `มะเขือ` fragment scores only 80% against the correct synonym — below
+  the 85% cutoff `extract.py` uses. A looser cutoff was tried during planning and rejected:
+  at 60%, unrelated short tokens started matching real synonyms by accident (`กระ` →
+  `กระเพรา` at 60%). Missing a Thai typo is an acceptable, tested-for outcome
+  (`tests/test_extract.py::test_thai_typo_recovery_is_a_known_gap_not_a_silent_wrong_answer`);
+  inventing a wrong ingredient from an unrelated token is not, and the test suite protects
+  the boundary between the two rather than the accuracy number.
+
+**Also found and flagged, not fixed** (per instruction — a data-file edit deserves its own
+commit, not one bundled into NLP work): `sour_curry_paste` in `ingredients.json` likely
+carries a curry-paste name (`พริกแกงเหลือง`) that actually names yellow curry paste, not
+sour. See C4's closure note for detail.
+
+---
+
+*Last updated: 2026-08-08 (session 6). Week 5's real task — `nlp/extract.py::extract()` —
+is now implemented and tested (85 tests passing). C4 closed. Still outstanding: Week 2
+photo shoot (batch_B), telling Person 1 about the C1 schema change, the suspected
+`sour_curry_paste`/`พริกแกงเหลือง` mis-assignment, and everything from Week 6 on.*

@@ -1,0 +1,228 @@
+[
+  {
+    "text": "มีไก่กับไข่",
+    "ingredients": [
+      "chicken",
+      "egg"
+    ],
+    "health_tags": [],
+    "excluded": [],
+    "why": "plain listing, two exact-match ingredients"
+  },
+  {
+    "text": "มีกุ้งกับไข่ อยากกินคลีน ไม่เอาหมู",
+    "ingredients": [
+      "shrimp",
+      "egg"
+    ],
+    "health_tags": [
+      "clean"
+    ],
+    "excluded": [
+      "pork"
+    ],
+    "why": "the project canonical worked example (Claude.md:122): listing + health tag + negation in one sentence"
+  },
+  {
+    "text": "มีหมูสับกับกระเทียม",
+    "ingredients": [
+      "pork",
+      "garlic"
+    ],
+    "health_tags": [],
+    "excluded": [],
+    "why": "a longer synonym variant (หมูสับ) rather than the bare name"
+  },
+  {
+    "text": "อยากกินคีโต มีไก่กับพริกไทย",
+    "ingredients": [
+      "chicken",
+      "pepper"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded": [],
+    "why": "health tag plus the pepper/chili collision pair in one sentence"
+  },
+  {
+    "text": "ไม่เอาพริก มีไก่ด้วย",
+    "ingredients": [
+      "chicken"
+    ],
+    "health_tags": [],
+    "excluded": [
+      "chili"
+    ],
+    "why": "negation appearing before the positive mention, opposite order from the canonical example"
+  },
+  {
+    "text": "มีกุ้งแห้งกับถั่วลิสง",
+    "ingredients": [
+      "dried_shrimp",
+      "peanut"
+    ],
+    "health_tags": [],
+    "excluded": [],
+    "why": "two collision-prone ingredients together: dried shrimp (not shrimp), peanut (not bean sprout)"
+  },
+  {
+    "text": "ไม่ใส่น้ำมันหอย มีผักคะน้ากับกระเทียม",
+    "ingredients": [
+      "chinese_broccoli",
+      "garlic"
+    ],
+    "health_tags": [],
+    "excluded": [
+      "oyster_sauce"
+    ],
+    "why": "negation phrasing ไม่ใส่ + the oyster-sauce/oil collision + chinese broccoli"
+  },
+  {
+    "text": "ไม่มีกุ้ง มีปลาแทน",
+    "ingredients": [
+      "fish"
+    ],
+    "health_tags": [],
+    "excluded": [
+      "shrimp"
+    ],
+    "why": "negation phrasing ไม่มี + fish (not the fish/fish_sauce infix collision)"
+  },
+  {
+    "text": "อยากกินมังสวิรัติ ไม่เอาหมู",
+    "ingredients": [],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded": [
+      "pork"
+    ],
+    "why": "vegetarian tag plus a negation"
+  },
+  {
+    "text": "กินเจ มีเต้าหู้กับผักกาดหอม",
+    "ingredients": [
+      "tofu",
+      "lettuce"
+    ],
+    "health_tags": [
+      "vegan"
+    ],
+    "excluded": [],
+    "why": "เจ -> vegan mapping plus tofu and lettuce"
+  },
+  {
+    "text": "อยากกินอาหารเจ",
+    "ingredients": [],
+    "health_tags": [
+      "vegan"
+    ],
+    "excluded": [],
+    "why": "the other เจ phrasing, alone"
+  },
+  {
+    "text": "เจอกันพรุ่งนี้",
+    "ingredients": [],
+    "health_tags": [],
+    "excluded": [],
+    "why": "must NOT fire vegan -- เจ false-positive guard, no food content at all"
+  },
+  {
+    "text": "อยากกินวีแกน มีเห็ดกับมะเขือเทศ",
+    "ingredients": [
+      "mushroom",
+      "tomato"
+    ],
+    "health_tags": [
+      "vegan"
+    ],
+    "excluded": [],
+    "why": "vegan tag plus mushroom and the tomato/eggplant sibling pair"
+  },
+  {
+    "text": "มีน้ำปลากับน้ำมันหอย",
+    "ingredients": [
+      "fish_sauce",
+      "oyster_sauce"
+    ],
+    "health_tags": [],
+    "excluded": [],
+    "why": "two seasoning collisions together: fish_sauce (not fish), oyster_sauce (not vegetable_oil)"
+  },
+  {
+    "text": "มีข้าวคั่วกับตะไคร้",
+    "ingredients": [
+      "roasted_rice_powder",
+      "lemongrass"
+    ],
+    "health_tags": [],
+    "excluded": [],
+    "why": "roasted rice powder (not rice) plus lemongrass"
+  },
+  {
+    "text": "I have chiken and egg",
+    "ingredients": [
+      "chicken",
+      "egg"
+    ],
+    "health_tags": [],
+    "excluded": [],
+    "why": "English typo recovery via rapidfuzz"
+  },
+  {
+    "text": "I have some eggplant and fish sauce",
+    "ingredients": [
+      "eggplant",
+      "fish_sauce"
+    ],
+    "health_tags": [],
+    "excluded": [],
+    "why": "two English collision pairs in one sentence"
+  },
+  {
+    "text": "",
+    "ingredients": [],
+    "health_tags": [],
+    "excluded": [],
+    "why": "empty string must not crash, returns all-empty"
+  },
+  {
+    "text": "😀",
+    "ingredients": [],
+    "health_tags": [],
+    "excluded": [],
+    "why": "junk/emoji input must not crash"
+  },
+  {
+    "text": "อยากกินคลีน ไม่เอาน้ำตาล",
+    "ingredients": [],
+    "health_tags": [
+      "clean"
+    ],
+    "excluded": [
+      "sugar"
+    ],
+    "why": "clean tag plus negating a seasoning rather than a main ingredient"
+  },
+  {
+    "text": "มีกะหล่ำดอกกับแครอท",
+    "ingredients": [
+      "cauliflower",
+      "carrot"
+    ],
+    "health_tags": [],
+    "excluded": [],
+    "why": "cauliflower (not cabbage) plus carrot"
+  },
+  {
+    "text": "มีมันฝรั่งกับมันเทศ",
+    "ingredients": [
+      "potato",
+      "sweet_potato"
+    ],
+    "health_tags": [],
+    "excluded": [],
+    "why": "both potato siblings named in the same sentence -- must not conflate them with each other"
+  }
+]

@@ -438,10 +438,10 @@ Three capabilities required:
 > 💡 Don't train your own NER model (a model that learns to find ingredient names in a sentence) — that would need thousands of labeled sentences, not worth it for just 15-20 vocabulary terms. Dictionary + fuzzy matching is enough.
 
 **Checklist:**
-- [ ] Thai word segmentation via PyThaiNLP working
-- [ ] Fuzzy matching catches misspellings
-- [ ] Negation detection catches "no X," "without X," etc.
-- [ ] **Measure on your own dev set** (20 sentences) — no need to send this to anyone yet, tune freely
+- [x] Thai word segmentation via PyThaiNLP working
+- [x] Fuzzy matching catches misspellings *(English typos reliably; Thai typo recovery is a documented limitation — see concern.md, Week 5 session log)*
+- [x] Negation detection catches "no X," "without X," etc.
+- [x] **Measure on your own dev set** (20 sentences) — no need to send this to anyone yet, tune freely *(22 sentences, 100% pass, `data/nlp_dev_set.json`)*
 
 ## Week 6 — Check In + Be Ready for Extra Work
 
