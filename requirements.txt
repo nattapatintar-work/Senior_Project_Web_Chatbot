@@ -17,9 +17,13 @@ python-dotenv>=1.0.0     # load secrets from a .env file instead of hardcoding
 # --- NLP (Week 5) ----------------------------------------------------------
 pythainlp>=5.0.0         # Thai word segmentation; Thai has no spaces between
                          # words, so text must be tokenized before matching
+rapidfuzz>=3.0.0         # fuzzy matching for typos in ingredient names
 
 # --- Recommender (Week 7) --------------------------------------------------
 scikit-learn>=1.4.0      # TfidfVectorizer + cosine_similarity, both built in
+
+# --- Chat system (Week 8) ---------------------------------------------------
+pyyaml>=6.0               # reads thresholds.yaml (LLM routing config) from Person 1
 
 # --- Testing ---------------------------------------------------------------
 pytest>=8.0.0            # runs tests/test_contract.py

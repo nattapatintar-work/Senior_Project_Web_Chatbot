@@ -20,10 +20,10 @@ Things to watch on the Ingredient-to-Recipe Chatbot project. Unlike the dated fi
 - ~~**C1** — Dictionary can't hold seasonings/aromatics, and 4 tests forbid adding them~~ → ✅ **CLOSED 2026-08-05**
 - **C2** — 20 classes ≈ 4,000 instances to label, not 3,000 → 🟡 **impacts Week 3–4**
 - ~~**C3** — PyThaiNLP unverified on Python 3.13~~ → ✅ **CLOSED 2026-08-05**
-- **C4** — Thai prefix collisions break naive matching → 🟡 **impacts Week 5** *(worse since Week 3: 40 new entries added more collisions)*
+- **C4** — Thai prefix collisions break naive matching → 🟡 **impacts Week 5** *(worse since Week 3: 49 new entries added more collisions, not yet fully audited)*
 - ~~**C5** — No git repo; AGPL-3.0 obligation unmet~~ → ✅ **CLOSED 2026-08-05**
 - **C6** — ปวยเล้ง synonym is my guess, not your decision → 🟢 **impacts Week 2**
-- **C7** — `rapidfuzz` / `pyyaml` missing from requirements → 🟢 **impacts Week 5, 8**
+- ~~**C7** — `rapidfuzz` / `pyyaml` missing from requirements~~ → ✅ **CLOSED 2026-08-08**
 - **C8** — cp874 encoding crash will recur on Person 1's PC → 🟢 **impacts anytime**
 
 ---
@@ -37,6 +37,10 @@ Things to watch on the Ingredient-to-Recipe Chatbot project. Unlike the dated fi
 > ingredients keep `yolo_class_id` 0–19, completely unchanged; 40 text-only entries were
 > added with `yolo_class_id: null` (proteins, herbs, staples, seasonings). Because no
 > existing key moved and no existing ID changed, the joint lock with Person 1 holds.
+> **Count updated 2026-08-08 (session 5): the text-only tier has since grown to 49** (69
+> total), picking up further additions made while filling `recipes.json` — e.g.
+> `yellow_curry_paste` and `sour_curry_paste`, both called out by name in their triggering
+> recipes' `notes` fields as "had to be added." The 20 detectable IDs are still untouched.
 >
 > The four tests were relaxed as predicted, and **two new ones added** that guard the
 > lock better than the originals did:
@@ -178,6 +182,14 @@ Several names in the locked 20 are prefixes of others:
 The dictionary went from 20 entries to 60, and the new ones collide with each other and
 with the original 20:
 
+**Updated again 2026-08-08 (session 5): the dictionary is now 69 entries (20 detectable +
+49 text-only), not 60.** The 9 added since (mostly seasonings pulled in while writing
+`recipes.json`, e.g. `yellow_curry_paste`, `sour_curry_paste`) have **not** been audited
+for new collisions the way the table below was. Whoever implements the Week 5 matcher
+should re-run the collision check against the current 69, not against this table alone —
+the longest-match-first fix covers unknown future collisions structurally, but the test
+cases below were written against the 60-entry snapshot and may not be exhaustive anymore.
+
 | Short | Longer | Risk |
 |---|---|---|
 | พริก (chili) | พริกไทย (pepper) | "พริกไทย" matches as **chili** — a seasoning read as a main ingredient |
@@ -260,7 +272,20 @@ synonyms is a 10-second edit if you want to play it safe.
 
 ---
 
-## C7 — `rapidfuzz` and `pyyaml` are missing from requirements.txt
+## ~~C7 — `rapidfuzz` and `pyyaml` are missing from requirements.txt~~ ✅ CLOSED
+
+> ✅ **Closed 2026-08-08 (session 5).** Both added to `requirements.txt`
+> (`rapidfuzz>=3.0.0` under NLP, `pyyaml>=6.0` under a new "Chat system (Week 8)" block).
+> `pip install -r requirements.txt` verified clean on this machine (rapidfuzz 3.14.5,
+> pyyaml 6.0.2 resolved), and `pytest tests/ -q` still 53 passed afterward.
+>
+> **A related gap surfaced while closing this one, not fixed here:** `requests` is
+> imported by `tools/thaifcd.py` but declared in neither `requirements.txt` nor
+> `tools/requirements-dev.txt`. Filed as **C16** below rather than folded into this entry,
+> since it's a different file and a different owner-facing risk (the nutrition tool, not
+> the chatbot).
+
+**Original entry follows.**
 
 > 🟢 **Low** · **Impacts: Week 5 and Week 8** · Owner: You
 
@@ -270,8 +295,8 @@ synonyms is a 10-second edit if you want to play it safe.
 Minor, but it means `pip install -r requirements.txt` on a fresh machine does not produce
 a working environment — which matters when Person 1 clones the repo.
 
-**Next action:** Add both when you next touch `requirements.txt`. No rush, but do it before
-Week 5.
+**Next action:** ~~Add both when you next touch `requirements.txt`. No rush, but do it
+before Week 5.~~ Done.
 
 ---
 
@@ -530,10 +555,11 @@ the report.
 | ID | Raised | Closed | Resolution |
 |---|---|---|---|
 | C3 | Week 1 | 2026-08-05 (Week 2) | PyThaiNLP 5.3.5 verified working on Python 3.13.2; no fallback venv needed |
-| C1 | Week 1 | 2026-08-05 (Week 3) | Two-tier dictionary (Option A): 40 text-only entries with `yolo_class_id: null`, 20 detectable untouched. 4 tests relaxed, 2 stricter ones added. **Person 1 not yet told** |
+| C1 | Week 1 | 2026-08-05 (Week 3) | Two-tier dictionary (Option A): originally 40 text-only entries with `yolo_class_id: null` (now 49 — grew during recipe-DB work, see C4), 20 detectable untouched. 4 tests relaxed, 2 stricter ones added. **Person 1 not yet told** |
 | C5 | Week 1 | 2026-08-05 (Week 3) | `git init` + 3 commits + verbatim AGPL-3.0 `LICENSE`. `.env` verified excluded before first commit. Public push + README still outstanding |
 | C12 | Week 3 | 2026-08-05 (Week 3) | broccoli via USDA FDC 170379 in `data/external_nutrition.json`, converted onto Thai FCD's available-carbohydrate basis; onion needed no source, appearing only in direct recipes |
 | C13 | Week 3 | 2026-08-05 (Week 3) | `data/recipes.json` written; 53 tests passing |
+| C7 | Week 1 | 2026-08-08 (session 5) | `rapidfuzz` and `pyyaml` added to `requirements.txt`; both installed and verified clean |
 
 ---
 
@@ -551,6 +577,47 @@ one throughout.
 
 ---
 
-*Last updated: 2026-08-08 (session 4). Weeks 3–4 deliverable complete and now spot-checked
-against the live source for the `direct` recipes. Still outstanding: Week 2 photo shoot
-(batch_B), telling Person 1 about the C1 schema change, and everything from Week 5 on.*
+# ------- Week 5 prep (session 5, 2026-08-08) -------
+
+A readiness check for Week 5 (NLP extraction) surfaced three things worth fixing before
+the real build starts, none of them the NLP work itself:
+
+- **C7 closed** — see the closed table above.
+- **New: C16** — `requests` is imported by `tools/thaifcd.py` but declared in neither
+  `requirements.txt` nor `tools/requirements-dev.txt`. It only works locally because it
+  happens to already be installed.
+- **Count drift fixed** — `data/ingredients.json` had grown from the documented 60 entries
+  to 69 (49 text-only, not 40) without concern.md being updated; C1's and C4's entries
+  above now say so. The extra 9 are legitimate additions made while writing
+  `recipes.json` (e.g. `yellow_curry_paste`, `sour_curry_paste`), not corruption, but the
+  Week 5 collision audit in C4 needs re-running against the real 69, not the stale 60.
+
+**Confirmed still not ready to start the actual Week 5 build:** `nlp/extract.py::extract()`
+remains a pure mock (`STATUS: MOCK (Week 1-2 skeleton)` in its own docstring) that ignores
+its input entirely — zero tokenization, matching, or negation logic exists yet. That is
+expected; it *is* the Week 5 task, not a gap in it.
+
+## C16 — `requests` is used by a tool script but declared nowhere
+
+> 🟢 **Low** · **Impacts: anytime someone else re-runs `tools/thaifcd.py`** · Owner: You
+
+`tools/thaifcd.py` does `import requests` unconditionally, but neither `requirements.txt`
+nor `tools/requirements-dev.txt` lists it — only `pypdf` is declared there. It has worked
+on this machine throughout because `requests` happens to already be installed (it's a
+transitive dependency of `line-bot-sdk`), so the gap has been invisible.
+
+Low severity because the chatbot itself never imports `tools/`, so this can't break the
+bot. It would only bite someone following `tools/requirements-dev.txt`'s own header
+instruction (`pip install -r tools/requirements-dev.txt`) on a machine where nothing else
+happened to pull `requests` in first — most plausibly Person 1, if they ever needed to
+re-run or extend the nutrition tool.
+
+**Next action:** add `requests>=2.32.0` to `tools/requirements-dev.txt` next time that
+file is touched. Not urgent enough to justify a solo edit for one line.
+
+---
+
+*Last updated: 2026-08-08 (session 5). Week 5 NLP build (`nlp/extract.py`) confirmed not
+started — still the pure Week 1-2 mock. Pre-Week-5 prep done: C7 closed, C16 opened, C1/C4
+counts corrected to the real 69-entry dictionary. Still outstanding: Week 2 photo shoot
+(batch_B), telling Person 1 about the C1 schema change, and the Week 5 build itself.*
