@@ -467,11 +467,11 @@ Output: [{"name":"Pad Kra Pao Chicken", "score":0.87,
 > 💡 **Beginner note:** Don't worry about this needing to be "cutting-edge research" — the project docs explicitly say this is **implementation, not research**. TF-IDF + cosine is a standard, well-established method — nothing new needs to be invented here.
 
 **Checklist:**
-- [ ] Convert menus into vectors
-- [ ] Compute TF-IDF + cosine similarity
-- [ ] Filter by health tags (excluded_for)
-- [ ] Display "have" vs "need to buy" clearly separated
-- [ ] Measure on your dev set first
+- [x] Convert menus into vectors
+- [x] Compute TF-IDF + cosine similarity
+- [x] Filter by health tags (excluded_for) *(AND across requested tags; excluded ingredients drop a dish only via `main_ingredients`/`seasonings`, never `optional_ingredients` — see `concern.md` session log)*
+- [x] Display "have" vs "need to buy" clearly separated *(`missing` is main-ingredients-only; a missing optional is not a shopping-list item)*
+- [x] Measure on your dev set first *(`data/recommender_dev_set.json`, 8 cases, all passing — `tools/run_recommender_dev_set.py`)*
 
 ## Week 8 — Complete the Chat System
 

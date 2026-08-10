@@ -1,0 +1,77 @@
+{
+  "_readme": "Person 2's own dev set for recommender/recommend.py, Week 7. Free to tune against at any time -- Person 1's Week 10 test set (Claude.md's evaluation protocol) is separate and never touched here. Each case's expect_top3_contains/expect_absent was checked against a real run of recommend() at the time it was written (see tools/run_recommender_dev_set.py output), not guessed.",
+  "cases": [
+    {
+      "id": "dev_01",
+      "why": "Claude.md's own worked recommender example (chicken+garlic+chili, clean). The doc's illustrative dish (Pad Kra Pao) isn't itself clean-tagged in this project's real data -- th_031 includes rice as a main and carries no health_tags -- so the top result is legitimately a different clean dish, not a bug.",
+      "ingredients": ["chicken", "garlic", "chili"],
+      "health_tags": ["clean"],
+      "excluded": [],
+      "expect_top3_contains": ["th_034"],
+      "expect_absent": ["th_031"]
+    },
+    {
+      "id": "dev_02",
+      "why": "Claude.md:122's canonical NLP sentence end-to-end: shrimp+egg, clean, no pork. Must never surface a pork dish.",
+      "ingredients": ["shrimp", "egg"],
+      "health_tags": ["clean"],
+      "excluded": ["pork"],
+      "expect_top3_contains": ["th_002"],
+      "expect_absent": ["th_015", "th_016", "th_021", "th_027", "th_029", "th_032"]
+    },
+    {
+      "id": "dev_03",
+      "why": "The HEALTH_TAGS.md vegan trap: fish_sauce is an animal product and must not sneak a vegan-filtered result. Also proves seasonings don't distort the score -- fish_sauce is stripped from the user's ingredients before vectorising, so it neither disqualifies nor inflates any dish.",
+      "ingredients": ["spinach", "garlic", "fish_sauce"],
+      "health_tags": ["vegan"],
+      "excluded": [],
+      "expect_top3_contains": ["th_036"],
+      "expect_absent": ["th_001", "th_021"]
+    },
+    {
+      "id": "dev_04",
+      "why": "Excluding an ingredient that only ever appears as OPTIONAL (green_onion in th_001, th_002's neighbourhood) must not disqualify a dish -- an optional is omittable by definition. th_002 (ไข่ต้ม, no green_onion at all) and th_001 (ไข่เจียว, green_onion only optional) must both survive.",
+      "ingredients": ["egg"],
+      "health_tags": [],
+      "excluded": ["green_onion"],
+      "expect_top3_contains": ["th_002", "th_001"],
+      "expect_absent": []
+    },
+    {
+      "id": "dev_05",
+      "why": "Excluding an ingredient that appears as a MAIN must drop every dish built on it. Contrast with dev_04 -- same excluded-filter code path, opposite outcome, because the field differs.",
+      "ingredients": ["pork", "eggplant"],
+      "health_tags": [],
+      "excluded": ["pork"],
+      "expect_top3_contains": ["th_012"],
+      "expect_absent": ["th_015", "th_016", "th_021", "th_027", "th_029", "th_032"]
+    },
+    {
+      "id": "dev_06",
+      "why": "Over-constrained health request (vegan AND keto together, AND-not-OR per the module docstring) with an ingredient (chicken) no vegan dish contains. Correct answer is an empty list, not a crash and not a best-effort fallback.",
+      "ingredients": ["chicken"],
+      "health_tags": ["vegan", "keto"],
+      "excluded": [],
+      "expect_top3_contains": [],
+      "expect_absent": []
+    },
+    {
+      "id": "dev_07",
+      "why": "A seasoning-only input. Seasonings are stripped before vectorising (Claude.md:427), so once stripped there is nothing left to score against -- must return [], not 'everything matches equally' or a crash from an empty vector.",
+      "ingredients": ["fish_sauce"],
+      "health_tags": [],
+      "excluded": [],
+      "expect_top3_contains": [],
+      "expect_absent": []
+    },
+    {
+      "id": "dev_08",
+      "why": "Empty ingredient list -- happens for real whenever YOLO detects nothing and the user sent no text. Must return [], not raise.",
+      "ingredients": [],
+      "health_tags": [],
+      "excluded": [],
+      "expect_top3_contains": [],
+      "expect_absent": []
+    }
+  ]
+}

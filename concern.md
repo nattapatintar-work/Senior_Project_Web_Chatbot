@@ -562,6 +562,15 @@ are not modelled.
 
 ## C15 — The keto tag is true of the dish and misleading about the meal
 
+> **Update 2026-08-10 (Week 7 session):** Decided — deferred to Week 8, not handled in
+> `recommend()`. The recommender passes `health_tags` through on every result unchanged
+> (a new, additive field on the frozen interface — `tests/test_contract.py`'s
+> `issubset` check stays valid), so Week 8's `format_reply()` has what it needs to render
+> "keto (ไม่รวมข้าว)" without re-reading `recipes.json`. `recommend()` itself does not
+> qualify, reweight, or otherwise treat keto specially — display wording belongs in the
+> template, not the scorer. Still open until Week 8 actually writes that wording; tracked
+> there now, not here.
+
 > 🟡 **Medium** · **Impacts: Week 7 (recommender), Weeks 11–12 (report)** · Owner: You
 
 23 of the 40 recipes carry `keto`. That is far more than a Thai recipe database should
@@ -716,3 +725,107 @@ sour. See C4's closure note for detail.
 is now implemented and tested (69 tests passing). C4 closed. Still outstanding: Week 2
 photo shoot (batch_B), telling Person 1 about the C1 schema change, the suspected
 `sour_curry_paste`/`พริกแกงเหลือง` mis-assignment, and everything from Week 6 on.*
+
+---
+
+# ------- Week 7 (session 7, 2026-08-10) -------
+
+`recommender/recommend.py::recommend()` implemented for real — no longer the Week 1–2
+mock. TF-IDF + cosine similarity via scikit-learn over `data/recipes.json`'s 40 recipes,
+health-tag and excluded-ingredient filtering applied *before* scoring. New files:
+`tests/test_recommend.py` (15 correctness tests), `data/recommender_dev_set.json` (8 cases,
+own dev set — Person 1's Week 10 test set untouched), `tools/run_recommender_dev_set.py`
+(pass/fail runner, deliberately not a Precision@3 claim — see that file's own docstring for
+why). `nlp/`, `data/ingredients.json`, `data/recipes.json` untouched.
+
+**Readiness check confirmed all three prerequisites clean before starting:** every
+ingredient key referenced by all 40 recipes resolves against `ingredients.json` (0 unknown
+keys); `main_ingredients`/`optional_ingredients` contain zero `is_seasoning: true` entries
+and `seasonings` contains only them; `extract()`'s three keys need no adapter and were
+already wired straight through by `api/main.py:344`.
+
+**Three design decisions made this session, confirmed with you before coding (not solo
+judgement calls):**
+
+- **C15 (keto/rice) deferred to Week 8**, not handled here. See C15's own update above.
+  `recommend()` passes `health_tags` through unchanged as a new field on every result.
+- **An excluded ingredient only drops a dish via `main_ingredients` or `seasonings`.** An
+  excluded ingredient sitting only in `optional_ingredients` does not disqualify the dish —
+  an optional is omittable by definition. Verified against real data: excluding
+  `green_onion` (optional-only in `th_001`, absent entirely from `th_002`) keeps both
+  dishes in the results, and neither falsely reports having an ingredient the user didn't
+  supply.
+- **Pure TF-IDF cosine, no blended coverage term.** Exactly `Claude.md:451-474`'s spec —
+  no invented weighting to defend in the report.
+
+### Two implementation details worth recording
+
+**Seasonings are stripped twice, not once.** `Claude.md:427` says basic seasonings must not
+affect matching. This is enforced on both sides of the scoring: a recipe's `seasonings`
+list is never part of its TF-IDF document (so a recipe doesn't get "more fish sauce" credit
+for restating it), and the *user's* ingredient list has seasonings stripped before
+vectorising (so typing "fish_sauce" cannot itself inflate a score). Tested directly —
+`recommend(["chicken","garlic"])` and `recommend(["chicken","garlic","fish_sauce"])` return
+identical ids and identical scores, not just an identical ranking.
+
+**A float-epsilon guard was needed that wasn't anticipated in the plan.** `cosine_similarity`
+can return values like `1.0000000000000002` from floating-point rounding in the dot
+product, which would fail `test_score_is_a_number_between_zero_and_one`'s `0.0 <= score
+<= 1.0` — a real, if rare, way for the frozen contract to break on data-dependent floating
+point noise rather than logic. Scores are clamped into `[0.0, 1.0]` before rounding to 2dp.
+
+### Two test-writing mistakes caught before commit, not after
+
+Both were bugs in the *test*, not the code — same discipline as session 6's C4 finding
+("verify the fixture assumption directly, don't assume it"):
+
+1. `test_health_tags_are_ANDed_not_ORed` originally assumed no recipe in the database is
+   tagged both `vegan` and `keto`, and asserted `recommend(["chicken"], health_tags=
+   ["vegan","keto"]) == []` on that basis. False — `th_036` and `th_037` are tagged both.
+   The assertion passed anyway by coincidence (no vegan dish contains chicken regardless of
+   the keto filter), which would have hidden a real OR-instead-of-AND bug. Rewritten to
+   isolate the AND behaviour directly: `th_004` is vegan but not keto (potato is a starch
+   staple, disqualified per `HEALTH_TAGS.md` regardless of its carb count), so querying
+   `vegan` alone must surface it and `vegan`+`keto` together must not.
+2. `test_excluded_for_is_respected_even_if_health_tags_were_mistagged` looped over *every*
+   recipe using its own `excluded_for` as the query, including recipes whose `excluded_for`
+   is `[]` — an empty filter list applies no filter at all, so it trivially "passed" for
+   those without testing anything. Restricted to recipes with a non-empty `excluded_for`.
+
+### Verification
+
+```
+$ python -m pytest tests/ -q
+................................................................................ [100%]
+84 passed in 4.59s
+```
+53 (Week 3) + 16 (Week 5, `test_extract.py`) + 15 (Week 7, `test_recommend.py`) = 84 —
+re-derived from a fresh run at write time, not carried over from mid-session, per session
+6's own corrective note above.
+
+```
+$ python tools/run_recommender_dev_set.py
+...
+8/8 dev cases passed
+```
+
+```
+$ python -c "from api.main import handle_user_input; print(handle_user_input('มีไก่กับไข่ อยากกินคลีน ไม่เอาพริก'))"
+🍳 เมนูแนะนำสำหรับคุณ
+1. ไข่ต้ม     ✅ มีแล้ว: egg          📊 69.0 kcal | ...
+2. ไข่ตุ๋น     ✅ มีแล้ว: egg          📊 92.0 kcal | ...
+3. ผัดเผ็ดไก่  ✅ มีแล้ว: chicken     📊 200.0 kcal | ...
+```
+Full path — `extract()` → `recommend()` → `format_reply()` — with zero mocks anywhere,
+correctly excluding chili-containing dishes per the sentence's own negation.
+
+### Not fixed, not new — carried forward unchanged
+
+Person 1 still not told about the C1 two-tier dictionary schema change (open since session
+3), the suspected `sour_curry_paste`/`พริกแกงเหลือง` mis-assignment (C4's closure note), and
+the Week 2 batch_B photo shoot (still not started, five sessions overdue). None of these
+block Week 7 or Week 8.
+
+**Priority for next session:** the same handoff note that's been ready for four sessions
+now, then Week 8 (session buffer + debounce + reply-token strategy + Quick Reply +
+`format_reply()`'s C15 keto/rice wording).
