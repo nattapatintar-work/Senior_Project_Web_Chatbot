@@ -48,6 +48,7 @@ on its own.
 """
 
 import threading
+import time
 import traceback
 from dataclasses import dataclass, field
 
@@ -74,6 +75,14 @@ class Session:
 
     # The pending countdown. None means nothing is scheduled.
     timer: threading.Timer | None = None
+
+    # time.monotonic() timestamps of this session's first and most recent
+    # message. Wall-clock time.time() is deliberately not used — it can jump
+    # (NTP sync, DST, manual clock changes), which would make an elapsed-time
+    # measurement lie. first_seen lets main.py log how much of the ~30s reply
+    # token lifetime is spent before the LINE reply call actually fires.
+    first_seen: float = field(default_factory=time.monotonic)
+    last_seen: float = field(default_factory=time.monotonic)
 
 
 # --- Module state ----------------------------------------------------------
@@ -130,6 +139,7 @@ def add_text(user_id: str, text: str, reply_token: str) -> None:
     with _lock:
         session = _get_or_create(user_id)
         session.texts.append(text)
+        session.last_seen = time.monotonic()
 
         # Always overwrite with the NEWEST reply token.
         #
@@ -152,6 +162,7 @@ def add_image(user_id: str, message_id: str, reply_token: str) -> None:
     """
     with _lock:
         session = _get_or_create(user_id)
+        session.last_seen = time.monotonic()
 
         if len(session.image_ids) < _max_images:
             session.image_ids.append(message_id)
@@ -217,10 +228,20 @@ def _flush(user_id: str) -> None:
 
     # Already flushed, or cancelled. Nothing to do.
     if session is None:
+        print(f"[session] flush skipped for {user_id}: already popped (no-op)", flush=True)
         return
 
     if _flush_handler is None:
-        # No handler registered — normal in tests.
+        # No handler registered — normal in tests, but a silent bug in
+        # production: it would mean main.py never called set_flush_handler(),
+        # so every debounce window closes and nothing happens, with no error
+        # anywhere. Logging it here is what makes that case distinguishable
+        # from a handler that ran and simply produced no visible output.
+        print(
+            f"[session] flush skipped for {user_id}: no flush handler registered "
+            f"(session.set_flush_handler() was never called)",
+            flush=True,
+        )
         return
 
     try:

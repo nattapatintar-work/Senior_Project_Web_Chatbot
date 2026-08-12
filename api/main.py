@@ -50,6 +50,8 @@ https://github.com/line/line-bot-sdk-python
 # sys.path setup so `python api/main.py` can find the nlp/ and recommender/
 # folders. Without it Python only looks inside api/ and raises ImportError.
 import sys
+import time
+import traceback
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -68,6 +70,7 @@ from linebot.v3.messaging import (
     ReplyMessageRequest,
     TextMessage,
 )
+from linebot.v3.messaging.exceptions import ApiException
 from linebot.v3.webhooks import ImageMessageContent, MessageEvent, TextMessageContent
 
 from api import config, mock_cv, session
@@ -94,6 +97,21 @@ handler = WebhookHandler(config.CHANNEL_SECRET)
 # credentials for two different jobs: the secret proves messages coming IN are
 # genuine, the token proves we are allowed to send messages OUT.
 line_config = Configuration(access_token=config.CHANNEL_ACCESS_TOKEN)
+
+
+def _log(msg: str) -> None:
+    """
+    One print helper for the whole webhook->reply path, tagged "[bot]" so the
+    full chain for one message is a single grep away in the terminal.
+
+    Debugging note (2026-08-12): before this, the happy path for a text-only
+    message printed NOTHING — the only print() anywhere in main.py sat inside
+    _download_image(), which a text-only message never reaches. That made a
+    silent success and several silent early-return bugs (unhandled event type,
+    no user_id, flush handler not wired) look identical: "200, no reply, no
+    log" either way. Every step below now logs, success included.
+    """
+    print(f"[bot] {msg}", flush=True)
 
 
 # ===========================================================================
@@ -144,14 +162,41 @@ def callback():
     body = request.get_data(as_text=True)
     signature = request.headers.get("X-Line-Signature", "")
 
+    _log(f"callback: received {len(body)} bytes")
+
+    # Log what kind of event(s) this body actually contains, independent of
+    # whether handler.handle() finds a matching @handler.add() for them. This
+    # is what separates "no handler registered for this event type" (e.g. a
+    # sticker, a follow event, a postback) from every other silent path — that
+    # case logs an SDK-internal "No handler of ..." at INFO level, which is
+    # easy to miss even with logging configured.
+    try:
+        import json as _json
+
+        events = _json.loads(body).get("events", [])
+        kinds = [f"{e.get('type')}/{e.get('message', {}).get('type')}" for e in events]
+        _log(f"callback: {len(events)} event(s): {kinds}")
+    except Exception:
+        _log("callback: could not pre-parse body for logging (non-fatal)")
+
     try:
         handler.handle(body, signature)
     except InvalidSignatureError:
         # Wrong or missing signature. Either the request is not from LINE, or
         # LINE_CHANNEL_SECRET in .env does not match the channel.
         app.logger.warning("Rejected a webhook with an invalid signature")
+        _log("callback: REJECTED — invalid signature (check LINE_CHANNEL_SECRET)")
         abort(400)
+    except Exception:
+        # handler.handle() dispatches to on_text/on_image, and Flask's default
+        # error handling would turn an exception here into a 500 with no
+        # traceback in this terminal (only in Flask's own log stream). Printing
+        # explicitly keeps every failure visible in the same place.
+        _log("callback: UNHANDLED EXCEPTION during handler.handle()")
+        traceback.print_exc()
+        raise
 
+    _log("callback: dispatched OK, returning 200")
     return "OK", 200
 
 
@@ -165,6 +210,7 @@ def on_text(event: MessageEvent) -> None:
     user_id = _user_id_of(event)
     if user_id is None:
         return
+    _log(f"on_text: buffered text for {user_id[:8]}..., token={event.reply_token[:8]}...")
     session.add_text(user_id, event.message.text, event.reply_token)
 
 
@@ -180,6 +226,7 @@ def on_image(event: MessageEvent) -> None:
     user_id = _user_id_of(event)
     if user_id is None:
         return
+    _log(f"on_image: buffered image for {user_id[:8]}..., token={event.reply_token[:8]}...")
     session.add_image(user_id, event.message.id, event.reply_token)
 
 
@@ -190,7 +237,14 @@ def _user_id_of(event: MessageEvent) -> str | None:
     Messages can also arrive from groups and chat rooms, where there may be no
     user ID. getattr(..., None) returns None instead of raising in that case.
     """
-    return getattr(event.source, "user_id", None)
+    user_id = getattr(event.source, "user_id", None)
+    if user_id is None:
+        # Silent by design before this change — a message from a group/room
+        # source with no user_id would vanish here with zero log output,
+        # looking identical to a successful-but-unreplied flush.
+        source_type = getattr(event.source, "type", "unknown")
+        _log(f"_user_id_of: no user_id on this event (source.type={source_type!r}) — dropped")
+    return user_id
 
 
 # ===========================================================================
@@ -205,45 +259,60 @@ def process_session(sess: session.Session) -> None:
     without blocking the webhook. It must not raise — session._flush catches
     and logs, but a clean failure path here gives the user a better message.
     """
-    # --- Step 1: download the photos -----------------------------------------
-    image_paths = []
-    for message_id in sess.image_ids:
-        try:
-            image_paths.append(_download_image(message_id, sess.user_id))
-        except Exception as exc:
-            # One bad download should not sink the whole reply. Skip it and
-            # carry on with whatever else the user sent.
-            print(f"[main] could not download image {message_id}: {exc}", flush=True)
+    _log(
+        f"process_session: start for {sess.user_id[:8]}..., "
+        f"{len(sess.texts)} text(s), {len(sess.image_ids)} image(s)"
+    )
 
-    # --- Step 2: run detection on each photo ---------------------------------
-    detected: list[str] = []
-    for path in image_paths:
-        # mock_cv.detect() is fake until Week 8, when Person 1's real detect()
-        # replaces it. The return shape is already the agreed one, so that swap
-        # touches nothing else.
-        for item in mock_cv.detect(path):
-            if item["confidence"] >= CONFIDENCE_THRESHOLD:
-                detected.append(item["ingredient"])
+    try:
+        # --- Step 1: download the photos -------------------------------------
+        image_paths = []
+        for message_id in sess.image_ids:
+            try:
+                image_paths.append(_download_image(message_id, sess.user_id))
+            except Exception as exc:
+                # One bad download should not sink the whole reply. Skip it and
+                # carry on with whatever else the user sent.
+                print(f"[main] could not download image {message_id}: {exc}", flush=True)
 
-    # Deduplicate while keeping order — the same ingredient may appear in
-    # several photos. dict.fromkeys() preserves order where set() would not.
-    detected = list(dict.fromkeys(detected))
+        # --- Step 2: run detection on each photo ------------------------------
+        detected: list[str] = []
+        for path in image_paths:
+            # mock_cv.detect() is fake until Week 8, when Person 1's real detect()
+            # replaces it. The return shape is already the agreed one, so that swap
+            # touches nothing else.
+            for item in mock_cv.detect(path):
+                if item["confidence"] >= CONFIDENCE_THRESHOLD:
+                    detected.append(item["ingredient"])
 
-    # --- Step 3: join the separate texts -------------------------------------
-    # Several messages become one string so extract() sees the whole request.
-    combined_text = " ".join(sess.texts)
+        # Deduplicate while keeping order — the same ingredient may appear in
+        # several photos. dict.fromkeys() preserves order where set() would not.
+        detected = list(dict.fromkeys(detected))
+        _log(f"process_session: detected={detected}")
 
-    # --- Step 4: run the pipeline --------------------------------------------
-    reply = handle_user_input(combined_text, detected_ingredients=detected)
+        # --- Step 3: join the separate texts -----------------------------------
+        # Several messages become one string so extract() sees the whole request.
+        combined_text = " ".join(sess.texts)
+        _log(f"process_session: combined_text={combined_text!r}")
 
-    # --- Step 5: mention anything that was dropped ---------------------------
-    if sess.dropped_images:
-        reply += (
-            f"\n\n(ส่งรูปมา {sess.dropped_images} รูปเกินกำหนด "
-            f"ใช้แค่ {len(sess.image_ids)} รูปแรกนะคะ)"
-        )
+        # --- Step 4: run the pipeline --------------------------------------------
+        reply = handle_user_input(combined_text, detected_ingredients=detected)
+        _log(f"process_session: reply built, {len(reply)} chars")
 
-    send_reply(sess.user_id, sess.reply_token, reply)
+        # --- Step 5: mention anything that was dropped ---------------------------
+        if sess.dropped_images:
+            reply += (
+                f"\n\n(ส่งรูปมา {sess.dropped_images} รูปเกินกำหนด "
+                f"ใช้แค่ {len(sess.image_ids)} รูปแรกนะคะ)"
+            )
+
+        send_reply(sess.user_id, sess.reply_token, reply, first_seen=sess.first_seen)
+    except Exception:
+        # Belt and braces alongside session._flush's own try/except — having
+        # both means a traceback prints regardless of which layer is reached
+        # first as this file evolves, and this one has the [bot] tag context.
+        _log(f"process_session: UNHANDLED EXCEPTION for {sess.user_id[:8]}...")
+        traceback.print_exc()
 
 
 def _download_image(message_id: str, user_id: str) -> str:
@@ -269,7 +338,9 @@ def _download_image(message_id: str, user_id: str) -> str:
     return str(path)
 
 
-def send_reply(user_id: str, reply_token: str, text: str) -> None:
+def send_reply(
+    user_id: str, reply_token: str, text: str, first_seen: float | None = None
+) -> None:
     """
     Send the reply. Try Reply first, fall back to Push only if that fails.
 
@@ -284,30 +355,67 @@ def send_reply(user_id: str, reply_token: str, text: str) -> None:
     token has already failed, which in practice means it expired — a token
     lasts ~30 seconds, and 2.5s of debounce plus several image downloads can
     occasionally exceed that.
+
+    first_seen: time.monotonic() timestamp of the session's first message, if
+    known. Logged as elapsed time before the reply call — this is the
+    reply-token-expiry measurement: a token lasts ~30s, and without this
+    number a hang and a slow-but-successful call look the same in hindsight.
     """
     if len(text) > MAX_MESSAGE_LENGTH:
         text = text[: MAX_MESSAGE_LENGTH - 3] + "..."
 
     message = TextMessage(text=text)
 
+    elapsed = f"{time.monotonic() - first_seen:.1f}s" if first_seen is not None else "unknown"
+    _log(
+        f"send_reply: token={reply_token[:8]}... len={len(reply_token)} "
+        f"elapsed_since_first_message={elapsed} text_len={len(text)}"
+    )
+
     with ApiClient(line_config) as api_client:
         api = MessagingApi(api_client)
 
         try:
             # --- Preferred path: free, no quota cost ---
-            api.reply_message(
-                ReplyMessageRequest(reply_token=reply_token, messages=[message])
+            # _request_timeout is explicit because the SDK's default is None
+            # (no timeout at all). Without it, a stalled HTTPS call to
+            # api.line.me blocks this daemon timer thread forever, printing
+            # nothing — indistinguishable from a call that quietly succeeded.
+            # (connect_timeout, read_timeout) in seconds.
+            result = api.reply_message(
+                ReplyMessageRequest(reply_token=reply_token, messages=[message]),
+                _request_timeout=(5, 10),
             )
+            _log(f"send_reply: reply OK — result={result}")
             return
+        except ApiException as exc:
+            # LINE's real reason (e.g. "Invalid reply token", "The reply
+            # token is already used") lives in exc.body, not in str(exc).
+            _log(
+                f"send_reply: reply FAILED — ApiException status={exc.status} "
+                f"body={exc.body!r}; falling back to push"
+            )
         except Exception as exc:
-            print(f"[main] reply failed ({exc}); falling back to push", flush=True)
+            _log(
+                f"send_reply: reply FAILED — {type(exc).__name__}: {exc}; "
+                f"falling back to push"
+            )
 
         try:
             # --- Fallback: COSTS QUOTA. Only because reply already failed. ---
-            api.push_message(PushMessageRequest(to=user_id, messages=[message]))
+            result = api.push_message(
+                PushMessageRequest(to=user_id, messages=[message]),
+                _request_timeout=(5, 10),
+            )
+            _log(f"send_reply: push OK — result={result}")
+        except ApiException as exc:
+            _log(
+                f"send_reply: push ALSO FAILED — ApiException status={exc.status} "
+                f"body={exc.body!r}"
+            )
         except Exception as exc:
             # Both failed. Nothing more to try — log it and move on.
-            print(f"[main] push also failed: {exc}", flush=True)
+            _log(f"send_reply: push ALSO FAILED — {type(exc).__name__}: {exc}")
 
 
 # ===========================================================================
@@ -411,6 +519,16 @@ if __name__ == "__main__":
     #                        running, which is maddening when you are trying to
     #                        see why a reply failed.
     sys.stdout.reconfigure(encoding="utf-8", line_buffering=True)
+
+    # The line-bot-sdk logs "No handler of <EventType>" at INFO level whenever
+    # an event arrives that has no matching @handler.add() — e.g. a sticker,
+    # a "follow" event, or a postback. Python's logging defaults to WARNING,
+    # so that line is silently dropped unless this is configured. Without it,
+    # sending the bot anything other than plain text/image looks exactly like
+    # every other silent failure path.
+    import logging
+
+    logging.basicConfig(level=logging.INFO, format="%(name)s: %(message)s")
 
     print("Starting LINE bot on http://localhost:5000")
     print("  health check : http://localhost:5000/health")
