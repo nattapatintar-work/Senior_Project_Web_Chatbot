@@ -31,34 +31,53 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from nlp.extract import extract, load_ingredients
 from recommender.recommend import recommend
 
-# The 20 ingredients locked in with Person 1. Written out here on purpose:
+# The 100 ingredients locked in with Person 1. Written out here on purpose:
 # if anyone edits ingredients.json without the team agreeing, a test fails and
 # says so. YOLO class IDs are baked into the trained model weights, so a
 # silent renumbering after training would quietly corrupt every prediction.
 #
-# THE DICTIONARY HAS TWO TIERS (added Week 3, concern C1)
+# THE DICTIONARY HAS TWO TIERS (added Week 3, concern C1; re-locked at 100
+# classes when Person 1 expanded the trained model, confirmed against their
+# notebook)
 # -------------------------------------------------------
-# Tier 1 -- DETECTABLE: these 20, with yolo_class_id 0-19. Unchanged, and the
-#           tests below still pin them exactly. This is the locked agreement.
+# Tier 1 -- DETECTABLE: these 100, with yolo_class_id 0-99. This is the locked
+#           agreement, and the tests below still pin it exactly.
 # Tier 2 -- TEXT-ONLY: everything with yolo_class_id null. Ingredients a camera
-#           will never usefully identify -- fish sauce in a bottle, pork in a
-#           freezer bag, holy basil buried under other leaves -- but which the
-#           40 recipes need and which users type all the time. They reach the
-#           system through extract(), never through YOLO.
+#           will never usefully identify -- fish sauce in a bottle, rice in a
+#           bowl, a curry paste in a jar -- but which recipes need and which
+#           users type all the time. They reach the system through extract(),
+#           never through YOLO.
 #
 # The second tier was added because the recipe database could not be written
 # without it: the project's own worked example, "มีกุ้งกับไข่ อยากกินคลีน
-# ไม่เอาหมู" (Claude.md:122), uses two ingredients the locked 20 do not contain.
+# ไม่เอาหมู" (Claude.md:122), uses an ingredient (egg) that happens to be
+# detectable, but health tags and negation always arrive through text only.
 #
-# Adding a tier does NOT reopen the lock. No existing key moved, no existing ID
-# changed, and test_the_detectable_tier_is_still_the_agreed_twenty below proves
-# it on every run -- which matters more to Person 1's training than the total
-# count of entries in the file ever did.
+# Adding a tier does NOT reopen the lock. test_the_detectable_tier_is_still_
+# the_agreed_hundred below proves the detectable tier's identity and order on
+# every run -- which matters more to Person 1's training than the total count
+# of entries in the file ever did.
 EXPECTED_INGREDIENTS = [
-    "chicken", "egg", "cabbage", "lettuce", "spinach",
-    "tomato", "cucumber", "eggplant", "pumpkin", "cauliflower",
-    "broccoli", "carrot", "onion", "garlic", "ginger",
-    "potato", "sweet_potato", "green_onion", "chili", "bell_pepper",
+    "chicken", "pork", "beef", "minced_meat", "sausage",
+    "egg", "quail_egg", "shrimp", "fish", "squid",
+    "clam", "mussel", "oyster", "crab", "tofu",
+    "garlic", "shallot", "onion", "green_onion", "ginger",
+    "galangal", "turmeric", "lemongrass", "kaffir_lime_leaf", "chili",
+    "basil", "holy_basil", "maenglak", "clove_basil", "mint_leaves",
+    "coriander", "chives", "pandan_leaf", "dill", "piper_lolot",
+    "celery", "shiitake", "wood_ear", "enoki", "button",
+    "king_oyster", "white_oyster", "straw_mushroom", "tomato", "bell_pepper",
+    "cabbage", "napa_cabbage", "chinese_kale", "cauliflower", "broccoli",
+    "lettuce", "cucumber", "eggplant", "thai_eggplant", "bitter_gourd",
+    "bok_choy", "okra", "white_radish", "pumpkin", "chayote",
+    "winter_melon", "bottle_gourd", "sponge_gourd", "carrot", "green_bean",
+    "yardlong_bean", "winged_bean", "hyacinth_bean", "green_peas", "bamboo_shoots",
+    "spinach", "malabar_spinach", "water_spinach", "amaranth", "ivy_gourd",
+    "banana_flower", "jicama", "asparagus", "senna_siamea", "soybean_sprouts",
+    "moringa", "corn", "potato", "sweet_potato", "cassava",
+    "lime", "taro_root", "pineapple", "mango", "green_papaya",
+    "tamarind", "banana", "coconut", "lychee", "durian",
+    "pomelo", "jackfruit", "rambutan", "cashew", "peanuts",
 ]
 
 
@@ -70,14 +89,15 @@ def test_ingredients_file_loads():
     """The file must be valid JSON and must not be empty."""
     data = load_ingredients()
     assert isinstance(data, dict)
-    # Not "== 20" any more: the text-only tier is free to grow as recipes need
-    # it. What must not change is the detectable tier, pinned two tests below.
-    assert len(data) >= 20
+    # Not a fixed count: the text-only tier is free to grow as recipes need
+    # it, and the detectable tier grew to 100 when Person 1 retrained. What
+    # must not change is the detectable tier's identity, pinned two tests below.
+    assert len(data) >= 100
 
 
-def test_the_detectable_tier_is_still_the_agreed_twenty():
+def test_the_detectable_tier_is_still_the_agreed_hundred():
     """
-    The 20 YOLO classes, in order, unchanged.
+    The 100 YOLO classes, in order, unchanged.
 
     This is the test that actually guards the lock with Person 1, and it is
     stricter than a count of the file's entries: it checks identity and order,
@@ -114,7 +134,7 @@ def test_every_ingredient_has_the_required_fields():
 
 def test_yolo_class_ids_are_sequential_from_zero():
     """
-    The non-null IDs must be exactly 0-19, no gaps and no duplicates.
+    The non-null IDs must be exactly 0-99, no gaps and no duplicates.
 
     YOLO identifies classes by number, not name. A gap or a repeat means the
     trained model and this dictionary disagree about what class 7 is, and every
@@ -125,7 +145,7 @@ def test_yolo_class_ids_are_sequential_from_zero():
     raise TypeError while sorting instead of reporting anything useful.
     """
     ids = [e["yolo_class_id"] for e in load_ingredients().values() if e["yolo_class_id"] is not None]
-    assert sorted(ids) == list(range(20)), f"class IDs are wrong: {sorted(ids)}"
+    assert sorted(ids) == list(range(100)), f"class IDs are wrong: {sorted(ids)}"
 
 
 def test_seasonings_are_never_detectable():

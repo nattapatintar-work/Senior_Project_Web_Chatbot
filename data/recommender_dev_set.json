@@ -3,29 +3,29 @@
   "cases": [
     {
       "id": "dev_01",
-      "why": "Claude.md's own worked recommender example (chicken+garlic+chili, clean). The doc's illustrative dish (Pad Kra Pao) isn't itself clean-tagged in this project's real data -- th_031 includes rice as a main and carries no health_tags -- so the top result is legitimately a different clean dish, not a bug.",
+      "why": "Claude.md's own worked recommender example (chicken+garlic+chili, clean). The doc's illustrative dish (Pad Kra Pao) isn't itself clean-tagged in this project's real data -- th_029 includes rice as a main and carries no health_tags -- so the top result is legitimately a different clean dish, not a bug. IDs updated after the Week-9 recipes.json rebuild (40 -> 84 recipes) renumbered everything; the dish itself (ผัดกะหล่ำปลีน้ำปลา) is unchanged.",
       "ingredients": ["chicken", "garlic", "chili"],
       "health_tags": ["clean"],
       "excluded": [],
-      "expect_top3_contains": ["th_034"],
-      "expect_absent": ["th_031"]
+      "expect_top3_contains": ["th_032"],
+      "expect_absent": ["th_029"]
     },
     {
       "id": "dev_02",
-      "why": "Claude.md:122's canonical NLP sentence end-to-end: shrimp+egg, clean, no pork. Must never surface a pork dish.",
+      "why": "Claude.md:122's canonical NLP sentence end-to-end: shrimp+egg, clean, no pork. Must never surface a pork dish. IDs re-derived after the Week-9 recipes.json rebuild renumbered everything -- three of these (th_027, th_029, th_032 under the old numbering) had drifted to different, non-pork dishes, which made this check pass for the wrong reason.",
       "ingredients": ["shrimp", "egg"],
       "health_tags": ["clean"],
       "excluded": ["pork"],
       "expect_top3_contains": ["th_002"],
-      "expect_absent": ["th_015", "th_016", "th_021", "th_027", "th_029", "th_032"]
+      "expect_absent": ["th_015", "th_016", "th_021", "th_026", "th_027", "th_030"]
     },
     {
       "id": "dev_03",
-      "why": "The HEALTH_TAGS.md vegan trap: fish_sauce is an animal product and must not sneak a vegan-filtered result. Also proves seasonings don't distort the score -- fish_sauce is stripped from the user's ingredients before vectorising, so it neither disqualifies nor inflates any dish.",
+      "why": "The HEALTH_TAGS.md vegan trap: fish_sauce is an animal product and must not sneak a vegan-filtered result. Also proves seasonings don't distort the score -- fish_sauce is stripped from the user's ingredients before vectorising, so it neither disqualifies nor inflates any dish. IDs updated after the Week-9 recipes.json rebuild (40 -> 84 recipes) renumbered everything; the dish itself (ผัดผักโขมกระเทียม) is unchanged.",
       "ingredients": ["spinach", "garlic", "fish_sauce"],
       "health_tags": ["vegan"],
       "excluded": [],
-      "expect_top3_contains": ["th_036"],
+      "expect_top3_contains": ["th_034"],
       "expect_absent": ["th_001", "th_021"]
     },
     {
@@ -39,12 +39,12 @@
     },
     {
       "id": "dev_05",
-      "why": "Excluding an ingredient that appears as a MAIN must drop every dish built on it. Contrast with dev_04 -- same excluded-filter code path, opposite outcome, because the field differs.",
+      "why": "Excluding an ingredient that appears as a MAIN must drop every dish built on it. Contrast with dev_04 -- same excluded-filter code path, opposite outcome, because the field differs. IDs re-derived after the Week-9 recipes.json rebuild; see dev_02's note.",
       "ingredients": ["pork", "eggplant"],
       "health_tags": [],
       "excluded": ["pork"],
       "expect_top3_contains": ["th_012"],
-      "expect_absent": ["th_015", "th_016", "th_021", "th_027", "th_029", "th_032"]
+      "expect_absent": ["th_015", "th_016", "th_021", "th_026", "th_027", "th_030"]
     },
     {
       "id": "dev_06",

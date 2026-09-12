@@ -1,487 +1,1696 @@
 {
   "chicken": {
-    "name_th": "ไก่",
+    "name_th": "เนื้อไก่",
+    "category": "protein",
     "yolo_class_id": 0,
     "is_seasoning": false,
     "is_animal_product": true,
-    "synonyms": ["ไก่", "เนื้อไก่", "อกไก่", "สะโพกไก่", "น่องไก่", "ไก่สด", "chicken"]
+    "synonyms": [
+      "เนื้อไก่",
+      "ไก่",
+      "อกไก่",
+      "สะโพกไก่",
+      "น่องไก่",
+      "ไก่สด",
+      "chicken"
+    ],
+    "confusable_with": []
   },
-  "egg": {
-    "name_th": "ไข่",
+  "pork": {
+    "name_th": "เนื้อหมู",
+    "category": "protein",
     "yolo_class_id": 1,
     "is_seasoning": false,
     "is_animal_product": true,
-    "synonyms": ["ไข่", "ไข่ไก่", "ไข่เป็ด", "ไข่สด", "egg", "eggs"]
-  },
-  "cabbage": {
-    "name_th": "กะหล่ำปลี",
-    "yolo_class_id": 2,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["กะหล่ำปลี", "กะหล่ำ", "กระหล่ำปลี", "กะหล่ำปลีขาว", "กะหล่ำปลีม่วง", "cabbage"]
-  },
-  "lettuce": {
-    "name_th": "ผักกาดหอม",
-    "yolo_class_id": 3,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["ผักกาดหอม", "ผักสลัด", "ผักกาดแก้ว", "สลัด", "lettuce"]
-  },
-  "spinach": {
-    "name_th": "ผักโขม",
-    "yolo_class_id": 4,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["ผักโขม", "ผักขม", "ปวยเล้ง", "ผักปวยเล้ง", "spinach"]
-  },
-  "tomato": {
-    "name_th": "มะเขือเทศ",
-    "yolo_class_id": 5,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["มะเขือเทศ", "มะเขือเทศราชินี", "มะเขือเทศสีดา", "tomato", "tomatoes"]
-  },
-  "cucumber": {
-    "name_th": "แตงกวา",
-    "yolo_class_id": 6,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["แตงกวา", "แตงร้าน", "แตงกวาญี่ปุ่น", "cucumber"]
-  },
-  "eggplant": {
-    "name_th": "มะเขือยาว",
-    "yolo_class_id": 7,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["มะเขือยาว", "มะเขือม่วง", "eggplant", "aubergine"]
-  },
-  "pumpkin": {
-    "name_th": "ฟักทอง",
-    "yolo_class_id": 8,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["ฟักทอง", "ฟักทองญี่ปุ่น", "ฟักทองไทย", "pumpkin"]
-  },
-  "cauliflower": {
-    "name_th": "กะหล่ำดอก",
-    "yolo_class_id": 9,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["กะหล่ำดอก", "ดอกกะหล่ำ", "กระหล่ำดอก", "กะหล่ำดอกขาว", "cauliflower"]
-  },
-  "broccoli": {
-    "name_th": "บรอกโคลี",
-    "yolo_class_id": 10,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["บรอกโคลี", "บรอกโคลี่", "บล็อคโคลี่", "บล็อกโคลี", "บรอคโคลี", "broccoli"]
-  },
-  "carrot": {
-    "name_th": "แครอท",
-    "yolo_class_id": 11,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["แครอท", "แครรอท", "แคร์รอท", "carrot", "carrots"]
-  },
-  "onion": {
-    "name_th": "หัวหอม",
-    "yolo_class_id": 12,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["หัวหอม", "หอมใหญ่", "หัวหอมใหญ่", "หอมหัวใหญ่", "onion"]
-  },
-  "garlic": {
-    "name_th": "กระเทียม",
-    "yolo_class_id": 13,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["กระเทียม", "กระเทียมสด", "กระเทียมกลีบ", "หัวกระเทียม", "garlic"]
-  },
-  "ginger": {
-    "name_th": "ขิง",
-    "yolo_class_id": 14,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["ขิง", "ขิงสด", "ขิงแก่", "ขิงอ่อน", "ginger"]
-  },
-  "potato": {
-    "name_th": "มันฝรั่ง",
-    "yolo_class_id": 15,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["มันฝรั่ง", "หัวมันฝรั่ง", "มันฝรั่งสด", "potato", "potatoes"]
-  },
-  "sweet_potato": {
-    "name_th": "มันเทศ",
-    "yolo_class_id": 16,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["มันเทศ", "มันหวาน", "มันญี่ปุ่น", "sweet potato", "sweetpotato"]
-  },
-  "green_onion": {
-    "name_th": "ต้นหอม",
-    "yolo_class_id": 17,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["ต้นหอม", "ใบหอม", "หอมซอย", "ต้นหอมซอย", "green onion", "spring onion", "scallion"]
-  },
-  "chili": {
-    "name_th": "พริก",
-    "yolo_class_id": 18,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["พริก", "พริกขี้หนู", "พริกชี้ฟ้า", "พริกแดง", "พริกเขียว", "chili", "chilli"]
-  },
-  "bell_pepper": {
-    "name_th": "พริกหวาน",
-    "yolo_class_id": 19,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["พริกหวาน", "พริกหยวก", "พริกยักษ์", "bell pepper", "capsicum", "paprika"]
-  },
-
-  "pork": {
-    "name_th": "หมู",
-    "yolo_class_id": null,
-    "is_seasoning": false,
-    "is_animal_product": true,
-    "synonyms": ["หมู", "เนื้อหมู", "หมูสับ", "หมูสามชั้น", "สันคอหมู", "หมูกรอบ", "pork"]
+    "synonyms": [
+      "เนื้อหมู",
+      "หมู",
+      "หมูสามชั้น",
+      "สันคอหมู",
+      "pork"
+    ],
+    "confusable_with": []
   },
   "beef": {
     "name_th": "เนื้อวัว",
-    "yolo_class_id": null,
+    "category": "protein",
+    "yolo_class_id": 2,
     "is_seasoning": false,
     "is_animal_product": true,
-    "synonyms": ["เนื้อวัว", "เนื้อ", "เนื้อโค", "beef"]
+    "synonyms": [
+      "เนื้อวัว",
+      "เนื้อโค",
+      "beef"
+    ],
+    "confusable_with": []
+  },
+  "minced_meat": {
+    "name_th": "เนื้อสัตว์สับ",
+    "category": "protein",
+    "yolo_class_id": 3,
+    "is_seasoning": false,
+    "is_animal_product": true,
+    "synonyms": [
+      "เนื้อสัตว์สับ",
+      "เนื้อสับ",
+      "หมูสับ",
+      "เนื้อบด",
+      "minced meat",
+      "ground meat"
+    ],
+    "confusable_with": []
+  },
+  "sausage": {
+    "name_th": "ไส้กรอก",
+    "category": "protein",
+    "yolo_class_id": 4,
+    "is_seasoning": false,
+    "is_animal_product": true,
+    "synonyms": [
+      "ไส้กรอก",
+      "ไส้กรอกหมู",
+      "ไส้กรอกไก่",
+      "sausage"
+    ],
+    "confusable_with": []
+  },
+  "egg": {
+    "name_th": "ไข่ไก่",
+    "category": "protein",
+    "yolo_class_id": 5,
+    "is_seasoning": false,
+    "is_animal_product": true,
+    "synonyms": [
+      "ไข่ไก่",
+      "ไข่",
+      "ไข่สด",
+      "egg",
+      "eggs"
+    ],
+    "confusable_with": []
+  },
+  "quail_egg": {
+    "name_th": "ไข่นกกระทา",
+    "category": "protein",
+    "yolo_class_id": 6,
+    "is_seasoning": false,
+    "is_animal_product": true,
+    "synonyms": [
+      "ไข่นกกระทา",
+      "ไข่กระทา",
+      "quail egg"
+    ],
+    "confusable_with": []
   },
   "shrimp": {
     "name_th": "กุ้ง",
-    "yolo_class_id": null,
+    "category": "protein",
+    "yolo_class_id": 7,
     "is_seasoning": false,
     "is_animal_product": true,
-    "synonyms": ["กุ้ง", "กุ้งสด", "กุ้งขาว", "กุ้งแม่น้ำ", "shrimp", "prawn"]
-  },
-  "dried_shrimp": {
-    "name_th": "กุ้งแห้ง",
-    "yolo_class_id": null,
-    "is_seasoning": false,
-    "is_animal_product": true,
-    "synonyms": ["กุ้งแห้ง", "dried shrimp"]
-  },
-  "squid": {
-    "name_th": "ปลาหมึก",
-    "yolo_class_id": null,
-    "is_seasoning": false,
-    "is_animal_product": true,
-    "synonyms": ["ปลาหมึก", "หมึก", "หมึกกล้วย", "squid"]
+    "synonyms": [
+      "กุ้ง",
+      "กุ้งสด",
+      "กุ้งขาว",
+      "กุ้งแม่น้ำ",
+      "shrimp",
+      "prawn"
+    ],
+    "confusable_with": []
   },
   "fish": {
     "name_th": "ปลา",
-    "yolo_class_id": null,
+    "category": "protein",
+    "yolo_class_id": 8,
     "is_seasoning": false,
     "is_animal_product": true,
-    "synonyms": ["ปลา", "เนื้อปลา", "ปลาทู", "ปลานิล", "ปลากะพง", "fish"]
+    "synonyms": [
+      "ปลา",
+      "เนื้อปลา",
+      "ปลาทู",
+      "ปลานิล",
+      "ปลากะพง",
+      "fish"
+    ],
+    "confusable_with": []
+  },
+  "squid": {
+    "name_th": "ปลาหมึก",
+    "category": "protein",
+    "yolo_class_id": 9,
+    "is_seasoning": false,
+    "is_animal_product": true,
+    "synonyms": [
+      "ปลาหมึก",
+      "หมึก",
+      "หมึกกล้วย",
+      "squid"
+    ],
+    "confusable_with": []
+  },
+  "clam": {
+    "name_th": "หอยตลับ",
+    "category": "protein",
+    "yolo_class_id": 10,
+    "is_seasoning": false,
+    "is_animal_product": true,
+    "synonyms": [
+      "หอยตลับ",
+      "หอยลาย",
+      "clam"
+    ],
+    "confusable_with": []
+  },
+  "mussel": {
+    "name_th": "หอยแมลงภู่",
+    "category": "protein",
+    "yolo_class_id": 11,
+    "is_seasoning": false,
+    "is_animal_product": true,
+    "synonyms": [
+      "หอยแมลงภู่",
+      "mussel"
+    ],
+    "confusable_with": []
+  },
+  "oyster": {
+    "name_th": "หอยนางรม",
+    "category": "protein",
+    "yolo_class_id": 12,
+    "is_seasoning": false,
+    "is_animal_product": true,
+    "synonyms": [
+      "หอยนางรม",
+      "oyster"
+    ],
+    "confusable_with": []
+  },
+  "crab": {
+    "name_th": "ปู",
+    "category": "protein",
+    "yolo_class_id": 13,
+    "is_seasoning": false,
+    "is_animal_product": true,
+    "synonyms": [
+      "ปู",
+      "ปูทะเล",
+      "เนื้อปู",
+      "crab"
+    ],
+    "confusable_with": []
   },
   "tofu": {
-    "name_th": "เต้าหู้",
-    "yolo_class_id": null,
+    "name_th": "เต้าหู้ขาว",
+    "category": "protein",
+    "yolo_class_id": 14,
     "is_seasoning": false,
     "is_animal_product": false,
-    "synonyms": ["เต้าหู้", "เต้าหู้ขาว", "เต้าหู้แข็ง", "เต้าหู้อ่อน", "tofu"]
+    "synonyms": [
+      "เต้าหู้ขาว",
+      "เต้าหู้",
+      "เต้าหู้แข็ง",
+      "tofu"
+    ],
+    "confusable_with": []
   },
-  "mushroom": {
-    "name_th": "เห็ด",
-    "yolo_class_id": null,
+  "garlic": {
+    "name_th": "กระเทียม",
+    "category": "herb_aromatic",
+    "yolo_class_id": 15,
     "is_seasoning": false,
     "is_animal_product": false,
-    "synonyms": ["เห็ด", "เห็ดฟาง", "เห็ดนางฟ้า", "เห็ดหอม", "เห็ดออรินจิ", "mushroom"]
+    "synonyms": [
+      "กระเทียม",
+      "กระเทียมสด",
+      "กระเทียมกลีบ",
+      "หัวกระเทียม",
+      "garlic"
+    ],
+    "confusable_with": []
   },
-  "chinese_broccoli": {
-    "name_th": "คะน้า",
-    "yolo_class_id": null,
+  "shallot": {
+    "name_th": "หอมแดง",
+    "category": "herb_aromatic",
+    "yolo_class_id": 16,
     "is_seasoning": false,
     "is_animal_product": false,
-    "synonyms": ["คะน้า", "ผักคะน้า", "ยอดคะน้า", "chinese broccoli", "kale"]
+    "synonyms": [
+      "หอมแดง",
+      "shallot"
+    ],
+    "confusable_with": []
   },
-  "bean_sprout": {
-    "name_th": "ถั่วงอก",
-    "yolo_class_id": null,
+  "onion": {
+    "name_th": "หอมหัวใหญ่",
+    "category": "herb_aromatic",
+    "yolo_class_id": 17,
     "is_seasoning": false,
     "is_animal_product": false,
-    "synonyms": ["ถั่วงอก", "bean sprout", "beansprout"]
+    "synonyms": [
+      "หอมหัวใหญ่",
+      "หัวหอม",
+      "หอมใหญ่",
+      "onion"
+    ],
+    "confusable_with": []
   },
-  "long_bean": {
-    "name_th": "ถั่วฝักยาว",
-    "yolo_class_id": null,
+  "green_onion": {
+    "name_th": "ต้นหอม",
+    "category": "herb_aromatic",
+    "yolo_class_id": 18,
     "is_seasoning": false,
     "is_animal_product": false,
-    "synonyms": ["ถั่วฝักยาว", "ถั่วพู", "yardlong bean", "long bean"]
+    "synonyms": [
+      "ต้นหอม",
+      "ใบหอม",
+      "หอมซอย",
+      "green onion",
+      "spring onion",
+      "scallion"
+    ],
+    "confusable_with": []
   },
-  "green_papaya": {
-    "name_th": "มะละกอดิบ",
-    "yolo_class_id": null,
+  "ginger": {
+    "name_th": "ขิง",
+    "category": "herb_aromatic",
+    "yolo_class_id": 19,
     "is_seasoning": false,
     "is_animal_product": false,
-    "synonyms": ["มะละกอดิบ", "มะละกอ", "มะละกอสับ", "green papaya", "papaya"]
-  },
-  "holy_basil": {
-    "name_th": "ใบกะเพรา",
-    "yolo_class_id": null,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["ใบกะเพรา", "กะเพรา", "กระเพรา", "ใบกระเพรา", "holy basil"]
-  },
-  "thai_basil": {
-    "name_th": "ใบโหระพา",
-    "yolo_class_id": null,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["ใบโหระพา", "โหระพา", "thai basil", "sweet basil"]
-  },
-  "kaffir_lime_leaf": {
-    "name_th": "ใบมะกรูด",
-    "yolo_class_id": null,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["ใบมะกรูด", "มะกรูด", "kaffir lime leaf"]
-  },
-  "lemongrass": {
-    "name_th": "ตะไคร้",
-    "yolo_class_id": null,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["ตะไคร้", "ตะไคร้หอม", "lemongrass"]
+    "synonyms": [
+      "ขิง",
+      "ขิงสด",
+      "ขิงแก่",
+      "ขิงอ่อน",
+      "ginger"
+    ],
+    "confusable_with": []
   },
   "galangal": {
     "name_th": "ข่า",
-    "yolo_class_id": null,
+    "category": "herb_aromatic",
+    "yolo_class_id": 20,
     "is_seasoning": false,
     "is_animal_product": false,
-    "synonyms": ["ข่า", "ข่าอ่อน", "ข่าแก่", "galangal"]
+    "synonyms": [
+      "ข่า",
+      "ข่าอ่อน",
+      "ข่าแก่",
+      "galangal"
+    ],
+    "confusable_with": []
+  },
+  "turmeric": {
+    "name_th": "ขมิ้นชัน",
+    "category": "herb_aromatic",
+    "yolo_class_id": 21,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ขมิ้นชัน",
+      "ขมิ้น",
+      "turmeric"
+    ],
+    "confusable_with": []
+  },
+  "lemongrass": {
+    "name_th": "ตะไคร้",
+    "category": "herb_aromatic",
+    "yolo_class_id": 22,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ตะไคร้",
+      "ตะไคร้หอม",
+      "lemongrass"
+    ],
+    "confusable_with": []
+  },
+  "kaffir_lime_leaf": {
+    "name_th": "ใบมะกรูด",
+    "category": "herb_aromatic",
+    "yolo_class_id": 23,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ใบมะกรูด",
+      "มะกรูด",
+      "kaffir lime leaf"
+    ],
+    "confusable_with": []
+  },
+  "chili": {
+    "name_th": "พริก",
+    "category": "herb_aromatic",
+    "yolo_class_id": 24,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "พริก",
+      "พริกขี้หนู",
+      "พริกชี้ฟ้า",
+      "พริกแดง",
+      "พริกเขียว",
+      "chili",
+      "chilli"
+    ],
+    "confusable_with": []
+  },
+  "basil": {
+    "name_th": "โหระพา",
+    "category": "herb_aromatic",
+    "yolo_class_id": 25,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "โหระพา",
+      "ใบโหระพา",
+      "thai basil",
+      "sweet basil"
+    ],
+    "confusable_with": []
+  },
+  "holy_basil": {
+    "name_th": "กะเพรา",
+    "category": "herb_aromatic",
+    "yolo_class_id": 26,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "กะเพรา",
+      "ใบกะเพรา",
+      "กระเพรา",
+      "ใบกระเพรา",
+      "holy basil"
+    ],
+    "confusable_with": []
+  },
+  "maenglak": {
+    "name_th": "แมงลัก",
+    "category": "herb_aromatic",
+    "yolo_class_id": 27,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "แมงลัก",
+      "ใบแมงลัก",
+      "lemon basil",
+      "lemon_basil"
+    ],
+    "confusable_with": []
+  },
+  "clove_basil": {
+    "name_th": "ใบยี่หร่า",
+    "category": "herb_aromatic",
+    "yolo_class_id": 28,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ใบยี่หร่า",
+      "ยี่หร่า",
+      "clove basil"
+    ],
+    "confusable_with": []
+  },
+  "mint_leaves": {
+    "name_th": "สะระแหน่",
+    "category": "herb_aromatic",
+    "yolo_class_id": 29,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "สะระแหน่",
+      "ใบสะระแหน่",
+      "mint",
+      "mint leaves"
+    ],
+    "confusable_with": []
   },
   "coriander": {
     "name_th": "ผักชี",
-    "yolo_class_id": null,
+    "category": "herb_aromatic",
+    "yolo_class_id": 30,
     "is_seasoning": false,
     "is_animal_product": false,
-    "synonyms": ["ผักชี", "ใบผักชี", "รากผักชี", "coriander", "cilantro"]
+    "synonyms": [
+      "ผักชี",
+      "ใบผักชี",
+      "รากผักชี",
+      "coriander",
+      "cilantro"
+    ],
+    "confusable_with": []
   },
-  "mint": {
-    "name_th": "สะระแหน่",
-    "yolo_class_id": null,
+  "chives": {
+    "name_th": "กุยช่าย",
+    "category": "herb_aromatic",
+    "yolo_class_id": 31,
     "is_seasoning": false,
     "is_animal_product": false,
-    "synonyms": ["สะระแหน่", "ใบสะระแหน่", "mint"]
+    "synonyms": [
+      "กุยช่าย",
+      "ใบกุยช่าย",
+      "chives",
+      "garlic chives"
+    ],
+    "confusable_with": []
+  },
+  "pandan_leaf": {
+    "name_th": "ใบเตย",
+    "category": "herb_aromatic",
+    "yolo_class_id": 32,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ใบเตย",
+      "เตย",
+      "pandan leaf",
+      "pandan"
+    ],
+    "confusable_with": []
+  },
+  "dill": {
+    "name_th": "ผักชีลาว",
+    "category": "herb_aromatic",
+    "yolo_class_id": 33,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ผักชีลาว",
+      "dill"
+    ],
+    "confusable_with": []
+  },
+  "piper_lolot": {
+    "name_th": "ใบชะพลู",
+    "category": "herb_aromatic",
+    "yolo_class_id": 34,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ใบชะพลู",
+      "ชะพลู",
+      "piper lolot",
+      "wild betel leaf"
+    ],
+    "confusable_with": []
+  },
+  "celery": {
+    "name_th": "ขึ้นฉ่าย",
+    "category": "herb_aromatic",
+    "yolo_class_id": 35,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ขึ้นฉ่าย",
+      "คื่นฉ่าย",
+      "celery",
+      "chinese celery"
+    ],
+    "confusable_with": []
+  },
+  "shiitake": {
+    "name_th": "เห็ดหอม",
+    "category": "mushroom",
+    "yolo_class_id": 36,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "เห็ดหอม",
+      "shiitake"
+    ],
+    "confusable_with": []
+  },
+  "wood_ear": {
+    "name_th": "เห็ดหูหนู",
+    "category": "mushroom",
+    "yolo_class_id": 37,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "เห็ดหูหนู",
+      "wood ear mushroom"
+    ],
+    "confusable_with": []
+  },
+  "enoki": {
+    "name_th": "เห็ดเข็มทอง",
+    "category": "mushroom",
+    "yolo_class_id": 38,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "เห็ดเข็มทอง",
+      "enoki"
+    ],
+    "confusable_with": []
+  },
+  "button": {
+    "name_th": "เห็ดกระดุม",
+    "category": "mushroom",
+    "yolo_class_id": 39,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "เห็ดกระดุม",
+      "เห็ดแชมปิญอง",
+      "button mushroom",
+      "champignon"
+    ],
+    "confusable_with": []
+  },
+  "king_oyster": {
+    "name_th": "เห็ดนางรมหลวง",
+    "category": "mushroom",
+    "yolo_class_id": 40,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "เห็ดนางรมหลวง",
+      "เห็ดออรินจิ",
+      "king oyster mushroom"
+    ],
+    "confusable_with": []
+  },
+  "white_oyster": {
+    "name_th": "เห็ดนางรม",
+    "category": "mushroom",
+    "yolo_class_id": 41,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "เห็ดนางรม",
+      "white oyster mushroom"
+    ],
+    "confusable_with": []
+  },
+  "straw_mushroom": {
+    "name_th": "เห็ดฟาง",
+    "category": "mushroom",
+    "yolo_class_id": 42,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "เห็ดฟาง",
+      "straw mushroom"
+    ],
+    "confusable_with": []
+  },
+  "tomato": {
+    "name_th": "มะเขือเทศ",
+    "category": "vegetable",
+    "yolo_class_id": 43,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "มะเขือเทศ",
+      "มะเขือเทศราชินี",
+      "มะเขือเทศสีดา",
+      "tomato",
+      "tomatoes"
+    ],
+    "confusable_with": []
+  },
+  "bell_pepper": {
+    "name_th": "พริกหวาน",
+    "category": "vegetable",
+    "yolo_class_id": 44,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "พริกหวาน",
+      "พริกหยวก",
+      "พริกยักษ์",
+      "bell pepper",
+      "capsicum",
+      "paprika"
+    ],
+    "confusable_with": []
+  },
+  "cabbage": {
+    "name_th": "กะหล่ำปลี",
+    "category": "vegetable",
+    "yolo_class_id": 45,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "กะหล่ำปลี",
+      "กะหล่ำ",
+      "กระหล่ำปลี",
+      "cabbage"
+    ],
+    "confusable_with": []
+  },
+  "napa_cabbage": {
+    "name_th": "ผักกาดขาว",
+    "category": "vegetable",
+    "yolo_class_id": 46,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ผักกาดขาว",
+      "napa cabbage",
+      "chinese cabbage"
+    ],
+    "confusable_with": []
+  },
+  "chinese_kale": {
+    "name_th": "คะน้า",
+    "category": "vegetable",
+    "yolo_class_id": 47,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "คะน้า",
+      "ผักคะน้า",
+      "ยอดคะน้า",
+      "chinese kale",
+      "kai-lan"
+    ],
+    "confusable_with": []
+  },
+  "cauliflower": {
+    "name_th": "กะหล่ำดอก",
+    "category": "vegetable",
+    "yolo_class_id": 48,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "กะหล่ำดอก",
+      "ดอกกะหล่ำ",
+      "กระหล่ำดอก",
+      "cauliflower"
+    ],
+    "confusable_with": []
+  },
+  "broccoli": {
+    "name_th": "บรอกโคลี",
+    "category": "vegetable",
+    "yolo_class_id": 49,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "บรอกโคลี",
+      "บล็อกโคลี",
+      "broccoli"
+    ],
+    "confusable_with": []
+  },
+  "lettuce": {
+    "name_th": "ผักกาดหอม",
+    "category": "vegetable",
+    "yolo_class_id": 50,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ผักกาดหอม",
+      "ผักสลัด",
+      "สลัด",
+      "lettuce"
+    ],
+    "confusable_with": []
+  },
+  "cucumber": {
+    "name_th": "แตงกวา",
+    "category": "vegetable",
+    "yolo_class_id": 51,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "แตงกวา",
+      "แตงร้าน",
+      "cucumber"
+    ],
+    "confusable_with": []
+  },
+  "eggplant": {
+    "name_th": "มะเขือยาว",
+    "category": "vegetable",
+    "yolo_class_id": 52,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "มะเขือยาว",
+      "มะเขือม่วง",
+      "eggplant",
+      "aubergine"
+    ],
+    "confusable_with": [
+      "thai_eggplant"
+    ]
+  },
+  "thai_eggplant": {
+    "name_th": "มะเขือเปราะ",
+    "category": "vegetable",
+    "yolo_class_id": 53,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "มะเขือเปราะ",
+      "thai eggplant"
+    ],
+    "confusable_with": [
+      "eggplant"
+    ]
+  },
+  "bitter_gourd": {
+    "name_th": "มะระ",
+    "category": "vegetable",
+    "yolo_class_id": 54,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "มะระ",
+      "มะระขี้นก",
+      "bitter gourd",
+      "bitter melon"
+    ],
+    "confusable_with": []
+  },
+  "bok_choy": {
+    "name_th": "ผักกวางตุ้ง",
+    "category": "vegetable",
+    "yolo_class_id": 55,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ผักกวางตุ้ง",
+      "กวางตุ้ง",
+      "bok choy"
+    ],
+    "confusable_with": []
+  },
+  "okra": {
+    "name_th": "กระเจี๊ยบเขียว",
+    "category": "vegetable",
+    "yolo_class_id": 56,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "กระเจี๊ยบเขียว",
+      "okra",
+      "lady finger"
+    ],
+    "confusable_with": []
+  },
+  "white_radish": {
+    "name_th": "หัวไชเท้า",
+    "category": "vegetable",
+    "yolo_class_id": 57,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "หัวไชเท้า",
+      "ไชเท้า",
+      "white radish",
+      "daikon"
+    ],
+    "confusable_with": []
+  },
+  "pumpkin": {
+    "name_th": "ฟักทอง",
+    "category": "vegetable",
+    "yolo_class_id": 58,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ฟักทอง",
+      "pumpkin"
+    ],
+    "confusable_with": []
+  },
+  "chayote": {
+    "name_th": "ฟักแม้ว",
+    "category": "vegetable",
+    "yolo_class_id": 59,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ฟักแม้ว",
+      "chayote"
+    ],
+    "confusable_with": []
+  },
+  "winter_melon": {
+    "name_th": "ฟักเขียว",
+    "category": "vegetable",
+    "yolo_class_id": 60,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ฟักเขียว",
+      "winter melon"
+    ],
+    "confusable_with": []
+  },
+  "bottle_gourd": {
+    "name_th": "น้ำเต้า",
+    "category": "vegetable",
+    "yolo_class_id": 61,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "น้ำเต้า",
+      "bottle gourd"
+    ],
+    "confusable_with": []
+  },
+  "sponge_gourd": {
+    "name_th": "บวบ",
+    "category": "vegetable",
+    "yolo_class_id": 62,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "บวบ",
+      "บวบเหลี่ยม",
+      "sponge gourd",
+      "luffa"
+    ],
+    "confusable_with": []
+  },
+  "carrot": {
+    "name_th": "แครอท",
+    "category": "vegetable",
+    "yolo_class_id": 63,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "แครอท",
+      "แครรอท",
+      "carrot",
+      "carrots"
+    ],
+    "confusable_with": []
+  },
+  "green_bean": {
+    "name_th": "ถั่วแขก",
+    "category": "vegetable",
+    "yolo_class_id": 64,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ถั่วแขก",
+      "green bean",
+      "french bean"
+    ],
+    "confusable_with": []
+  },
+  "yardlong_bean": {
+    "name_th": "ถั่วฝักยาว",
+    "category": "vegetable",
+    "yolo_class_id": 65,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ถั่วฝักยาว",
+      "yardlong bean",
+      "long bean"
+    ],
+    "confusable_with": []
+  },
+  "winged_bean": {
+    "name_th": "ถั่วพู",
+    "category": "vegetable",
+    "yolo_class_id": 66,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ถั่วพู",
+      "winged bean"
+    ],
+    "confusable_with": []
+  },
+  "hyacinth_bean": {
+    "name_th": "ถั่วแปบ",
+    "category": "vegetable",
+    "yolo_class_id": 67,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ถั่วแปบ",
+      "hyacinth bean"
+    ],
+    "confusable_with": []
+  },
+  "green_peas": {
+    "name_th": "ถั่วลันเตา",
+    "category": "vegetable",
+    "yolo_class_id": 68,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ถั่วลันเตา",
+      "green peas"
+    ],
+    "confusable_with": []
+  },
+  "bamboo_shoots": {
+    "name_th": "หน่อไม้",
+    "category": "vegetable",
+    "yolo_class_id": 69,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "หน่อไม้",
+      "bamboo shoots"
+    ],
+    "confusable_with": []
+  },
+  "spinach": {
+    "name_th": "ปวยเล้ง",
+    "category": "vegetable",
+    "yolo_class_id": 70,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ปวยเล้ง",
+      "spinach"
+    ],
+    "confusable_with": [
+      "amaranth"
+    ]
+  },
+  "malabar_spinach": {
+    "name_th": "ผักปลัง",
+    "category": "vegetable",
+    "yolo_class_id": 71,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ผักปลัง",
+      "malabar spinach"
+    ],
+    "confusable_with": []
+  },
+  "water_spinach": {
+    "name_th": "ผักบุ้ง",
+    "category": "vegetable",
+    "yolo_class_id": 72,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ผักบุ้ง",
+      "water spinach",
+      "morning glory"
+    ],
+    "confusable_with": []
+  },
+  "amaranth": {
+    "name_th": "ผักโขม",
+    "category": "vegetable",
+    "yolo_class_id": 73,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ผักโขม",
+      "amaranth"
+    ],
+    "confusable_with": [
+      "spinach"
+    ]
+  },
+  "ivy_gourd": {
+    "name_th": "ใบตำลึง",
+    "category": "vegetable",
+    "yolo_class_id": 74,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ใบตำลึง",
+      "ตำลึง",
+      "ivy gourd"
+    ],
+    "confusable_with": []
+  },
+  "banana_flower": {
+    "name_th": "หัวปลี",
+    "category": "vegetable",
+    "yolo_class_id": 75,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "หัวปลี",
+      "banana flower",
+      "banana blossom"
+    ],
+    "confusable_with": []
+  },
+  "jicama": {
+    "name_th": "มันแกว",
+    "category": "vegetable",
+    "yolo_class_id": 76,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "มันแกว",
+      "jicama"
+    ],
+    "confusable_with": []
+  },
+  "asparagus": {
+    "name_th": "หน่อไม้ฝรั่ง",
+    "category": "vegetable",
+    "yolo_class_id": 77,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "หน่อไม้ฝรั่ง",
+      "asparagus"
+    ],
+    "confusable_with": []
+  },
+  "senna_siamea": {
+    "name_th": "ใบขี้เหล็ก",
+    "category": "vegetable",
+    "yolo_class_id": 78,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ใบขี้เหล็ก",
+      "ขี้เหล็ก",
+      "senna siamea",
+      "cassod tree leaf"
+    ],
+    "confusable_with": []
+  },
+  "soybean_sprouts": {
+    "name_th": "ถั่วงอกหัวโต",
+    "category": "vegetable",
+    "yolo_class_id": 79,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ถั่วงอกหัวโต",
+      "soybean sprouts"
+    ],
+    "confusable_with": []
+  },
+  "moringa": {
+    "name_th": "ใบมะรุม",
+    "category": "vegetable",
+    "yolo_class_id": 80,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ใบมะรุม",
+      "มะรุม",
+      "moringa"
+    ],
+    "confusable_with": []
+  },
+  "corn": {
+    "name_th": "ข้าวโพด",
+    "category": "vegetable",
+    "yolo_class_id": 81,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ข้าวโพด",
+      "corn"
+    ],
+    "confusable_with": []
+  },
+  "potato": {
+    "name_th": "มันฝรั่ง",
+    "category": "carb",
+    "yolo_class_id": 82,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "มันฝรั่ง",
+      "หัวมันฝรั่ง",
+      "potato",
+      "potatoes"
+    ],
+    "confusable_with": []
+  },
+  "sweet_potato": {
+    "name_th": "มันเทศ",
+    "category": "carb",
+    "yolo_class_id": 83,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "มันเทศ",
+      "มันหวาน",
+      "sweet potato"
+    ],
+    "confusable_with": []
+  },
+  "cassava": {
+    "name_th": "มันสำปะหลัง",
+    "category": "carb",
+    "yolo_class_id": 84,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "มันสำปะหลัง",
+      "cassava"
+    ],
+    "confusable_with": []
   },
   "lime": {
     "name_th": "มะนาว",
-    "yolo_class_id": null,
+    "category": "fruit",
+    "yolo_class_id": 85,
     "is_seasoning": false,
     "is_animal_product": false,
-    "synonyms": ["มะนาว", "น้ำมะนาว", "ลูกมะนาว", "lime"]
+    "synonyms": [
+      "มะนาว",
+      "น้ำมะนาว",
+      "ลูกมะนาว",
+      "lime"
+    ],
+    "confusable_with": []
   },
-  "peanut": {
-    "name_th": "ถั่วลิสง",
-    "yolo_class_id": null,
+  "taro_root": {
+    "name_th": "เผือก",
+    "category": "fruit",
+    "yolo_class_id": 86,
     "is_seasoning": false,
     "is_animal_product": false,
-    "synonyms": ["ถั่วลิสง", "ถั่วลิสงคั่ว", "peanut", "peanuts"]
+    "synonyms": [
+      "เผือก",
+      "taro root",
+      "taro"
+    ],
+    "confusable_with": []
   },
-  "cashew_nut": {
+  "pineapple": {
+    "name_th": "สับปะรด",
+    "category": "fruit",
+    "yolo_class_id": 87,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "สับปะรด",
+      "pineapple"
+    ],
+    "confusable_with": []
+  },
+  "mango": {
+    "name_th": "มะม่วง",
+    "category": "fruit",
+    "yolo_class_id": 88,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "มะม่วง",
+      "mango"
+    ],
+    "confusable_with": []
+  },
+  "green_papaya": {
+    "name_th": "มะละกอดิบ",
+    "category": "fruit",
+    "yolo_class_id": 89,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "มะละกอดิบ",
+      "มะละกอ",
+      "green papaya"
+    ],
+    "confusable_with": []
+  },
+  "tamarind": {
+    "name_th": "มะขาม",
+    "category": "fruit",
+    "yolo_class_id": 90,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "มะขาม",
+      "tamarind"
+    ],
+    "confusable_with": []
+  },
+  "banana": {
+    "name_th": "กล้วย",
+    "category": "fruit",
+    "yolo_class_id": 91,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "กล้วย",
+      "banana"
+    ],
+    "confusable_with": []
+  },
+  "coconut": {
+    "name_th": "มะพร้าว",
+    "category": "fruit",
+    "yolo_class_id": 92,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "มะพร้าว",
+      "coconut"
+    ],
+    "confusable_with": []
+  },
+  "lychee": {
+    "name_th": "ลิ้นจี่",
+    "category": "fruit",
+    "yolo_class_id": 93,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ลิ้นจี่",
+      "lychee"
+    ],
+    "confusable_with": []
+  },
+  "durian": {
+    "name_th": "ทุเรียน",
+    "category": "fruit",
+    "yolo_class_id": 94,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ทุเรียน",
+      "durian"
+    ],
+    "confusable_with": []
+  },
+  "pomelo": {
+    "name_th": "ส้มโอ",
+    "category": "fruit",
+    "yolo_class_id": 95,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ส้มโอ",
+      "pomelo"
+    ],
+    "confusable_with": []
+  },
+  "jackfruit": {
+    "name_th": "ขนุน",
+    "category": "fruit",
+    "yolo_class_id": 96,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ขนุน",
+      "jackfruit"
+    ],
+    "confusable_with": []
+  },
+  "rambutan": {
+    "name_th": "เงาะ",
+    "category": "fruit",
+    "yolo_class_id": 97,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "เงาะ",
+      "rambutan"
+    ],
+    "confusable_with": []
+  },
+  "cashew": {
     "name_th": "เม็ดมะม่วงหิมพานต์",
-    "yolo_class_id": null,
+    "category": "nut_seed",
+    "yolo_class_id": 98,
     "is_seasoning": false,
     "is_animal_product": false,
-    "synonyms": ["เม็ดมะม่วงหิมพานต์", "เม็ดมะม่วง", "cashew", "cashew nut"]
+    "synonyms": [
+      "เม็ดมะม่วงหิมพานต์",
+      "เม็ดมะม่วง",
+      "cashew",
+      "cashew nut"
+    ],
+    "confusable_with": []
   },
-  "rice": {
-    "name_th": "ข้าวสวย",
-    "yolo_class_id": null,
+  "peanuts": {
+    "name_th": "ถั่วลิสง",
+    "category": "nut_seed",
+    "yolo_class_id": 99,
     "is_seasoning": false,
     "is_animal_product": false,
-    "synonyms": ["ข้าวสวย", "ข้าว", "ข้าวสาร", "ข้าวหอมมะลิ", "rice"]
+    "synonyms": [
+      "ถั่วลิสง",
+      "ถั่วลิสงคั่ว",
+      "peanuts",
+      "peanut"
+    ],
+    "confusable_with": []
   },
-  "rice_noodle": {
-    "name_th": "เส้นก๋วยเตี๋ยว",
-    "yolo_class_id": null,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["เส้นก๋วยเตี๋ยว", "ก๋วยเตี๋ยว", "เส้นใหญ่", "เส้นเล็ก", "เส้นจันท์", "rice noodle"]
-  },
-  "glass_noodle": {
-    "name_th": "วุ้นเส้น",
-    "yolo_class_id": null,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["วุ้นเส้น", "glass noodle", "vermicelli"]
-  },
-  "egg_noodle": {
-    "name_th": "บะหมี่",
-    "yolo_class_id": null,
-    "is_seasoning": false,
-    "is_animal_product": true,
-    "synonyms": ["บะหมี่", "เส้นบะหมี่", "บะหมี่เหลือง", "egg noodle"]
-  },
-  "spaghetti": {
-    "name_th": "สปาเกตตี",
-    "yolo_class_id": null,
-    "is_seasoning": false,
-    "is_animal_product": false,
-    "synonyms": ["สปาเกตตี", "สปาเกตตี้", "เส้นสปาเกตตี", "พาสต้า", "spaghetti", "pasta"]
-  },
-
   "fish_sauce": {
     "name_th": "น้ำปลา",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
     "is_animal_product": true,
-    "synonyms": ["น้ำปลา", "fish sauce"]
+    "synonyms": [
+      "น้ำปลา",
+      "fish sauce"
+    ],
+    "confusable_with": []
   },
   "oyster_sauce": {
     "name_th": "น้ำมันหอย",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
     "is_animal_product": true,
-    "synonyms": ["น้ำมันหอย", "ซอสหอยนางรม", "oyster sauce"]
+    "synonyms": [
+      "น้ำมันหอย",
+      "ซอสหอยนางรม",
+      "oyster sauce"
+    ],
+    "confusable_with": []
   },
   "shrimp_paste": {
     "name_th": "กะปิ",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
     "is_animal_product": true,
-    "synonyms": ["กะปิ", "shrimp paste"]
+    "synonyms": [
+      "กะปิ",
+      "shrimp paste"
+    ],
+    "confusable_with": []
   },
   "soy_sauce": {
     "name_th": "ซีอิ๊วขาว",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
     "is_animal_product": false,
-    "synonyms": ["ซีอิ๊วขาว", "ซีอิ๊ว", "ซอสถั่วเหลือง", "soy sauce"]
+    "synonyms": [
+      "ซีอิ๊วขาว",
+      "ซีอิ๊ว",
+      "ซอสถั่วเหลือง",
+      "soy sauce"
+    ],
+    "confusable_with": []
   },
   "dark_soy_sauce": {
     "name_th": "ซีอิ๊วดำ",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
     "is_animal_product": false,
-    "synonyms": ["ซีอิ๊วดำ", "ซีอิ๊วหวาน", "dark soy sauce"]
+    "synonyms": [
+      "ซีอิ๊วดำ",
+      "ซีอิ๊วหวาน",
+      "dark soy sauce"
+    ],
+    "confusable_with": []
   },
   "sugar": {
     "name_th": "น้ำตาล",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
     "is_animal_product": false,
-    "synonyms": ["น้ำตาล", "น้ำตาลทราย", "น้ำตาลปี๊บ", "น้ำตาลมะพร้าว", "sugar"]
+    "synonyms": [
+      "น้ำตาล",
+      "น้ำตาลทราย",
+      "น้ำตาลปี๊บ",
+      "sugar"
+    ],
+    "confusable_with": []
   },
   "salt": {
     "name_th": "เกลือ",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
     "is_animal_product": false,
-    "synonyms": ["เกลือ", "เกลือป่น", "salt"]
+    "synonyms": [
+      "เกลือ",
+      "เกลือป่น",
+      "salt"
+    ],
+    "confusable_with": []
   },
   "pepper": {
     "name_th": "พริกไทย",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
     "is_animal_product": false,
-    "synonyms": ["พริกไทย", "พริกไทยป่น", "พริกไทยดำ", "pepper", "black pepper"]
+    "synonyms": [
+      "พริกไทย",
+      "พริกไทยป่น",
+      "พริกไทยดำ",
+      "pepper"
+    ],
+    "confusable_with": []
   },
   "vegetable_oil": {
     "name_th": "น้ำมันพืช",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
     "is_animal_product": false,
-    "synonyms": ["น้ำมันพืช", "น้ำมัน", "น้ำมันปาล์ม", "น้ำมันรำข้าว", "vegetable oil"]
+    "synonyms": [
+      "น้ำมันพืช",
+      "น้ำมันปาล์ม",
+      "vegetable oil"
+    ],
+    "confusable_with": []
   },
   "vinegar": {
     "name_th": "น้ำส้มสายชู",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
     "is_animal_product": false,
-    "synonyms": ["น้ำส้มสายชู", "vinegar"]
+    "synonyms": [
+      "น้ำส้มสายชู",
+      "vinegar"
+    ],
+    "confusable_with": []
   },
   "coconut_milk": {
     "name_th": "กะทิ",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
     "is_animal_product": false,
-    "synonyms": ["กะทิ", "หัวกะทิ", "น้ำกะทิ", "coconut milk"]
+    "synonyms": [
+      "กะทิ",
+      "หัวกะทิ",
+      "น้ำกะทิ",
+      "coconut milk"
+    ],
+    "confusable_with": []
   },
   "green_curry_paste": {
     "name_th": "พริกแกงเขียวหวาน",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
-    "is_animal_product": false,
-    "synonyms": ["พริกแกงเขียวหวาน", "น้ำพริกแกงเขียวหวาน", "green curry paste"]
+    "is_animal_product": true,
+    "synonyms": [
+      "พริกแกงเขียวหวาน",
+      "น้ำพริกแกงเขียวหวาน",
+      "green curry paste"
+    ],
+    "confusable_with": []
   },
   "red_curry_paste": {
     "name_th": "พริกแกงเผ็ด",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
-    "is_animal_product": false,
-    "synonyms": ["พริกแกงเผ็ด", "พริกแกงแดง", "น้ำพริกแกงเผ็ด", "red curry paste"]
+    "is_animal_product": true,
+    "synonyms": [
+      "พริกแกงเผ็ด",
+      "พริกแกงแดง",
+      "red curry paste"
+    ],
+    "confusable_with": []
   },
   "massaman_curry_paste": {
     "name_th": "พริกแกงมัสมั่น",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
-    "is_animal_product": false,
-    "synonyms": ["พริกแกงมัสมั่น", "น้ำพริกแกงมัสมั่น", "massaman curry paste"]
+    "is_animal_product": true,
+    "synonyms": [
+      "พริกแกงมัสมั่น",
+      "massaman curry paste"
+    ],
+    "confusable_with": []
   },
   "yellow_curry_paste": {
     "name_th": "พริกแกงกะหรี่",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
-    "is_animal_product": false,
-    "synonyms": ["พริกแกงกะหรี่", "น้ำพริกแกงกะหรี่", "ผงกะหรี่", "yellow curry paste", "curry powder"]
+    "is_animal_product": true,
+    "synonyms": [
+      "พริกแกงกะหรี่",
+      "ผงกะหรี่",
+      "yellow curry paste",
+      "curry powder"
+    ],
+    "confusable_with": []
   },
   "sour_curry_paste": {
     "name_th": "พริกแกงส้ม",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
-    "is_animal_product": false,
-    "synonyms": ["พริกแกงส้ม", "น้ำพริกแกงส้ม", "พริกแกงเหลือง", "น้ำพริกแกงเหลือง", "sour curry paste"]
+    "is_animal_product": true,
+    "synonyms": [
+      "พริกแกงส้ม",
+      "พริกแกงเหลือง",
+      "sour curry paste"
+    ],
+    "confusable_with": []
   },
   "chili_paste": {
     "name_th": "น้ำพริกเผา",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
-    "is_animal_product": false,
-    "synonyms": ["น้ำพริกเผา", "พริกเผา", "chili paste", "chilli jam"]
+    "is_animal_product": true,
+    "synonyms": [
+      "น้ำพริกเผา",
+      "พริกเผา",
+      "chili paste"
+    ],
+    "confusable_with": []
   },
   "tamarind_paste": {
     "name_th": "น้ำมะขามเปียก",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
     "is_animal_product": false,
-    "synonyms": ["น้ำมะขามเปียก", "มะขามเปียก", "tamarind paste"]
+    "synonyms": [
+      "น้ำมะขามเปียก",
+      "มะขามเปียก",
+      "tamarind paste"
+    ],
+    "confusable_with": []
   },
   "roasted_rice_powder": {
     "name_th": "ข้าวคั่ว",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
     "is_animal_product": false,
-    "synonyms": ["ข้าวคั่ว", "ข้าวคั่วป่น", "roasted rice powder"]
+    "synonyms": [
+      "ข้าวคั่ว",
+      "roasted rice powder"
+    ],
+    "confusable_with": []
   },
   "butter": {
     "name_th": "เนย",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
     "is_animal_product": true,
-    "synonyms": ["เนย", "เนยสด", "butter"]
+    "synonyms": [
+      "เนย",
+      "เนยสด",
+      "butter"
+    ],
+    "confusable_with": []
   },
   "milk": {
     "name_th": "นม",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
     "is_animal_product": true,
-    "synonyms": ["นม", "นมสด", "นมจืด", "milk"]
+    "synonyms": [
+      "นม",
+      "นมสด",
+      "นมจืด",
+      "milk"
+    ],
+    "confusable_with": []
   },
   "mayonnaise": {
     "name_th": "มายองเนส",
+    "category": "seasoning",
     "yolo_class_id": null,
     "is_seasoning": true,
     "is_animal_product": true,
-    "synonyms": ["มายองเนส", "น้ำสลัด", "mayonnaise", "mayo"]
+    "synonyms": [
+      "มายองเนส",
+      "น้ำสลัด",
+      "mayonnaise"
+    ],
+    "confusable_with": []
+  },
+  "rice": {
+    "name_th": "ข้าวสวย",
+    "category": "carb",
+    "yolo_class_id": null,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ข้าวสวย",
+      "ข้าว",
+      "ข้าวหอมมะลิ",
+      "rice"
+    ],
+    "confusable_with": []
+  },
+  "rice_noodle": {
+    "name_th": "เส้นก๋วยเตี๋ยว",
+    "category": "carb",
+    "yolo_class_id": null,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "เส้นก๋วยเตี๋ยว",
+      "ก๋วยเตี๋ยว",
+      "เส้นใหญ่",
+      "เส้นเล็ก",
+      "rice noodle"
+    ],
+    "confusable_with": []
+  },
+  "glass_noodle": {
+    "name_th": "วุ้นเส้น",
+    "category": "carb",
+    "yolo_class_id": null,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "วุ้นเส้น",
+      "glass noodle",
+      "vermicelli"
+    ],
+    "confusable_with": []
+  },
+  "egg_noodle": {
+    "name_th": "บะหมี่",
+    "category": "carb",
+    "yolo_class_id": null,
+    "is_seasoning": false,
+    "is_animal_product": true,
+    "synonyms": [
+      "บะหมี่",
+      "เส้นบะหมี่",
+      "egg noodle"
+    ],
+    "confusable_with": []
+  },
+  "spaghetti": {
+    "name_th": "สปาเกตตี",
+    "category": "carb",
+    "yolo_class_id": null,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "สปาเกตตี",
+      "พาสต้า",
+      "spaghetti",
+      "pasta"
+    ],
+    "confusable_with": []
   }
 }

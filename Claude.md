@@ -416,6 +416,7 @@ Goal by end of Week 2: send a message to the LINE Bot and get a real reply back 
 - Basic seasonings (fish sauce, sugar, etc.) don't count toward ingredient matching — everyone has them at home
 - **The definition of "vegan" must include fish sauce and shrimp paste** ← the most commonly missed detail
 - The Recipe DB must **not be split with anyone else** — differing standards (one person considers Pad Kra Pao "clean," the other doesn't) creates the hardest-to-find bug of all. Do it solo, start to finish.
+- **Note: dessert/sweet dishes are allowed in the recipe database, not just savory dishes** — this was clarified after an earlier session assumed savory-only. Same rules apply: main/optional ingredients from the current dictionary, real fetchable nutrition source, real recipe_source_url.
 
 **Checklist:**
 - [x] Find a reliable nutrition source before you start filling data

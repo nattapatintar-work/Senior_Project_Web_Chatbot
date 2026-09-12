@@ -37,5 +37,65 @@
       "note": "6.64 - 2.6 = 4.04, converting the USDA figure onto Thai FCD's available-carbohydrate basis so the two sources can be summed in one recipe."
     },
     "citation": "\"Broccoli, raw.\" FoodData Central, 30 Oct. 2020, U.S.D.A., Agricultural Research Service, fdc.nal.usda.gov."
+  },
+  "EXT:usda-chayote-raw": {
+    "food_code": "FDC 170402",
+    "name_en": "Chayote, fruit, raw",
+    "name_th": "ฟักแม้ว (มะระหวาน), ผล, ดิบ",
+    "source": "USDA FoodData Central",
+    "source_date": "2019-04-01",
+    "retrieved": "2026-09-12",
+    "basis": "per 100 g edible portion",
+    "kcal": 19.0,
+    "protein": 0.82,
+    "fat": 0.13,
+    "carb": 2.81,
+    "carb_derivation": {
+      "carbohydrate_by_difference": 4.51,
+      "fiber_total_dietary": 1.70,
+      "available_carbohydrate": 2.81,
+      "note": "4.51 - 1.70 = 2.81. Thai FCD's only chayote record (STD:586) is young leaves/shoots with all four macros null (not analysed) -- confirmed by direct lookup and a broader re-search this session -- so this is the fruit itself, sourced externally, on the same available-carbohydrate basis as the rest of the file."
+    },
+    "citation": "\"Chayote, fruit, raw.\" FoodData Central, 1 Apr. 2019, U.S.D.A., fdc.nal.usda.gov, FDC ID 170402."
+  },
+  "EXT:usda-pasta-cooked": {
+    "food_code": "FDC 168928",
+    "name_en": "Pasta, cooked, unenriched, without added salt",
+    "name_th": "สปาเกตตี, ต้ม",
+    "source": "USDA FoodData Central",
+    "source_date": "2019-04-01",
+    "retrieved": "2026-09-12",
+    "basis": "per 100 g edible portion",
+    "kcal": 158.0,
+    "protein": 5.8,
+    "fat": 0.93,
+    "carb": 29.06,
+    "carb_derivation": {
+      "carbohydrate_by_difference": 30.86,
+      "fiber_total_dietary": 1.80,
+      "available_carbohydrate": 29.06,
+      "note": "30.86 - 1.80 = 29.06. Thai FCD has zero pasta/spaghetti entries of any kind (confirmed by repeated search under multiple Thai spellings)."
+    },
+    "citation": "\"Pasta, cooked, unenriched, without added salt.\" FoodData Central, 1 Apr. 2019, U.S.D.A., fdc.nal.usda.gov, FDC ID 168928."
+  },
+  "EXT:usda-hyacinth-bean-immature-raw": {
+    "food_code": "FDC 169234",
+    "name_en": "Hyacinth-beans, immature seeds, raw",
+    "name_th": "ถั่วแปบ, ฝักอ่อน, ดิบ",
+    "source": "USDA FoodData Central",
+    "source_date": "2019-04-01",
+    "retrieved": "2026-09-12",
+    "basis": "per 100 g edible portion",
+    "kcal": 46.0,
+    "protein": 2.10,
+    "fat": 0.20,
+    "carb": 5.89,
+    "carb_derivation": {
+      "carbohydrate_by_difference": 9.19,
+      "fiber_total_dietary": 3.30,
+      "available_carbohydrate": 5.89,
+      "note": "9.19 - 3.30 = 5.89. Thai FCD has zero hyacinth_bean entries. The official Indian Food Composition Tables (IFCT 2017, ICMR-NIN, checked directly via the ifct2017/ifct2017 GitHub mirror of the published tables) has only dried mature-seed 'Field bean' varieties (codes B007/B008/B009, ~275-285 kcal), the same wrong food form as USDA's own mature-seed record (FDC 175210, not used here). This 'immature seeds, raw' record is the fresh-pod match the dictionary entry (category: vegetable) actually represents."
+    },
+    "citation": "\"Hyacinth-beans, immature seeds, raw.\" FoodData Central, 1 Apr. 2019, U.S.D.A., fdc.nal.usda.gov, FDC ID 169234."
   }
 }

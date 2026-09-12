@@ -51,6 +51,7 @@ REQUIRED_FIELDS = {
     "nutrition_source": str,
     "nutrition_method": str,
     "cook_time_min": (int, float),
+    "recipe_source_url": str,
 }
 
 MACROS = ("kcal", "protein", "fat", "carb")
@@ -95,9 +96,17 @@ def test_recipes_file_loads_as_utf8_json():
     assert isinstance(recipes, list)
 
 
-def test_there_are_forty_recipes():
-    """Claude.md specifies 40 — enough to make recommendations meaningful."""
-    assert len(load_recipes()) == 40
+def test_there_are_at_least_seventy_recipes():
+    """
+    Floor of 70, not a fixed count.
+
+    The original Claude.md target was 40, sized against a 20-class detectable
+    tier. Once the dictionary grew to 127 ingredients, 40 recipes could no
+    longer exercise it -- most of the new vocabulary would sit unused. The
+    floor is a lower bound so the database can keep growing without breaking
+    this test; it does not need tightening back to an exact number.
+    """
+    assert len(load_recipes()) >= 70
 
 
 def test_recipe_ids_are_unique():
@@ -220,6 +229,22 @@ def test_every_recipe_cites_its_source():
         )
 
 
+def test_every_recipe_cites_where_its_ingredient_list_came_from():
+    """
+    recipe_source_url is separate from nutrition_source on purpose.
+
+    nutrition_source answers "where did the macros come from" (always Thai
+    FCD, or Thai FCD plus a declared exception like USDA for broccoli).
+    recipe_source_url answers a different question: "where did the dish's
+    ingredient list and method come from". Conflating the two would make it
+    impossible to tell a nutrition citation from a recipe citation at a glance.
+    """
+    for recipe in load_recipes():
+        url = recipe["recipe_source_url"].strip()
+        assert url, f"{recipe['id']} has no recipe_source_url"
+        assert url.startswith("http"), f"{recipe['id']}: recipe_source_url '{url}' is not a URL"
+
+
 def test_nutrition_method_is_declared_and_computed_recipes_show_their_working():
     """
     Every recipe says how its numbers were derived, and computed ones prove it.
@@ -307,12 +332,14 @@ def test_meat_and_seafood_exclude_vegetarian():
     from them, which is where fish sauce and shrimp paste catch people out.
     """
     known = load_ingredients()
-    flesh = {
-        "chicken", "pork", "beef", "shrimp", "dried_shrimp", "squid", "fish",
-        "fish_sauce", "oyster_sauce", "shrimp_paste",
-    }
-    # Guard against a rename in the dictionary silently emptying this set.
-    assert flesh <= set(known), f"unknown keys in flesh set: {flesh - set(known)}"
+    # Derived from is_animal_product rather than hand-listed: a hardcoded set
+    # goes stale the moment the dictionary changes (this is exactly what broke
+    # when the 127-entry rebuild added clam/mussel/oyster/crab/sausage/the
+    # curry pastes as is_animal_product:true, and dropped dried_shrimp
+    # entirely). Eggs and dairy are vegetarian-safe per HEALTH_TAGS.md, so they
+    # are the only animal products carved back out.
+    VEGETARIAN_OK_ANIMAL = {"egg", "quail_egg", "milk", "butter", "mayonnaise", "egg_noodle"}
+    flesh = {k for k, v in known.items() if v["is_animal_product"]} - VEGETARIAN_OK_ANIMAL
 
     for recipe in load_recipes():
         offenders = [k for k in all_ingredients_of(recipe) if k in flesh]

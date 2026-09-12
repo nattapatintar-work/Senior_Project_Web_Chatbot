@@ -81,9 +81,11 @@ COLLISION_CASES = [
     ("มีพริกไทยด้วย", "pepper", "chili"),
     ("มีน้ำมันหอยด้วย", "oyster_sauce", "vegetable_oil"),
     # Further pairs from concern.md's C4 tables (Thai).
+    # NOTE: the กุ้ง/กุ้งแห้ง (shrimp/dried_shrimp) pair that used to live here
+    # was removed -- dried_shrimp was dropped from the 127-entry
+    # ingredients.json rebuild, so the collision it tested no longer exists.
     ("มีพริกหวานด้วย", "bell_pepper", "chili"),
     ("มีกะหล่ำดอกด้วย", "cauliflower", "cabbage"),
-    ("มีกุ้งแห้งด้วย", "dried_shrimp", "shrimp"),
     ("มีซีอิ๊วดำด้วย", "dark_soy_sauce", "soy_sauce"),
     ("มีข้าวคั่วด้วย", "roasted_rice_powder", "rice"),
     # INFIX collisions: the short synonym sits inside the longer one, not at
@@ -141,8 +143,8 @@ SIBLING_CASES = [
     ("มีหอมใหญ่ด้วย", "onion", "green_onion"),
     ("มีมะเขือเทศด้วย", "tomato", "eggplant"),
     ("มีมะเขือยาวด้วย", "eggplant", "tomato"),
-    ("มีถั่วลิสงด้วย", "peanut", "bean_sprout"),
-    ("มีถั่วงอกด้วย", "bean_sprout", "peanut"),
+    ("มีถั่วลิสงด้วย", "peanuts", "soybean_sprouts"),
+    ("มีถั่วงอกหัวโตด้วย", "soybean_sprouts", "peanuts"),
 ]
 
 

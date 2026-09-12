@@ -164,8 +164,18 @@ def test_missing_only_lists_main_ingredients_never_optional():
 
 
 def test_have_is_the_intersection_of_user_ingredients_and_the_dish():
+    """
+    th_001 (ไข่เจียว) has no carrot at all, so "have" must exclude it.
+
+    top_k is set high here on purpose: with 84 recipes now in the database,
+    dishes that genuinely score higher for "egg, carrot" (e.g. ไข่ตุ๋น, which
+    lists carrot as optional) legitimately outrank th_001 -- that is the
+    recommender working correctly, not a bug. This test only cares whether
+    the "have" field is computed as the right intersection once th_001 is in
+    the result set, not whether it ranks in the top few.
+    """
     recipe = next(r for r in load_recipes() if r["id"] == "th_001")  # ไข่เจียว
-    results = recommend(["egg", "carrot"])  # carrot isn't in th_001 at all
+    results = recommend(["egg", "carrot"], top_k=len(load_recipes()))  # carrot isn't in th_001 at all
     dish = next(d for d in results if d["id"] == "th_001")
     assert dish["have"] == ["egg"]
     assert "carrot" not in dish["have"]

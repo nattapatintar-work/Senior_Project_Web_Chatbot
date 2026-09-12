@@ -26,12 +26,12 @@
   {
     "text": "มีหมูสับกับกระเทียม",
     "ingredients": [
-      "pork",
+      "minced_meat",
       "garlic"
     ],
     "health_tags": [],
     "excluded": [],
-    "why": "a longer synonym variant (หมูสับ) rather than the bare name"
+    "why": "หมูสับ (minced pork) resolves to minced_meat, not pork -- it used to be claimed by both entries' synonym lists (a dictionary bug fixed this session); minced_meat is the semantically correct match since หมูสับ literally means minced pork"
   },
   {
     "text": "อยากกินคีโต มีไก่กับพริกไทย",
@@ -59,24 +59,23 @@
   {
     "text": "มีกุ้งแห้งกับถั่วลิสง",
     "ingredients": [
-      "dried_shrimp",
-      "peanut"
+      "peanuts"
     ],
     "health_tags": [],
     "excluded": [],
-    "why": "two collision-prone ingredients together: dried shrimp (not shrimp), peanut (not bean sprout)"
+    "why": "dried_shrimp was removed from the 127-entry ingredients.json rebuild (no dish needs it after ส้มตำไทย was dropped), so กุ้งแห้ง now silently fails to match instead of resolving -- known, documented gap, not a false positive. peanuts (renamed from peanut in the same rebuild) still resolves correctly."
   },
   {
     "text": "ไม่ใส่น้ำมันหอย มีผักคะน้ากับกระเทียม",
     "ingredients": [
-      "chinese_broccoli",
+      "chinese_kale",
       "garlic"
     ],
     "health_tags": [],
     "excluded": [
       "oyster_sauce"
     ],
-    "why": "negation phrasing ไม่ใส่ + the oyster-sauce/oil collision + chinese broccoli"
+    "why": "negation phrasing ไม่ใส่ + the oyster-sauce/oil collision + Chinese kale (renamed from chinese_broccoli in the 127-entry ingredients.json rebuild)"
   },
   {
     "text": "ไม่มีกุ้ง มีปลาแทน",
@@ -131,14 +130,13 @@
   {
     "text": "อยากกินวีแกน มีเห็ดกับมะเขือเทศ",
     "ingredients": [
-      "mushroom",
       "tomato"
     ],
     "health_tags": [
       "vegan"
     ],
     "excluded": [],
-    "why": "vegan tag plus mushroom and the tomato/eggplant sibling pair"
+    "why": "the generic mushroom entry was removed in the 127-entry ingredients.json rebuild, split into 7 specific species (shiitake, wood_ear, etc.) with no catch-all -- generic เห็ด now silently fails to match rather than resolving to any of them. Known, documented gap, not a false positive."
   },
   {
     "text": "มีน้ำปลากับน้ำมันหอย",
