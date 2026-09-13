@@ -59,11 +59,12 @@
   {
     "text": "มีกุ้งแห้งกับถั่วลิสง",
     "ingredients": [
+      "dried_shrimp",
       "peanuts"
     ],
     "health_tags": [],
     "excluded": [],
-    "why": "dried_shrimp was removed from the 127-entry ingredients.json rebuild (no dish needs it after ส้มตำไทย was dropped), so กุ้งแห้ง now silently fails to match instead of resolving -- known, documented gap, not a false positive. peanuts (renamed from peanut in the same rebuild) still resolves correctly."
+    "why": "dried_shrimp was re-added to ingredients.json in the 250-recipe expansion (Batch 3) once ส้มตำไทย and similar dishes genuinely needed it again -- กุ้งแห้ง now resolves correctly instead of silently failing. This case used to document that gap as known/expected; it now documents the fix. peanuts (renamed from peanut in the 127-entry rebuild) still resolves correctly."
   },
   {
     "text": "ไม่ใส่น้ำมันหอย มีผักคะน้ากับกระเทียม",

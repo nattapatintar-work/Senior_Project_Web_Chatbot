@@ -7263,5 +7263,1259 @@
     "recipe_source_url": "https://www.wongnai.com/recipes/ugc/aa2adfe4767849f4b0e3256de385bcf4",
     "notes": "Coverage dish for jicama. Everyday Thai-Chinese stir-fry.",
     "category": "savory"
+  },
+  {
+    "id": "th_166",
+    "name_th": "แกงคั่วซี่โครงหมูใบมะกรูด",
+    "main_ingredients": [
+      "pork",
+      "kaffir_lime_leaf"
+    ],
+    "optional_ingredients": [
+      "thai_eggplant",
+      "chili"
+    ],
+    "seasonings": [
+      "red_curry_paste",
+      "coconut_milk",
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 205,
+    "cook_time_min": 35,
+    "nutrition": {
+      "kcal": 245.0,
+      "protein": 33.8,
+      "fat": 9.1,
+      "carb": 5.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "pork": 150,
+      "kaffir_lime_leaf": 5,
+      "red_curry_paste": 30,
+      "coconut_milk": 15,
+      "fish_sauce": 5
+    },
+    "basis_refs": {
+      "pork": "STD:958",
+      "kaffir_lime_leaf": "STD:246",
+      "red_curry_paste": "STD:296",
+      "coconut_milk": "STD:1348",
+      "fish_sauce": "STD:291"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from pork (STD:958), kaffir lime leaf (STD:246), red curry paste (STD:296), coconut milk (STD:1348), fish sauce (STD:291)",
+    "recipe_source_url": "https://cooking.kapook.com/view174596.html",
+    "notes": "Coverage dish for kaffir_lime_leaf (used generously, shredded/torn, not a background trace amount). Thai FCD has no separate 'kaeng kua' curry paste record, so red_curry_paste is used as the closest available match -- kaeng kua paste is a near-identical blend without dried spices, and home recipes commonly substitute one for the other; disclosed here.",
+    "category": "savory"
+  },
+  {
+    "id": "th_167",
+    "name_th": "ไก่ทอดใบมะกรูด",
+    "main_ingredients": [
+      "chicken",
+      "kaffir_lime_leaf"
+    ],
+    "optional_ingredients": [
+      "tapioca_starch"
+    ],
+    "seasonings": [
+      "red_curry_paste",
+      "fish_sauce",
+      "sugar",
+      "pepper"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 256,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 490.0,
+      "protein": 35.9,
+      "fat": 25.4,
+      "carb": 28.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "chicken": 200,
+      "kaffir_lime_leaf": 8,
+      "tapioca_starch": 20,
+      "red_curry_paste": 15,
+      "fish_sauce": 8,
+      "sugar": 5
+    },
+    "basis_refs": {
+      "chicken": "STD:895",
+      "kaffir_lime_leaf": "STD:246",
+      "tapioca_starch": "STD:1934",
+      "red_curry_paste": "STD:296",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from chicken (STD:895), kaffir lime leaf (STD:246), tapioca starch (STD:1934), red curry paste (STD:296), fish sauce (STD:291), sugar (STD:1391)",
+    "recipe_source_url": "https://cookpad.com/th/recipes/13412131",
+    "notes": "Second coverage dish for kaffir_lime_leaf -- shredded leaves are fried until crispy and eaten with the chicken, not just a marinade aromatic. tapioca_starch stands in for the recipe's 'crispy fry flour' blend.",
+    "category": "savory"
+  },
+  {
+    "id": "th_168",
+    "name_th": "หมูสับผัดโหระพา",
+    "main_ingredients": [
+      "minced_meat",
+      "basil"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "chili"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "soy_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 190,
+    "cook_time_min": 12,
+    "nutrition": {
+      "kcal": 377.0,
+      "protein": 28.4,
+      "fat": 25.6,
+      "carb": 7.8
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "minced_meat": 150,
+      "basil": 20,
+      "oyster_sauce": 10,
+      "soy_sauce": 5,
+      "sugar": 5
+    },
+    "basis_refs": {
+      "minced_meat": "STD:970",
+      "basil": "STD:252",
+      "oyster_sauce": "STD:270",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from minced pork (STD:970), sweet basil (STD:252), oyster sauce (STD:270), soy sauce (STD:273), sugar (STD:1391)",
+    "recipe_source_url": "https://food.trueid.net/detail/RaKqkD191BQ4",
+    "notes": "Coverage dish for basil (โหระพา) -- distinct from the existing กะเพรา (holy_basil) dishes in the database; sweet basil has a milder, more anise-like flavor and is used here in the same defining role holy basil plays in ผัดกะเพรา.",
+    "category": "savory"
+  },
+  {
+    "id": "th_169",
+    "name_th": "ปลาทูผัดใบโหระพา",
+    "main_ingredients": [
+      "fish",
+      "basil"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "chili"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "oyster_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 195,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 201.0,
+      "protein": 31.3,
+      "fat": 4.9,
+      "carb": 7.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "fish": 150,
+      "basil": 15,
+      "soy_sauce": 10,
+      "oyster_sauce": 15,
+      "sugar": 5
+    },
+    "basis_refs": {
+      "fish": "STD:1084",
+      "basil": "STD:252",
+      "soy_sauce": "STD:273",
+      "oyster_sauce": "STD:270",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from fish (STD:1084), sweet basil (STD:252), soy sauce (STD:273), oyster sauce (STD:270), sugar (STD:1391)",
+    "recipe_source_url": "https://www.lemon8-app.com/@pakininkrua/7335329885264790017?region=th",
+    "notes": "Second coverage dish for basil, paired with fish rather than pork/poultry for variety. Source uses mackerel (ปลาทู); mapped to the generic fish key, matching how other fish dishes in this database (e.g. th_155, th_163) already handle species-level detail.",
+    "category": "savory"
+  },
+  {
+    "id": "th_170",
+    "name_th": "หมูผัดขึ้นฉ่าย",
+    "main_ingredients": [
+      "pork",
+      "celery"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "ginger",
+      "chili"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "oyster_sauce",
+      "soy_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 250,
+    "cook_time_min": 12,
+    "nutrition": {
+      "kcal": 236.0,
+      "protein": 33.6,
+      "fat": 6.1,
+      "carb": 10.6
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "pork": 150,
+      "celery": 60,
+      "fish_sauce": 5,
+      "oyster_sauce": 20,
+      "soy_sauce": 10,
+      "sugar": 5
+    },
+    "basis_refs": {
+      "pork": "STD:958",
+      "celery": "STD:495",
+      "fish_sauce": "STD:291",
+      "oyster_sauce": "STD:270",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from pork (STD:958), celery (STD:495), fish sauce (STD:291), oyster sauce (STD:270), soy sauce (STD:273), sugar (STD:1391)",
+    "recipe_source_url": "https://cookpad.com/th/recipes/7347028",
+    "notes": "Coverage dish for celery (ขึ้นฉ่าย, Chinese celery) as the main vegetable rather than a garnish quantity.",
+    "category": "savory"
+  },
+  {
+    "id": "th_171",
+    "name_th": "ปลากระพงผัดขึ้นฉ่าย",
+    "main_ingredients": [
+      "fish",
+      "celery"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "ginger",
+      "chili",
+      "tapioca_starch"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "oyster_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 220,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 204.0,
+      "protein": 31.5,
+      "fat": 5.0,
+      "carb": 7.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "fish": 150,
+      "celery": 40,
+      "soy_sauce": 10,
+      "oyster_sauce": 15,
+      "sugar": 5
+    },
+    "basis_refs": {
+      "fish": "STD:1084",
+      "celery": "STD:495",
+      "soy_sauce": "STD:273",
+      "oyster_sauce": "STD:270",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from fish (STD:1084), celery (STD:495), soy sauce (STD:273), oyster sauce (STD:270), sugar (STD:1391)",
+    "recipe_source_url": "https://www.deksomboon.com/recipe-detail/detail-7.html",
+    "notes": "Second coverage dish for celery, paired with fish (source: sea bass fillet, mapped to the generic fish key) rather than pork. tapioca_starch is a thin cornstarch-slurry thickener for the sauce and contributes negligible bulk, so it is listed as a seasoning but not counted in nutrition_basis.",
+    "category": "savory"
+  },
+  {
+    "id": "th_172",
+    "name_th": "ปลานึ่งมะนาว",
+    "main_ingredients": [
+      "fish",
+      "lime"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "chili",
+      "coriander"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 245,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 255.0,
+      "protein": 40.2,
+      "fat": 6.6,
+      "carb": 8.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "fish": 200,
+      "lime": 30,
+      "fish_sauce": 10,
+      "sugar": 5
+    },
+    "basis_refs": {
+      "fish": "STD:1084",
+      "lime": "STD:306",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from fish (STD:1084), lime (STD:306), fish sauce (STD:291), sugar (STD:1391)",
+    "recipe_source_url": "https://food.trueid.net/detail/MQEyvBGJ6byQ",
+    "notes": "Coverage dish for lime (มะนาว) used in real bulk (juice and slices over the whole fish), not a garnish squeeze -- unlike every prior recipe in this database where lime sits in optional_ingredients and is excluded from nutrition_basis. Thai FCD has no raw/fresh lime record at all (confirmed by direct search) -- only STD:306, pickled lime -- so that record is used as the closest available approximation, disclosed here, same pattern as th_163's tamarind substitution.",
+    "category": "savory"
+  },
+  {
+    "id": "th_173",
+    "name_th": "มะนาวดอง",
+    "main_ingredients": [
+      "lime"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "salt",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 158,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 100.0,
+      "protein": 0.8,
+      "fat": 0.2,
+      "carb": 23.8
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "lime": 150,
+      "sugar": 8
+    },
+    "basis_refs": {
+      "lime": "STD:306",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from pickled lime (STD:306), sugar (STD:1391)",
+    "recipe_source_url": "https://www.sanook.com/women/260449/",
+    "notes": "Second coverage dish for lime, sole main ingredient by design -- a real traditional Thai preserve (whole limes brined in salt water, used as a condiment with grilled meats or added to soups/tom yum for a mellow sourness), not invented to pad ingredient usage. Salt is the brine base and mostly stays in the soaking liquid rather than being eaten, so it is listed as a seasoning but not counted in nutrition_basis; STD:306 (pickled lime) is a direct match to this preparation, unlike th_172 where it stands in for fresh lime.",
+    "category": "savory"
+  },
+  {
+    "id": "th_174",
+    "name_th": "หอมเจียว",
+    "main_ingredients": [
+      "shallot"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "vegetable_oil",
+      "salt"
+    ],
+    "health_tags": [
+      "keto",
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 60,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 38.0,
+      "protein": 1.5,
+      "fat": 0.0,
+      "carb": 7.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "shallot": 60
+    },
+    "basis_refs": {
+      "shallot": "STD:251"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from shallot (STD:251)",
+    "recipe_source_url": "https://cookpad.com/th/recipes/13771310",
+    "notes": "Coverage dish for shallot as sole main ingredient -- a real, commonly-made Thai topping/condiment (crispy fried shallots), sprinkled over rice dishes, noodle soups, and salads, not invented to pad ingredient usage. Frying oil not modelled per project convention (cooking oil absorption is not tracked anywhere in this database); nutrition reflects the raw shallot only, which understates the fried product's actual fat/kcal -- disclosed here since, unusually for this database, oil absorption is the majority of this particular dish's calories rather than a minor omission.",
+    "category": "savory"
+  },
+  {
+    "id": "th_175",
+    "name_th": "ไก่ผัดขิงกับเห็ดหูหนู",
+    "main_ingredients": [
+      "chicken",
+      "ginger"
+    ],
+    "optional_ingredients": [
+      "wood_ear",
+      "onion",
+      "green_onion",
+      "garlic",
+      "carrot"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "soy_sauce",
+      "dark_soy_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 255,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 316.0,
+      "protein": 27.4,
+      "fat": 19.0,
+      "carb": 8.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "chicken": 150,
+      "ginger": 60,
+      "wood_ear": 30,
+      "oyster_sauce": 10,
+      "soy_sauce": 5
+    },
+    "basis_refs": {
+      "chicken": "STD:895",
+      "ginger": "STD:233",
+      "wood_ear": "STD:662",
+      "oyster_sauce": "STD:270",
+      "soy_sauce": "STD:273"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from chicken (STD:895), ginger (STD:233), wood ear mushroom (STD:662), oyster sauce (STD:270), soy sauce (STD:273)",
+    "recipe_source_url": "https://www.pim.in.th/side-dish-by-chicken/127-chicken-fried-with-ginger",
+    "notes": "Coverage dish for ginger, used in near-equal quantity to the chicken (not a background aromatic amount), matching the source recipe's own ratio. wood_ear is a substantial secondary vegetable here, listed optional since the dish is recognizable without it.",
+    "category": "savory"
+  },
+  {
+    "id": "th_176",
+    "name_th": "หมูผัดพริกหยวก",
+    "main_ingredients": [
+      "pork",
+      "bell_pepper"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "onion"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "soy_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 320,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 224.0,
+      "protein": 33.5,
+      "fat": 6.4,
+      "carb": 6.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "pork": 150,
+      "bell_pepper": 150,
+      "oyster_sauce": 15,
+      "soy_sauce": 5
+    },
+    "basis_refs": {
+      "pork": "STD:958",
+      "bell_pepper": "STD:549",
+      "oyster_sauce": "STD:270",
+      "soy_sauce": "STD:273"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from pork (STD:958), green bell pepper (STD:549), oyster sauce (STD:270), soy sauce (STD:273)",
+    "recipe_source_url": "https://cookpad.com/th/recipes/14136561",
+    "notes": "Coverage dish for bell_pepper (พริกหยวก) as a bulk main vegetable, not a garnish strip. Thai FCD's bell pepper record is for the green variety specifically; red/yellow variants (STD:550/551) run slightly sweeter but are not separately tracked here.",
+    "category": "savory"
+  },
+  {
+    "id": "th_177",
+    "name_th": "แกงจืดผักกาดขาวหมูสับ",
+    "main_ingredients": [
+      "napa_cabbage",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "green_onion",
+      "coriander"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "salt",
+      "pepper"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 255,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 249.0,
+      "protein": 21.0,
+      "fat": 17.2,
+      "carb": 1.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "napa_cabbage": 150,
+      "minced_meat": 100,
+      "soy_sauce": 5
+    },
+    "basis_refs": {
+      "napa_cabbage": "STD:478",
+      "minced_meat": "STD:970",
+      "soy_sauce": "STD:273"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from napa cabbage (STD:478), minced pork (STD:970), soy sauce (STD:273)",
+    "recipe_source_url": "https://www.maggi.co.th/recipes/minced-pork-cabbage-soup",
+    "notes": "IMPORTANT -- this is a simplified version of the traditional dish, not a neutral adaptation. The source recipe includes a branded seasoning sauce (dropped, cosmetic) AND หัวไชโป๊ว (preserved radish/turnip) -- a real salty-sweet flavor component that defines this soup's traditional taste, not a trivial detail. หัวไชโป๊ว is not in the ingredient dictionary; rather than add a new ingredient for one recipe, it is omitted here, which measurably changes the dish's flavor from the traditional preparation. Coverage dish for napa_cabbage.",
+    "category": "savory"
+  },
+  {
+    "id": "th_178",
+    "name_th": "ผัดบรอกโคลีกุ้ง",
+    "main_ingredients": [
+      "broccoli",
+      "shrimp"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "carrot"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "soy_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 245,
+    "cook_time_min": 12,
+    "nutrition": {
+      "kcal": 133.0,
+      "protein": 20.8,
+      "fat": 1.6,
+      "carb": 7.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "broccoli": 150,
+      "shrimp": 80,
+      "oyster_sauce": 10,
+      "soy_sauce": 5
+    },
+    "basis_refs": {
+      "broccoli": "EXT:usda-broccoli-raw",
+      "shrimp": "STD:1042",
+      "oyster_sauce": "STD:270",
+      "soy_sauce": "STD:273"
+    },
+    "nutrition_source": "USDA FoodData Central (broccoli, no Thai FCD record -- see data/NUTRITION_SOURCE.md), Thai FCD (INMU) for prawn (STD:1042), oyster sauce (STD:270), soy sauce (STD:273)",
+    "recipe_source_url": "https://www.verasu.com/blog/Stir-Fried-Broccoli-with-Shrimp_Recipe",
+    "notes": "Coverage dish for broccoli, an everyday Thai-Chinese stir-fry. broccoli uses the established USDA fallback (no Thai FCD record exists for it, per data/NUTRITION_SOURCE.md and data/external_nutrition.json), fiber-corrected to match Thai FCD's carbohydrate convention.",
+    "category": "savory"
+  },
+  {
+    "id": "th_179",
+    "name_th": "ส้มตำไทย",
+    "main_ingredients": [
+      "green_papaya",
+      "dried_shrimp"
+    ],
+    "optional_ingredients": [
+      "tomato",
+      "yardlong_bean",
+      "peanuts",
+      "garlic",
+      "chili",
+      "lime"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 213,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 121.0,
+      "protein": 5.6,
+      "fat": 4.3,
+      "carb": 12.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "green_papaya": 150,
+      "dried_shrimp": 5,
+      "tomato": 30,
+      "peanuts": 8,
+      "fish_sauce": 15,
+      "sugar": 5
+    },
+    "basis_refs": {
+      "green_papaya": "STD:590",
+      "dried_shrimp": "STD:1036",
+      "tomato": "STD:571",
+      "peanuts": "STD:345",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from green papaya (STD:590), dried shrimp (STD:1036), tomato (STD:571), peanuts (STD:345), fish sauce (STD:291), sugar (STD:1391)",
+    "recipe_source_url": "https://cookpad.com/th/recipes/11860486",
+    "notes": "Coverage dish for green_papaya, and the reason dried_shrimp was re-added to the dictionary this batch -- this exact dish was dropped in session 9's 127-entry rebuild for lacking that ingredient (Summarization/2026-09-12_1504_9.md). yardlong_bean is listed optional (source's 'long beans' pounded into the salad) but not counted in nutrition_basis since it's a garnish quantity, not a bulk contributor.",
+    "category": "savory"
+  },
+  {
+    "id": "th_180",
+    "name_th": "ยำถั่วพูกุ้งแห้ง",
+    "main_ingredients": [
+      "winged_bean",
+      "dried_shrimp"
+    ],
+    "optional_ingredients": [
+      "shrimp",
+      "minced_meat",
+      "cashew",
+      "shallot",
+      "chili",
+      "garlic"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "sugar",
+      "coconut_milk",
+      "chili_paste"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 385,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 436.0,
+      "protein": 40.3,
+      "fat": 17.9,
+      "carb": 24.4
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "winged_bean": 150,
+      "dried_shrimp": 15,
+      "shrimp": 100,
+      "minced_meat": 50,
+      "fish_sauce": 15,
+      "sugar": 15,
+      "coconut_milk": 20,
+      "chili_paste": 20
+    },
+    "basis_refs": {
+      "winged_bean": "STD:451",
+      "dried_shrimp": "STD:1036",
+      "shrimp": "STD:1042",
+      "minced_meat": "STD:970",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391",
+      "coconut_milk": "STD:1348",
+      "chili_paste": "STD:302"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from winged bean (STD:451), dried shrimp (STD:1036), prawn (STD:1042), minced pork (STD:970), fish sauce (STD:291), sugar (STD:1391), coconut milk (STD:1348), chili paste (STD:302)",
+    "recipe_source_url": "https://pantip.com/topic/35726588",
+    "notes": "Second coverage dish for both winged_bean and dried_shrimp -- the source recipe (a real, named forum post by ครัวตุ๊กตา) uses dried shrimp twice over (ground and fried), plus fresh shrimp, minced pork, boiled egg, cashews, and roasted coconut. Boiled egg and roasted coconut are omitted from both ingredient lists and nutrition_basis -- they're real components of the source but would need a fifth/sixth main-list slot for a garnish-level contribution; disclosed here rather than silently dropped.",
+    "category": "savory"
+  },
+  {
+    "id": "th_181",
+    "name_th": "ผัดเห็ดรวม 5 สหาย",
+    "main_ingredients": [
+      "enoki",
+      "shiitake",
+      "king_oyster",
+      "wood_ear"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "chili"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 240,
+    "cook_time_min": 12,
+    "nutrition": {
+      "kcal": 91.0,
+      "protein": 5.1,
+      "fat": 0.4,
+      "carb": 13.4
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "enoki": 60,
+      "shiitake": 60,
+      "king_oyster": 60,
+      "wood_ear": 40,
+      "oyster_sauce": 15,
+      "sugar": 5
+    },
+    "basis_refs": {
+      "enoki": "STD:627",
+      "shiitake": "STD:658",
+      "king_oyster": "STD:641",
+      "wood_ear": "STD:662",
+      "oyster_sauce": "STD:270",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from enoki mushroom (STD:627), shiitake (STD:658), king oyster mushroom (STD:641), wood ear mushroom (STD:662), oyster sauce (STD:270), sugar (STD:1391)",
+    "recipe_source_url": "https://www.lemon8-app.com/@enjoywithbear/7548131946191159825?region=us",
+    "notes": "Single dish covering 4 underused mushroom varieties as co-main ingredients -- a real 'mixed mushroom' stir-fry, not an artificial combination. The source's 5th mushroom (shimeji, เห็ดชิเมจิ) has no matching dictionary key and is left out entirely rather than mis-mapped to a different species.",
+    "category": "savory"
+  },
+  {
+    "id": "th_182",
+    "name_th": "ปลาหมึกผัดกระเทียมพริกไทย",
+    "main_ingredients": [
+      "squid"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "coriander",
+      "tapioca_starch"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "fish_sauce",
+      "sugar",
+      "pepper"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 170,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 126.0,
+      "protein": 23.3,
+      "fat": 0.6,
+      "carb": 6.6
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "squid": 150,
+      "oyster_sauce": 10,
+      "fish_sauce": 5,
+      "sugar": 5
+    },
+    "basis_refs": {
+      "squid": "STD:1146",
+      "oyster_sauce": "STD:270",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from squid (STD:1146), oyster sauce (STD:270), fish sauce (STD:291), sugar (STD:1391)",
+    "recipe_source_url": "https://cheewajit.com/healthy-food/recipe/67107.html",
+    "notes": "Coverage dish for squid. Source deep-fries the squid in a crispy-fry flour coating (tapioca_starch) before stir-frying; the flour and its frying oil are listed as a seasoning but not counted in nutrition_basis, matching how coating flour was handled for th_167.",
+    "category": "savory"
+  },
+  {
+    "id": "th_183",
+    "name_th": "ต้มยำปลาหมึกน้ำใส",
+    "main_ingredients": [
+      "squid"
+    ],
+    "optional_ingredients": [
+      "galangal",
+      "lemongrass",
+      "kaffir_lime_leaf",
+      "chili",
+      "holy_basil",
+      "lime",
+      "straw_mushroom"
+    ],
+    "seasonings": [
+      "fish_sauce"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 155,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 101.0,
+      "protein": 23.0,
+      "fat": 0.6,
+      "carb": 0.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "squid": 150,
+      "fish_sauce": 5
+    },
+    "basis_refs": {
+      "squid": "STD:1146",
+      "fish_sauce": "STD:291"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from squid (STD:1146), fish sauce (STD:291)",
+    "recipe_source_url": "https://www.lemon8-app.com/homekitchenbynat/7553291104286114311?region=th",
+    "notes": "Second coverage dish for squid, a clear-broth (nam sai) tom yum rather than th_182's stir-fry. Lime juice is added off-heat to taste and not measured in the source; kept as garnish (optional, not in nutrition_basis), consistent with every other tom-yum-style dish in this database.",
+    "category": "savory"
+  },
+  {
+    "id": "th_184",
+    "name_th": "หอยลายผัดน้ำพริกเผา",
+    "main_ingredients": [
+      "clam"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "chili",
+      "holy_basil"
+    ],
+    "seasonings": [
+      "chili_paste",
+      "oyster_sauce",
+      "soy_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 245,
+    "cook_time_min": 12,
+    "nutrition": {
+      "kcal": 221.0,
+      "protein": 22.3,
+      "fat": 5.7,
+      "carb": 19.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "clam": 200,
+      "chili_paste": 20,
+      "oyster_sauce": 20,
+      "soy_sauce": 5
+    },
+    "basis_refs": {
+      "clam": "STD:1176",
+      "chili_paste": "STD:302",
+      "oyster_sauce": "STD:270",
+      "soy_sauce": "STD:273"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from clam (STD:1176), chili paste (STD:302), oyster sauce (STD:270), soy sauce (STD:273)",
+    "recipe_source_url": "https://www.pim.in.th/side-dish-by-seafood-and-aquatic-food/535-2012-01-10-14-31-19",
+    "notes": "Coverage dish for clam.",
+    "category": "savory"
+  },
+  {
+    "id": "th_185",
+    "name_th": "ออส่วน",
+    "main_ingredients": [
+      "oyster",
+      "egg"
+    ],
+    "optional_ingredients": [
+      "soybean_sprouts",
+      "green_onion",
+      "coriander",
+      "garlic",
+      "tapioca_starch"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "fish_sauce",
+      "sugar",
+      "pepper"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 260,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 368.0,
+      "protein": 20.7,
+      "fat": 12.4,
+      "carb": 43.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "oyster": 100,
+      "egg": 100,
+      "tapioca_starch": 40,
+      "oyster_sauce": 15,
+      "fish_sauce": 5
+    },
+    "basis_refs": {
+      "oyster": "STD:1172",
+      "egg": "STD:1274",
+      "tapioca_starch": "STD:1934",
+      "oyster_sauce": "STD:270",
+      "fish_sauce": "STD:291"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from oyster, stir-fried (STD:1172), egg (STD:1274), tapioca starch (STD:1934), oyster sauce (STD:270), fish sauce (STD:291)",
+    "recipe_source_url": "https://kindeeyuudee.baanlaesuan.com/easy-cooking/oyster-omelet/",
+    "notes": "Coverage dish for oyster. Source uses both 'flour arrowroot' (แป้งท้าว) and tapioca starch for the batter; both map to the same tapioca_starch dictionary key, so their gram amounts are combined rather than double-counted as two entries. oyster uses STD:1172 (stir-fried) rather than STD:1171 (raw) -- the raw record has no macro values at all in Thai FCD (confirmed null across all four fields), and stir-fried matches how the oyster is actually cooked in this dish anyway.",
+    "category": "savory"
+  },
+  {
+    "id": "th_186",
+    "name_th": "ปูผัดผงกะหรี่",
+    "main_ingredients": [
+      "crab",
+      "egg"
+    ],
+    "optional_ingredients": [
+      "onion",
+      "green_onion",
+      "chili",
+      "coriander",
+      "garlic"
+    ],
+    "seasonings": [
+      "yellow_curry_paste",
+      "oyster_sauce",
+      "chili_paste",
+      "soy_sauce",
+      "milk",
+      "sugar",
+      "pepper"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 403,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 457.0,
+      "protein": 49.0,
+      "fat": 21.9,
+      "carb": 15.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "crab": 150,
+      "egg": 150,
+      "milk": 60,
+      "yellow_curry_paste": 10,
+      "oyster_sauce": 15,
+      "chili_paste": 10,
+      "soy_sauce": 5,
+      "sugar": 3
+    },
+    "basis_refs": {
+      "crab": "STD:1157",
+      "egg": "STD:1274",
+      "milk": "STD:1335",
+      "yellow_curry_paste": "STD:294",
+      "oyster_sauce": "STD:270",
+      "chili_paste": "STD:302",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from crab (STD:1157), egg (STD:1274), milk (STD:1335), curry paste (STD:294), oyster sauce (STD:270), chili paste (STD:302), soy sauce (STD:273), sugar (STD:1391)",
+    "recipe_source_url": "https://cooking.kapook.com/view68789.html",
+    "notes": "Coverage dish for crab. The source's dry curry powder maps to the dictionary's yellow_curry_paste, whose synonyms already include 'curry powder' -- not a substitution, that key was defined to cover both forms.",
+    "category": "savory"
+  },
+  {
+    "id": "th_187",
+    "name_th": "หอยแมลงภู่อบสมุนไพร",
+    "main_ingredients": [
+      "mussel"
+    ],
+    "optional_ingredients": [
+      "lemongrass",
+      "kaffir_lime_leaf",
+      "galangal",
+      "basil"
+    ],
+    "seasonings": [
+      "salt"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 250,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 138.0,
+      "protein": 23.3,
+      "fat": 2.3,
+      "carb": 5.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "mussel": 250
+    },
+    "basis_refs": {
+      "mussel": "STD:1173"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from mussel (STD:1173)",
+    "recipe_source_url": "https://cookpad.com/th/recipes/2498361",
+    "notes": "Coverage dish for mussel. The herb bed (lemongrass, kaffir lime leaf, galangal, basil) that the mussels are steamed over is a real and defining part of this dish, but its mass is small relative to 1 kg of mussels; kept optional and out of nutrition_basis, consistent with how aromatics are handled throughout this database. No oil or fat in this recipe (steamed, no frying) -- one of the leanest dishes in the set by design, not by omission.",
+    "category": "savory"
+  },
+  {
+    "id": "th_188",
+    "name_th": "คะน้าหมูกรอบ",
+    "main_ingredients": [
+      "chinese_kale",
+      "pork"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "chili"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "soy_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 265,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 157.0,
+      "protein": 23.3,
+      "fat": 4.0,
+      "carb": 4.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "chinese_kale": 150,
+      "pork": 90,
+      "oyster_sauce": 20,
+      "soy_sauce": 5
+    },
+    "basis_refs": {
+      "chinese_kale": "STD:491",
+      "pork": "STD:958",
+      "oyster_sauce": "STD:270",
+      "soy_sauce": "STD:273"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from Chinese kale (STD:491), pork (STD:958), oyster sauce (STD:270), soy sauce (STD:273)",
+    "recipe_source_url": "https://www.maggi.co.th/recipes/chinese-kale-crispy-pork-belly",
+    "notes": "Coverage dish for chinese_kale. Source uses two branded Maggi sauces (stir-fry seasoning sauce, oyster sauce); mapped to the dictionary's generic soy_sauce and oyster_sauce, since the dictionary has no brand-specific entries and these are functionally the same product category. 'Crispy pork' is deep-fried pork belly, mapped to the generic pork key -- frying oil not modelled, per project convention.",
+    "category": "savory"
+  },
+  {
+    "id": "th_189",
+    "name_th": "กวางตุ้งผัดน้ำมันหอย",
+    "main_ingredients": [
+      "bok_choy"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "chili"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "soy_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 235,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 67.0,
+      "protein": 3.6,
+      "fat": 0.6,
+      "carb": 10.8
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "bok_choy": 200,
+      "oyster_sauce": 20,
+      "soy_sauce": 10,
+      "sugar": 5
+    },
+    "basis_refs": {
+      "bok_choy": "STD:476",
+      "oyster_sauce": "STD:270",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from Taiwanese bok choy (STD:476), oyster sauce (STD:270), soy sauce (STD:273), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/8a921852763b487c975c66cdb8963698",
+    "notes": "Coverage dish for bok_choy. Source specifies the Taiwanese variety (กวางตุ้งไต้หวัน); Thai FCD carries a variety-specific record (STD:476) that matches exactly, used in place of the generic bok choy record.",
+    "category": "savory"
+  },
+  {
+    "id": "th_190",
+    "name_th": "แกงจืดหัวไชเท้าหมูสับ",
+    "main_ingredients": [
+      "white_radish",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "carrot",
+      "garlic",
+      "green_onion",
+      "coriander"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "fish_sauce",
+      "pepper"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 265,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 257.0,
+      "protein": 19.7,
+      "fat": 17.3,
+      "carb": 4.4
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "white_radish": 150,
+      "minced_meat": 100,
+      "soy_sauce": 10,
+      "fish_sauce": 5
+    },
+    "basis_refs": {
+      "white_radish": "STD:624",
+      "minced_meat": "STD:970",
+      "soy_sauce": "STD:273",
+      "fish_sauce": "STD:291"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from white radish (STD:624), minced pork (STD:970), soy sauce (STD:273), fish sauce (STD:291)",
+    "recipe_source_url": "https://cookpad.com/th/recipes/15408873",
+    "notes": "Coverage dish for white_radish.",
+    "category": "savory"
   }
 ]

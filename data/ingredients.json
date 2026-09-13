@@ -116,7 +116,9 @@
       "shrimp",
       "prawn"
     ],
-    "confusable_with": []
+    "confusable_with": [
+      "dried_shrimp"
+    ]
   },
   "fish": {
     "name_th": "ปลา",
@@ -1883,5 +1885,20 @@
       "fermented fish"
     ],
     "confusable_with": []
+  },
+  "dried_shrimp": {
+    "name_th": "กุ้งแห้ง",
+    "category": "protein",
+    "yolo_class_id": null,
+    "is_seasoning": false,
+    "is_animal_product": true,
+    "synonyms": [
+      "กุ้งแห้ง",
+      "กุ้งแห้งป่น",
+      "dried shrimp"
+    ],
+    "confusable_with": [
+      "shrimp"
+    ]
   }
 }

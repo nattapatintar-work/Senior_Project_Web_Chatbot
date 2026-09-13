@@ -29,6 +29,21 @@
       "protein": "PROTCNT"
     }
   },
+  "STD:1036": {
+    "carb": 0.0,
+    "fat": 2.23,
+    "food_code": "G200",
+    "kcal": 199.0,
+    "name_en": "Shrimp, without shell, salted, dried",
+    "name_th": "กุง, แหง, ไมมีเปลือก",
+    "protein": 44.85,
+    "tags_used": {
+      "carb": "CHOCDF",
+      "fat": "FAT",
+      "kcal": "ENERCT",
+      "protein": "PROTCNT"
+    }
+  },
   "STD:1042": {
     "carb": 0.0,
     "fat": 1.3,
@@ -52,6 +67,21 @@
     "name_en": "Striped snake-head fish, raw",
     "name_th": "ปลาชอน (คอ), สด",
     "protein": 20.03,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
+  "STD:1146": {
+    "carb": 0.2,
+    "fat": 0.4,
+    "food_code": "G143",
+    "kcal": 66.0,
+    "name_en": "Squid, splendid, raw",
+    "name_th": "ปลาหมึกกลวย, สด",
+    "protein": 15.36,
     "tags_used": {
       "carb": "CHOAVLDF",
       "fat": "FAT",
@@ -1184,6 +1214,21 @@
       "protein": "PROTCNT"
     }
   },
+  "STD:246": {
+    "carb": 21.71,
+    "fat": 3.1,
+    "food_code": "N35",
+    "kcal": 137.0,
+    "name_en": "Leech lime or Kaffir lime, leaves",
+    "name_th": "มะกรูด, ใบ",
+    "protein": 5.46,
+    "tags_used": {
+      "carb": "CHOCDF",
+      "fat": "FAT",
+      "kcal": "ENERCT",
+      "protein": "PROTCNT"
+    }
+  },
   "STD:248": {
     "carb": 0.13,
     "fat": 0.13,
@@ -1207,6 +1252,21 @@
     "name_en": "Shallot, bulbs",
     "name_th": "หอมแดง",
     "protein": 2.57,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
+  "STD:252": {
+    "carb": 2.56,
+    "fat": 0.22,
+    "food_code": "N37",
+    "kcal": 32.0,
+    "name_en": "Sweet basil, leaves",
+    "name_th": "โหระพา, ใบ",
+    "protein": 2.89,
     "tags_used": {
       "carb": "CHOAVLDF",
       "fat": "FAT",
@@ -1346,6 +1406,21 @@
       "carb": "CHOAVLDF",
       "fat": "FAT",
       "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
+  "STD:306": {
+    "carb": 10.8,
+    "fat": 0.1,
+    "food_code": "N36",
+    "kcal": 46.0,
+    "name_en": "Lime, pickled",
+    "name_th": "มะนาว, ดอง",
+    "protein": 0.5,
+    "tags_used": {
+      "carb": "CHOCDF",
+      "fat": "FAT",
+      "kcal": "ENERCT",
       "protein": "PROTCNT"
     }
   },
@@ -1709,6 +1784,21 @@
       "protein": "PROTCNT"
     }
   },
+  "STD:476": {
+    "carb": 1.58,
+    "fat": 0.3,
+    "food_code": "D68",
+    "kcal": 16.0,
+    "name_en": "Cabbage, Chinese (Pai-tsai), Taiwanese variety, raw",
+    "name_th": "ผักกวางตุง, ไตหวัน, ดิบ",
+    "protein": 1.3,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
   "STD:478": {
     "carb": 0.0,
     "fat": 0.1,
@@ -1747,6 +1837,21 @@
     "name_en": "Amaranth, raw",
     "name_th": "ผักโขมใหญ, ดิบ",
     "protein": 3.11,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
+  "STD:491": {
+    "carb": 0.82,
+    "fat": 0.3,
+    "food_code": "D84",
+    "kcal": 21.0,
+    "name_en": "Kale, Chinese, leaves and stem, raw",
+    "name_th": "ผักคะนา, กานและใบ, ดิบ",
+    "protein": 2.38,
     "tags_used": {
       "carb": "CHOAVLDF",
       "fat": "FAT",
@@ -1837,6 +1942,21 @@
     "name_en": "Chilli, bird",
     "name_th": "พริกขี้หนู",
     "protein": 3.37,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
+  "STD:549": {
+    "carb": 2.04,
+    "fat": 0.29,
+    "food_code": "D103",
+    "kcal": 18.0,
+    "name_en": "Pepper, sweet, green, raw",
+    "name_th": "พริกยักษ/พริกหวาน, สีเขียว, ดิบ",
+    "protein": 0.82,
     "tags_used": {
       "carb": "CHOAVLDF",
       "fat": "FAT",
