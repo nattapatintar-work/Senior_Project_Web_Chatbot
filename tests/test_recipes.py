@@ -378,7 +378,7 @@ def test_meat_and_seafood_exclude_vegetarian():
     # curry pastes as is_animal_product:true, and dropped dried_shrimp
     # entirely). Eggs and dairy are vegetarian-safe per HEALTH_TAGS.md, so they
     # are the only animal products carved back out.
-    VEGETARIAN_OK_ANIMAL = {"egg", "quail_egg", "milk", "butter", "mayonnaise", "egg_noodle"}
+    VEGETARIAN_OK_ANIMAL = {"egg", "quail_egg", "milk", "butter", "mayonnaise", "egg_noodle", "cream_cheese"}
     flesh = {k for k, v in known.items() if v["is_animal_product"]} - VEGETARIAN_OK_ANIMAL
 
     for recipe in load_recipes():
@@ -396,7 +396,7 @@ def test_no_flesh_means_vegetarian_is_not_excluded():
     above, applied to the vegetarian tag instead of vegan.
     """
     known = load_ingredients()
-    VEGETARIAN_OK_ANIMAL = {"egg", "quail_egg", "milk", "butter", "mayonnaise", "egg_noodle"}
+    VEGETARIAN_OK_ANIMAL = {"egg", "quail_egg", "milk", "butter", "mayonnaise", "egg_noodle", "cream_cheese"}
     flesh = {k for k, v in known.items() if v["is_animal_product"]} - VEGETARIAN_OK_ANIMAL
 
     for recipe in load_recipes():

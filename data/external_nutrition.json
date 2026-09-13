@@ -97,5 +97,65 @@
       "note": "9.19 - 3.30 = 5.89. Thai FCD has zero hyacinth_bean entries. The official Indian Food Composition Tables (IFCT 2017, ICMR-NIN, checked directly via the ifct2017/ifct2017 GitHub mirror of the published tables) has only dried mature-seed 'Field bean' varieties (codes B007/B008/B009, ~275-285 kcal), the same wrong food form as USDA's own mature-seed record (FDC 175210, not used here). This 'immature seeds, raw' record is the fresh-pod match the dictionary entry (category: vegetable) actually represents."
     },
     "citation": "\"Hyacinth-beans, immature seeds, raw.\" FoodData Central, 1 Apr. 2019, U.S.D.A., fdc.nal.usda.gov, FDC ID 169234."
+  },
+  "EXT:usda-cocoa-powder-unsweetened": {
+    "food_code": "FDC 169593",
+    "name_en": "Cocoa, dry powder, unsweetened",
+    "name_th": "ผงโกโก้ ไม่หวาน",
+    "source": "USDA FoodData Central, SR Legacy",
+    "source_date": "2019-04-01",
+    "retrieved": "2026-09-14",
+    "basis": "per 100 g edible portion",
+    "kcal": 228.0,
+    "protein": 19.6,
+    "fat": 13.7,
+    "carb": 20.9,
+    "carb_derivation": {
+      "carbohydrate_by_difference": 57.9,
+      "fiber_total_dietary": 37.0,
+      "available_carbohydrate": 20.9,
+      "note": "57.9 - 37.0 = 20.9. Thai FCD has no plain cocoa powder record (only a branded cocoa-cream cracker product). Unsweetened baking cocoa is unusually fiber-dense, so the correction matters more here than for most entries in this file."
+    },
+    "citation": "\"Cocoa, dry powder, unsweetened.\" FoodData Central, 1 Apr. 2019, U.S.D.A., fdc.nal.usda.gov, FDC ID 169593."
+  },
+  "EXT:usda-cream-cheese": {
+    "food_code": "FDC 173418",
+    "name_en": "Cheese, cream",
+    "name_th": "ครีมชีส",
+    "source": "USDA FoodData Central, SR Legacy",
+    "source_date": "2019-04-01",
+    "retrieved": "2026-09-14",
+    "basis": "per 100 g edible portion",
+    "kcal": 350.0,
+    "protein": 6.15,
+    "fat": 34.44,
+    "carb": 5.52,
+    "carb_derivation": {
+      "carbohydrate_by_difference": 5.52,
+      "fiber_total_dietary": 0.0,
+      "available_carbohydrate": 5.52,
+      "note": "5.52 - 0.0 = 5.52 (no fiber in cream cheese, so no correction needed in practice -- kept for consistency with the rest of this file). Thai FCD has no plain cream cheese record (only a branded cream-cheese cracker product)."
+    },
+    "citation": "\"Cheese, cream.\" FoodData Central, 1 Apr. 2019, U.S.D.A., fdc.nal.usda.gov, FDC ID 173418."
+  },
+  "EXT:usda-baking-powder": {
+    "food_code": "FDC 172803",
+    "name_en": "Leavening agents, baking powder, double-acting, sodium aluminum sulfate",
+    "name_th": "ผงฟู",
+    "source": "USDA FoodData Central, SR Legacy",
+    "source_date": "2019-04-01",
+    "retrieved": "2026-09-14",
+    "basis": "per 100 g edible portion",
+    "kcal": 53.0,
+    "protein": 0.0,
+    "fat": 0.0,
+    "carb": 27.5,
+    "carb_derivation": {
+      "carbohydrate_by_difference": 27.7,
+      "fiber_total_dietary": 0.2,
+      "available_carbohydrate": 27.5,
+      "note": "27.7 - 0.2 = 27.5. Thai FCD has no baking powder record at all. Used only in gram amounts of 3-6g per recipe, so its real contribution to a recipe's total is a couple of kcal -- tracked honestly via this record rather than assumed zero."
+    },
+    "citation": "\"Leavening agents, baking powder, double-acting, sodium aluminum sulfate.\" FoodData Central, 1 Apr. 2019, U.S.D.A., fdc.nal.usda.gov, FDC ID 172803."
   }
 }

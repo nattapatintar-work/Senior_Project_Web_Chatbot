@@ -944,6 +944,21 @@
       "protein": "PROTCNT"
     }
   },
+  "STD:1739": {
+    "carb": 43.97,
+    "fat": 6.89,
+    "food_code": "T383",
+    "kcal": 290.0,
+    "name_en": "Bread, sandwich",
+    "name_th": "ขนมป ั งแซนวิช",
+    "protein": 10.94,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
   "STD:187": {
     "carb": 81.61,
     "fat": 0.55,
@@ -1046,6 +1061,21 @@
       "carb": "CHOCDF",
       "fat": "FAT",
       "kcal": "ENERCT",
+      "protein": "PROTCNT"
+    }
+  },
+  "STD:193": {
+    "carb": 71.75,
+    "fat": 1.34,
+    "food_code": "A34",
+    "kcal": 354.0,
+    "name_en": "Wheat flour",
+    "name_th": "แป  งสาลี",
+    "protein": 12.22,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
       "protein": "PROTCNT"
     }
   },

@@ -1787,5 +1787,73 @@
       "water chestnut"
     ],
     "confusable_with": []
+  },
+  "wheat_flour": {
+    "name_th": "แป้งสาลี",
+    "category": "carb",
+    "yolo_class_id": null,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "แป้งสาลี",
+      "แป้งอเนกประสงค์",
+      "wheat flour",
+      "all-purpose flour",
+      "all purpose flour"
+    ],
+    "confusable_with": []
+  },
+  "cocoa_powder": {
+    "name_th": "ผงโกโก้",
+    "category": "carb",
+    "yolo_class_id": null,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ผงโกโก้",
+      "cocoa powder",
+      "cocoa"
+    ],
+    "confusable_with": []
+  },
+  "baking_powder": {
+    "name_th": "ผงฟู",
+    "category": "seasoning",
+    "yolo_class_id": null,
+    "is_seasoning": true,
+    "is_animal_product": false,
+    "synonyms": [
+      "ผงฟู",
+      "baking powder"
+    ],
+    "confusable_with": []
+  },
+  "cream_cheese": {
+    "name_th": "ครีมชีส",
+    "category": "seasoning",
+    "yolo_class_id": null,
+    "is_seasoning": true,
+    "is_animal_product": true,
+    "synonyms": [
+      "ครีมชีส",
+      "cream cheese"
+    ],
+    "confusable_with": []
+  },
+  "bread": {
+    "name_th": "ขนมปัง",
+    "category": "carb",
+    "yolo_class_id": null,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ขนมปัง",
+      "ขนมปังแซนวิช",
+      "ขนมปังแผ่น",
+      "bread",
+      "sandwich bread",
+      "white bread"
+    ],
+    "confusable_with": []
   }
 }

@@ -5143,7 +5143,9 @@
     "main_ingredients": [
       "glutinous_rice"
     ],
-    "optional_ingredients": [],
+    "optional_ingredients": [
+      "coconut"
+    ],
     "seasonings": [
       "coconut_milk",
       "sugar"
@@ -5174,7 +5176,7 @@
     },
     "nutrition_source": "Thai FCD (INMU), computed from steamed glutinous rice (STD:149), coconut milk (STD:1348), sugar (STD:1391)",
     "recipe_source_url": "https://www.thaitable.com/thai/recipe/coconut-milk-sticky-rice",
-    "notes": "The plain base dessert -- no fruit topping -- distinct from th_050/th_051 (mango/durian sticky rice), which use this same base.",
+    "notes": "The plain base dessert -- no fruit topping -- distinct from th_050/th_051 (mango/durian sticky rice), which use this same base. Documented variant \"ข้าวเหนียวมูนหน้ากระฉีก\" tops the rice with caramelised shredded coconut -- optional, not priced into nutrition_basis, matching the convention for every other optional ingredient in this file.",
     "id": "th_119",
     "category": "dessert"
   },
@@ -5223,7 +5225,9 @@
     "main_ingredients": [
       "glutinous_rice"
     ],
-    "optional_ingredients": [],
+    "optional_ingredients": [
+      "coconut"
+    ],
     "seasonings": [
       "sugar",
       "coconut_milk"
@@ -5254,7 +5258,7 @@
     },
     "nutrition_source": "Thai FCD (INMU), computed from steamed glutinous rice (STD:149), sugar (STD:1391), coconut milk (STD:1348)",
     "recipe_source_url": "https://lionbrand.com.au/recipes/red-sticky-rice-recipe-kow-nhiew-dang/",
-    "notes": "\"Red\" sticky rice -- actually dark brown from palm sugar caramelisation, not literally red. Distinct dessert from the plain (ข้าวเหนียวมูน) and fruit-topped versions.",
+    "notes": "\"Red\" sticky rice -- actually dark brown from palm sugar caramelisation, not literally red. Distinct dessert from the plain (ข้าวเหนียวมูน) and fruit-topped versions. Same กระฉีก (caramelised coconut) topping used for the plain version (th_119) applies here too -- optional, not priced.",
     "id": "th_121",
     "category": "dessert"
   },
@@ -5395,7 +5399,8 @@
       "rice_flour"
     ],
     "optional_ingredients": [
-      "pandan_leaf"
+      "pandan_leaf",
+      "jackfruit"
     ],
     "seasonings": [
       "coconut_milk",
@@ -5427,7 +5432,7 @@
     },
     "nutrition_source": "Thai FCD (INMU), computed from rice flour (STD:187), coconut milk (STD:1348), sugar (STD:1391)",
     "recipe_source_url": "https://hungryinthailand.com/lod-chong-dessert-cendol-recipe/",
-    "notes": "Pandan-green rice-flour noodles in sweet coconut milk. pandan_leaf is a flavoring/coloring agent, not eaten, so it contributes no macros -- same convention as th_082's wrapper.",
+    "notes": "Pandan-green rice-flour noodles in sweet coconut milk. pandan_leaf is a flavoring/coloring agent, not eaten, so it contributes no macros -- same convention as th_082's wrapper. A documented variant serves the noodles with jackfruit strands mixed into the syrup -- optional, not priced.",
     "id": "th_125",
     "category": "dessert"
   },
@@ -5874,7 +5879,8 @@
       "mung_bean"
     ],
     "optional_ingredients": [
-      "rice_flour"
+      "rice_flour",
+      "coconut"
     ],
     "seasonings": [
       "coconut_milk",
@@ -5910,7 +5916,7 @@
     },
     "nutrition_source": "Thai FCD (INMU), computed from glutinous rice flour (STD:190), rice flour (STD:187), dried mung bean (STD:319), coconut milk (STD:1348), sugar (STD:1391)",
     "recipe_source_url": "http://en.foodtravel.tv/recfoodShow_Detail.aspx?viewId=2438",
-    "notes": "Steamed dumpling wrapped in banana leaf, sweet mung bean filling (the savoury version, kanom tian sai kem, exists too but is out of scope for a dessert batch).",
+    "notes": "Steamed dumpling wrapped in banana leaf, sweet mung bean filling (the savoury version, kanom tian sai kem, exists too but is out of scope for a dessert batch). A documented sweet-filling variation adds freshly grated coconut to the mung bean filling -- optional, not priced.",
     "id": "th_136",
     "category": "dessert"
   },
@@ -6043,7 +6049,9 @@
     "main_ingredients": [
       "mung_bean"
     ],
-    "optional_ingredients": [],
+    "optional_ingredients": [
+      "coconut"
+    ],
     "seasonings": [
       "sugar"
     ],
@@ -6064,7 +6072,7 @@
     "nutrition_ref": "STD:1631",
     "nutrition_source": "Thai FCD (INMU), food code T396 (ถั่วเขียว, เมล็ด, ต้มน้ำตาล)",
     "recipe_source_url": "https://www.pholfoodmafia.com/recipe/mung-bean-thai-custard-%E0%B8%82%E0%B8%99%E0%B8%A1%E0%B8%AB%E0%B8%A1%E0%B9%89%E0%B8%AD%E0%B9%81%E0%B8%81%E0%B8%87/",
-    "notes": "Direct whole-dish lookup -- Thai FCD has a specific record for mung beans boiled with sugar, so this is fully sourced rather than assembled from raw ingredients.",
+    "notes": "Direct whole-dish lookup -- Thai FCD has a specific record for mung beans boiled with sugar, so this is fully sourced rather than assembled from raw ingredients. Shredded coconut (มะพร้าวขูด) is a traditional topping for this dish -- optional, not priced.",
     "id": "th_140",
     "category": "dessert"
   },
@@ -6117,7 +6125,9 @@
     "main_ingredients": [
       "tapioca_pearl"
     ],
-    "optional_ingredients": [],
+    "optional_ingredients": [
+      "corn"
+    ],
     "seasonings": [
       "coconut_milk",
       "sugar"
@@ -6148,7 +6158,7 @@
     },
     "nutrition_source": "Thai FCD (INMU), computed from sago flour (STD:1935), coconut milk (STD:1348), sugar (STD:1391)",
     "recipe_source_url": "https://importfood.com/recipes/recipe/52-thai-tapioca-pearl-with-sweet-coconut-milk",
-    "notes": "Boiled tapioca pearls in sweet coconut milk. Thai FCD has no distinct dried-pearl record, only sago flour (STD:1935) -- disclosed approximation, same starch source in a different physical form, used since it's the closest available record to the dictionary's tapioca_pearl entry.",
+    "notes": "Boiled tapioca pearls in sweet coconut milk. Thai FCD has no distinct dried-pearl record, only sago flour (STD:1935) -- disclosed approximation, same starch source in a different physical form, used since it's the closest available record to the dictionary's tapioca_pearl entry. \"สาคูเปียกข้าวโพด\" (corn tapioca pudding) is a well-documented named variant -- optional, not priced.",
     "id": "th_142",
     "category": "dessert"
   },
@@ -6158,7 +6168,9 @@
       "water_chestnut",
       "tapioca_starch"
     ],
-    "optional_ingredients": [],
+    "optional_ingredients": [
+      "jackfruit"
+    ],
     "seasonings": [
       "coconut_milk",
       "sugar"
@@ -6191,8 +6203,480 @@
     },
     "nutrition_source": "Thai FCD (INMU), computed from water chestnut (STD:816), tapioca starch (STD:1934), coconut milk (STD:1348), sugar (STD:1391)",
     "recipe_source_url": "https://hot-thai-kitchen.com/tub-tim-grob/",
-    "notes": "\"Red rubies\" -- water chestnut cubes coated in tapioca starch (the coating is what creates the ruby-like translucent shell once boiled), served in sweet coconut milk. Both the water chestnut and its starch coating are priced in nutrition_basis, not just the chestnut alone, since the coating is a real, weighable part of what's eaten.",
+    "notes": "\"Red rubies\" -- water chestnut cubes coated in tapioca starch (the coating is what creates the ruby-like translucent shell once boiled), served in sweet coconut milk. Both the water chestnut and its starch coating are priced in nutrition_basis, not just the chestnut alone, since the coating is a real, weighable part of what's eaten. Jackfruit strips are a commonly documented addition alongside the water chestnut rubies -- optional, not priced.",
     "id": "th_143",
     "category": "dessert"
+  },
+  {
+    "name_th": "คุกกี้ถั่วลิสงจีน",
+    "main_ingredients": [
+      "peanuts",
+      "wheat_flour"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "vegetable_oil",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 105,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 538.0,
+      "protein": 13.0,
+      "fat": 30.2,
+      "carb": 52.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "peanuts": 30,
+      "wheat_flour": 40,
+      "vegetable_oil": 15,
+      "sugar": 20
+    },
+    "basis_refs": {
+      "peanuts": "STD:345",
+      "wheat_flour": "STD:193",
+      "vegetable_oil": "STD:1368",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from peanuts (STD:345), wheat flour (STD:193), vegetable oil (STD:1368), sugar (STD:1391)",
+    "recipe_source_url": "https://www.pholfoodmafia.com/recipe/chinese-peanut-cookies-%E0%B9%84%E0%B8%8A%E0%B8%99%E0%B8%B4%E0%B8%AA%E0%B8%9E%E0%B8%B5%E0%B8%99%E0%B8%B1%E0%B8%97%E0%B8%84%E0%B8%B8%E0%B8%81%E0%B8%81%E0%B8%B5%E0%B9%89",
+    "notes": "Chinese Peanut Cookies -- a Chinese New Year staple made and sold widely in Thailand's Thai-Chinese communities, using peanut/vegetable oil rather than butter (the source's own Thai-style variant), which is what's priced here.",
+    "category": "dessert",
+    "id": "th_144"
+  },
+  {
+    "name_th": "บราวนี่",
+    "main_ingredients": [
+      "egg",
+      "wheat_flour",
+      "cocoa_powder"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "butter",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 100,
+    "cook_time_min": 35,
+    "nutrition": {
+      "kcal": 385.0,
+      "protein": 8.0,
+      "fat": 20.0,
+      "carb": 44.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "egg": 20,
+      "wheat_flour": 25,
+      "cocoa_powder": 10,
+      "butter": 20,
+      "sugar": 25
+    },
+    "basis_refs": {
+      "egg": "STD:1274",
+      "wheat_flour": "STD:193",
+      "cocoa_powder": "EXT:usda-cocoa-powder-unsweetened",
+      "butter": "STD:1384",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU) for egg/wheat flour/butter/sugar, USDA FoodData Central for cocoa powder (Thai FCD has no plain cocoa powder record) -- see data/external_nutrition.json",
+    "recipe_source_url": "https://www.pholfoodmafia.com/recipe/fudge-brownie-%E0%B8%9F%E0%B8%B1%E0%B8%94%E0%B8%88%E0%B9%8C%E0%B8%9A%E0%B8%A3%E0%B8%B2%E0%B8%A7%E0%B8%99%E0%B8%B5%E0%B9%88/",
+    "notes": "Fudgy-style brownie -- no baking powder, matching most classic recipes which rely on egg alone for structure, staying dense rather than cakey. One single square serving.",
+    "category": "dessert",
+    "id": "th_145"
+  },
+  {
+    "name_th": "เค้กกล้วยหอม",
+    "main_ingredients": [
+      "banana",
+      "wheat_flour",
+      "egg"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "butter",
+      "sugar",
+      "baking_powder"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 127,
+    "cook_time_min": 45,
+    "nutrition": {
+      "kcal": 382.0,
+      "protein": 6.8,
+      "fat": 14.3,
+      "carb": 55.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "banana": 40,
+      "wheat_flour": 35,
+      "egg": 15,
+      "butter": 15,
+      "sugar": 20,
+      "baking_powder": 2
+    },
+    "basis_refs": {
+      "banana": "STD:696",
+      "wheat_flour": "STD:193",
+      "egg": "STD:1274",
+      "butter": "STD:1384",
+      "sugar": "STD:1391",
+      "baking_powder": "EXT:usda-baking-powder"
+    },
+    "nutrition_source": "Thai FCD (INMU) for banana/wheat flour/egg/butter/sugar, USDA FoodData Central for baking powder (Thai FCD has no record) -- see data/external_nutrition.json",
+    "recipe_source_url": "https://www.pholfoodmafia.com/recipe/the-ultimate-banana-cake-%E0%B8%AA%E0%B8%B8%E0%B8%94%E0%B8%A2%E0%B8%AD%E0%B8%94%E0%B9%80%E0%B8%84%E0%B9%89%E0%B8%81%E0%B8%81%E0%B8%A5%E0%B9%89%E0%B8%A7%E0%B8%A2%E0%B8%AB%E0%B8%AD%E0%B8%A1/",
+    "notes": "One slice serving.",
+    "category": "dessert",
+    "id": "th_146"
+  },
+  {
+    "name_th": "เค้กช็อกโกแลต",
+    "main_ingredients": [
+      "egg",
+      "wheat_flour",
+      "cocoa_powder"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "butter",
+      "sugar",
+      "baking_powder",
+      "milk"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 120,
+    "cook_time_min": 60,
+    "nutrition": {
+      "kcal": 423.0,
+      "protein": 9.1,
+      "fat": 20.2,
+      "carb": 52.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "egg": 20,
+      "wheat_flour": 35,
+      "cocoa_powder": 8,
+      "butter": 20,
+      "sugar": 25,
+      "baking_powder": 2,
+      "milk": 10
+    },
+    "basis_refs": {
+      "egg": "STD:1274",
+      "wheat_flour": "STD:193",
+      "cocoa_powder": "EXT:usda-cocoa-powder-unsweetened",
+      "butter": "STD:1384",
+      "sugar": "STD:1391",
+      "baking_powder": "EXT:usda-baking-powder",
+      "milk": "STD:1335"
+    },
+    "nutrition_source": "Thai FCD (INMU) for egg/wheat flour/butter/sugar/milk, USDA FoodData Central for cocoa powder and baking powder (Thai FCD has no records) -- see data/external_nutrition.json",
+    "recipe_source_url": "https://butterjoykitchen.com/super-moist-and-soft-thai-butter-cake/",
+    "notes": "The source's own Thai butter cake recipe with its documented chocolate variation (cocoa powder added to the dry ingredients). One slice serving.",
+    "category": "dessert",
+    "id": "th_147"
+  },
+  {
+    "name_th": "โรตีกล้วยหอม",
+    "main_ingredients": [
+      "banana",
+      "egg",
+      "wheat_flour"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "butter",
+      "sugar",
+      "milk"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 200,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 507.0,
+      "protein": 12.6,
+      "fat": 16.6,
+      "carb": 75.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "banana": 60,
+      "egg": 30,
+      "wheat_flour": 60,
+      "butter": 15,
+      "sugar": 15,
+      "milk": 20
+    },
+    "basis_refs": {
+      "banana": "STD:696",
+      "egg": "STD:1274",
+      "wheat_flour": "STD:193",
+      "butter": "STD:1384",
+      "sugar": "STD:1391",
+      "milk": "STD:1335"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from banana (STD:696), egg (STD:1274), wheat flour (STD:193), butter (STD:1384), sugar (STD:1391), milk (STD:1335)",
+    "recipe_source_url": "https://hot-thai-kitchen.com/banana-roti/",
+    "notes": "Khao San Road-style street food -- egg-based dough stretched thin and fried, filled with sliced banana, finished with a condensed-milk drizzle. The dictionary has no condensed milk entry, so the drizzle is approximated as milk + sugar, disclosed here rather than silently substituted.",
+    "category": "dessert",
+    "id": "th_148"
+  },
+  {
+    "name_th": "ทาร์ตไข่",
+    "main_ingredients": [
+      "egg",
+      "wheat_flour"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "butter",
+      "sugar",
+      "milk"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 75,
+    "cook_time_min": 40,
+    "nutrition": {
+      "kcal": 221.0,
+      "protein": 5.7,
+      "fat": 10.8,
+      "carb": 25.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "egg": 20,
+      "wheat_flour": 20,
+      "butter": 10,
+      "sugar": 10,
+      "milk": 15
+    },
+    "basis_refs": {
+      "egg": "STD:1274",
+      "wheat_flour": "STD:193",
+      "butter": "STD:1384",
+      "sugar": "STD:1391",
+      "milk": "STD:1335"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from egg (STD:1274), wheat flour (STD:193), butter (STD:1384), sugar (STD:1391), milk (STD:1335)",
+    "recipe_source_url": "https://www.pholfoodmafia.com/recipe/egg-tart-%E0%B8%97%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B8%95%E0%B9%84%E0%B8%82%E0%B9%88/",
+    "notes": "Portuguese/HK-origin egg tart, ubiquitous in Thai bakeries. One individual tart serving. Butter/wheat flour represent the pastry shell; the source's evaporated milk is approximated with the dictionary's milk entry.",
+    "category": "dessert",
+    "id": "th_149"
+  },
+  {
+    "name_th": "ชีสเค้กมะม่วง",
+    "main_ingredients": [
+      "mango",
+      "wheat_flour"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "cream_cheese",
+      "butter",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 135,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 408.0,
+      "protein": 6.0,
+      "fat": 25.9,
+      "carb": 38.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "mango": 40,
+      "wheat_flour": 20,
+      "cream_cheese": 50,
+      "butter": 10,
+      "sugar": 15
+    },
+    "basis_refs": {
+      "mango": "STD:765",
+      "wheat_flour": "STD:193",
+      "cream_cheese": "EXT:usda-cream-cheese",
+      "butter": "STD:1384",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU) for mango/wheat flour/butter/sugar, USDA FoodData Central for cream cheese (Thai FCD has no plain cream cheese record) -- see data/external_nutrition.json",
+    "recipe_source_url": "https://www.mango.org/recipes/no-bake-mango-cheesecake/",
+    "notes": "No-bake mango cheesecake, a staple of Thai dessert cafes. The source recipe sets with gelatin, which is not in the ingredient dictionary -- omitted here (a softer, spoonable set rather than a sliceable one), disclosed rather than silently substituted. Crust is a baked flour-butter-sugar base, one slice serving.",
+    "category": "dessert",
+    "id": "th_150"
+  },
+  {
+    "name_th": "ขนมปังชุบไข่ทอด",
+    "main_ingredients": [
+      "egg",
+      "bread"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "butter",
+      "sugar",
+      "milk"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 125,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 338.0,
+      "protein": 11.1,
+      "fat": 15.5,
+      "carb": 37.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "egg": 30,
+      "bread": 60,
+      "butter": 10,
+      "sugar": 10,
+      "milk": 15
+    },
+    "basis_refs": {
+      "egg": "STD:1274",
+      "bread": "STD:1739",
+      "butter": "STD:1384",
+      "sugar": "STD:1391",
+      "milk": "STD:1335"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from egg (STD:1274), sandwich bread (STD:1739), butter (STD:1384), sugar (STD:1391), milk (STD:1335)",
+    "recipe_source_url": "https://www.pholfoodmafia.com/recipe/ultimate-french-toasts-%E0%B8%AA%E0%B8%B8%E0%B8%94%E0%B8%A2%E0%B8%AD%E0%B8%94%E0%B9%80%E0%B8%9F%E0%B8%A3%E0%B8%99%E0%B8%8A%E0%B9%8C%E0%B9%82%E0%B8%97%E0%B8%AA%E0%B8%95%E0%B9%8C/",
+    "notes": "French toast -- bread dipped in egg-milk batter and pan-fried in butter, a common Thai breakfast/dessert menu item. One serving (1-2 slices).",
+    "category": "dessert",
+    "id": "th_151"
+  },
+  {
+    "name_th": "พุดดิ้งขนมปัง",
+    "main_ingredients": [
+      "egg",
+      "bread"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "milk",
+      "butter",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 200,
+    "cook_time_min": 45,
+    "nutrition": {
+      "kcal": 449.0,
+      "protein": 15.0,
+      "fat": 18.7,
+      "carb": 53.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "egg": 40,
+      "bread": 70,
+      "milk": 60,
+      "butter": 10,
+      "sugar": 20
+    },
+    "basis_refs": {
+      "egg": "STD:1274",
+      "bread": "STD:1739",
+      "milk": "STD:1335",
+      "butter": "STD:1384",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from egg (STD:1274), sandwich bread (STD:1739), milk (STD:1335), butter (STD:1384), sugar (STD:1391)",
+    "recipe_source_url": "https://www.livewellbakeoften.com/grandmas-bread-pudding/",
+    "notes": "Classic baked egg-and-milk custard poured over bread cubes, one of the clearest examples of a dessert where egg genuinely is a main ingredient, not a garnish.",
+    "category": "dessert",
+    "id": "th_152"
+  },
+  {
+    "name_th": "คัสตาร์ดคาราเมล",
+    "main_ingredients": [
+      "egg"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 160,
+    "cook_time_min": 40,
+    "nutrition": {
+      "kcal": 236.0,
+      "protein": 9.2,
+      "fat": 7.2,
+      "carb": 33.6
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "egg": 50,
+      "milk": 80,
+      "sugar": 30
+    },
+    "basis_refs": {
+      "egg": "STD:1274",
+      "milk": "STD:1335",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from egg (STD:1274), milk (STD:1335), sugar (STD:1391)",
+    "recipe_source_url": "https://www.madaboutmacarons.com/classic-french-creme-caramel/",
+    "notes": "Creme caramel / caramel custard -- French in origin, sold everywhere in Thai bakeries and hotel breakfasts as \"caramel custard\" or \"sangkhaya caramel.\" No new ingredients needed -- egg, milk, and sugar were all already in the dictionary.",
+    "category": "dessert",
+    "id": "th_153"
   }
 ]

@@ -20,7 +20,7 @@ Usage:
     python tools/derive_diet_tags.py --fix     # rewrites data/recipes.json in place
 
 Rule (matches HEALTH_TAGS.md + tests/test_recipes.py):
-    VEGETARIAN_OK_ANIMAL = {"egg", "quail_egg", "milk", "butter", "mayonnaise", "egg_noodle"}
+    VEGETARIAN_OK_ANIMAL = {"egg", "quail_egg", "milk", "butter", "mayonnaise", "egg_noodle", "cream_cheese"}
     flesh = every is_animal_product ingredient NOT in VEGETARIAN_OK_ANIMAL
 
     - any flesh ingredient present  -> excluded_for includes "vegetarian"
@@ -37,7 +37,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
-VEGETARIAN_OK_ANIMAL = {"egg", "quail_egg", "milk", "butter", "mayonnaise", "egg_noodle"}
+VEGETARIAN_OK_ANIMAL = {"egg", "quail_egg", "milk", "butter", "mayonnaise", "egg_noodle", "cream_cheese"}
 
 
 def load_ingredients():
