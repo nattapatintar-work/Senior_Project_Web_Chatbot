@@ -6678,5 +6678,590 @@
     "notes": "Creme caramel / caramel custard -- French in origin, sold everywhere in Thai bakeries and hotel breakfasts as \"caramel custard\" or \"sangkhaya caramel.\" No new ingredients needed -- egg, milk, and sugar were all already in the dictionary.",
     "category": "dessert",
     "id": "th_153"
+  },
+  {
+    "id": "th_154",
+    "name_th": "ซุปหน่อไม้",
+    "main_ingredients": [
+      "bamboo_shoots"
+    ],
+    "optional_ingredients": [
+      "shallot",
+      "chili",
+      "green_onion",
+      "coriander",
+      "lime"
+    ],
+    "seasonings": [
+      "yanang",
+      "pla_ra",
+      "fish_sauce",
+      "roasted_rice_powder",
+      "salt"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 190,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 64.0,
+      "protein": 5.7,
+      "fat": 1.2,
+      "carb": 4.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "bamboo_shoots": 150,
+      "yanang": 20,
+      "pla_ra": 15,
+      "fish_sauce": 5
+    },
+    "basis_refs": {
+      "bamboo_shoots": "STD:613",
+      "yanang": "STD:597",
+      "pla_ra": "STD:1228",
+      "fish_sauce": "STD:291"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from bamboo shoot (STD:613), yanang leaf (STD:597), fermented fish (STD:1228), fish sauce (STD:291)",
+    "recipe_source_url": "https://aroifin.com/recipes/sup-nor-mai-bamboo-shoot-yum/",
+    "notes": "Isan bamboo shoot soup. Coverage dish for bamboo_shoots. yanang leaf and pla_ra (fermented fish) are new dictionary entries added for this recipe -- both are staple Isan seasonings reused across this batch (also in kaeng om beef), not one-off additions. Garnish herbs (shallot, chili, green onion, coriander, lime) are listed but not counted in nutrition_basis, matching the convention already used for th_025/th_062/th_066.",
+    "category": "savory"
+  },
+  {
+    "id": "th_155",
+    "name_th": "แกงมะรุมปลา",
+    "main_ingredients": [
+      "moringa",
+      "fish"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sour_curry_paste",
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 170,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 151.0,
+      "protein": 19.6,
+      "fat": 2.9,
+      "carb": 10.8
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "moringa": 60,
+      "fish": 80,
+      "sour_curry_paste": 25,
+      "fish_sauce": 5
+    },
+    "basis_refs": {
+      "moringa": "STD:587",
+      "fish": "STD:1084",
+      "sour_curry_paste": "STD:299",
+      "fish_sauce": "STD:291"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from moringa leaf (STD:587), fish (STD:1084), sour curry paste (STD:299), fish sauce (STD:291)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/f5a3204c16da4125a7bec683903cde6a",
+    "notes": "Sour moringa-and-fish curry, an Isan/central-plains staple. Coverage dish for moringa. The sour curry paste already contains the shallot/garlic/lemongrass/galangal/chili/shrimp paste blend, so those aromatics are not listed again separately -- is_animal_product on sour_curry_paste (from its shrimp paste) already drives the vegetarian/vegan exclusion mechanically.",
+    "category": "savory"
+  },
+  {
+    "id": "th_156",
+    "name_th": "แกงอ่อมเนื้อ",
+    "main_ingredients": [
+      "beef"
+    ],
+    "optional_ingredients": [
+      "yardlong_bean",
+      "thai_eggplant",
+      "kaffir_lime_leaf",
+      "lemongrass",
+      "shallot",
+      "chili",
+      "coriander",
+      "green_onion"
+    ],
+    "seasonings": [
+      "pla_ra",
+      "fish_sauce"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 260,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 218.0,
+      "protein": 33.7,
+      "fat": 7.0,
+      "carb": 3.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "beef": 150,
+      "yardlong_bean": 50,
+      "thai_eggplant": 40,
+      "pla_ra": 15,
+      "fish_sauce": 5
+    },
+    "basis_refs": {
+      "beef": "STD:936",
+      "yardlong_bean": "STD:449",
+      "thai_eggplant": "STD:573",
+      "pla_ra": "STD:1228",
+      "fish_sauce": "STD:291"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from beef (STD:936), yardlong bean (STD:449), Thai eggplant (STD:573), fermented fish (STD:1228), fish sauce (STD:291)",
+    "recipe_source_url": "https://www.tumkinaeng.com/%E0%B8%AD%E0%B9%88%E0%B8%AD%E0%B8%A1%E0%B9%80%E0%B8%99%E0%B8%B7%E0%B9%89%E0%B8%AD/",
+    "notes": "Isan beef stew. Source recipe uses pla_ra plus beef blood as a thickener; beef blood is deliberately omitted here -- a raw animal byproduct sold only by specialty Isan butchers, with real food-safety handling concerns, and (unlike pla_ra, reused in bamboo shoot soup) would be a single-dish dictionary entry not worth adding. A second published recipe (eattourthai.com) uses beef bile instead of blood, confirming this is a genuine fork between authentic recipes rather than a corner being cut.",
+    "category": "savory"
+  },
+  {
+    "id": "th_157",
+    "name_th": "ก้อยกุ้ง",
+    "main_ingredients": [
+      "shrimp"
+    ],
+    "optional_ingredients": [
+      "shallot",
+      "chili",
+      "lemongrass",
+      "mint_leaves",
+      "green_onion",
+      "coriander",
+      "kaffir_lime_leaf",
+      "lime"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "roasted_rice_powder"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 110,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 96.0,
+      "protein": 20.1,
+      "fat": 1.3,
+      "carb": 0.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "shrimp": 100,
+      "fish_sauce": 10
+    },
+    "basis_refs": {
+      "shrimp": "STD:1042",
+      "fish_sauce": "STD:291"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from prawn (STD:1042), fish sauce (STD:291)",
+    "recipe_source_url": "https://esan108.com/%E0%B8%81%E0%B9%89%E0%B8%AD%E0%B8%A2%E0%B8%81%E0%B8%B8%E0%B9%89%E0%B8%87-%E0%B8%AA%E0%B8%B9%E0%B8%95%E0%B8%A3%E0%B8%AD%E0%B8%B2%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B8%AD%E0%B8%B5%E0%B8%AA%E0%B8%B2%E0%B8%99.html",
+    "notes": "Isan spicy raw/scalded shrimp salad. Herbs, lime juice, and roasted rice powder are garnish/dressing quantities, excluded from nutrition_basis, matching the convention already used for th_025/th_062/th_066.",
+    "category": "savory"
+  },
+  {
+    "id": "th_158",
+    "name_th": "แกงจืดมะระยัดไส้หมูสับ",
+    "main_ingredients": [
+      "bitter_gourd",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "coriander",
+      "shiitake",
+      "glass_noodle"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "oyster_sauce",
+      "pepper"
+    ],
+    "health_tags": [
+      "clean"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 220,
+    "cook_time_min": 35,
+    "nutrition": {
+      "kcal": 264.0,
+      "protein": 16.4,
+      "fat": 14.1,
+      "carb": 15.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "bitter_gourd": 120,
+      "minced_meat": 80,
+      "glass_noodle": 15,
+      "soy_sauce": 5
+    },
+    "basis_refs": {
+      "bitter_gourd": "STD:585",
+      "minced_meat": "STD:970",
+      "glass_noodle": "STD:396",
+      "soy_sauce": "STD:273"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from bitter gourd (STD:585), minced pork (STD:970), mung bean noodle (STD:396), soy sauce (STD:273)",
+    "recipe_source_url": "https://www.foodietaste.com/recipe_detail.asp?id=2823",
+    "notes": "Coverage dish for bitter_gourd. pepper appears only in seasonings (soup-base black pepper); the stuffing mix also uses pepper in the real recipe but it is not double-listed here, per the one-list-per-ingredient rule.",
+    "category": "savory"
+  },
+  {
+    "id": "th_159",
+    "name_th": "ผัดบวบใส่ไข่",
+    "main_ingredients": [
+      "sponge_gourd",
+      "egg"
+    ],
+    "optional_ingredients": [
+      "garlic"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 215,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 126.0,
+      "protein": 8.6,
+      "fat": 4.7,
+      "carb": 11.4
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "sponge_gourd": 150,
+      "egg": 55,
+      "soy_sauce": 5,
+      "sugar": 5
+    },
+    "basis_refs": {
+      "sponge_gourd": "STD:464",
+      "egg": "STD:1274",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from angled luffa (STD:464), egg (STD:1274), soy sauce (STD:273), sugar (STD:1391)",
+    "recipe_source_url": "https://aroifin.com/recipes/stir-fried-angled-gourd-with-eggs/",
+    "notes": "Coverage dish for sponge_gourd. Simple everyday stir-fry, cooking oil not modelled per project convention.",
+    "category": "savory"
+  },
+  {
+    "id": "th_160",
+    "name_th": "ยำผักกาดหอม",
+    "main_ingredients": [
+      "lettuce",
+      "shrimp"
+    ],
+    "optional_ingredients": [
+      "minced_meat",
+      "glass_noodle",
+      "peanuts",
+      "shallot",
+      "chili",
+      "lime"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 213,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 277.0,
+      "protein": 18.5,
+      "fat": 7.6,
+      "carb": 32.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "lettuce": 80,
+      "shrimp": 50,
+      "minced_meat": 40,
+      "glass_noodle": 30,
+      "fish_sauce": 8,
+      "sugar": 5
+    },
+    "basis_refs": {
+      "lettuce": "STD:484",
+      "shrimp": "STD:1042",
+      "minced_meat": "STD:970",
+      "glass_noodle": "STD:396",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from lettuce (STD:484), prawn (STD:1042), minced pork (STD:970), mung bean noodle (STD:396), fish sauce (STD:291), sugar (STD:1391)",
+    "recipe_source_url": "https://women.kapook.com/view39598.html",
+    "notes": "Coverage dish for lettuce -- a genuinely Thai lettuce salad (shrimp/pork/glass noodle/peanut, Thai-style dressing), distinct from the Vietnamese fresh spring roll previously found and excluded from this batch. Source is the Mae Ban-credited recipe on this Kapook article (\"ผักกาดหอมคำอร่อย\"), which lists the same ingredients used here.",
+    "category": "savory"
+  },
+  {
+    "id": "th_161",
+    "name_th": "ขนมเปียกปูนใบเตย",
+    "main_ingredients": [
+      "rice_flour",
+      "pandan_leaf"
+    ],
+    "optional_ingredients": [
+      "tapioca_starch"
+    ],
+    "seasonings": [
+      "sugar",
+      "coconut_milk"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 270,
+    "cook_time_min": 40,
+    "nutrition": {
+      "kcal": 865.0,
+      "protein": 7.0,
+      "fat": 9.4,
+      "carb": 187.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "rice_flour": 80,
+      "tapioca_starch": 40,
+      "sugar": 90,
+      "coconut_milk": 60
+    },
+    "basis_refs": {
+      "rice_flour": "STD:187",
+      "tapioca_starch": "STD:1934",
+      "sugar": "STD:1391",
+      "coconut_milk": "STD:1348"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from rice flour (STD:187), tapioca starch (STD:1934), sugar (STD:1391), coconut milk (STD:1348)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/green-coconut-sweet-pudding",
+    "notes": "Coverage dish for pandan_leaf -- traditional Thai rice-flour jelly dessert. Pandan is used as strained juice for color/aroma and contributes negligible bulk macros, so it is not counted in nutrition_basis, consistent with how garnish herbs are handled elsewhere in this batch.",
+    "category": "dessert"
+  },
+  {
+    "id": "th_162",
+    "name_th": "ขนมกุยช่าย",
+    "main_ingredients": [
+      "chives",
+      "tapioca_starch"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "soy_sauce",
+      "sugar",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 173,
+    "cook_time_min": 45,
+    "nutrition": {
+      "kcal": 391.0,
+      "protein": 1.8,
+      "fat": 0.2,
+      "carb": 93.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "chives": 60,
+      "tapioca_starch": 100,
+      "soy_sauce": 8,
+      "sugar": 5
+    },
+    "basis_refs": {
+      "chives": "STD:413",
+      "tapioca_starch": "STD:1934",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from garlic chives (STD:413), tapioca starch (STD:1934), soy sauce (STD:273), sugar (STD:1391)",
+    "recipe_source_url": "https://cooking.kapook.com/view166165.html",
+    "notes": "Coverage dish for chives. Savory steamed dumpling, not a dessert, despite being a khanom by name -- Thai khanom covers savory snacks too. Cooking oil for pan-frying not modelled per project convention.",
+    "category": "savory"
+  },
+  {
+    "id": "th_163",
+    "name_th": "ปลาทอดราดซอสมะขาม",
+    "main_ingredients": [
+      "fish",
+      "tamarind"
+    ],
+    "optional_ingredients": [
+      "cashew"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 175,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 288.0,
+      "protein": 25.0,
+      "fat": 3.9,
+      "carb": 37.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "fish": 120,
+      "tamarind": 30,
+      "fish_sauce": 10,
+      "sugar": 15
+    },
+    "basis_refs": {
+      "fish": "STD:1084",
+      "tamarind": "STD:750",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from fish (STD:1084), tamarind (STD:750), fish sauce (STD:291), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/7d8a7b5d4390476fbd81452bf04d41ef",
+    "notes": "Coverage dish for tamarind. The tamarind sauce is normally made from tamarind pulp soaked in water rather than whole fruit, but Thai FCD has no separate entry for the paste/pulp form -- only STD:750 (sweet tamarind, whole fruit variety) is catalogued, so that record is used as the closest available match, disclosed here. Deep-fried, so this dish does not qualify for the clean tag.",
+    "category": "savory"
+  },
+  {
+    "id": "th_164",
+    "name_th": "ไข่พะโล้ใส่ไข่นกกระทา",
+    "main_ingredients": [
+      "quail_egg"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "coriander",
+      "shiitake"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "dark_soy_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 110,
+    "cook_time_min": 40,
+    "nutrition": {
+      "kcal": 198.0,
+      "protein": 12.7,
+      "fat": 10.4,
+      "carb": 13.6
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "quail_egg": 90,
+      "soy_sauce": 5,
+      "dark_soy_sauce": 5,
+      "sugar": 10
+    },
+    "basis_refs": {
+      "quail_egg": "STD:1281",
+      "soy_sauce": "STD:273",
+      "dark_soy_sauce": "STD:277",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from quail egg (STD:1281), soy sauce (STD:273), dark soy sauce (STD:277), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/a2708b4af7d041dc9b41ac1b3318a825",
+    "notes": "Coverage dish for quail_egg. Popular Thai five-spice stewed egg (palo) made with quail eggs instead of chicken eggs. Star anise/cinnamon spice mix not in the dictionary and contributes negligible macros, so it is omitted from nutrition_basis and left out of seasonings rather than approximated with an unrelated key.",
+    "category": "savory"
+  },
+  {
+    "id": "th_165",
+    "name_th": "ผัดมันแกว",
+    "main_ingredients": [
+      "jicama",
+      "pork"
+    ],
+    "optional_ingredients": [
+      "garlic"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "sugar",
+      "soy_sauce"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 230,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 154.0,
+      "protein": 14.4,
+      "fat": 2.5,
+      "carb": 17.8
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "jicama": 150,
+      "pork": 60,
+      "oyster_sauce": 10,
+      "sugar": 5,
+      "soy_sauce": 5
+    },
+    "basis_refs": {
+      "jicama": "STD:1923",
+      "pork": "STD:958",
+      "oyster_sauce": "STD:270",
+      "sugar": "STD:1391",
+      "soy_sauce": "STD:273"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from jicama (STD:1923), pork (STD:958), oyster sauce (STD:270), sugar (STD:1391), soy sauce (STD:273)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/aa2adfe4767849f4b0e3256de385bcf4",
+    "notes": "Coverage dish for jicama. Everyday Thai-Chinese stir-fry.",
+    "category": "savory"
   }
 ]

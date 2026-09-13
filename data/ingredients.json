@@ -1855,5 +1855,33 @@
       "white bread"
     ],
     "confusable_with": []
+  },
+  "yanang": {
+    "name_th": "ใบย่านาง",
+    "category": "seasoning",
+    "yolo_class_id": null,
+    "is_seasoning": true,
+    "is_animal_product": false,
+    "synonyms": [
+      "ใบย่านาง",
+      "ย่านาง",
+      "yanang",
+      "yanang leaf"
+    ],
+    "confusable_with": []
+  },
+  "pla_ra": {
+    "name_th": "ปลาร้า",
+    "category": "seasoning",
+    "yolo_class_id": null,
+    "is_seasoning": true,
+    "is_animal_product": true,
+    "synonyms": [
+      "ปลาร้า",
+      "น้ำปลาร้า",
+      "pla ra",
+      "fermented fish"
+    ],
+    "confusable_with": []
   }
 }
