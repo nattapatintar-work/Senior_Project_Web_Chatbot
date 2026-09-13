@@ -329,6 +329,21 @@
       "protein": "PROTCNT"
     }
   },
+  "STD:139": {
+    "carb": 31.1,
+    "fat": 0.24,
+    "food_code": "A11",
+    "kcal": 136.0,
+    "name_en": "Rice, polished, cooked",
+    "name_th": "ขาวเจา, สุก",
+    "protein": 2.28,
+    "tags_used": {
+      "carb": "CHOCDF",
+      "fat": "FAT",
+      "kcal": "ENERCT",
+      "protein": "PROTCNT"
+    }
+  },
   "STD:1391": {
     "carb": 95.47,
     "fat": 0.1,
@@ -2287,6 +2302,21 @@
     "name_en": "Mushroom, Jew 's ear, raw",
     "name_th": "เห็ดหูหนูสีนํ้าตาล, ดิบ",
     "protein": 0.73,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
+  "STD:688": {
+    "carb": 1.41,
+    "fat": 0.54,
+    "food_code": "D167",
+    "kcal": 32.0,
+    "name_en": "Mushroom, button/champignon, canned in brine, liquid excluded",
+    "name_th": "เห็ดกระดุม/แชมป ิ ญอง, ในนํ้าเกลือ, บรรจุกระป  อง, ไมรวมนํ้า",
+    "protein": 3.69,
     "tags_used": {
       "carb": "CHOAVLDF",
       "fat": "FAT",
