@@ -1692,5 +1692,100 @@
       "pasta"
     ],
     "confusable_with": []
+  },
+  "glutinous_rice": {
+    "name_th": "ข้าวเหนียว",
+    "category": "carb",
+    "yolo_class_id": null,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ข้าวเหนียว",
+      "sticky rice",
+      "glutinous rice"
+    ],
+    "confusable_with": []
+  },
+  "glutinous_rice_flour": {
+    "name_th": "แป้งข้าวเหนียว",
+    "category": "carb",
+    "yolo_class_id": null,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "แป้งข้าวเหนียว",
+      "glutinous rice flour",
+      "sweet rice flour"
+    ],
+    "confusable_with": []
+  },
+  "rice_flour": {
+    "name_th": "แป้งข้าวเจ้า",
+    "category": "carb",
+    "yolo_class_id": null,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "แป้งข้าวเจ้า",
+      "rice flour"
+    ],
+    "confusable_with": []
+  },
+  "mung_bean": {
+    "name_th": "ถั่วเขียว",
+    "category": "nut_seed",
+    "yolo_class_id": null,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "ถั่วเขียว",
+      "mung bean",
+      "green gram"
+    ],
+    "confusable_with": []
+  },
+  "tapioca_starch": {
+    "name_th": "แป้งมันสำปะหลัง",
+    "category": "carb",
+    "yolo_class_id": null,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "แป้งมันสำปะหลัง",
+      "แป้งมัน",
+      "tapioca starch",
+      "tapioca flour"
+    ],
+    "confusable_with": [
+      "tapioca_pearl"
+    ]
+  },
+  "tapioca_pearl": {
+    "name_th": "เม็ดสาคู",
+    "category": "carb",
+    "yolo_class_id": null,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "เม็ดสาคู",
+      "สาคู",
+      "tapioca pearl",
+      "sago pearl"
+    ],
+    "confusable_with": [
+      "tapioca_starch"
+    ]
+  },
+  "water_chestnut": {
+    "name_th": "แห้ว",
+    "category": "vegetable",
+    "yolo_class_id": null,
+    "is_seasoning": false,
+    "is_animal_product": false,
+    "synonyms": [
+      "แห้ว",
+      "water chestnut"
+    ],
+    "confusable_with": []
   }
 }

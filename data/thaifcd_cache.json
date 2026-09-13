@@ -884,6 +884,21 @@
       "protein": "PROTCNT"
     }
   },
+  "STD:1631": {
+    "carb": 24.23,
+    "fat": 0.15,
+    "food_code": "T396",
+    "kcal": 114.0,
+    "name_en": "Mungbean, mature seeds, boiled, added sugar",
+    "name_th": "ถั่วเขียว, เมล็ด, ตมนํ้าตาล",
+    "protein": 2.9,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
   "STD:1634": {
     "carb": 49.3,
     "fat": 13.4,
@@ -922,6 +937,36 @@
     "name_en": "Miang kham (leaf wrapped bites)",
     "name_th": "เมี่ยงคําใต",
     "protein": 5.42,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
+  "STD:187": {
+    "carb": 81.61,
+    "fat": 0.55,
+    "food_code": "A80",
+    "kcal": 359.0,
+    "name_en": "Rice flour, white",
+    "name_th": "แป  งขาวเจา",
+    "protein": 6.57,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
+  "STD:190": {
+    "carb": 82.75,
+    "fat": 0.0,
+    "food_code": "A83",
+    "kcal": 357.0,
+    "name_en": "Rice flour, glutinous",
+    "name_th": "แป  งขาวเหนียว",
+    "protein": 6.0,
     "tags_used": {
       "carb": "CHOAVLDF",
       "fat": "FAT",
@@ -997,6 +1042,36 @@
     "name_en": "Cassava, raw",
     "name_th": "มันสําปะหลัง, ดิบ",
     "protein": 0.8,
+    "tags_used": {
+      "carb": "CHOCDF",
+      "fat": "FAT",
+      "kcal": "ENERCT",
+      "protein": "PROTCNT"
+    }
+  },
+  "STD:1934": {
+    "carb": 87.42,
+    "fat": 0.09,
+    "food_code": "B5",
+    "kcal": 353.0,
+    "name_en": "Tapioca, flour",
+    "name_th": "แป  งมันสําปะหลัง",
+    "protein": 0.11,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
+  "STD:1935": {
+    "carb": 85.3,
+    "fat": 0.05,
+    "food_code": "B29",
+    "kcal": 342.0,
+    "name_en": "Sago flour",
+    "name_th": "แป  งสาคู",
+    "protein": 0.03,
     "tags_used": {
       "carb": "CHOCDF",
       "fat": "FAT",
@@ -1192,6 +1267,21 @@
     "name_en": "Paste chilli, fried in oil",
     "name_th": "นํ้าพริกเผา",
     "protein": 5.02,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
+  "STD:319": {
+    "carb": 35.83,
+    "fat": 1.59,
+    "food_code": "C15",
+    "kcal": 302.0,
+    "name_en": "Mungbean, mature seeds, dried, raw",
+    "name_th": "ถั่วเขียว, เมล็ดแหง, ดิบ",
+    "protein": 22.98,
     "tags_used": {
       "carb": "CHOAVLDF",
       "fat": "FAT",
@@ -2039,6 +2129,36 @@
       "protein": "PROTCNT"
     }
   },
+  "STD:754": {
+    "carb": 2.86,
+    "fat": 3.0,
+    "food_code": "E142",
+    "kcal": 47.0,
+    "name_en": "Coconut, young, flesh",
+    "name_th": "มะพราวออน, เนื้อ",
+    "protein": 1.4,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
+  "STD:759": {
+    "carb": 15.29,
+    "fat": 0.13,
+    "food_code": "E63",
+    "kcal": 72.0,
+    "name_en": "Mango, Kiew-sa-weya variety, unripe",
+    "name_th": "มะมวงเขียวเสวย, ดิบ",
+    "protein": 0.69,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
   "STD:765": {
     "carb": 16.64,
     "fat": 0.23,
@@ -2096,6 +2216,21 @@
       "carb": "CHOAVLDF",
       "fat": "FAT",
       "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
+  "STD:816": {
+    "carb": 21.3,
+    "fat": 0.1,
+    "food_code": "E127",
+    "kcal": 91.0,
+    "name_en": "Water chestnut",
+    "name_th": "แหว",
+    "protein": 1.2,
+    "tags_used": {
+      "carb": "CHOCDF",
+      "fat": "FAT",
+      "kcal": "ENERCT",
       "protein": "PROTCNT"
     }
   },

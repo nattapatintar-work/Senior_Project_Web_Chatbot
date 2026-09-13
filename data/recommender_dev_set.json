@@ -30,11 +30,11 @@
     },
     {
       "id": "dev_04",
-      "why": "Excluding an ingredient that only ever appears as OPTIONAL (green_onion in th_001, th_002's neighbourhood) must not disqualify a dish -- an optional is omittable by definition. th_002 (ไข่ต้ม, no green_onion at all) and th_001 (ไข่เจียว, green_onion only optional) must both survive.",
+      "why": "Excluding an ingredient that only ever appears as OPTIONAL (green_onion in th_001's neighbourhood) must not disqualify a dish -- an optional is omittable by definition. th_002 (ไข่ต้ม, no green_onion at all) must survive. th_001 (ไข่เจียว) is deliberately not asserted here anymore: the dessert expansion added two more pure egg+sugar dishes (th_096, th_108) that legitimately tie th_001's score for a bare 'egg' query, so it can fall outside the default top-3 on ranking alone -- correct behaviour, not a regression. That specific case (th_001 stays in the *result set*, just not necessarily top-3) is covered directly in tests/test_recommend.py with an unbounded top_k instead.",
       "ingredients": ["egg"],
       "health_tags": [],
       "excluded": ["green_onion"],
-      "expect_top3_contains": ["th_002", "th_001"],
+      "expect_top3_contains": ["th_002"],
       "expect_absent": []
     },
     {

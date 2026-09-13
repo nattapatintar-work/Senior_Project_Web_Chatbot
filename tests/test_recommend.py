@@ -76,8 +76,15 @@ def test_excluding_an_optional_ingredient_keeps_the_dish():
     """
     th_001 (ไข่เจียว) has green_onion only as optional_ingredients. Excluding
     it must not remove the dish from consideration -- it's omittable.
+
+    top_k is set high on purpose: the dessert expansion added several other
+    pure egg+sugar dishes (th_096, th_108) that legitimately tie th_001's
+    score for a bare "egg" query, so th_001 can fall outside a small top_k
+    on ranking alone -- that's the recommender working correctly, not a
+    bug. This test only cares whether th_001 stays in the result set and
+    whether its "have" is computed correctly once it's there.
     """
-    results = recommend(["egg"], excluded=["green_onion"])
+    results = recommend(["egg"], excluded=["green_onion"], top_k=len(load_recipes()))
     assert "th_001" in _ids(results)
     # And green_onion, which the user doesn't have anyway, is not falsely
     # reported as something they have.

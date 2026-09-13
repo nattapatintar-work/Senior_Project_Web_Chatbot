@@ -31,7 +31,8 @@
     "nutrition_ref": "STD:1270",
     "nutrition_source": "Thai FCD (INMU), food code H4",
     "notes": "70 g = about two eggs. NOT tagged clean: the source record is 32.9 g fat per 100 g, which tells you a Thai omelette is shallow-fried in a lot of oil, not pan-fried. Excluded for vegetarians because of the fish sauce, which is the mistake Claude.md:429 warns about.",
-    "recipe_source_url": "https://thai-foodie.com/thaifood/how-to-make-a-thai-style-omelette/"
+    "recipe_source_url": "https://thai-foodie.com/thaifood/how-to-make-a-thai-style-omelette/",
+    "category": "savory"
   },
   {
     "id": "th_002",
@@ -61,7 +62,8 @@
     "nutrition_ref": "STD:1271",
     "nutrition_source": "Thai FCD (INMU), food code H18",
     "notes": "50 g = one egg. Tagged vegetarian but excluded for vegan: eggs are fine for vegetarians, not for vegans. This is the only difference between the two tags, and it is why they cannot be one rule.",
-    "recipe_source_url": "https://hungryinthailand.com/thai-style-soft-boiled-egg/"
+    "recipe_source_url": "https://hungryinthailand.com/thai-style-soft-boiled-egg/",
+    "category": "savory"
   },
   {
     "id": "th_003",
@@ -96,7 +98,8 @@
     "nutrition_ref": "STD:1272",
     "nutrition_source": "Thai FCD (INMU), food code H6",
     "notes": "150 g because steamed egg has water added, so a bowl weighs far more than the egg in it — the source is only 61 kcal/100 g for that reason. Clean: steamed, no sugar, no coconut milk.",
-    "recipe_source_url": "https://hot-thai-kitchen.com/steamed-egg/"
+    "recipe_source_url": "https://hot-thai-kitchen.com/steamed-egg/",
+    "category": "savory"
   },
   {
     "id": "th_004",
@@ -126,7 +129,8 @@
     "nutrition_ref": "STD:1439",
     "nutrition_source": "Thai FCD (INMU), food code S37",
     "notes": "Vegan and vegetarian — nothing animal-derived — but deliberately NOT clean, because it is deep-fried. A dish can be perfectly fine for a diet and still not be 'clean'; the four tags answer different questions.",
-    "recipe_source_url": "https://www.pholfoodmafia.com/recipe/crispy-fluffy-fries-%E0%B9%80%E0%B8%9F%E0%B8%A3%E0%B8%99%E0%B8%8A%E0%B9%8C%E0%B8%9F%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%AA%E0%B9%8C%E0%B8%81%E0%B8%A3%E0%B8%AD%E0%B8%9A%E0%B8%99%E0%B8%AD%E0%B8%81/"
+    "recipe_source_url": "https://www.pholfoodmafia.com/recipe/crispy-fluffy-fries-%E0%B9%80%E0%B8%9F%E0%B8%A3%E0%B8%99%E0%B8%8A%E0%B9%8C%E0%B8%9F%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%AA%E0%B9%8C%E0%B8%81%E0%B8%A3%E0%B8%AD%E0%B8%9A%E0%B8%99%E0%B8%AD%E0%B8%81/",
+    "category": "savory"
   },
   {
     "id": "th_005",
@@ -163,7 +167,8 @@
     "nutrition_ref": "STD:1456",
     "nutrition_source": "Thai FCD (INMU), food code T184",
     "notes": "200 g is the curry only — rice is counted as its own dish. That is why a curry can pass the 10 g carb keto rule; see the warning in RECIPES_NOTES.md. Not clean: coconut milk and sugar both disqualify it.",
-    "recipe_source_url": "https://hot-thai-kitchen.com/green-curry-new-2/"
+    "recipe_source_url": "https://hot-thai-kitchen.com/green-curry-new-2/",
+    "category": "savory"
   },
   {
     "id": "th_006",
@@ -200,7 +205,8 @@
     "nutrition_ref": "STD:1464",
     "nutrition_source": "Thai FCD (INMU), food code T187",
     "notes": "Eggplant is optional rather than main: red curry is defined by the paste and coconut milk, not by which vegetable goes in. Putting it in main would wrongly require it for a match.",
-    "recipe_source_url": "https://hot-thai-kitchen.com/red-curry-chicken-squash/"
+    "recipe_source_url": "https://hot-thai-kitchen.com/red-curry-chicken-squash/",
+    "category": "savory"
   },
   {
     "id": "th_007",
@@ -234,7 +240,8 @@
     "nutrition_ref": "STD:1467",
     "nutrition_source": "Thai FCD (INMU), food code T188",
     "notes": "No tags at all, and that is a real answer rather than a gap: 11.6 g carb per serving just misses the 10 g keto limit, and the sugar rules out clean. Panang is thicker and sweeter than red curry, which the numbers show.",
-    "recipe_source_url": "https://hot-thai-kitchen.com/panang-curry/"
+    "recipe_source_url": "https://hot-thai-kitchen.com/panang-curry/",
+    "category": "savory"
   },
   {
     "id": "th_008",
@@ -271,7 +278,8 @@
     "nutrition_ref": "STD:1468",
     "nutrition_source": "Thai FCD (INMU), food code T189",
     "notes": "Potato and onion are main, not optional — a massaman without them is not a massaman. Both are detectable classes, so this dish can be triggered by a photo of chicken and potatoes.",
-    "recipe_source_url": "https://hungryinthailand.com/thai-massaman-chicken-curry/"
+    "recipe_source_url": "https://hungryinthailand.com/thai-massaman-chicken-curry/",
+    "category": "savory"
   },
   {
     "id": "th_009",
@@ -305,7 +313,8 @@
     "nutrition_ref": "STD:1451",
     "nutrition_source": "Thai FCD (INMU), food code T179",
     "notes": "yellow_curry_paste had to be added to ingredients.json for this dish — the dictionary only had green, red and massaman. Leaving it out would have described the dish wrongly.",
-    "recipe_source_url": "https://hot-thai-kitchen.com/yellow-curry-chicken/"
+    "recipe_source_url": "https://hot-thai-kitchen.com/yellow-curry-chicken/",
+    "category": "savory"
   },
   {
     "id": "th_010",
@@ -342,7 +351,8 @@
     "nutrition_ref": "STD:1460",
     "nutrition_source": "Thai FCD (INMU), food code T186",
     "notes": "Clean but NOT keto, even though it is only ~3.3 g carb: potato is in main_ingredients, and the keto rule blocks starch staples regardless of the arithmetic. Four of its five ingredients are detectable classes, making this one of the best photo-driven matches in the database.",
-    "recipe_source_url": "https://www.sidechef.com/recipes/2558/thai_chicken_vegetable_soup/"
+    "recipe_source_url": "https://www.sidechef.com/recipes/2558/thai_chicken_vegetable_soup/",
+    "category": "savory"
   },
   {
     "id": "th_011",
@@ -376,7 +386,8 @@
     "nutrition_ref": "STD:1481",
     "nutrition_source": "Thai FCD (INMU), food code T193",
     "notes": "Baked, not fried, but the sauce carries enough sugar (12.1 g carb per 100 g) to rule out both clean and keto. Oyster sauce also makes it non-vegetarian even though no seafood is visible.",
-    "recipe_source_url": "https://www.pholfoodmafia.com/recipe/roasted-chicken-%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%AD%E0%B8%9A/"
+    "recipe_source_url": "https://www.pholfoodmafia.com/recipe/roasted-chicken-%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%AD%E0%B8%9A/",
+    "category": "savory"
   },
   {
     "id": "th_012",
@@ -413,7 +424,8 @@
     "nutrition_ref": "STD:1484",
     "nutrition_source": "Thai FCD (INMU), food code T299",
     "notes": "Fish sauce is listed deliberately. The source record shows 7.6 g protein per 100 g, which is far too high for eggplant alone — the analysed dish clearly contains a fermented fish or meat element, as Isan-style ซุปมะเขือ normally does. Calling it vegan because the name lists a vegetable would have been wrong.",
-    "recipe_source_url": "https://www.pholfoodmafia.com/recipe/thai-eggplant-dip-%E0%B8%8B%E0%B8%B8%E0%B8%9B%E0%B8%A1%E0%B8%B0%E0%B9%80%E0%B8%82%E0%B8%B7%E0%B8%AD/"
+    "recipe_source_url": "https://www.pholfoodmafia.com/recipe/thai-eggplant-dip-%E0%B8%8B%E0%B8%B8%E0%B8%9B%E0%B8%A1%E0%B8%B0%E0%B9%80%E0%B8%82%E0%B8%B7%E0%B8%AD/",
+    "category": "savory"
   },
   {
     "id": "th_013",
@@ -451,7 +463,8 @@
     "nutrition_ref": "STD:1502",
     "nutrition_source": "Thai FCD (INMU), food code T222",
     "notes": "Five of its main ingredients are detectable classes — the strongest photo-driven match in the database. Sweet-and-sour means sugar, so neither clean nor keto.",
-    "recipe_source_url": "https://hot-thai-kitchen.com/sweet-and-sour/"
+    "recipe_source_url": "https://hot-thai-kitchen.com/sweet-and-sour/",
+    "category": "savory"
   },
   {
     "id": "th_014",
@@ -488,7 +501,8 @@
     "nutrition_ref": "STD:1503",
     "nutrition_source": "Thai FCD (INMU), food code T224",
     "notes": "Clean and keto: stir-fried rather than deep-fried, no sugar, and no coconut milk — this version uses paste and oil only, which is what the source describes.",
-    "recipe_source_url": "https://www.eatingthaifood.com/thai-gai-pad-prik-gaeng-recipe-%E0%B8%A7%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%97%E0%B8%B3-%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B8%9E%E0%B8%A3%E0%B8%B4%E0%B8%81%E0%B9%81%E0%B8%81/"
+    "recipe_source_url": "https://www.eatingthaifood.com/thai-gai-pad-prik-gaeng-recipe-%E0%B8%A7%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%97%E0%B8%B3-%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B8%9E%E0%B8%A3%E0%B8%B4%E0%B8%81%E0%B9%81%E0%B8%81/",
+    "category": "savory"
   },
   {
     "id": "th_015",
@@ -525,7 +539,8 @@
     "nutrition_ref": "STD:1459",
     "nutrition_source": "Thai FCD (INMU), food code T285",
     "notes": "The pork counterpart to th_005. Pork is text-only, so this dish can never be triggered by a photo — it needs the user to type หมู. That is exactly what the NLP side exists for.",
-    "recipe_source_url": "https://hungryinthailand.com/thai-green-curry-pork/"
+    "recipe_source_url": "https://hungryinthailand.com/thai-green-curry-pork/",
+    "category": "savory"
   },
   {
     "id": "th_016",
@@ -562,7 +577,8 @@
     "nutrition_ref": "STD:1463",
     "nutrition_source": "Thai FCD (INMU), food code T290",
     "notes": "แกงป่า is the jungle curry — no coconut milk, which is what makes it the one curry here that qualifies as clean. Only 0.8 g fat per 100 g, against 6.05 for green curry.",
-    "recipe_source_url": "https://www.ezythaicooking.com/free_recipes/Jungle-curry-with-pork.html"
+    "recipe_source_url": "https://www.ezythaicooking.com/free_recipes/Jungle-curry-with-pork.html",
+    "category": "savory"
   },
   {
     "id": "th_017",
@@ -601,7 +617,8 @@
     "nutrition_ref": "STD:1471",
     "nutrition_source": "Thai FCD (INMU), food code T191",
     "notes": "sour_curry_paste was the second addition to ingredients.json. At 31 kcal and 0.16 g fat per 100 g this is the lightest dish in the database — แกงส้ม has no coconut milk and no oil at all.",
-    "recipe_source_url": "https://www.eatingthaifood.com/gaeng-som-thai-sweet-sour-soup/"
+    "recipe_source_url": "https://www.eatingthaifood.com/gaeng-som-thai-sweet-sour-soup/",
+    "category": "savory"
   },
   {
     "id": "th_018",
@@ -640,7 +657,8 @@
     "nutrition_ref": "STD:1489",
     "nutrition_source": "Thai FCD (INMU), food code T211",
     "notes": "Galangal and lemongrass are main, not optional — remove either and it stops being ต้มข่า. Both are text-only, so despite the chicken this dish needs typed input to match well.",
-    "recipe_source_url": "https://hot-thai-kitchen.com/tom-ka-gai/"
+    "recipe_source_url": "https://hot-thai-kitchen.com/tom-ka-gai/",
+    "category": "savory"
   },
   {
     "id": "th_019",
@@ -680,7 +698,8 @@
     "nutrition_ref": "STD:1491",
     "nutrition_source": "Thai FCD (INMU), food code T212",
     "notes": "Chili is in optional_ingredients, not seasonings — it is flagged is_seasoning: false in the dictionary, and a test enforces the split. น้ำพริกเผา contains sugar and oil, so clean was not applied even though the dish looks light.",
-    "recipe_source_url": "https://hot-thai-kitchen.com/tom-yum-goong/"
+    "recipe_source_url": "https://hot-thai-kitchen.com/tom-yum-goong/",
+    "category": "savory"
   },
   {
     "id": "th_020",
@@ -719,7 +738,8 @@
     "nutrition_ref": "STD:1492",
     "nutrition_source": "Thai FCD (INMU), food code T213",
     "notes": "The clear version, without chilli paste — 0.37 g fat and 0.5 g carb per 100 g, the leanest dish in the database. That is why this one is clean and th_019 is not.",
-    "recipe_source_url": "https://rachelcooksthai.com/tom-yum-chicken-soup/"
+    "recipe_source_url": "https://rachelcooksthai.com/tom-yum-chicken-soup/",
+    "category": "savory"
   },
   {
     "id": "th_021",
@@ -754,7 +774,8 @@
     "nutrition_ref": "STD:1490",
     "nutrition_source": "Thai FCD (INMU), food code T226",
     "notes": "Palm sugar is essential to พะโล้, so clean is out, and 28 g carb per serving puts keto well out of reach.",
-    "recipe_source_url": "https://hot-thai-kitchen.com/kai-palo/"
+    "recipe_source_url": "https://hot-thai-kitchen.com/kai-palo/",
+    "category": "savory"
   },
   {
     "id": "th_022",
@@ -788,7 +809,8 @@
     "nutrition_ref": "STD:1494",
     "nutrition_source": "Thai FCD (INMU), food code T215",
     "notes": "Keto at 9.2 g carb — just inside the 10 g limit — but deep-fried, so not clean. A good illustration that the two tags are independent.",
-    "recipe_source_url": "https://www.marionskitchen.com/thai-shrimp-cakes-tod-mun-goong/"
+    "recipe_source_url": "https://www.marionskitchen.com/thai-shrimp-cakes-tod-mun-goong/",
+    "category": "savory"
   },
   {
     "id": "th_023",
@@ -825,7 +847,8 @@
     "nutrition_ref": "STD:1505",
     "nutrition_source": "Thai FCD (INMU), food code T225",
     "notes": "Long bean is text-only, so a photo of chicken alone would not match this well — the user has to mention ถั่วฝักยาว.",
-    "recipe_source_url": "https://hot-thai-kitchen.com/gai-pad-prik-king2/"
+    "recipe_source_url": "https://hot-thai-kitchen.com/gai-pad-prik-king2/",
+    "category": "savory"
   },
   {
     "id": "th_024",
@@ -866,7 +889,8 @@
     "nutrition_ref": "STD:1506",
     "nutrition_source": "Thai FCD (INMU), food code T227",
     "notes": "120 g is a yum portion — a shared side, not a main plate. Onion and tomato are detectable, so a photo can partly reach this dish even though the seafood cannot be seen.",
-    "recipe_source_url": "https://hungryinthailand.com/yum-talay/"
+    "recipe_source_url": "https://hungryinthailand.com/yum-talay/",
+    "category": "savory"
   },
   {
     "id": "th_025",
@@ -905,7 +929,8 @@
     "nutrition_ref": "STD:1508",
     "nutrition_source": "Thai FCD (INMU), food code T101",
     "notes": "The only beef dish in the database. ข้าวคั่ว is a seasoning here, not a staple — it is a spoonful of toasted ground rice for aroma, which is why it does not disqualify the keto tag the way ข้าว would.",
-    "recipe_source_url": "https://iheartumami.com/beef-larb/"
+    "recipe_source_url": "https://iheartumami.com/beef-larb/",
+    "category": "savory"
   },
   {
     "id": "th_026",
@@ -943,7 +968,8 @@
     "nutrition_ref": "STD:1524",
     "nutrition_source": "Thai FCD (INMU), food code T8",
     "notes": "300 g is a one-plate meal, unlike the 200 g curry portions which assume rice alongside. Rice noodle in main_ingredients rules out keto outright.",
-    "recipe_source_url": "https://hot-thai-kitchen.com/pad-kee-mao-2/"
+    "recipe_source_url": "https://hot-thai-kitchen.com/pad-kee-mao-2/",
+    "category": "savory"
   },
   {
     "id": "th_027",
@@ -980,7 +1006,8 @@
     "nutrition_ref": "STD:1529",
     "nutrition_source": "Thai FCD (INMU), food code T11",
     "notes": "คะน้า is chinese_kale, a separate dictionary entry from broccoli — different plants that a detector would also see differently. Keeping them apart matters more than it looks.",
-    "recipe_source_url": "https://hot-thai-kitchen.com/pad-see-ew-new/"
+    "recipe_source_url": "https://hot-thai-kitchen.com/pad-see-ew-new/",
+    "category": "savory"
   },
   {
     "id": "th_028",
@@ -1016,7 +1043,8 @@
     "nutrition_ref": "STD:1550",
     "nutrition_source": "Thai FCD (INMU), food code T310",
     "notes": "Northern Thai. egg_noodle is flagged is_animal_product because บะหมี่ contains egg — so this excludes vegans through the noodles as well as the chicken.",
-    "recipe_source_url": "https://hot-thai-kitchen.com/kao-soi/"
+    "recipe_source_url": "https://hot-thai-kitchen.com/kao-soi/",
+    "category": "savory"
   },
   {
     "id": "th_029",
@@ -1054,7 +1082,8 @@
     "nutrition_ref": "STD:1561",
     "nutrition_source": "Thai FCD (INMU), food code T54",
     "notes": "The dish that exposed concern C1 — recommend.py already claimed 'missing: holy_basil' months before the dictionary could hold it. Holy basil is main, not optional: without it this is just chicken on rice.",
-    "recipe_source_url": "https://hot-thai-kitchen.com/holy-basil-stir-fry/"
+    "recipe_source_url": "https://hot-thai-kitchen.com/holy-basil-stir-fry/",
+    "category": "savory"
   },
   {
     "id": "th_030",
@@ -1093,7 +1122,8 @@
     "nutrition_ref": "STD:1554",
     "nutrition_source": "Thai FCD (INMU), food code T56",
     "notes": "Generous optional list on purpose — fried rice absorbs whatever is in the fridge, which is exactly the situation this whole project is built for.",
-    "recipe_source_url": "https://www.cookingwithnart.com/thai-pork-fried-rice/"
+    "recipe_source_url": "https://www.cookingwithnart.com/thai-pork-fried-rice/",
+    "category": "savory"
   },
   {
     "id": "th_031",
@@ -1150,7 +1180,8 @@
     },
     "nutrition_source": "Thai FCD (INMU), computed from D10, D27, D9, N2, K34, N60, N136",
     "notes": "Gram amounts are mine, not INMU's — see concern C14. 12 g of oil is about one tablespoon; oil is the single biggest lever on the calorie count here, which is why it is stated rather than folded in. Excluded for vegetarians because of the oyster sauce, not because of anything visible.",
-    "recipe_source_url": "https://rachelcooksthai.com/stir-fried-mixed-vegetables/"
+    "recipe_source_url": "https://rachelcooksthai.com/stir-fried-mixed-vegetables/",
+    "category": "savory"
   },
   {
     "id": "th_032",
@@ -1198,7 +1229,8 @@
     },
     "nutrition_source": "Thai FCD (INMU), computed from D10, N2, D335, K34, N71",
     "notes": "Thai FCD has no entry for any simple stir-fried vegetable dish, which is why this is computed. Protein is understated by roughly 0.4 g: the fish sauce record (N71) has no protein value, and it is summed as zero rather than invented.",
-    "recipe_source_url": "https://shesimmers.com/2012/06/stir-fried-cabbage-with-fish-sauce-%E0%B8%81%E0%B8%B0%E0%B8%AB%E0%B8%A5%E0%B9%88%E0%B8%B3%E0%B8%9B%E0%B8%A5%E0%B8%B5%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%9B%E0%B8%A5%E0%B8%B2.html"
+    "recipe_source_url": "https://shesimmers.com/2012/06/stir-fried-cabbage-with-fish-sauce-%E0%B8%81%E0%B8%B0%E0%B8%AB%E0%B8%A5%E0%B9%88%E0%B8%B3%E0%B8%9B%E0%B8%A5%E0%B8%B5%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%9B%E0%B8%A5%E0%B8%B2.html",
+    "category": "savory"
   },
   {
     "id": "th_033",
@@ -1255,7 +1287,8 @@
     },
     "nutrition_source": "Thai FCD (INMU), computed from F25, N16, D30, N2, K34, N136, N60",
     "notes": "Chicken is priced from the raw record (F25), so cooking loss is not modelled — the real cooked portion weighs less and is slightly more calorie-dense per gram. 25 g of ginger is a generous thumb; this dish is defined by it.",
-    "recipe_source_url": "https://www.pholfoodmafia.com/recipe/stir-fried-chicken-with-ginger-%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B8%82%E0%B8%B4%E0%B8%87/"
+    "recipe_source_url": "https://www.pholfoodmafia.com/recipe/stir-fried-chicken-with-ginger-%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B8%82%E0%B8%B4%E0%B8%87/",
+    "category": "savory"
   },
   {
     "id": "th_034",
@@ -1299,7 +1332,8 @@
     },
     "nutrition_source": "Thai FCD (INMU), computed from D80, N2, K34, N136",
     "notes": "Seasoned with soy sauce rather than the more usual oyster sauce, specifically so the database has a genuinely vegan stir-fry. That is a real cooking choice, not a relabelling — one drop of oyster sauce would make the vegan tag false. Note D80 reports 0.0 g available carbohydrate for amaranth, which is the source's own figure, not a missing value. recipe_source_url cites a generic garlic-spinach stir-fry technique (not Thai-specific) since no dedicated ผัดผักโขมกระเทียม recipe surfaced online; the technique and seasoning list are unchanged from what was already verified for this dish.",
-    "recipe_source_url": "https://www.food.com/amp/recipe/garlic-spinach-stir-fry-360134"
+    "recipe_source_url": "https://www.food.com/amp/recipe/garlic-spinach-stir-fry-360134",
+    "category": "savory"
   },
   {
     "id": "th_035",
@@ -1344,7 +1378,8 @@
     },
     "nutrition_source": "Thai FCD (INMU), computed from D77, D118, D34, D27",
     "notes": "Dressing is deliberately NOT counted — it is served on the side, and 30 g of a creamy dressing would roughly triple the calories of this dish. Anyone using these numbers should know the salad alone is what was measured. The only recipe with an empty seasonings list.",
-    "recipe_source_url": "https://nourishedkitchen.com/thai-salad-recipe/"
+    "recipe_source_url": "https://nourishedkitchen.com/thai-salad-recipe/",
+    "category": "savory"
   },
   {
     "id": "th_036",
@@ -1393,7 +1428,8 @@
     },
     "nutrition_source": "Thai FCD (INMU), computed from D108, H19, N2, K34, N71",
     "notes": "Clean but not keto: pumpkin brings about 15 g of carbohydrate, well over the 10 g limit. A dish being wholesome and being low-carb are different questions, and the rules are set up to answer them separately.",
-    "recipe_source_url": "https://shesimmers.com/2013/04/stir-fried-pumpkin-with-eggs-%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B8%9F%E0%B8%B1%E0%B8%81%E0%B8%97%E0%B8%AD%E0%B8%87%E0%B9%83%E0%B8%AA%E0%B9%88%E0%B9%84%E0%B8%82%E0%B9%88.html"
+    "recipe_source_url": "https://shesimmers.com/2013/04/stir-fried-pumpkin-with-eggs-%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B8%9F%E0%B8%B1%E0%B8%81%E0%B8%97%E0%B8%AD%E0%B8%87%E0%B9%83%E0%B8%AA%E0%B9%88%E0%B9%84%E0%B8%82%E0%B9%88.html",
+    "category": "savory"
   },
   {
     "id": "th_037",
@@ -1426,7 +1462,8 @@
     },
     "nutrition_source": "Thai FCD (INMU), computed from B9",
     "notes": "The one computed recipe with no modelling in it at all — B9 is already the steamed value, so the only assumption is the 150 g portion. Not keto: 41 g of carbohydrate, and sweet potato is a starch staple regardless. recipe_source_url points to a general reference rather than a dedicated recipe: steaming a whole sweet potato with nothing added has no single-ingredient 'recipe' as such online (every search hit was a composite dessert using sweet potato as one ingredient among several), so citing an unrelated composite recipe would misrepresent the dish.",
-    "recipe_source_url": "https://en.wikipedia.org/wiki/Sweet_potato"
+    "recipe_source_url": "https://en.wikipedia.org/wiki/Sweet_potato",
+    "category": "savory"
   },
   {
     "id": "th_038",
@@ -1480,7 +1517,8 @@
     },
     "nutrition_source": "Thai FCD (INMU) except broccoli: USDA FoodData Central, 'Broccoli, raw', 30 Oct 2020 (FDC 170379) — see data/external_nutrition.json",
     "notes": "The only recipe drawing on a second database. Thai FCD has no broccoli entry at all (concern C12), so USDA was used, and its carbohydrate figure was converted onto Thai FCD's basis first: 6.64 g by difference minus 2.6 g fibre = 4.04 g available. Summing the two sources without that correction would have overstated the carbs by 2.6 g and pushed this dish over the keto limit.",
-    "recipe_source_url": "https://healthythairecipes.com/thai-moms-super-simple-and-easy-stir-fried-broccoli-and-chicken-recipe/"
+    "recipe_source_url": "https://healthythairecipes.com/thai-moms-super-simple-and-easy-stir-fried-broccoli-and-chicken-recipe/",
+    "category": "savory"
   },
   {
     "name_th": "ผัดผักบุ้งไฟแดง",
@@ -1529,7 +1567,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from water spinach (STD:507), N2, K34, N136, N60",
     "recipe_source_url": "https://learnthaiwithmod.com/2012/08/stir-fried-chinese-water-morning-glory-pad-pak-bung-fai-daeng-%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B8%9C%E0%B8%B1%E0%B8%81%E0%B8%9A%E0%B8%B8%E0%B9%89%E0%B8%87%E0%B9%84%E0%B8%9F%E0%B9%81%E0%B8%94%E0%B8%87/",
     "notes": "Coverage dish for water_spinach. The dish's name comes from the flare of fire under a hot wok, not from spiciness.",
-    "id": "th_039"
+    "id": "th_039",
+    "category": "savory"
   },
   {
     "name_th": "กุยช่ายผัดไข่",
@@ -1574,7 +1613,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from chives (STD:413), H19, K34, N136, N60",
     "recipe_source_url": "https://redhousespice.com/chinese-chive-egg/",
     "notes": "Coverage dish for chives.",
-    "id": "th_040"
+    "id": "th_040",
+    "category": "savory"
   },
   {
     "name_th": "มะระผัดไข่",
@@ -1621,7 +1661,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from bitter gourd (STD:585), H19, K34, N71, N136",
     "recipe_source_url": "https://www.pholfoodmafia.com/recipe/stir-fried-bitter-gourd-with-egg-%E0%B8%A1%E0%B8%B0%E0%B8%A3%E0%B8%B0%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B9%84%E0%B8%82%E0%B9%88/",
     "notes": "Coverage dish for bitter_gourd.",
-    "id": "th_041"
+    "id": "th_041",
+    "category": "savory"
   },
   {
     "name_th": "ผัดถั่วงอกหัวโตเต้าหู้",
@@ -1667,7 +1708,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from soybean sprout (STD:447), tofu (STD:373), K34, N136",
     "recipe_source_url": "https://www.pholfoodmafia.com/recipe/stir-fried-yellow-garlic-chives-with-egg-tofu-%E0%B8%81%E0%B8%B8%E0%B8%A2%E0%B8%8A%E0%B9%88%E0%B8%B2%E0%B8%A2%E0%B8%82%E0%B8%B2%E0%B8%A7%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B9%80%E0%B8%95%E0%B9%89%E0%B8%B2%E0%B9%84%E0%B8%82%E0%B9%88/",
     "notes": "Coverage dish for soybean_sprouts (ถั่วงอกหัวโต -- a distinct, larger sprout from the plain bean sprout, which has no entry in this dictionary). Fully vegan: soy sauce only, no fish/oyster sauce.",
-    "id": "th_042"
+    "id": "th_042",
+    "category": "savory"
   },
   {
     "name_th": "แกงเลียงกุ้ง",
@@ -1716,7 +1758,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from pumpkin (D108), shrimp (STD:1042), lemon basil (STD:248), N71, shrimp paste (STD:254)",
     "recipe_source_url": "https://hot-thai-kitchen.com/kaeng-liang/",
     "notes": "Coverage dish for maenglak and shrimp_paste. No coconut milk, so it stays light -- kaeng liang predates the introduction of coconut milk to central Thai curries.",
-    "id": "th_043"
+    "id": "th_043",
+    "category": "savory"
   },
   {
     "name_th": "ไก่ผัดเม็ดมะม่วงหิมพานต์",
@@ -1769,7 +1812,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from chicken (F25), cashew (STD:363), onion (STD:1287), K34, N60, N136, sugar",
     "recipe_source_url": "https://hot-thai-kitchen.com/cashew-chicken/",
     "notes": "Coverage dish for cashew. A Thai-Chinese restaurant staple -- the Thai version is drier and more sauce-intense than the Chinese-American original.",
-    "id": "th_044"
+    "id": "th_044",
+    "category": "savory"
   },
   {
     "name_th": "ข้าวผัดสับปะรดกุ้ง",
@@ -1823,7 +1867,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from cooked rice, pineapple (STD:814), shrimp (STD:1042), K34, N71, sugar, curry powder (STD:264)",
     "recipe_source_url": "https://www.recipetineats.com/pineapple-fried-rice-thai/",
     "notes": "Coverage dish for pineapple. Curry powder is what gives Thai pineapple fried rice its characteristic yellow tint and mild warmth; cashew is optional garnish here since th_006 already covers it as a main.",
-    "id": "th_045"
+    "id": "th_045",
+    "category": "savory"
   },
   {
     "name_th": "ยำส้มโอ",
@@ -1873,7 +1918,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from pomelo (STD:812), shrimp (STD:1042), roasted chili paste (STD:1440), N71, sugar",
     "recipe_source_url": "https://hot-thai-kitchen.com/yum-som-o/",
     "notes": "Coverage dish for pomelo. Toasted coconut and peanuts are traditional garnishes, listed optional since a user's photo/text rarely surfaces them.",
-    "id": "th_046"
+    "id": "th_046",
+    "category": "savory"
   },
   {
     "name_th": "ข้าวผัดอเมริกัน",
@@ -1919,7 +1965,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from cooked rice, fried pork sausage (STD:1011), butter (STD:1384), sugar",
     "recipe_source_url": "https://hot-thai-kitchen.com/american-fried-rice/",
     "notes": "Coverage dish for butter and sausage. Ketchup and raisins, part of the traditional dish, are not in the ingredient dictionary and are omitted rather than approximated. Salt is in the seasonings list but not the nutrition_basis: Thai FCD has no standalone salt record, and table salt is genuinely ~0 kcal/protein/fat/carb, so omitting it does not understate the macros this project tracks.",
-    "id": "th_047"
+    "id": "th_047",
+    "category": "savory"
   },
   {
     "name_th": "แกงขนุนอ่อนใส่หมู",
@@ -1963,7 +2010,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from young jackfruit (STD:416), raw minced pork (STD:970), shrimp paste, fish sauce",
     "recipe_source_url": "https://hot-thai-kitchen.com/northern-jackfruit-curry/",
     "notes": "Coverage dish for jackfruit (young/unripe, ขนุนอ่อน -- a savoury vegetable use, distinct from the ripe fruit eaten as dessert). A water-based Northern Thai curry, no coconut milk.",
-    "id": "th_048"
+    "id": "th_048",
+    "category": "savory"
   },
   {
     "name_th": "กล้วยบวชชี",
@@ -1994,12 +2042,13 @@
     "nutrition_source": "Thai FCD (INMU), food code STD:1599 (กล้วยบวชชี)",
     "recipe_source_url": "https://hungryinthailand.com/bananas-in-coconut-milk/",
     "notes": "Coverage dish for banana. A classic simple dessert -- bananas simmered in lightly sweetened, salted coconut milk.",
-    "id": "th_049"
+    "id": "th_049",
+    "category": "dessert"
   },
   {
     "name_th": "ข้าวเหนียวมะม่วง",
     "main_ingredients": [
-      "rice",
+      "glutinous_rice",
       "mango"
     ],
     "optional_ingredients": [],
@@ -2023,26 +2072,27 @@
     },
     "nutrition_method": "computed",
     "nutrition_basis": {
-      "rice": 150,
+      "glutinous_rice": 150,
       "mango": 150,
       "coconut_milk": 60,
       "sugar": 20
     },
     "basis_refs": {
-      "rice": "STD:149",
+      "glutinous_rice": "STD:149",
       "mango": "STD:765",
       "coconut_milk": "STD:1348",
       "sugar": "STD:1391"
     },
     "nutrition_source": "Thai FCD (INMU), computed from steamed glutinous rice (STD:149), Nam Dok Mai mango (STD:765), coconut milk, sugar",
     "recipe_source_url": "https://hot-thai-kitchen.com/mango-sticky-rice/",
-    "notes": "Coverage dish for mango. \"rice\" here is glutinous/sticky rice (ข้าวเหนียว), nutritionally different from the dictionary's canonical steamed jasmine rice (ข้าวสวย) that the key otherwise represents -- flagged since compute_nutrition sources it from a dedicated sticky-rice record (STD:149), not the jasmine-rice one used elsewhere. Salt is seasoned to taste and omitted from nutrition_basis: no Thai FCD record exists, and salt is genuinely ~0 kcal/protein/fat/carb.",
-    "id": "th_050"
+    "notes": "Coverage dish for mango.",
+    "id": "th_050",
+    "category": "dessert"
   },
   {
     "name_th": "ข้าวเหนียวทุเรียน",
     "main_ingredients": [
-      "rice",
+      "glutinous_rice",
       "durian"
     ],
     "optional_ingredients": [],
@@ -2066,21 +2116,22 @@
     },
     "nutrition_method": "computed",
     "nutrition_basis": {
-      "rice": 150,
+      "glutinous_rice": 150,
       "durian": 100,
       "coconut_milk": 60,
       "sugar": 15
     },
     "basis_refs": {
-      "rice": "STD:149",
+      "glutinous_rice": "STD:149",
       "durian": "STD:736",
       "coconut_milk": "STD:1348",
       "sugar": "STD:1391"
     },
     "nutrition_source": "Thai FCD (INMU), computed from steamed glutinous rice (STD:149), Monthong durian (STD:736), coconut milk, sugar",
     "recipe_source_url": "https://hot-thai-kitchen.com/durian-sticky-rice/",
-    "notes": "Coverage dish for durian. Same 'rice' key here means glutinous sticky rice as in the mango version above. Salt omitted from nutrition_basis (no Thai FCD record; genuinely ~0 macros).",
-    "id": "th_051"
+    "notes": "Coverage dish for durian.",
+    "id": "th_051",
+    "category": "dessert"
   },
   {
     "name_th": "มันสำปะหลังเชื่อม",
@@ -2119,7 +2170,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from raw cassava (STD:1929), coconut milk, sugar",
     "recipe_source_url": "https://whattocooktoday.com/candied-cassava-coconut-milk.html",
     "notes": "Coverage dish for cassava. Long, slow simmer in syrup until translucent; coconut milk sauce poured over at serving, not cooked in.",
-    "id": "th_052"
+    "id": "th_052",
+    "category": "dessert"
   },
   {
     "name_th": "แกงบวดเผือก",
@@ -2162,7 +2214,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from steamed taro (STD:1922), pumpkin (D108), coconut milk, sugar",
     "recipe_source_url": "https://www.templeofthai.com/recipes/coconut_pudding.php",
     "notes": "Coverage dish for taro_root. Thai FCD has no raw-taro record, only steamed (STD:1922) -- accepted as-is per the same convention used for sweet_potato's B9 record in the carried-forward dessert. Salt omitted from nutrition_basis (no Thai FCD record; genuinely ~0 macros).",
-    "id": "th_053"
+    "id": "th_053",
+    "category": "dessert"
   },
   {
     "name_th": "กล้วยลิ้นจี่กะทิ",
@@ -2205,7 +2258,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from ripe banana (STD:696), lychee (STD:785), coconut milk, sugar",
     "recipe_source_url": "https://daboxcsa.org/blogs/recipes/thai-banana-lychee-dessert-in-coconut-milk",
     "notes": "Coverage dish for lychee. A simple mixed-fruit-in-coconut-milk dessert in the same family as กล้วยบวชชี. Salt omitted from nutrition_basis (no Thai FCD record; genuinely ~0 macros).",
-    "id": "th_054"
+    "id": "th_054",
+    "category": "dessert"
   },
   {
     "name_th": "ยำวุ้นเส้นทะเล",
@@ -2260,7 +2314,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from dried mung bean noodle (STD:396), minced pork (STD:970), shrimp, onion, tomato, celery (STD:495), N71, sugar",
     "recipe_source_url": "https://hot-thai-kitchen.com/glass-noodle-salad-v2/",
     "notes": "Coverage dish for glass_noodle, minced_meat, and celery all at once. NOT tagged keto despite the arithmetic possibly allowing it -- glass_noodle is one of HEALTH_TAGS.md's explicit starch staples.",
-    "id": "th_055"
+    "id": "th_055",
+    "category": "savory"
   },
   {
     "name_th": "หอยลายผัดพริกเผา",
@@ -2305,7 +2360,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from clam (STD:1176), K34, roasted chili paste (STD:302), N71",
     "recipe_source_url": "https://www.pholfoodmafia.com/recipe/stir-fried-clams-with-chilli-paste-%E0%B8%AB%E0%B8%AD%E0%B8%A2%E0%B8%A5%E0%B8%B2%E0%B8%A2%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B8%9E%E0%B8%A3%E0%B8%B4%E0%B8%81%E0%B9%80%E0%B8%9C%E0%B8%B2/",
     "notes": "Coverage dish for clam. holy_basil is listed as a main ingredient (essential to the dish) but Thai FCD has no standalone raw holy basil leaf record, so it is not in nutrition_basis -- its likely contribution (a leafy herb, ~15g) is small and its omission is disclosed here rather than approximated from an unrelated record.",
-    "id": "th_056"
+    "id": "th_056",
+    "category": "savory"
   },
   {
     "name_th": "ผัดฉ่าหอยแมลงภู่",
@@ -2353,7 +2409,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from mussel (STD:1173), K34, roasted chili paste (STD:302), N71, sugar",
     "recipe_source_url": "https://rosasthai.com/recipes/mussels-chilli-basil",
     "notes": "Coverage dish for mussel. holy_basil is a main ingredient (essential to the dish) but has no standalone Thai FCD record, so it is excluded from nutrition_basis rather than approximated -- same disclosed gap as the clam dish above.",
-    "id": "th_057"
+    "id": "th_057",
+    "category": "savory"
   },
   {
     "name_th": "ไข่ลูกเขย",
@@ -2399,7 +2456,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from quail egg (STD:1281), shallot (STD:251), K34, N71, sugar",
     "recipe_source_url": "https://hot-thai-kitchen.com/son-in-law-eggs/",
     "notes": "Coverage dish for quail_egg and shallot together. Traditionally duck or hen eggs; quail eggs are a smaller, bite-size home variant that keeps the dish squarely inside the dictionary's protein tier. tamarind_paste is in the seasonings list but not nutrition_basis: Thai FCD has no tamarind-paste record (only whole-fruit forms, a poor proxy for the concentrated cooking paste), so it is disclosed as omitted rather than approximated.",
-    "id": "th_058"
+    "id": "th_058",
+    "category": "savory"
   },
   {
     "name_th": "ปูผัดผงกะหรี่",
@@ -2451,7 +2509,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from crab meat (STD:1157), egg, onion, celery, curry powder (STD:264), milk (STD:1335), sugar",
     "recipe_source_url": "https://hot-thai-kitchen.com/curry-crab/",
     "notes": "Coverage dish for crab and milk together. A Thai-Chinese restaurant dish (poo pad pong karee) -- evaporated or fresh milk softens the curry sauce into a custardy coating.",
-    "id": "th_059"
+    "id": "th_059",
+    "category": "savory"
   },
   {
     "name_th": "ออส่วน",
@@ -2495,7 +2554,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from oyster, stir-fried (STD:1172 -- the closest available Thai FCD record; the raw-oyster record STD:1171 exists but has no analysed macros), egg, K34, N136",
     "recipe_source_url": "https://en.wikipedia.org/wiki/O-tao",
     "notes": "Coverage dish for oyster. Uses the stir-fried oyster record rather than raw, which happens to match how this dish is actually cooked -- the raw record (STD:1171) is present in Thai FCD but carries no analysed nutrient values at all.",
-    "id": "th_060"
+    "id": "th_060",
+    "category": "savory"
   },
   {
     "name_th": "แกงจืดฟักเขียวหมูสับ",
@@ -2541,7 +2601,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from winter melon (STD:559), raw minced pork (STD:970), soy sauce, salt, pepper",
     "recipe_source_url": "https://www.pholfoodmafia.com/recipe/winter-melon-soup-%E0%B9%81%E0%B8%81%E0%B8%87%E0%B8%88%E0%B8%B7%E0%B8%94%E0%B8%9F%E0%B8%B1%E0%B8%81/",
     "notes": "Coverage dish for winter_melon.",
-    "id": "th_061"
+    "id": "th_061",
+    "category": "savory"
   },
   {
     "name_th": "ยำถั่วพู",
@@ -2589,7 +2650,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from winged bean pod (STD:451), shrimp, N71, sugar",
     "recipe_source_url": "https://hot-thai-kitchen.com/wing-bean-salad/",
     "notes": "Coverage dish for winged_bean. Named as a salad (ยำ), matching the actual recipe source, rather than a stir-fry.",
-    "id": "th_062"
+    "id": "th_062",
+    "category": "savory"
   },
   {
     "name_th": "ผัดมะรุมไข่",
@@ -2635,7 +2697,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from moringa leaves (STD:587), egg, K34, N71",
     "recipe_source_url": "https://phuketsouth.com/how-to-use-moringa-leaves-in-thai-cooking/",
     "notes": "Coverage dish for moringa.",
-    "id": "th_063"
+    "id": "th_063",
+    "category": "savory"
   },
   {
     "name_th": "แกงขี้เหล็ก",
@@ -2677,7 +2740,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from senna siamea leaves and shoots (STD:421), raw minced pork, shrimp paste, fish sauce",
     "recipe_source_url": "https://www.thaifoodheritage.com/en/recipe_list/detail/gaeng-khilek-thick-curry-with-siamese-senna",
     "notes": "Coverage dish for senna_siamea. Traditionally the leaves are boiled and drained at length first to remove bitterness -- a preparation step, not a nutrition change, since the raw-leaf record is what enters the food before that processing loss.",
-    "id": "th_064"
+    "id": "th_064",
+    "category": "savory"
   },
   {
     "name_th": "ผัดหน่อไม้ไข่",
@@ -2723,7 +2787,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from bamboo shoot (STD:613), egg, K34, N71",
     "recipe_source_url": "https://www.ezythaicooking.com/free_recipes/stir-fried-bamboo-shoots-with-egg.html",
     "notes": "Coverage dish for bamboo_shoots.",
-    "id": "th_065"
+    "id": "th_065",
+    "category": "savory"
   },
   {
     "name_th": "ยำหัวปลีกุ้ง",
@@ -2768,7 +2833,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from banana flower (STD:623), shrimp, N71, sugar",
     "recipe_source_url": "https://www.simplysuwanee.com/banana-blossom-salad/",
     "notes": "Coverage dish for banana_flower, with coconut listed as the traditional optional garnish.",
-    "id": "th_066"
+    "id": "th_066",
+    "category": "savory"
   },
   {
     "name_th": "ตำมะละกอกุ้งสด",
@@ -2818,7 +2884,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from green papaya (STD:590), tomato, yardlong bean (using the green bean record STD:445 as the nearest raw-legume-pod proxy -- see notes), N71, sugar",
     "recipe_source_url": "https://hot-thai-kitchen.com/papaya-salad-v3/",
     "notes": "Coverage dish for green_papaya. Built without dried shrimp, since that ingredient is absent from the dictionary -- fresh shrimp is used as a substitute source of protein/umami instead, which changes the flavour profile from the classic version but keeps every listed ingredient real and traceable.",
-    "id": "th_067"
+    "id": "th_067",
+    "category": "savory"
   },
   {
     "name_th": "ผัดตำลึงไข่",
@@ -2864,7 +2931,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from ivy gourd (STD:503), egg, K34, N71",
     "recipe_source_url": "https://recipe.sgethai.com/recipes/stir-fried-ivy-gourd-with-egg/",
     "notes": "Coverage dish for ivy_gourd.",
-    "id": "th_068"
+    "id": "th_068",
+    "category": "savory"
   },
   {
     "name_th": "ผักกาดขาวผัดหมูสับ",
@@ -2911,7 +2979,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from napa cabbage (STD:478), raw minced pork, K34, N60, N136",
     "recipe_source_url": "https://www.pholfoodmafia.com/recipe/stir-fried-napa-cabbage-with-minced-pork-%E0%B8%9C%E0%B8%B1%E0%B8%81%E0%B8%81%E0%B8%B2%E0%B8%94%E0%B8%82%E0%B8%B2%E0%B8%A7%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B8%AB%E0%B8%A1%E0%B8%B9%E0%B8%AA%E0%B8%B1/",
     "notes": "Coverage dish for napa_cabbage. Stir-fry rather than clear soup, matching the actual recipe source.",
-    "id": "th_069"
+    "id": "th_069",
+    "category": "savory"
   },
   {
     "name_th": "ผัดพริกขิงถั่วแขกกุ้ง",
@@ -2961,7 +3030,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from green bean pod (STD:445), shrimp, K34, red curry paste, N71",
     "recipe_source_url": "https://www.simplysuwanee.com/easy-red-curry-green-beans-with-shrimp/",
     "notes": "Coverage dish for green_bean. Same family as th_023 (ผัดพริกขิงไก่ใส่ถั่วฝักยาว) but with green_bean and shrimp instead of yardlong_bean and chicken.",
-    "id": "th_070"
+    "id": "th_070",
+    "category": "savory"
   },
   {
     "name_th": "ต้มจืดหัวไชเท้าหมูสับ",
@@ -3009,7 +3079,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from white radish (STD:624), raw minced pork, soy sauce, salt, pepper",
     "recipe_source_url": "https://www.cookingwithnart.com/daikon-soup-with-pork-ribs/",
     "notes": "Coverage dish for white_radish.",
-    "id": "th_071"
+    "id": "th_071",
+    "category": "savory"
   },
   {
     "name_th": "ผัดกระเจี๊ยบเขียวไข่",
@@ -3026,10 +3097,10 @@
       "soy_sauce"
     ],
     "health_tags": [
-      "clean"
+      "clean",
+      "vegetarian"
     ],
     "excluded_for": [
-      "vegetarian",
       "vegan"
     ],
     "serving_g": 190,
@@ -3056,7 +3127,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from okra pod (STD:399), egg, K34, N136",
     "recipe_source_url": "https://krua.co/recipe/stir-fried-okra-with-egg",
     "notes": "Coverage dish for okra.",
-    "id": "th_072"
+    "id": "th_072",
+    "category": "savory"
   },
   {
     "name_th": "ผัดบวบใส่ไข่",
@@ -3105,7 +3177,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from angled sponge gourd (STD:464), egg, K34, N71, N136",
     "recipe_source_url": "https://recipe.sgethai.com/recipes/stir-fried-angled-gourd-with-eggs/",
     "notes": "Coverage dish for sponge_gourd.",
-    "id": "th_073"
+    "id": "th_073",
+    "category": "savory"
   },
   {
     "name_th": "ยำมันแกว",
@@ -3150,7 +3223,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from jicama (STD:1923), peanuts, N71, sugar",
     "recipe_source_url": "https://sunset.com/recipe/thai-style-jicama-salad",
     "notes": "Coverage dish for jicama.",
-    "id": "th_074"
+    "id": "th_074",
+    "category": "savory"
   },
   {
     "name_th": "ข้าวโพดคลุกเนย",
@@ -3193,7 +3267,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from sweet corn kernels (STD:143), butter, milk, sugar",
     "recipe_source_url": "https://www.theworldofstreetfood.com/2023/08/thai-street-corn-or-khao-pod-klook-noey.html",
     "notes": "Coverage dish for corn. A Thai night-market street snack (khao pod klook noey), not plain boiled corn -- the milk-butter-sugar coating is the point of the dish.",
-    "id": "th_075"
+    "id": "th_075",
+    "category": "savory"
   },
   {
     "name_th": "ผัดผักปลังน้ำมันหอย",
@@ -3238,7 +3313,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from Malabar spinach (STD:511), N2, K34, N60",
     "recipe_source_url": "http://simplethaifood.com/thai-recipes/stir-fry/stir-fry-ceylon-spinach-with-oyster-sauce/",
     "notes": "Coverage dish for malabar_spinach.",
-    "id": "th_076"
+    "id": "th_076",
+    "category": "savory"
   },
   {
     "name_th": "ผัดมะเขือเปราะหมูสับ",
@@ -3285,7 +3361,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from Thai eggplant (STD:573), raw minced pork, K34, N136, N71",
     "recipe_source_url": "https://thatspicychick.com/thai-eggplant-stir-fry/",
     "notes": "Coverage dish for thai_eggplant.",
-    "id": "th_077"
+    "id": "th_077",
+    "category": "savory"
   },
   {
     "name_th": "ต้มยำเห็ดรวม",
@@ -3348,7 +3425,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from shiitake (STD:658), enoki (STD:627), king oyster (STD:641), wood ear (STD:662), button/champignon (STD:625), white oyster (STD:640), N71, roasted chili paste",
     "recipe_source_url": "https://hot-thai-kitchen.com/mushroom-tom-yum/",
     "notes": "Coverage dish for all 6 remaining mushroom species at once. A vegetarian-friendly tom yum where mixed mushrooms substitute for meat/seafood entirely -- popular during vegetarian festivals.",
-    "id": "th_078"
+    "id": "th_078",
+    "category": "savory"
   },
   {
     "name_th": "ผัดผักกวางตุ้งน้ำมันหอย",
@@ -3395,7 +3473,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from bok choy (STD:474), N2, K34, N60, sugar",
     "recipe_source_url": "https://vickypham.com/blog/bok-choy-oyster-sauce/",
     "notes": "Coverage dish for bok_choy. Not tagged clean: a pinch of sugar in the sauce is traditional for this exact preparation.",
-    "id": "th_079"
+    "id": "th_079",
+    "category": "savory"
   },
   {
     "name_th": "ต้มยำปลาใส่ผักชีลาว",
@@ -3441,7 +3520,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from snakehead fish (STD:1084), dill (STD:501), N71",
     "recipe_source_url": "https://hot-thai-kitchen.com/tom-yum-fish/",
     "notes": "Coverage dish for dill. Dill (ผักชีลาว) in a sour fish soup is a distinctly Isaan/Northeastern variation on the central Thai tom yum base cited here.",
-    "id": "th_080"
+    "id": "th_080",
+    "category": "savory"
   },
   {
     "name_th": "เมี่ยงคำ",
@@ -3488,7 +3568,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from piper lolot leaf (STD:432), peanuts, shrimp paste, sugar",
     "recipe_source_url": "https://hot-thai-kitchen.com/miang-kham/",
     "notes": "Coverage dish for piper_lolot. Built without dried shrimp, which the classic topping list includes but which is absent from the dictionary -- ginger, shallot, lime and coconut cover the rest of the traditional toppings as optional.",
-    "id": "th_081"
+    "id": "th_081",
+    "category": "savory"
   },
   {
     "name_th": "ไก่ห่อใบเตยทอด",
@@ -3537,7 +3618,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from chicken (F25), K34, N136, N60, sugar -- pandan leaf itself is a discarded wrapper, not eaten, so it contributes no macros (same convention as th_037's uncounted dressing)",
     "recipe_source_url": "https://rachelcooksthai.com/pandan-chicken-bites/",
     "notes": "Coverage dish for pandan_leaf. The leaf wraps and perfumes the chicken during frying but is not eaten, so it is listed as a main ingredient (it is essential to the dish) with zero nutrition_basis weight -- consistent with how th_037 excludes its uncounted dressing.",
-    "id": "th_082"
+    "id": "th_082",
+    "category": "savory"
   },
   {
     "name_th": "ไก่ทอดขมิ้น",
@@ -3583,7 +3665,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from chicken (F25), turmeric (STD:231), K34, N71, pepper",
     "recipe_source_url": "https://krua.co/recipe/turmeric-fried-chicken",
     "notes": "Coverage dish for turmeric. Southern Thai fried chicken, marinated with fresh turmeric root rather than curry powder.",
-    "id": "th_083"
+    "id": "th_083",
+    "category": "savory"
   },
   {
     "name_th": "สลัดมันฝรั่ง",
@@ -3630,7 +3713,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from raw potato (STD:1928, boiled before serving -- cooking loss not modelled), egg, mayonnaise (STD:1389), pepper",
     "recipe_source_url": "https://www.pholfoodmafia.com/recipe/potato-salad-%E0%B8%AA%E0%B8%A5%E0%B8%B1%E0%B8%94%E0%B8%A1%E0%B8%B1%E0%B8%99%E0%B8%9D%E0%B8%A3%E0%B8%B1%E0%B9%88%E0%B8%87/",
     "notes": "Coverage dish for mayonnaise. A Western-influenced side dish that is genuinely common in Thai home cooking and at Thai buffets, per Claude.md's allowance for international dishes Thais actually cook. Salt omitted from nutrition_basis (no Thai FCD record; genuinely ~0 macros).",
-    "id": "th_084"
+    "id": "th_084",
+    "category": "savory"
   },
   {
     "name_th": "หน่อไม้ฝรั่งผัดกุ้ง",
@@ -3682,7 +3766,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from asparagus (STD:617), shrimp (STD:1042), N2, K34, N60, N136",
     "recipe_source_url": "http://simplethaifood.com/thai-recipes/stir-fry/asparagus-with-shrimp-noh-mai-farang-pad-gung/",
     "notes": "Coverage dish for asparagus (previously unused despite having real Thai FCD data).",
-    "id": "th_085"
+    "id": "th_085",
+    "category": "savory"
   },
   {
     "name_th": "น้ำเต้าผัดไข่",
@@ -3734,7 +3819,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from bottle gourd (STD:455), egg (STD:1274), N2, K34, N136, N71",
     "recipe_source_url": "https://vnifood.com/recipe/stir-fried-bottle-gourd-with-egg/",
     "notes": "Coverage dish for bottle_gourd (previously unused despite having real Thai FCD data).",
-    "id": "th_086"
+    "id": "th_086",
+    "category": "savory"
   },
   {
     "name_th": "ถั่วลันเตาผัดกุนเชียง",
@@ -3783,7 +3869,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from green peas, raw pods (STD:452), fried pork sausage (STD:1011), N2, K34, N136, N60",
     "recipe_source_url": "https://www.pholfoodmafia.com/recipe/stir-fried-peas-with-chinese-sausages-%E0%B8%96%E0%B8%B1%E0%B9%88%E0%B8%A7%E0%B8%A5%E0%B8%B1%E0%B8%99%E0%B9%80%E0%B8%95%E0%B8%B2%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B8%81%E0%B8%B8%E0%B8%99%E0%B9%80/",
     "notes": "Coverage dish for green_peas (previously unused despite having real Thai FCD data). NOTE -- ingredient substitution: the source recipe uses Chinese sausage (กุนเชียง), which the dictionary has no dedicated entry for. Priced here against the dictionary's generic sausage entry (ไส้กรอก, STD:1011, fried pork sausage) as the nearest available match -- Chinese sausage is sweeter and denser than a Western-style pork sausage, so the macros here are an approximation, not an exact match to the named dish. Not tagged clean regardless, since sausage is processed meat either way.",
-    "id": "th_087"
+    "id": "th_087",
+    "category": "savory"
   },
   {
     "name_th": "แกงปลาดุกใบยี่หร่า",
@@ -3830,7 +3917,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from fish (STD:1084), clove basil leaves (STD:468), red curry paste (STD:296), coconut milk (STD:1348), N71",
     "recipe_source_url": "https://www.pholfoodmafia.com/recipe/catfish-curry-with-clove-basil-and-lotus-stem-%E0%B9%81%E0%B8%81%E0%B8%87%E0%B8%9B%E0%B8%A5%E0%B8%B2%E0%B8%94%E0%B8%B8%E0%B8%81%E0%B9%83%E0%B8%9A%E0%B8%A2%E0%B8%B5%E0%B9%88%E0%B8%AB%E0%B8%A3%E0%B9%88/",
     "notes": "Coverage dish for clove_basil (previously unused despite having real Thai FCD data). Fish priced against the dictionary's generic fish record (snakehead, STD:1084), not a catfish-specific one, since the dictionary has no separate catfish entry -- 'fish' is the intended generic key here, same species-approximation already used in th_080. Lotus stem, part of the traditional dish, is not in the dictionary and is omitted.",
-    "id": "th_088"
+    "id": "th_088",
+    "category": "savory"
   },
   {
     "name_th": "ผักโขมผัดเต้าหู้กระเทียม",
@@ -3877,7 +3965,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from amaranth (STD:489), tofu (STD:373), N2, K34, N136",
     "recipe_source_url": "https://www.abowlofsugar.com/post/thai-style-stir-fried-amaranth-with-tofu-and-garlic",
     "notes": "Coverage dish for amaranth (previously unused as its own ingredient -- the same Thai FCD record, STD:489, had only ever been borrowed for the dictionary's separate 'spinach' key in an earlier recipe, never cited under 'amaranth' itself). Fully vegan: soy sauce only, no fish/oyster sauce, no coconut milk.",
-    "id": "th_089"
+    "id": "th_089",
+    "category": "savory"
   },
   {
     "name_th": "เงาะลอยแก้ว",
@@ -3913,7 +4002,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from rambutan (STD:707), sugar (STD:1391)",
     "recipe_source_url": "https://www.youtube.com/watch?v=yMs6uPBm0ik",
     "notes": "Coverage dish for rambutan (previously unused despite having real Thai FCD data). Salt (traditional, a pinch) omitted from nutrition_basis: no Thai FCD salt record, and table salt is genuinely ~0 kcal/protein/fat/carb.",
-    "id": "th_090"
+    "id": "th_090",
+    "category": "dessert"
   },
   {
     "name_th": "มะขามคลุก",
@@ -3952,7 +4042,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from sweet tamarind (STD:750), bird's eye chili (STD:545), sugar (STD:1391)",
     "recipe_source_url": "https://foodof.com/Spicy%20and%20Sweet%20Tamarind%20-%20Cookery%20of%20Thailand",
     "notes": "Coverage dish for tamarind (previously unused -- the dictionary's tamarind_paste entry is a different product, the concentrated cooking paste, not the fresh sweet fruit). Salt (traditional) omitted from nutrition_basis: no Thai FCD record, genuinely ~0 macros.",
-    "id": "th_091"
+    "id": "th_091",
+    "category": "dessert"
   },
   {
     "name_th": "กล้วยเชื่อม",
@@ -3988,7 +4079,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from ripe banana (STD:696), sugar (STD:1391)",
     "recipe_source_url": "https://www.thaitable.com/thai/recipe/bananas-in-syrup",
     "notes": "Distinct from th_049 (กล้วยบวชชี) -- plain sugar syrup, no coconut milk, giving the database a banana dessert without coconut milk's fat/clean-tag implications.",
-    "id": "th_092"
+    "id": "th_092",
+    "category": "dessert"
   },
   {
     "name_th": "ถั่วตัด",
@@ -4024,7 +4116,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from roasted peanuts (STD:345), sugar (STD:1391)",
     "recipe_source_url": "https://whattocooktoday.com/easy-sesame-peanut-brittle.html",
     "notes": "Coverage-variety dish. Sesame seeds, part of some versions, are not in the dictionary and are omitted -- this is the plain peanuts-and-sugar variant, which is also a recognized traditional form (Fah Sung Thong).",
-    "id": "th_093"
+    "id": "th_093",
+    "category": "dessert"
   },
   {
     "name_th": "เม็ดมะม่วงหิมพานต์อบกะทิ",
@@ -4063,7 +4156,8 @@
     "nutrition_source": "Thai FCD (INMU), computed from raw cashew nut (STD:363), coconut milk (STD:1348), sugar (STD:1391)",
     "recipe_source_url": "https://www.pholfoodmafia.com/recipe/coconut-flavoured-cashew-nut-%E0%B9%80%E0%B8%A1%E0%B9%87%E0%B8%94%E0%B8%A1%E0%B8%B0%E0%B8%A1%E0%B9%88%E0%B8%A7%E0%B8%87%E0%B8%AB%E0%B8%B4%E0%B8%A1%E0%B8%9E%E0%B8%B2%E0%B8%99%E0%B8%95%E0%B9%8C/",
     "notes": "Coverage-variety dish. Egg white, part of the source recipe's coating, is not priced separately here -- simplified to the three ingredients that carry the flavor and macros the dictionary already tracks.",
-    "id": "th_094"
+    "id": "th_094",
+    "category": "dessert"
   },
   {
     "name_th": "สังขยาฟักทอง",
@@ -4095,7 +4189,8 @@
     "nutrition_source": "Thai FCD (INMU), food code T279 (สังขยาฟักทอง)",
     "recipe_source_url": "https://rachelcooksthai.com/pumpkin-custard/",
     "notes": "Whole-dish direct lookup -- egg custard steamed inside a hollowed kabocha pumpkin. Excluded for vegan and vegetarian only via egg/coconut milk's dairy-adjacent status is not applicable here (coconut milk is plant-based); excluded_for vegan is driven by egg.",
-    "id": "th_095"
+    "id": "th_095",
+    "category": "dessert"
   },
   {
     "name_th": "ทองหยอด",
@@ -4106,9 +4201,10 @@
     "seasonings": [
       "sugar"
     ],
-    "health_tags": [],
+    "health_tags": [
+      "vegetarian"
+    ],
     "excluded_for": [
-      "vegetarian",
       "vegan"
     ],
     "serving_g": 50,
@@ -4124,7 +4220,8 @@
     "nutrition_source": "Thai FCD (INMU), food code T141 (ทองหยอด)",
     "recipe_source_url": "https://en.wikipedia.org/wiki/Thong_yot",
     "notes": "Whole-dish direct lookup. One of the nine auspicious Thai desserts (introduced to the Ayutthaya court by Maria Guyomar de Pinha); egg yolk dropped into hot sugar syrup. Excluded for vegetarian and vegan: it is egg, essentially.",
-    "id": "th_096"
+    "id": "th_096",
+    "category": "dessert"
   },
   {
     "name_th": "กุ้งผัดฟักแม้ว",
@@ -4176,7 +4273,8 @@
     "nutrition_source": "Thai FCD (INMU) except chayote: USDA FoodData Central, \"Chayote, fruit, raw,\" 1 Apr. 2019 (FDC 170402) -- see data/external_nutrition.json",
     "recipe_source_url": "https://rackoflam.com/shrimp-and-chayote-stir-fry/",
     "notes": "Coverage dish for chayote. Thai FCD's only chayote record (STD:586, young leaves/shoots) has all four macros null -- not analysed -- confirmed by direct lookup and a broader re-search this session, so the fruit itself is sourced externally. USDA's carbohydrate-by-difference (4.51g/100g) includes fiber (1.70g); stored here on Thai FCD's available-carbohydrate basis (2.81g) so it can be summed with the Thai FCD-sourced ingredients in this same recipe without overstating carbs -- same correction as th_040's broccoli.",
-    "id": "th_097"
+    "id": "th_097",
+    "category": "savory"
   },
   {
     "name_th": "สปาเกตตีผัดขี้เมา",
@@ -4225,7 +4323,8 @@
     "nutrition_source": "Thai FCD (INMU) except spaghetti: USDA FoodData Central, \"Pasta, cooked, unenriched, without added salt,\" 1 Apr. 2019 (FDC 168928) -- see data/external_nutrition.json",
     "recipe_source_url": "https://hungryinthailand.com/spaghetti-kee-mao-recipe/",
     "notes": "Coverage dish for spaghetti. Thai FCD has zero pasta/spaghetti entries under any spelling searched, confirmed this session and in the original 84-recipe rebuild. USDA's carb-by-difference (30.86g/100g) includes fiber (1.80g); stored on the available-carbohydrate basis (29.06g), same correction as chayote/broccoli above. holy_basil is a main ingredient (essential to the dish's identity) but has no standalone Thai FCD record -- excluded from nutrition_basis rather than approximated, same disclosed gap as th_056/057.",
-    "id": "th_098"
+    "id": "th_098",
+    "category": "savory"
   },
   {
     "name_th": "ผัดถั่วแปบ",
@@ -4273,6 +4372,1827 @@
     "nutrition_source": "Thai FCD (INMU) except hyacinth_bean: USDA FoodData Central, \"Hyacinth-beans, immature seeds, raw,\" 1 Apr. 2019 (FDC 169234) -- see data/external_nutrition.json",
     "recipe_source_url": "https://food52.com/recipes/34054-hyacinth-beans-stir-fry",
     "notes": "Coverage dish for hyacinth_bean, the last of the 5 originally-flagged gaps. Thai FCD has zero entries. The official Indian Food Composition Tables (IFCT 2017, ICMR-NIN) were checked directly via the ifct2017/ifct2017 GitHub mirror and have only dried mature-seed 'Field bean' varieties (B007/B008/B009), the same wrong food form as USDA's own mature-seed record (FDC 175210, not used). This USDA 'immature seeds, raw' record is the fresh-pod match the dictionary entry (category: vegetable) actually represents; its 46 kcal/100g independently cross-checks against unrelated secondary sources quoting the same figure. Seasoned the same way as the other bean stir-fries in this database (winged_bean, green_bean, yardlong_bean) for consistency.",
-    "id": "th_099"
+    "id": "th_099",
+    "category": "savory"
+  },
+  {
+    "name_th": "ขนมหม้อแกงเผือก",
+    "main_ingredients": [
+      "taro_root",
+      "egg"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 260,
+    "cook_time_min": 40,
+    "nutrition": {
+      "kcal": 390.0,
+      "protein": 11.3,
+      "fat": 13.6,
+      "carb": 54.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "taro_root": 120,
+      "egg": 55,
+      "coconut_milk": 60,
+      "sugar": 25
+    },
+    "basis_refs": {
+      "taro_root": "STD:1922",
+      "egg": "STD:1274",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from taro (STD:1922), egg (STD:1274), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://www.pholfoodmafia.com/recipe/thai-taro-custard-%E0%B8%82%E0%B8%99%E0%B8%A1%E0%B8%AB%E0%B8%A1%E0%B9%89%E0%B8%AD%E0%B9%81%E0%B8%81%E0%B8%87%E0%B9%80%E0%B8%9C%E0%B8%B7%E0%B8%AD%E0%B8%81/",
+    "notes": "Baked custard, distinct from the existing แกงบวดเผือก (simmered in syrup). Taro priced from Thai FCD's steamed record (STD:1922) -- no raw-taro record exists, same substitution already used for th_053.",
+    "id": "th_100",
+    "category": "dessert"
+  },
+  {
+    "name_th": "แกงบวดฟักทอง",
+    "main_ingredients": [
+      "pumpkin"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 230,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 246.0,
+      "protein": 2.9,
+      "fat": 9.4,
+      "carb": 35.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "pumpkin": 150,
+      "coconut_milk": 60,
+      "sugar": 20
+    },
+    "basis_refs": {
+      "pumpkin": "STD:561",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from pumpkin (STD:561), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://rachelcooksthai.com/pumpkin-in-coconut-milk/",
+    "notes": "Distinct from th_053 (taro) and th_095 (pumpkin egg custard) -- pumpkin chunks poached directly in sweet coconut milk, no egg, no baking.",
+    "id": "th_101",
+    "category": "dessert"
+  },
+  {
+    "name_th": "แกงบวดมันเทศ",
+    "main_ingredients": [
+      "sweet_potato"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 230,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 349.0,
+      "protein": 2.5,
+      "fat": 9.0,
+      "carb": 61.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "sweet_potato": 150,
+      "coconut_milk": 60,
+      "sugar": 20
+    },
+    "basis_refs": {
+      "sweet_potato": "STD:1926",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from steamed sweet potato (STD:1926), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://steemit.com/food/@tangmo/thai-delicious-dessert-sweet-potato-in-coconut-milk",
+    "notes": "Same gang buad family as pumpkin/taro versions, sweet potato instead -- a genuinely separately-named dish in Thai dessert cataloguing, not a relabel.",
+    "id": "th_102",
+    "category": "dessert"
+  },
+  {
+    "name_th": "กล้วยปิ้ง",
+    "main_ingredients": [
+      "banana"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar",
+      "butter"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 220,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 389.0,
+      "protein": 2.0,
+      "fat": 14.5,
+      "carb": 60.8
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "banana": 150,
+      "coconut_milk": 40,
+      "sugar": 20,
+      "butter": 10
+    },
+    "basis_refs": {
+      "banana": "STD:696",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391",
+      "butter": "STD:1384"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from ripe banana (STD:696), coconut milk (STD:1348), sugar, butter (STD:1384)",
+    "recipe_source_url": "https://hungryinthailand.com/grilled-bananas/",
+    "notes": "Grilled, not simmered -- distinct texture/method from th_092 (กล้วยเชื่อม, candied in syrup) and th_049 (กล้วยบวชชี, poached in coconut milk).",
+    "id": "th_103",
+    "category": "dessert"
+  },
+  {
+    "name_th": "เผือกทอด",
+    "main_ingredients": [
+      "taro_root"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "vegetable_oil",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 180,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 358.0,
+      "protein": 3.8,
+      "fat": 15.2,
+      "carb": 49.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "taro_root": 150,
+      "vegetable_oil": 15,
+      "sugar": 15
+    },
+    "basis_refs": {
+      "taro_root": "STD:1922",
+      "vegetable_oil": "STD:1368",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from taro (STD:1922), vegetable oil (STD:1368), sugar (STD:1391)",
+    "recipe_source_url": "https://www.cookingwithnart.com/fried-sugared-taro/",
+    "notes": "Deep-fried then tossed in caramelized sugar -- a snack, not the baked custard above.",
+    "id": "th_104",
+    "category": "dessert"
+  },
+  {
+    "name_th": "มันทอด",
+    "main_ingredients": [
+      "sweet_potato"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "vegetable_oil",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 185,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 395.0,
+      "protein": 1.5,
+      "fat": 15.2,
+      "carb": 60.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "sweet_potato": 150,
+      "vegetable_oil": 15,
+      "sugar": 20
+    },
+    "basis_refs": {
+      "sweet_potato": "STD:1926",
+      "vegetable_oil": "STD:1368",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from steamed sweet potato (STD:1926), vegetable oil (STD:1368), sugar (STD:1391)",
+    "recipe_source_url": "https://www.pholfoodmafia.com/recipe/fried-sweet-potato-with-sweet-and-sour-sauce-%E0%B8%A1%E0%B8%B1%E0%B8%99%E0%B8%97%E0%B8%AD%E0%B8%94%E0%B8%AA%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%AA/",
+    "notes": "The candied/syrup-glazed style specifically -- fried sweet potato pieces coated in hot syrup until crisp-shelled, distinct from the pumpkin/taro chip snacks below.",
+    "id": "th_105",
+    "category": "dessert"
+  },
+  {
+    "name_th": "สับปะรดจิ้มพริกเกลือ",
+    "main_ingredients": [
+      "pineapple",
+      "chili"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 163,
+    "cook_time_min": 5,
+    "nutrition": {
+      "kcal": 117.0,
+      "protein": 0.9,
+      "fat": 0.1,
+      "carb": 26.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "pineapple": 150,
+      "chili": 3,
+      "sugar": 10
+    },
+    "basis_refs": {
+      "pineapple": "STD:814",
+      "chili": "STD:545",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from pineapple (STD:814), bird's eye chili (STD:545), sugar (STD:1391)",
+    "recipe_source_url": "https://beinspired.au/recipes/fresh-fruit-with-spicy-thai-salt/",
+    "notes": "Prik-kab-klua (chili-salt) fruit dip, the same treatment already applied to tamarind (th_091) -- salt itself omitted from nutrition_basis (no Thai FCD record; genuinely ~0 macros).",
+    "id": "th_106",
+    "category": "dessert"
+  },
+  {
+    "name_th": "มะม่วงน้ำปลาหวาน",
+    "main_ingredients": [
+      "mango"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "fish_sauce",
+      "sugar",
+      "shrimp_paste"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 193,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 201.0,
+      "protein": 3.1,
+      "fat": 0.4,
+      "carb": 43.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "mango": 150,
+      "fish_sauce": 15,
+      "sugar": 20,
+      "shrimp_paste": 8
+    },
+    "basis_refs": {
+      "mango": "STD:759",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391",
+      "shrimp_paste": "STD:254"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from unripe green mango (STD:759), fish sauce (STD:291), sugar (STD:1391), shrimp paste (STD:254)",
+    "recipe_source_url": "https://hot-thai-kitchen.com/nampla-waan/",
+    "notes": "A sweet-salty fruit dip, not a plain dessert -- the mango is tart/unripe (STD:759, a different record from the ripe mango STD:765 used in th_050/th_091/th_094 below), so its own macros are meaningfully different (lower sugar, more starch). Dried shrimp, part of the traditional dip, is not in the dictionary and is omitted.",
+    "id": "th_107",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ฝอยทอง",
+    "main_ingredients": [
+      "egg"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 95,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 228.0,
+      "protein": 7.5,
+      "fat": 4.6,
+      "carb": 39.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "egg": 55,
+      "sugar": 40
+    },
+    "basis_refs": {
+      "egg": "STD:1274",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from egg (STD:1274), sugar (STD:1391)",
+    "recipe_source_url": "https://lionbrand.com.au/recipes/recipe-foi-thong/",
+    "notes": "\"Golden threads\" -- the sibling dessert to th_096 (ทองหยอด), same Ayutthaya-era Portuguese origin (Maria Guyomar de Pinha), egg yolk drizzled into syrup rather than dropped. Yolk-only traditionally; priced here as whole egg for simplicity, consistent with how th_096 is priced.",
+    "id": "th_108",
+    "category": "dessert"
+  },
+  {
+    "name_th": "สังขยาข้าวโพด",
+    "main_ingredients": [
+      "corn",
+      "egg"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 235,
+    "cook_time_min": 35,
+    "nutrition": {
+      "kcal": 350.0,
+      "protein": 11.7,
+      "fat": 14.9,
+      "carb": 42.4
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "corn": 100,
+      "egg": 55,
+      "coconut_milk": 60,
+      "sugar": 20
+    },
+    "basis_refs": {
+      "corn": "STD:143",
+      "egg": "STD:1274",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from sweet corn kernels (STD:143), egg (STD:1274), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://food52.com/recipes/28405-thai-sweet-corn-pudding",
+    "notes": "Steamed corn custard, same family as th_095 (pumpkin) but a distinct named dish, corn instead of pumpkin.",
+    "id": "th_109",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ทุเรียนกวน",
+    "main_ingredients": [
+      "durian"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 230,
+    "cook_time_min": 60,
+    "nutrition": {
+      "kcal": 396.0,
+      "protein": 4.8,
+      "fat": 6.7,
+      "carb": 76.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "durian": 200,
+      "sugar": 30
+    },
+    "basis_refs": {
+      "durian": "STD:736",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from Monthong durian (STD:736), sugar (STD:1391)",
+    "recipe_source_url": "https://praneesthaikitchen.com/2013/07/17/durian-paste-candy-recipe-%E0%B8%97%E0%B8%B8%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%99%E0%B8%81%E0%B8%A7%E0%B8%99-thurian-guan/",
+    "notes": "Long-simmered durian-and-sugar paste/leather, distinct preparation from th_051 (durian sticky rice) -- no rice, no coconut milk, cooked down to a spreadable candy.",
+    "id": "th_110",
+    "category": "dessert"
+  },
+  {
+    "name_th": "มะม่วงกวน",
+    "main_ingredients": [
+      "mango"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 225,
+    "cook_time_min": 45,
+    "nutrition": {
+      "kcal": 242.0,
+      "protein": 1.5,
+      "fat": 0.5,
+      "carb": 57.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "mango": 200,
+      "sugar": 25
+    },
+    "basis_refs": {
+      "mango": "STD:765",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from ripe mango (STD:765), sugar (STD:1391)",
+    "recipe_source_url": "https://en.wikipedia.org/wiki/Mamuang_kuan",
+    "notes": "Ripe mango cooked down into a fruit-leather candy, same family as ทุเรียนกวน above.",
+    "id": "th_111",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ขนุนทอด",
+    "main_ingredients": [
+      "jackfruit"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "keto",
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 165,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 188.0,
+      "protein": 2.7,
+      "fat": 15.9,
+      "carb": 3.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "jackfruit": 150,
+      "vegetable_oil": 15
+    },
+    "basis_refs": {
+      "jackfruit": "STD:416",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from young jackfruit (STD:416), vegetable oil (STD:1368)",
+    "recipe_source_url": "https://www.thaicookbook.tv/thai-food-ingredients/fruits-and-nuts/jackfruit-thai-khanun/",
+    "notes": "Thinly-sliced jackfruit, deep-fried into chips. Priced against the same young/unripe jackfruit record already used for th_048's savory curry (STD:416) -- Thai FCD has no separate ripe-jackfruit-flesh record.",
+    "id": "th_112",
+    "category": "dessert"
+  },
+  {
+    "name_th": "กล้วยฉาบ",
+    "main_ingredients": [
+      "banana"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "vegetable_oil",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 185,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 415.0,
+      "protein": 1.3,
+      "fat": 20.2,
+      "carb": 55.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "banana": 150,
+      "vegetable_oil": 20,
+      "sugar": 15
+    },
+    "basis_refs": {
+      "banana": "STD:696",
+      "vegetable_oil": "STD:1368",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from ripe banana (STD:696), vegetable oil (STD:1368), sugar (STD:1391)",
+    "recipe_source_url": "https://hungryinthailand.com/fried-banana-chips/",
+    "notes": "Deep-fried banana chips, sugar-glazed variant. One of three parallel real, independently sold Thai chip snacks in this batch (banana/taro/sweet-potato ฉาบ).",
+    "id": "th_113",
+    "category": "dessert"
+  },
+  {
+    "name_th": "เผือกฉาบ",
+    "main_ingredients": [
+      "taro_root"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "vegetable_oil",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 185,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 403.0,
+      "protein": 3.8,
+      "fat": 20.2,
+      "carb": 49.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "taro_root": 150,
+      "vegetable_oil": 20,
+      "sugar": 15
+    },
+    "basis_refs": {
+      "taro_root": "STD:1922",
+      "vegetable_oil": "STD:1368",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from taro (STD:1922), vegetable oil (STD:1368), sugar (STD:1391)",
+    "recipe_source_url": "https://krua.co/recipe/crispy-taro",
+    "notes": "Taro chip snack, sugar-glazed -- distinct product from เผือกทอด above (thicker cut, chip-style vs. fritter-style).",
+    "id": "th_114",
+    "category": "dessert"
+  },
+  {
+    "name_th": "มันฉาบ",
+    "main_ingredients": [
+      "sweet_potato"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "vegetable_oil",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 185,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 421.0,
+      "protein": 1.5,
+      "fat": 20.2,
+      "carb": 55.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "sweet_potato": 150,
+      "vegetable_oil": 20,
+      "sugar": 15
+    },
+    "basis_refs": {
+      "sweet_potato": "STD:1926",
+      "vegetable_oil": "STD:1368",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from steamed sweet potato (STD:1926), vegetable oil (STD:1368), sugar (STD:1391)",
+    "recipe_source_url": "https://www.thaisnackonline.com/post/thai-sweet-potato-chips-sweet-crunchy-snack-diy-snacks",
+    "notes": "Third of the three parallel ฉาบ chip snacks (banana/taro/sweet-potato).",
+    "id": "th_115",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ลิ้นจี่ลอยแก้ว",
+    "main_ingredients": [
+      "lychee"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 180,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 210.0,
+      "protein": 1.7,
+      "fat": 0.3,
+      "carb": 49.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "lychee": 150,
+      "sugar": 30
+    },
+    "basis_refs": {
+      "lychee": "STD:785",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from lychee (STD:785), sugar (STD:1391)",
+    "recipe_source_url": "https://www.youtube.com/watch?v=03XMYe2narI",
+    "notes": "Same loi kaeo (floating-in-iced-syrup) treatment as th_090 (rambutan), applied to lychee.",
+    "id": "th_116",
+    "category": "dessert"
+  },
+  {
+    "name_th": "สับปะรดลอยแก้ว",
+    "main_ingredients": [
+      "pineapple"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 180,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 192.0,
+      "protein": 1.0,
+      "fat": 0.1,
+      "carb": 45.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "pineapple": 150,
+      "sugar": 30
+    },
+    "basis_refs": {
+      "pineapple": "STD:814",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from pineapple (STD:814), sugar (STD:1391)",
+    "recipe_source_url": "https://shesimmers.com/2011/07/pineapple-in-iced-jasmine-infused-syrup-%E0%B8%AA%E0%B8%B1%E0%B8%9A%E0%B8%9B%E0%B8%B0%E0%B8%A3%E0%B8%94%E0%B8%A5%E0%B8%AD%E0%B8%A2%E0%B9%81%E0%B8%81%E0%B9%89%E0%B8%A7.html",
+    "notes": "Same loi kaeo family, pineapple. Jasmine/clove flavoring in the syrup is aromatic only and not itself a tracked ingredient, same convention as pandan leaf elsewhere.",
+    "id": "th_117",
+    "category": "dessert"
+  },
+  {
+    "name_th": "สังขยามะพร้าวอ่อน",
+    "main_ingredients": [
+      "coconut",
+      "egg"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 215,
+    "cook_time_min": 40,
+    "nutrition": {
+      "kcal": 257.0,
+      "protein": 9.4,
+      "fat": 13.5,
+      "carb": 23.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "coconut": 100,
+      "egg": 55,
+      "coconut_milk": 40,
+      "sugar": 20
+    },
+    "basis_refs": {
+      "coconut": "STD:754",
+      "egg": "STD:1274",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from young coconut flesh (STD:754), egg (STD:1274), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://www.youtube.com/shorts/1S6CZWt__5Y",
+    "notes": "Young coconut meat folded into egg custard, steamed inside the coconut shell -- distinct from th_095 (pumpkin) and สังขยาข้าวโพด (corn) above. \"coconut\" here is priced against the young/unripe flesh record (STD:754), not the generic mature-coconut record used elsewhere in the dictionary for the same key -- disclosed since the dictionary does not distinguish young vs. mature coconut as separate ingredients.",
+    "id": "th_118",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ข้าวเหนียวมูน",
+    "main_ingredients": [
+      "glutinous_rice"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 230,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 514.0,
+      "protein": 7.9,
+      "fat": 9.2,
+      "carb": 99.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "glutinous_rice": 150,
+      "coconut_milk": 60,
+      "sugar": 20
+    },
+    "basis_refs": {
+      "glutinous_rice": "STD:149",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from steamed glutinous rice (STD:149), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://www.thaitable.com/thai/recipe/coconut-milk-sticky-rice",
+    "notes": "The plain base dessert -- no fruit topping -- distinct from th_050/th_051 (mango/durian sticky rice), which use this same base.",
+    "id": "th_119",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ข้าวต้มมัด",
+    "main_ingredients": [
+      "glutinous_rice",
+      "banana"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 180,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 338.0,
+      "protein": 5.5,
+      "fat": 6.2,
+      "carb": 64.6
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "glutinous_rice": 100,
+      "banana": 40,
+      "coconut_milk": 40
+    },
+    "basis_refs": {
+      "glutinous_rice": "STD:149",
+      "banana": "STD:696",
+      "coconut_milk": "STD:1348"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from steamed glutinous rice (STD:149), ripe banana (STD:696), coconut milk (STD:1348)",
+    "recipe_source_url": "https://leelalicious.com/khao-tom-mad-thai-sticky-rice-dessert-with-recipe/",
+    "notes": "Sticky rice cooked in coconut milk with banana, wrapped and steamed in banana leaf. Salt (traditional) omitted from nutrition_basis, same convention as elsewhere -- no Thai FCD record, genuinely ~0 macros.",
+    "id": "th_120",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ข้าวเหนียวแดง",
+    "main_ingredients": [
+      "glutinous_rice"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sugar",
+      "coconut_milk"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 220,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 547.0,
+      "protein": 7.6,
+      "fat": 4.8,
+      "carb": 118.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "glutinous_rice": 150,
+      "sugar": 40,
+      "coconut_milk": 30
+    },
+    "basis_refs": {
+      "glutinous_rice": "STD:149",
+      "sugar": "STD:1391",
+      "coconut_milk": "STD:1348"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from steamed glutinous rice (STD:149), sugar (STD:1391), coconut milk (STD:1348)",
+    "recipe_source_url": "https://lionbrand.com.au/recipes/red-sticky-rice-recipe-kow-nhiew-dang/",
+    "notes": "\"Red\" sticky rice -- actually dark brown from palm sugar caramelisation, not literally red. Distinct dessert from the plain (ข้าวเหนียวมูน) and fruit-topped versions.",
+    "id": "th_121",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ข้าวเหนียวเปียกข้าวโพด",
+    "main_ingredients": [
+      "glutinous_rice",
+      "corn"
+    ],
+    "optional_ingredients": [
+      "coconut"
+    ],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 250,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 459.0,
+      "protein": 7.8,
+      "fat": 9.1,
+      "carb": 86.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "glutinous_rice": 100,
+      "corn": 60,
+      "coconut_milk": 50,
+      "sugar": 20,
+      "coconut": 20
+    },
+    "basis_refs": {
+      "glutinous_rice": "STD:149",
+      "corn": "STD:143",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391",
+      "coconut": "STD:754"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from steamed glutinous rice (STD:149), sweet corn (STD:143), coconut milk (STD:1348), sugar (STD:1391), coconut flesh (STD:754)",
+    "recipe_source_url": "https://www.cookingwithnart.com/thai-sticky-rice-pudding-with-corn/",
+    "notes": "A wetter, porridge-style sticky rice with corn, distinct from the dry-grain glutinous rice desserts above. Coconut priced against the dictionary's only coconut-flesh record (young coconut, STD:754) -- Thai FCD has no separate mature/shredded coconut record.",
+    "id": "th_122",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ข้าวเหนียวสังขยา",
+    "main_ingredients": [
+      "glutinous_rice",
+      "egg"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 265,
+    "cook_time_min": 35,
+    "nutrition": {
+      "kcal": 558.0,
+      "protein": 14.8,
+      "fat": 10.8,
+      "carb": 100.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "glutinous_rice": 150,
+      "egg": 55,
+      "coconut_milk": 40,
+      "sugar": 20
+    },
+    "basis_refs": {
+      "glutinous_rice": "STD:149",
+      "egg": "STD:1274",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from steamed glutinous rice (STD:149), egg (STD:1274), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://hungryinthailand.com/sweet-sticky-rice-with-thai-custard/",
+    "notes": "Sticky rice served with a steamed egg-coconut custard instead of fresh fruit -- a genuinely different dessert from the mango/durian versions, not a relabel.",
+    "id": "th_123",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ข้าวเหนียวปิ้ง",
+    "main_ingredients": [
+      "glutinous_rice",
+      "banana"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 170,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 324.0,
+      "protein": 5.3,
+      "fat": 4.7,
+      "carb": 64.4
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "glutinous_rice": 100,
+      "banana": 40,
+      "coconut_milk": 30
+    },
+    "basis_refs": {
+      "glutinous_rice": "STD:149",
+      "banana": "STD:696",
+      "coconut_milk": "STD:1348"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from steamed glutinous rice (STD:149), ripe banana (STD:696), coconut milk (STD:1348)",
+    "recipe_source_url": "https://www.cuisine.co.nz/recipe/grilled-sticky-rice-in-banana-leaf/",
+    "notes": "Grilled, not boiled/steamed like ข้าวต้มมัด -- a genuinely different cooking method (the banana leaf is charred over open flame), same core ingredients.",
+    "id": "th_124",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ลอดช่อง",
+    "main_ingredients": [
+      "rice_flour"
+    ],
+    "optional_ingredients": [
+      "pandan_leaf"
+    ],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 170,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 450.0,
+      "protein": 5.5,
+      "fat": 12.2,
+      "carb": 79.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "rice_flour": 60,
+      "coconut_milk": 80,
+      "sugar": 30
+    },
+    "basis_refs": {
+      "rice_flour": "STD:187",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from rice flour (STD:187), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://hungryinthailand.com/lod-chong-dessert-cendol-recipe/",
+    "notes": "Pandan-green rice-flour noodles in sweet coconut milk. pandan_leaf is a flavoring/coloring agent, not eaten, so it contributes no macros -- same convention as th_082's wrapper.",
+    "id": "th_125",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ขนมชั้น",
+    "main_ingredients": [
+      "rice_flour",
+      "tapioca_starch"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 260,
+    "cook_time_min": 60,
+    "nutrition": {
+      "kcal": 736.0,
+      "protein": 5.4,
+      "fat": 15.2,
+      "carb": 143.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "rice_flour": 50,
+      "tapioca_starch": 50,
+      "coconut_milk": 100,
+      "sugar": 60
+    },
+    "basis_refs": {
+      "rice_flour": "STD:187",
+      "tapioca_starch": "STD:1934",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from rice flour (STD:187), tapioca starch (STD:1934), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://rachelcooksthai.com/layered-dessert/",
+    "notes": "9-layer steamed coconut pudding, a mix of rice flour and tapioca starch for its characteristic chewy texture.",
+    "id": "th_126",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ตะโก้เผือก",
+    "main_ingredients": [
+      "taro_root",
+      "rice_flour"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 230,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 466.0,
+      "protein": 6.1,
+      "fat": 12.1,
+      "carb": 82.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "taro_root": 80,
+      "rice_flour": 40,
+      "coconut_milk": 80,
+      "sugar": 30
+    },
+    "basis_refs": {
+      "taro_root": "STD:1922",
+      "rice_flour": "STD:187",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from taro (STD:1922), rice flour (STD:187), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://hot-thai-kitchen.com/upside-down-tako/",
+    "notes": "Simplified to the two-layer taro-and-coconut pudding common to most home recipes; some versions add a black sticky rice base layer, omitted here to avoid double-counting glutinous rice under a different preparation.",
+    "id": "th_127",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ตะโก้ข้าวโพด",
+    "main_ingredients": [
+      "corn",
+      "rice_flour"
+    ],
+    "optional_ingredients": [
+      "water_chestnut"
+    ],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 250,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 485.0,
+      "protein": 7.1,
+      "fat": 13.2,
+      "carb": 84.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "corn": 80,
+      "rice_flour": 40,
+      "coconut_milk": 80,
+      "sugar": 30,
+      "water_chestnut": 20
+    },
+    "basis_refs": {
+      "corn": "STD:143",
+      "rice_flour": "STD:187",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391",
+      "water_chestnut": "STD:816"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from sweet corn (STD:143), rice flour (STD:187), coconut milk (STD:1348), sugar (STD:1391), water chestnut (STD:816)",
+    "recipe_source_url": "https://api2.krua.co/recipe/thai-pudding-with-corn/",
+    "notes": "Corn version of tako, sometimes includes diced water chestnut for crunch (listed optional here since not every recipe includes it).",
+    "id": "th_128",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ขนมเปียกปูน",
+    "main_ingredients": [
+      "rice_flour"
+    ],
+    "optional_ingredients": [
+      "pandan_leaf"
+    ],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 160,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 459.0,
+      "protein": 5.2,
+      "fat": 9.2,
+      "carb": 88.4
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "rice_flour": 60,
+      "coconut_milk": 60,
+      "sugar": 40
+    },
+    "basis_refs": {
+      "rice_flour": "STD:187",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from rice flour (STD:187), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://lionbrand.com.au/recipes/pandan-pudding-in-coconut-cream-recipe-kanom-piak-poon-baitoye/",
+    "notes": "Simplified to its core (rice flour, coconut milk, sugar, pandan for color/flavor only, zero-contribution). Some traditional recipes also add mung bean starch and limewater; omitted here since the dictionary tracks mung_bean as whole/split beans, not a separate starch product, and the core dessert holds without them.",
+    "id": "th_129",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ขนมกล้วย",
+    "main_ingredients": [
+      "banana",
+      "rice_flour"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 225,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 468.0,
+      "protein": 5.1,
+      "fat": 7.8,
+      "carb": 92.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "banana": 100,
+      "rice_flour": 50,
+      "coconut_milk": 50,
+      "sugar": 25
+    },
+    "basis_refs": {
+      "banana": "STD:696",
+      "rice_flour": "STD:187",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from ripe banana (STD:696), rice flour (STD:187), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://www.pholfoodmafia.com/recipe/steamed-banana-cake-%E0%B8%82%E0%B8%99%E0%B8%A1%E0%B8%81%E0%B8%A5%E0%B9%89%E0%B8%A7%E0%B8%A2/",
+    "notes": "Steamed banana rice-flour cake, texturally distinct from the sticky-rice-based banana desserts (ข้าวต้มมัด/ข้าวเหนียวปิ้ง) above -- this one is a true cake batter.",
+    "id": "th_130",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ขนมถ้วยฟู",
+    "main_ingredients": [
+      "rice_flour"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 140,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 429.0,
+      "protein": 4.9,
+      "fat": 6.3,
+      "carb": 88.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "rice_flour": 60,
+      "coconut_milk": 40,
+      "sugar": 40
+    },
+    "basis_refs": {
+      "rice_flour": "STD:187",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from rice flour (STD:187), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://www.sidechef.com/recipes/170768/thai_steamed_cupcakes_khanom_pui_fai/",
+    "notes": "Steamed until the batter blooms/cracks open at the top (\"fu\" = fluffy) -- a leavened rice-flour cupcake, distinct from the dense custards/puddings above.",
+    "id": "th_131",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ขนมใส่ไส้",
+    "main_ingredients": [
+      "rice_flour",
+      "coconut"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 170,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 399.0,
+      "protein": 5.4,
+      "fat": 6.3,
+      "carb": 79.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "rice_flour": 60,
+      "coconut": 50,
+      "coconut_milk": 30,
+      "sugar": 30
+    },
+    "basis_refs": {
+      "rice_flour": "STD:187",
+      "coconut": "STD:754",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from rice flour (STD:187), coconut flesh (STD:754), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://missflour.com/en/food_recipes/test-%E0%B9%82%E0%B8%84%E0%B8%81%E0%B8%B0%E0%B8%97-eng/",
+    "notes": "A steamed rice-flour cup filled with a shredded-coconut-and-palm-sugar filling. Coconut priced against the young-coconut record (STD:754), same disclosed approximation as elsewhere in this batch.",
+    "id": "th_132",
+    "category": "dessert"
+  },
+  {
+    "name_th": "กล้วยแขก",
+    "main_ingredients": [
+      "banana",
+      "rice_flour"
+    ],
+    "optional_ingredients": [
+      "coconut"
+    ],
+    "seasonings": [
+      "vegetable_oil",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian",
+      "vegan"
+    ],
+    "excluded_for": [],
+    "serving_g": 190,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 507.0,
+      "protein": 3.7,
+      "fat": 20.8,
+      "carb": 74.6
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "banana": 100,
+      "rice_flour": 40,
+      "vegetable_oil": 20,
+      "sugar": 15,
+      "coconut": 15
+    },
+    "basis_refs": {
+      "banana": "STD:696",
+      "rice_flour": "STD:187",
+      "vegetable_oil": "STD:1368",
+      "sugar": "STD:1391",
+      "coconut": "STD:754"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from ripe banana (STD:696), rice flour (STD:187), vegetable oil (STD:1368), sugar (STD:1391), coconut flesh (STD:754)",
+    "recipe_source_url": "https://hungryinthailand.com/thai-fried-bananas-recipe/",
+    "notes": "The Malay-influenced fried-banana-fritter style (deep-fried in a coconut-rice-flour batter), distinct from th_092 (กล้วยเชื่อม, candied) and กล้วยฉาบ (chips) elsewhere in the database -- \"khaek\" in the name references the South Asian origin of the technique.",
+    "id": "th_133",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ทองม้วน",
+    "main_ingredients": [
+      "rice_flour",
+      "egg"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 140,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 356.0,
+      "protein": 8.0,
+      "fat": 8.7,
+      "carb": 61.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "rice_flour": 50,
+      "egg": 30,
+      "coconut_milk": 40,
+      "sugar": 20
+    },
+    "basis_refs": {
+      "rice_flour": "STD:187",
+      "egg": "STD:1274",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from rice flour (STD:187), egg (STD:1274), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://www.templeofthai.com/food/asian_snacks/golden-crispy-coconut-rolls",
+    "notes": "Thin wafer batter cooked on a griddle, rolled into cigar shapes while hot. Black sesame, part of some versions, is not in the dictionary and is omitted.",
+    "id": "th_134",
+    "category": "dessert"
+  },
+  {
+    "name_th": "บัวลอยไข่หวาน",
+    "main_ingredients": [
+      "glutinous_rice_flour",
+      "egg"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 225,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 480.0,
+      "protein": 11.4,
+      "fat": 19.4,
+      "carb": 64.8
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "glutinous_rice_flour": 40,
+      "egg": 55,
+      "coconut_milk": 100,
+      "sugar": 30
+    },
+    "basis_refs": {
+      "glutinous_rice_flour": "STD:190",
+      "egg": "STD:1274",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from glutinous rice flour (STD:190), egg (STD:1274), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://www.walkinghungry.com/2025/01/bua-loi-khai-waan-sweet-thai-dessert.html",
+    "notes": "Glutinous rice flour balls poached in sweet coconut milk with a whole poached egg -- the \"kai wan\" (sweet egg) variant, distinct from the ginger-soup version (bua loi nam khing).",
+    "id": "th_135",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ขนมเทียน",
+    "main_ingredients": [
+      "glutinous_rice_flour",
+      "mung_bean"
+    ],
+    "optional_ingredients": [
+      "rice_flour"
+    ],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 280,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 853.0,
+      "protein": 22.4,
+      "fat": 10.0,
+      "carb": 160.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "glutinous_rice_flour": 100,
+      "rice_flour": 20,
+      "mung_bean": 60,
+      "coconut_milk": 60,
+      "sugar": 40
+    },
+    "basis_refs": {
+      "glutinous_rice_flour": "STD:190",
+      "rice_flour": "STD:187",
+      "mung_bean": "STD:319",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from glutinous rice flour (STD:190), rice flour (STD:187), dried mung bean (STD:319), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "http://en.foodtravel.tv/recfoodShow_Detail.aspx?viewId=2438",
+    "notes": "Steamed dumpling wrapped in banana leaf, sweet mung bean filling (the savoury version, kanom tian sai kem, exists too but is out of scope for a dessert batch).",
+    "id": "th_136",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ขนมต้ม",
+    "main_ingredients": [
+      "glutinous_rice_flour",
+      "coconut"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sugar"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 180,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 468.0,
+      "protein": 6.0,
+      "fat": 1.8,
+      "carb": 106.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "glutinous_rice_flour": 80,
+      "coconut": 60,
+      "sugar": 40
+    },
+    "basis_refs": {
+      "glutinous_rice_flour": "STD:190",
+      "coconut": "STD:754",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from glutinous rice flour (STD:190), coconut flesh (STD:754), sugar (STD:1391)",
+    "recipe_source_url": "https://lionbrand.com.au/recipes/thai-coconut-balls-recipe-khanom-tom/",
+    "notes": "Boiled glutinous rice dumplings with caramelised shredded coconut filling, rolled in more coconut. Coconut priced against the dictionary's only coconut-flesh record (young coconut, STD:754), same disclosed approximation used throughout this batch.",
+    "id": "th_137",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ขนมจาก",
+    "main_ingredients": [
+      "glutinous_rice_flour",
+      "coconut"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sugar"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 150,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 389.0,
+      "protein": 5.1,
+      "fat": 1.5,
+      "carb": 88.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "glutinous_rice_flour": 70,
+      "coconut": 50,
+      "sugar": 30
+    },
+    "basis_refs": {
+      "glutinous_rice_flour": "STD:190",
+      "coconut": "STD:754",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from glutinous rice flour (STD:190), coconut flesh (STD:754), sugar (STD:1391)",
+    "recipe_source_url": "https://en.wikipedia.org/wiki/Khanom_chak",
+    "notes": "Grilled over charcoal wrapped in nipa palm leaf (the dish's namesake, จาก). The wrapper leaf is not eaten and contributes no macros.",
+    "id": "th_138",
+    "category": "dessert"
+  },
+  {
+    "name_th": "เม็ดขนุน",
+    "main_ingredients": [
+      "mung_bean",
+      "egg"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 200,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 559.0,
+      "protein": 22.1,
+      "fat": 8.9,
+      "carb": 87.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "mung_bean": 80,
+      "egg": 20,
+      "coconut_milk": 40,
+      "sugar": 60
+    },
+    "basis_refs": {
+      "mung_bean": "STD:319",
+      "egg": "STD:1274",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from dried mung bean (STD:319), egg (STD:1274), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://lionbrand.com.au/recipes/jackfruit-seed-dessert-recipe-khanom-med-khanoon/",
+    "notes": "One of the nine auspicious Thai desserts -- shaped like jackfruit seeds for its auspicious name (\"kanoon\" sounds like \"support\"), but contains no actual jackfruit. Egg is used sparingly as an egg-yolk dip/coating before the syrup bath, priced at a smaller weight than a whole egg accordingly.",
+    "id": "th_139",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ถั่วเขียวต้มน้ำตาล",
+    "main_ingredients": [
+      "mung_bean"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sugar"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 200,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 228.0,
+      "protein": 5.8,
+      "fat": 0.3,
+      "carb": 48.5
+    },
+    "nutrition_method": "direct",
+    "nutrition_ref": "STD:1631",
+    "nutrition_source": "Thai FCD (INMU), food code T396 (ถั่วเขียว, เมล็ด, ต้มน้ำตาล)",
+    "recipe_source_url": "https://www.pholfoodmafia.com/recipe/mung-bean-thai-custard-%E0%B8%82%E0%B8%99%E0%B8%A1%E0%B8%AB%E0%B8%A1%E0%B9%89%E0%B8%AD%E0%B9%81%E0%B8%81%E0%B8%87/",
+    "notes": "Direct whole-dish lookup -- Thai FCD has a specific record for mung beans boiled with sugar, so this is fully sourced rather than assembled from raw ingredients.",
+    "id": "th_140",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ขนมหม้อแกงถั่ว",
+    "main_ingredients": [
+      "mung_bean",
+      "egg"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 205,
+    "cook_time_min": 40,
+    "nutrition": {
+      "kcal": 459.0,
+      "protein": 22.2,
+      "fat": 14.4,
+      "carb": 52.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "mung_bean": 60,
+      "egg": 55,
+      "coconut_milk": 60,
+      "sugar": 30
+    },
+    "basis_refs": {
+      "mung_bean": "STD:319",
+      "egg": "STD:1274",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from dried mung bean (STD:319), egg (STD:1274), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://shesimmers.com/2011/01/thai-custard-khanom-mo-gaeng.html",
+    "notes": "The mung bean sibling of th_100 (taro) and th_095 (pumpkin) in the mo kaeng custard family -- steamed/baked mung bean, egg and coconut milk custard, topped with fried shallot.",
+    "id": "th_141",
+    "category": "dessert"
+  },
+  {
+    "name_th": "สาคูเปียก",
+    "main_ingredients": [
+      "tapioca_pearl"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 165,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 420.0,
+      "protein": 1.5,
+      "fat": 11.9,
+      "carb": 76.8
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "tapioca_pearl": 60,
+      "coconut_milk": 80,
+      "sugar": 25
+    },
+    "basis_refs": {
+      "tapioca_pearl": "STD:1935",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from sago flour (STD:1935), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://importfood.com/recipes/recipe/52-thai-tapioca-pearl-with-sweet-coconut-milk",
+    "notes": "Boiled tapioca pearls in sweet coconut milk. Thai FCD has no distinct dried-pearl record, only sago flour (STD:1935) -- disclosed approximation, same starch source in a different physical form, used since it's the closest available record to the dictionary's tapioca_pearl entry.",
+    "id": "th_142",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ทับทิมกรอบ",
+    "main_ingredients": [
+      "water_chestnut",
+      "tapioca_starch"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 235,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 412.0,
+      "protein": 2.7,
+      "fat": 12.0,
+      "carb": 73.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "water_chestnut": 100,
+      "tapioca_starch": 30,
+      "coconut_milk": 80,
+      "sugar": 25
+    },
+    "basis_refs": {
+      "water_chestnut": "STD:816",
+      "tapioca_starch": "STD:1934",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from water chestnut (STD:816), tapioca starch (STD:1934), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://hot-thai-kitchen.com/tub-tim-grob/",
+    "notes": "\"Red rubies\" -- water chestnut cubes coated in tapioca starch (the coating is what creates the ruby-like translucent shell once boiled), served in sweet coconut milk. Both the water chestnut and its starch coating are priced in nutrition_basis, not just the chestnut alone, since the coating is a real, weighable part of what's eaten.",
+    "id": "th_143",
+    "category": "dessert"
   }
 ]

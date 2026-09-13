@@ -245,6 +245,21 @@ def test_every_recipe_cites_where_its_ingredient_list_came_from():
         assert url.startswith("http"), f"{recipe['id']}: recipe_source_url '{url}' is not a URL"
 
 
+def test_every_recipe_has_a_valid_dessert_or_savory_category():
+    """
+    category distinguishes dessert dishes from savory ones -- added after a
+    session where the only way to answer "how many desserts are there" was
+    to hand-count recipe ID ranges from build logs, which isn't a real,
+    checkable field and would silently go stale the next time a recipe is
+    added without updating that manual tracking.
+    """
+    for recipe in load_recipes():
+        assert "category" in recipe, f"{recipe['id']} has no category"
+        assert recipe["category"] in ("dessert", "savory"), (
+            f"{recipe['id']}: category '{recipe['category']}' is not 'dessert' or 'savory'"
+        )
+
+
 def test_nutrition_method_is_declared_and_computed_recipes_show_their_working():
     """
     Every recipe says how its numbers were derived, and computed ones prove it.
@@ -324,6 +339,31 @@ def test_animal_products_exclude_vegan():
             )
 
 
+def test_no_animal_products_means_vegan_is_not_excluded():
+    """
+    The reverse direction of test_animal_products_exclude_vegan.
+
+    A dish with zero animal-derived ingredients has no reason to exclude
+    vegan, and excluding it anyway is a real bug -- it happened twice during
+    the dessert expansion (a build script's default excluded_for list was
+    copy-pasted onto fully plant-based recipes without checking each one).
+    Neither existing vegan/vegetarian test caught it: the forward tests only
+    assert "has animal ingredients -> must exclude", never "has none ->
+    must not exclude", and a bare exclusion with no matching health_tags
+    claim doesn't trip test_a_tag_is_never_both_claimed_and_excluded either.
+    This closes that gap. (Not tagging vegan when eligible is fine --
+    HEALTH_TAGS.md says most dishes claim neither tag -- only wrongly
+    excluding it is the bug this guards against.)
+    """
+    known = load_ingredients()
+    for recipe in load_recipes():
+        offenders = [k for k in all_ingredients_of(recipe) if known[k]["is_animal_product"]]
+        if not offenders:
+            assert "vegan" not in recipe["excluded_for"], (
+                f"{recipe['id']} has no animal-derived ingredients but excludes vegan anyway"
+            )
+
+
 def test_meat_and_seafood_exclude_vegetarian():
     """
     Vegetarian allows egg and dairy, so this cannot reuse is_animal_product.
@@ -346,6 +386,24 @@ def test_meat_and_seafood_exclude_vegetarian():
         if offenders:
             assert "vegetarian" in recipe["excluded_for"], (
                 f"{recipe['id']} contains {offenders} but is not excluded_for vegetarian"
+            )
+
+
+def test_no_flesh_means_vegetarian_is_not_excluded():
+    """
+    The reverse direction of test_meat_and_seafood_exclude_vegetarian --
+    same rationale as test_no_animal_products_means_vegan_is_not_excluded
+    above, applied to the vegetarian tag instead of vegan.
+    """
+    known = load_ingredients()
+    VEGETARIAN_OK_ANIMAL = {"egg", "quail_egg", "milk", "butter", "mayonnaise", "egg_noodle"}
+    flesh = {k for k, v in known.items() if v["is_animal_product"]} - VEGETARIAN_OK_ANIMAL
+
+    for recipe in load_recipes():
+        offenders = [k for k in all_ingredients_of(recipe) if k in flesh]
+        if not offenders:
+            assert "vegetarian" not in recipe["excluded_for"], (
+                f"{recipe['id']} has no meat/fish/seafood ingredients but excludes vegetarian anyway"
             )
 
 
