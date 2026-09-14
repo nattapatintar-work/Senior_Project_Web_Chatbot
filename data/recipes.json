@@ -11184,5 +11184,451 @@
     "recipe_source_url": "https://www.wongnai.com/recipes/ugc/d493e5b781ba48e4b5b7653aacea347e",
     "notes": "Third coverage dish for broccoli, genuinely distinct from th_178 (shrimp version): minced pork instead of shrimp.",
     "category": "savory"
+  },
+  {
+    "id": "th_253",
+    "name_th": "ลาบหมู",
+    "main_ingredients": [
+      "minced_meat",
+      "mint_leaves"
+    ],
+    "optional_ingredients": [
+      "shallot",
+      "coriander",
+      "lime",
+      "chili"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "roasted_rice_powder",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 156,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 280.0,
+      "protein": 19.4,
+      "fat": 17.1,
+      "carb": 10.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "minced_meat": 100,
+      "mint_leaves": 5,
+      "shallot": 15,
+      "coriander": 5,
+      "lime": 10,
+      "chili": 3,
+      "fish_sauce": 10,
+      "roasted_rice_powder": 5,
+      "sugar": 3
+    },
+    "basis_refs": {
+      "minced_meat": "STD:970",
+      "mint_leaves": "STD:250",
+      "shallot": "STD:251",
+      "coriander": "STD:498",
+      "lime": "EXT:usda-lime-juice-raw",
+      "chili": "STD:545",
+      "fish_sauce": "STD:291",
+      "roasted_rice_powder": "STD:187",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU) for most ingredients; roasted_rice_powder approximated with STD:187 (rice flour, white, raw) -- Thai FCD has no ข้าวคั่ว (toasted ground rice) record at all, and dry-roasting whole rice grains before grinding does not meaningfully change macronutrient content, only aroma; used in a small amount (5g) here. lime is fresh-squeezed juice, sourced via EXT:usda-lime-juice-raw per the th_242 correction (not STD:306 pickled lime).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/9c3364f49e154ba5b05cd1d979a20330",
+    "notes": "Coverage dish for mint_leaves (previously only 1 use, th_025). Classic Northeastern/Central Thai minced-meat salad -- pork version, distinct from th_025's beef version (ลาบเนื้อ, which uses a direct Thai FCD dish-level record, STD:1508, that is beef-specific and doesn't apply here).",
+    "category": "savory"
+  },
+  {
+    "id": "th_254",
+    "name_th": "ยำถั่วพูกุ้งสด",
+    "main_ingredients": [
+      "winged_bean",
+      "shrimp"
+    ],
+    "optional_ingredients": [
+      "minced_meat",
+      "egg",
+      "shallot",
+      "peanuts",
+      "lime",
+      "chili"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "coconut_milk",
+      "sugar",
+      "chili_paste",
+      "vegetable_oil"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 294,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 384.0,
+      "protein": 26.7,
+      "fat": 22.9,
+      "carb": 15.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "winged_bean": 100,
+      "shrimp": 50,
+      "minced_meat": 50,
+      "egg": 25,
+      "shallot": 8,
+      "peanuts": 5,
+      "lime": 8,
+      "chili": 2,
+      "fish_sauce": 10,
+      "coconut_milk": 15,
+      "sugar": 8,
+      "chili_paste": 8,
+      "vegetable_oil": 5
+    },
+    "basis_refs": {
+      "winged_bean": "STD:451",
+      "shrimp": "STD:1042",
+      "minced_meat": "STD:970",
+      "egg": "STD:1274",
+      "shallot": "STD:251",
+      "peanuts": "STD:345",
+      "lime": "EXT:usda-lime-juice-raw",
+      "chili": "STD:545",
+      "fish_sauce": "STD:291",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391",
+      "chili_paste": "STD:302",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU) for all ingredients except lime (EXT:usda-lime-juice-raw, per the th_242 correction).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/winged-bean-with-minced-pork-and-shrimp",
+    "notes": "Coverage dish for winged_bean (3rd use). A tossed coconut-cream salad (ยำ), distinct in format from th_062/th_180 which are both pounded (ตำ) -- different technique, not just a different protein.",
+    "category": "savory"
+  },
+  {
+    "id": "th_255",
+    "name_th": "ยำมะระจีนกุ้งสด",
+    "main_ingredients": [
+      "bitter_gourd",
+      "shrimp"
+    ],
+    "optional_ingredients": [
+      "minced_meat",
+      "shallot",
+      "chili"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 245,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 226.0,
+      "protein": 21.5,
+      "fat": 8.0,
+      "carb": 14.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "bitter_gourd": 100,
+      "shrimp": 60,
+      "minced_meat": 40,
+      "shallot": 20,
+      "chili": 5,
+      "fish_sauce": 10,
+      "sugar": 10
+    },
+    "basis_refs": {
+      "bitter_gourd": "STD:585",
+      "shrimp": "STD:1042",
+      "minced_meat": "STD:970",
+      "shallot": "STD:251",
+      "chili": "STD:545",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from bitter gourd, Thai variety (STD:585), shrimp (STD:1042), minced pork (STD:970), shallot (STD:251), bird chili (STD:545), fish sauce (STD:291), sugar (STD:1391).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/spicy-bitter-gourd-with-fresh-shrimp",
+    "notes": "Coverage dish for bitter_gourd (3rd use). A salad (ยำ), distinct from th_041 (egg stir-fry) and th_158 (clear soup). Source's coarse salt (used only to rub the bitter gourd before rinsing it off, not eaten) excluded from nutrition_basis, same convention as other prep-only salt uses.",
+    "category": "savory"
+  },
+  {
+    "id": "th_256",
+    "name_th": "ผัดพริกแกงถั่วฝักยาวหมู",
+    "main_ingredients": [
+      "yardlong_bean",
+      "pork"
+    ],
+    "optional_ingredients": [
+      "kaffir_lime_leaf"
+    ],
+    "seasonings": [
+      "red_curry_paste",
+      "fish_sauce",
+      "sugar",
+      "vegetable_oil"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 210,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 320.0,
+      "protein": 23.6,
+      "fat": 19.5,
+      "carb": 10.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "yardlong_bean": 70,
+      "pork": 100,
+      "kaffir_lime_leaf": 1,
+      "red_curry_paste": 10,
+      "fish_sauce": 7,
+      "sugar": 7,
+      "vegetable_oil": 15
+    },
+    "basis_refs": {
+      "yardlong_bean": "STD:449",
+      "pork": "STD:958",
+      "kaffir_lime_leaf": "STD:246",
+      "red_curry_paste": "STD:296",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from yardlong bean (STD:449), pork lean (STD:958), kaffir lime leaf (STD:246), red curry paste (STD:296), fish sauce (STD:291), sugar (STD:1391), vegetable oil (STD:1368).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/6b530ae1e2ed4aeca31db03c194c6e91",
+    "notes": "Coverage dish for yardlong_bean (3rd use). A curry-paste stir-fry, distinct from th_023 (plain stir-fry with chicken, no curry paste) and th_067 (a som-tam-style pounded salad).",
+    "category": "savory"
+  },
+  {
+    "id": "th_257",
+    "name_th": "สาคูไส้หมู",
+    "main_ingredients": [
+      "tapioca_pearl",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "white_radish",
+      "peanuts",
+      "garlic",
+      "coriander"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "sugar",
+      "salt"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 148,
+    "cook_time_min": 40,
+    "nutrition": {
+      "kcal": 372.0,
+      "protein": 11.0,
+      "fat": 13.3,
+      "carb": 51.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "tapioca_pearl": 50,
+      "minced_meat": 35,
+      "white_radish": 30,
+      "peanuts": 15,
+      "garlic": 3,
+      "coriander": 2,
+      "soy_sauce": 8,
+      "sugar": 5
+    },
+    "basis_refs": {
+      "tapioca_pearl": "STD:1935",
+      "minced_meat": "STD:970",
+      "white_radish": "STD:624",
+      "peanuts": "STD:345",
+      "garlic": "STD:226",
+      "coriander": "STD:498",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU) for all computed ingredients. salt has no Thai FCD record (pure NaCl, no macronutrients) and contributes nothing to any of the 4 tracked fields, so it's listed in seasonings for the recommender but left out of nutrition_basis, matching how salt is handled everywhere else in this database. white_radish approximates the source's ไชโป้วหวาน (sweet preserved daikon) -- same base vegetable, no separate preserved-radish key in the dictionary; disclosed as an approximation.",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/54314b4631114e2e9c4154a131fa8952",
+    "notes": "Coverage dish for tapioca_pearl (3rd use). A savory steamed dumpling, distinct from th_142/th_216 which are both sweet coconut-milk soups.",
+    "category": "savory"
+  },
+  {
+    "id": "th_258",
+    "name_th": "ผักกาดขาวผัดน้ำปลากุ้งแห้งกรอบ",
+    "main_ingredients": [
+      "napa_cabbage",
+      "dried_shrimp"
+    ],
+    "optional_ingredients": [
+      "garlic"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 176,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 51.0,
+      "protein": 7.1,
+      "fat": 0.4,
+      "carb": 3.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "napa_cabbage": 150,
+      "dried_shrimp": 10,
+      "garlic": 3,
+      "fish_sauce": 11,
+      "sugar": 2
+    },
+    "basis_refs": {
+      "napa_cabbage": "STD:478",
+      "dried_shrimp": "STD:1036",
+      "garlic": "STD:226",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from napa cabbage (STD:478), dried shrimp, shelled (STD:1036), garlic (STD:226), fish sauce (STD:291), sugar (STD:1391).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/0dca476f45ff44fab728eb81722cb5c6",
+    "notes": "Coverage dish for napa_cabbage (3rd use) and dried_shrimp (3rd use) together. Crispy-dried-shrimp version, distinct from th_069/th_177 (neither uses dried shrimp).",
+    "category": "savory"
+  },
+  {
+    "id": "th_259",
+    "name_th": "ต้มจืดบวบหมูสับ",
+    "main_ingredients": [
+      "sponge_gourd",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "coriander",
+      "garlic"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "oyster_sauce",
+      "pepper"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegetarian",
+      "vegan"
+    ],
+    "serving_g": 231,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 182.0,
+      "protein": 12.9,
+      "fat": 10.4,
+      "carb": 8.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "sponge_gourd": 150,
+      "minced_meat": 60,
+      "coriander": 2,
+      "garlic": 3,
+      "soy_sauce": 10,
+      "oyster_sauce": 5,
+      "pepper": 1
+    },
+    "basis_refs": {
+      "sponge_gourd": "STD:464",
+      "minced_meat": "STD:970",
+      "coriander": "STD:498",
+      "garlic": "STD:226",
+      "soy_sauce": "STD:273",
+      "oyster_sauce": "STD:270",
+      "pepper": "STD:243"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from angled sponge gourd (STD:464), minced pork (STD:970), coriander (STD:498), garlic (STD:226), soy sauce (STD:273), oyster sauce (STD:270), black pepper (STD:243).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/ffb53be3862548f7b23de51d23638d5e",
+    "notes": "Coverage dish for sponge_gourd -- dropped to 1 use after th_073 (a duplicate of th_159) was deleted this session. A clear soup (ต้มจืด), distinct in format from th_159 (egg stir-fry).",
+    "category": "savory"
+  },
+  {
+    "id": "th_260",
+    "name_th": "ข้าวเหนียวขนุน",
+    "main_ingredients": [
+      "jackfruit",
+      "glutinous_rice"
+    ],
+    "optional_ingredients": [
+      "peanuts"
+    ],
+    "seasonings": [
+      "coconut_milk",
+      "sugar",
+      "salt"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 170,
+    "cook_time_min": 40,
+    "nutrition": {
+      "kcal": 333.0,
+      "protein": 5.6,
+      "fat": 7.3,
+      "carb": 60.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "jackfruit": 60,
+      "glutinous_rice": 60,
+      "peanuts": 5,
+      "coconut_milk": 30,
+      "sugar": 15
+    },
+    "basis_refs": {
+      "jackfruit": "STD:701",
+      "glutinous_rice": "STD:149",
+      "peanuts": "STD:345",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU) for all computed ingredients. salt (8g in the source, for the coconut-milk topping) has no Thai FCD record and contributes no macronutrients, so it's listed in seasonings but left out of nutrition_basis, same as elsewhere in this database.",
+    "recipe_source_url": "https://cookpad.com/th/recipes/3494493-%E0%B8%82%E0%B8%B2%E0%B8%A7%E0%B9%80%E0%B8%AB%E0%B8%99%E0%B8%A2%E0%B8%A7%E0%B8%82%E0%B8%99%E0%B8%99",
+    "notes": "Coverage dish for jackfruit (4th use). Sticky-rice-and-fruit format, distinct from th_112 (fried), th_229 (in syrup), and th_048 (savory curry).",
+    "category": "dessert"
   }
 ]
