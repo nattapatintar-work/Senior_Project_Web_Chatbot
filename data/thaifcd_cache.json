@@ -2579,6 +2579,21 @@
       "protein": "PROTCNT"
     }
   },
+  "STD:844": {
+    "carb": 30.65,
+    "fat": 0.15,
+    "food_code": "E172",
+    "kcal": 131.0,
+    "name_en": "Mango, unripe, candied",
+    "name_th": "มะมวง, แชอิ่ม",
+    "protein": 0.55,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
   "STD:895": {
     "carb": 1.4,
     "fat": 12.4,

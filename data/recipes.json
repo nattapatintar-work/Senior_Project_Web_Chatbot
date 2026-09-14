@@ -10857,5 +10857,480 @@
     "recipe_source_url": "https://www.wongnai.com/recipes/ugc/476052d72bd34b5689c7ff38c2c33636",
     "notes": "Third coverage dish for ginger, used in near-equal quantity to the pork (matching the source's own ratio), not a background aromatic amount.",
     "category": "savory"
+  },
+  {
+    "id": "th_242",
+    "name_th": "น้ำมะนาว",
+    "main_ingredients": [
+      "lime"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sugar",
+      "salt"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 90,
+    "cook_time_min": 5,
+    "nutrition": {
+      "kcal": 133.0,
+      "protein": 0.5,
+      "fat": 0.1,
+      "carb": 31.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "lime": 60,
+      "sugar": 30
+    },
+    "basis_refs": {
+      "lime": "EXT:usda-lime-juice-raw",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "USDA FoodData Central (lime juice, no Thai FCD record -- see data/NUTRITION_SOURCE.md and data/external_nutrition.json), Thai FCD (INMU) for sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/162ec430d9e14d4dad4a6d4e1945bda8",
+    "notes": "Third coverage dish for lime -- a drink, distinct from th_172/th_173 (both savory). Thai FCD has no raw/fresh lime record at all; uses the USDA fallback (EXT:usda-lime-juice-raw, fresh lime juice) rather than STD:306 (pickled lime), which is a genuine mismatch for this dish -- th_173 is the pickled-lime dish that record actually belongs to.",
+    "category": "dessert"
+  },
+  {
+    "id": "th_243",
+    "name_th": "มันสำปะหลังปิ้งราดน้ำกะทิ",
+    "main_ingredients": [
+      "cassava"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar",
+      "salt",
+      "butter"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 230,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 414.0,
+      "protein": 2.2,
+      "fat": 11.9,
+      "carb": 74.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "cassava": 150,
+      "coconut_milk": 50,
+      "sugar": 25,
+      "butter": 5
+    },
+    "basis_refs": {
+      "cassava": "STD:1929",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391",
+      "butter": "STD:1384"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from cassava (STD:1929), coconut milk (STD:1348), sugar (STD:1391), butter (STD:1384)",
+    "recipe_source_url": "https://www.pim.in.th/thai-dessert/1022-roasted-tapioca-with-coconut-syrup",
+    "notes": "Third coverage dish for cassava, genuinely distinct from th_052 (candied/simmered in syrup) and th_208 (steamed, rolled in fresh coconut): grilled over charcoal, then dipped repeatedly in a sweet-salty coconut-milk glaze.",
+    "category": "dessert"
+  },
+  {
+    "id": "th_244",
+    "name_th": "มะม่วงแช่อิ่ม",
+    "main_ingredients": [
+      "mango"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sugar",
+      "salt"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 170,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 274.0,
+      "protein": 1.0,
+      "fat": 0.2,
+      "carb": 65.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "mango": 150,
+      "sugar": 20
+    },
+    "basis_refs": {
+      "mango": "STD:844",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from candied unripe mango (STD:844 -- a direct match to this exact finished product), sugar (STD:1391)",
+    "recipe_source_url": "https://aroifin.com/recipes/thai-preserved-mango-recipe/",
+    "notes": "Fifth coverage dish for mango, genuinely distinct from all existing uses (sticky rice, fish-sauce salad, boiled paste, cheesecake): unripe mango brined and preserved into a sweet-tart-crisp snack. STD:844 is a direct record for this specific product, not an approximation.",
+    "category": "dessert"
+  },
+  {
+    "id": "th_245",
+    "name_th": "น้ำลิ้นจี่",
+    "main_ingredients": [
+      "lychee"
+    ],
+    "optional_ingredients": [
+      "pandan_leaf"
+    ],
+    "seasonings": [
+      "sugar"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 230,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 242.0,
+      "protein": 2.2,
+      "fat": 0.3,
+      "carb": 56.4
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "lychee": 200,
+      "sugar": 30
+    },
+    "basis_refs": {
+      "lychee": "STD:785",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from lychee (STD:785), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/311a358ffce14a7eb1808acaa70602c1",
+    "notes": "Third coverage dish for lychee, genuinely distinct from th_054/th_116 (whole fruit desserts): lychee flesh simmered into a sweet drink/syrup, served chilled. STD:785 (whole fresh lychee) used rather than the commercial 25%-juice record (STD:1419), since this recipe simmers real fruit, not a diluted drink product.",
+    "category": "dessert"
+  },
+  {
+    "id": "th_246",
+    "name_th": "ข้าวโพดปิ้งกะทิ",
+    "main_ingredients": [
+      "corn"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar",
+      "salt",
+      "butter"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 230,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 351.0,
+      "protein": 6.2,
+      "fat": 15.1,
+      "carb": 47.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "corn": 150,
+      "coconut_milk": 60,
+      "sugar": 15,
+      "butter": 5
+    },
+    "basis_refs": {
+      "corn": "STD:143",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391",
+      "butter": "STD:1384"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from sweet corn (STD:143), coconut milk (STD:1348), sugar (STD:1391), butter (STD:1384)",
+    "recipe_source_url": "https://cooking.kapook.com/view104251.html",
+    "notes": "Fifth coverage dish for corn, genuinely distinct from existing custard/ตะโก้/sticky-rice-pudding forms: whole corn on the cob grilled over charcoal, repeatedly basted with a sweet-salty coconut-butter glaze -- confirmed via direct fetch of the source that this basting is the dish's defining, named element (ข้าวโพดปิ้งกะทิ/ข้าวโพดปิ้งน้ำกะทิ), not plain grilled corn with coconut milk added incidentally.",
+    "category": "dessert"
+  },
+  {
+    "id": "th_247",
+    "name_th": "ส้มตำปูปลาร้า",
+    "main_ingredients": [
+      "green_papaya",
+      "crab"
+    ],
+    "optional_ingredients": [
+      "tomato",
+      "yardlong_bean",
+      "garlic",
+      "chili"
+    ],
+    "seasonings": [
+      "pla_ra",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 240,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 138.0,
+      "protein": 13.3,
+      "fat": 2.3,
+      "carb": 14.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "green_papaya": 150,
+      "crab": 60,
+      "pla_ra": 20,
+      "sugar": 10
+    },
+    "basis_refs": {
+      "green_papaya": "STD:590",
+      "crab": "STD:1157",
+      "pla_ra": "STD:1228",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from green papaya (STD:590), crab (STD:1157), fermented fish (STD:1228), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/622d404019d8430cbeded6383858bf61",
+    "notes": "Third coverage dish for green_papaya, genuinely distinct from th_179 (dried-shrimp version, no crab or fermented fish): the pla_ra-and-crab variant, a different classic som tum style. Also a coverage dish for crab and a second reuse of pla_ra (added in Batch 1, now genuinely reused across multiple dishes as intended).",
+    "category": "savory"
+  },
+  {
+    "id": "th_248",
+    "name_th": "ไข่นกกระทาลูกเขย",
+    "main_ingredients": [
+      "quail_egg"
+    ],
+    "optional_ingredients": [
+      "shallot",
+      "chili"
+    ],
+    "seasonings": [
+      "tamarind_paste",
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 170,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 371.0,
+      "protein": 17.2,
+      "fat": 13.9,
+      "carb": 43.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "quail_egg": 120,
+      "sugar": 30,
+      "tamarind_paste": 20
+    },
+    "basis_refs": {
+      "quail_egg": "STD:1281",
+      "sugar": "STD:1391",
+      "tamarind_paste": "STD:750"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from quail egg (STD:1281), sugar (STD:1391), tamarind (STD:750, standing in for tamarind paste/pulp, same approximation already used for th_163/th_231)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/fried-quail-eggs-with-tamarind-sauce",
+    "notes": "Second coverage dish for quail_egg, genuinely distinct from th_164 (five-spice stewed egg, savory-salty): deep-fried then coated in a sweet-tart tamarind glaze, the 'son-in-law egg' (ไข่ลูกเขย) treatment. Also reuses tamarind (STD:750/tamarind_paste's stand-in, per existing precedent) for a 4th coverage.",
+    "category": "savory"
+  },
+  {
+    "id": "th_249",
+    "name_th": "ปลาหมึกย่างน้ำจิ้มซีฟู้ด",
+    "main_ingredients": [
+      "squid"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "chili",
+      "coriander"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 195,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 177.0,
+      "protein": 27.8,
+      "fat": 0.7,
+      "carb": 14.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "squid": 180,
+      "sugar": 15
+    },
+    "basis_refs": {
+      "squid": "STD:1146",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from squid (STD:1146), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/grilled-squid-with-spicy-sauce",
+    "notes": "Fourth coverage dish for squid, genuinely distinct from existing garlic-pepper stir-fry and tom-yum preparations: whole squid grilled over charcoal, served with a blended lime-garlic-chili seafood dipping sauce. Lime juice in the dipping sauce is a garnish/dip quantity, excluded from nutrition_basis per the lime convention used throughout this database.",
+    "category": "savory"
+  },
+  {
+    "id": "th_250",
+    "name_th": "ยำกะหล่ำกรอบ",
+    "main_ingredients": [
+      "cabbage"
+    ],
+    "optional_ingredients": [
+      "cashew",
+      "chili"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 160,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 75.0,
+      "protein": 2.3,
+      "fat": 0.3,
+      "carb": 14.4
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "cabbage": 150,
+      "sugar": 10
+    },
+    "basis_refs": {
+      "cabbage": "STD:409",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from cabbage (STD:409), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/e4b7d8cfb1264b7eab6d1e17003c15e1",
+    "notes": "Fourth coverage dish for cabbage, genuinely distinct from existing soup-based uses: a raw, dressed salad with toasted coconut and cashews. Toasted coconut is a garnish quantity, excluded from nutrition_basis; cashew listed optional since it's a textural topping, not a defining bulk ingredient here.",
+    "category": "savory"
+  },
+  {
+    "id": "th_251",
+    "name_th": "มะเขือยาวผัดหมูสับ",
+    "main_ingredients": [
+      "eggplant",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "chili",
+      "holy_basil"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "soy_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 260,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 268.0,
+      "protein": 19.9,
+      "fat": 17.1,
+      "carb": 6.4
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "eggplant": 150,
+      "minced_meat": 100,
+      "oyster_sauce": 10
+    },
+    "basis_refs": {
+      "eggplant": "STD:576",
+      "minced_meat": "STD:970",
+      "oyster_sauce": "STD:270"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from eggplant (STD:576), minced pork (STD:970), oyster sauce (STD:270)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/7b25f3a4df53488fba8d136c521cf182",
+    "notes": "Fourth coverage dish for eggplant.",
+    "category": "savory"
+  },
+  {
+    "id": "th_252",
+    "name_th": "ผัดบล็อคโคลี่หมูสับ",
+    "main_ingredients": [
+      "broccoli",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "carrot"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "soy_sauce"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 260,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 286.0,
+      "protein": 22.7,
+      "fat": 17.6,
+      "carb": 8.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "broccoli": 150,
+      "minced_meat": 100,
+      "oyster_sauce": 10
+    },
+    "basis_refs": {
+      "broccoli": "EXT:usda-broccoli-raw",
+      "minced_meat": "STD:970",
+      "oyster_sauce": "STD:270"
+    },
+    "nutrition_source": "USDA FoodData Central (broccoli, no Thai FCD record -- see data/NUTRITION_SOURCE.md), Thai FCD (INMU) for minced pork (STD:970) and oyster sauce (STD:270)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/d493e5b781ba48e4b5b7653aacea347e",
+    "notes": "Third coverage dish for broccoli, genuinely distinct from th_178 (shrimp version): minced pork instead of shrimp.",
+    "category": "savory"
   }
 ]
