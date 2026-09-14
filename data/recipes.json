@@ -12254,5 +12254,346 @@
     "recipe_source_url": "https://www.wongnai.com/recipes/ugc/25e3ab63761c4a1a9dfa23f6c26f5d93",
     "notes": "Coverage dish for water_spinach. Deep-fried battered water spinach tossed in a sweet-spicy-sour dressing with mixed seafood and pork. The source also calls for a hot dog, which has no dictionary entry and is dropped as a non-essential, non-traditional add-in; vegetable_oil (20g) counted for deep-fry oil absorption.",
     "category": "savory"
+  },
+  {
+    "name_th": "บวดเงาะ",
+    "main_ingredients": [
+      "rambutan"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar",
+      "salt"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 270,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 341.0,
+      "protein": 3.2,
+      "fat": 15.0,
+      "carb": 48.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "rambutan": 150,
+      "coconut_milk": 100,
+      "sugar": 20
+    },
+    "basis_refs": {
+      "rambutan": "STD:707",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from rambutan (STD:707), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/2a6946eb16784a62aef211890957c4a7",
+    "notes": "Coverage dish for rambutan (3rd use). Warm coconut-milk 'buad' style -- rambutan simmered directly in sweetened, salted coconut milk -- distinct from th_090/th_202 (both ลอยแก้ว: rambutan in cold clear sugar syrup, no coconut milk at all). The coconut milk is exactly what makes this บวด rather than ลอยแก้ว. Salt (traditional pinch) omitted from nutrition_basis, same precedent as th_090: no Thai FCD salt record and table salt is genuinely ~0 kcal/protein/fat/carb.",
+    "id": "th_273",
+    "category": "dessert"
+  },
+  {
+    "name_th": "บัวลอยทุเรียน",
+    "main_ingredients": [
+      "durian",
+      "glutinous_rice_flour"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 295,
+    "cook_time_min": 45,
+    "nutrition": {
+      "kcal": 570.0,
+      "protein": 7.3,
+      "fat": 24.9,
+      "carb": 78.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "durian": 80,
+      "glutinous_rice_flour": 50,
+      "coconut_milk": 150,
+      "sugar": 15
+    },
+    "basis_refs": {
+      "durian": "STD:736",
+      "glutinous_rice_flour": "STD:190",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from durian (STD:736), glutinous rice flour (STD:190), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/durian-bualoi",
+    "notes": "Durian-flavoured glutinous-rice-flour dumplings (both kneaded into the dough and diced as garnish, summed as one 80g durian figure) in sweet coconut-milk soup -- distinct from th_110 (long-simmered durian paste, no dough/no soup), th_228 (thin durian slices deep-fried and salted), and th_051 (whole grains of glutinous rice, not flour dumplings). 4th coverage use of durian. Source's white sugar + palm sugar are summed under the generic sugar key (precedent: th_261/th_281-style palm-sugar mapping used throughout this DB). Yellow/green food colouring (a few drops, decorative only) has no dictionary entry and is dropped as non-essential -- zero nutritional contribution either way. Source recipe is bulk-batch (syrup alone totals ~1.9kg coconut cream); quantities here are scaled down to one realistic bowl-sized serving rather than the full batch.",
+    "id": "th_274",
+    "category": "dessert"
+  },
+  {
+    "name_th": "วุ้นลิ้นจี่",
+    "main_ingredients": [
+      "lychee"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sugar"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 170,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 172.0,
+      "protein": 1.6,
+      "fat": 0.3,
+      "carb": 39.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "lychee": 150,
+      "sugar": 20
+    },
+    "basis_refs": {
+      "lychee": "STD:785",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from lychee (STD:785), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/02bc59598ae04d6fb77233ae11ba4713",
+    "notes": "Set agar jelly (ผงวุ้น dissolved, boiled with sweet syrup, poured into a mould with lychee flesh, chilled until firm) -- a genuinely different preparation from th_116 (ลอยแก้ว: lychee floating loose in a cold clear syrup, no gelling agent, never set). Same main_ingredients+seasonings set as th_116 is unavoidable at this ingredient's level of detail (both are just lychee+sugar at the dictionary's granularity), same situation already accepted for th_052/th_243 (both cassava-only) and th_090/th_202 (both rambutan-based) elsewhere in this DB -- the dishes are distinguished by technique, not by a dictionary-trackable ingredient. Jelly/agar powder (ผงวุ้น) and the branded sweetened syrup have no dictionary entries; the syrup's sugar content is represented by the generic sugar key, and the agar powder itself (a near-zero-kcal setting agent used in only a few grams per serving) is a technical processing aid omitted from nutrition_basis, same convention as th_090's salt omission. Canned lychee flesh priced against the same STD:785 fresh-lychee record th_116/th_054/th_245 already use, no dedicated canned-lychee record in Thai FCD.",
+    "id": "th_275",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ขนุนกวน",
+    "main_ingredients": [
+      "jackfruit"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 230,
+    "cook_time_min": 60,
+    "nutrition": {
+      "kcal": 303.0,
+      "protein": 3.4,
+      "fat": 5.2,
+      "carb": 58.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "jackfruit": 180,
+      "coconut_milk": 30,
+      "sugar": 20
+    },
+    "basis_refs": {
+      "jackfruit": "STD:701",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from ripe jackfruit (STD:701), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://cookpad.com/th/recipes/15065558",
+    "notes": "Overripe jackfruit split, seeded and sliced against the grain, then slow-stirred over heat with coconut milk added gradually until it reduces to a sticky, dry preservable paste -- 5th coverage use of jackfruit, distinct from th_112 (thin ripe-jackfruit slices deep-fried into chips, oil not coconut milk), th_229 (whole segments floated in cold sugar syrup, no reduction/no coconut milk), th_260 (glutinous rice base), and th_048 (savory curry, unripe jackfruit, pork). Source calls the sugar optional (\"จะใส่หรือไม่ก็ได้\"); included here since it's the norm for this dish and to keep nutrition tracked rather than assumed absent.",
+    "id": "th_276",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ขนมหม้อแกงมันเทศ",
+    "main_ingredients": [
+      "sweet_potato",
+      "egg"
+    ],
+    "optional_ingredients": [
+      "shallot"
+    ],
+    "seasonings": [
+      "coconut_milk",
+      "sugar",
+      "salt",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 305,
+    "cook_time_min": 45,
+    "nutrition": {
+      "kcal": 519.0,
+      "protein": 9.9,
+      "fat": 23.6,
+      "carb": 63.4
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "sweet_potato": 150,
+      "egg": 55,
+      "coconut_milk": 60,
+      "sugar": 20,
+      "vegetable_oil": 10,
+      "shallot": 10
+    },
+    "basis_refs": {
+      "sweet_potato": "STD:1926",
+      "egg": "STD:1274",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391",
+      "vegetable_oil": "STD:1368",
+      "shallot": "STD:251"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from steamed sweet potato (STD:1926), egg (STD:1274), coconut milk (STD:1348), sugar (STD:1391), vegetable oil (STD:1368), shallot (STD:251)",
+    "recipe_source_url": "https://cookpad.com/th/recipes/13891152",
+    "notes": "Baked egg custard (หม้อแกง): mashed sweet potato folded with coconut milk and beaten egg, baked, topped with oil-fried shallots -- distinct from th_102 (syrup-stewed sweet potato, no egg/no baking), th_105 (fried pieces glazed in syrup), and th_115 (thin fried chips). Source's white sugar + palm sugar summed under the generic sugar key. Fried-shallot topping counted as optional (a real, weighed garnish, not core to the custard body); its frying oil (4 tsp in source, scaled to 10g here) is counted as vegetable_oil.",
+    "id": "th_277",
+    "category": "dessert"
+  },
+  {
+    "name_th": "เปลือกส้มโอเชื่อม",
+    "main_ingredients": [
+      "pomelo"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sugar",
+      "salt"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 160,
+    "cook_time_min": 90,
+    "nutrition": {
+      "kcal": 274.0,
+      "protein": 1.4,
+      "fat": 0.2,
+      "carb": 65.8
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "pomelo": 100,
+      "sugar": 60
+    },
+    "basis_refs": {
+      "pomelo": "STD:812",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from pomelo (STD:812), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/pomelo-skin-candied",
+    "notes": "Candied peel, not flesh: the outer green skin is pared off, the white pith/peel layer is salted and soaked in lime water 2 hours to cut bitterness, boiled through several changes of water, then simmered in heavy sugar syrup (700g sugar per fruit) until translucent -- distinct from th_209 (pomelo segments/flesh floated in cold syrup, no peel, no candying reduction). Thai FCD has exactly one pomelo record (STD:812, 'different varieties') and no dedicated peel-only record; used here as the closest available match, disclosed rather than treated as exact -- checked data/external_nutrition.json first per the standing rule, no pomelo entry there either. This is a reasonable approximation in practice since the candying process dominates the final macros (60g added sugar against 100g peel, a ~0.6:1 ratio, well above th_052's 0.2:1 cassava-candying ratio, reflecting the source's much heavier syrup load). The preliminary salt treatment and lime-water soak are texture/bitterness-correcting steps with no real caloric contribution and are omitted from nutrition_basis, same convention as th_090's salt omission.",
+    "id": "th_278",
+    "category": "dessert"
+  },
+  {
+    "name_th": "เค้กข้าวโพดสูตรนึ่ง",
+    "main_ingredients": [
+      "corn",
+      "wheat_flour"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar",
+      "baking_powder",
+      "salt"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 174,
+    "cook_time_min": 35,
+    "nutrition": {
+      "kcal": 326.0,
+      "protein": 7.5,
+      "fat": 4.8,
+      "carb": 63.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "corn": 100,
+      "wheat_flour": 30,
+      "coconut_milk": 20,
+      "sugar": 20,
+      "baking_powder": 4
+    },
+    "basis_refs": {
+      "corn": "STD:143",
+      "wheat_flour": "STD:193",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391",
+      "baking_powder": "EXT:usda-baking-powder"
+    },
+    "nutrition_source": "Thai FCD (INMU) for sweet corn (STD:143), wheat flour (STD:193), coconut milk (STD:1348), sugar (STD:1391); baking powder from USDA FoodData Central (EXT:usda-baking-powder, no Thai FCD record) per data/external_nutrition.json -- the same disclosed record already used at th_146 and in a Batch-10 cauliflower dish.",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/58c31d645088455a8d7c51afe31426c9",
+    "notes": "Steamed cake batter (no oven) -- fresh corn kernels blended with coconut milk, sugar and water, combined with sifted flour and leaveners, rested, then steamed in moulds -- distinct from th_109 (egg-based steamed custard, no flour, no rise), th_122 (glutinous rice + corn porridge), th_128 (corn + rice flour pudding cup, different flour and no steaming-rise step), and th_246 (whole grilled corn cob basted in coconut milk, not a batter/cake at all). wheat_flour promoted to main_ingredients since it is the cake's structural flour (this is also what keeps the main_ingredients set from colliding with th_246's plain ['corn']). Baking soda (source calls for both baking soda and baking powder) is mapped onto the baking_powder dictionary key -- both are near-zero-calorie leavening agents used in gram quantities, same simplification precedent as palm-sugar-to-sugar mapping elsewhere in this DB. Lime juice (1 tsp, a leavening activator here rather than a flavour ingredient) is a trace quantity with negligible caloric contribution and is dropped from the tracked ingredient lists entirely, same treatment as trace garnishes in th_272.",
+    "id": "th_279",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ขนมมันทอด",
+    "main_ingredients": [
+      "cassava",
+      "rice_flour"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sugar",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 215,
+    "cook_time_min": 40,
+    "nutrition": {
+      "kcal": 525.0,
+      "protein": 3.3,
+      "fat": 15.5,
+      "carb": 93.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "cassava": 150,
+      "rice_flour": 30,
+      "sugar": 20,
+      "vegetable_oil": 15
+    },
+    "basis_refs": {
+      "cassava": "STD:1929",
+      "rice_flour": "STD:187",
+      "sugar": "STD:1391",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from raw cassava (STD:1929), rice flour (STD:187), sugar (STD:1391), vegetable oil (STD:1368)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/09702b3bea1541238ddb48215f90f871",
+    "notes": "Boiled cassava tossed hot in sugar, shaped into balls, coated in a rice-flour-and-slaked-lime-water batter, then deep-fried -- distinct from th_052 (candied/syrup-simmered, no frying, coconut milk sauce), th_208 (steamed with coconut, no frying), and th_243 (grilled on skewers, no coating, no frying). CORRECTION vs. the pre-approval assumption: re-fetching the source ingredient list directly shows the coating flour is แป้งข้าวจ้าว (rice flour, dictionary key rice_flour), not tapioca starch as the dish's working title implied -- verified by name, no แป้งมันสำปะหลัง anywhere in the source's ingredient list. main_ingredients set to [cassava, rice_flour] accordingly; this does NOT collide with th_105's ['sweet_potato'] set (confirmed: th_105 is มันทอดน้ำตาล, candied fried sweet potato -- same name_th 'มันทอด' as a substring, completely different main ingredient, no coating flour at all). Slaked lime water (น้ำปูนใส, a texture agent with no real caloric content) has no dictionary entry and is omitted from nutrition_basis, same convention as salt/lime-water treatments elsewhere in this batch.",
+    "id": "th_280",
+    "category": "dessert"
   }
 ]
