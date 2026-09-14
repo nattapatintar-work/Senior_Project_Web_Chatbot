@@ -138,6 +138,26 @@
     },
     "citation": "\"Cheese, cream.\" FoodData Central, 1 Apr. 2019, U.S.D.A., fdc.nal.usda.gov, FDC ID 173418."
   },
+  "EXT:usda-lime-juice-raw": {
+    "food_code": "FDC 168156",
+    "name_en": "Lime juice, raw",
+    "name_th": "น้ำมะนาว, สด",
+    "source": "USDA FoodData Central, SR Legacy",
+    "source_date": "2019-04-01",
+    "retrieved": "2026-09-14",
+    "basis": "per 100 g edible portion",
+    "kcal": 28.0,
+    "protein": 0.42,
+    "fat": 0.07,
+    "carb": 4.8,
+    "carb_derivation": {
+      "carbohydrate_by_difference": 8.4,
+      "fiber_total_dietary": 3.6,
+      "available_carbohydrate": 4.8,
+      "note": "8.4 - 3.6 = 4.8. Thai FCD has no raw/fresh lime record at all (confirmed by repeated direct search across multiple recipes) -- only STD:306, pickled lime, which is the right record for th_173's actual pickled-lime dish but a real mismatch for fresh lime juice (different product: brine-salted whole preserved fruit vs. squeezed juice, not just a different cut of the same fresh ingredient). FDC ID corroborated via a secondary nutrition aggregator (triagemethod.com, myfooddata.com) since fdc.nal.usda.gov itself returned errors when fetched directly this session; the reported macro values (28 kcal, 0.42 protein, 0.07 fat, 8.4 carb-by-difference, 3.6 fiber) matched consistently across both."
+    },
+    "citation": "\"Lime juice, raw.\" FoodData Central, 1 Apr. 2019, U.S.D.A., fdc.nal.usda.gov, FDC ID 168156."
+  },
   "EXT:usda-baking-powder": {
     "food_code": "FDC 172803",
     "name_en": "Leavening agents, baking powder, double-acting, sodium aluminum sulfate",

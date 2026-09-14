@@ -9799,10 +9799,10 @@
     "serving_g": 195,
     "cook_time_min": 10,
     "nutrition": {
-      "kcal": 78.0,
-      "protein": 7.3,
-      "fat": 4.6,
-      "carb": 1.8
+      "kcal": 103.0,
+      "protein": 8.4,
+      "fat": 4.8,
+      "carb": 5.5
     },
     "nutrition_method": "computed",
     "nutrition_basis": {
@@ -9812,14 +9812,14 @@
       "oyster_sauce": 5
     },
     "basis_refs": {
-      "chayote": "STD:586",
+      "chayote": "EXT:usda-chayote-raw",
       "egg": "STD:1274",
       "fish_sauce": "STD:291",
       "oyster_sauce": "STD:270"
     },
-    "nutrition_source": "Thai FCD (INMU), computed from chayote shoots (STD:586, closest available record -- disclosed below), egg (STD:1274), fish sauce (STD:291), oyster sauce (STD:270)",
+    "nutrition_source": "USDA FoodData Central (chayote fruit, no usable Thai FCD record -- see data/NUTRITION_SOURCE.md and data/external_nutrition.json), Thai FCD (INMU) for egg (STD:1274), fish sauce (STD:291), oyster sauce (STD:270)",
     "recipe_source_url": "https://www.wongnai.com/recipes/ugc/fe6c5ad2a8e74105822a749c70efed72",
-    "notes": "Coverage dish for chayote. Thai FCD has no record for the chayote fruit itself -- only STD:586, the young shoot tips (ยอด). Used as the closest available approximation, disclosed here; shoots run higher in vitamins/fiber than the fruit, so this likely overstates some values.",
+    "notes": "CORRECTED (found while sourcing th_242): originally used STD:586, Thai FCD chayote young-shoot record -- which has all four macros null (not analysed), so chayote silently contributed zero to this recipe's nutrition, not 'overstated' as the original notes incorrectly claimed. EXT:usda-chayote-raw (chayote fruit, already present in data/external_nutrition.json) is the correct fix and was available the whole time. Coverage dish for chayote.",
     "category": "savory"
   },
   {
@@ -9882,7 +9882,8 @@
       "shrimp_paste"
     ],
     "health_tags": [
-      "clean"
+      "clean",
+      "keto"
     ],
     "excluded_for": [
       "vegan",
@@ -9891,10 +9892,10 @@
     "serving_g": 200,
     "cook_time_min": 15,
     "nutrition": {
-      "kcal": 379.0,
-      "protein": 47.3,
-      "fat": 5.8,
-      "carb": 34.5
+      "kcal": 197.0,
+      "protein": 29.9,
+      "fat": 5.4,
+      "carb": 5.2
     },
     "nutrition_method": "computed",
     "nutrition_basis": {
@@ -9904,14 +9905,14 @@
       "shrimp_paste": 5
     },
     "basis_refs": {
-      "hyacinth_bean": "STD:333",
+      "hyacinth_bean": "EXT:usda-hyacinth-bean-immature-raw",
       "pork": "STD:958",
       "fish_sauce": "STD:291",
       "shrimp_paste": "STD:254"
     },
-    "nutrition_source": "Thai FCD (INMU), computed from hyacinth bean (STD:333, dried mature seed -- closest available record, disclosed below), pork (STD:958), fish sauce (STD:291), shrimp paste (STD:254)",
+    "nutrition_source": "USDA FoodData Central (hyacinth bean immature pod, no usable Thai FCD record -- see data/NUTRITION_SOURCE.md and data/external_nutrition.json), Thai FCD (INMU) for pork (STD:958), fish sauce (STD:291), shrimp paste (STD:254)",
     "recipe_source_url": "https://cookpad.com/th/recipes/16088719",
-    "notes": "Coverage dish for hyacinth_bean. Thai FCD has no record for the fresh young pod used in this stir-fry -- only STD:333, the dried mature seed, is catalogued. That record runs far denser in calories/protein/carbs than a fresh pod would, so the small basis weight (60g) is a deliberate partial correction, but the per-100g source values themselves remain an approximation; disclosed here rather than presented as exact.",
+    "notes": "CORRECTED (found while sourcing th_242): originally used STD:333, Thai FCD's dried mature hyacinth bean SEED record -- a different food form (dense dried seed vs. the fresh young pod actually used in this stir-fry) that overstated calories/protein/carbs. EXT:usda-hyacinth-bean-immature-raw (immature pod, already present in data/external_nutrition.json) is the correct fix and was available the whole time. Coverage dish for hyacinth_bean.",
     "category": "savory"
   },
   {
