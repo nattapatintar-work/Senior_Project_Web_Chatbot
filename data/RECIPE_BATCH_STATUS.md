@@ -11,18 +11,51 @@
 
 ---
 
-## Current database state (as of Batch 10, committed)
+## Current database state (as of Batch 11, committed)
 
-- **269 recipes**, 176 savory / 93 dessert (65.4% / 34.6%)
-- Target: **300 recipes at ~60/40** → still need roughly **+4 savory / +27
-  dessert**. The savory/dessert gap widened this batch (Batch 10's
-  untouched-ingredient list was all vegetables, which don't naturally
-  yield dessert candidates) — **Batch 11 must go heavily dessert-focused**
-  to recover toward 60/40 by 300.
+- **277 recipes**, 176 savory / 101 dessert (63.5% / 36.5%)
+- Target: **300 recipes at ~60/40** → still need roughly **+3–4 savory /
+  +19 dessert**. Batch 11 moved the ratio the right direction (34.6% →
+  36.5% dessert) but landed 0 of the savory portion — **Batch 12 should
+  keep pushing dessert** and only pick up savory (jicama/shallot/celery
+  or a fresh ingredient) opportunistically if a real source turns up.
 - 3 new ingredients added across all batches so far (`yanang`, `pla_ra`,
   `dried_shrimp`) — cap is 10 total
-- Latest commits: Batch 10 (257→269, this session), `547f0b1` (Batch 9,
-  249→257)
+- Latest commits: Batch 11 (269→277), Batch 10 (257→269), `547f0b1`
+  (Batch 9, 249→257)
+
+## Known, accepted: same `name_th` with different `main_ingredients`
+
+`th_039`/`th_198` (ผัดผักบุ้งไฟแดง) and `th_099`/`th_220` (ผัดถั่วแปบ) share an
+exact dish name but have different `main_ingredients` sets — **not a bug,
+left as-is by user decision**. Generic Thai dish names legitimately cover
+multiple ingredient variants in real usage; renaming one would misrepresent
+what people actually call the dish. The duplicate-check rule (name_th
+match AND main_ingredients-set match) correctly does not flag these,
+since only the name half matches. The recommender keys off
+`main_ingredients`, not `name_th`, so there's no functional impact. Don't
+re-flag this pattern in future batches unless a *new* pair also matches on
+`main_ingredients`.
+
+## Batch 11 — DONE (8 dishes, th_273–th_280, all dessert)
+
+All 8 written, validated (`validate_recipe_draft.py` clean, `pytest
+tests/` 88 passed, `compute_nutrition.py` 277 checked / 0 mismatched),
+duplicate-re-checked against the full final file, and committed. No new
+dictionary ingredients, no new external nutrition sources (reused
+`EXT:usda-baking-powder` from an earlier batch).
+
+- **th_280** (ขนมมันทอด, cassava) — pre-approval assumed a tapioca-starch
+  coating; re-fetching the source directly showed it's actually
+  `rice_flour`. Corrected before writing, disclosed in `notes`, confirmed
+  not a duplicate of th_105 (sweet potato — same `name_th` substring
+  "มันทอด", different ingredient entirely).
+- Savory research this batch (jicama/shallot/celery, genuinely new angles
+  each) came up empty — every search surfaced only listing/collection
+  pages, no single fetchable recipe page for any of the three. Dropped
+  rather than citing a listing page, per user instruction to keep
+  dropping until a real source turns up (no Wikipedia/encyclopedia
+  fallback allowed).
 
 ## Batch 10 — DONE (12 dishes: th_261–th_272, 11 savory + 1 dessert)
 
@@ -83,41 +116,49 @@ search, plain and under the Thai term) and `EXT:usda-baking-powder`.
 - Show exact JSON diffs (not prose summaries) before every commit
 - New ingredients only if clearly justified, hard cap 10 total (3 used)
 
-## Batch 11 — NOT STARTED, must be heavily dessert-focused
+## Batch 12 — NOT STARTED, keep pushing dessert
 
-Target: roughly **+4 savory / +27 dessert** to recover toward 60/40 by 300.
-Most of Batch 10's untouched vegetable-ingredient list won't help with
-this — dessert candidates need their own ingredient-usage pass (fruits,
-coconut milk, rice flour, etc.), not a continuation of the vegetable list
-below.
+Target: roughly **+3–4 savory / +19 dessert** to close the rest of the
+gap toward 60/40 by 300. Batch 11's dessert-relevant ingredients that hit
+"saturated, don't force another entry" territory (mango: 5 formats,
+coconut: 7) should stay deprioritized unless a genuinely new angle
+appears — don't retry the same technique-repeat search.
 
-### Leftover from Batch 10's savory list — still untouched
+### Untouched / worth another pass
 
-jicama, shallot, celery — not reached in Batch 10 (ran out of turn
-budget). All three were dropped once already in Batch 10 with reasons
-above the fold in git history — see the Batch 10 commit message / this
-file's prior version if picking one back up; needs a genuinely new angle,
-not a retry of the same search.
-
-Also explicitly deprioritized in Batch 10 because they already have two
-distinct formats in the DB: malabar_spinach, amaranth, senna_siamea,
-clove_basil, maenglak, spinach, bottle_gourd, banana_flower, green_peas.
+- **taro_root, pineapple** — Batch 11's first-choice new dessert formats
+  for both were dropped (taro's เผือกเชื่อม judged too close to existing
+  ฉาบ/ทอด entries; pineapple's grilled/butter-baked angle had no real
+  recipe source, only a restaurant-menu listing). A *different* angle on
+  either might land — not a retry of the same search.
+- **jicama, shallot, celery** — dropped again in Batch 11 with genuinely
+  new angles each (ต้มจืดมันแกว/นึ่ง for jicama, ยำหอมแดง for shallot,
+  ต้มจืดขึ้นฉ่าย/ไข่เจียวขึ้นฉ่าย for celery) — same result as Batch 10, no
+  single fetchable recipe page for any of them. **No Wikipedia/
+  encyclopedia fallback allowed** (explicit user decision) — keep
+  dropping until a real single-recipe page turns up, or treat these as
+  likely permanently unreachable for this DB's sourcing standard.
+- **banana** — still deliberately deprioritized (11 uses, most-used
+  ingredient in the DB).
 
 ### Exact next steps to resume
 
 1. Re-run the ingredient-usage distribution fresh (check git log first —
-   this file's counts are current as of the Batch 10 commit, but verify
+   this file's counts are current as of the Batch 11 commit, but verify
    nothing else has landed since).
-2. For the dessert push: pull the list of dessert-relevant ingredients at
-   low use-counts (fruits, glutinous rice flour, coconut milk formats,
-   etc.) the same way the savory list was built, and prioritize those —
-   this is a different ingredient set than Batch 10 worked through.
+2. Build a fresh low-usage ingredient list oriented at dessert formats
+   not yet tried (different fruits/starches than Batches 10–11 covered),
+   plus opportunistically retry taro_root/pineapple with new angles.
 3. Apply the same duplicate-check-before-proposing discipline (exact
    `name_th` match AND `main_ingredients`-set match against the full
    existing list) that's caught real near-misses in every batch so far.
-4. Report the consolidated dish list back to the user for approval before
+4. Verify every source URL is a real single-recipe page (open and read
+   it, don't trust the search snippet) — Batch 10 had one dead/paywalled
+   source and Batch 11 had one ingredient-list correction slip through
+   the research phase, both caught only by re-fetching at write time.
+5. Report the consolidated dish list back to the user for approval before
    writing anything.
-5. Once approved: source Thai FCD/external nutrition for all dishes
+6. Once approved: source Thai FCD/external nutrition for all dishes
    (checking `external_nutrition.json` first per the standing rule), write
    into `data/recipes.json`, run `tools/compute_nutrition.py --fill`,
    `tools/derive_diet_tags.py --fix`, assign clean/keto tags, run
