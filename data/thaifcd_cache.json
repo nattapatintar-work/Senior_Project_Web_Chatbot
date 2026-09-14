@@ -539,6 +539,21 @@
       "protein": "PROTCNT"
     }
   },
+  "STD:148": {
+    "carb": 80.49,
+    "fat": 0.62,
+    "food_code": "A22",
+    "kcal": 354.0,
+    "name_en": "Rice, glutinous, polished, raw",
+    "name_th": "ขาวเหนียว, ดิบ",
+    "protein": 6.3,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
   "STD:1481": {
     "carb": 12.07,
     "fat": 4.37,
@@ -1046,6 +1061,21 @@
       "carb": "CHOAVLDF",
       "fat": "FAT",
       "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
+  "STD:191": {
+    "carb": null,
+    "fat": null,
+    "food_code": "A77",
+    "kcal": null,
+    "name_en": "Rice flour, glutinous, brown",
+    "name_th": "แป  งขาวเหนียว ขาวกลอง",
+    "protein": 7.54,
+    "tags_used": {
+      "carb": null,
+      "fat": null,
+      "kcal": null,
       "protein": "PROTCNT"
     }
   },

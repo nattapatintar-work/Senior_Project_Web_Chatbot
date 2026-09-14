@@ -9095,7 +9095,8 @@
     "name_th": "ข้าวหมกไก่",
     "main_ingredients": [
       "chicken",
-      "rice"
+      "rice",
+      "turmeric"
     ],
     "optional_ingredients": [
       "ginger",
@@ -9135,7 +9136,642 @@
     },
     "nutrition_source": "Thai FCD (INMU), computed from chicken (STD:895), cooked rice (STD:139), curry/turmeric spice paste (STD:294)",
     "recipe_source_url": "https://www.pim.in.th/one-dish-food/1146-chicken-biryani",
-    "notes": "Coverage dish for turmeric. Source's whole-spice blend (turmeric powder, cumin, coriander seed, cinnamon, star anise, cardamom, ghee) is approximated with yellow_curry_paste, the closest existing dictionary seasoning built around turmeric -- the individual whole spices are not in the dictionary and are not approximated one-for-one, disclosed here rather than invented as new ingredients for one dish.",
+    "notes": "Coverage dish for turmeric -- fixed: an earlier version of this recipe (Batch 4) claimed coverage in its notes but never actually included the turmeric key in any field, only yellow_curry_paste as an approximation for the source's whole-spice blend. turmeric (ผงขมิ้น 1/2 ช้อนชา) is a real, named ingredient in the source and is now listed as a co-main alongside chicken and rice. yellow_curry_paste remains as the approximation for the rest of the whole-spice blend (cumin, coriander seed, cinnamon, star anise, cardamom), which are not in the dictionary and are not approximated one-for-one.",
     "category": "savory"
+  },
+  {
+    "id": "th_204",
+    "name_th": "ผัดถั่วแขกหมูสับ",
+    "main_ingredients": [
+      "green_bean",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "garlic"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "soy_sauce",
+      "salt"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 315,
+    "cook_time_min": 12,
+    "nutrition": {
+      "kcal": 285.0,
+      "protein": 22.1,
+      "fat": 17.1,
+      "carb": 7.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "green_bean": 200,
+      "minced_meat": 100,
+      "oyster_sauce": 10,
+      "soy_sauce": 5
+    },
+    "basis_refs": {
+      "green_bean": "STD:445",
+      "minced_meat": "STD:970",
+      "oyster_sauce": "STD:270",
+      "soy_sauce": "STD:273"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from snap bean (STD:445), minced pork (STD:970), oyster sauce (STD:270), soy sauce (STD:273)",
+    "recipe_source_url": "https://pantip.com/topic/40992416",
+    "notes": "Coverage dish for green_bean (ถั่วแขก).",
+    "category": "savory"
+  },
+  {
+    "id": "th_205",
+    "name_th": "ต้มจืดผักโขมหมูสับ",
+    "main_ingredients": [
+      "amaranth",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "coriander"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "fish_sauce",
+      "pepper"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 240,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 222.0,
+      "protein": 19.4,
+      "fat": 14.1,
+      "carb": 1.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "amaranth": 150,
+      "minced_meat": 80,
+      "soy_sauce": 5,
+      "fish_sauce": 5
+    },
+    "basis_refs": {
+      "amaranth": "STD:489",
+      "minced_meat": "STD:970",
+      "soy_sauce": "STD:273",
+      "fish_sauce": "STD:291"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from amaranth (STD:489), minced pork (STD:970), soy sauce (STD:273), fish sauce (STD:291)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/1721171628894607aec7f31e2db636fd",
+    "notes": "Coverage dish for amaranth (ผักโขม).",
+    "category": "savory"
+  },
+  {
+    "id": "th_206",
+    "name_th": "ทอดมันหัวปลีใส่หมูสับ",
+    "main_ingredients": [
+      "banana_flower",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "egg",
+      "kaffir_lime_leaf",
+      "chili",
+      "tapioca_starch"
+    ],
+    "seasonings": [
+      "red_curry_paste",
+      "fish_sauce"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 275,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 388.0,
+      "protein": 30.0,
+      "fat": 26.4,
+      "carb": 4.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "banana_flower": 100,
+      "minced_meat": 150,
+      "red_curry_paste": 20,
+      "fish_sauce": 5
+    },
+    "basis_refs": {
+      "banana_flower": "STD:623",
+      "minced_meat": "STD:970",
+      "red_curry_paste": "STD:296",
+      "fish_sauce": "STD:291"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from banana flower (STD:623), minced pork (STD:970), red curry paste (STD:296), fish sauce (STD:291)",
+    "recipe_source_url": "https://cookpad.com/th/recipes/16618523",
+    "notes": "Second coverage dish for banana_flower (first: th_066, a raw salad -- this one is a cooked, deep-fried patty, a genuinely different preparation).",
+    "category": "savory"
+  },
+  {
+    "id": "th_207",
+    "name_th": "ผัดถั่วงอกเต้าหู้",
+    "main_ingredients": [
+      "soybean_sprouts",
+      "tofu"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "green_onion"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "soy_sauce"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 285,
+    "cook_time_min": 8,
+    "nutrition": {
+      "kcal": 246.0,
+      "protein": 27.7,
+      "fat": 11.8,
+      "carb": 1.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "soybean_sprouts": 200,
+      "tofu": 70,
+      "oyster_sauce": 10,
+      "soy_sauce": 5
+    },
+    "basis_refs": {
+      "soybean_sprouts": "STD:447",
+      "tofu": "STD:373",
+      "oyster_sauce": "STD:270",
+      "soy_sauce": "STD:273"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from soybean sprout (STD:447), tofu (STD:373), oyster sauce (STD:270), soy sauce (STD:273)",
+    "recipe_source_url": "https://www.pim.in.th/vegetarian-side-dish/572-2012-07-12-17-50-37",
+    "notes": "Coverage dish for soybean_sprouts (ถั่วงอกหัวโต, the larger soybean-sprout variety -- distinct dictionary key from mung bean sprouts, which this database has no separate entry for).",
+    "category": "savory"
+  },
+  {
+    "id": "th_208",
+    "name_th": "ขนมมันสำปะหลังนึ่งมะพร้าว",
+    "main_ingredients": [
+      "cassava",
+      "coconut"
+    ],
+    "optional_ingredients": [
+      "pandan_leaf"
+    ],
+    "seasonings": [
+      "sugar",
+      "salt"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 265,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 514.0,
+      "protein": 2.4,
+      "fat": 1.6,
+      "carb": 122.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "cassava": 150,
+      "coconut": 40,
+      "sugar": 75
+    },
+    "basis_refs": {
+      "cassava": "STD:1929",
+      "coconut": "STD:754",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from cassava (STD:1929), coconut (STD:754), sugar (STD:1391)",
+    "recipe_source_url": "https://www.pim.in.th/thai-dessert/940-steamed-topioca-cake",
+    "notes": "Coverage dish for cassava, genuinely distinct from th_052 (มันสำปะหลังเชื่อม -- candied, simmered in syrup, no coconut coating). This one is grated cassava steamed in cups, then rolled in fresh grated coconut -- different texture and technique. Pandan leaf juice is a flavoring/coloring amount, not counted in nutrition_basis.",
+    "category": "dessert"
+  },
+  {
+    "id": "th_209",
+    "name_th": "ส้มโอลอยแก้ว",
+    "main_ingredients": [
+      "pomelo"
+    ],
+    "optional_ingredients": [
+      "mint_leaves"
+    ],
+    "seasonings": [
+      "sugar"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 120,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 119.0,
+      "protein": 1.1,
+      "fat": 0.1,
+      "carb": 27.6
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "pomelo": 100,
+      "sugar": 20
+    },
+    "basis_refs": {
+      "pomelo": "STD:812",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from pomelo (STD:812), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/e78741306ecc41f48f411ea5d340d392",
+    "notes": "First dessert use of pomelo (existing uses -- th_046, th_201 -- are both savory salads). Segments in simple syrup over ice.",
+    "category": "dessert"
+  },
+  {
+    "id": "th_210",
+    "name_th": "ข้าวเหนียวดำเปียก",
+    "main_ingredients": [
+      "glutinous_rice"
+    ],
+    "optional_ingredients": [
+      "tapioca_starch"
+    ],
+    "seasonings": [
+      "coconut_milk",
+      "sugar",
+      "salt"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 230,
+    "cook_time_min": 60,
+    "nutrition": {
+      "kcal": 627.0,
+      "protein": 5.9,
+      "fat": 15.2,
+      "carb": 116.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "glutinous_rice": 60,
+      "coconut_milk": 100,
+      "sugar": 60,
+      "tapioca_starch": 10
+    },
+    "basis_refs": {
+      "glutinous_rice": "STD:148",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391",
+      "tapioca_starch": "STD:1934"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from glutinous rice (STD:148), coconut milk (STD:1348), sugar (STD:1391), tapioca starch (STD:1934)",
+    "recipe_source_url": "https://cooking.kapook.com/view253926.html",
+    "notes": "Genuinely distinct from th_121 (ข้าวเหนียวแดง): that dish is dry-kneaded with caramelized palm sugar and sesame, no coconut-milk sauce. This one is a wet pudding -- glutinous rice simmered soft, served in sweet coconut milk. glutinous_rice here stands in for the black variety (ข้าวเหนียวดำ), not separately tracked in the dictionary; STD:148 (raw glutinous rice, uncooked basis) used since the grain is cooked from raw in this recipe, unlike dishes using already-cooked rice.",
+    "category": "dessert"
+  },
+  {
+    "id": "th_211",
+    "name_th": "ขนมครก",
+    "main_ingredients": [
+      "rice_flour"
+    ],
+    "optional_ingredients": [
+      "rice",
+      "green_onion"
+    ],
+    "seasonings": [
+      "coconut_milk",
+      "sugar",
+      "salt"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 240,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 572.0,
+      "protein": 6.8,
+      "fat": 15.2,
+      "carb": 101.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "rice_flour": 60,
+      "rice": 40,
+      "coconut_milk": 100,
+      "sugar": 40
+    },
+    "basis_refs": {
+      "rice_flour": "STD:187",
+      "rice": "STD:139",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from rice flour (STD:187), cooked jasmine rice (STD:139), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://food.trueid.net/detail/aR7ljx6YPoyL",
+    "notes": "Coverage dessert dish for rice_flour -- pan-fried in a crimped cast-iron mold (the namesake 'khrok'), two layers (savory coconut-cream top, sweet rice-flour base). Cooked rice is a genuine batter component in the source (ข้าวหอมมะลิหุงสุก 100ก), listed optional rather than main since rice_flour is the defining ingredient.",
+    "category": "dessert"
+  },
+  {
+    "id": "th_212",
+    "name_th": "ขนมถ้วย",
+    "main_ingredients": [
+      "rice_flour"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar",
+      "salt"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 240,
+    "cook_time_min": 40,
+    "nutrition": {
+      "kcal": 622.0,
+      "protein": 6.9,
+      "fat": 18.2,
+      "carb": 107.4
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "rice_flour": 70,
+      "coconut_milk": 120,
+      "sugar": 50
+    },
+    "basis_refs": {
+      "rice_flour": "STD:187",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from rice flour (STD:187), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://food.trueid.net/detail/YkdvORVYEn1Q",
+    "notes": "Genuinely distinct from th_131 (ขนมถ้วยฟู): that dish rises via a fermented rice-flour starter (no coconut milk, cracked-top appearance). This one is unleavened, coconut-milk-based, steamed in two layers (sweet base, salty coconut-cream top), flat-topped -- confirmed as a genuinely different technique and composition, not a renamed duplicate.",
+    "category": "dessert"
+  },
+  {
+    "id": "th_213",
+    "name_th": "ปลากริมไข่เต่า",
+    "main_ingredients": [
+      "rice_flour",
+      "tapioca_starch"
+    ],
+    "optional_ingredients": [
+      "glutinous_rice_flour"
+    ],
+    "seasonings": [
+      "coconut_milk",
+      "sugar",
+      "salt"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 250,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 702.0,
+      "protein": 6.9,
+      "fat": 15.2,
+      "carb": 133.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "rice_flour": 60,
+      "tapioca_starch": 15,
+      "glutinous_rice_flour": 15,
+      "coconut_milk": 100,
+      "sugar": 60
+    },
+    "basis_refs": {
+      "rice_flour": "STD:187",
+      "tapioca_starch": "STD:1934",
+      "glutinous_rice_flour": "STD:190",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from rice flour (STD:187), tapioca starch (STD:1934), glutinous rice flour (STD:191), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://socialthaiban.com/17857/",
+    "notes": "Chewy rice-flour dumplings in two shapes/colors served in two coconut-milk sauces (sweet + salty) -- genuinely distinct from th_161 (ขนมเปียกปูนใบเตย, a firm poured jelly). Source also calls for mung bean flour (แป้งถั่วเขียว), not in the dictionary and not substituted -- disclosed omission rather than an invented ingredient.",
+    "category": "dessert"
+  },
+  {
+    "id": "th_214",
+    "name_th": "มะพร้าวแก้ว",
+    "main_ingredients": [
+      "coconut"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sugar",
+      "salt"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 225,
+    "cook_time_min": 45,
+    "nutrition": {
+      "kcal": 360.0,
+      "protein": 2.7,
+      "fat": 4.6,
+      "carb": 75.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "coconut": 150,
+      "sugar": 75
+    },
+    "basis_refs": {
+      "coconut": "STD:754",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from coconut (STD:754), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/c721ae0e1f764103850c6e49a6982ca1",
+    "notes": "First dessert dish where coconut is the sole main ingredient rather than a co-ingredient. Crystallized coconut candy -- shredded young coconut simmered in sugar syrup until the syrup crystallizes on the strands, then dried.",
+    "category": "dessert"
+  },
+  {
+    "id": "th_215",
+    "name_th": "เค้กแครอท",
+    "main_ingredients": [
+      "carrot",
+      "wheat_flour",
+      "egg"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sugar",
+      "baking_powder",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 315,
+    "cook_time_min": 50,
+    "nutrition": {
+      "kcal": 760.0,
+      "protein": 21.3,
+      "fat": 6.2,
+      "carb": 152.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "carrot": 80,
+      "wheat_flour": 100,
+      "egg": 55,
+      "sugar": 80
+    },
+    "basis_refs": {
+      "carrot": "STD:429",
+      "wheat_flour": "STD:193",
+      "egg": "STD:1274",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from carrot (STD:429), wheat flour (STD:193), egg (STD:1274), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/carrot-cake",
+    "notes": "First dessert use of carrot (existing uses are all savory stir-fries/soups).",
+    "category": "dessert"
+  },
+  {
+    "id": "th_216",
+    "name_th": "สาคูมะพร้าวอ่อน",
+    "main_ingredients": [
+      "tapioca_pearl",
+      "coconut"
+    ],
+    "optional_ingredients": [
+      "pandan_leaf"
+    ],
+    "seasonings": [
+      "sugar",
+      "salt",
+      "coconut_milk"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 190,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 393.0,
+      "protein": 2.0,
+      "fat": 9.2,
+      "carb": 75.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "tapioca_pearl": 40,
+      "coconut": 60,
+      "sugar": 40,
+      "coconut_milk": 50
+    },
+    "basis_refs": {
+      "tapioca_pearl": "STD:1935",
+      "coconut": "STD:754",
+      "sugar": "STD:1391",
+      "coconut_milk": "STD:1348"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from sago flour (STD:1935, closest available record -- Thai FCD has no distinct dried-pearl record, same approximation as th_142), coconut (STD:754), sugar (STD:1391), coconut milk (STD:1348)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/a429a8c832194b2fa38fe6f4560b6f3a",
+    "notes": "Genuinely distinct from th_142 (สาคูเปียก): here young coconut meat is a substantial bulk co-ingredient, not a garnish, and coconut water often replaces plain water in cooking the pearls -- disclosed as coconut_milk in seasonings for simplicity since coconut water itself has no Thai FCD record.",
+    "category": "dessert"
+  },
+  {
+    "id": "th_217",
+    "name_th": "ขนมปุยฝ้าย",
+    "main_ingredients": [
+      "egg",
+      "wheat_flour"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sugar",
+      "baking_powder",
+      "milk"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 270,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 791.0,
+      "protein": 20.9,
+      "fat": 7.0,
+      "carb": 159.8
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "egg": 55,
+      "wheat_flour": 100,
+      "sugar": 90,
+      "milk": 25
+    },
+    "basis_refs": {
+      "egg": "STD:1274",
+      "wheat_flour": "STD:193",
+      "sugar": "STD:1391",
+      "milk": "STD:1335"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from egg (STD:1274), wheat flour (STD:193), sugar (STD:1391), milk (STD:1335)",
+    "recipe_source_url": "https://cookpad.com/th/recipes/16766179",
+    "notes": "Steamed fluffy cracked-top cake (a Chinese-New-Year favor cake), distinct from all 4 existing wheat_flour desserts (บราวนี่/เค้กช็อกโกแลต/เค้กกล้วยหอม/ชีสเค้กมะม่วง, none of which are steamed). Source's evaporated/condensed milk approximated with the dictionary's generic milk key.",
+    "category": "dessert"
   }
 ]
