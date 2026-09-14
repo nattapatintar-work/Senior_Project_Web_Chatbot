@@ -2414,6 +2414,21 @@
       "protein": "PROTCNT"
     }
   },
+  "STD:701": {
+    "carb": 21.73,
+    "fat": 0.42,
+    "food_code": "E10",
+    "kcal": 101.0,
+    "name_en": "Jackfruit, common variety, ripe",
+    "name_th": "ขนุน, สุก",
+    "protein": 1.55,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
   "STD:707": {
     "carb": 17.92,
     "fat": 0.14,
