@@ -9773,5 +9773,480 @@
     "recipe_source_url": "https://cookpad.com/th/recipes/16766179",
     "notes": "Steamed fluffy cracked-top cake (a Chinese-New-Year favor cake), distinct from all 4 existing wheat_flour desserts (บราวนี่/เค้กช็อกโกแลต/เค้กกล้วยหอม/ชีสเค้กมะม่วง, none of which are steamed). Source's evaporated/condensed milk approximated with the dictionary's generic milk key.",
     "category": "dessert"
+  },
+  {
+    "id": "th_218",
+    "name_th": "ฟักแม้วผัดไข่",
+    "main_ingredients": [
+      "chayote",
+      "egg"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "chili"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "oyster_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 195,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 78.0,
+      "protein": 7.3,
+      "fat": 4.6,
+      "carb": 1.8
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "chayote": 130,
+      "egg": 55,
+      "fish_sauce": 5,
+      "oyster_sauce": 5
+    },
+    "basis_refs": {
+      "chayote": "STD:586",
+      "egg": "STD:1274",
+      "fish_sauce": "STD:291",
+      "oyster_sauce": "STD:270"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from chayote shoots (STD:586, closest available record -- disclosed below), egg (STD:1274), fish sauce (STD:291), oyster sauce (STD:270)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/fe6c5ad2a8e74105822a749c70efed72",
+    "notes": "Coverage dish for chayote. Thai FCD has no record for the chayote fruit itself -- only STD:586, the young shoot tips (ยอด). Used as the closest available approximation, disclosed here; shoots run higher in vitamins/fiber than the fruit, so this likely overstates some values.",
+    "category": "savory"
+  },
+  {
+    "id": "th_219",
+    "name_th": "ไข่เจียวผักชีลาว",
+    "main_ingredients": [
+      "dill",
+      "egg"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "fish_sauce"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 135,
+    "cook_time_min": 8,
+    "nutrition": {
+      "kcal": 157.0,
+      "protein": 15.2,
+      "fat": 9.3,
+      "carb": 2.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "dill": 20,
+      "egg": 110,
+      "fish_sauce": 5
+    },
+    "basis_refs": {
+      "dill": "STD:432",
+      "egg": "STD:1274",
+      "fish_sauce": "STD:291"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from dill (STD:432), egg (STD:1274), fish sauce (STD:291)",
+    "recipe_source_url": "https://cookpad.com/th/recipes/877969",
+    "notes": "Second coverage dish for dill -- an omelette where dill is chopped generously into the batter itself, not a garnish quantity.",
+    "category": "savory"
+  },
+  {
+    "id": "th_220",
+    "name_th": "ผัดถั่วแปบ",
+    "main_ingredients": [
+      "hyacinth_bean",
+      "pork"
+    ],
+    "optional_ingredients": [
+      "yardlong_bean",
+      "kaffir_lime_leaf",
+      "chili"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "shrimp_paste"
+    ],
+    "health_tags": [
+      "clean"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 200,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 379.0,
+      "protein": 47.3,
+      "fat": 5.8,
+      "carb": 34.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "hyacinth_bean": 60,
+      "pork": 130,
+      "fish_sauce": 5,
+      "shrimp_paste": 5
+    },
+    "basis_refs": {
+      "hyacinth_bean": "STD:333",
+      "pork": "STD:958",
+      "fish_sauce": "STD:291",
+      "shrimp_paste": "STD:254"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from hyacinth bean (STD:333, dried mature seed -- closest available record, disclosed below), pork (STD:958), fish sauce (STD:291), shrimp paste (STD:254)",
+    "recipe_source_url": "https://cookpad.com/th/recipes/16088719",
+    "notes": "Coverage dish for hyacinth_bean. Thai FCD has no record for the fresh young pod used in this stir-fry -- only STD:333, the dried mature seed, is catalogued. That record runs far denser in calories/protein/carbs than a fresh pod would, so the small basis weight (60g) is a deliberate partial correction, but the per-100g source values themselves remain an approximation; disclosed here rather than presented as exact.",
+    "category": "savory"
+  },
+  {
+    "id": "th_221",
+    "name_th": "น้ำจิ้มผักชี",
+    "main_ingredients": [
+      "coriander"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "chili"
+    ],
+    "seasonings": [
+      "sugar",
+      "salt"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 75,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 76.0,
+      "protein": 1.5,
+      "fat": 0.2,
+      "carb": 16.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "coriander": 60,
+      "sugar": 15
+    },
+    "basis_refs": {
+      "coriander": "STD:498",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from coriander (STD:498), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/6fa0155bb2c24efa92006e10f44b9a89",
+    "notes": "Coverage dish for coriander -- a blended dipping sauce/chutney (coriander, garlic, chili, lime, sugar, salt), not a cooked main dish, following the same condiment-as-recipe precedent already established by th_174 (หอมเจียว). Lime juice is a squeeze quantity, excluded from nutrition_basis per the convention used for lime throughout this database (except th_172/th_173, where lime was the deliberate bulk main).",
+    "category": "savory"
+  },
+  {
+    "id": "th_222",
+    "name_th": "ต้มจืดน้ำเต้าหมูสับ",
+    "main_ingredients": [
+      "bottle_gourd",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "green_onion"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "pepper"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 260,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 255.0,
+      "protein": 19.3,
+      "fat": 17.1,
+      "carb": 4.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "bottle_gourd": 150,
+      "minced_meat": 100,
+      "soy_sauce": 10
+    },
+    "basis_refs": {
+      "bottle_gourd": "STD:455",
+      "minced_meat": "STD:970",
+      "soy_sauce": "STD:273"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from bottle gourd (STD:455), minced pork (STD:970), soy sauce (STD:273)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/a0f6ca8979db425a871426ad6c67d5e4",
+    "notes": "Coverage dish for bottle_gourd.",
+    "category": "savory"
+  },
+  {
+    "id": "th_223",
+    "name_th": "ปวยเล้งผัดไข่",
+    "main_ingredients": [
+      "spinach",
+      "egg"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "chili"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "salt"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 215,
+    "cook_time_min": 8,
+    "nutrition": {
+      "kcal": 108.0,
+      "protein": 11.0,
+      "fat": 5.4,
+      "carb": 2.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "spinach": 150,
+      "egg": 55,
+      "oyster_sauce": 10
+    },
+    "basis_refs": {
+      "spinach": "STD:469",
+      "egg": "STD:1274",
+      "oyster_sauce": "STD:270"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from spinach (STD:469), egg (STD:1274), oyster sauce (STD:270)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/d05f4d195dd74dda94cb73229b401021",
+    "notes": "Coverage dish for spinach.",
+    "category": "savory"
+  },
+  {
+    "id": "th_224",
+    "name_th": "ผัดหน่อไม้ใส่ใบแมงลักหมูสามชั้น",
+    "main_ingredients": [
+      "maenglak",
+      "bamboo_shoots",
+      "pork"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "chili"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "soy_sauce",
+      "oyster_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 250,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 162.0,
+      "protein": 23.8,
+      "fat": 4.4,
+      "carb": 3.6
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "maenglak": 25,
+      "bamboo_shoots": 120,
+      "pork": 100,
+      "fish_sauce": 5
+    },
+    "basis_refs": {
+      "maenglak": "STD:248",
+      "bamboo_shoots": "STD:613",
+      "pork": "STD:958",
+      "fish_sauce": "STD:291"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from hairy/lemon basil (STD:248), bamboo shoot (STD:613), pork (STD:958), fish sauce (STD:291)",
+    "recipe_source_url": "https://pantip.com/topic/38984760",
+    "notes": "Coverage dish for maenglak, used as a full bundle (1 กำ) stirred through at the end, not a trace garnish -- verified via direct fetch of the source. Also a second coverage dish for bamboo_shoots, already ≥ 2 uses.",
+    "category": "savory"
+  },
+  {
+    "id": "th_225",
+    "name_th": "หมูสับผัดใบยี่หร่าพริกแห้ง",
+    "main_ingredients": [
+      "clove_basil",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "chili"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "dark_soy_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 243,
+    "cook_time_min": 12,
+    "nutrition": {
+      "kcal": 488.0,
+      "protein": 37.5,
+      "fat": 34.3,
+      "carb": 6.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "clove_basil": 30,
+      "minced_meat": 200,
+      "fish_sauce": 8,
+      "dark_soy_sauce": 5
+    },
+    "basis_refs": {
+      "clove_basil": "STD:468",
+      "minced_meat": "STD:970",
+      "fish_sauce": "STD:291",
+      "dark_soy_sauce": "STD:277"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from clove basil (STD:468), minced pork (STD:970), fish sauce (STD:291), dark soy sauce (STD:277)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/709ba945e405489fafec94734693ecdb",
+    "notes": "Coverage dish for clove_basil, verified via direct fetch to confirm this source genuinely uses ใบยี่หร่า (clove basil) and not ใบชะพลู (piper_lolot, a different herb an earlier candidate source turned out to actually be about).",
+    "category": "savory"
+  },
+  {
+    "id": "th_226",
+    "name_th": "แกงผักปลัง",
+    "main_ingredients": [
+      "malabar_spinach",
+      "tomato"
+    ],
+    "optional_ingredients": [
+      "lemongrass",
+      "shallot",
+      "garlic",
+      "chili"
+    ],
+    "seasonings": [
+      "shrimp_paste",
+      "fish_sauce"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 225,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 52.0,
+      "protein": 6.0,
+      "fat": 0.7,
+      "carb": 2.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "malabar_spinach": 150,
+      "tomato": 60,
+      "shrimp_paste": 10,
+      "fish_sauce": 5
+    },
+    "basis_refs": {
+      "malabar_spinach": "STD:511",
+      "tomato": "STD:571",
+      "shrimp_paste": "STD:254",
+      "fish_sauce": "STD:291"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from malabar spinach (STD:511), tomato (STD:571), shrimp paste (STD:254), fish sauce (STD:291)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/b940beb5f4f640ac81292d4b0adfeae8",
+    "notes": "IMPORTANT -- simplified from the traditional dish, not a neutral adaptation. The source recipe's other major ingredient is แหนมหมู (fermented pork sausage), a real, defining flavor component, not in the dictionary. Omitted here rather than adding a new ingredient for one recipe; shrimp_paste and fish_sauce (both genuine components of the same dish) are kept as the seasoning base. This measurably changes the dish's flavor from the traditional preparation. Coverage dish for malabar_spinach.",
+    "category": "savory"
+  },
+  {
+    "id": "th_227",
+    "name_th": "แกงขี้เหล็กปลาย่าง",
+    "main_ingredients": [
+      "senna_siamea",
+      "fish"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "red_curry_paste",
+      "shrimp_paste",
+      "sugar",
+      "salt"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 240,
+    "cook_time_min": 90,
+    "nutrition": {
+      "kcal": 245.0,
+      "protein": 26.3,
+      "fat": 9.0,
+      "carb": 7.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "senna_siamea": 120,
+      "fish": 80,
+      "coconut_milk": 30,
+      "red_curry_paste": 10
+    },
+    "basis_refs": {
+      "senna_siamea": "STD:421",
+      "fish": "STD:1084",
+      "coconut_milk": "STD:1348",
+      "red_curry_paste": "STD:296"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from senna siamea leaves and shoots (STD:421), fish (STD:1084), coconut milk (STD:1348), curry paste (STD:296)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/5801fcbfb3f54f9c851a07adbb841ed2",
+    "notes": "Second coverage dish for senna_siamea, genuinely distinct from th_064 (pork-based, no coconut milk, different source): this one is grilled-fish-based with a coconut-milk curry paste broth. As with th_064, leaves are boiled at length first to remove bitterness -- a preparation step, not a nutrition change, since the raw-leaf record is what enters the food before that processing loss.",
+    "category": "savory"
   }
 ]

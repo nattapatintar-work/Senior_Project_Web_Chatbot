@@ -1484,6 +1484,21 @@
       "protein": "PROTCNT"
     }
   },
+  "STD:333": {
+    "carb": 54.7,
+    "fat": 0.8,
+    "food_code": "C26",
+    "kcal": 350.0,
+    "name_en": "Hyacinth / lablab bean, mature seeds, dried, raw",
+    "name_th": "ถั่วแปะยี, เมล็ดแหง, ดิบ",
+    "protein": 31.1,
+    "tags_used": {
+      "carb": "CHOCDF",
+      "fat": "FAT",
+      "kcal": "ENERCT",
+      "protein": "PROTCNT"
+    }
+  },
   "STD:345": {
     "carb": 14.4,
     "fat": 48.65,
@@ -1814,6 +1829,21 @@
       "protein": "PROTCNT"
     }
   },
+  "STD:469": {
+    "carb": 0.0,
+    "fat": 0.57,
+    "food_code": "D61",
+    "kcal": 19.0,
+    "name_en": "Spinach, raw",
+    "name_th": "ปวยเลง, ดิบ",
+    "protein": 2.37,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
   "STD:474": {
     "carb": 1.25,
     "fat": 0.18,
@@ -1912,6 +1942,21 @@
     "name_en": "Celery, raw",
     "name_th": "ผักคื่นชาย, ดิบ",
     "protein": 1.55,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
+  "STD:498": {
+    "carb": 3.07,
+    "fat": 0.28,
+    "food_code": "D87",
+    "kcal": 30.0,
+    "name_en": "Coriander",
+    "name_th": "ผักชี",
+    "protein": 2.34,
     "tags_used": {
       "carb": "CHOAVLDF",
       "fat": "FAT",
