@@ -1289,6 +1289,21 @@
       "protein": null
     }
   },
+  "STD:250": {
+    "carb": 0.9,
+    "fat": 0.67,
+    "food_code": "N40",
+    "kcal": 34.0,
+    "name_en": "Kitchen Mint or Marsh Mint, leaves",
+    "name_th": "สะระแหน, ใบ",
+    "protein": 3.23,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
   "STD:251": {
     "carb": 12.07,
     "fat": 0.07,
@@ -1402,6 +1417,21 @@
     "name_en": "Sauce, curry",
     "name_th": "นํ้าพริกแกงกะหรี่",
     "protein": 5.08,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
+  "STD:295": {
+    "carb": 8.42,
+    "fat": 0.83,
+    "food_code": "N95",
+    "kcal": 71.0,
+    "name_en": "Paste, curry, green (Nam phrik kaeng khieo wan)",
+    "name_th": "นํ้าพริกแกงเขียวหวาน",
+    "protein": 3.4,
     "tags_used": {
       "carb": "CHOAVLDF",
       "fat": "FAT",
@@ -2576,21 +2606,6 @@
       "carb": "CHOCDF",
       "fat": "FAT",
       "kcal": "ENERCT",
-      "protein": "PROTCNT"
-    }
-  },
-  "STD:250": {
-    "carb": 0.9,
-    "fat": 0.67,
-    "food_code": "N40",
-    "kcal": 34.0,
-    "name_en": "Kitchen Mint or Marsh Mint, leaves",
-    "name_th": "สะระแหน, ใบ",
-    "protein": 3.23,
-    "tags_used": {
-      "carb": "CHOAVLDF",
-      "fat": "FAT",
-      "kcal": "ENERC",
       "protein": "PROTCNT"
     }
   },

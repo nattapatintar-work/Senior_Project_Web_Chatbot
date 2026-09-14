@@ -11630,5 +11630,629 @@
     "recipe_source_url": "https://cookpad.com/th/recipes/3494493-%E0%B8%82%E0%B8%B2%E0%B8%A7%E0%B9%80%E0%B8%AB%E0%B8%99%E0%B8%A2%E0%B8%A7%E0%B8%82%E0%B8%99%E0%B8%99",
     "notes": "Coverage dish for jackfruit (4th use). Sticky-rice-and-fruit format, distinct from th_112 (fried), th_229 (in syrup), and th_048 (savory curry).",
     "category": "dessert"
+  },
+  {
+    "id": "th_261",
+    "name_th": "แกงเหลืองปลา",
+    "main_ingredients": [
+      "fish",
+      "turmeric"
+    ],
+    "optional_ingredients": [
+      "green_papaya",
+      "galangal",
+      "garlic",
+      "shallot",
+      "chili",
+      "lime"
+    ],
+    "seasonings": [
+      "shrimp_paste",
+      "tamarind_paste",
+      "salt"
+    ],
+    "health_tags": [
+      "clean"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 280,
+    "cook_time_min": 35,
+    "nutrition": {
+      "kcal": 233.0,
+      "protein": 33.5,
+      "fat": 5.3,
+      "carb": 11.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "fish": 150,
+      "turmeric": 10,
+      "green_papaya": 100,
+      "shrimp_paste": 10,
+      "tamarind_paste": 10
+    },
+    "basis_refs": {
+      "fish": "STD:1084",
+      "turmeric": "STD:231",
+      "green_papaya": "STD:590",
+      "shrimp_paste": "STD:254",
+      "tamarind_paste": "STD:750"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from striped snakehead fish (STD:1084), turmeric (STD:231), papaya raw (STD:590), shrimp paste (STD:254), tamarind (STD:750)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/southern-yellow-hot-sour-soup",
+    "notes": "Coverage dish for turmeric, used fresh and pounded into the curry paste rather than as a store-bought powder. The originally approved source (thaifoodmaster) turned out to be a members-only paywalled landing page with no actual ingredient list on the page itself -- substituted with this accessible single-recipe source for the same dish (southern Thai yellow/sour fish curry, ใส่มะละกอดิบ). galangal/garlic/shallot/chili/lime are the curry-paste aromatics, listed but not counted in nutrition_basis, matching the convention used for other from-scratch curry pastes (e.g. th_083, th_154).",
+    "category": "savory"
+  },
+  {
+    "id": "th_262",
+    "name_th": "แกงส้มปลากระเจี๊ยบเขียว",
+    "main_ingredients": [
+      "fish",
+      "okra"
+    ],
+    "optional_ingredients": [
+      "chili",
+      "garlic",
+      "shallot",
+      "turmeric"
+    ],
+    "seasonings": [
+      "shrimp_paste",
+      "salt",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 245,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 216.0,
+      "protein": 33.7,
+      "fat": 5.3,
+      "carb": 7.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "fish": 150,
+      "okra": 80,
+      "shrimp_paste": 10,
+      "sugar": 5
+    },
+    "basis_refs": {
+      "fish": "STD:1084",
+      "okra": "STD:399",
+      "shrimp_paste": "STD:254",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from striped snakehead fish (STD:1084), okra raw (STD:399), shrimp paste (STD:254), sugar (STD:1391)",
+    "recipe_source_url": "https://cookpad.com/th/recipes/12899203",
+    "notes": "Second turmeric-bearing dish in this batch (see th_261) but not a turmeric coverage dish itself -- okra is the target ingredient here, going from 2 to 3 main_ingredients uses. A southern sour curry made with fresh okra rather than papaya; palm sugar in the source is mapped to the generic sugar dictionary key. Curry-paste aromatics (chili, garlic, shallot, turmeric) listed but not counted in nutrition_basis, same convention as th_261.",
+    "category": "savory"
+  },
+  {
+    "id": "th_263",
+    "name_th": "อาจาด",
+    "main_ingredients": [
+      "cucumber"
+    ],
+    "optional_ingredients": [
+      "carrot",
+      "chili"
+    ],
+    "seasonings": [
+      "vinegar",
+      "sugar",
+      "salt"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 160,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 89.0,
+      "protein": 1.4,
+      "fat": 0.2,
+      "carb": 18.8
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "cucumber": 100,
+      "carrot": 30,
+      "vinegar": 15,
+      "sugar": 15
+    },
+    "basis_refs": {
+      "cucumber": "STD:441",
+      "carrot": "STD:429",
+      "vinegar": "EXT:usda-vinegar-distilled",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU) for cucumber (STD:441), carrot (STD:429), and sugar (STD:1391); USDA FoodData Central for vinegar (EXT:usda-vinegar-distilled) -- disclosed fallback, Thai FCD has no vinegar record of any kind (confirmed by repeated search, plain and under the Thai term).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/aeae0e2d37804e65a2021c234f7cb299",
+    "notes": "Coverage dish for cucumber (2->3 main_ingredients uses). A sweet-sour pickled condiment typically served alongside fried dishes (satay, fish cakes) rather than eaten as a standalone main; chili listed as optional garnish, not counted in nutrition_basis.",
+    "category": "savory"
+  },
+  {
+    "id": "th_264",
+    "name_th": "บัวลอยใบเตยนมสด",
+    "main_ingredients": [
+      "glutinous_rice_flour",
+      "pandan_leaf"
+    ],
+    "optional_ingredients": [
+      "tapioca_starch"
+    ],
+    "seasonings": [
+      "milk",
+      "sugar",
+      "salt"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 190,
+    "cook_time_min": 35,
+    "nutrition": {
+      "kcal": 304.0,
+      "protein": 7.1,
+      "fat": 4.9,
+      "carb": 57.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "glutinous_rice_flour": 50,
+      "milk": 130,
+      "sugar": 10
+    },
+    "basis_refs": {
+      "glutinous_rice_flour": "STD:190",
+      "milk": "STD:1335",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from glutinous rice flour (STD:190), whole pasteurised milk (STD:1335), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/5eccd7852a614c91a7ef8c57f955c969",
+    "notes": "Second coverage dish for pandan_leaf (first: th_161, 2->3 main_ingredients uses), distinct format -- boiled glutinous-rice dumplings served in warm sweetened fresh milk rather than th_161's set rice-flour-and-coconut-milk jelly pudding. Pandan is used as strained juice for color/aroma and, matching th_161's precedent, is not counted in nutrition_basis. Black sesame garnish has no dictionary entry and is omitted entirely; tapioca_starch is used only as a light anti-stick dusting (much smaller than th_161's bulk use) and is likewise not counted in nutrition_basis. milk is is_seasoning=True in the dictionary, so it is placed in seasonings, not main_ingredients, per tools/validate_recipe_draft.py's rule.",
+    "category": "dessert"
+  },
+  {
+    "id": "th_265",
+    "name_th": "แกงเขียวหวานหมูมะเขือเปราะ",
+    "main_ingredients": [
+      "pork",
+      "thai_eggplant",
+      "kaffir_lime_leaf"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "green_curry_paste",
+      "coconut_milk",
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 368,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 415.0,
+      "protein": 25.7,
+      "fat": 26.6,
+      "carb": 16.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "pork": 100,
+      "thai_eggplant": 80,
+      "coconut_milk": 150,
+      "green_curry_paste": 15,
+      "fish_sauce": 10,
+      "sugar": 5,
+      "kaffir_lime_leaf": 8
+    },
+    "basis_refs": {
+      "pork": "STD:958",
+      "thai_eggplant": "STD:573",
+      "coconut_milk": "STD:1348",
+      "green_curry_paste": "STD:295",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391",
+      "kaffir_lime_leaf": "STD:246"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from pork, lean (STD:958), Thai eggplant (STD:573), coconut milk (STD:1348), green curry paste (STD:295), fish sauce (STD:291), sugar (STD:1391), kaffir lime leaf (STD:246)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/c708cb622659434fbb1bb63d0c0b0018",
+    "notes": "Third coverage dish for thai_eggplant (มะเขือเปราะ), distinct in format from th_077 (pork stir-fry) and th_194 (grilled-pork yam) -- a coconut-milk green curry. kaffir_lime_leaf is promoted from optional to main_ingredients (the source uses 5-10 whole leaves, a substantial defining quantity, not a garnish sprinkle) specifically because {pork, thai_eggplant} alone is an EXACT main_ingredients-set match with both th_077 and th_194 -- caught by this session's duplicate check. Adding the leaf as a real, quantity-backed main ingredient (precedent: th_166, th_167 both count kaffir_lime_leaf in nutrition_basis as a main ingredient at similar gram amounts) breaks the collision honestly rather than by padding. The source also calls for a block of pig/chicken blood, a real and common addition to this dish in Thailand, but it has no dictionary entry and is not a defining ingredient of the format, so it is left out; 'seasoning powder' (ผงปรุงรส) is similarly omitted, not in the dictionary.",
+    "category": "savory"
+  },
+  {
+    "id": "th_266",
+    "name_th": "แกงจืดกวางตุ้งหมูสับ",
+    "main_ingredients": [
+      "minced_meat",
+      "bok_choy"
+    ],
+    "optional_ingredients": [
+      "carrot",
+      "shiitake",
+      "tofu",
+      "garlic",
+      "celery",
+      "coriander"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "sugar",
+      "pepper"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 390,
+    "cook_time_min": 40,
+    "nutrition": {
+      "kcal": 374.0,
+      "protein": 30.3,
+      "fat": 21.7,
+      "carb": 10.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "minced_meat": 100,
+      "bok_choy": 150,
+      "carrot": 50,
+      "shiitake": 15,
+      "tofu": 60,
+      "soy_sauce": 10,
+      "sugar": 5
+    },
+    "basis_refs": {
+      "minced_meat": "STD:970",
+      "bok_choy": "STD:474",
+      "carrot": "STD:429",
+      "shiitake": "STD:658",
+      "tofu": "STD:373",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from minced pork (STD:970), Chinese flowering cabbage / กวางตุ้ง (STD:474), carrot (STD:429), shiitake mushroom raw as the closest available record for the source's dried-and-reconstituted mushroom (STD:658), soft tofu (STD:373), soy sauce (STD:273), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/cf8b9e4474a740909b1b2c7a3f161135",
+    "notes": "Coverage dish for bok_choy (2->3 main_ingredients uses). กวางตุ้ง (Chinese flowering cabbage) maps directly to the bok_choy dictionary entry -- confirmed via STD:474's own English name 'Cabbage, Chinese (Flowering white cabbage)'. The source's 'tofu with egg' is a specific egg-tofu tube product (เต้าหู้ไข่); approximated with the plain tofu dictionary key since there is no separate egg-tofu entry, disclosed here rather than presented as exact. 'สามเกลอ' marinade breaks down into garlic, pepper, and coriander root, all already in the dictionary. A Knorr pork broth cube (a bouillon product) has no dictionary entry and is omitted.",
+    "category": "savory"
+  },
+  {
+    "id": "th_267",
+    "name_th": "ดอกกะหล่ำทอดกรอบผัดซอสเปรี้ยวหวาน",
+    "main_ingredients": [
+      "cauliflower"
+    ],
+    "optional_ingredients": [
+      "egg",
+      "wheat_flour",
+      "tapioca_starch",
+      "garlic",
+      "green_onion",
+      "ginger"
+    ],
+    "seasonings": [
+      "baking_powder",
+      "soy_sauce",
+      "sugar",
+      "vinegar",
+      "vegetable_oil",
+      "salt",
+      "pepper"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 333,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 528.0,
+      "protein": 16.1,
+      "fat": 20.1,
+      "carb": 68.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "cauliflower": 150,
+      "egg": 50,
+      "wheat_flour": 40,
+      "tapioca_starch": 15,
+      "baking_powder": 3,
+      "soy_sauce": 20,
+      "sugar": 20,
+      "vinegar": 20,
+      "vegetable_oil": 15
+    },
+    "basis_refs": {
+      "cauliflower": "STD:408",
+      "egg": "STD:1274",
+      "wheat_flour": "STD:193",
+      "tapioca_starch": "STD:1934",
+      "baking_powder": "EXT:usda-baking-powder",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391",
+      "vinegar": "EXT:usda-vinegar-distilled",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU) for cauliflower (STD:408), egg (STD:1274), wheat flour (STD:193), tapioca starch (STD:1934), soy sauce (STD:273), sugar (STD:1391), vegetable oil (STD:1368); USDA FoodData Central for baking powder (EXT:usda-baking-powder) and vinegar (EXT:usda-vinegar-distilled) -- both disclosed fallbacks, Thai FCD has no record for either.",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/f8ed46af44ad4375a6c31af587db65b9",
+    "notes": "Coverage dish for cauliflower (2->3 main_ingredients uses). Batter-fried florets tossed in a Chinese-style sweet-sour sauce. Sesame oil, tomato sauce (ketchup) and the cornstarch-water slurry in the sauce, and the white-sesame-seed / dried-chili garnish, have no dictionary entries and are omitted rather than force-mapped onto an unrelated key; the cornstarch's thickening role is already covered by the tapioca_starch used in the batter. vegetable_oil (15g) is counted for deep-fry oil absorption, matching the convention used elsewhere in the db for fried dishes (e.g. th_185).",
+    "category": "savory"
+  },
+  {
+    "id": "th_268",
+    "name_th": "ไข่เจียวต้นหอม",
+    "main_ingredients": [
+      "egg",
+      "green_onion"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "soy_sauce",
+      "pepper",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "keto",
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 140,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 232.0,
+      "protein": 13.9,
+      "fat": 18.4,
+      "carb": 2.8
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "egg": 100,
+      "green_onion": 15,
+      "soy_sauce": 15,
+      "vegetable_oil": 10
+    },
+    "basis_refs": {
+      "egg": "STD:1274",
+      "green_onion": "STD:436",
+      "soy_sauce": "STD:273",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from egg (STD:1274), spring onion (STD:436), soy sauce (STD:273), vegetable oil (STD:1368)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/457adcdf109241679b6d86261e7f9e20",
+    "notes": "Coverage dish for green_onion. Second ไข่เจียว-format dish alongside th_001 (plain omelette) and th_269 (basil variant below) -- a green-onion filled version. Not tagged clean: same reasoning already established for th_001, a Thai-style omelette is shallow-fried in enough oil that the fat content (18.4g in a 140g serving here) is well past the 'stir-fry, don't submerge' clean threshold.",
+    "category": "savory"
+  },
+  {
+    "id": "th_269",
+    "name_th": "ไข่เจียวใบโหระพา",
+    "main_ingredients": [
+      "egg",
+      "basil"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "soy_sauce",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "keto",
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 105,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 269.0,
+      "protein": 8.7,
+      "fat": 25.0,
+      "carb": 2.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "egg": 60,
+      "basil": 10,
+      "soy_sauce": 15,
+      "vegetable_oil": 20
+    },
+    "basis_refs": {
+      "egg": "STD:1274",
+      "basil": "STD:252",
+      "soy_sauce": "STD:273",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from egg (STD:1274), sweet basil (STD:252), soy sauce (STD:273), vegetable oil (STD:1368)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/3c1a043dcca8468fa3dcfdf3dab300a8",
+    "notes": "Third ไข่เจียว-format coverage dish (see th_001, th_268) -- a basil-filled, meat-free variant. The source explicitly describes deep-frying until golden, using more oil than th_268's version (reflected in the higher oil grams and higher fat/100g here); not tagged clean for the same reason as th_001/th_268.",
+    "category": "savory"
+  },
+  {
+    "id": "th_270",
+    "name_th": "พริกหยวกยัดไส้ทอด",
+    "main_ingredients": [
+      "bell_pepper",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "wheat_flour"
+    ],
+    "seasonings": [
+      "pepper",
+      "sugar",
+      "soy_sauce",
+      "vegetable_oil"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 265,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 556.0,
+      "protein": 23.1,
+      "fat": 37.7,
+      "carb": 29.6
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "bell_pepper": 100,
+      "minced_meat": 100,
+      "wheat_flour": 30,
+      "soy_sauce": 10,
+      "sugar": 5,
+      "vegetable_oil": 20
+    },
+    "basis_refs": {
+      "bell_pepper": "STD:549",
+      "minced_meat": "STD:970",
+      "wheat_flour": "STD:193",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from sweet green pepper (STD:549), minced pork (STD:970), wheat flour (STD:193), soy sauce (STD:273), sugar (STD:1391), vegetable oil (STD:1368)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/9f070c590f854fc7a9c692464a2b5c9b",
+    "notes": "Coverage dish for bell_pepper. Ground pork stuffed into deseeded bell peppers, battered and deep-fried; vegetable_oil (20g) counted for deep-fry oil absorption. 'Seasoning powder' (ผงปรุงรส) has no dictionary entry and is omitted.",
+    "category": "savory"
+  },
+  {
+    "id": "th_271",
+    "name_th": "แกงไก่ใส่ฟักเขียว",
+    "main_ingredients": [
+      "chicken",
+      "winter_melon"
+    ],
+    "optional_ingredients": [
+      "kaffir_lime_leaf",
+      "basil"
+    ],
+    "seasonings": [
+      "red_curry_paste",
+      "coconut_milk",
+      "sugar",
+      "fish_sauce",
+      "soy_sauce"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 440,
+    "cook_time_min": 40,
+    "nutrition": {
+      "kcal": 579.0,
+      "protein": 29.9,
+      "fat": 41.4,
+      "carb": 19.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "chicken": 150,
+      "winter_melon": 100,
+      "red_curry_paste": 20,
+      "coconut_milk": 150,
+      "sugar": 10,
+      "fish_sauce": 10
+    },
+    "basis_refs": {
+      "chicken": "STD:895",
+      "winter_melon": "STD:559",
+      "red_curry_paste": "STD:296",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391",
+      "fish_sauce": "STD:291"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from chicken (STD:895), wax gourd / winter melon (STD:559), red curry paste (STD:296), coconut milk (STD:1348), sugar (STD:1391), fish sauce (STD:291)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/3ed7fb23bd5649acb49792b73c78663c",
+    "notes": "Coverage dish for winter_melon (ฟักเขียว, 2->3 main_ingredients uses) -- a coconut-milk red curry, distinct in format from the other winter_melon-bearing dishes in the db. 'Seasoning sauce' (รสดี, a bottled liquid seasoning) is mapped to soy_sauce but not counted in nutrition_basis, matching how minor flavoring seasonings are handled elsewhere (e.g. tamarind_paste in th_201).",
+    "category": "savory"
+  },
+  {
+    "id": "th_272",
+    "name_th": "ยำผักบุ้งกรอบ",
+    "main_ingredients": [
+      "water_spinach",
+      "shrimp"
+    ],
+    "optional_ingredients": [
+      "squid",
+      "minced_meat",
+      "wheat_flour",
+      "lime"
+    ],
+    "seasonings": [
+      "sugar",
+      "fish_sauce",
+      "chili_paste",
+      "vegetable_oil"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 300,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 497.0,
+      "protein": 29.4,
+      "fat": 26.6,
+      "carb": 32.6
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "water_spinach": 100,
+      "shrimp": 60,
+      "squid": 40,
+      "minced_meat": 30,
+      "wheat_flour": 30,
+      "vegetable_oil": 20,
+      "fish_sauce": 10,
+      "sugar": 10
+    },
+    "basis_refs": {
+      "water_spinach": "STD:507",
+      "shrimp": "STD:1042",
+      "squid": "STD:1146",
+      "minced_meat": "STD:970",
+      "wheat_flour": "STD:193",
+      "vegetable_oil": "STD:1368",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from water spinach (STD:507), giant tiger prawn (STD:1042), squid (STD:1146), minced pork (STD:970), wheat flour (STD:193), vegetable oil (STD:1368), fish sauce (STD:291), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/25e3ab63761c4a1a9dfa23f6c26f5d93",
+    "notes": "Coverage dish for water_spinach. Deep-fried battered water spinach tossed in a sweet-spicy-sour dressing with mixed seafood and pork. The source also calls for a hot dog, which has no dictionary entry and is dropped as a non-essential, non-traditional add-in; vegetable_oil (20g) counted for deep-fry oil absorption.",
+    "category": "savory"
   }
 ]

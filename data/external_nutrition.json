@@ -158,6 +158,26 @@
     },
     "citation": "\"Lime juice, raw.\" FoodData Central, 1 Apr. 2019, U.S.D.A., fdc.nal.usda.gov, FDC ID 168156."
   },
+  "EXT:usda-vinegar-distilled": {
+    "food_code": "FDC 172237",
+    "name_en": "Vinegar, distilled",
+    "name_th": "น้ำส้มสายชู, กลั่น",
+    "source": "USDA FoodData Central, SR Legacy",
+    "source_date": "2019-04-01",
+    "retrieved": "2026-09-14",
+    "basis": "per 100 g edible portion",
+    "kcal": 18.0,
+    "protein": 0.0,
+    "fat": 0.0,
+    "carb": 0.04,
+    "carb_derivation": {
+      "carbohydrate_by_difference": 0.04,
+      "fiber_total_dietary": 0.0,
+      "available_carbohydrate": 0.04,
+      "note": "0.04 - 0.0 = 0.04. Thai FCD has no vinegar record at all (confirmed via repeated search, plain and under the Thai term 'น้ำส้มสายชู'). This is plain distilled vinegar, 5% acetic acid, per the USDA record's own note that water accounts for 94.78g/100g."
+    },
+    "citation": "\"Vinegar, distilled.\" FoodData Central, 1 Apr. 2019, U.S.D.A., fdc.nal.usda.gov, FDC ID 172237."
+  },
   "EXT:usda-baking-powder": {
     "food_code": "FDC 172803",
     "name_en": "Leavening agents, baking powder, double-acting, sodium aluminum sulfate",
