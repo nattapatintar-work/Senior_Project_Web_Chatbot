@@ -54,9 +54,9 @@ Things to watch on the Ingredient-to-Recipe Chatbot project. Unlike the dated fi
 > lets the vegan rule be **derived from the data** instead of remembered. That second one
 > matters more than it looks — see the note at the end of this entry.
 >
-> ⚠️ **Still owed to Person 1:** they have not yet been told. The message is short —
-> *IDs 0–19 and all 20 keys are untouched; only entries YOLO will never see were added.*
-> Tell them before they next pull, not after.
+> ✅ **Told 2026-08-12 (session 8).** Message sent as planned — *IDs 0–19 and all 20 keys
+> are untouched; only entries YOLO will never see were added.* Open since session 3, closed
+> this session.
 
 **Original entry follows.**
 
@@ -829,3 +829,51 @@ block Week 7 or Week 8.
 **Priority for next session:** the same handoff note that's been ready for four sessions
 now, then Week 8 (session buffer + debounce + reply-token strategy + Quick Reply +
 `format_reply()`'s C15 keto/rice wording).
+
+---
+
+# ------- Week 8 prep (session 8, 2026-08-12) -------
+
+## ~~Webhook silent-failure investigation — LINE OA received messages but sent no replies~~ ✅ CLOSED
+
+> ✅ **Closed 2026-08-12 (session 8).** Root cause was **not application code** — a LINE OA
+> platform setting.
+
+The bot appeared completely silent: LINE OA showed messages as received, `POST /callback`
+returned `200`, but no reply ever reached the user. Before any instrumentation existed,
+this looked exactly like it could have been anywhere — Weeks 1–7 logic, the Flask app, the
+LINE SDK, or the platform itself.
+
+**Investigation order, cheapest-to-rule-out first:**
+
+1. Added full observability instrumentation to `api/main.py` / `api/session.py` (no
+   behavior change, committed separately as `1a836fe`): a `_log()` helper at every stage of
+   callback → session → reply, explicit `_request_timeout=(5, 10)` on `reply_message`/
+   `push_message` (the SDK's own default is no timeout at all), `first_seen`/`last_seen` on
+   `Session`, and `logging.basicConfig` to surface the SDK's own log lines, not just this
+   project's.
+2. A signed dry-run confirmed `extract()` → `recommend()` → `format_reply()` was already
+   correct **in-process**, before the instrumentation was even used to look at the live
+   path — this ruled out five sessions of NLP/recommender work as the cause up front,
+   rather than re-auditing it mid-investigation.
+3. With logging enabled, the real signature appeared: `"callback: 0 event(s): []"`. The
+   webhook *was* being hit (LINE always pings it, hence the `200`), but the events list
+   was empty — the message itself never arrived in the payload.
+4. Root cause: `manager.line.biz` → Response settings had **"Chat" response mode enabled**
+   alongside "Webhook." "Chat" mode intercepts incoming user messages at the platform level
+   and answers them through LINE's own auto-reply interface *before* they are ever
+   forwarded to the registered webhook — so the app was never wrong, and never even saw
+   the message.
+
+**Fix:** disabled "Chat" in Response settings, confirmed "Webhook" stayed enabled. Zero
+code changes.
+
+**Confirmed live, real LINE app, zero mocks:** sent `"มีไก่กับไข่"` from a real phone,
+server log reached `send_reply: reply OK`, LINE app received correct egg-based
+recommendations with real nutrition data — same shape as session 7's in-process worked
+example, this time over the actual production request path.
+
+**Worth carrying forward:** this is a genuine "looked like a bug, wasn't" case for the
+Weeks 11–12 report — the instrumentation that solved it stays committed (`1a836fe`)
+because it's exactly what will make C11's slow-reply-token failure mode visible if it ever
+fires for real, not a one-off debugging aid to strip out later.

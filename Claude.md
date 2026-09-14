@@ -4,6 +4,19 @@
 
 ---
 
+## 🛠️ Working Style
+
+- **Show actual diffs/data, not prose summaries.** When reporting a change for
+  review (a recipe edit, an ingredient field, a tag fix), show the exact
+  before/after values or JSON — not a description of what changed. The user
+  reviews the real data, not a paraphrase of it.
+- **Every cut/rejected dish or ingredient needs a specific, named reason.**
+  Never say "removed" or "adjusted" alone — say *why*: "no findable source,"
+  "duplicate of th_0XX," "needs an out-of-scope ingredient," etc. This applies
+  any time something proposed doesn't make it into the final data.
+
+---
+
 # PART A — PROJECT OVERVIEW
 
 ## 1. What This Project Is
