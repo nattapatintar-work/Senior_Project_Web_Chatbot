@@ -877,3 +877,66 @@ example, this time over the actual production request path.
 Weeks 11–12 report — the instrumentation that solved it stays committed (`1a836fe`)
 because it's exactly what will make C11's slow-reply-token failure mode visible if it ever
 fires for real, not a one-off debugging aid to strip out later.
+
+---
+
+# ------- Week 5 revisit (session 13, 2026-09-15) -------
+
+## C17 — `confusable_with` field is documentation-only, not read by any code → ✅ noted, no fix needed
+
+> A Week 5 NLP maintenance audit (dictionary grew 69 → 142 entries since Week 5; this
+> pass checked whether `nlp/extract.py` and `data/nlp_dev_set.json` still held up)
+> surfaced this while checking whether `lime`/`kaffir_lime_leaf` had a fuzzy-match risk
+> flagged via `confusable_with`.
+
+**Finding:** `data/ingredients.json`'s `confusable_with` field (added session 9,
+alongside `category`) is **never read anywhere in the codebase** — grepped `nlp/`,
+`tests/`, `tools/`, `recommender/`, `api/`, zero hits outside the data file itself. Its
+original documented purpose (session 9's summary) was a *visual/naming-similarity
+annotation*, likely intended for whoever labels YOLO training images (Person 1's side),
+not an NLP fuzzy-match signal. It is currently populated for exactly one pair
+(`eggplant`/`thai_eggplant`, mutual) plus one one-directional entry
+(`amaranth`→`spinach`), and left empty (`[]`) everywhere else, including
+`lime`/`kaffir_lime_leaf`.
+
+**Why this matters:** a future session could reasonably assume setting
+`confusable_with` on a pair would make `extract()` (or anything else) treat them more
+cautiously. It would not — the field is inert. If that behavior is ever wanted, it needs
+to be wired into `nlp/extract.py`'s resolution logic first (e.g. as an additional
+fuzzy-match guard), not just populated in the data.
+
+**Checked separately, the actual question that prompted this:** is there a real
+fuzzy-match collision risk between `lime` and `kaffir_lime_leaf`? No —
+`fuzz.ratio('มะนาว', 'มะกรูด')` = 36.4, `fuzz.ratio('lime', 'kaffir lime leaf')` = 40.0,
+both far below the module's 85 cutoff. This holds regardless of `confusable_with`.
+
+**Severity:** 🟢 Low. **Impacts:** anytime a future session touches `category`/
+`confusable_with` or adds a new ingredient. **Next action:** none required — this entry
+exists so nobody spends time wiring up or debugging a field that was never meant to be
+functional yet, and either builds it out deliberately (extract.py + tests) or drops it,
+rather than assuming it already does something.
+
+## Same audit, everything else — confirmed clean, no new concerns raised
+
+- **Stale dev-set keys**: none. All 22 pre-existing `nlp_dev_set.json` cases still pass
+  against the current 142-entry dictionary.
+- **New collision risk** (17 prefix-collision groups spanning ถั่ว/เห็ด/ผัก/ใบ/มะ/เนื้อ/มัน/
+  มะเขือ/หอย/หอม/กะ/ปลา-ปลาหมึก/ฟัก/หัว/พริก/หน่อไม้/กระ/ไข่ไก่, including the two
+  HIGH RISK shapes — พริก vs พริกหวาน, matching the original C4 bug's exact shape, and
+  ไข่ไก่ must-not-split-into-ไข่+ไก่): all verified live via `extract()`, isolated and
+  combined. **Zero collisions found.** The Trie-based longest-match tokenization (C4's
+  fix) is handling all of it correctly.
+- **Coverage gap**: real — 80 of 83 ingredients added since Week 5 had zero dev-set
+  coverage. Closed for the 7 highest-risk ones (`pla_ra`, `yanang`, `sour_curry_paste`,
+  `yellow_curry_paste`, `quail_egg`, `king_oyster`, `white_oyster`) by adding 5 new cases
+  to `data/nlp_dev_set.json` this session (22 → 27), each verified against live
+  `extract()` before being added. 73 newer ingredients remain uncovered — not addressed
+  this session, no urgency identified.
+- **Thai typo recovery**: still weak, confirmed still reproducible
+  (`"มีมะเขือเทดด้วย"` still fails to recover มะเขือเทศ/tomato) — unchanged documented
+  limitation, not touched.
+- **เจ → vegan over-matching**: still doesn't exclude alliums (garlic/onion), confirmed
+  live — unchanged documented limitation, already self-disclosed in
+  `data/health_terms.json`, not touched.
+
+`nlp/extract.py` itself was not modified — no bug was found in it.

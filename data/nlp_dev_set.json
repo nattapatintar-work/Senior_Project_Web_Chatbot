@@ -223,5 +223,55 @@
     "health_tags": [],
     "excluded": [],
     "why": "both potato siblings named in the same sentence -- must not conflate them with each other"
+  },
+  {
+    "text": "มีน้ำปลาร้ากับพริก",
+    "ingredients": [
+      "pla_ra",
+      "chili"
+    ],
+    "health_tags": [],
+    "excluded": [],
+    "why": "pla_ra coverage (added in the 250-recipe expansion, never tested since): the full compound น้ำปลาร้า must resolve to pla_ra, not collapse to fish_sauce's น้ำปลา prefix or fish's ปลา prefix -- Week 5/9 maintenance audit"
+  },
+  {
+    "text": "มีใบย่านางกับตะไคร้",
+    "ingredients": [
+      "yanang",
+      "lemongrass"
+    ],
+    "health_tags": [],
+    "excluded": [],
+    "why": "yanang coverage: a newer text-only ingredient (yolo_class_id null) added for recipe-DB expansion, never tested since -- Week 5/9 maintenance audit"
+  },
+  {
+    "text": "มีพริกแกงส้มกับพริกแกงกะหรี่",
+    "ingredients": [
+      "sour_curry_paste",
+      "yellow_curry_paste"
+    ],
+    "health_tags": [],
+    "excluded": [],
+    "why": "sour_curry_paste + yellow_curry_paste coverage: both share the พริก prefix (same shape as the chili/bell_pepper collision risk) and must resolve to their own distinct curry-paste keys, never to chili or each other -- Week 5/9 maintenance audit"
+  },
+  {
+    "text": "มีไข่นกกระทากับไข่ไก่",
+    "ingredients": [
+      "quail_egg",
+      "egg"
+    ],
+    "health_tags": [],
+    "excluded": [],
+    "why": "quail_egg coverage: ไข่นกกระทา shares the ไข่ prefix with egg's own ไข่ไก่/ไข่ synonyms and must resolve separately -- both keys present in one sentence, neither collapsing into the other -- Week 5/9 maintenance audit"
+  },
+  {
+    "text": "มีเห็ดนางรมหลวงกับเห็ดนางรม",
+    "ingredients": [
+      "king_oyster",
+      "white_oyster"
+    ],
+    "health_tags": [],
+    "excluded": [],
+    "why": "king_oyster + white_oyster coverage: เห็ดนางรมหลวง is a superstring of เห็ดนางรม -- both must resolve to their own distinct mushroom keys, not collapse to the shorter one -- Week 5/9 maintenance audit"
   }
 ]
