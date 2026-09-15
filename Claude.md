@@ -494,6 +494,21 @@ Output: [{"name":"Pad Kra Pao Chicken", "score":0.87,
 - [x] Display "have" vs "need to buy" clearly separated *(`missing` is main-ingredients-only; a missing optional is not a shopping-list item)*
 - [x] Measure on your dev set first *(`data/recommender_dev_set.json`, 8 cases, all passing — `tools/run_recommender_dev_set.py`)*
 
+> 📝 **TODO, not yet implemented (recorded here so it stops being an unwritten
+> intention that only lives in conversation):** `recommend()`'s TF-IDF vectorizer
+> currently treats every ingredient key identically, regardless of whether it's
+> photo-detectable (`yolo_class_id` set in `data/ingredients.json`) or text-only
+> (`null`). The idea, never built: weight non-YOLO ingredients lower in the
+> similarity score, since a user is far less likely to have *typed* a text-only
+> ingredient (e.g. `pla_ra`, `yanang`) than to have it visible in a photo — so a
+> dish that only matches on text-only ingredients is a weaker signal than one
+> matching on photo-detectable ones. This would need a per-token weight vector
+> multiplied against the TF-IDF matrix (or a second `TfidfVectorizer` fit
+> separately), not a change to `_recipe_document()`'s current main×2/optional×1
+> repetition scheme, which is solving a different problem (mains vs. optionals,
+> not photo vs. text). Not attempted — this is a note for a future session to
+> pick up deliberately, not something to guess into `recommend.py` on the side.
+
 ## Week 8 — Complete the Chat System
 
 Several tasks converge this week:

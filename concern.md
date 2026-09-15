@@ -436,7 +436,7 @@ threads rather than one after another. Also check quota with
 - ~~**C12** — `broccoli` and `onion` have no nutrition data anywhere~~ → ✅ **CLOSED 2026-08-05**
 - ~~**C13** — Test suite is red~~ → ✅ **CLOSED 2026-08-05** (53 passing)
 - **C14** — Computed recipes' gram amounts are our assumption, not reference data → 🟡 **impacts Weeks 11–12**
-- **C15** — The keto tag is true of the dish and misleading about the meal → 🟡 **impacts Week 7**
+- **C15** — The keto tag is true of the dish and misleading about the meal → 🟡 **REQUIRED Week 8 task, not optional polish — impacts what health claims users see**
 
 ---
 
@@ -571,7 +571,18 @@ are not modelled.
 > template, not the scorer. Still open until Week 8 actually writes that wording; tracked
 > there now, not here.
 
-> 🟡 **Medium** · **Impacts: Week 7 (recommender), Weeks 11–12 (report)** · Owner: You
+> **Update 2026-09-15 (recommender verification pass):** Confirmed still open, checked
+> directly against the real code — `api/main.py`'s `format_reply()` never reads
+> `dish["health_tags"]` anywhere (grepped the whole file). No "(ไม่รวมข้าว)" wording, no
+> keto qualification, nothing. **This is a required Week 8 deliverable, not optional
+> polish or a nice-to-have wording tweak** — until it's implemented, the bot will tell a
+> user a dish is "keto" while it's actually served with ~60g of carbohydrate from rice,
+> a health claim about the meal that is false as delivered even though the underlying
+> per-dish number is correct. That gap is exactly what this concern exists to prevent
+> shipping silently.
+
+> 🟡 **Medium** · **Impacts: Week 8 (format_reply, required not optional), Weeks 11–12
+> (report)** · Owner: You
 
 23 of the 40 recipes carry `keto`. That is far more than a Thai recipe database should
 plausibly produce, and the cause is a portion convention rather than a bug.
@@ -590,15 +601,13 @@ checks out.
 produced an unflattering answer is how a definition stops meaning anything. The honest
 move is to leave the rule intact and record that it is producing a bad result.
 
-**Next action:** in Week 7, either
-
-- have the recommender qualify the tag in the reply template — "keto, without rice" — or
-- add a third clause to the keto rule ("not conventionally served with rice") and retag,
-  documenting that the rule changed and why.
-
-Either way it needs a sentence in the report. The underlying point is a good one to make:
-a health tag is meaningless without a stated portion, and portion conventions are exactly
-where a nutrition database quietly encodes an assumption.
+**Next action:** already decided (2026-08-10 update above) — qualify the tag in Week 8's
+`format_reply()` reply template (e.g. "keto (ไม่รวมข้าว)"), not by retagging
+`recipes.json`. `recommend()` and `HEALTH_TAGS.md`'s keto rule stay as-is; this is
+display-layer work only, and it's part of Week 8's checklist, not a separate optional
+task. It needs a sentence in the report either way. The underlying point is a good one to
+make regardless: a health tag is meaningless without a stated portion, and portion
+conventions are exactly where a nutrition database quietly encodes an assumption.
 
 ---
 
