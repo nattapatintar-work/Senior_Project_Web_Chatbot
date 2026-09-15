@@ -456,19 +456,39 @@ def handle_user_input(text: str = "", detected_ingredients: list[str] | None = N
     )
 
     # --- Step 4: build the reply from a template ---------------------------
-    return format_reply(results)
+    return format_reply(results, requested_health_tags=parsed["health_tags"])
 
 
-def format_reply(results: list[dict]) -> str:
+def format_reply(
+    results: list[dict], requested_health_tags: list[str] | None = None
+) -> str:
     """
     Turn recommender output into the message the user actually reads.
 
     Deliberately a plain template and not an LLM call. Templates are instant,
     and the reply token from LINE expires in 10-30 seconds — a slow LLM round
     trip risks missing that window entirely and losing the reply.
+
+    requested_health_tags: what the user actually asked for (parsed["health_tags"]
+    from extract()), NOT a dish's own health_tags. Used only for the C15 fix
+    below (concern.md) — everything else in this function still reads solely
+    from each dish's own fields.
+
+    C15 (concern.md): a dish's "keto" tag is correct about the dish itself, but
+    misleading about the meal as eaten, because curry servings are costed
+    without rice (200g curry, ~6g carb) while nobody eats curry without it
+    (~60g carb once a normal rice portion is added). The tagging logic in
+    recommend()/HEALTH_TAGS.md is deliberately left alone — it is accurate for
+    what it measures. The fix belongs here, in the display layer: when a dish
+    is keto AND the user specifically asked for keto, qualify it with
+    "(ไม่รวมข้าว)" so the claim is honest about what's being promised. If the
+    user never asked for keto, the tag is not shown at all — a dish being
+    incidentally keto is not something an unrelated user needs to see.
     """
     if not results:
         return "ไม่พบเมนูที่ตรงกับวัตถุดิบที่มีค่ะ ลองส่งวัตถุดิบเพิ่มเติมดูนะคะ"
+
+    requested_health_tags = requested_health_tags or []
 
     lines = ["🍳 เมนูแนะนำสำหรับคุณ", ""]
 
@@ -479,6 +499,9 @@ def format_reply(results: list[dict]) -> str:
             lines.append(f"   ✅ มีแล้ว: {', '.join(dish['have'])}")
         if dish["missing"]:
             lines.append(f"   🛒 ต้องซื้อ: {', '.join(dish['missing'])}")
+
+        if "keto" in dish["health_tags"] and "keto" in requested_health_tags:
+            lines.append("   🏷️ คีโต (ไม่รวมข้าว)")
 
         nutrition = dish["nutrition"]
         lines.append(

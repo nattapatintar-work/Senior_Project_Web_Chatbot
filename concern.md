@@ -436,7 +436,7 @@ threads rather than one after another. Also check quota with
 - ~~**C12** — `broccoli` and `onion` have no nutrition data anywhere~~ → ✅ **CLOSED 2026-08-05**
 - ~~**C13** — Test suite is red~~ → ✅ **CLOSED 2026-08-05** (53 passing)
 - **C14** — Computed recipes' gram amounts are our assumption, not reference data → 🟡 **impacts Weeks 11–12**
-- **C15** — The keto tag is true of the dish and misleading about the meal → 🟡 **REQUIRED Week 8 task, not optional polish — impacts what health claims users see**
+- ~~**C15** — The keto tag is true of the dish and misleading about the meal~~ → ✅ **CLOSED 2026-09-15**
 
 ---
 
@@ -560,7 +560,23 @@ are not modelled.
 
 ---
 
-## C15 — The keto tag is true of the dish and misleading about the meal
+## ~~C15 — The keto tag is true of the dish and misleading about the meal~~ ✅ CLOSED
+
+> ✅ **Closed 2026-09-15.** Fixed in `api/main.py`'s `format_reply()`: when a dish is
+> `keto`-tagged **and** the user's message specifically requested `keto`
+> (`parsed["health_tags"]` from `extract()`, threaded through as `format_reply()`'s new
+> `requested_health_tags` parameter), the reply now shows a `🏷️ คีโต (ไม่รวมข้าว)` line
+> for that dish. If the user never asked for keto, no tag line is shown at all — a dish
+> being incidentally keto isn't noise an unrelated user needs to see. `recommend()` and
+> `HEALTH_TAGS.md`'s keto rule were deliberately left untouched, per the 2026-08-10
+> decision below — the tagging logic is correct for what it measures; only the display
+> layer needed the qualifier. Verified end-to-end: `"มีไข่ อยากกินคีโต"` shows the
+> qualifier on all 3 resulting keto dishes; `"มีไข่"` alone (same ingredient, no keto
+> request) shows none, even though the same dishes remain genuinely keto-tagged. All 88
+> tests still pass — no test pinned `format_reply()`'s output text, so nothing else
+> needed updating.
+
+**Original entry follows.**
 
 > **Update 2026-08-10 (Week 7 session):** Decided — deferred to Week 8, not handled in
 > `recommend()`. The recommender passes `health_tags` through on every result unchanged
