@@ -7072,47 +7072,47 @@
     "name_th": "ผัดมันแกว",
     "main_ingredients": [
       "jicama",
-      "pork"
+      "pork",
+      "egg"
     ],
     "optional_ingredients": [
       "garlic"
     ],
     "seasonings": [
-      "oyster_sauce",
-      "sugar",
-      "soy_sauce"
+      "soy_sauce",
+      "sugar"
     ],
     "health_tags": [],
     "excluded_for": [
       "vegan",
       "vegetarian"
     ],
-    "serving_g": 230,
-    "cook_time_min": 15,
+    "serving_g": 350,
+    "cook_time_min": 25,
     "nutrition": {
-      "kcal": 154.0,
-      "protein": 14.4,
-      "fat": 2.5,
-      "carb": 17.8
+      "kcal": 354.0,
+      "protein": 32.4,
+      "fat": 12.1,
+      "carb": 28.6
     },
     "nutrition_method": "computed",
     "nutrition_basis": {
       "jicama": 150,
-      "pork": 60,
-      "oyster_sauce": 10,
-      "sugar": 5,
-      "soy_sauce": 5
+      "pork": 100,
+      "egg": 65,
+      "soy_sauce": 20,
+      "sugar": 15
     },
     "basis_refs": {
       "jicama": "STD:1923",
       "pork": "STD:958",
-      "oyster_sauce": "STD:270",
-      "sugar": "STD:1391",
-      "soy_sauce": "STD:273"
+      "egg": "STD:1292",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391"
     },
-    "nutrition_source": "Thai FCD (INMU), computed from jicama (STD:1923), pork (STD:958), oyster sauce (STD:270), sugar (STD:1391), soy sauce (STD:273)",
-    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/aa2adfe4767849f4b0e3256de385bcf4",
-    "notes": "Coverage dish for jicama. Everyday Thai-Chinese stir-fry.",
+    "nutrition_source": "Thai FCD (INMU), computed from jicama (STD:1923), pork (STD:958), duck egg (STD:1292), soy sauce (STD:273), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/a8872b30e4ba44f6a0e236a06dbd6303",
+    "notes": "CORRECTED (data-integrity fix, discovered while sourcing th_289): this entry previously cited https://www.wongnai.com/.../aa2adfe4767849f4b0e3256de385bcf4 with main_ingredients {jicama, pork} and oyster_sauce/soy_sauce/sugar -- but that URL, re-fetched twice, is actually a pork-free oyster-sauce jicama stir-fry (now written as th_289) and never matched this entry's ingredient list. Re-sourced from a different, real single-recipe page whose ingredients genuinely include pork (100g) -- jicama, pork, 1 whole duck egg cracked in near the end, garlic, a bottled seasoning sauce (mapped to soy_sauce, the same functional-product mapping used elsewhere in this DB for branded seasoning sauces), and sugar. Egg promoted from absent to a real main_ingredients entry (a whole duck egg is a substantial, defining addition here, not a garnish) -- this also keeps the set {jicama, pork, egg} genuinely distinct from th_289's {jicama} alone and th_288's {jicama, chicken}. Duck egg priced as STD:1292 (whole raw duck egg, ~65g); no dictionary distinction between chicken/duck egg exists, so it uses the same 'egg' key as every other dish. serving_g/nutrition recomputed from the source's actual stated quantities (1 jicama head ~150g by prior DB convention, 100g pork, 1 duck egg ~65g, 20g seasoning sauce, 15g sugar) rather than the previous entry's unexplained smaller amounts.",
     "category": "savory"
   },
   {
@@ -12595,5 +12595,478 @@
     "notes": "Boiled cassava tossed hot in sugar, shaped into balls, coated in a rice-flour-and-slaked-lime-water batter, then deep-fried -- distinct from th_052 (candied/syrup-simmered, no frying, coconut milk sauce), th_208 (steamed with coconut, no frying), and th_243 (grilled on skewers, no coating, no frying). CORRECTION vs. the pre-approval assumption: re-fetching the source ingredient list directly shows the coating flour is แป้งข้าวจ้าว (rice flour, dictionary key rice_flour), not tapioca starch as the dish's working title implied -- verified by name, no แป้งมันสำปะหลัง anywhere in the source's ingredient list. main_ingredients set to [cassava, rice_flour] accordingly; this does NOT collide with th_105's ['sweet_potato'] set (confirmed: th_105 is มันทอดน้ำตาล, candied fried sweet potato -- same name_th 'มันทอด' as a substring, completely different main ingredient, no coating flour at all). Slaked lime water (น้ำปูนใส, a texture agent with no real caloric content) has no dictionary entry and is omitted from nutrition_basis, same convention as salt/lime-water treatments elsewhere in this batch.",
     "id": "th_280",
     "category": "dessert"
+  },
+  {
+    "name_th": "น้ำมะขาม",
+    "main_ingredients": [
+      "tamarind"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sugar"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 55,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 192.0,
+      "protein": 1.1,
+      "fat": 0.0,
+      "carb": 45.8
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "tamarind": 30,
+      "sugar": 25
+    },
+    "basis_refs": {
+      "tamarind": "STD:750",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from sweet tamarind (STD:750), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/c3f07dd243b44c4c84bab2c063b34fa0",
+    "notes": "Drink format, distinct from th_091 (มะขามคลุก, dry loose fresh-fruit candy) and th_231 (มะขามแก้ว, cooked-down crystallized candy balls): tamarind concentrate dissolved in hot water, sweetened, served over ice. Source uses a branded Knorr wet tamarind paste as the entire drink's sole bulk ingredient with no amount given (\"to taste\"); mapped onto the tamarind (fresh-fruit) dictionary key rather than tamarind_paste, since it plays the same 'star ingredient at real bulk quantity' role that th_091/th_231 already establish for that key -- th_091's own note explains tamarind_paste is reserved for the small-dash curry-souring product, not this. Because the source gives no gram amount for tamarind or exact sugar ('to taste'), the basis below is a disclosed reasonable estimate (~30g concentrate + 25g sugar per 250ml glass) based on standard nam-makham proportions for a 3-cup-water batch serving about 4 glasses. Salt ('a small amount') omitted from nutrition_basis, same convention as th_091's salt omission. Water/ice (the diluting medium) contributes no tracked weight, matching the DB-wide convention of not modelling non-caloric liquid dilution (e.g. th_043, th_078, th_080, th_154).",
+    "id": "th_281",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ขนมสอดไส้",
+    "main_ingredients": [
+      "coconut",
+      "glutinous_rice_flour",
+      "rice_flour"
+    ],
+    "optional_ingredients": [
+      "tapioca_starch"
+    ],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 150,
+    "cook_time_min": 45,
+    "nutrition": {
+      "kcal": 436.0,
+      "protein": 5.1,
+      "fat": 14.8,
+      "carb": 70.4
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "coconut": 21,
+      "sugar": 28,
+      "glutinous_rice_flour": 41,
+      "rice_flour": 8,
+      "tapioca_starch": 2,
+      "coconut_milk": 50
+    },
+    "basis_refs": {
+      "coconut": "STD:754",
+      "sugar": "STD:1391",
+      "glutinous_rice_flour": "STD:190",
+      "rice_flour": "STD:187",
+      "tapioca_starch": "STD:1934",
+      "coconut_milk": "STD:1349"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from grated coconut (STD:754), sugar (STD:1391), glutinous rice flour (STD:190), rice flour (STD:187), tapioca starch (STD:1934, standing in for arrowroot starch), coconut cream (STD:1349)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/3bc902ce7be047a4a67817f6388ed662",
+    "notes": "Steamed banana-leaf-wrapped stuffed dumpling: shredded coconut cooked down with palm sugar into a filling, wrapped in a glutinous-rice-flour dough, coated in a rice-flour-and-coconut-cream batter, then steamed -- distinct from th_137 (ขนมต้ม, boiled + rolled in grated coconut, main set {coconut, glutinous_rice_flour} only, no rice_flour, no steaming-in-batter step). WRITE-TIME VERIFICATION (flagged pre-approval): re-fetching the source confirms rice flour (แป้งข้าวเจ้า, 60g) is a genuine structural component of the coating batter, not a trace addition -- about 16% of the dough's combined flour weight (60g against 300g glutinous rice flour), added for the well-documented technique of cutting the gumminess pure glutinous flour would otherwise have. main_ingredients confirmed as {coconut, glutinous_rice_flour, rice_flour} per the pre-approved plan, no correction needed. Palm sugar mapped to the generic sugar key (precedent: th_279, th_280). The dough also calls for 15g of แป้งท้าวยายม่อม (arrowroot starch, no dedicated dictionary entry); mapped onto tapioca_starch (STD:1934) as the closest equivalent starch, same simplification precedent as baking-soda-to-baking-powder at th_279 -- kept in optional_ingredients rather than main since it is a minor 15g addition, not part of the approved main set. Jasmine essence and food coloring are flavor/color agents with no dictionary entry and no real caloric contribution, omitted from nutrition_basis.",
+    "id": "th_282",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ข้าวเหนียวเปียกเผือก",
+    "main_ingredients": [
+      "taro_root",
+      "glutinous_rice"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 278,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 544.0,
+      "protein": 8.4,
+      "fat": 15.1,
+      "carb": 93.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "taro_root": 33,
+      "glutinous_rice": 130,
+      "coconut_milk": 100,
+      "sugar": 15
+    },
+    "basis_refs": {
+      "taro_root": "STD:1922",
+      "glutinous_rice": "STD:149",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from steamed taro (STD:1922), steamed glutinous rice (STD:149), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/72e80b484b044ca6b8643acfa5f91e6a",
+    "notes": "Sweet coconut-milk rice porridge/soup: steamed sticky rice simmered with water and sugar, steamed taro cubes stirred in, finished with warmed coconut milk -- distinct from taro_root's 5 existing formats (soup-with-pumpkin, custard, fried, chips, pudding), and a new use for glutinous_rice (previously only used in the whole-grain dessert-with-topping family, e.g. th_050/th_119/th_123, never as a rice-porridge base cooked directly in liquid). CORRECTION vs. the pre-approval plan: the source uses only canned/carton coconut milk (กะทิ, 1 can) with no fresh grated coconut anywhere -- confirmed by direct re-fetch. Coconut milk is a seasoning-level dictionary key (is_seasoning=True), not the fresh-coconut 'coconut' main-ingredient key (which every existing coconut-main dish in this DB backs with a real grated-coconut gram amount, e.g. th_118/th_132/th_137/th_138/th_208/th_214/th_216); dropping 'coconut' from main_ingredients here does not break the YOLO-detectability rule since taro_root (yolo_class_id 86) already satisfies it. main_ingredients corrected to {taro_root, glutinous_rice}, coconut milk moved to seasonings. Batch totals ('4 packets' steamed sticky rice, '1 cup' taro, '1 can' coconut milk, sugar 'to taste') have no exact gram figures in the source; the basis above is a disclosed per-serving estimate (assuming the batch serves about 4) based on standard packet/cup/can sizes. Salt ('a small amount') omitted, same convention as elsewhere in this DB.",
+    "id": "th_283",
+    "category": "dessert"
+  },
+  {
+    "name_th": "ขนมผิง",
+    "main_ingredients": [
+      "egg",
+      "tapioca_starch"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 85,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 253.0,
+      "protein": 1.6,
+      "fat": 3.4,
+      "carb": 53.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "egg": 8,
+      "tapioca_starch": 36,
+      "coconut_milk": 18,
+      "sugar": 23
+    },
+    "basis_refs": {
+      "egg": "STD:1274",
+      "tapioca_starch": "STD:1934",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from whole egg (STD:1274, standing in for egg yolk, same simplification as th_096/th_097), tapioca starch (STD:1934), coconut milk (STD:1348), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/936f99b29d344f66b5797c4cde4d0932",
+    "notes": "Baked crispy cookie: tapioca starch toasted dry, kneaded with egg yolk and a coconut-milk-sugar syrup, rested overnight, shaped into small balls, then baked -- WRITE-TIME VERIFICATION (flagged pre-approval): re-fetching the source confirms tapioca starch (2 cups) substantially outweighs the coconut milk (1/2 cup) in the recipe -- tapioca is genuinely the dominant, structural ingredient, not coconut. main_ingredients confirmed as {egg, tapioca_starch} per the pre-approval plan, no correction needed; this does not collide with th_118's {coconut, egg} main set since coconut here never rises above seasoning-level coconut_milk. Egg yolk (not whole egg) priced as whole egg for simplicity, same convention already used for th_096 (ทองหยอด) and th_097 (ฝอยทอง), both also traditionally yolk-only. Overnight dough rest and the optional day-long smoking step are not counted in cook_time_min (active baking time only), consistent with how this DB tracks active preparation rather than passive resting.",
+    "id": "th_284",
+    "category": "dessert"
+  },
+  {
+    "name_th": "แกงส้มฟักแม้วกุ้งสด",
+    "main_ingredients": [
+      "chayote",
+      "shrimp",
+      "fish"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sour_curry_paste",
+      "tamarind_paste",
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 220,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 158.0,
+      "protein": 12.7,
+      "fat": 1.0,
+      "carb": 22.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "chayote": 120,
+      "fish": 30,
+      "sour_curry_paste": 20,
+      "tamarind_paste": 15,
+      "fish_sauce": 12,
+      "sugar": 3,
+      "shrimp": 20
+    },
+    "basis_refs": {
+      "chayote": "EXT:usda-chayote-raw",
+      "fish": "STD:1112",
+      "sour_curry_paste": "STD:299",
+      "tamarind_paste": "STD:750",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391",
+      "shrimp": "STD:1042"
+    },
+    "nutrition_source": "Thai FCD (INMU) for tilapia (STD:1112), sour curry paste (STD:299), tamarind (STD:750, standing in for tamarind paste per existing precedent), fish sauce (STD:291), sugar (STD:1391), tiger prawn (STD:1042); chayote from USDA FoodData Central (EXT:usda-chayote-raw, no usable Thai FCD record -- Thai FCD's only chayote entry, STD:586, is young leaves/shoots with all four macros null) per data/external_nutrition.json, the same disclosed record already used at th_218's Batch-8 predecessor decision",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/6fe3d5f3b5054b70a99f0a9d8814256b",
+    "notes": "Sour curry: whole tilapia boiled, the cooked flesh pounded together with a pre-made sour curry paste (พริกแกงส้ม), simmered with chayote and fresh shrimp, finished with tamarind juice/fish sauce/palm sugar -- distinct from chayote's 2 existing entries, both stir-fries (th_097 {chayote,shrimp}, th_218 {chayote,egg}, neither a curry, neither using fish). The fish (pounded into the curry base rather than left as fillets) is what keeps the main set from colliding exactly with th_097's {chayote, shrimp}. Since a pre-made curry paste is used (unlike th_286's from-scratch paste below), its own aromatics (shallot/garlic/lemongrass/galangal/chili/shrimp paste blend) are not listed again separately, same convention as th_155/th_261. Palm sugar mapped to the generic sugar key. Salt (1/2 tsp) omitted, no real caloric contribution. Batch serves 7-8 per source; basis above assumes 5 servings from the stated batch quantities (2 heads chayote, 1 whole tilapia, 100g curry paste, 5 tbsp tamarind juice, 4 tbsp fish sauce, 1 tbsp palm sugar, 6-7 shrimp), a disclosed per-serving estimate since the source gives batch totals rather than per-serving amounts.",
+    "id": "th_285",
+    "category": "savory"
+  },
+  {
+    "name_th": "แกงส้มมะละกอ",
+    "main_ingredients": [
+      "green_papaya",
+      "fish"
+    ],
+    "optional_ingredients": [
+      "shallot",
+      "chili"
+    ],
+    "seasonings": [
+      "shrimp_paste",
+      "tamarind_paste",
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 181,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 91.0,
+      "protein": 8.2,
+      "fat": 1.7,
+      "carb": 8.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "green_papaya": 125,
+      "fish": 45,
+      "shrimp_paste": 2,
+      "tamarind_paste": 4,
+      "fish_sauce": 4,
+      "sugar": 1
+    },
+    "basis_refs": {
+      "green_papaya": "STD:590",
+      "fish": "STD:1212",
+      "shrimp_paste": "STD:254",
+      "tamarind_paste": "STD:750",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from raw papaya (STD:590), canned mackerel in tomato sauce (STD:1212, the common retail form of \"ปลากระป้อง\" -- the source does not name a brand/variant), shrimp paste (STD:254), tamarind (STD:750, standing in for tamarind paste per existing precedent), fish sauce (STD:291), sugar (STD:1391)",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/a5909f3c78f141e2851a33f7688345b5",
+    "notes": "Cooked sour curry using unripe (green) papaya, distinct from all 3 existing green_papaya dishes, which are all ส้มตำ salads (raw, pounded, never simmered). MISTRANSLATION CAUGHT AT WRITE TIME: the source lists \"กระชาย\" among the paste aromatics, which an earlier automated summarization pass glossed as 'galangal' -- กระชาย is actually fingerroot (Boesenbergia rotunda, sometimes called Chinese ginger), a different rhizome from real galangal (ข่า, the dictionary's galangal entry). Cross-checked directly against the Thai text and against data/ingredients.json's synonyms before writing; the dictionary has no fingerroot entry, so it is omitted from nutrition_basis as a minor pounded-paste aromatic (5 small pieces), same treatment as galangal/garlic/shallot/chili aromatics in th_261's from-scratch curry paste. Shallot and dried chili (also paste aromatics, both with dictionary entries) are listed in optional_ingredients but likewise not counted in nutrition_basis, matching th_261's exact convention for a home-pounded (not pre-made) curry paste. \"ปลากระป้อง\" (canned fish, no brand/variant stated) mapped to the generic fish key and priced against the canned-mackerel-in-tomato-sauce record, the most common retail form of this product in Thailand -- same species-level-detail-dropped convention as th_155/th_169's fresh mackerel. Salt (1/2 tsp) omitted, no real caloric contribution. Source gives batch totals (1 whole papaya, 2 cans canned fish, curry-paste aromatics, 1/2 tbsp shrimp paste, 1 tbsp fish sauce, 1 tsp sugar, 1 tbsp tamarind juice) rather than per-serving amounts; basis above assumes 4 servings from the stated batch, a disclosed per-serving estimate.",
+    "id": "th_286",
+    "category": "savory"
+  },
+  {
+    "name_th": "ยำหอมแดง",
+    "main_ingredients": [
+      "shallot",
+      "chili"
+    ],
+    "optional_ingredients": [
+      "lime",
+      "dried_shrimp",
+      "peanuts"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 190,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 130.0,
+      "protein": 4.1,
+      "fat": 0.2,
+      "carb": 25.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "shallot": 150,
+      "chili": 5,
+      "fish_sauce": 30,
+      "sugar": 5
+    },
+    "basis_refs": {
+      "shallot": "STD:251",
+      "chili": "STD:545",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from shallot (STD:251), bird's eye chili (STD:545), fish sauce (STD:291), sugar (STD:1391). Lime juice (2 tbsp in the source) is listed in optional_ingredients but not counted in nutrition_basis -- see notes.",
+    "recipe_source_url": "https://www.lemon8-app.com/@jaojookkanomthai/7533072125247144464?region=us",
+    "notes": "New main_ingredients set {shallot, chili} -- chili is a real co-main here (fresh or dried chili is a named dressing ingredient with a measured role, not a garnish), which avoids colliding with th_174's {shallot} alone (a different dish -- crispy fried shallot condiment, no chili at all). Chose this Lemon8 source over the alternative tamthiwa post (Burmese-style with a roasted-shrimp-paste coating) because it gives exact measured amounts (2 tbsp fish sauce, 2 tbsp lime juice, 1-1.5 tsp sugar), making the nutrition basis traceable rather than guessed from vague amounts like 'a small drizzle.' Re-fetched directly to confirm: ingredients are shallot, chili (fresh or dried, to taste), fish sauce, lime juice, sugar, with dried shrimp / crispy fish / pork floss / tuna as alternative OPTIONAL proteins (pick one, not all) and crispy shallot or roasted peanuts as an optional garnish -- both dried_shrimp and peanuts exist in the dictionary and are listed in optional_ingredients to reflect this, but neither is counted in nutrition_basis since the base recipe (no added protein) is what's costed, matching how other optional add-ins are handled elsewhere in this DB. Lime juice is also optional_ingredients-only, not nutrition_basis, to keep this comparable to th_172's precedent (lime as a dressing component placed in optional_ingredients). Shallot bulk weight and chili amount are not stated in the source ('firm, fragrant bulbs', 'to taste') -- 150 g shallot and 5 g chili are a disclosed reasonable estimate for one shared portion of this salad, sized against th_074's/th_165's jicama-salad servings (130-150 g bulk vegetable) as the closest precedent in this DB. Not a duplicate of th_174 (different main_ingredients set, different dish/format entirely).",
+    "id": "th_287",
+    "category": "savory"
+  },
+  {
+    "name_th": "แกงกะทิไก่มันแกว",
+    "main_ingredients": [
+      "jicama",
+      "chicken"
+    ],
+    "optional_ingredients": [
+      "kaffir_lime_leaf"
+    ],
+    "seasonings": [
+      "red_curry_paste",
+      "coconut_milk",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 448,
+    "cook_time_min": 40,
+    "nutrition": {
+      "kcal": 592.0,
+      "protein": 30.5,
+      "fat": 41.4,
+      "carb": 23.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "jicama": 120,
+      "chicken": 150,
+      "red_curry_paste": 20,
+      "coconut_milk": 150,
+      "sugar": 8
+    },
+    "basis_refs": {
+      "jicama": "STD:1923",
+      "chicken": "STD:895",
+      "red_curry_paste": "STD:296",
+      "coconut_milk": "STD:1348",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from jicama (STD:1923), chicken (STD:895), red curry paste (STD:296, standing in for the source's southern curry paste -- see notes), coconut milk (STD:1348), sugar (STD:1391).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/d3a6169b51bc42838c5c3519d1444c00",
+    "notes": "A genuinely new format for jicama (curry) alongside th_074 (raw pounded salad, {jicama, peanuts}) and th_165 (dry stir-fry, {jicama, pork}) -- no main_ingredients collision. Re-fetched directly: chicken (1/2 bird), jicama (4 heads), southern curry paste (150 g), coconut milk (1000 ml), 2 Knorr chicken bouillon cubes, coconut sugar (1/2 tbsp), salt (1 tsp), kaffir lime leaf (1 sprig), matching the pre-approved ingredient list. The dictionary has no distinct 'southern curry paste' entry (only green/red/yellow/massaman/sour); mapped to red_curry_paste as the closest available product category (a ground fresh-chili-and-aromatics paste), the same kind of functional-equivalent mapping already used elsewhere in this DB for branded products without a dedicated key (e.g. Maggi seasoning sauce -> soy_sauce in th_267/th_271). The 2 Knorr bouillon cubes have no dictionary entry and are omitted entirely, matching the existing precedent for Knorr broth-cube products (see the bok_choy coverage dish's notes). Salt (1 tsp) omitted, no real caloric contribution, same convention used throughout this DB. Kaffir lime leaf is only 1 sprig here (not the 5-10-whole-leaf defining quantity that promoted it to a main ingredient in th_166/th_167/th_265), so it stays optional and out of nutrition_basis. Amounts in nutrition_basis are a disclosed per-serving estimate (this DB's usual practice for a batch-quantity source) assuming roughly 4 servings from the stated batch, sized directly against th_271's near-identical chicken + vegetable + red-curry-paste + coconut-milk + sugar coconut curry template.",
+    "id": "th_288",
+    "category": "savory"
+  },
+  {
+    "name_th": "ผัดมันแกวน้ำมันหอย",
+    "main_ingredients": [
+      "jicama"
+    ],
+    "optional_ingredients": [
+      "garlic"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "vegetable_oil",
+      "soy_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 181,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 174.0,
+      "protein": 1.7,
+      "fat": 10.2,
+      "carb": 18.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "jicama": 150,
+      "oyster_sauce": 10,
+      "vegetable_oil": 10,
+      "soy_sauce": 5,
+      "sugar": 6
+    },
+    "basis_refs": {
+      "jicama": "STD:1923",
+      "oyster_sauce": "STD:270",
+      "vegetable_oil": "STD:1368",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from jicama (STD:1923), oyster sauce (STD:270), vegetable oil (STD:1368), soy sauce (STD:273, standing in for the source's separate bottled seasoning sauce -- see notes), sugar (STD:1391).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/aa2adfe4767849f4b0e3256de385bcf4",
+    "notes": "A new, non-colliding main_ingredients set {jicama} alone -- confirmed neither th_074 ({jicama, peanuts}) nor th_165 ({jicama, pork}) use jicama by itself. NOT vegan/vegetarian despite having no meat: oyster_sauce is an animal product and disqualifies both diets per data/HEALTH_TAGS.md's vegan trap rule, even though every other ingredient here is plant-based. Re-fetched directly and confirmed the page text word-for-word: jicama (300 g), garlic (3-4 cloves), sugar (1 tbsp), oyster sauce (1 tbsp), vegetable oil (2 tbsp), a separate bottled seasoning sauce (ซอสปรุงรส, mapped to soy_sauce, the same functional-product-category mapping used for Maggi/Knorr seasoning sauces elsewhere in this DB), and seasoning powder (ผงปรุงรส, no dictionary entry, omitted -- a minor MSG-type flavoring, not a caloric ingredient). Explicitly confirmed the page contains NO pork or any other meat anywhere, in any variant. IMPORTANT DATA-QUALITY FLAG (not fixed here, reported for the user's attention): th_165, already committed in an earlier batch, cites this exact same URL as its recipe_source_url for a {jicama, pork} dish with oyster_sauce/sugar/soy_sauce -- but the live page at this URL has never mentioned pork and is a plain vegetable-only jicama stir-fry. th_165's own ingredient list (jicama, pork, garlic, oyster sauce, sugar, soy sauce) does not match what's on this page; its source_url looks like a copy-paste mistake from an earlier batch, unrelated to this session's work. Left untouched per this task's scope -- flagging for a separate correction pass rather than editing th_165 here. Serving amounts here are a disclosed per-serving estimate (source states amounts for the whole 'serves 2' batch; jicama halved to 150 g/serving, seasonings estimated at typical per-serving levels seen elsewhere in this DB for the same seasoning set, e.g. th_165).",
+    "id": "th_289",
+    "category": "savory"
+  },
+  {
+    "name_th": "ขึ้นฉ่ายผัดหมูสับ",
+    "main_ingredients": [
+      "celery",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "garlic"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "sugar",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 173,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 352.0,
+      "protein": 19.4,
+      "fat": 27.1,
+      "carb": 6.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "celery": 50,
+      "minced_meat": 100,
+      "soy_sauce": 8,
+      "sugar": 5,
+      "vegetable_oil": 10
+    },
+    "basis_refs": {
+      "celery": "STD:495",
+      "minced_meat": "STD:970",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from celery (STD:495), minced pork (STD:970), soy sauce (STD:273, standing in for the source's concentrated Knorr seasoning sauce -- see notes), sugar (STD:1391), soybean/vegetable oil (STD:1368).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/c656009d98bd483498f1c6d4527e6414",
+    "notes": "Genuinely different dictionary key from th_170's {pork, celery} (whole-cut pork, stir-fried with fish_sauce/oyster_sauce/soy_sauce): this dish uses minced_meat (หมูสับ), a distinct ingredient key, so no main_ingredients-set collision. MISTRANSLATION CHECK (per this task's caution): re-fetched the page directly and confirmed the Thai text reads ขึ้นฉ่าย -- Chinese celery (Apium graveolens var. secalinum), matching data/ingredients.json's celery entry synonyms (ขึ้นฉ่าย, คื่นฉ่าย) exactly -- NOT ผักบุ้ง (water spinach/morning glory). An automated fetch pass on this same page again glossed the word as 'celery/morning glory' in English parentheses when asked a follow-up question; that gloss was discarded and the Thai source text was used instead, per this task's explicit warning not to trust an English gloss alone. Ingredients confirmed on the page: celery, minced pork, garlic, water, a Knorr bottled concentrated seasoning sauce (คนอร์ขวดซอสข้นปรุงรส), sugar, soybean oil -- matching the pre-approved list exactly. Water carries no nutrition_basis entry (non-caloric diluting liquid, same DB-wide convention as th_043/th_078/th_080/th_154). The Knorr concentrated seasoning sauce (a bottled liquid, not a bouillon cube) is mapped to soy_sauce, the same functional-product-category convention used for other bottled branded seasoning sauces elsewhere in this DB (e.g. th_267/th_271's Maggi/'seasoning sauce' -> soy_sauce). The source (titled for '1 plate') gives NO gram/tablespoon amounts for anything -- every figure in nutrition_basis is a disclosed reasonable estimate for one single-serving plate, sized against th_170's per-serving pork+celery stir-fry amounts as the closest precedent in this DB (scaled down for a smaller single-plate dish rather than th_170's larger 250 g shared-plate serving).",
+    "id": "th_290",
+    "category": "savory"
   }
 ]

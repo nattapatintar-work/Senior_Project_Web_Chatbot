@@ -14,6 +14,13 @@
   Never say "removed" or "adjusted" alone — say *why*: "no findable source,"
   "duplicate of th_0XX," "needs an out-of-scope ingredient," etc. This applies
   any time something proposed doesn't make it into the final data.
+- **Never dismiss a search result as unfit based on the snippet alone —
+  always fetch and check the actual page content before dropping a
+  candidate.** Traced to a real miss: jicama/shallot/celery were reported
+  "unreachable" across three recipe-database batches, but real single-dish
+  sources for all three were sitting in the search results the whole time —
+  filtered out by judging the snippet instead of opening the page. Applies
+  to source-hunting of every kind, not just the recipe batches.
 
 ---
 
