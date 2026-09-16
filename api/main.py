@@ -64,18 +64,40 @@ from linebot.v3.exceptions import InvalidSignatureError
 from linebot.v3.messaging import (
     ApiClient,
     Configuration,
+    MessageAction,
     MessagingApi,
     MessagingApiBlob,
     PushMessageRequest,
+    QuickReply,
+    QuickReplyItem,
     ReplyMessageRequest,
     TextMessage,
 )
 from linebot.v3.messaging.exceptions import ApiException
 from linebot.v3.webhooks import ImageMessageContent, MessageEvent, TextMessageContent
 
-from api import config, mock_cv, session
+from api import config, confirmation, mock_cv, session
 from nlp.extract import extract
 from recommender.recommend import recommend
+
+# The Quick Reply button attached to every "anything else?" confirmation
+# prompt (Week 8). Built once at import time, same reasoning as nlp/extract.py
+# building its Trie once: this object is identical on every use, so there is
+# no reason to reconstruct it per message. Its label/text is
+# confirmation.PRIMARY_CONFIRM_PHRASE — the single source of truth also used
+# by confirmation.is_confirmation_text() — so the button always produces text
+# that gets recognised as a confirmation, not a second literal that could
+# silently drift out of sync with the one in confirmation.py.
+_CONFIRM_QUICK_REPLY = QuickReply(
+    items=[
+        QuickReplyItem(
+            action=MessageAction(
+                label=confirmation.PRIMARY_CONFIRM_PHRASE,
+                text=confirmation.PRIMARY_CONFIRM_PHRASE,
+            )
+        )
+    ]
+)
 
 # Detections below this confidence are thrown away.
 #
@@ -295,8 +317,56 @@ def process_session(sess: session.Session) -> None:
         combined_text = " ".join(sess.texts)
         _log(f"process_session: combined_text={combined_text!r}")
 
-        # --- Step 4: run the pipeline --------------------------------------------
-        reply = handle_user_input(combined_text, detected_ingredients=detected)
+        # --- Step 4: confirm-before-recommending (Week 8) -----------------------
+        # Every completed debounce round either starts a NEW confirmation
+        # ("anything else?") or answers an EXISTING one for this user — see
+        # api/confirmation.py's module docstring for why this needs state
+        # beyond what session.py already tracks. quick_reply stays None for a
+        # final recommendation; it's only attached to a confirmation prompt.
+        quick_reply = None
+        pending = confirmation.get(sess.user_id)
+
+        if pending is None:
+            # Fresh request: gather everything this round, then ASK before
+            # recommending instead of answering immediately.
+            ingredients, health_tags, excluded = _gather_ingredients(combined_text, detected)
+            confirmation.start(sess.user_id, ingredients, health_tags, excluded)
+            reply = _confirmation_prompt(ingredients)
+            quick_reply = _CONFIRM_QUICK_REPLY
+            _log(f"process_session: asked {sess.user_id[:8]}... to confirm, ingredients={ingredients}")
+
+        elif confirmation.is_confirmation_text(combined_text) and not detected:
+            # User confirmed: no new photos this round, and the text matches.
+            # (A confirmation tap that somehow also carries new photos is
+            # treated as "added more" below instead — new images are
+            # unambiguous evidence of intent to add something, so they win
+            # the tie-break over a possibly-coincidental text match.)
+            resolved = confirmation.resolve(sess.user_id)
+            reply = _finalize(resolved)
+            _log(f"process_session: {sess.user_id[:8]}... confirmed, recommending")
+
+        else:
+            # User sent something else instead of confirming: fold it in.
+            new_ingredients, new_health_tags, new_excluded = _gather_ingredients(
+                combined_text, detected
+            )
+            merged = confirmation.merge(sess.user_id, new_ingredients, new_health_tags, new_excluded)
+            if merged.prompts_sent < confirmation.MAX_CONFIRMATION_PROMPTS:
+                confirmation.record_reprompt(sess.user_id)
+                reply = _confirmation_prompt(merged.ingredients)
+                quick_reply = _CONFIRM_QUICK_REPLY
+                _log(
+                    f"process_session: {sess.user_id[:8]}... added more, asking again "
+                    f"({merged.prompts_sent} prompts sent so far)"
+                )
+            else:
+                resolved = confirmation.resolve(sess.user_id)
+                reply = _finalize(resolved)
+                _log(
+                    f"process_session: {sess.user_id[:8]}... hit the confirmation-prompt "
+                    f"cap, recommending without asking again"
+                )
+
         _log(f"process_session: reply built, {len(reply)} chars")
 
         # --- Step 5: mention anything that was dropped ---------------------------
@@ -306,7 +376,13 @@ def process_session(sess: session.Session) -> None:
                 f"ใช้แค่ {len(sess.image_ids)} รูปแรกนะคะ)"
             )
 
-        send_reply(sess.user_id, sess.reply_token, reply, first_seen=sess.first_seen)
+        send_reply(
+            sess.user_id,
+            sess.reply_token,
+            reply,
+            first_seen=sess.first_seen,
+            quick_reply=quick_reply,
+        )
     except Exception:
         # Belt and braces alongside session._flush's own try/except — having
         # both means a traceback prints regardless of which layer is reached
@@ -339,7 +415,11 @@ def _download_image(message_id: str, user_id: str) -> str:
 
 
 def send_reply(
-    user_id: str, reply_token: str, text: str, first_seen: float | None = None
+    user_id: str,
+    reply_token: str,
+    text: str,
+    first_seen: float | None = None,
+    quick_reply: QuickReply | None = None,
 ) -> None:
     """
     Send the reply. Try Reply first, fall back to Push only if that fails.
@@ -360,11 +440,15 @@ def send_reply(
     known. Logged as elapsed time before the reply call — this is the
     reply-token-expiry measurement: a token lasts ~30s, and without this
     number a hang and a slow-but-successful call look the same in hindsight.
+
+    quick_reply: attached to the outgoing message as-is (or omitted if None).
+    Week 8's confirmation flow uses this to attach the "anything else?"
+    button; a final recommendation passes nothing.
     """
     if len(text) > MAX_MESSAGE_LENGTH:
         text = text[: MAX_MESSAGE_LENGTH - 3] + "..."
 
-    message = TextMessage(text=text)
+    message = TextMessage(text=text, quick_reply=quick_reply)
 
     elapsed = f"{time.monotonic() - first_seen:.1f}s" if first_seen is not None else "unknown"
     _log(
@@ -401,26 +485,61 @@ def send_reply(
                 f"falling back to push"
             )
 
+        _push(user_id, message)
+
+
+def _push(user_id: str, message: TextMessage) -> None:
+    """
+    Send one message via Push. COSTS LINE QUOTA — see send_reply()'s docstring
+    for why Push is an emergency-only path on the Thai free LINE OA plan.
+
+    Factored out of send_reply()'s fallback branch so the confirmation-
+    timeout path (api/confirmation.py's timer fires with no reply token
+    available at all — it isn't triggered by an incoming webhook) can reuse
+    the exact same call instead of duplicating it.
+    """
+    with ApiClient(line_config) as api_client:
+        api = MessagingApi(api_client)
         try:
-            # --- Fallback: COSTS QUOTA. Only because reply already failed. ---
             result = api.push_message(
                 PushMessageRequest(to=user_id, messages=[message]),
                 _request_timeout=(5, 10),
             )
-            _log(f"send_reply: push OK — result={result}")
+            _log(f"_push: push OK — result={result}")
         except ApiException as exc:
-            _log(
-                f"send_reply: push ALSO FAILED — ApiException status={exc.status} "
-                f"body={exc.body!r}"
-            )
+            _log(f"_push: push FAILED — ApiException status={exc.status} body={exc.body!r}")
         except Exception as exc:
-            # Both failed. Nothing more to try — log it and move on.
-            _log(f"send_reply: push ALSO FAILED — {type(exc).__name__}: {exc}")
+            # Nothing more to try — log it and move on.
+            _log(f"_push: push FAILED — {type(exc).__name__}: {exc}")
 
 
 # ===========================================================================
 # Pipeline (unchanged from Week 1)
 # ===========================================================================
+
+def _gather_ingredients(
+    text: str, detected_ingredients: list[str] | None = None
+) -> tuple[list[str], list[str], list[str]]:
+    """
+    Parse `text` and merge it with `detected_ingredients` into the three
+    lists recommend() needs: (ingredients, health_tags, excluded).
+
+    Factored out of handle_user_input() so it and Week 8's confirmation flow
+    (process_session()'s three branches, which each need to parse one round
+    of new input without immediately recommending) share exactly one merge
+    implementation, instead of two copies quietly drifting apart over time.
+
+    Handling text and photos through the same function is what makes the
+    system genuinely multimodal rather than two separate features. A photo
+    can show ไก่ sitting on the counter but can never show that the user wants
+    something clean, and it cannot see the fish sauce inside a closed bottle.
+    Text fills both gaps.
+    """
+    detected_ingredients = detected_ingredients or []
+    parsed = extract(text)
+    all_ingredients = list(dict.fromkeys(detected_ingredients + parsed["ingredients"]))
+    return all_ingredients, parsed["health_tags"], parsed["excluded"]
+
 
 def handle_user_input(text: str = "", detected_ingredients: list[str] | None = None) -> str:
     """
@@ -434,29 +553,68 @@ def handle_user_input(text: str = "", detected_ingredients: list[str] | None = N
     Returns:
         The reply string, ready to hand to LINE.
 
-    Handling text and photos through the same function is what makes the
-    system genuinely multimodal rather than two separate features. A photo
-    can show ไก่ sitting on the counter but can never show that the user wants
-    something clean, and it cannot see the fish sauce inside a closed bottle.
-    Text fills both gaps.
+    Not called by process_session() any more as of Week 8 (see
+    _confirmation_prompt()/_finalize() below — a fresh request now gets a
+    confirmation prompt before a recommendation, not an immediate one). Kept
+    as a real, correct one-shot pipeline function in its own right: skip the
+    confirmation step entirely and go straight from raw input to a
+    recommendation. No test currently calls it directly, but its behavior is
+    unchanged and still exercised end-to-end via _gather_ingredients() and
+    format_reply(), both of which are.
     """
-    detected_ingredients = detected_ingredients or []
+    ingredients, health_tags, excluded = _gather_ingredients(text, detected_ingredients)
+    results = recommend(ingredients=ingredients, health_tags=health_tags, excluded=excluded)
+    return format_reply(results, requested_health_tags=health_tags)
 
-    # --- Step 1: pull structure out of the typed message -------------------
-    parsed = extract(text)
 
-    # --- Step 2: merge what the photo saw with what the text said ----------
-    all_ingredients = list(dict.fromkeys(detected_ingredients + parsed["ingredients"]))
-
-    # --- Step 3: score the dishes ------------------------------------------
-    results = recommend(
-        ingredients=all_ingredients,
-        health_tags=parsed["health_tags"],
-        excluded=parsed["excluded"],
+def _confirmation_prompt(ingredients: list[str]) -> str:
+    """
+    Build the "anything else?" prompt text. The Quick Reply button itself is
+    attached separately by the caller, via send_reply()'s quick_reply param
+    (_CONFIRM_QUICK_REPLY) — this function only builds the message text.
+    """
+    if ingredients:
+        have_line = f"ตอนนี้มีวัตถุดิบ: {', '.join(ingredients)}\n\n"
+    else:
+        have_line = ""
+    return (
+        f"{have_line}มีวัตถุดิบอื่นเพิ่มเติมไหมคะ? "
+        f'พิมพ์เพิ่มได้เลย หรือกด "{confirmation.PRIMARY_CONFIRM_PHRASE}" ถ้าพร้อมแล้วค่ะ'
     )
 
-    # --- Step 4: build the reply from a template ---------------------------
-    return format_reply(results, requested_health_tags=parsed["health_tags"])
+
+def _finalize(pending: confirmation.PendingConfirmation) -> str:
+    """
+    Build the actual recommendation reply from a resolved PendingConfirmation
+    — the confirmation-flow equivalent of handle_user_input()'s last two
+    steps, but starting from already-gathered data instead of raw text
+    (nothing new to extract at this point, the confirmation round is over).
+    """
+    results = recommend(
+        ingredients=pending.ingredients,
+        health_tags=pending.health_tags,
+        excluded=pending.excluded,
+    )
+    return format_reply(results, requested_health_tags=pending.health_tags)
+
+
+def _on_confirmation_timeout(pending: confirmation.PendingConfirmation) -> None:
+    """
+    Called on confirmation.py's own timer thread when a user never responds
+    to the "anything else?" prompt within CONFIRM_TIMEOUT_SECONDS.
+
+    No fresh reply token exists for this path — it is triggered by our own
+    timer, not an incoming webhook — so this pushes directly via _push()
+    rather than going through send_reply()'s reply-then-push-fallback order.
+    This is the one place this feature costs LINE push quota by design; see
+    confirmation.py's CONFIRM_TIMEOUT_SECONDS comment for why the timeout is
+    generous enough that this should be rare.
+    """
+    _log(f"confirmation timeout: pushing final recommendation to {pending.user_id[:8]}...")
+    reply = _finalize(pending)
+    if len(reply) > MAX_MESSAGE_LENGTH:
+        reply = reply[: MAX_MESSAGE_LENGTH - 3] + "..."
+    _push(pending.user_id, TextMessage(text=reply))
 
 
 def format_reply(
@@ -526,6 +684,7 @@ session.configure(
     max_images=config.MAX_IMAGES_PER_SESSION,
 )
 session.set_flush_handler(process_session)
+confirmation.set_timeout_handler(_on_confirmation_timeout)
 
 
 if __name__ == "__main__":
