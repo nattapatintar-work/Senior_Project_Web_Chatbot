@@ -965,3 +965,45 @@ rather than assuming it already does something.
   `data/health_terms.json`, not touched.
 
 `nlp/extract.py` itself was not modified — no bug was found in it.
+
+---
+
+# ------- Week 8 revisit (session 14, 2026-09-16) -------
+
+## C18 — process_session()'s confirmation-flow wiring has zero automated test coverage
+
+> Raised during a sanity check of the confirm-before-recommending flow (shipped earlier
+> this session, `53392a5`). The check itself confirmed the flow is complete and correct
+> (free-text additions work, all three PendingConfirmation fields merge correctly, and
+> button-tap/typed-confirm/timeout/prompt-cap-hit all four converge on `_finalize()` with
+> the fully merged data) — this is the one gap it found, not a bug.
+
+**Finding:** `api/confirmation.py` itself is well-covered — 23 tests in
+`tests/test_confirmation.py`, exercising `merge`/`resolve`/timeout/the resolve-timeout
+race/multi-user isolation, all in isolation from Flask/LINE. But **`api/main.py`'s own
+wiring has no automated tests at all** — grepped `tests/` directly, nothing references
+`process_session`, `_finalize`, `_confirmation_prompt`, or `_on_confirmation_timeout`.
+The three-way branch in `process_session()` (fresh request / user confirmed / user added
+more), the "new photos override a coincidental confirmation-phrase text match" tie-break,
+and the connection from `confirmation`'s resolved state into the actual
+`recommend()`/`format_reply()` calls were verified only once, by hand, in a throwaway
+terminal script during implementation — never captured as a permanent test.
+
+**Why this matters:** a future change to this branching logic — most likely the deferred
+low-confidence-verification feature ("is this really onion?"), which will almost
+certainly need to touch `process_session()`'s same branch structure — could silently
+break the confirm/merge/finalize wiring, and `pytest tests/` would still show fully green.
+This is exactly the kind of regression this project's testing discipline elsewhere is
+built to catch (see `tests/test_session.py`'s equivalent coverage of `session.py`'s own
+debounce/flush wiring) — `api/main.py`'s confirmation branching is the one piece of this
+subsystem that doesn't yet have that safety net.
+
+**Next action:** write `tests/test_main.py` (or similar) covering `process_session()`'s
+three branches end-to-end with a fake/stubbed `send_reply()` (mirroring how
+`test_session.py`'s `collect_flushes()` and `test_confirmation.py`'s `collect_timeouts()`
+substitute a recording function for the real side-effecting one), before or alongside
+whatever change next touches this code — not deferred indefinitely. Not written now, by
+explicit instruction; this entry exists so it isn't forgotten.
+
+> 🟡 **Medium** · **Impacts: next time `process_session()` is touched (likely the deferred
+> low-confidence-verification feature)** · Owner: You
