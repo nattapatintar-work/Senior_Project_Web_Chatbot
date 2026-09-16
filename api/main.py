@@ -3,14 +3,13 @@ api/main.py
 ===========
 The LINE chatbot webhook.
 
-STATUS: Week 2 — real webhook, mock brains
-------------------------------------------
-The LINE plumbing here is real: signature verification, session buffering,
-image download, replies. What it says is still fake — extract(), recommend()
-and detect() are all mocks until Weeks 5, 7 and 8.
-
-That split is deliberate. Week 2's goal is simply "send a message to the bot
-and get a real reply back" (project doc, Week 2).
+STATUS: Week 8/9 — everything real
+-----------------------------------
+extract() (Week 5), recommend() (Week 7), and detect() (Week 8/9, wrapping
+Person 1's delivered YOLO model in api/mock_cv.py) are all real now. The LINE
+plumbing — signature verification, session buffering, image download,
+replies, the Week 8 confirm-before-recommending flow — has been real since
+Week 2.
 
     User sends photo/text on LINE
             |
@@ -104,7 +103,12 @@ _CONFIRM_QUICK_REPLY = QuickReply(
 # Low-confidence boxes are usually shadows, reflections or stains that YOLO has
 # mistaken for food. Acting on them is worse than missing an ingredient: the
 # bot confidently recommends a dish based on something that was never there.
-CONFIDENCE_THRESHOLD = 0.5
+#
+# Read from data/thresholds.yaml (Week 8/9 handoff #4 from Person 1) via
+# config.CONFIDENCE_THRESHOLD, not hardcoded here any more — see
+# api/config.py's _load_confidence_threshold() for the non-fatal-missing
+# fallback (this handoff is documented as "not blocking," unlike the LINE
+# credentials).
 
 # LINE rejects a text message longer than 5000 characters.
 MAX_MESSAGE_LENGTH = 5000
@@ -300,11 +304,12 @@ def process_session(sess: session.Session) -> None:
         # --- Step 2: run detection on each photo ------------------------------
         detected: list[str] = []
         for path in image_paths:
-            # mock_cv.detect() is fake until Week 8, when Person 1's real detect()
-            # replaces it. The return shape is already the agreed one, so that swap
-            # touches nothing else.
+            # mock_cv.detect() is real as of Week 8/9 (Person 1's delivered
+            # YOLO model, models/best_phase1_n_ceiling1000_img640.pt) — the
+            # return shape was agreed from the start, so this swap touched
+            # nothing else here.
             for item in mock_cv.detect(path):
-                if item["confidence"] >= CONFIDENCE_THRESHOLD:
+                if item["confidence"] >= config.CONFIDENCE_THRESHOLD:
                     detected.append(item["ingredient"])
 
         # Deduplicate while keeping order — the same ingredient may appear in

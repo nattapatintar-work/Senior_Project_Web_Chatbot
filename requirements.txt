@@ -25,5 +25,11 @@ scikit-learn>=1.4.0      # TfidfVectorizer + cosine_similarity, both built in
 # --- Chat system (Week 8) ---------------------------------------------------
 pyyaml>=6.0               # reads thresholds.yaml (LLM routing config) from Person 1
 
+# --- Computer vision (Week 8/9) ---------------------------------------------
+ultralytics>=8.4.0        # loads and runs Person 1's delivered YOLO model
+                          # (models/best_phase1_n_ceiling1000_img640.pt). Pulls
+                          # in torch as its own dependency automatically; no
+                          # separate torch pin needed here.
+
 # --- Testing ---------------------------------------------------------------
 pytest>=8.0.0            # runs tests/test_contract.py

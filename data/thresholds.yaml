@@ -1,0 +1,16 @@
+# Confidence cutoff for YOLO detections (api/mock_cv.py::detect(), read at
+# startup by api/config.py). A detection below this is discarded rather than
+# trusted -- low-confidence boxes are usually shadows, reflections, or stains
+# that the model mistook for food, and acting on them is worse than missing
+# an ingredient outright (api/main.py's confidence-filter docstring).
+#
+# Verified 2026-09-16: this value matches the model's own class mapping
+# check (data/ingredients.json's yolo_class_id 0-99 == model.names exactly,
+# models/best_phase1_n_ceiling1000_img640.pt), not chosen independently of it.
+#
+# per_class is empty for now -- every class uses `default`. Add entries here
+# later to override specific classes (e.g. one with a known high false-
+# positive rate) without changing this file's structure or api/config.py's
+# loader.
+default: 0.5
+per_class: {}

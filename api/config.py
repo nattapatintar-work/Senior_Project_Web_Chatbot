@@ -21,6 +21,7 @@ Why this file fails loudly at import time:
 import os
 from pathlib import Path
 
+import yaml
 from dotenv import load_dotenv
 
 # Project root — this file is api/config.py, so .parent.parent is one level
@@ -87,3 +88,39 @@ MAX_IMAGES_PER_SESSION = 5
 
 # Where downloaded photos are saved. Git-ignored: they are user data, not code.
 INCOMING_DIR = PROJECT_ROOT / "data" / "incoming"
+
+# --- YOLO confidence threshold (Week 8/9 handoff #4 from Person 1) ---------
+THRESHOLDS_PATH = PROJECT_ROOT / "data" / "thresholds.yaml"
+
+
+def _load_confidence_threshold() -> float:
+    """
+    Read the "default" confidence cutoff from data/thresholds.yaml.
+
+    Deliberately NOT fatal if the file is missing, unlike _require() above.
+    The project doc explicitly marks this handoff "not blocking — use default
+    values" (Claude.md's Week 8 cross-handoff table): a missing thresholds.yaml
+    should fall back to the same 0.5 this project used before the file
+    existed, not crash the server the way a missing LINE credential does. A
+    LINE credential has no safe default; this one does.
+    """
+    if not THRESHOLDS_PATH.exists():
+        print(
+            f"[config] {THRESHOLDS_PATH} not found, using default confidence "
+            f"threshold 0.5",
+            flush=True,
+        )
+        return 0.5
+
+    with open(THRESHOLDS_PATH, encoding="utf-8") as f:
+        data = yaml.safe_load(f) or {}
+
+    # per_class isn't read yet -- the file's structure supports future
+    # per-class overrides (see the file's own comments), but nothing in this
+    # codebase looks them up until there's real per-class data to act on.
+    return float(data.get("default", 0.5))
+
+
+# Read at import time, same reasoning as the credentials above: fail (or in
+# this case, fall back) once at startup, not silently per-request.
+CONFIDENCE_THRESHOLD = _load_confidence_threshold()
