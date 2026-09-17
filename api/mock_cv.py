@@ -125,8 +125,22 @@ def detect(image_path: str) -> list[dict]:
         highest-confidence first — the exact shape the mock this replaces
         always returned, so api/main.py's confidence filter and everything
         downstream needs nothing else to change.
+
+    conf=0.001 (ultralytics' own "val" mode default, per
+    ultralytics/cfg/default.yaml) is passed explicitly here. Without it,
+    ultralytics silently applies its own hidden conf=0.25 floor inside
+    predict() -- confirmed both from that same config file and empirically
+    (model.predictor.args.conf == 0.25 when unset) -- discarding detections
+    below 0.25 before api/main.py's own config.CONFIDENCE_THRESHOLD (0.5)
+    ever runs. Harmless today (0.5 > 0.25, so nothing our own threshold
+    would keep was ever lost), but a latent trap if thresholds.yaml's
+    default is ever tuned below 0.25, and it made an accurate "raw
+    detections" log impossible -- a call without conf= can't reveal
+    anything ultralytics already threw away. This does not change what
+    detect() returns to callers; api/main.py's own >= CONFIDENCE_THRESHOLD
+    filter still does all the real filtering, exactly as before.
     """
-    results = _MODEL.predict(image_path, verbose=False, device=_DEVICE)[0]
+    results = _MODEL.predict(image_path, verbose=False, device=_DEVICE, conf=0.001)[0]
 
     # box.cls / box.conf are single-element torch.Tensors in Ultralytics'
     # Boxes API — int()/float() casts get plain Python values, since
@@ -139,4 +153,17 @@ def detect(image_path: str) -> list[dict]:
         }
         for box in results.boxes
     ]
+
+    # Logged separately from api/main.py's post-filter "detected=[...]" line
+    # -- this is everything YOLO's model head produced, before our own
+    # threshold discards anything. Lets a "nothing detected" report be
+    # diagnosed as either "YOLO genuinely saw nothing" (this line is "[]")
+    # or "YOLO saw something, our threshold filtered it out" (this line is
+    # non-empty but every entry is below config.CONFIDENCE_THRESHOLD).
+    raw_detections = [
+        {"ingredient": d["ingredient"], "confidence": round(d["confidence"], 3)}
+        for d in detections
+    ]
+    print(f"[mock_cv] raw detections: {raw_detections}", flush=True)
+
     return sorted(detections, key=lambda d: d["confidence"], reverse=True)
