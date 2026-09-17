@@ -302,20 +302,38 @@ def process_session(sess: session.Session) -> None:
                 print(f"[main] could not download image {message_id}: {exc}", flush=True)
 
         # --- Step 2: run detection on each photo ------------------------------
-        detected: list[str] = []
+        # Per unique ingredient name, keep only the highest-confidence
+        # detection seen across ALL images in this session -- not just
+        # "whichever occurrence came first." A plain dict.fromkeys() dedup
+        # would have kept the first-seen occurrence regardless of confidence,
+        # which happens to equal "highest confidence" within a single image
+        # (mock_cv.detect() already sorts its own return value by confidence
+        # descending) but is not guaranteed correct across multiple images --
+        # e.g. a weak detection in photo 1 processed before a strong one in
+        # photo 2 would have silently won under first-occurrence dedup. This
+        # doesn't change recommend()'s TF-IDF scoring (confidence never
+        # reaches recommend() either way, so the final name list was already
+        # duplicate-free), but it matters for anything that later cares which
+        # confidence a kept ingredient represents (e.g. the deferred
+        # low-confidence-verification feature), and testing at a very low
+        # threshold surfaces far more of these multi-box/multi-photo cases.
+        detected_confidence: dict[str, float] = {}
         for path in image_paths:
             # mock_cv.detect() is real as of Week 8/9 (Person 1's delivered
             # YOLO model, models/best_phase1_n_ceiling1000_img640.pt) — the
             # return shape was agreed from the start, so this swap touched
             # nothing else here.
             for item in mock_cv.detect(path):
-                if item["confidence"] >= config.CONFIDENCE_THRESHOLD:
-                    detected.append(item["ingredient"])
+                if item["confidence"] < config.CONFIDENCE_THRESHOLD:
+                    continue
+                name = item["ingredient"]
+                if name not in detected_confidence or item["confidence"] > detected_confidence[name]:
+                    detected_confidence[name] = item["confidence"]
 
-        # Deduplicate while keeping order — the same ingredient may appear in
-        # several photos. dict.fromkeys() preserves order where set() would not.
-        detected = list(dict.fromkeys(detected))
-        _log(f"process_session: detected={detected}")
+        # dict preserves insertion order (first-seen name), same as the old
+        # dict.fromkeys() call -- only the VALUE kept per name changed.
+        detected = list(detected_confidence.keys())
+        _log(f"process_session: detected={detected} (confidences={detected_confidence})")
 
         # --- Step 3: join the separate texts -----------------------------------
         # Several messages become one string so extract() sees the whole request.
