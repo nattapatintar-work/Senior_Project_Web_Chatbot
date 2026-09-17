@@ -105,7 +105,12 @@ def _warm_up(model: YOLO) -> None:
 # budget outright on a cold CPU run.
 _MODEL = YOLO(str(MODEL_PATH))
 _verify_class_mapping(_MODEL)
+print(
+    "[mock_cv] class mapping verified against data/ingredients.json (100 classes)",
+    flush=True,
+)
 _warm_up(_MODEL)
+print(f"[mock_cv] model loaded and warmed up on device={_DEVICE!r}", flush=True)
 
 
 def detect(image_path: str) -> list[dict]:
