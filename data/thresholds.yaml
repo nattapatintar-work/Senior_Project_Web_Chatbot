@@ -12,5 +12,12 @@
 # later to override specific classes (e.g. one with a known high false-
 # positive rate) without changing this file's structure or api/config.py's
 # loader.
-default: 0.5
+#
+# TEMPORARY - exploratory testing only, expect noisy/false-positive
+# detections at this level, revert before any real demo or handoff
+# discussion with Person 1. Set to 0.01 (2026-09-17) specifically to see
+# what the model reports near the floor -- api/mock_cv.py's raw-detections
+# log line plus this near-zero cutoff means almost nothing gets filtered
+# before it reaches process_session(). Real value is 0.5, see above.
+default: 0.01
 per_class: {}
