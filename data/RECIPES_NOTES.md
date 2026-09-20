@@ -186,9 +186,29 @@ Precedent examples:
 
 Earlier examples of the same pattern: th_265 (kaffir lime leaf), th_284, th_290.
 
-## 9. Known inconsistencies / backlog for a future cleanup pass
+## 9. Convention: shell-on shellfish and whole squid (round 3, decided 2026-09-20)
 
-Recorded, deliberately **not fixed** yet.
+For the raw-weight amounts given in a source, decide what is actually edible:
+
+- **Meat-labelled weights are counted as-is**: shucked or boiled meat (e.g. "หอยแมลงภู่แกะต้ม
+  200 g" in th_342), canned clam meat (th_344), and already-cleaned/cut squid (th_339).
+- **Shell-on bivalves (mussel, clam): about 30% edible.** e.g. th_345: 1 kg of clams in shell
+  = 300 g meat; th_343: 12 shell-on clams assumed about 20 g each = 72 g meat.
+- **Whole uncleaned squid: about 75% edible** (th_338: 400 g whole squid = 300 g).
+- When a source does not say whether the weight is shell-on (e.g. th_341 หอยทอด, where the
+  mussels are batter-fried), the assumption is stated in that recipe's `notes`.
+- Crab keeps its own rule from round 2 (hard-shell about 50%, soft-shell about 100%,
+  meat-labelled as-is).
+
+## 10. Known Limitations
+
+One place for everything that is known to be imperfect in the recipe database, written up
+so it can be lifted into the report's limitations section. Entries are grouped by kind.
+All are recorded deliberately and **not fixed** yet; each says what would resolve it.
+(Limitations of the original 40-recipe database are in §3 keto tag, §4 assumed gram
+amounts, §5 what the sources could not supply, and §6 coverage imbalance.)
+
+### A. Edible-weight inconsistencies (which grams count as food)
 
 - **Crab weight basis differs between th_240 and th_303.** th_240 (ปูผัดพริกไทยดำ) counts
   its crab grams directly as edible meat against `STD:1157` (meat-only record). th_303
@@ -196,12 +216,17 @@ Recorded, deliberately **not fixed** yet.
   assumes about 50% edible (75 g meat per serving). The two recipes therefore apply
   different assumptions to the same kind of source figure. Reconcile to one convention
   later; neither recipe is changed now. (th_186, th_247 and th_304 also use crab; check
-  them in the same pass.)
-- **th_034 (ผัดผักโขมกระเทียม) nutrition uses the wrong Thai FCD record.** Its key is
-  `spinach` but its nutrition is computed from `STD:489` (Amaranth, raw), not `STD:469`
-  (Spinach, raw), which every other spinach recipe uses. Related to concern C6 (the
-  ปวยเล้ง/ผักโขม spinach-vs-amaranth ambiguity). Needs a decision on whether the dish is
-  really spinach or amaranth, then either a re-key or a nutrition recompute. Not fixed.
+  them in the same pass.) The crab rule adopted in round 2 (hard-shell about 50%,
+  soft-shell about 100%, meat-labelled as-is) governs all recipes written since.
+- **Bivalve weights: th_056, th_057 and th_238 count grams as meat regardless of shell.**
+  th_056 (หอยลายผัดพริกเผา), th_184, th_237 (clam) and th_057, th_187, th_238 (mussel) each
+  price 150 g of shellfish directly against `STD:1176` / `STD:1173` (edible-meat records)
+  without saying whether the source weight was shell-on. Since round 3 the rule in §9
+  applies to new recipes; these six older recipes were NOT revisited. Reconcile in a future
+  cleanup pass (same category of issue as th_240 vs th_303 for crab).
+
+### B. Nutrition record does not match the food
+
 - **Fatty pork cuts are priced as lean (known limitation, th_328).** Thai FCD has no
   pork-belly (or other high-fat pork) record, so th_328 (หมูย่างเกาหลีห่อผักสลัดคอส,
   100 g pork belly + 100 g pork shoulder per serving) is priced entirely with lean pork
@@ -212,3 +237,25 @@ Recorded, deliberately **not fixed** yet.
   priced with plain beef meat `STD:936` in th_306 and th_335. No audit has been done for
   other affected recipes. Revisit if a better Thai FCD record (or a disclosed external
   one) turns up.
+- **th_034 (ผัดผักโขมกระเทียม) nutrition uses the wrong Thai FCD record.** Its key is
+  `spinach` but its nutrition is computed from `STD:489` (Amaranth, raw), not `STD:469`
+  (Spinach, raw), which every other spinach recipe uses. Related to concern C6 (the
+  ปวยเล้ง/ผักโขม spinach-vs-amaranth ambiguity). Needs a decision on whether the dish is
+  really spinach or amaranth, then either a re-key or a nutrition recompute. Not fixed.
+
+### C. Coverage targets not met
+
+- **quail_egg landed at 5 main-ingredient recipes (target 6-9 not met).** Savory quail-egg
+  dishes are genuinely scarce in Thai cuisine. Most search results for "ไข่นกกระทา" are the
+  dessert ขนมไข่นกกระทา, which contains no quail egg at all and was rejected. Only two
+  further verifiable savory dishes were found in round 3 (th_346 green-curry fried quail
+  eggs, th_347 mixed-vegetable oyster-sauce stir-fry), on top of the existing three
+  (th_058, th_164, th_248). Decided 2026-09-20 to accept 5 and report the shortfall rather
+  than pad with an unfit or borderline dish.
+- **mussel landed at 5 main-ingredient recipes (target 6-9 not met).** The remaining
+  verifiable mussel dishes were near-duplicates of stir-fries already in the database: a
+  sixth candidate, ผัดโคตรหอยแมลงภู่ (onion + sweet basil), differs from th_342 (shallot +
+  sweet basil) and the existing th_057 (holy basil) by little more than the aromatics, and
+  a steamed-mussel-with-dip dish duplicated th_187. Decided 2026-09-20 to keep only
+  หอยทอด (th_341) and the shallot stir-fry (th_342) and report 5, rather than add
+  near-identical recipes that would inflate the count without adding coverage.
