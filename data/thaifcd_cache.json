@@ -284,6 +284,21 @@
       "protein": "PROTCNT"
     }
   },
+  "STD:1292": {
+    "carb": 1.94,
+    "fat": 12.21,
+    "food_code": "H14",
+    "kcal": 173.0,
+    "name_en": "Egg, duck, whole, raw",
+    "name_th": "ไข่เป็ด, ทั้งฟอง, ดิบ",
+    "protein": 13.93,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
   "STD:1335": {
     "carb": 5.21,
     "fat": 3.78,
@@ -1256,6 +1271,21 @@
       "carb": "CHOCDF",
       "fat": "FAT",
       "kcal": "ENERCT",
+      "protein": "PROTCNT"
+    }
+  },
+  "STD:228": {
+    "carb": 4.04,
+    "fat": 0.45,
+    "food_code": "N3",
+    "kcal": 41.0,
+    "name_en": "Holy basil, leaves",
+    "name_th": "กระเพรา, ใบ",
+    "protein": 3.27,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
       "protein": "PROTCNT"
     }
   },
@@ -2722,21 +2752,6 @@
     "name_en": "Pork, minced, raw",
     "name_th": "หมู, สับ, ดิบ",
     "protein": 18.2,
-    "tags_used": {
-      "carb": "CHOAVLDF",
-      "fat": "FAT",
-      "kcal": "ENERC",
-      "protein": "PROTCNT"
-    }
-  },
-  "STD:1292": {
-    "carb": 1.94,
-    "fat": 12.21,
-    "food_code": "H14",
-    "kcal": 173.0,
-    "name_en": "Egg, duck, whole, raw",
-    "name_th": "ไข่เป็ด, ทั้งฟอง, ดิบ",
-    "protein": 13.93,
     "tags_used": {
       "carb": "CHOAVLDF",
       "fat": "FAT",

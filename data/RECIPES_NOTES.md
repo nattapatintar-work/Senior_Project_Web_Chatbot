@@ -161,3 +161,44 @@ The two `clean` rules that are *not* machine-checkable — "not deep-fried" and 
 processed meat" — stay human judgements, applied per `HEALTH_TAGS.md`. th_004
 (มันฝรั่งทอด) and th_022 (ทอดมันกุ้ง) are the two dishes where deep-frying was the
 deciding factor.
+
+---
+
+## 8. Convention: promoting a minor-by-weight ingredient to `main_ingredients`
+
+Decided 2026-09-20 (user decision, round 1 of the coverage batch). Promoting an
+ingredient that is minor by weight into `main_ingredients` is an **accepted, intentional
+convention**, not a one-off judgement call, when it is done for a system reason:
+
+- to avoid an **exact `main_ingredients`-set collision** with an existing recipe, or
+- to satisfy a task's **required ingredient** (e.g. "carrot must be a main ingredient").
+
+Conditions: the ingredient must really be in the source recipe, ideally one of its named
+or defining components, and the promotion must be disclosed in the recipe's `notes`
+(what was promoted, why, and its actual weight share).
+
+Precedent examples:
+- **th_299** (ต้มจืดหัวไชเท้าแครอท) — carrot is main although it is the minor vegetable
+  by weight (about 40 g against 165 g of radish per serving); it is in the dish name and
+  the task required carrot as a main.
+- **th_308** (เนื้อผัดพริกไทยดำ) — onion promoted to main because `{beef}` alone would
+  collide exactly with th_156 and th_235.
+
+Earlier examples of the same pattern: th_265 (kaffir lime leaf), th_284, th_290.
+
+## 9. Known inconsistencies / backlog for a future cleanup pass
+
+Recorded, deliberately **not fixed** yet.
+
+- **Crab weight basis differs between th_240 and th_303.** th_240 (ปูผัดพริกไทยดำ) counts
+  its crab grams directly as edible meat against `STD:1157` (meat-only record). th_303
+  (ปูอบวุ้นเส้น) treats the source's 300 g of crab pieces as whole crab with shell and
+  assumes about 50% edible (75 g meat per serving). The two recipes therefore apply
+  different assumptions to the same kind of source figure. Reconcile to one convention
+  later; neither recipe is changed now. (th_186, th_247 and th_304 also use crab; check
+  them in the same pass.)
+- **th_034 (ผัดผักโขมกระเทียม) nutrition uses the wrong Thai FCD record.** Its key is
+  `spinach` but its nutrition is computed from `STD:489` (Amaranth, raw), not `STD:469`
+  (Spinach, raw), which every other spinach recipe uses. Related to concern C6 (the
+  ปวยเล้ง/ผักโขม spinach-vs-amaranth ambiguity). Needs a decision on whether the dish is
+  really spinach or amaranth, then either a re-key or a nutrition recompute. Not fixed.

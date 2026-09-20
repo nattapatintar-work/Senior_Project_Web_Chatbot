@@ -13068,5 +13068,1152 @@
     "notes": "Genuinely different dictionary key from th_170's {pork, celery} (whole-cut pork, stir-fried with fish_sauce/oyster_sauce/soy_sauce): this dish uses minced_meat (หมูสับ), a distinct ingredient key, so no main_ingredients-set collision. MISTRANSLATION CHECK (per this task's caution): re-fetched the page directly and confirmed the Thai text reads ขึ้นฉ่าย -- Chinese celery (Apium graveolens var. secalinum), matching data/ingredients.json's celery entry synonyms (ขึ้นฉ่าย, คื่นฉ่าย) exactly -- NOT ผักบุ้ง (water spinach/morning glory). An automated fetch pass on this same page again glossed the word as 'celery/morning glory' in English parentheses when asked a follow-up question; that gloss was discarded and the Thai source text was used instead, per this task's explicit warning not to trust an English gloss alone. Ingredients confirmed on the page: celery, minced pork, garlic, water, a Knorr bottled concentrated seasoning sauce (คนอร์ขวดซอสข้นปรุงรส), sugar, soybean oil -- matching the pre-approved list exactly. Water carries no nutrition_basis entry (non-caloric diluting liquid, same DB-wide convention as th_043/th_078/th_080/th_154). The Knorr concentrated seasoning sauce (a bottled liquid, not a bouillon cube) is mapped to soy_sauce, the same functional-product-category convention used for other bottled branded seasoning sauces elsewhere in this DB (e.g. th_267/th_271's Maggi/'seasoning sauce' -> soy_sauce). The source (titled for '1 plate') gives NO gram/tablespoon amounts for anything -- every figure in nutrition_basis is a disclosed reasonable estimate for one single-serving plate, sized against th_170's per-serving pork+celery stir-fry amounts as the closest precedent in this DB (scaled down for a smaller single-plate dish rather than th_170's larger 250 g shared-plate serving).",
     "id": "th_290",
     "category": "savory"
+  },
+  {
+    "name_th": "เต้าหู้ยัดไส้นึ่งซีอิ๊ว",
+    "main_ingredients": [
+      "tofu",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "shiitake",
+      "green_onion",
+      "chili"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "oyster_sauce",
+      "sugar",
+      "pepper"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 322,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 429.0,
+      "protein": 35.8,
+      "fat": 23.7,
+      "carb": 13.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "tofu": 150,
+      "minced_meat": 75,
+      "shiitake": 25,
+      "green_onion": 15,
+      "soy_sauce": 25,
+      "oyster_sauce": 22,
+      "sugar": 8,
+      "pepper": 1,
+      "chili": 1
+    },
+    "basis_refs": {
+      "tofu": "STD:373",
+      "minced_meat": "STD:970",
+      "shiitake": "STD:658",
+      "green_onion": "STD:436",
+      "soy_sauce": "STD:273",
+      "oyster_sauce": "STD:270",
+      "sugar": "STD:1391",
+      "pepper": "STD:243",
+      "chili": "STD:545"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from white tofu (STD:373), minced pork (STD:970), shiitake (STD:658), spring onion (STD:436), light soy sauce (STD:273), oyster sauce (STD:270), sugar (STD:1391), black pepper (STD:243), bird chilli (STD:545).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/steamed-tofu-stuffed-with-ground-pork",
+    "notes": "SOURCE (fetched, Thai text checked): tofu is explicitly เต้าหู้ขาว 2 แผ่น (white tofu, matching the dictionary's tofu and Thai FCD STD:373). Other lines: หมูสับ 150 กรัม, เห็ดหอมสับ 5 ดอก, ต้นหอม 3 ต้น, steamed 20 min. DISTINCT: main set {tofu, minced_meat} matches no existing recipe (th_266 has tofu only as optional). NUTRITION METHOD: computed; the source gives no yield, so I assumed the 2 blocks serve 2 and used half of each amount (tofu 150 g, pork 75 g). Half of the gravy (soy 5 tbsp, oyster 3 tbsp, brown sugar 1 tbsp) is included; the broth is not counted (no macros). Sesame oil (1/2 tbsp) and Chinese rice wine (2 tbsp) have no dictionary key and no Thai FCD entry in the cache, so they are omitted - this slightly understates fat and carb. Mushrooms are chopped fresh shiitake per the Thai text (เห็ดหอม); 5 mushrooms assumed about 50 g total, half per serving. Brown sugar mapped to sugar. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: no, 13.9 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_291",
+    "category": "savory"
+  },
+  {
+    "name_th": "กะเพราเต้าหู้",
+    "main_ingredients": [
+      "tofu",
+      "chili",
+      "holy_basil"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "vegetable_oil",
+      "soy_sauce",
+      "dark_soy_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto",
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 190,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 309.0,
+      "protein": 20.3,
+      "fat": 20.9,
+      "carb": 5.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "tofu": 150,
+      "chili": 6,
+      "holy_basil": 8,
+      "vegetable_oil": 10,
+      "soy_sauce": 10,
+      "dark_soy_sauce": 3,
+      "sugar": 3
+    },
+    "basis_refs": {
+      "tofu": "STD:373",
+      "chili": "STD:545",
+      "holy_basil": "STD:228",
+      "vegetable_oil": "STD:1368",
+      "soy_sauce": "STD:273",
+      "dark_soy_sauce": "STD:277",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from white tofu (STD:373), bird chilli (STD:545), holy basil leaves (STD:228), palm olein oil (STD:1368), light soy sauce (STD:273), dark soy sauce (STD:277), sugar (STD:1391).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/0a7a9790c49b49d39b2a57a811b95983",
+    "notes": "SOURCE (fetched): เต้าหู้ขาวครึ่งก้อน (white tofu, half block), พริกขี้หนู 6 เม็ด, กะเพรา 2 ต้น, soybean oil 1 tbsp, a branded seasoning sauce (อร่อยชัวร์), sugar, a little dark soy, 1 ladle water; single plate. The tofu is shallow-fried in about 1 tbsp oil then the excess oil is poured off - not deep-fried. DISTINCT: the source has NO garlic, so main is {tofu, chili, holy_basil}; no collision with th_001 (chicken basil). NUTRITION METHOD: computed. Holy basil uses Thai FCD STD:228 (Ocimum tenuiflorum = กะเพรา), which I fetched with tools/thaifcd.py and added to data/thaifcd_cache.json. Of the 14 g oil in the pan I counted 10 g as retained (the rest is poured off) - a judgement call. The branded seasoning sauce is mapped to soy_sauce (same convention as the Maggi/seasoning-sauce dishes in this DB). HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: yes (5.9 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand - this dish qualifies as vegan.",
+    "id": "th_292",
+    "category": "savory"
+  },
+  {
+    "name_th": "เต้าหู้ทอดซอสมะขาม",
+    "main_ingredients": [
+      "tofu"
+    ],
+    "optional_ingredients": [
+      "shallot",
+      "mint_leaves",
+      "chili"
+    ],
+    "seasonings": [
+      "tamarind_paste",
+      "sugar",
+      "soy_sauce",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 214,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 424.0,
+      "protein": 20.6,
+      "fat": 20.8,
+      "carb": 33.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "tofu": 150,
+      "tamarind_paste": 25,
+      "sugar": 15,
+      "soy_sauce": 2,
+      "vegetable_oil": 10,
+      "shallot": 8,
+      "mint_leaves": 3,
+      "chili": 1
+    },
+    "basis_refs": {
+      "tofu": "STD:373",
+      "tamarind_paste": "STD:750",
+      "sugar": "STD:1391",
+      "soy_sauce": "STD:273",
+      "vegetable_oil": "STD:1368",
+      "shallot": "STD:251",
+      "mint_leaves": "STD:250",
+      "chili": "STD:545"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from white tofu (STD:373), tamarind (STD:750), sugar (STD:1391), light soy sauce (STD:273), palm olein oil (STD:1368), shallot (STD:251), mint (STD:250), bird chilli (STD:545).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/1ba3cee049884c9181e8e9b5e77be3cc",
+    "notes": "SOURCE (fetched, Thai text checked): เต้าหู้ขาว 1 ก้อน (white tofu), น้ำมะขามเปียก 1/3 ถ้วย, น้ำตาลปีบ 1 ช้อนโต๊ะ, ซีอิ้วขาว 1/4 ช้อนชา, หอมแดง/ใบสาระแหน่/พริกแห้ง 'ตามชอบ'. Tofu is deep-fried, then sauced. REPLACES an earlier draft (Cookpad ผัดเต้าหู้หมูสับขึ้นฉ่าย) whose page never says which tofu it is; a different Cookpad tofu-tamarind page was rejected because it says เต้าหู้เหลือง (yellow tofu). DISTINCT: main set {tofu} alone is unused by any existing recipe. Shallot, mint and dried chilli are 'to taste' garnish, so they are optional. NUTRITION METHOD: computed. Tamarind water 1/3 cup is estimated as about 25 g of tamarind pulp (STD:750, the same record other tamarind dishes here use); palm sugar mapped to sugar; oil absorbed by the fried tofu is an assumed 10 g (source gives 'oil for frying', no amount). Grams for shallot/mint/chilli are assumed garnish amounts. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because it is deep-fried and sugar is in its seasonings; keto: no, 33.7 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand - this dish qualifies as vegan.",
+    "id": "th_293",
+    "category": "savory"
+  },
+  {
+    "name_th": "กะหล่ำปลีผัดไข่",
+    "main_ingredients": [
+      "cabbage",
+      "egg"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "oyster_sauce",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 280,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 200.0,
+      "protein": 12.9,
+      "fat": 11.6,
+      "carb": 9.4
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "cabbage": 180,
+      "egg": 75,
+      "oyster_sauce": 20,
+      "vegetable_oil": 5
+    },
+    "basis_refs": {
+      "cabbage": "STD:409",
+      "egg": "STD:1274",
+      "oyster_sauce": "STD:270",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from cabbage (STD:409), whole egg (STD:1274), oyster sauce (STD:270), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/0e1a1f71a03048fb90221392f312812d",
+    "notes": "SOURCE (fetched): กะหล่ำปลี 1 หัวเล็ก, ไข่ไก่ 1-2 ฟอง, ซอสปรุงรส/ซอสหอยนางรม 2 ช้อนโต๊ะ; 1 person. Eggs cracked onto the cabbage in the pan. DISTINCT: {cabbage, egg} is a new main set (th_250 is {cabbage}, th_032 is {cabbage, garlic, chili}). NUTRITION METHOD: computed; every gram amount is my assumption because the source only says 'one small head' (a whole small head is far more than one plate, so I used a 180 g portion), '1-2 eggs' (midpoint 75 g) and '2 tbsp sauce' (20 g). The source lists no oil, but a wok stir-fry cannot be done dry, so I added 5 g and am flagging it as an assumption. The 'seasoning sauce OR oyster sauce' is mapped to oyster_sauce, which is the animal-product choice (safe direction for vegetarian filtering). HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: yes (9.4 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_294",
+    "category": "savory"
+  },
+  {
+    "name_th": "ต้มจืดกะหล่ำม้วนหมูเด้ง",
+    "main_ingredients": [
+      "cabbage",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "green_onion",
+      "coriander"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "salt",
+      "pepper"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 413,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 614.0,
+      "protein": 48.3,
+      "fat": 42.8,
+      "carb": 7.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "minced_meat": 250,
+      "cabbage": 130,
+      "green_onion": 15,
+      "coriander": 3,
+      "soy_sauce": 15
+    },
+    "basis_refs": {
+      "minced_meat": "STD:970",
+      "cabbage": "STD:409",
+      "green_onion": "STD:436",
+      "coriander": "STD:498",
+      "soy_sauce": "STD:273"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from minced pork (STD:970), cabbage (STD:409), spring onion (STD:436), coriander (STD:498), light soy sauce (STD:273).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/bb1e0d7777de4b2a87a98d2594bc5fa0",
+    "notes": "SOURCE (fetched): minced pork 500 g, cabbage 1 large head, long spring onions 10-12 stems (used as ties for the rolls), pork-bone broth 3 cups, white soy 2 tbsp, salt 1/2 tsp, white pepper 2 tsp, coriander root 1-2; serves 2. DISTINCT: same soup family as th_069/th_177 but those use napa_cabbage (a different dictionary key); this is a stuffed regular-cabbage roll, a different dish. Main set {cabbage, minced_meat} is new. NUTRITION METHOD: computed, half the recipe per serving (250 g pork is what the source calls for - it is a meat-heavy soup, so kcal is high for a soup). Pork-bone broth has no dictionary key and no macros are counted for it. The cabbage leaves eaten per serving (130 g) are my estimate. Coriander root is counted as coriander (STD:498) at an assumed 3 g. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: yes (7.2 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_295",
+    "category": "savory"
+  },
+  {
+    "name_th": "กะหล่ำปลีผัดกุ้ง",
+    "main_ingredients": [
+      "cabbage",
+      "shrimp"
+    ],
+    "optional_ingredients": [
+      "chili"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "fish_sauce",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 284,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 171.0,
+      "protein": 18.3,
+      "fat": 6.3,
+      "carb": 8.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "cabbage": 180,
+      "shrimp": 75,
+      "oyster_sauce": 18,
+      "fish_sauce": 3,
+      "chili": 3,
+      "vegetable_oil": 5
+    },
+    "basis_refs": {
+      "cabbage": "STD:409",
+      "shrimp": "STD:1042",
+      "oyster_sauce": "STD:270",
+      "fish_sauce": "STD:291",
+      "chili": "STD:545",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from cabbage (STD:409), shrimp (STD:1042), oyster sauce (STD:270), fish sauce (STD:291), bird chilli (STD:545), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/ec368da64f5142cfa5829c91aa4e6e58",
+    "notes": "SOURCE (fetched): กะหล่ำปลี 2 หัว [sic], กุ้งสดขนาดกลาง 10 ตัว, น้ำมันหอย 2 ช้อนโต๊ะ, น้ำปลา 1 ช้อนชา, พริกสด 5 เม็ด, soup stock; serves 2. WARNING: '2 heads of cabbage' for 2 people is implausible as written; I used a 180 g portion of cabbage per person and am flagging this rather than following the literal number. DISTINCT: {cabbage, shrimp} is a new main set. NUTRITION METHOD: computed; shrimp 10 medium (about 150 g peeled) split across 2 servings = 75 g. Oil is listed as 'heat oil' with no amount, so 5 g is an assumption. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: yes (8.3 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_296",
+    "category": "savory"
+  },
+  {
+    "name_th": "แครอทไข่",
+    "main_ingredients": [
+      "carrot",
+      "egg"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "clean",
+      "keto",
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 338,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 377.0,
+      "protein": 28.1,
+      "fat": 25.0,
+      "carb": 8.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "carrot": 130,
+      "egg": 200,
+      "vegetable_oil": 8
+    },
+    "basis_refs": {
+      "carrot": "STD:429",
+      "egg": "STD:1274",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from carrot (STD:429), whole egg (STD:1274), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/515eaeec1d61404aad0cd83f97c350de",
+    "notes": "SOURCE (fetched): แครอท 1 หัว + ไข่ไก่ 4 ฟอง, shredded carrot beaten with the eggs and pan-fried in a small amount of oil, cut into bite-size pieces; '1 plate'. DISTINCT: {carrot, egg} is a new main set. NUTRITION METHOD: computed; the whole plate is treated as one serving because the source says 1 plate (1 carrot ~130 g, 4 eggs = 200 g). 'A little oil' is assumed 8 g. 'Pan-fried in a little oil' is treated as NOT deep-fried for the clean tag. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: yes (8.1 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_297",
+    "category": "savory"
+  },
+  {
+    "name_th": "ผัดแครอทใส่หมูสับ",
+    "main_ingredients": [
+      "carrot",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "green_onion"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "pepper"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 201,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 241.0,
+      "protein": 18.4,
+      "fat": 15.5,
+      "carb": 5.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "minced_meat": 90,
+      "carrot": 90,
+      "garlic": 8,
+      "green_onion": 5,
+      "soy_sauce": 8
+    },
+    "basis_refs": {
+      "minced_meat": "STD:970",
+      "carrot": "STD:429",
+      "garlic": "STD:226",
+      "green_onion": "STD:436",
+      "soy_sauce": "STD:273"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from minced pork (STD:970), carrot (STD:429), garlic (STD:226), spring onion (STD:436), light soy sauce (STD:273).",
+    "recipe_source_url": "https://www.lemon8-app.com/@noosa128128/7546633926686032392?region=us",
+    "notes": "SOURCE (fetched, Lemon8 post): หมูสับ 150-200 กรัม, แครอท 1 หัวกลาง, กระเทียมสับ 1 ช้อนโต๊ะ, น้ำเปล่า 2-3 ช้อนโต๊ะ, ซีอิ๊วขาว 1-2 ช้อนชา, พริกไทย, ต้นหอมหรือหอมใหญ่ (optional); 1-2 portions. The source sautés in a splash of water with NO oil (the pork renders its own fat), so no oil is in the nutrition basis. DISTINCT: {carrot, minced_meat} is a new main set. NUTRITION METHOD: computed; used the midpoint pork (175 g) and one medium carrot split across 2 servings. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: yes (5.5 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_298",
+    "category": "savory"
+  },
+  {
+    "name_th": "ต้มจืดหัวไชเท้าแครอท",
+    "main_ingredients": [
+      "white_radish",
+      "carrot",
+      "pork"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "fish_sauce",
+      "soy_sauce",
+      "salt"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 300,
+    "cook_time_min": 60,
+    "nutrition": {
+      "kcal": 146.0,
+      "protein": 20.0,
+      "fat": 3.8,
+      "carb": 6.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "pork": 85,
+      "white_radish": 165,
+      "carrot": 40,
+      "fish_sauce": 5,
+      "soy_sauce": 5
+    },
+    "basis_refs": {
+      "pork": "STD:958",
+      "white_radish": "STD:624",
+      "carrot": "STD:429",
+      "fish_sauce": "STD:291",
+      "soy_sauce": "STD:273"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from lean pork (STD:958), radish (STD:624), carrot (STD:429), fish sauce (STD:291), light soy sauce (STD:273).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/6c26f49ac3ae4573a20992e193e68f3a",
+    "notes": "REPLACES the dropped ซุปแครอท (needs fresh cream - not in Thai FCD). SOURCE (fetched, Thai text checked): ซี่โครงหมู ครึ่งกิโลกรัม, หัวไชเท้า 2 หัว, แครอท 1 หัว, น้ำเปล่า 2 ลิตร, น้ำปลา, ซีอิ๊วขาว, ซอสปรุงรส, เกลือ; serves 3; pork ribs simmered until tender then vegetables added. JUDGEMENT CALL - CARROT AS A MAIN: carrot is one of the only two vegetables and is in the dish title, but by weight it is the minor one (1 carrot vs 2 radishes, about 40 g vs 165 g per serving). I kept it in main because it defines the dish; you may prefer it optional. DISTINCT: th_190 (แกงจืดหัวไชเท้าหมูสับ) is minced-pork radish soup with carrot not in its main list; this is a rib-based soup with {white_radish, carrot, pork} - a new main set. NUTRITION METHOD: computed. Ribs have bone; I assumed about 250 g edible meat from the 500 g of ribs (85 g per serving) and priced it with lean pork STD:958, the record 13 existing whole-cut pork dishes in this DB already use; ribs are fattier, so fat is probably understated. Cook time 60 min is my estimate ('simmer until tender', no minutes given). The 'seasoning sauce' and salt add no macros here. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: yes (6.0 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_299",
+    "category": "savory"
+  },
+  {
+    "name_th": "ผัดดอกกะหล่ำใส่กุ้ง",
+    "main_ingredients": [
+      "cauliflower",
+      "shrimp"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "chili"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "soy_sauce",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 150,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 111.0,
+      "protein": 9.8,
+      "fat": 5.7,
+      "carb": 4.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "cauliflower": 100,
+      "shrimp": 35,
+      "garlic": 3,
+      "chili": 1,
+      "oyster_sauce": 4,
+      "soy_sauce": 2,
+      "vegetable_oil": 5
+    },
+    "basis_refs": {
+      "cauliflower": "STD:408",
+      "shrimp": "STD:1042",
+      "garlic": "STD:226",
+      "chili": "STD:545",
+      "oyster_sauce": "STD:270",
+      "soy_sauce": "STD:273",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from cauliflower (STD:408), shrimp (STD:1042), garlic (STD:226), bird chilli (STD:545), oyster sauce (STD:270), light soy sauce (STD:273), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/2ec73a79152941c6858472bc1523d02d",
+    "notes": "SOURCE (fetched): ดอกกะหล่ำ 1 หัวเล็ก, กุ้งสด 7 ตัว, กระเทียม 2 กลีบ, พริกขี้หนู 2 เม็ด, น้ำมัน 1 ช้อนโต๊ะ, น้ำมันหอย 2 ช้อนชา, ซอสปรุงรส 1 ช้อนชา, ผงปรุงรส 1 ช้อนชา, น้ำ 2 ถ้วยตวง; serves 3. DISTINCT: {cauliflower, shrimp} is a new main set. NUTRITION METHOD: computed, one third of the recipe per serving; the small head is assumed about 300 g. The seasoning powder has no dictionary key and is omitted. Seasoning sauce mapped to soy_sauce. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: yes (4.0 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_300",
+    "category": "savory"
+  },
+  {
+    "name_th": "กะหล่ำดอกผัดไข่",
+    "main_ingredients": [
+      "cauliflower",
+      "egg"
+    ],
+    "optional_ingredients": [
+      "carrot",
+      "garlic"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 205,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 201.0,
+      "protein": 12.7,
+      "fat": 13.5,
+      "carb": 6.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "cauliflower": 100,
+      "egg": 75,
+      "carrot": 10,
+      "garlic": 3,
+      "oyster_sauce": 10,
+      "vegetable_oil": 7
+    },
+    "basis_refs": {
+      "cauliflower": "STD:408",
+      "egg": "STD:1274",
+      "carrot": "STD:429",
+      "garlic": "STD:226",
+      "oyster_sauce": "STD:270",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from cauliflower (STD:408), whole egg (STD:1274), carrot (STD:429), garlic (STD:226), oyster sauce (STD:270), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/103ca88365d54f319366784467aa0cf5",
+    "notes": "SOURCE (fetched): ดอกกะหล่ำ 200 กรัม, ไข่ไก่ 3 ฟอง, แครอทหั่นเล็กน้อย, กระเทียม 2 กลีบ, น้ำมันรำข้าว 1 ช้อนโต๊ะ, ซอสผัดอเนกประสงค์; serves 2. DISTINCT: {cauliflower, egg} is a new main set. JUDGEMENT CALLS: (1) 'all-purpose stir-fry sauce' is a bottled sauce that is typically oyster-sauce-based; I mapped it to oyster_sauce (10 g). If that is wrong the dish would also be vegetarian, but I chose the direction that never offers it to a vegetarian by mistake. (2) Rice bran oil has no Thai FCD record in the cache, so it is priced as vegetable_oil (palm olein STD:1368); both are essentially 100% fat. NUTRITION METHOD: computed, half the recipe per serving. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: yes (6.1 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_301",
+    "category": "savory"
+  },
+  {
+    "name_th": "ซุปครีมกะหล่ำดอก",
+    "main_ingredients": [
+      "cauliflower",
+      "potato"
+    ],
+    "optional_ingredients": [
+      "onion",
+      "garlic"
+    ],
+    "seasonings": [
+      "vegetable_oil",
+      "milk",
+      "salt",
+      "pepper"
+    ],
+    "health_tags": [
+      "clean",
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 240.5,
+    "cook_time_min": 35,
+    "nutrition": {
+      "kcal": 174.0,
+      "protein": 5.9,
+      "fat": 9.7,
+      "carb": 14.8
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "cauliflower": 100,
+      "potato": 50,
+      "onion": 20,
+      "garlic": 1.5,
+      "vegetable_oil": 7,
+      "milk": 62
+    },
+    "basis_refs": {
+      "cauliflower": "STD:408",
+      "potato": "STD:1928",
+      "onion": "STD:622",
+      "garlic": "STD:226",
+      "vegetable_oil": "STD:1368",
+      "milk": "STD:1335"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from cauliflower (STD:408), potato (STD:1928), onion (STD:622), garlic (STD:226), palm olein oil (STD:1368), milk (STD:1335).",
+    "recipe_source_url": "https://www.pholfoodmafia.com/recipe/creamy-cauliflower-soup-%E0%B8%8B%E0%B8%B8%E0%B8%9B%E0%B8%84%E0%B8%A3%E0%B8%B5%E0%B8%A1%E0%B8%81%E0%B8%B0%E0%B8%AB%E0%B8%A5%E0%B9%88%E0%B8%B3%E0%B8%94%E0%B8%AD%E0%B8%81/",
+    "notes": "WEAKEST SOURCE OF THE BATCH - please review. The page lists ingredients (garlic 1 clove, onion 80 g, cauliflower 400 g, potato 200 g, olive oil 2 tbsp, milk 250 ml, stock, salt, pepper, parsley) but has no written method and no yield. The stock volume is printed as 5000 ml, which is clearly a typo; stock adds no macros so it does not affect the numbers. JUDGEMENT CALLS: (1) I assumed the recipe makes 4 bowls and used one quarter of each ingredient. (2) Olive oil is priced as vegetable_oil (palm olein STD:1368) - both about 100% fat, olive oil is a bit lower in kcal per gram. (3) Cook time 35 min is my estimate (page gives none). DISTINCT: {cauliflower, potato} is a new main set. Potato is a starch staple in main, so this can never carry the keto tag. International dish (cream-style soup) commonly cooked by Thais. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: no, main contains a starch staple (potato); carb is 14.8 g; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_302",
+    "category": "savory"
+  },
+  {
+    "name_th": "ปูอบวุ้นเส้น",
+    "main_ingredients": [
+      "crab",
+      "glass_noodle"
+    ],
+    "optional_ingredients": [
+      "ginger",
+      "coriander",
+      "garlic"
+    ],
+    "seasonings": [
+      "vegetable_oil",
+      "soy_sauce",
+      "oyster_sauce",
+      "sugar",
+      "pepper"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 171.5,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 385.0,
+      "protein": 14.3,
+      "fat": 18.1,
+      "carb": 40.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "crab": 75,
+      "glass_noodle": 40,
+      "vegetable_oil": 16,
+      "soy_sauce": 15,
+      "oyster_sauce": 9,
+      "sugar": 3,
+      "garlic": 6,
+      "ginger": 4,
+      "coriander": 3,
+      "pepper": 0.5
+    },
+    "basis_refs": {
+      "crab": "STD:1157",
+      "glass_noodle": "STD:396",
+      "vegetable_oil": "STD:1368",
+      "soy_sauce": "STD:273",
+      "oyster_sauce": "STD:270",
+      "sugar": "STD:1391",
+      "garlic": "STD:226",
+      "ginger": "STD:233",
+      "coriander": "STD:498",
+      "pepper": "STD:243"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from crab meat (STD:1157), dried mung-bean noodles (STD:396), palm olein oil (STD:1368), light soy sauce (STD:273), oyster sauce (STD:270), sugar (STD:1391), garlic (STD:226), ginger (STD:233), coriander (STD:498), black pepper (STD:243).",
+    "recipe_source_url": "https://www.ezythaicooking.com/free_recipes/baked-crabs-with-mung-bean-noodle_th.html",
+    "notes": "SOURCE (fetched): ปูทะเล 300 g, วุ้นเส้น 2 ห่อ, รากผักชี 4 ราก, พริกไทยดำ 20 เม็ด, กระเทียม 4 กลีบ, ขิง 3 แผ่น, น้ำมันพืช 2 ช้อนโต๊ะ, น้ำมันงา 1 ช้อนชา, ซีอิ๊วขาว 2 ช้อนโต๊ะ, น้ำตาล 1/2 ช้อนโต๊ะ, ซอสหอยนางรม 1 ช้อนโต๊ะ, น้ำ 1 ถ้วย; serves 2; baked in a clay pot 15 min at 180C. This page has NO bacon, unlike the other popular version (Wongnai 0245b0bd), which I rejected because bacon has no dictionary key. DISTINCT: {crab, glass_noodle} is a new main set. NUTRITION METHOD: computed; per serving = half. JUDGEMENT CALL - crab weight: the 300 g is crab pieces WITH shell, but STD:1157 is edible meat only, so I assumed about 50% edible = 75 g meat per serving. (th_240 uses whole grams as meat; this is more conservative and I am flagging the difference.) Dried noodles: 2 packs assumed 80 g, so 40 g per serving. Sesame oil (1 tsp) is folded into vegetable_oil. Optional dark soy sauce is omitted. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: no, main contains a starch staple (glass_noodle); carb is 40.3 g; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_303",
+    "category": "savory"
+  },
+  {
+    "name_th": "ข้าวผัดปู",
+    "main_ingredients": [
+      "crab",
+      "rice",
+      "egg"
+    ],
+    "optional_ingredients": [
+      "onion",
+      "garlic"
+    ],
+    "seasonings": [
+      "vegetable_oil",
+      "soy_sauce",
+      "sugar",
+      "pepper",
+      "salt",
+      "butter"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 463,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 727.0,
+      "protein": 40.8,
+      "fat": 37.3,
+      "carb": 57.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "rice": 165,
+      "crab": 150,
+      "egg": 75,
+      "garlic": 6,
+      "onion": 15,
+      "sugar": 2,
+      "soy_sauce": 22,
+      "vegetable_oil": 21,
+      "butter": 7
+    },
+    "basis_refs": {
+      "rice": "STD:139",
+      "crab": "STD:1157",
+      "egg": "STD:1274",
+      "garlic": "STD:226",
+      "onion": "STD:622",
+      "sugar": "STD:1391",
+      "soy_sauce": "STD:273",
+      "vegetable_oil": "STD:1368",
+      "butter": "STD:1384"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from cooked rice (STD:139), crab meat (STD:1157), whole egg (STD:1274), garlic (STD:226), onion (STD:622), sugar (STD:1391), light soy sauce (STD:273), palm olein oil (STD:1368), butter (STD:1384).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/2b27c9d7644e4f8e8acd251bb8f92000",
+    "notes": "SOURCE (fetched, Thai text checked): ข้าวสวยเก่าแช่เย็น 2 ถ้วย, เนื้อปูนึ่ง 300 กรัม (steamed crab MEAT), ไข่ไก่ 3 ฟอง (chicken egg, confirmed), กระเทียม 4 กลีบ, หอมหัวใหญ่ 1/4 หัว, เกลือ/น้ำตาล/พริกไทย 1 ช้อนชา each, ซีอิ้วขาว 3 ช้อนโต๊ะ, น้ำมัน 3 ช้อนโต๊ะ, เนยสด 1 ช้อนโต๊ะ. DISTINCT: {crab, rice, egg} is a new main set (th_030 is pork fried rice). NUTRITION METHOD: computed; serves 2 assumed (source gives no yield), half of everything per serving. Cooked rice priced with STD:139 (polished rice, cooked). Rice is a starch staple in main, so the dish can never be keto. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: no, main contains a starch staple (rice); carb is 57.0 g; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_304",
+    "category": "savory"
+  },
+  {
+    "name_th": "ปูจ๋า",
+    "main_ingredients": [
+      "crab",
+      "minced_meat",
+      "egg"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "coriander"
+    ],
+    "seasonings": [
+      "sugar",
+      "soy_sauce",
+      "oyster_sauce",
+      "pepper",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 185,
+    "cook_time_min": 50,
+    "nutrition": {
+      "kcal": 365.0,
+      "protein": 26.8,
+      "fat": 26.6,
+      "carb": 4.6
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "crab": 50,
+      "minced_meat": 75,
+      "egg": 30,
+      "garlic": 8,
+      "coriander": 1.5,
+      "sugar": 2,
+      "soy_sauce": 6,
+      "oyster_sauce": 2,
+      "pepper": 0.5,
+      "vegetable_oil": 10
+    },
+    "basis_refs": {
+      "crab": "STD:1157",
+      "minced_meat": "STD:970",
+      "egg": "STD:1274",
+      "garlic": "STD:226",
+      "coriander": "STD:498",
+      "sugar": "STD:1391",
+      "soy_sauce": "STD:273",
+      "oyster_sauce": "STD:270",
+      "pepper": "STD:243",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from crab meat (STD:1157), minced pork (STD:970), whole egg (STD:1274), garlic (STD:226), coriander (STD:498), sugar (STD:1391), light soy sauce (STD:273), oyster sauce (STD:270), black pepper (STD:243), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/796a0363f507424fb5e7a4929930b26a",
+    "notes": "SOURCE (fetched): เนื้อปู 200 กรัม, หมูสับ 300 กรัม, กระเทียมไทย 10 กลีบ, รากผักชี 3 ราก, พริกไทย 1 ช้อนชา, น้ำตาลทราย 1/2 ช้อนโต๊ะ, ซีอิ๊วขาว 1.5 ช้อนโต๊ะ, น้ำมันหอย 1/2 ช้อนโต๊ะ, ไข่แดง 1 + ไข่ไก่ 2, กระดองปู 8 กระดอง; makes 8; steamed 15 min then dipped in egg and DEEP-FRIED. DISTINCT: {crab, minced_meat, egg} is a new main set. JUDGEMENT CALL: the pork (300 g) outweighs the crab (200 g), but the dish is named for and served in the crab shell, so crab stays in main. NUTRITION METHOD: computed; serving = 2 pieces (a quarter of the batch of 8). The egg is 1 yolk + 2 eggs for the batch (about 117 g), so 30 g per 2-piece serving. Oil absorbed by deep-frying is my assumption (10 g per serving; the source gives no amount). Deep-fried, so never tagged clean. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because it is deep-fried and sugar is in its seasonings; keto: yes (4.6 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_305",
+    "category": "savory"
+  },
+  {
+    "name_th": "กะเพราเนื้อ",
+    "main_ingredients": [
+      "beef",
+      "chili",
+      "garlic",
+      "holy_basil"
+    ],
+    "optional_ingredients": [
+      "onion"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "soy_sauce",
+      "sugar",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 239,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 431.0,
+      "protein": 23.5,
+      "fat": 32.6,
+      "carb": 9.6
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "beef": 100,
+      "chili": 15,
+      "garlic": 30,
+      "holy_basil": 20,
+      "oyster_sauce": 30,
+      "soy_sauce": 15,
+      "sugar": 1,
+      "vegetable_oil": 28
+    },
+    "basis_refs": {
+      "beef": "STD:936",
+      "chili": "STD:545",
+      "garlic": "STD:226",
+      "holy_basil": "STD:228",
+      "oyster_sauce": "STD:270",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from beef (STD:936), bird chilli (STD:545), garlic (STD:226), holy basil leaves (STD:228), oyster sauce (STD:270), light soy sauce (STD:273), sugar (STD:1391), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/b5fb9593f38e4fbe941be5636746cc37",
+    "notes": "SOURCE (fetched): เนื้อวัวติดมันสับ 1 ขีด (minced beef with fat, 100 g), พริกสด 15 เม็ด, กระเทียม 10 กลีบ, ใบกระเพรา 1 กำ, ซอสหอย 2 ช้อนโต๊ะ, ซีอิ๊วขาว 1 ช้อนโต๊ะ, น้ำตาลปลายช้อน, น้ำมันพืช 2 ช้อนโต๊ะ, onion optional; one plate. DISTINCT: {beef, chili, garlic, holy_basil} is a new main set (th_001 is chicken). NUTRITION METHOD: computed. JUDGEMENT CALL: the source says beef WITH fat, but Thai FCD STD:936 is a plain beef-meat record, so fat is probably understated. Holy basil uses STD:228 (see th_292). Basil 'one handful' assumed 20 g, 15 chillies about 15 g, 10 garlic cloves about 30 g. Powder seasoning (optional) omitted. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: yes (9.6 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_306",
+    "category": "savory"
+  },
+  {
+    "name_th": "แกงมัสมั่นเนื้อ",
+    "main_ingredients": [
+      "beef",
+      "potato",
+      "peanuts"
+    ],
+    "optional_ingredients": [
+      "onion"
+    ],
+    "seasonings": [
+      "massaman_curry_paste",
+      "coconut_milk",
+      "sugar",
+      "tamarind_paste",
+      "fish_sauce",
+      "salt"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 502,
+    "cook_time_min": 110,
+    "nutrition": {
+      "kcal": 680.0,
+      "protein": 32.7,
+      "fat": 38.2,
+      "carb": 47.8
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "beef": 100,
+      "potato": 100,
+      "peanuts": 17,
+      "onion": 50,
+      "coconut_milk": 167,
+      "massaman_curry_paste": 33,
+      "sugar": 15,
+      "tamarind_paste": 10,
+      "fish_sauce": 10
+    },
+    "basis_refs": {
+      "beef": "STD:936",
+      "potato": "STD:1928",
+      "peanuts": "STD:345",
+      "onion": "STD:622",
+      "coconut_milk": "STD:1348",
+      "massaman_curry_paste": "STD:296",
+      "sugar": "STD:1391",
+      "tamarind_paste": "STD:750",
+      "fish_sauce": "STD:291"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from beef (STD:936), potato (STD:1928), peanuts (STD:345), onion (STD:622), coconut milk (STD:1348), red curry paste (stand-in) (STD:296), sugar (STD:1391), tamarind (STD:750), fish sauce (STD:291).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/ecde464e118e40dfac93afb87c6edbb5",
+    "notes": "SOURCE (fetched): beef shank 300 g, massaman curry paste 100 g, coconut milk 500 ml, roasted peanuts 50 g, palm sugar 3 tbsp, tamarind paste 2 tbsp, fish sauce 2 tbsp, potatoes 2 medium, onion 1 large, plus whole spices, lime/sour-orange juice 1 tbsp and one beef stock cube. Beef simmered about 1 hour, total 1 h 50. DISTINCT: th_008 (massaman chicken) is a different protein; {beef, potato, peanuts} is a new main set. Potato and peanuts kept in main following th_008's reasoning (a massaman without them is not a massaman). NUTRITION METHOD: computed; the source's 300 g of beef is treated as 3 servings. JUDGEMENT CALLS: (1) Thai FCD has no massaman-paste record, so I used the red curry paste record STD:296 as the closest available paste (disclosed stand-in, same idea as other 'closest available' picks in this DB) - macros are approximate. (2) Palm sugar mapped to sugar. (3) The stock cube and the whole spices are omitted (no key/record). (4) The sour-orange juice (น้ำส้มซ่า) is NOT lime, so I left it out rather than map it wrongly. The coconut milk and sugar mean it is never clean. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings and it uses coconut milk; keto: no, main contains a starch staple (potato); carb is 47.8 g; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_307",
+    "category": "savory"
+  },
+  {
+    "name_th": "เนื้อผัดพริกไทยดำ",
+    "main_ingredients": [
+      "beef",
+      "onion"
+    ],
+    "optional_ingredients": [
+      "green_onion",
+      "garlic",
+      "chili"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "soy_sauce",
+      "sugar",
+      "fish_sauce",
+      "pepper",
+      "vegetable_oil"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 337,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 425.0,
+      "protein": 42.9,
+      "fat": 22.7,
+      "carb": 11.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "beef": 200,
+      "onion": 60,
+      "green_onion": 20,
+      "garlic": 8,
+      "chili": 2,
+      "oyster_sauce": 15,
+      "soy_sauce": 8,
+      "sugar": 3,
+      "fish_sauce": 5,
+      "pepper": 2,
+      "vegetable_oil": 14
+    },
+    "basis_refs": {
+      "beef": "STD:936",
+      "onion": "STD:622",
+      "green_onion": "STD:436",
+      "garlic": "STD:226",
+      "chili": "STD:545",
+      "oyster_sauce": "STD:270",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391",
+      "fish_sauce": "STD:291",
+      "pepper": "STD:243",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from beef (STD:936), onion (STD:622), spring onion (STD:436), garlic (STD:226), bird chilli (STD:545), oyster sauce (STD:270), light soy sauce (STD:273), sugar (STD:1391), fish sauce (STD:291), black pepper (STD:243), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/1ff983cbf63a413692aafab7f6161e93",
+    "notes": "SOURCE (fetched): เนื้อ 0.5 โล, ต้นหอม, หอมใหญ่, กระเทียม, พริก 2 ต้น (no amounts), น้ำมันหอย, ซีอิ้วขาว, น้ำตาล, น้ำปลา, ผงปรุงรสคนอร์, black pepper, vegetable oil (marinade); serves 2. DISTINCT / JUDGEMENT CALL: a main set of {beef} alone would collide EXACTLY with th_156 and th_235, so onion is promoted to main - it is the defining vegetable of a black-pepper beef stir-fry - and green onion/garlic/chilli stay optional (same disclosed pattern as th_284/th_265). NUTRITION METHOD: computed; 500 g beef for 2 = 250 g each is very meat-heavy, so I priced 200 g per serving. All vegetable/sauce amounts are assumptions because the source lists none. Marinating time (30 min) is passive and not counted in cook_time_min (this DB tracks active time). Powder seasoning omitted. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: no, 11.3 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_308",
+    "category": "savory"
+  },
+  {
+    "name_th": "ปวยเล้งผัดเห็ดหอม",
+    "main_ingredients": [
+      "spinach",
+      "shiitake"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "soy_sauce",
+      "sugar",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "keto",
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 335,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 170.0,
+      "protein": 8.5,
+      "fat": 11.3,
+      "carb": 5.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "spinach": 200,
+      "shiitake": 90,
+      "soy_sauce": 34,
+      "sugar": 1,
+      "vegetable_oil": 10
+    },
+    "basis_refs": {
+      "spinach": "STD:469",
+      "shiitake": "STD:658",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from spinach (STD:469), shiitake (STD:658), light soy sauce (STD:273), sugar (STD:1391), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://www.sanook.com/women/86045/",
+    "notes": "SOURCE (fetched, Thai text checked): ปวยเล้งหั่นท่อน 200 กรัม, เห็ดหอมสด 7 ดอก, ซอสเห็ดหอมเจ 1 1/2 ช้อนโต๊ะ, ซีอิ๊วขาว 2 1/2 ช้อนชา, น้ำตาลทราย 1/4 ช้อนชา, น้ำ 2 ช้อนโต๊ะ, oil for the wok. NOTE: the fetch tool's English gloss called ปวยเล้ง 'bamboo shoots'; the Thai text is ปวยเล้ง (spinach), and I trust the Thai. DISTINCT: {spinach, shiitake} is a new main set. NUTRITION METHOD: computed, the whole plate as one serving. JUDGEMENT CALL - mushroom sauce: ซอสเห็ดหอมเจ is a vegetarian (plant-based) oyster-style sauce with no dictionary key, so I priced it as soy_sauce (22 g + the 12 g of light soy = 34 g). Using oyster_sauce would wrongly mark this vegan dish as animal-derived. This probably understates its sugar/carb a little. Oil amount is an assumption (10 g). 7 fresh shiitake assumed about 90 g. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: yes (5.5 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand - this dish qualifies as vegan.",
+    "id": "th_309",
+    "category": "savory"
+  },
+  {
+    "name_th": "แกงจืดปวยเล้งหมูสับ",
+    "main_ingredients": [
+      "spinach",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "celery",
+      "garlic"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "salt"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 170,
+    "cook_time_min": 40,
+    "nutrition": {
+      "kcal": 140.0,
+      "protein": 12.0,
+      "fat": 9.1,
+      "carb": 1.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "spinach": 100,
+      "minced_meat": 50,
+      "celery": 10,
+      "garlic": 3,
+      "soy_sauce": 7
+    },
+    "basis_refs": {
+      "spinach": "STD:469",
+      "minced_meat": "STD:970",
+      "celery": "STD:495",
+      "garlic": "STD:226",
+      "soy_sauce": "STD:273"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from spinach (STD:469), minced pork (STD:970), celery (STD:495), garlic (STD:226), light soy sauce (STD:273).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/4861359ca3d54d6298b264c29a5441cf",
+    "notes": "SOURCE (fetched): กระดูกหมู 3 ชิ้น, หมูสับตามต้องการ, ปวยเล้ง 1 กำ, คึ่นช่าย 1 ต้น, ซีอิ๊วขาวพอประมาณ, เกลือ 1/2 ช้อนชา, กระเทียม 2 กลีบ; serves 2. NOTE: the fetch tool's English gloss called ปวยเล้ง 'water morning glory'; the Thai text is ปวยเล้ง (spinach) and I trust the Thai. DISTINCT: {spinach, minced_meat} is a new main set (th_034 = spinach+garlic, th_223 = spinach+egg). NUTRITION METHOD: computed, half the recipe per serving. Pork bones (for the stock) have no dictionary key and no macros are counted for them. The pork is 'as desired' in the source, so 100 g total (50 g per serving) is my assumption, consistent with other clear pork soups in this DB. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: yes (1.2 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_310",
+    "category": "savory"
+  },
+  {
+    "name_th": "ผัดปวยเล้งน้ำมันหอย",
+    "main_ingredients": [
+      "spinach",
+      "garlic",
+      "chili"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "oyster_sauce",
+      "sugar",
+      "salt",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 235,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 146.0,
+      "protein": 5.4,
+      "fat": 11.2,
+      "carb": 3.4
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "spinach": 200,
+      "garlic": 6,
+      "chili": 3,
+      "oyster_sauce": 15,
+      "sugar": 1,
+      "vegetable_oil": 10
+    },
+    "basis_refs": {
+      "spinach": "STD:469",
+      "garlic": "STD:226",
+      "chili": "STD:545",
+      "oyster_sauce": "STD:270",
+      "sugar": "STD:1391",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from spinach (STD:469), garlic (STD:226), bird chilli (STD:545), oyster sauce (STD:270), sugar (STD:1391), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/74237cad0cfe4cd78ff8d2fd13f9a76b",
+    "notes": "SOURCE (fetched): ปวยเล้ง, พริกและกระเทียมทุบ, น้ำมันหอย (or vegetarian mushroom sauce), น้ำตาลนิดหน่อย, เกลือนิดหน่อย; the source gives NO quantities at all, so EVERY gram amount here is my assumption (spinach 200 g, etc.) - the weakest-quantified recipe in the batch. DISTINCT: {spinach, garlic, chili} differs from th_034 {spinach, garlic}; same 'garlic+chilli as co-main' pattern as th_032. The crushed chilli and garlic are laid on the spinach and fried together, so they define the dish rather than garnish it. NUTRITION METHOD: computed; oyster sauce used (the source's main option), so the dish is excluded for vegetarian/vegan even though the source offers a vegetarian sauce as a swap. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: yes (3.4 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_311",
+    "category": "savory"
   }
 ]
