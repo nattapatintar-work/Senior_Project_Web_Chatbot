@@ -1319,6 +1319,21 @@
       "protein": "PROTCNT"
     }
   },
+  "STD:232": {
+    "carb": 7.79,
+    "fat": 0.17,
+    "food_code": "N11",
+    "kcal": 35.0,
+    "name_en": "Galanga",
+    "name_th": "ขา",
+    "protein": 0.69,
+    "tags_used": {
+      "carb": "CHOCDF",
+      "fat": "FAT",
+      "kcal": "ENERCT",
+      "protein": "PROTCNT"
+    }
+  },
   "STD:233": {
     "carb": 5.93,
     "fat": 0.6,
@@ -1332,6 +1347,21 @@
       "fat": "FAT",
       "kcal": "ENERCT",
       "protein": "PROTCNT"
+    }
+  },
+  "STD:237": {
+    "carb": 15.48,
+    "fat": null,
+    "food_code": "N18",
+    "kcal": 77.0,
+    "name_en": "Lemongrass",
+    "name_th": "ตะไคร",
+    "protein": null,
+    "tags_used": {
+      "carb": "CHOCDF",
+      "fat": null,
+      "kcal": "ENERCT",
+      "protein": null
     }
   },
   "STD:243": {

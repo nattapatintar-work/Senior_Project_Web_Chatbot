@@ -186,7 +186,7 @@ Precedent examples:
 
 Earlier examples of the same pattern: th_265 (kaffir lime leaf), th_284, th_290.
 
-## 9. Convention: shell-on shellfish and whole squid (round 3, decided 2026-09-20)
+## 9. Convention: edible weight of shell-on shellfish, whole squid, whole fish and bone-in wings (rounds 3 and 6, decided 2026-09-20)
 
 For the raw-weight amounts given in a source, decide what is actually edible:
 
@@ -199,6 +199,17 @@ For the raw-weight amounts given in a source, decide what is actually edible:
   mussels are batter-fried), the assumption is stated in that recipe's `notes`.
 - Crab keeps its own rule from round 2 (hard-shell about 50%, soft-shell about 100%,
   meat-labelled as-is).
+- **Whole fish: about 45% edible** (fillet yield; decided in round 6). A source that says
+  "2 whole tilapia" with no size is assumed to be about 400 g per fish and priced as
+  360 g of meat in total (th_396 ปลาทับทิมนึ่งขิง); th_389 (แกงส้มผักบุ้งปลาน้ำดอกไม้)
+  assumes 2 fish x about 250 g whole = 225 g of meat. A weight that is already labelled as
+  fillet or meat is counted as-is.
+- **Bone-in chicken wings: about 55% edible** (round 6). th_393 (ไก่ทอดตะไคร้): 1 kg of
+  mid-wings is priced as 550 g of meat and skin. The general chicken record `STD:895`
+  (12.4 g fat/100 g) already carries skin-level fat, so wings priced this way are not a
+  lean-record-for-fatty-cut mismatch.
+- These two percentages are round-6 assumptions, not measured yields. Each recipe that uses
+  them states the fish/wing size it assumed in its `notes`.
 
 ## 10. Known Limitations
 
@@ -224,6 +235,12 @@ amounts, §5 what the sources could not supply, and §6 coverage imbalance.)
   without saying whether the source weight was shell-on. Since round 3 the rule in §9
   applies to new recipes; these six older recipes were NOT revisited. Reconcile in a future
   cleanup pass (same category of issue as th_240 vs th_303 for crab).
+- **Older fish and bone-in recipes were not revisited for the round-6 whole-fish and wing
+  rules (§9).** Earlier fish dishes such as th_171 (ปลากระพงผัดขึ้นฉ่าย, 150 g) and th_261
+  (แกงเหลืองปลา, 150 g) price the source's fish weight directly against the fish record
+  `STD:1084`, and the older recipes do not always say whether that weight was whole fish or
+  fillet. Not audited; reconcile in a future cleanup pass if any of them start from a
+  whole-fish weight.
 
 ### B. Nutrition record does not match the food
 
@@ -242,6 +259,14 @@ amounts, §5 what the sources could not supply, and §6 coverage imbalance.)
   (Spinach, raw), which every other spinach recipe uses. Related to concern C6 (the
   ปวยเล้ง/ผักโขม spinach-vs-amaranth ambiguity). Needs a decision on whether the dish is
   really spinach or amaranth, then either a re-key or a nutrition recompute. Not fixed.
+- **Lemongrass (`STD:237`) has kcal and carbohydrate but blank protein and fat.** The only
+  Thai FCD lemongrass record was added to the cache in round 6 for th_392 (ยำตะไคร้), th_393
+  (ไก่ทอดตะไคร้) and th_396 (ปลาทับทิมนึ่งขิง, as part of a galangal/lemongrass topping). The
+  tool counts the blank fields as 0, so protein and fat from lemongrass are slightly
+  understated in those three recipes (small: 5-22 g of lemongrass per serving). The older
+  soups th_018/019/020 are not affected: their nutrition is `direct` (a whole-dish INMU
+  record), so lemongrass is never priced separately there.
+  Revisit if a fuller record (or a disclosed external one) turns up.
 
 ### C. Coverage targets not met
 

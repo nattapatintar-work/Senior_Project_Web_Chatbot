@@ -18552,5 +18552,502 @@
     "notes": "SOURCE (fetched, Cookpad): กุ้ง 150 กรัม, อกไก่ 50 กรัม, พริกหวาน 200 กรัม, กระเทียม 30 กรัม, หอมใหญ่ 1 หัว, ต้นหอม 2 ต้น, พริกไทยดำ 2 กรัม, ซอสหอยนางรม 20 กรัม, น้ำปลาโลโซเดียม 10 กรัม, น้ำตาล 5 กรัม, น้ำเปล่า 40 กรัม; 2 servings (cook 10 min). PROMOTION (RECIPES_NOTES.md section 8): chicken breast is only 50 g but is named in the title, so it is main. Onion and garlic are the aromatics; onion (1 head) is main. INGREDIENT-TYPE CALLS: low-sodium fish sauce (น้ำปลาโลโซเดียม) is priced as fish_sauce. Chicken breast is priced with the general chicken-meat record STD:895 (fattier than breast: 12.4 g fat/100 g) - a small overstatement at 25 g per serving, disclosed. DISTINCT: {bell_pepper, shrimp, chicken, onion} is a new main set. NUTRITION METHOD: computed, halved per serving. 1 onion assumed 150 g. Frying oil is not listed, 1 tbsp (14 g) assumed; the 40 g of water carries no macros. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: no, 12.8 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
     "id": "th_388",
     "category": "savory"
+  },
+  {
+    "name_th": "แกงส้มผักบุ้งปลาน้ำดอกไม้",
+    "main_ingredients": [
+      "water_spinach",
+      "fish"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "sour_curry_paste",
+      "tamarind_paste",
+      "fish_sauce",
+      "sugar",
+      "salt"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 125,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 114.0,
+      "protein": 8.6,
+      "fat": 1.3,
+      "carb": 15.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "water_spinach": 50.0,
+      "fish": 28.1,
+      "sour_curry_paste": 25.0,
+      "tamarind_paste": 6.2,
+      "fish_sauce": 11.2,
+      "sugar": 4.5
+    },
+    "basis_refs": {
+      "water_spinach": "STD:507",
+      "fish": "STD:1084",
+      "sour_curry_paste": "STD:299",
+      "tamarind_paste": "STD:750",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from water spinach (Chinese convolvulus) (STD:507), striped snake-head fish (generic fish stand-in) (STD:1084), sour curry paste (STD:299), sweet tamarind pulp (STD:750), fish sauce (STD:291), sugar (STD:1391).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/f3ffdf2ca5e246a78b416fe702767689",
+    "notes": "SOURCE (fetched, Wongnai): ผักบุ้งไทย 2 กำ, ปลาน้ำดอกไม้ 2 ตัว, พริกแกงส้ม 2 ขีด, มะขามเปียก 5 ฝัก, น้ำปลา 5 ช้อนโต๊ะ, น้ำตาลปี๊บ 3 ช้อนโต๊ะ, เกลือ 2 ช้อนโต๊ะ, น้ำเปล่า 4 ลิตร; '1 big pot' (prep 30 + cook 30 min). A thin sour curry (แกงส้ม) with NO coconut milk - a different cooking style from the three stir-fried/crispy-salad water-spinach dishes. DISTINCT: {water_spinach, fish} is a new main set (th_272 is {water_spinach, shrimp}). WEAK QUANTITIES (disclosed): the page gives no servings and no fish size, so I ASSUMED 8 servings for the 4 L pot, 2 fish x about 250 g whole, and 1 bunch (กำ) of water spinach = 200 g. Per the new RECIPES_NOTES.md section 9 rule, whole fish is about 45% edible: 500 g x 45% = 225 g meat, so 28 g of fish per serving (a broth-base fish, not a fillet portion). ปลาน้ำดอกไม้ is priced with the generic fish record (striped snake-head, STD:1084) - an approximation, as for the other fish dishes. Tamarind 5 pods is priced as about 50 g of the sweet-tamarind record (STD:750, the same stand-in earlier recipes use); palm sugar is priced as sugar. VEGAN CHECK: fish, fish sauce and the curry paste are all keyed animal ingredients, so the vegetarian/vegan exclusion is honest. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: no, 15.1 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_389",
+    "category": "savory"
+  },
+  {
+    "name_th": "ผักบุ้งผัดกะปิ",
+    "main_ingredients": [
+      "water_spinach",
+      "dried_shrimp"
+    ],
+    "optional_ingredients": [
+      "chili",
+      "garlic",
+      "shallot"
+    ],
+    "seasonings": [
+      "shrimp_paste",
+      "sugar",
+      "fish_sauce",
+      "oyster_sauce",
+      "vegetable_oil"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 207.5,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 299.0,
+      "protein": 22.8,
+      "fat": 15.4,
+      "carb": 15.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "water_spinach": 100.0,
+      "dried_shrimp": 40.0,
+      "chili": 2.5,
+      "garlic": 4.5,
+      "shallot": 7.5,
+      "shrimp_paste": 9.0,
+      "sugar": 12.0,
+      "fish_sauce": 9.0,
+      "oyster_sauce": 9.0,
+      "vegetable_oil": 14.0
+    },
+    "basis_refs": {
+      "water_spinach": "STD:507",
+      "dried_shrimp": "STD:1036",
+      "chili": "STD:545",
+      "garlic": "STD:226",
+      "shallot": "STD:251",
+      "shrimp_paste": "STD:254",
+      "sugar": "STD:1391",
+      "fish_sauce": "STD:291",
+      "oyster_sauce": "STD:270",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from water spinach (Chinese convolvulus) (STD:507), dried shrimp (STD:1036), bird chilli (STD:545), garlic (STD:226), shallot (STD:251), shrimp paste (STD:254), sugar (STD:1391), fish sauce (STD:291), oyster sauce (STD:270), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/9ade3cba94244343bde845a8ad3f9d0a",
+    "notes": "SOURCE (fetched, Wongnai): ผักบุ้งไทย 1 กำ, พริกขี้หนู 5 เม็ด, กระเทียม 3 กลีบ, กะปิ 1 ช้อนโต๊ะ, น้ำตาลทราย 2 ช้อนโต๊ะ, น้ำปลา 1 ช้อนโต๊ะ, น้ำมันหอย 1 ช้อนโต๊ะ, หอมแดง 3 กลีบ, กุ้งแห้ง 1 ถ้วย, น้ำมันพืช 2 ช้อนโต๊ะ; 1-2 servings (prep 10 + cook 10 min). Shrimp paste, garlic and shallot are pounded together, then stir-fried with the dried shrimp - a shrimp-paste stir-fry, not the red-chilli style of th_039/th_198. PROMOTION (RECIPES_NOTES.md section 8): dried shrimp is a named bulk component (1 cup), so it is main (keyed as dried_shrimp, STD:1036); shrimp paste stays a seasoning. DISTINCT: {water_spinach, dried_shrimp} is a new main set. NUTRITION METHOD: computed, halved per serving (2 assumed from '1-2'). Assumed weights: 1 bunch of water spinach 200 g; 1 cup of dried shrimp 80 g; 1 tbsp of the sauces 18 g; 2 tbsp sugar 24 g. The sugar is what the page states (a sweet-salty dish). Dried shrimp, shrimp paste, fish sauce and oyster sauce are all keyed animal ingredients, so the vegetarian/vegan exclusion is honest. A Pantip 'ผักบุ้งผัดกะปิใส่หมูสับ' page was rejected because its ingredient list has no กะปิ at all. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: no, 15.3 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_390",
+    "category": "savory"
+  },
+  {
+    "name_th": "ยำมะเขือยาวเผา",
+    "main_ingredients": [
+      "eggplant",
+      "egg",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "shallot",
+      "lime",
+      "chili",
+      "basil"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 266,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 182.0,
+      "protein": 12.1,
+      "fat": 7.7,
+      "carb": 13.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "eggplant": 125.0,
+      "minced_meat": 20.0,
+      "egg": 50.0,
+      "shallot": 15.0,
+      "lime": 30.0,
+      "chili": 2.5,
+      "basil": 1.5,
+      "fish_sauce": 18.0,
+      "sugar": 4.0
+    },
+    "basis_refs": {
+      "eggplant": "STD:576",
+      "minced_meat": "STD:970",
+      "egg": "STD:1274",
+      "shallot": "STD:251",
+      "lime": "EXT:usda-lime-juice-raw",
+      "chili": "STD:545",
+      "basil": "STD:252",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from eggplant (green, raw) (STD:576), minced pork (STD:970), whole egg (STD:1274), shallot (STD:251), lime juice (USDA) (EXT:usda-lime-juice-raw), bird chilli (STD:545), basil (STD:252), fish sauce (STD:291), sugar (STD:1391).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/c9a568db68b342cd8d6477640e518faf",
+    "notes": "SOURCE (fetched, Wongnai): มะเขือยาว 1 ลูก, หมูสับ 2-3 ช้อนโต๊ะ, หอมแดงซอย 3 หัว, น้ำเปล่า 3 ช้อนโต๊ะ, น้ำตาลทราย 2 ช้อนชา, น้ำมะนาว 2 ลูก, น้ำปลา 2 ช้อนโต๊ะ, พริกสับตามชอบ, ไข่ต้ม 2 ฟอง, ใบโหระพาเล็กน้อย; 2 servings (prep 15 + cook 30 min). The eggplant is GRILLED whole, peeled and dressed as a spicy salad (ยำ) - a different technique from the existing curries, dip and stir-fry. PROMOTION (RECIPES_NOTES.md section 8): the minced pork is only 2-3 tbsp (about 40 g) and the two boiled eggs are 100 g, but both are named components of the dish, so egg and minced_meat are main. DISTINCT: {eggplant, egg, minced_meat} is a new main set (th_251 is {eggplant, minced_meat}). NUTRITION METHOD: computed, halved per serving. Assumed weights: 1 large eggplant 250 g raw (Thai FCD 'Egg plant, green, raw' STD:576; grilling loses water, not modelled); 2-3 tbsp of pork 40 g; 3 shallots 30 g; the juice of 2 limes 60 g (USDA lime-juice record, the same fallback earlier recipes use); chilli and basil are 'to taste / a little' so 5 g and 3 g are assumed. The 2 boiled eggs are priced with the raw whole-egg record (STD:1274). The pork is rendered in its own fat; no oil is listed, so none is added. The 3 tbsp water carries no macros. A pim.in.th version was rejected because it needs a brand chilli sauce (ซอสเผ็ดแจสซี่) with no key. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: no, 13.1 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_391",
+    "category": "savory"
+  },
+  {
+    "name_th": "ยำตะไคร้",
+    "main_ingredients": [
+      "lemongrass",
+      "dried_shrimp"
+    ],
+    "optional_ingredients": [
+      "lime",
+      "chili",
+      "piper_lolot",
+      "mint_leaves"
+    ],
+    "seasonings": [
+      "sugar",
+      "fish_sauce"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 109.5,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 151.0,
+      "protein": 7.3,
+      "fat": 0.5,
+      "carb": 27.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "lemongrass": 22.5,
+      "dried_shrimp": 15.0,
+      "sugar": 22.5,
+      "lime": 22.5,
+      "fish_sauce": 18.0,
+      "chili": 2.5,
+      "piper_lolot": 5.0,
+      "mint_leaves": 1.5
+    },
+    "basis_refs": {
+      "lemongrass": "STD:237",
+      "dried_shrimp": "STD:1036",
+      "sugar": "STD:1391",
+      "lime": "EXT:usda-lime-juice-raw",
+      "fish_sauce": "STD:291",
+      "chili": "STD:545",
+      "piper_lolot": "STD:432",
+      "mint_leaves": "STD:250"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from lemongrass (STD:237), dried shrimp (STD:1036), sugar (STD:1391), lime juice (USDA) (EXT:usda-lime-juice-raw), fish sauce (STD:291), bird chilli (STD:545), wild betel leaf (STD:432), mint (STD:250).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/5b0303537cc14015b6090e28786885ba",
+    "notes": "SOURCE (fetched, Wongnai): ตะไคร้ซอย 3 ต้น, กุ้งแห้งทอด 4 ช้อนโต๊ะ, หอมเจียวสำหรับโรย, น้ำตาลมะพร้าวเคี่ยว 3 ช้อนโต๊ะ, น้ำมะนาว 3 ช้อนโต๊ะ, น้ำปลา 2 ช้อนโต๊ะ, พริกขี้หนูซอยตามชอบ, ใบชะพลูตามชอบ, ใบสาระแหน่สำหรับโรย; 1 dish for 2 people (prep 15 + cook 15 min). A lemongrass salad (ยำ) where the thinly sliced lemongrass is the dish itself, unlike the three existing lemongrass soups (th_018/019/020), where it only flavours the broth. DISTINCT: {lemongrass, dried_shrimp} is a new main set. Dried shrimp (4 tbsp, keyed) is main, ใบชะพลู is piper_lolot, สาระแหน่ is mint_leaves. Chosen over the fresh-shrimp version (ยำตะไคร้กุ้งสด, kept in reserve) because every key quantity is stated here. DATA-QUALITY WEAK SPOT (logged in RECIPES_NOTES.md section 10-B): the only Thai FCD lemongrass record (STD:237, a new cache record) has kcal and carbohydrate but BLANK protein and fat, so the tool counts those as 0 - the lemongrass contribution to protein/fat is slightly understated (small: 22 g per serving). NUTRITION METHOD: computed, halved per serving. Assumed weights: 3 stalks give about 45 g of finely sliced tender lemongrass; 4 tbsp of fried dried shrimp about 30 g (oil absorbed while frying not counted); 3 tbsp of reduced palm sugar about 45 g, priced as sugar; the juice of lime 3 tbsp 45 g (USDA lime juice fallback); chilli 5 g, wild betel 10 g, mint 3 g are 'to taste'. OMITTED: the fried-shallot topping (a small garnish, no oil amount given). Dried shrimp and fish sauce are keyed animal ingredients, so the vegetarian/vegan exclusion is honest. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: no, 27.5 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_392",
+    "category": "savory"
+  },
+  {
+    "name_th": "ไก่ทอดตะไคร้",
+    "main_ingredients": [
+      "chicken",
+      "lemongrass"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "soy_sauce",
+      "sugar",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 144.8,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 319.0,
+      "protein": 19.3,
+      "fat": 23.6,
+      "carb": 6.6
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "chicken": 110.0,
+      "lemongrass": 16.0,
+      "soy_sauce": 6.4,
+      "sugar": 2.4,
+      "vegetable_oil": 10.0
+    },
+    "basis_refs": {
+      "chicken": "STD:895",
+      "lemongrass": "STD:237",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from chicken meat (STD:895), lemongrass (STD:237), light soy sauce (STD:273), sugar (STD:1391), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/a5e866face164d72b8345fbc3e8cad46",
+    "notes": "SOURCE (fetched, Wongnai): ปีกกลางไก่ 1 กิโลกรัม, ตะไคร้ 10 ต้น, ซอสปรุงรส 2 ช้อนโต๊ะ, ผงปรุงรส 1 ช้อนโต๊ะ, น้ำตาลทราย 1 ช้อนโต๊ะ; 5 servings; the chicken is marinated with the lemongrass and seasonings for 2 hours, then fried over medium heat for about 20 minutes. A classic fried-lemongrass chicken. NOTE: the brief assumed a lemongrass fried flagship already existed; it did not (the 3 existing lemongrass mains are all soups), so this is the missing fried dish, not a repeat. DEEP-FRIED: so it is NOT tagged clean. EDIBLE WEIGHT (new RECIPES_NOTES.md section 9 rule, decided this round): bone-in chicken wings are about 55% edible, so 1 kg of mid-wings is priced as 550 g of meat and skin. The general chicken-meat record (STD:895, 12.4 g fat/100 g) already carries skin-level fat, so this is NOT a lean-record-for-a-fatty-cut mismatch. DISTINCT: {chicken, lemongrass} is a new main set. Lemongrass is a real component here (10 stems, fried and eaten as crisp threads). NUTRITION METHOD: computed, divided by 5. Assumed: about 8 g of usable lemongrass per stem (80 g); ซอสปรุงรส is mapped to soy_sauce (2 tbsp = 32 g); about 50 g of frying oil is absorbed across the batch (my assumption; oil absorption is not otherwise modelled). The unkeyed seasoning powder (1 tbsp) is OMITTED; chicken is keyed, so the vegetarian/vegan exclusion is honest. Lemongrass Thai FCD STD:237 has blank protein/fat (see th_392), a small understatement. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because it is deep-fried and sugar is in its seasonings; keto: yes (6.6 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_393",
+    "category": "savory"
+  },
+  {
+    "name_th": "หมูห่อใบเตยย่าง",
+    "main_ingredients": [
+      "pork",
+      "pandan_leaf"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "soy_sauce",
+      "salt",
+      "vegetable_oil",
+      "sugar"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 274,
+    "cook_time_min": 90,
+    "nutrition": {
+      "kcal": 411.0,
+      "protein": 53.2,
+      "fat": 16.9,
+      "carb": 11.3
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "pork": 250.0,
+      "soy_sauce": 8.0,
+      "vegetable_oil": 7.0,
+      "sugar": 9.0
+    },
+    "basis_refs": {
+      "pork": "STD:958",
+      "soy_sauce": "STD:273",
+      "vegetable_oil": "STD:1368",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from lean pork (STD:958), light soy sauce (STD:273), palm olein oil (STD:1368), sugar (STD:1391).",
+    "recipe_source_url": "https://cookpad.com/th/recipes/14834082",
+    "notes": "SOURCE (fetched, Cookpad): หมูสะโพก 500 กรัม, ซีอิ๊วขาว 1 ช้อนโต๊ะ, เกลือ 1/2 ช้อนโต๊ะ, น้ำมัน 1 ช้อนโต๊ะ, น้ำตาล 1 1/2 ช้อนโต๊ะ, ผงปรุงรสหมู 2 ช้อนชา, ใบเตยสำหรับห่อประมาณ 30 ใบ; 2 people, 1.5 hours in total; the marinated pork is wrapped in pandan leaves, stapled, and baked/air-fried at 200 C for 25 minutes (NOT deep-fried). PANDAN AS WRAPPER (same convention as th_082): the leaf perfumes the pork but is not eaten, so pandan_leaf is main (it is what makes the dish) with ZERO nutrition_basis weight. FATTY-CUT CHECK (requirement 10): หมูสะโพก (pork hip) is a lean cut, correctly priced with lean pork STD:958 - no limitation to log.DISTINCT: {pork, pandan_leaf} is a new main set (th_082 is {chicken, pandan_leaf}; the other two pandan mains are desserts). NUTRITION METHOD: computed, halved per serving (250 g of raw pork each, as the page states 500 g for 2 people). The unkeyed pork-flavour seasoning powder is OMITTED; pork is keyed, so the vegetarian/vegan exclusion is honest. The sweet pandan-flavoured dessert ข้าวเหนียวมูนใบเตยสังขยา was fetched but left in reserve (its source servings are muddled). HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: no, 11.3 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_394",
+    "category": "savory"
+  },
+  {
+    "name_th": "ปลาหมึกทอดขมิ้น",
+    "main_ingredients": [
+      "squid",
+      "turmeric"
+    ],
+    "optional_ingredients": [
+      "garlic"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "sugar",
+      "salt",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 169.3,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 194.0,
+      "protein": 20.7,
+      "fat": 10.6,
+      "carb": 3.6
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "squid": 133.3,
+      "turmeric": 6.7,
+      "garlic": 6.0,
+      "fish_sauce": 12.0,
+      "sugar": 1.3,
+      "vegetable_oil": 10.0
+    },
+    "basis_refs": {
+      "squid": "STD:1146",
+      "turmeric": "STD:231",
+      "garlic": "STD:226",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from squid (STD:1146), turmeric (STD:231), garlic (STD:226), fish sauce (STD:291), sugar (STD:1391), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://nlovecooking.com/%E0%B8%9B%E0%B8%A5%E0%B8%B2%E0%B8%AB%E0%B8%A1%E0%B8%B6%E0%B8%81%E0%B8%97%E0%B8%AD%E0%B8%94%E0%B8%82%E0%B8%A1%E0%B8%B4%E0%B9%89%E0%B8%99/",
+    "notes": "SOURCE (fetched, nlovecooking.com): ปลาหมึกหั่นเป็นชิ้นๆ 4 ตัว, ขมิ้น 2 หัว (บดละเอียด), กระเทียม 6 กลีบ (บดละเอียด), น้ำปลา 2 ช้อนโต๊ะ, น้ำตาลทราย 1 ช้อนชา, เกลือ 1 ช้อนชา, น้ำมันพืชสำหรับทอด; marinate 30 minutes then deep-fry. The page gives no servings or cook time. A non-chicken turmeric dish (the existing turmeric mains are chicken-fried, chicken rice and a fish curry). DEEP-FRIED: so it is NOT tagged clean. EDIBLE WEIGHT (RECIPES_NOTES.md section 9): 'ปลาหมึกหั่นเป็นชิ้นๆ' means the squid is already cleaned and cut, so the grams count as meat with no whole-squid allowance; the page gives no size, so 4 squid x about 100 g = 400 g is ASSUMED. DISTINCT: {squid, turmeric} is a new main set. NUTRITION METHOD: computed; servings ASSUMED 3 and cook time ASSUMED 15 min (neither stated). 2 turmeric knobs about 20 g (Thai FCD turmeric STD:231); 6 garlic cloves 18 g; about 30 g of frying oil is absorbed across the batch (my assumption). Fish sauce is a keyed animal ingredient and so is squid, so the vegetarian/vegan exclusion is honest. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because it is deep-fried and sugar is in its seasonings; keto: yes (3.6 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_395",
+    "category": "savory"
+  },
+  {
+    "name_th": "ปลาทับทิมนึ่งขิง",
+    "main_ingredients": [
+      "fish",
+      "ginger",
+      "celery"
+    ],
+    "optional_ingredients": [
+      "green_onion",
+      "chili",
+      "shiitake",
+      "garlic",
+      "galangal",
+      "lemongrass"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "sugar",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 202,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 201.0,
+      "protein": 20.0,
+      "fat": 10.3,
+      "carb": 5.8
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "fish": 90.0,
+      "ginger": 22.5,
+      "celery": 15.0,
+      "green_onion": 20.0,
+      "chili": 10.0,
+      "shiitake": 17.5,
+      "garlic": 5.0,
+      "galangal": 5.0,
+      "lemongrass": 5.0,
+      "soy_sauce": 4.0,
+      "sugar": 1.0,
+      "vegetable_oil": 7.0
+    },
+    "basis_refs": {
+      "fish": "STD:1084",
+      "ginger": "STD:233",
+      "celery": "STD:495",
+      "green_onion": "STD:436",
+      "chili": "STD:545",
+      "shiitake": "STD:658",
+      "garlic": "STD:226",
+      "galangal": "STD:232",
+      "lemongrass": "STD:237",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from striped snake-head fish (generic fish stand-in) (STD:1084), ginger (STD:233), celery (STD:495), spring onion (STD:436), bird chilli (STD:545), shiitake (STD:658), garlic (STD:226), galangal (STD:232), lemongrass (STD:237), light soy sauce (STD:273), sugar (STD:1391), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://food.trueid.net/detail/XakMeDb5Mz3E",
+    "notes": "SOURCE (fetched, TrueID): ปลาทับทิม 2 ตัว, ขิงอ่อนซอย 1 ถ้วย, พริกชี้ฟ้าแดงซอย 1/2 ถ้วย, ต้นหอมซอย 1 ถ้วย, ขึ้นช่ายซอย 1 ถ้วย, กระเทียมซอย 2 ช้อนโต๊ะ, น้ำตาลทราย 1 ช้อนชา, ซีอิ๊วขาว 1 ช้อนโต๊ะ, เต้าเจี้ยว 2 ช้อนโต๊ะ, น้ำมันงา 2 ช้อนโต๊ะ, น้ำซุปไก่ 1 ถ้วย, เห็ดหอม 1 ถ้วย, ข่า ตะไคร้ 1/2 ถ้วย. Chinese-style STEAMED whole red tilapia with a heap of ginger, celery and mushroom - a different technique from every existing ginger/celery dish (all stir-fries except the oyster soup th_324). One dish lifts BOTH ginger and celery. INGREDIENT-TYPE CALLS: ปลาทับทิม = red tilapia, priced with the generic fish record (striped snake-head STD:1084), an approximation. ขึ้นช่าย is celery (STD:495). MAIN vs OPTIONAL (judgment call): the page lists ginger, celery, spring onion, chilli, shiitake, garlic and galangal/lemongrass in similar 'cup' amounts, but the dish's identity (name and technique) is fish + ginger + celery, so those three are main and the rest are optional - their grams ARE still counted in the nutrition. EDIBLE WEIGHT (new RECIPES_NOTES.md section 9 rule): the page gives no fish size, so 2 whole tilapia x about 400 g = 800 g whole is ASSUMED, and whole fish is about 45% edible = 360 g of meat. Servings ASSUMED 4 (2 fish); cook time ASSUMED 15 min (not stated). UNMAPPED and OMITTED (disclosed): เต้าเจี้ยว (fermented soybean paste, 2 tbsp - no key), and the chicken stock (1 cup, no macros). Fish is a keyed animal ingredient, so the unkeyed chicken stock cannot cause a false vegan/vegetarian tag. Sesame oil (2 tbsp) is folded into vegetable_oil (28 g). Assumed weights: 1 cup ginger 90 g, 1 cup celery 60 g, 1 cup spring onion 80 g, 1/2 cup chilli 40 g, 1 cup sliced shiitake 70 g, 2 tbsp garlic 20 g, the 1/2 cup galangal+lemongrass split as 20 g each (galangal STD:232 and lemongrass STD:237, both new cache records; lemongrass has blank protein/fat, see th_392). DISTINCT: {fish, ginger, celery} is a new main set (th_171 is {fish, celery}). HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: yes (5.8 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_396",
+    "category": "savory"
+  },
+  {
+    "name_th": "แตงกวาผัดไข่",
+    "main_ingredients": [
+      "cucumber",
+      "egg"
+    ],
+    "optional_ingredients": [
+      "garlic"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "oyster_sauce",
+      "vegetable_oil",
+      "pepper"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 239,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 174.0,
+      "protein": 8.6,
+      "fat": 11.3,
+      "carb": 8.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "cucumber": 150.0,
+      "egg": 50.0,
+      "garlic": 15.0,
+      "soy_sauce": 8.0,
+      "oyster_sauce": 9.0,
+      "vegetable_oil": 7.0
+    },
+    "basis_refs": {
+      "cucumber": "STD:441",
+      "egg": "STD:1274",
+      "garlic": "STD:226",
+      "soy_sauce": "STD:273",
+      "oyster_sauce": "STD:270",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from cucumber (STD:441), whole egg (STD:1274), garlic (STD:226), light soy sauce (STD:273), oyster sauce (STD:270), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/80f88f72ef1244768dd73f77c3ec819b",
+    "notes": "SOURCE (fetched, Wongnai): แตงกวา 1-2 ผล, ไข่ไก่ 1-2 ฟอง, กระเทียม 1 หัว, น้ำเปล่า, ซอสปรุงรส 1 ช้อนโต๊ะ, ซอสหอยนางรม 1 ช้อนโต๊ะ, พริกไทยป่นตามชอบ; 1-2 servings (prep 10 + cook 10 min). Cucumber is the bulk of the dish here - a real main ingredient, not a salad filler (the other cucumber mains are a salad, a pickle, a sweet-and-sour and a beef salad). DISTINCT: {cucumber, egg} is a new main set. NUTRITION METHOD: computed, halved per serving (2 assumed from '1-2'). The page gives ranges, so I assumed the middle: 2 cucumbers x 150 g = 300 g (the range 1-2 could be 150-300 g), 2 eggs = 100 g, 1 garlic head = 30 g. Frying oil is not listed, so 1 tbsp (14 g) is assumed. ซอสปรุงรส is mapped to soy_sauce. Egg and oyster sauce are keyed animal ingredients, so the vegetarian/vegan exclusion is honest. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: yes (8.9 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_397",
+    "category": "savory"
   }
 ]
