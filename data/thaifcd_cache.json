@@ -194,6 +194,21 @@
       "protein": "PROTCNT"
     }
   },
+  "STD:1214": {
+    "carb": 0.0,
+    "fat": 0.79,
+    "food_code": "G84",
+    "kcal": 111.0,
+    "name_en": "Tuna, canned in water, liquid excluded",
+    "name_th": "ปลาทูนา, ในน้ำ, บรรจุกระป๋อง, เฉพาะเนื้อ",
+    "protein": 26.05,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
   "STD:1228": {
     "carb": 1.5,
     "fat": 3.27,

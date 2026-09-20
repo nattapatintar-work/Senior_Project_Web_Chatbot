@@ -202,3 +202,13 @@ Recorded, deliberately **not fixed** yet.
   (Spinach, raw), which every other spinach recipe uses. Related to concern C6 (the
   ปวยเล้ง/ผักโขม spinach-vs-amaranth ambiguity). Needs a decision on whether the dish is
   really spinach or amaranth, then either a re-key or a nutrition recompute. Not fixed.
+- **Fatty pork cuts are priced as lean (known limitation, th_328).** Thai FCD has no
+  pork-belly (or other high-fat pork) record, so th_328 (หมูย่างเกาหลีห่อผักสลัดคอส,
+  100 g pork belly + 100 g pork shoulder per serving) is priced entirely with lean pork
+  `STD:958`. Fat and kcal are therefore understated for that recipe, considerably so for
+  the belly half. Accepted as-is with the disclosure already in its `notes` (2026-09-20).
+  The same shortfall applies to any recipe that prices a fatty cut with a lean record,
+  e.g. th_299 (pork ribs priced as `STD:958`); the same idea applies to beef "with fat"
+  priced with plain beef meat `STD:936` in th_306 and th_335. No audit has been done for
+  other affected recipes. Revisit if a better Thai FCD record (or a disclosed external
+  one) turns up.

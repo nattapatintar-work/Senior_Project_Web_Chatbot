@@ -14215,5 +14215,1498 @@
     "notes": "SOURCE (fetched): ปวยเล้ง, พริกและกระเทียมทุบ, น้ำมันหอย (or vegetarian mushroom sauce), น้ำตาลนิดหน่อย, เกลือนิดหน่อย; the source gives NO quantities at all, so EVERY gram amount here is my assumption (spinach 200 g, etc.) - the weakest-quantified recipe in the batch. DISTINCT: {spinach, garlic, chili} differs from th_034 {spinach, garlic}; same 'garlic+chilli as co-main' pattern as th_032. The crushed chilli and garlic are laid on the spinach and fried together, so they define the dish rather than garnish it. NUTRITION METHOD: computed; oyster sauce used (the source's main option), so the dish is excluded for vegetarian/vegan even though the source offers a vegetarian sauce as a swap. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: yes (3.4 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
     "id": "th_311",
     "category": "savory"
+  },
+  {
+    "name_th": "ผัดก้านคะน้าเห็ดหอมสด",
+    "main_ingredients": [
+      "chinese_kale",
+      "shiitake"
+    ],
+    "optional_ingredients": [
+      "garlic"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "pepper",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "clean",
+      "keto",
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 187.5,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 94.0,
+      "protein": 4.9,
+      "fat": 5.4,
+      "carb": 4.4
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "chinese_kale": 105,
+      "shiitake": 50,
+      "garlic": 5,
+      "soy_sauce": 22,
+      "pepper": 0.5,
+      "vegetable_oil": 5
+    },
+    "basis_refs": {
+      "chinese_kale": "STD:491",
+      "shiitake": "STD:658",
+      "garlic": "STD:226",
+      "soy_sauce": "STD:273",
+      "pepper": "STD:243",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from Chinese kale (STD:491), shiitake (STD:658), garlic (STD:226), light soy sauce (STD:273), black pepper (STD:243), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/6d18e6c3a34941c1a6ed9bb1836d1ac0",
+    "notes": "SOURCE (fetched): ก้านคะน้าฮ่องกง 3-4 ต้น, ใบคะน้า 150 กรัม, เห็ดหอมสด 100 กรัม, ซอสปรุงรสฝาเขียว 2-3 ช้อนโต๊ะ, กระเทียมสับ 3 กลีบ, พริกไทย 1/2 ช้อนชา; 1-2 people; stir-fried about 5 min. INGREDIENT-TYPE CALL (approved): the source says คะน้าฮ่องกง (Hong Kong kale); it is mapped to chinese_kale (Thai FCD STD:491). Mushroom is explicitly เห็ดหอมสด (fresh shiitake) so the raw shiitake record STD:658 fits. DISTINCT: {chinese_kale, shiitake} is a new main set. NUTRITION METHOD: computed, half the recipe per serving. The source lists no oil, but a wok stir-fry cannot be dry, so 5 g oil is my disclosed assumption; the branded seasoning sauce is mapped to soy_sauce. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: yes (4.4 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand - this dish qualifies as vegan.",
+    "id": "th_312",
+    "category": "savory"
+  },
+  {
+    "name_th": "คะน้าหมูสับ",
+    "main_ingredients": [
+      "chinese_kale",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "garlic"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 215,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 222.0,
+      "protein": 12.9,
+      "fat": 15.9,
+      "carb": 5.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "chinese_kale": 125,
+      "garlic": 15,
+      "minced_meat": 50,
+      "oyster_sauce": 18,
+      "vegetable_oil": 7
+    },
+    "basis_refs": {
+      "chinese_kale": "STD:491",
+      "garlic": "STD:226",
+      "minced_meat": "STD:970",
+      "oyster_sauce": "STD:270",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from Chinese kale (STD:491), garlic (STD:226), minced pork (STD:970), oyster sauce (STD:270), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/3786a435999c42a9a111b3d7cb893fda",
+    "notes": "SOURCE (fetched): คะน้า 5 ต้น, กระเทียมสับ 1 หัว, หมูสับ 1 ขีด, ซอสหอยนางรม 2 ช้อนโต๊ะ, น้ำ ครึ่งถ้วยเล็ก, น้ำมันพืชสำหรับผัด; 1-2 people. DISTINCT: {chinese_kale, minced_meat} is a new main set (th_188 is kale + crispy pork). NUTRITION METHOD: computed, half the recipe per serving. Assumptions: 5 kale stalks about 250 g total, 1 garlic head about 30 g (a lot of garlic - kept optional because it is a flavour base), oil amount not given so 7 g per serving is assumed. Oyster sauce here is the animal-derived one, so the dish is excluded for vegetarian/vegan. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: yes (5.1 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_313",
+    "category": "savory"
+  },
+  {
+    "name_th": "คะน้าผัดเนื้อ",
+    "main_ingredients": [
+      "chinese_kale",
+      "beef"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "chili"
+    ],
+    "seasonings": [
+      "vegetable_oil",
+      "fish_sauce",
+      "oyster_sauce",
+      "sugar",
+      "soy_sauce"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 349,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 318.0,
+      "protein": 25.7,
+      "fat": 18.9,
+      "carb": 8.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "chinese_kale": 200,
+      "beef": 100,
+      "garlic": 8,
+      "chili": 6,
+      "vegetable_oil": 14,
+      "fish_sauce": 8,
+      "oyster_sauce": 9,
+      "sugar": 4
+    },
+    "basis_refs": {
+      "chinese_kale": "STD:491",
+      "beef": "STD:936",
+      "garlic": "STD:226",
+      "chili": "STD:545",
+      "vegetable_oil": "STD:1368",
+      "fish_sauce": "STD:291",
+      "oyster_sauce": "STD:270",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from Chinese kale (STD:491), beef (STD:936), garlic (STD:226), bird chilli (STD:545), palm olein oil (STD:1368), fish sauce (STD:291), oyster sauce (STD:270), sugar (STD:1391).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/358e6928ee704c4bbc5aa1d9bb5ccf72",
+    "notes": "SOURCE (fetched): คะน้า 400 กรัม, เนื้อสับ 200 กรัม, กระเทียมสับ 2 ช้อนโต๊ะ, พริกแดงสับหยาบ 2 ช้อนโต๊ะ, เต้าเจี้ยว 2 ช้อนโต๊ะ, น้ำมัน 2 ช้อนโต๊ะ, น้ำปลา 1 ช้อนโต๊ะ, น้ำมันหอย 1 ช้อนโต๊ะ, ซอสปรุงรส, น้ำตาล 2 ช้อนชา. INGREDIENT-TYPE CALL (approved): 'เนื้อสับ' with no animal named is read as minced BEEF (in Thai, เนื้อ alone means beef; pork would be written หมู). Priced with the beef record STD:936. DISTINCT: {chinese_kale, beef} is a new main set. NUTRITION METHOD: computed; the source gives no yield, so I assumed 2 servings. The fermented soybean (เต้าเจี้ยว) has no dictionary key and no Thai FCD record in the cache, so it is omitted (slightly understates saltiness, negligible macros). HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: yes (8.1 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_314",
+    "category": "savory"
+  },
+  {
+    "name_th": "ผัดบร็อคโคลี่เห็ดหอมหมูสับ",
+    "main_ingredients": [
+      "broccoli",
+      "shiitake",
+      "minced_meat"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "tapioca_starch"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "sugar",
+      "vegetable_oil",
+      "salt"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 114,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 133.0,
+      "protein": 8.2,
+      "fat": 7.8,
+      "carb": 6.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "broccoli": 53,
+      "minced_meat": 33,
+      "garlic": 2,
+      "shiitake": 15,
+      "soy_sauce": 5,
+      "sugar": 1,
+      "tapioca_starch": 3,
+      "vegetable_oil": 2
+    },
+    "basis_refs": {
+      "broccoli": "EXT:usda-broccoli-raw",
+      "minced_meat": "STD:970",
+      "garlic": "STD:226",
+      "shiitake": "STD:658",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391",
+      "tapioca_starch": "STD:1934",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from broccoli (EXT:usda-broccoli-raw), minced pork (STD:970), garlic (STD:226), shiitake (STD:658), light soy sauce (STD:273), sugar (STD:1391), tapioca starch (STD:1934), palm olein oil (STD:1368). Fallback where Thai FCD has no usable record: USDA FoodData Central for broccoli (EXT:usda-broccoli-raw) - see data/external_nutrition.json.",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/e8f5e995e7ee4e33bef67f5e4068f8e5",
+    "notes": "SOURCE (fetched): บร็อคโคลี่ 160 กรัม, หมูสับ 100 กรัม, กระเทียมสับ 1/2 ช้อนโต๊ะ, เห็ดหอมแห้งแช่น้ำจนนิ่ม 3 ดอก, คนอร์ซอสข้นปรุงรส รสหมู 1 ช้อนโต๊ะ, น้ำตาลทราย 1 ช้อนชา, แป้งข้าวโพดละลายน้ำ 2 ช้อนโต๊ะ, น้ำมันพืชเล็กน้อย, เกลือ; serves 3. INGREDIENT-TYPE CALL: this mushroom is DRIED shiitake, soaked. It is priced with the raw shiitake record STD:658 using the soaked weight (3 mushrooms about 45 g soaked, 15 g per serving) - a disclosed approximation, since Thai FCD's raw shiitake is not the same as a rehydrated one. PROMOTION (per RECIPES_NOTES.md section 8): broccoli is main although small by weight (53 g of about 114 g), and shiitake is promoted to main to hit the round-2 target; both are real named components. DISTINCT: {broccoli, shiitake, minced_meat} differs from th_252 {broccoli, minced_meat}. NUTRITION METHOD: computed, one third per serving. Broccoli uses the USDA fallback (Thai FCD has no broccoli entry - see th_038's precedent). Corn starch has no dictionary key; tapioca_starch (STD:1934, near-identical macros) is used as a disclosed stand-in for the 2 tbsp slurry (about 8 g starch assumed). The branded pork sauce is mapped to soy_sauce. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: yes (6.9 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_315",
+    "category": "savory"
+  },
+  {
+    "name_th": "ผัดบรอกโคลีเห็ดหอมสด",
+    "main_ingredients": [
+      "broccoli",
+      "shiitake"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "ginger"
+    ],
+    "seasonings": [
+      "vegetable_oil",
+      "soy_sauce"
+    ],
+    "health_tags": [
+      "clean",
+      "keto",
+      "vegan",
+      "vegetarian"
+    ],
+    "excluded_for": [],
+    "serving_g": 131,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 129.0,
+      "protein": 3.3,
+      "fat": 10.3,
+      "carb": 4.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "broccoli": 62,
+      "shiitake": 50,
+      "garlic": 4,
+      "ginger": 1,
+      "soy_sauce": 4,
+      "vegetable_oil": 10
+    },
+    "basis_refs": {
+      "broccoli": "EXT:usda-broccoli-raw",
+      "shiitake": "STD:658",
+      "garlic": "STD:226",
+      "ginger": "STD:233",
+      "soy_sauce": "STD:273",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from broccoli (EXT:usda-broccoli-raw), shiitake (STD:658), garlic (STD:226), ginger (STD:233), light soy sauce (STD:273), palm olein oil (STD:1368). Fallback where Thai FCD has no usable record: USDA FoodData Central for broccoli (EXT:usda-broccoli-raw) - see data/external_nutrition.json.",
+    "recipe_source_url": "https://api2.krua.co/recipe/stir-fried-broccoli/",
+    "notes": "SOURCE (fetched, krua.co): ดอกบรอกโคลี 250 กรัม, เห็ดหอมสดดอกเล็ก 200 กรัม, น้ำมันมะกอก 2 ช้อนโต๊ะ, กระเทียม 2 ช้อนโต๊ะ, ขิงอ่อน 1 ช้อนชา, ซีอิ๊วญี่ปุ่น 1 ช้อนโต๊ะ, น้ำมันงา 1 ช้อนโต๊ะ, งาดำคั่ว 1 ช้อนโต๊ะ; serves 4. Fresh shiitake, so STD:658 fits directly. DISTINCT: {broccoli, shiitake} is a new main set (th_315 also has minced pork). NUTRITION METHOD: computed, one quarter per serving. Olive oil (28 g) and sesame oil (14 g) are both folded into vegetable_oil (palm olein STD:1368, about 100% fat): 10 g per serving, approximate. Japanese soy sauce is priced as light soy sauce. The roasted black sesame seeds have no key and are omitted (about 2 g per serving). Broccoli uses the USDA fallback. No animal product, so this dish is eligible for vegan. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: yes (4.7 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand - this dish qualifies as vegan.",
+    "id": "th_316",
+    "category": "savory"
+  },
+  {
+    "name_th": "เนื้อผัดบรอกโคลี",
+    "main_ingredients": [
+      "beef",
+      "broccoli"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "ginger",
+      "green_onion",
+      "tapioca_starch"
+    ],
+    "seasonings": [
+      "soy_sauce",
+      "dark_soy_sauce",
+      "sugar",
+      "pepper",
+      "vegetable_oil"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 214.3,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 305.0,
+      "protein": 26.6,
+      "fat": 16.3,
+      "carb": 12.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "beef": 120,
+      "broccoli": 40,
+      "soy_sauce": 20,
+      "dark_soy_sauce": 1,
+      "sugar": 3,
+      "tapioca_starch": 6,
+      "vegetable_oil": 11,
+      "garlic": 6,
+      "ginger": 3,
+      "green_onion": 4,
+      "pepper": 0.3
+    },
+    "basis_refs": {
+      "beef": "STD:936",
+      "broccoli": "EXT:usda-broccoli-raw",
+      "soy_sauce": "STD:273",
+      "dark_soy_sauce": "STD:277",
+      "sugar": "STD:1391",
+      "tapioca_starch": "STD:1934",
+      "vegetable_oil": "STD:1368",
+      "garlic": "STD:226",
+      "ginger": "STD:233",
+      "green_onion": "STD:436",
+      "pepper": "STD:243"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from beef (STD:936), broccoli (EXT:usda-broccoli-raw), light soy sauce (STD:273), dark soy sauce (STD:277), sugar (STD:1391), tapioca starch (STD:1934), palm olein oil (STD:1368), garlic (STD:226), ginger (STD:233), spring onion (STD:436), black pepper (STD:243). Fallback where Thai FCD has no usable record: USDA FoodData Central for broccoli (EXT:usda-broccoli-raw) - see data/external_nutrition.json.",
+    "recipe_source_url": "https://krua.co/recipe/stir-fried-beef-with-broccoli",
+    "notes": "SOURCE (fetched, krua.co): เนื้อวัวส่วนใบบัว 300 กรัม, บรอกโคลี 100 กรัม, ซีอิ๊วขาว 2 ช้อนโต๊ะ, ซอสปรุงรส 1 ช้อนโต๊ะ, ซีอิ๊วดำหวาน 1/2 ช้อนชา, น้ำตาลทราย 2 ช้อนชา, เหล้าจีน 1 ช้อนโต๊ะ, พริกไทยดำ 1/4 ช้อนชา, แป้งข้าวโพด 2 ช้อนโต๊ะ, น้ำมัน 2 ช้อนโต๊ะ, กระเทียมจีน 2 ช้อนโต๊ะ, ขิงแก่ 1 ช้อนโต๊ะ, ต้นหอม 1 ต้น; serves 2-3; served over yakisoba noodles. PROMOTION (per RECIPES_NOTES.md section 8, like th_299): broccoli is main although it is only 100 g against 300 g of beef; it is in the dish name and the task required it. DISTINCT: {beef, broccoli} is a new main set. NUTRITION METHOD: computed; 2-3 servings so I divided by 2.5. Corn starch is priced as tapioca_starch (disclosed stand-in). Chinese rice wine and the yakisoba noodles served underneath are omitted (no key / not part of the stir-fry). Broccoli uses the USDA fallback. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: no, 12.5 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_317",
+    "category": "savory"
+  },
+  {
+    "name_th": "เห็ดออรินจิผัดน้ำมันหอย",
+    "main_ingredients": [
+      "king_oyster",
+      "carrot"
+    ],
+    "optional_ingredients": [
+      "green_onion",
+      "garlic",
+      "tapioca_starch"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "soy_sauce",
+      "sugar",
+      "vegetable_oil"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 182.5,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 160.0,
+      "protein": 4.2,
+      "fat": 7.4,
+      "carb": 17.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "king_oyster": 100,
+      "carrot": 20,
+      "oyster_sauce": 24,
+      "green_onion": 8,
+      "soy_sauce": 9,
+      "sugar": 6,
+      "garlic": 4.5,
+      "tapioca_starch": 4,
+      "vegetable_oil": 7
+    },
+    "basis_refs": {
+      "king_oyster": "STD:641",
+      "carrot": "STD:429",
+      "oyster_sauce": "STD:270",
+      "green_onion": "STD:436",
+      "soy_sauce": "STD:273",
+      "sugar": "STD:1391",
+      "garlic": "STD:226",
+      "tapioca_starch": "STD:1934",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from king oyster mushroom (STD:641), carrot (STD:429), oyster sauce (STD:270), spring onion (STD:436), light soy sauce (STD:273), sugar (STD:1391), garlic (STD:226), tapioca starch (STD:1934), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/0ae8bbb151744f499f68f270ca0efd16",
+    "notes": "SOURCE (fetched): เห็ดออรินจิหั่นบาง 200 กรัม, แครอท 40 กรัม, ซอสน้ำมันหอย 0.2 cup, ต้นหอม 2 ต้น, ซีอิ๊วขาว 1 ช้อนโต๊ะ, น้ำตาลทราย 1 ช้อนโต๊ะ, กระเทียมสับ 3 กลีบ, แป้งข้าวโพดละลายน้ำ 0.2 cup, น้ำมันพืช; serves 2. The Thai text is เห็ดออรินจิ = king oyster mushroom (the fetch tool's English gloss said 'oyster mushrooms'; not used). DISTINCT: {king_oyster, carrot} is a new main set. Carrot is small (40 g) but is the only other named vegetable, so it is main under the promotion convention. NUTRITION METHOD: computed, half per serving. The cornstarch amount is not given (0.2 cup slurry), so about 8 g of starch is assumed (tapioca_starch stand-in, 4 g per serving); oil amount is not given, so 7 g per serving is assumed. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: no, 17.0 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_318",
+    "category": "savory"
+  },
+  {
+    "name_th": "เห็ดนางรมหลวงผัดพริก",
+    "main_ingredients": [
+      "king_oyster",
+      "minced_meat",
+      "chili"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "vegetable_oil",
+      "sugar",
+      "oyster_sauce",
+      "soy_sauce",
+      "dark_soy_sauce"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 289,
+    "cook_time_min": 8,
+    "nutrition": {
+      "kcal": 514.0,
+      "protein": 30.6,
+      "fat": 37.9,
+      "carb": 10.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "king_oyster": 100,
+      "minced_meat": 150,
+      "chili": 6,
+      "vegetable_oil": 12,
+      "sugar": 3,
+      "oyster_sauce": 10,
+      "soy_sauce": 5,
+      "dark_soy_sauce": 3
+    },
+    "basis_refs": {
+      "king_oyster": "STD:641",
+      "minced_meat": "STD:970",
+      "chili": "STD:545",
+      "vegetable_oil": "STD:1368",
+      "sugar": "STD:1391",
+      "oyster_sauce": "STD:270",
+      "soy_sauce": "STD:273",
+      "dark_soy_sauce": "STD:277"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from king oyster mushroom (STD:641), minced pork (STD:970), bird chilli (STD:545), palm olein oil (STD:1368), sugar (STD:1391), oyster sauce (STD:270), light soy sauce (STD:273), dark soy sauce (STD:277).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/a768830f637b4b5aae8ac2fc70d36fd3",
+    "notes": "SOURCE (fetched): เห็ดนางรมหลวง 1 ดอก, หมูสับ 1 ถ้วย, น้ำมันถั่วเหลือง 1 ช้อนโต๊ะ, พริกขี้หนู 6 เมล็ด, น้ำตาลทราย/อร่อยชัวร์/น้ำมันหอย 'ตามชอบ', ซีอิ๊วดำเล็กน้อย; 1 plate. The page uses the spelling เห็ดนางรมหลวง (= king oyster, same mushroom as เห็ดออรินจิ) - a chosen source rather than the 'เห็ดออริจิน' misspelling page. DISTINCT: {king_oyster, minced_meat, chili} is a new main set. NUTRITION METHOD (approved weak spot): the source says only '1 mushroom' (ดอก); I assumed about 100 g for one large king oyster. Minced pork '1 cup' is assumed 150 g. All 'to taste' sauces are my assumed amounts. The branded seasoning sauce (อร่อยชัวร์) is mapped to soy_sauce. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: no, 10.5 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_319",
+    "category": "savory"
+  },
+  {
+    "name_th": "เห็ดออรินจิทอดเนย",
+    "main_ingredients": [
+      "king_oyster"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "butter"
+    ],
+    "health_tags": [
+      "clean",
+      "keto",
+      "vegetarian"
+    ],
+    "excluded_for": [
+      "vegan"
+    ],
+    "serving_g": 165,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 87.0,
+      "protein": 4.1,
+      "fat": 4.6,
+      "carb": 4.8
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "king_oyster": 160,
+      "butter": 5
+    },
+    "basis_refs": {
+      "king_oyster": "STD:641",
+      "butter": "STD:1384"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from king oyster mushroom (STD:641), butter (STD:1384).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/601ef12bd69a457b9c9e8347d66f59ee",
+    "notes": "SOURCE (fetched): เห็ดออรินจิ 4 ดอกใหญ่, เนยเค็ม 2 ช้อนชา; 1-2 people; sliced, scored and pan-fried in butter until the moisture evaporates. DISTINCT: {king_oyster} alone is a new main set (th_078 and th_181 are multi-mushroom mixes). NUTRITION METHOD: computed, half per serving; 4 large caps assumed about 320 g total. Salted butter is priced as butter STD:1384 (unsalted record; salt adds no macros). 'ทอด' here means pan-frying in 2 tsp of butter, NOT deep-frying, so it does not block the clean tag. Contains butter (dairy): vegetarian yes, vegan no. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: yes (4.8 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_320",
+    "category": "savory"
+  },
+  {
+    "name_th": "เห็ดนางรมผัดขึ้นฉ่าย",
+    "main_ingredients": [
+      "white_oyster",
+      "minced_meat",
+      "celery"
+    ],
+    "optional_ingredients": [
+      "garlic"
+    ],
+    "seasonings": [
+      "oyster_sauce",
+      "sugar",
+      "soy_sauce",
+      "pepper",
+      "vegetable_oil"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 179,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 301.0,
+      "protein": 9.9,
+      "fat": 24.1,
+      "carb": 10.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "white_oyster": 80,
+      "minced_meat": 40,
+      "garlic": 5,
+      "celery": 16,
+      "oyster_sauce": 14,
+      "sugar": 3,
+      "soy_sauce": 4,
+      "vegetable_oil": 17
+    },
+    "basis_refs": {
+      "white_oyster": "STD:640",
+      "minced_meat": "STD:970",
+      "garlic": "STD:226",
+      "celery": "STD:495",
+      "oyster_sauce": "STD:270",
+      "sugar": "STD:1391",
+      "soy_sauce": "STD:273",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from oyster mushroom (STD:640), minced pork (STD:970), garlic (STD:226), celery (STD:495), oyster sauce (STD:270), sugar (STD:1391), light soy sauce (STD:273), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/80fa25e11e764da5812ab56f3af982aa",
+    "notes": "SOURCE (fetched): เห็ดนางรม 1 ถุง, หมูบด 1 ขีด, กระเทียมสับ 4-5 กลีบ, ขึ้นฉ่าย 2 ต้น, น้ำมันหอย 2 ช้อนโต๊ะ, น้ำตาลทราย 2 ช้อนชา, ซีอิ้วขาว 1 ช้อนชา, ซอสปรุงรส 1 ช้อนชา, พริกไท 1/4 ช้อนชา, น้ำมันพืช 3 ช้อนโต๊ะ; serves 2-3. INGREDIENT-TYPE CALL (approved, strict wording): this page explicitly says เห็ดนางรม (title and ingredient line), so it counts as white_oyster. ขึ้นฉ่าย is Chinese celery (celery key), not spring onion - the fetch tool's English gloss said 'spring onions' and was ignored. Celery is in the title so it is main. DISTINCT: {white_oyster, minced_meat, celery} is a new main set. NUTRITION METHOD: computed, divided by 2.5 servings. '1 bag' of mushrooms is assumed about 200 g (80 g per serving). HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: no, 10.9 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_321",
+    "category": "savory"
+  },
+  {
+    "name_th": "ต้มยำไก่เห็ดรวมมิตร",
+    "main_ingredients": [
+      "chicken",
+      "king_oyster",
+      "white_oyster"
+    ],
+    "optional_ingredients": [
+      "galangal",
+      "lemongrass",
+      "kaffir_lime_leaf",
+      "chili",
+      "lime"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "chili_paste"
+    ],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 146,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 172.0,
+      "protein": 13.6,
+      "fat": 9.9,
+      "carb": 6.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "chicken": 71,
+      "king_oyster": 23,
+      "white_oyster": 23,
+      "fish_sauce": 13,
+      "chili": 1,
+      "lime": 11,
+      "chili_paste": 4
+    },
+    "basis_refs": {
+      "chicken": "STD:895",
+      "king_oyster": "STD:641",
+      "white_oyster": "STD:640",
+      "fish_sauce": "STD:291",
+      "chili": "STD:545",
+      "lime": "EXT:usda-lime-juice-raw",
+      "chili_paste": "STD:302"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from chicken meat (STD:895), king oyster mushroom (STD:641), oyster mushroom (STD:640), fish sauce (STD:291), bird chilli (STD:545), lime juice (EXT:usda-lime-juice-raw), chilli paste (STD:302). Fallback where Thai FCD has no usable record: USDA FoodData Central for lime juice (EXT:usda-lime-juice-raw) - see data/external_nutrition.json.",
+    "recipe_source_url": "https://th.openrice.com/th/recipe/%E0%B8%95%E0%B9%89%E0%B8%A1%E0%B8%A2%E0%B8%B3%E0%B9%84%E0%B8%81%E0%B9%88%E0%B9%80%E0%B8%AB%E0%B9%87%E0%B8%94%E0%B8%A3%E0%B8%A7%E0%B8%A1%E0%B8%A1%E0%B8%B4%E0%B8%95%E0%B8%A3/5387",
+    "notes": "SOURCE (fetched, OpenRice): เนื้อน่องไก่ 250 กรัม, ข่า 100 กรัม, ตะไคร้ 3-4 ต้น, ใบมะกรูด 80 กรัม, เห็ดออรินจิ 80 กรัม, เห็ดชิเมจิขาว 80 กรัม, เห็ดนางรม 80 กรัม, น้ำปลา 3 ช้อนโต๊ะ, พริกขี้หนู 1/2 ช้อนโต๊ะ, น้ำมะนาว 2-3 ช้อนโต๊ะ, น้ำพริกเผา 1 ช้อนโต๊ะ; 3-4 servings. INGREDIENT-TYPE CALLS (approved): (1) The fetch tool glossed เห็ดนางรม as 'straw mushrooms' and เห็ดออรินจิ as 'orange oyster mushrooms'; the Thai text is เห็ดนางรม (white oyster) and เห็ดออรินจิ (king oyster), which is what is used. (2) เห็ดชิเมจิขาว (white shimeji) has NO dictionary key, so it is listed in this note only and carries NO nutrition (23 g per serving of an unpriced mushroom - a disclosed omission that slightly understates kcal). DISTINCT: {chicken, king_oyster, white_oyster} is a new main set (th_078 has no chicken). NUTRITION METHOD: computed, divided by 3.5 servings. Galangal, lemongrass and kaffir lime leaves are stock aromatics that are not eaten, so they are optional and carry no nutrition, the same convention as the other tom-yum dishes (th_183). Chicken uses STD:895 (a general chicken-meat record; thigh is fattier than breast). Lime juice uses the USDA fallback, as th_242 does. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: yes (6.1 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_322",
+    "category": "savory"
+  },
+  {
+    "name_th": "ลาบเห็ดนางรม",
+    "main_ingredients": [
+      "white_oyster",
+      "minced_meat",
+      "shrimp"
+    ],
+    "optional_ingredients": [
+      "green_onion",
+      "coriander",
+      "shallot",
+      "chili",
+      "lime"
+    ],
+    "seasonings": [
+      "roasted_rice_powder",
+      "fish_sauce"
+    ],
+    "health_tags": [
+      "clean"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 274,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 230.0,
+      "protein": 19.2,
+      "fat": 9.4,
+      "carb": 16.5
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "white_oyster": 150,
+      "minced_meat": 50,
+      "shrimp": 30,
+      "green_onion": 5,
+      "coriander": 3,
+      "shallot": 10,
+      "roasted_rice_powder": 5,
+      "chili": 3,
+      "fish_sauce": 8,
+      "lime": 10
+    },
+    "basis_refs": {
+      "white_oyster": "STD:640",
+      "minced_meat": "STD:970",
+      "shrimp": "STD:1042",
+      "green_onion": "STD:436",
+      "coriander": "STD:498",
+      "shallot": "STD:251",
+      "roasted_rice_powder": "STD:187",
+      "chili": "STD:545",
+      "fish_sauce": "STD:291",
+      "lime": "EXT:usda-lime-juice-raw"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from oyster mushroom (STD:640), minced pork (STD:970), shrimp (STD:1042), spring onion (STD:436), coriander (STD:498), shallot (STD:251), rice flour (stand-in for roasted rice powder) (STD:187), bird chilli (STD:545), fish sauce (STD:291), lime juice (EXT:usda-lime-juice-raw). Fallback where Thai FCD has no usable record: USDA FoodData Central for lime juice (EXT:usda-lime-juice-raw) - see data/external_nutrition.json.",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/9dacf084a33e4e1cbf4208579bdd1b04",
+    "notes": "SOURCE (fetched): เห็ดนางรม, หมูสับลวก, กุ้งสับลวก, ต้นหอม, ผักชี, หอมแดง, ผักชีฝรั่ง, ข้าวคั่ว, พริกป่น, น้ำปลา, น้ำมะนาว - the page gives NO quantities at all. INGREDIENT-TYPE CALL (approved, strict wording): the page says เห็ดนางรม exactly. DISTINCT: {white_oyster, minced_meat, shrimp} is a new main set. NUTRITION METHOD (approved weak spot): computed; EVERY gram amount is my assumption for one serving (about 150 g blanched mushroom, 50 g pork, 30 g shrimp, herbs as garnish). ผักชีฝรั่ง (culantro) has no key and is omitted. Roasted rice powder is priced with the white rice flour record STD:187 (the same record already used for roasted rice powder elsewhere in this DB); dried chilli powder is priced as fresh chilli STD:545 (about 3 g; understates kcal by a few). Lime juice uses the USDA fallback. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: no, 16.5 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_323",
+    "category": "savory"
+  },
+  {
+    "name_th": "ต้มหอยนางรม",
+    "main_ingredients": [
+      "oyster",
+      "ginger"
+    ],
+    "optional_ingredients": [
+      "chili",
+      "garlic",
+      "celery",
+      "dried_shrimp",
+      "rice",
+      "lime",
+      "shallot"
+    ],
+    "seasonings": [
+      "sugar",
+      "dark_soy_sauce",
+      "pepper",
+      "salt"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 230,
+    "cook_time_min": 20,
+    "nutrition": {
+      "kcal": 239.0,
+      "protein": 13.3,
+      "fat": 5.6,
+      "carb": 33.1
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "oyster": 125,
+      "ginger": 8,
+      "chili": 6,
+      "garlic": 5,
+      "celery": 6,
+      "dried_shrimp": 5,
+      "rice": 40,
+      "sugar": 9,
+      "lime": 15,
+      "dark_soy_sauce": 4,
+      "shallot": 5,
+      "pepper": 2
+    },
+    "basis_refs": {
+      "oyster": "STD:1172",
+      "ginger": "STD:233",
+      "chili": "STD:545",
+      "garlic": "STD:226",
+      "celery": "STD:495",
+      "dried_shrimp": "STD:1036",
+      "rice": "STD:139",
+      "sugar": "STD:1391",
+      "lime": "EXT:usda-lime-juice-raw",
+      "dark_soy_sauce": "STD:277",
+      "shallot": "STD:251",
+      "pepper": "STD:243"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from oyster (stir-fried record) (STD:1172), ginger (STD:233), bird chilli (STD:545), garlic (STD:226), celery (STD:495), dried shrimp (STD:1036), cooked rice (STD:139), sugar (STD:1391), lime juice (EXT:usda-lime-juice-raw), dark soy sauce (STD:277), shallot (STD:251), black pepper (STD:243). Fallback where Thai FCD has no usable record: USDA FoodData Central for lime juice (EXT:usda-lime-juice-raw) - see data/external_nutrition.json.",
+    "recipe_source_url": "https://www.wongnai.com/recipes/oyster-soup",
+    "notes": "SOURCE (fetched): หอยนางรม 500 กรัม, ขิงแก่ 1/4 ถ้วย, พริก 1/4 ถ้วย, เต้าเจี้ยว 1/4 ถ้วย, ซีอิ้วดำหวาน 1 ช้อนโต๊ะ, น้ำมะนาว 1/4 ถ้วย, น้ำตาลทราย 3 ช้อนโต๊ะ, น้ำ 5 ลิตร, กระเทียม 20 กรัม, รากผักชี, พริกไทยดำ 1 ช้อนโต๊ะ, เกลือ, ปลาหมึกแห้ง 1/4 ถ้วย, กุ้งแห้ง 1/4 ถ้วย, ขึ้นฉ่าย 1/2 ถ้วย, หอมเจียว 1/4 ถ้วย, ข้าวสวย 1 ถ้วย; serves 4; oysters blanched about 10 seconds in the hot broth, served with a ginger-chilli-bean dipping sauce. INGREDIENT-TYPE CALL (approved): this is หอยนางรม = the SHELLFISH oyster (key: oyster), not the เห็ดนางรม mushroom. Per the approved decision it is priced with the stir-fried oyster record STD:1172 because Thai FCD's raw oyster record (STD:1171) has no values - the same choice as th_185 and th_239. DISTINCT: {oyster, ginger} is a new main set. Ginger is a named component of the dipping sauce (1/4 cup) so it is main under the promotion convention. NUTRITION METHOD: computed, one quarter per serving. OMITTED (no key or no fitting record): fermented soybean, dried squid (the squid record is fresh, so it would be wrong), coriander root, and the 5 L of water/stock. Fried shallot is priced as raw shallot (STD:251); the 'about 40 g of cooked rice per serving' is my assumption. Lime juice uses the USDA fallback. Cook time 20 min is my estimate (page gives none). HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: no, 33.1 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_324",
+    "category": "savory"
+  },
+  {
+    "name_th": "ก้อยหอยนางรม",
+    "main_ingredients": [
+      "oyster",
+      "shallot"
+    ],
+    "optional_ingredients": [
+      "green_onion",
+      "chili",
+      "mint_leaves",
+      "lime"
+    ],
+    "seasonings": [
+      "fish_sauce",
+      "pla_ra",
+      "roasted_rice_powder"
+    ],
+    "health_tags": [
+      "clean"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 144,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 119.0,
+      "protein": 8.6,
+      "fat": 4.4,
+      "carb": 10.6
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "oyster": 100,
+      "green_onion": 3,
+      "shallot": 6,
+      "chili": 5,
+      "fish_sauce": 9,
+      "lime": 9,
+      "pla_ra": 6,
+      "roasted_rice_powder": 5,
+      "mint_leaves": 1
+    },
+    "basis_refs": {
+      "oyster": "STD:1172",
+      "green_onion": "STD:436",
+      "shallot": "STD:251",
+      "chili": "STD:545",
+      "fish_sauce": "STD:291",
+      "lime": "EXT:usda-lime-juice-raw",
+      "pla_ra": "STD:1228",
+      "roasted_rice_powder": "STD:187",
+      "mint_leaves": "STD:250"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from oyster (stir-fried record) (STD:1172), spring onion (STD:436), shallot (STD:251), bird chilli (STD:545), fish sauce (STD:291), lime juice (EXT:usda-lime-juice-raw), pla ra (STD:1228), rice flour (stand-in for roasted rice powder) (STD:187), mint (STD:250). Fallback where Thai FCD has no usable record: USDA FoodData Central for lime juice (EXT:usda-lime-juice-raw) - see data/external_nutrition.json.",
+    "recipe_source_url": "https://www.wongnai.com/recipes/thai-style-oyster-spicy-salad",
+    "notes": "SOURCE (fetched): หอยนางรม 500 กรัม, ผักแพว 1/4 ถ้วย, ต้นหอม 1/4 ถ้วย, ผักชีฝรั่ง 1/4 ถ้วย, หอมแดงซอย 1/4 ถ้วย, พริกขี้หนูสวน, น้ำปลา 3 ช้อนโต๊ะ, น้ำมะนาว 3 ช้อนโต๊ะ, น้ำปลาร้า 2 ช้อนโต๊ะ, พริกป่น 3 ช้อนโต๊ะ, ข้าวคั่ว 3 ช้อนโต๊ะ, สะระแหน่; serves 5; raw oysters dressed Isan-style (ก้อย). INGREDIENT-TYPE CALL (approved): หอยนางรม = the shellfish (key: oyster), priced with STD:1172 as approved. DISTINCT: {oyster, shallot} is a new main set; a raw Isan-style dressing, different in technique from th_239 (a Thai yam) and th_185 (an omelette). Shallot is a named component so it is main under the promotion convention. NUTRITION METHOD: computed, one fifth per serving. ผักแพว (Vietnamese coriander) and ผักชีฝรั่ง (culantro) have no key and are omitted. Chilli powder and fresh chilli are combined and priced as fresh chilli STD:545 (understates dried-chilli kcal slightly). Fermented fish sauce is pla_ra STD:1228; roasted rice powder uses the rice-flour stand-in STD:187. Lime juice uses the USDA fallback. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: no, 10.6 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_325",
+    "category": "savory"
+  },
+  {
+    "name_th": "ข้าวต้มหอยนางรม",
+    "main_ingredients": [
+      "oyster",
+      "rice"
+    ],
+    "optional_ingredients": [
+      "ginger",
+      "garlic",
+      "celery",
+      "coriander"
+    ],
+    "seasonings": [
+      "salt"
+    ],
+    "health_tags": [
+      "clean"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 263,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 291.0,
+      "protein": 10.9,
+      "fat": 4.5,
+      "carb": 51.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "rice": 150,
+      "oyster": 100,
+      "ginger": 3,
+      "garlic": 3,
+      "celery": 5,
+      "coriander": 2
+    },
+    "basis_refs": {
+      "rice": "STD:139",
+      "oyster": "STD:1172",
+      "ginger": "STD:233",
+      "garlic": "STD:226",
+      "celery": "STD:495",
+      "coriander": "STD:498"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from cooked rice (STD:139), oyster (stir-fried record) (STD:1172), ginger (STD:233), garlic (STD:226), celery (STD:495), coriander (STD:498).",
+    "recipe_source_url": "https://cookpad.com/th/recipes/12382481",
+    "notes": "SOURCE (fetched, Cookpad): หอยนางรมสด 3 กล่อง, ข้าวสวย, น้ำซุป, ตังฉ่าย, คึ่นช่าย, ผักชี, กระเทียมเจียว, ขิงฝอย, เกลือ 1/2 ช้อนโต๊ะ; oysters blanched about 30 seconds, then added with rice to hot broth. INGREDIENT-TYPE CALLS (approved): หอยนางรม = the shellfish (STD:1172). NOTE two fetch-tool glosses were discarded: ตังฉ่าย is Tianjin PRESERVED CABBAGE (not celery) and has no dictionary key, so it is omitted; คึ่นช่าย is celery. DISTINCT: {oyster, rice} is a new main set. Rice is a starch staple in main, so the dish can never be keto. NUTRITION METHOD (weak spot): the source gives amounts only for oysters (3 boxes) and salt, so ONE bowl is my assumption (150 g cooked rice, 100 g oysters, small garnish weights). Broth and the salt in the blanching water carry no macros. Cook time 10 min is my estimate. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: no, main contains a starch staple (rice); carb is 51.7 g; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_326",
+    "category": "savory"
+  },
+  {
+    "name_th": "แซนวิชทูน่า",
+    "main_ingredients": [
+      "bread",
+      "fish",
+      "lettuce",
+      "tomato"
+    ],
+    "optional_ingredients": [
+      "onion",
+      "potato"
+    ],
+    "seasonings": [
+      "mayonnaise"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 336,
+    "cook_time_min": 10,
+    "nutrition": {
+      "kcal": 560.0,
+      "protein": 38.2,
+      "fat": 22.1,
+      "carb": 49.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "bread": 56,
+      "fish": 110,
+      "onion": 40,
+      "tomato": 45,
+      "lettuce": 20,
+      "mayonnaise": 15,
+      "potato": 50
+    },
+    "basis_refs": {
+      "bread": "STD:1739",
+      "fish": "STD:1214",
+      "onion": "STD:622",
+      "tomato": "STD:571",
+      "lettuce": "STD:484",
+      "mayonnaise": "STD:1389",
+      "potato": "STD:1439"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from sandwich bread (STD:1739), canned tuna in water (STD:1214), onion (STD:622), tomato (STD:571), lettuce (STD:484), mayonnaise (STD:1389), French fries (STD:1439).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/d6b0984329b34cf480216a89b2978c07",
+    "notes": "SOURCE (fetched): ขนมปังขาว (ย่างเหลือง) 2 แผ่น, ทูน่ากระป๋อง (บีบน้ำออก) 1 กระป๋อง, หอมใหญ่ แว่น 2 + สับ 30 กรัม, มะเขือเทศ 3 แว่น, ผักกาดหอม 2 ใบ, เฟรนช์ฟรายส์ 50 กรัม, มายองเนส 1 ช้อนโต๊ะ; 1 person. Replaces the rejected แกงกะทิผักกาดหอม (approved swap). INGREDIENT-TYPE CALLS: ผักกาดหอม is unambiguous here (2 leaves, about 20 g - minor by weight, kept in main under the promotion convention to hit the lettuce target). Canned tuna is keyed as fish and priced with Thai FCD STD:1214 (canned in water, liquid excluded); the drained can is assumed about 110 g. Bread uses STD:1739 (sandwich bread). Mayonnaise STD:1389. Bread is not photo-detectable but the other mains are. DISTINCT: {bread, fish, lettuce, tomato} is a new main set. NUTRITION METHOD: computed. The French-fries side is included using the existing Thai FCD record STD:1439 (potato key, optional). Because the fries are deep-fried and part of the listed plate, this dish is NOT tagged clean (conservative reading). HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because it is deep-fried; keto: no, 49.0 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_327",
+    "category": "savory"
+  },
+  {
+    "name_th": "หมูย่างเกาหลีห่อผักสลัดคอส",
+    "main_ingredients": [
+      "pork",
+      "lettuce"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "chili"
+    ],
+    "seasonings": [],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 277,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 262.0,
+      "protein": 43.5,
+      "fat": 8.1,
+      "carb": 3.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "pork": 200,
+      "lettuce": 67,
+      "garlic": 5,
+      "chili": 5
+    },
+    "basis_refs": {
+      "pork": "STD:958",
+      "lettuce": "STD:484",
+      "garlic": "STD:226",
+      "chili": "STD:545"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from lean pork (STD:958), lettuce (STD:484), garlic (STD:226), bird chilli (STD:545).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/515b6d5307af476bb391b71b03a1a677",
+    "notes": "SOURCE (fetched): สามชั้นสไลด์ 3 ขีด, เนื้อหมูสไลด์ 3 ขีด, ผักสลัดคอส 2 กำ, พริกชี้ฟ้าเขียว, กระเทียม, น้ำจิ้มซัมจัง, กิมจิ; serves 3; grilled pork wrapped in cos lettuce. INGREDIENT-TYPE CALL (approved): ผักสลัดคอส (cos/romaine) is counted as lettuce. DISTINCT: {pork, lettuce} is a new main set. NUTRITION METHOD: computed, one third per serving (100 g pork belly + 100 g pork shoulder = 200 g). JUDGEMENT CALL: Thai FCD has no pork-belly record, so all 200 g is priced with lean pork STD:958 - this UNDERSTATES fat and kcal considerably for pork belly. Kimchi and samjang dipping sauce have no key/record and are omitted; the lettuce (2 bunches, about 200 g) is split 3 ways. Cook time 15 min is my estimate. Grilled, no sugar: eligible for clean/keto if carbs allow. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: yes (3.0 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_328",
+    "category": "savory"
+  },
+  {
+    "name_th": "ซีซาร์สลัดอกไก่ไข่ต้ม",
+    "main_ingredients": [
+      "lettuce",
+      "chicken",
+      "egg"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [],
+    "health_tags": [
+      "clean",
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 265,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 294.0,
+      "protein": 27.7,
+      "fat": 18.3,
+      "carb": 3.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "lettuce": 100,
+      "egg": 55,
+      "chicken": 110
+    },
+    "basis_refs": {
+      "lettuce": "STD:484",
+      "egg": "STD:1271",
+      "chicken": "STD:895"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from lettuce (STD:484), whole egg (STD:1271), chicken meat (STD:895).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/8618c76d0da345eca8044233261478ff",
+    "notes": "SOURCE (fetched): ผักสลัด 1 ถุง, ไข่ต้ม 2 ฟอง, อกไก่นุ่ม 1 ชิ้น, น้ำสลัดซีซาร์แบบซอง 1 ซอง; 1-2 people. INGREDIENT-TYPE CALL (approved): 'ผักสลัด' (a bag of mixed salad greens) is counted as lettuce, which the dictionary lists as a synonym. DISTINCT: {lettuce, chicken, egg} is a new main set. NUTRITION METHOD (approved weak spot): computed, about 1.5 servings assumed so one serving = 100 g greens, 1 boiled egg (the boiled-egg record STD:1271), 110 g chicken breast. The Caesar dressing packet has no recipe or key, so it is OMITTED - this understates kcal (a real portion of dressing adds roughly 100 kcal). Chicken is priced with the general chicken-meat record STD:895, which is fattier than breast, so fat is overstated slightly. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: yes (3.9 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_329",
+    "category": "savory"
+  },
+  {
+    "name_th": "ปูนิ่มทอดกระเทียม",
+    "main_ingredients": [
+      "crab",
+      "garlic"
+    ],
+    "optional_ingredients": [
+      "wheat_flour",
+      "bread"
+    ],
+    "seasonings": [
+      "vegetable_oil",
+      "sugar",
+      "soy_sauce",
+      "oyster_sauce",
+      "salt"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 380,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 684.0,
+      "protein": 51.3,
+      "fat": 35.0,
+      "carb": 39.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "crab": 250,
+      "garlic": 20,
+      "wheat_flour": 12,
+      "bread": 50,
+      "vegetable_oil": 25,
+      "sugar": 6,
+      "soy_sauce": 8,
+      "oyster_sauce": 9
+    },
+    "basis_refs": {
+      "crab": "STD:1157",
+      "garlic": "STD:226",
+      "wheat_flour": "STD:193",
+      "bread": "STD:1739",
+      "vegetable_oil": "STD:1368",
+      "sugar": "STD:1391",
+      "soy_sauce": "STD:273",
+      "oyster_sauce": "STD:270"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from crab meat (STD:1157), garlic (STD:226), wheat flour (STD:193), sandwich bread (STD:1739), palm olein oil (STD:1368), sugar (STD:1391), light soy sauce (STD:273), oyster sauce (STD:270).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/30795fcf1e934849874c4d6aaf9c6512",
+    "notes": "SOURCE (fetched): ปูนิ่ม 1/2 กก., กระเทียม 1 หัว, แป้งโกกิ 3 ช้อนโต๊ะ, เกล็ดขนมปัง 100 กรัม, น้ำมันทอด 1 หม้อ, น้ำตาล 1 ช้อนโต๊ะ, เกลือ 1 ช้อนชา, ซีอิ๊วขาว 1 ช้อนโต๊ะ, น้ำมันหอย 1 ช้อนโต๊ะ; '1 plate'; crab is coated and DEEP-FRIED, garlic is fried and tossed in. CRAB WEIGHT CONVENTION (approved): soft-shell crab (ปูนิ่ม) is about 100% edible because the shell is soft, so the full 250 g is counted as meat. th_240 is untouched (backlog). DISTINCT: {crab, garlic} is a new main set. NUTRITION METHOD: computed. The source says '1 plate' for 500 g of crab, which I read as a shared plate of 2 servings (250 g crab each) - my assumption, otherwise the serving would exceed a sensible size. Breadcrumbs (100 g) are priced with sandwich bread STD:1739 (breadcrumbs are drier and higher in kcal, so this understates); แป้งโกกิ is priced as wheat flour; oil absorbed by deep frying is an assumed 25 g per serving. Deep-fried, so never clean. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because it is deep-fried and sugar is in its seasonings; keto: no, 39.9 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_330",
+    "category": "savory"
+  },
+  {
+    "name_th": "ปูผัดฉ่า",
+    "main_ingredients": [
+      "crab",
+      "basil",
+      "onion"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "chili"
+    ],
+    "seasonings": [
+      "pepper",
+      "vegetable_oil",
+      "dark_soy_sauce",
+      "soy_sauce",
+      "oyster_sauce",
+      "fish_sauce",
+      "sugar"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 213,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 256.0,
+      "protein": 23.3,
+      "fat": 13.4,
+      "carb": 9.7
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "crab": 125,
+      "basil": 15,
+      "onion": 30,
+      "garlic": 6,
+      "chili": 4,
+      "pepper": 1,
+      "vegetable_oil": 10,
+      "dark_soy_sauce": 3,
+      "soy_sauce": 5,
+      "oyster_sauce": 8,
+      "fish_sauce": 3,
+      "sugar": 3
+    },
+    "basis_refs": {
+      "crab": "STD:1157",
+      "basil": "STD:252",
+      "onion": "STD:622",
+      "garlic": "STD:226",
+      "chili": "STD:545",
+      "pepper": "STD:243",
+      "vegetable_oil": "STD:1368",
+      "dark_soy_sauce": "STD:277",
+      "soy_sauce": "STD:273",
+      "oyster_sauce": "STD:270",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from crab meat (STD:1157), sweet basil (STD:252), onion (STD:622), garlic (STD:226), bird chilli (STD:545), black pepper (STD:243), palm olein oil (STD:1368), dark soy sauce (STD:277), light soy sauce (STD:273), oyster sauce (STD:270), fish sauce (STD:291), sugar (STD:1391).",
+    "recipe_source_url": "https://cookpad.com/th/recipes/17135111",
+    "notes": "SOURCE (fetched, Cookpad): ปูสด, โหระพา, หัวหอมใหญ่, กระเทียม, พริกสด, พริกไทย, น้ำมันพืช, ซีอิ๊วดำ, ซีอิ๊วขาว, ซอสหอย, น้ำปลา, น้ำตาล, ซอสภูเขา; serves 2; the page gives NO quantities. INGREDIENT-TYPE CALL: โหระพา is SWEET basil (dictionary key basil, STD:252), NOT holy basil (กะเพรา). CRAB WEIGHT CONVENTION (approved): fresh whole hard-shell crab, about 50% edible. I assumed 500 g whole crab for the 2 servings = 250 g per serving gross, so 125 g meat per serving (STD:1157). DISTINCT: {crab, basil, onion} is a new main set. Basil and onion are the two named vegetables; basil is small by weight (promotion convention). NUTRITION METHOD (approved weak spot): computed; EVERY gram amount is my assumption because the source gives none. The chilli sauce and MSG in the source have no key and are omitted. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: yes (9.7 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_331",
+    "category": "savory"
+  },
+  {
+    "name_th": "เนื้อปูผัดพริกสด",
+    "main_ingredients": [
+      "crab",
+      "garlic",
+      "chili"
+    ],
+    "optional_ingredients": [],
+    "seasonings": [
+      "fish_sauce",
+      "sugar",
+      "oyster_sauce",
+      "pepper",
+      "vegetable_oil"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 137,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 189.0,
+      "protein": 18.1,
+      "fat": 10.8,
+      "carb": 4.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "crab": 100,
+      "garlic": 8,
+      "chili": 12,
+      "fish_sauce": 3,
+      "sugar": 2,
+      "oyster_sauce": 3,
+      "pepper": 1,
+      "vegetable_oil": 8
+    },
+    "basis_refs": {
+      "crab": "STD:1157",
+      "garlic": "STD:226",
+      "chili": "STD:545",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391",
+      "oyster_sauce": "STD:270",
+      "pepper": "STD:243",
+      "vegetable_oil": "STD:1368"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from crab meat (STD:1157), garlic (STD:226), bird chilli (STD:545), fish sauce (STD:291), sugar (STD:1391), oyster sauce (STD:270), black pepper (STD:243), palm olein oil (STD:1368).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/735a79dc3bcb4cf78c9b92279382df17",
+    "notes": "SOURCE (fetched): เนื้อปู 200 g, กระเทียม 5 กลีบ, พริก 7-8 เม็ด, พริกชี้ฟ้า 1 ต้น, น้ำปลา 1 ช้อนชา, น้ำตาล 1 ช้อนชา, น้ำมันหอย 1 ช้อนชา, พริกไทย 1/2 ช้อนชา; serves 2. CRAB WEIGHT CONVENTION (approved): the source weighs crab MEAT (เนื้อปู), so 200 g is counted as-is (100 g per serving), not reduced. DISTINCT: {crab, garlic, chili} is a new main set (th_240 is {crab}; this dish is defined by the pounded garlic+chilli paste). NUTRITION METHOD: computed, half per serving. The source mentions frying the garlic and chilli 'with oil' but gives no amount; 8 g per serving is my assumption. Chillies are 7-8 bird chillies plus 1 long chilli, about 24 g total. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: yes (4.2 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_332",
+    "category": "savory"
+  },
+  {
+    "name_th": "ซุปใสข้าวโพดกับปู",
+    "main_ingredients": [
+      "crab",
+      "corn"
+    ],
+    "optional_ingredients": [
+      "egg",
+      "tapioca_starch"
+    ],
+    "seasonings": [
+      "vegetable_oil",
+      "salt",
+      "pepper"
+    ],
+    "health_tags": [
+      "clean"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 143,
+    "cook_time_min": 15,
+    "nutrition": {
+      "kcal": 201.0,
+      "protein": 11.5,
+      "fat": 7.4,
+      "carb": 21.9
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "crab": 50,
+      "corn": 83,
+      "vegetable_oil": 5,
+      "tapioca_starch": 5
+    },
+    "basis_refs": {
+      "crab": "STD:1157",
+      "corn": "STD:143",
+      "vegetable_oil": "STD:1368",
+      "tapioca_starch": "STD:1934"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from crab meat (STD:1157), sweet corn (STD:143), palm olein oil (STD:1368), tapioca starch (STD:1934).",
+    "recipe_source_url": "https://cheewajit.com/healthy-food/recipe/186868.html",
+    "notes": "SOURCE (fetched, A Cuisine): ข้าวโพดกระป๋อง 1 กระป๋อง, เนื้อปูทะเลต้มสุก 1 ถ้วย, น้ำซุป 2 1/2-3 ถ้วย, เหล้าจีน 1 ช้อนโต๊ะ, แป้งข้าวโพด 2 ช้อนโต๊ะ, น้ำมันพืช 1 ช้อนโต๊ะ, ไข่ขาว 1 ฟอง, เกลือ, พริกไทยดำ; contains REAL crab meat (unlike ซุปข้าวโพดทรงเครื่อง, which was rejected because its crab is imitation). CRAB WEIGHT CONVENTION (approved): the crab is cooked crab MEAT (1 cup, about 150 g), counted as-is. DISTINCT: {crab, corn} is a new main set. NUTRITION METHOD (approved weak spot): computed; servings are not given, so 3 are assumed. Canned corn is priced as raw sweet corn kernels STD:143 (approximation approved). Corn starch is priced as tapioca_starch (stand-in). The 1 egg WHITE (about 11 g per serving, about 5 kcal) has no record and is listed as optional but not priced. Chinese rice wine and the broth carry no priced macros. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: no, 21.9 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_333",
+    "category": "savory"
+  },
+  {
+    "name_th": "ปูผัดพริกเผา",
+    "main_ingredients": [
+      "crab",
+      "shrimp",
+      "egg"
+    ],
+    "optional_ingredients": [
+      "chili",
+      "garlic",
+      "coriander",
+      "green_onion",
+      "celery",
+      "tomato",
+      "carrot"
+    ],
+    "seasonings": [
+      "vegetable_oil",
+      "chili_paste",
+      "fish_sauce",
+      "sugar",
+      "soy_sauce",
+      "oyster_sauce"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 628,
+    "cook_time_min": 40,
+    "nutrition": {
+      "kcal": 771.0,
+      "protein": 63.7,
+      "fat": 45.8,
+      "carb": 23.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "crab": 150,
+      "shrimp": 100,
+      "egg": 100,
+      "vegetable_oil": 28,
+      "chili_paste": 15,
+      "chili": 20,
+      "garlic": 15,
+      "coriander": 3,
+      "green_onion": 10,
+      "celery": 20,
+      "tomato": 100,
+      "carrot": 35,
+      "fish_sauce": 3,
+      "sugar": 6,
+      "soy_sauce": 5,
+      "oyster_sauce": 18
+    },
+    "basis_refs": {
+      "crab": "STD:1157",
+      "shrimp": "STD:1042",
+      "egg": "STD:1274",
+      "vegetable_oil": "STD:1368",
+      "chili_paste": "STD:302",
+      "chili": "STD:545",
+      "garlic": "STD:226",
+      "coriander": "STD:498",
+      "green_onion": "STD:436",
+      "celery": "STD:495",
+      "tomato": "STD:571",
+      "carrot": "STD:429",
+      "fish_sauce": "STD:291",
+      "sugar": "STD:1391",
+      "soy_sauce": "STD:273",
+      "oyster_sauce": "STD:270"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from crab meat (STD:1157), shrimp (STD:1042), whole egg (STD:1274), palm olein oil (STD:1368), chilli paste (STD:302), bird chilli (STD:545), garlic (STD:226), coriander (STD:498), spring onion (STD:436), celery (STD:495), tomato (STD:571), carrot (STD:429), fish sauce (STD:291), sugar (STD:1391), light soy sauce (STD:273), oyster sauce (STD:270).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/e7d0e2b20ec64249885e4a138dd26f25",
+    "notes": "SOURCE (fetched): ปูม้า 2 ตัว, กุ้ง 10 ตัว, ไข่ไก่ 2 ฟอง, น้ำมันพริกเผา 2 ช้อนโต๊ะ, น้ำพริกเผา 1 ช้อนโต๊ะ, พริกแดงจินดา 5 เม็ด, พริกชี้ฟ้าแดง 1 เม็ด, กระเทียม 5 กลีบ, รากผักชี 2 ต้น, ต้นหอม 2 ต้น, คึ่นฉ่าย 2 ต้น, น้ำปลา 1 ช้อนชา, น้ำตาล 1 1/2 ช้อนชา, ซอสปรุงรสผัด 1 ช้อนชา, น้ำมันหอย 1 ช้อนโต๊ะ, มะเขือเทศ 1 ลูก, แครอท 7 ชิ้น; '1 plate per serving'. CRAB WEIGHT CONVENTION (approved): 2 whole blue crabs (ปูม้า, hard-shell) assumed about 150 g each = 300 g gross, about 50% edible = 150 g meat. Shrimp: 10 medium shrimp assumed about 100 g peeled. DISTINCT: {crab, shrimp, egg} is a new main set (th_186 is {crab, egg}). NUTRITION METHOD: computed, one full plate as the source states, so this is a large serving (about 630 g); the source says 'per serving' so I kept it and flagged it. Chilli oil is priced as vegetable_oil; น้ำพริกเผา uses STD:302 (fried chilli paste); dried/red chillies are priced as fresh bird chilli STD:545. The seasoning sauce is mapped to soy_sauce. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: no, 23.0 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_334",
+    "category": "savory"
+  },
+  {
+    "name_th": "น้ำตกเนื้อ",
+    "main_ingredients": [
+      "beef",
+      "shallot",
+      "mint_leaves"
+    ],
+    "optional_ingredients": [
+      "green_onion",
+      "chili",
+      "lime"
+    ],
+    "seasonings": [
+      "roasted_rice_powder",
+      "sugar",
+      "fish_sauce"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 197,
+    "cook_time_min": 35,
+    "nutrition": {
+      "kcal": 214.0,
+      "protein": 31.2,
+      "fat": 6.4,
+      "carb": 7.0
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "beef": 150,
+      "shallot": 10,
+      "green_onion": 3,
+      "mint_leaves": 3,
+      "roasted_rice_powder": 3,
+      "sugar": 2,
+      "fish_sauce": 8,
+      "chili": 3,
+      "lime": 15
+    },
+    "basis_refs": {
+      "beef": "STD:936",
+      "shallot": "STD:251",
+      "green_onion": "STD:436",
+      "mint_leaves": "STD:250",
+      "roasted_rice_powder": "STD:187",
+      "sugar": "STD:1391",
+      "fish_sauce": "STD:291",
+      "chili": "STD:545",
+      "lime": "EXT:usda-lime-juice-raw"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from beef (STD:936), shallot (STD:251), spring onion (STD:436), mint (STD:250), rice flour (stand-in for roasted rice powder) (STD:187), sugar (STD:1391), fish sauce (STD:291), bird chilli (STD:545), lime juice (EXT:usda-lime-juice-raw). Fallback where Thai FCD has no usable record: USDA FoodData Central for lime juice (EXT:usda-lime-juice-raw) - see data/external_nutrition.json.",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/bc07c884b56a45c2b7b7fc3dede07755",
+    "notes": "SOURCE (fetched): เนื้อวัวติดมัน 300 กรัม, ต้นหอม 1 ช้อนโต๊ะ, ผักชีฝรั่ง 1 ช้อนโต๊ะ, หอมแดง 2 ช้อนโต๊ะ, สาระแหน่ 2 ช้อนโต๊ะ, ข้าวคั่ว 1 ช้อนโต๊ะ, ผงปรุงรส 1 ช้อนชา, น้ำตาล 1 ช้อนชา, น้ำปลา 1 ช้อนโต๊ะ, พริกป่น 1 ช้อนโต๊ะ, มะนาว 1 ลูกใหญ่; serves 2; beef grilled, rested, sliced and briefly boiled. DISTINCT: {beef, shallot, mint_leaves} differs from th_025 ลาบเนื้อ {beef, green_onion, mint_leaves, coriander}. Shallot and mint are the defining herbs, promoted to main (promotion convention). NUTRITION METHOD: computed, half per serving. The source uses beef WITH FAT, but STD:936 is a plain beef-meat record, so fat is probably understated. ผักชีฝรั่ง (culantro) and the seasoning powder are omitted. Chilli powder priced as fresh chilli STD:545. Roasted rice powder uses the rice-flour stand-in STD:187. 1 large lime assumed about 30 ml juice (15 ml per serving, USDA record). HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: yes (7.0 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_335",
+    "category": "savory"
+  },
+  {
+    "name_th": "แกงเผ็ดเนื้อ",
+    "main_ingredients": [
+      "beef",
+      "thai_eggplant",
+      "kaffir_lime_leaf"
+    ],
+    "optional_ingredients": [
+      "basil"
+    ],
+    "seasonings": [
+      "red_curry_paste",
+      "coconut_milk",
+      "sugar",
+      "fish_sauce",
+      "salt"
+    ],
+    "health_tags": [
+      "keto"
+    ],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 286,
+    "cook_time_min": 30,
+    "nutrition": {
+      "kcal": 325.0,
+      "protein": 19.3,
+      "fat": 22.3,
+      "carb": 9.2
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "beef": 75,
+      "coconut_milk": 125,
+      "red_curry_paste": 25,
+      "sugar": 2,
+      "fish_sauce": 15,
+      "kaffir_lime_leaf": 1,
+      "thai_eggplant": 40,
+      "basil": 3
+    },
+    "basis_refs": {
+      "beef": "STD:936",
+      "coconut_milk": "STD:1348",
+      "red_curry_paste": "STD:296",
+      "sugar": "STD:1391",
+      "fish_sauce": "STD:291",
+      "kaffir_lime_leaf": "STD:246",
+      "thai_eggplant": "STD:573",
+      "basil": "STD:252"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from beef (STD:936), coconut milk (STD:1348), red curry paste (STD:296), sugar (STD:1391), fish sauce (STD:291), kaffir lime leaf (STD:246), Thai eggplant (STD:573), sweet basil (STD:252).",
+    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/bcb8d6f2912d4ac588eb98834718db55",
+    "notes": "SOURCE (fetched): กะทิ 500 กรัม, น้ำเปล่า 200 กรัม, เนื้อวัว 300 กรัม, พริกแกงเผ็ด 100 กรัม, น้ำตาลโตนด 1/2 ช้อนโต๊ะ, น้ำปลา 4 ช้อนโต๊ะ, เกลือ 1 ช้อนชา, ใบมะกรูด 5 ใบ, มะเขือเปราะ 8 ลูก, มะเขือพวง 2 พวง, ใบโหระพา; about 4 servings. INGREDIENT-TYPE CALL: ใบโหระพา is SWEET basil (key basil), not holy basil. พริกแกงเผ็ด is red curry paste (STD:296, an exact Thai FCD paste record). มะเขือพวง (pea eggplant) has no key and is omitted. PROMOTION (per RECIPES_NOTES.md section 8, precedent th_265/th_166): kaffir_lime_leaf is main because 5 whole leaves are a defining flavour of the curry and a named component, even though they weigh only about 1 g per serving. (It is not needed to avoid a collision: {beef, thai_eggplant} alone would also have been free.) DISTINCT: {beef, thai_eggplant, kaffir_lime_leaf} is a new main set. NUTRITION METHOD: computed, one quarter per serving; 8 Thai eggplants assumed about 160 g in total. Coconut milk and sugar mean it is never clean. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings and it uses coconut milk; keto: yes (9.2 g carb per serving, at or under the 10 g limit, no starch staple in main); vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_336",
+    "category": "savory"
+  },
+  {
+    "name_th": "ยำเนื้อย่าง",
+    "main_ingredients": [
+      "beef",
+      "tomato",
+      "cucumber"
+    ],
+    "optional_ingredients": [
+      "garlic",
+      "chili",
+      "celery",
+      "onion",
+      "green_onion",
+      "lime"
+    ],
+    "seasonings": [
+      "sugar",
+      "fish_sauce"
+    ],
+    "health_tags": [],
+    "excluded_for": [
+      "vegan",
+      "vegetarian"
+    ],
+    "serving_g": 485,
+    "cook_time_min": 25,
+    "nutrition": {
+      "kcal": 324.0,
+      "protein": 33.5,
+      "fat": 6.8,
+      "carb": 29.6
+    },
+    "nutrition_method": "computed",
+    "nutrition_basis": {
+      "beef": 150,
+      "lime": 22,
+      "sugar": 18,
+      "fish_sauce": 22,
+      "garlic": 4,
+      "chili": 4,
+      "celery": 20,
+      "tomato": 45,
+      "onion": 40,
+      "green_onion": 10,
+      "cucumber": 150
+    },
+    "basis_refs": {
+      "beef": "STD:936",
+      "lime": "EXT:usda-lime-juice-raw",
+      "sugar": "STD:1391",
+      "fish_sauce": "STD:291",
+      "garlic": "STD:226",
+      "chili": "STD:545",
+      "celery": "STD:495",
+      "tomato": "STD:571",
+      "onion": "STD:622",
+      "green_onion": "STD:436",
+      "cucumber": "STD:441"
+    },
+    "nutrition_source": "Thai FCD (INMU), computed from beef (STD:936), lime juice (EXT:usda-lime-juice-raw), sugar (STD:1391), fish sauce (STD:291), garlic (STD:226), bird chilli (STD:545), celery (STD:495), tomato (STD:571), onion (STD:622), spring onion (STD:436), cucumber (STD:441). Fallback where Thai FCD has no usable record: USDA FoodData Central for lime juice (EXT:usda-lime-juice-raw) - see data/external_nutrition.json.",
+    "recipe_source_url": "https://www.wongnai.com/recipes/roast-beef-spicy-salad",
+    "notes": "SOURCE (fetched): เนื้อสันแหลม 300 กรัม, มะนาว 3 ช้อนโต๊ะ, น้ำตาลทราย 3 ช้อนโต๊ะ, น้ำปลา 3 ช้อนโต๊ะ, กระเทียมสับ 1 ช้อนโต๊ะ, พริกขี้หนูสับ 1 ช้อนโต๊ะ, ขึ้นฉ่าย 1/2 ถ้วย, มะเขือเทศ 1/2 ถ้วย, หอมใหญ่ 1/2 ถ้วย, ต้นหอม 1 ต้น, แตงกวา 2 ลูก; serves 2; grilled sirloin dressed as a yam. NOTE: this page has NO lettuce, so it is NOT counted for the lettuce target (confirmed by fetch). DISTINCT: {beef, tomato, cucumber} is a new main set; tomato and cucumber are the two largest vegetable components. NUTRITION METHOD: computed, half per serving (the source's 2 cucumbers are about 300 g). Sirloin is priced with the plain beef-meat record STD:936. Lime juice uses the USDA fallback. Sugar in seasonings means it cannot carry the clean tag. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because sugar is in its seasonings; keto: no, 29.6 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
+    "id": "th_337",
+    "category": "savory"
   }
 ]
