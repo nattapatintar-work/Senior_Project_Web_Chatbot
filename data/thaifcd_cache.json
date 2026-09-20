@@ -1754,6 +1754,21 @@
       "protein": "PROTCNT"
     }
   },
+  "STD:418": {
+    "carb": 2.86,
+    "fat": 0.18,
+    "food_code": "D16",
+    "kcal": 27.0,
+    "name_en": "Corn, baby, raw",
+    "name_th": "ขาวโพดออน, ดิบ",
+    "protein": 2.58,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
   "STD:421": {
     "carb": 5.3,
     "fat": 1.4,

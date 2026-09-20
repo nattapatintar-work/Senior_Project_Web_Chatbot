@@ -263,3 +263,45 @@ amounts, §5 what the sources could not supply, and §6 coverage imbalance.)
   a steamed-mussel-with-dip dish duplicated th_187. Decided 2026-09-20 to keep only
   หอยทอด (th_341) and the shallot stir-fry (th_342) and report 5, rather than add
   near-identical recipes that would inflate the count without adding coverage.
+- **ivy_gourd landed at 3 main-ingredient recipes (target 4-5 not met, round 5).** The
+  existing two are th_068 (with egg) and th_199 (with minced meat); round 5 added th_379
+  (ตำลึงผัดน้ำมัน), a deliberately minimal two-ingredient dish (ivy gourd + oil, exactly as
+  its source lists it). Every other ตำลึง dish found was rejected: ตำลึงผัดไข่ has the same
+  main set as th_068; แกงจืดตำลึงหมูสับ has the same main set as th_199 (and one version uses
+  egg tofu, not the dictionary tofu); แกงเลียง (all pages) is a near-duplicate of th_043
+  แกงเลียงกุ้ง; one แกงเลียง page used ตำลึงหวาน, a term with no clear meaning here, which
+  was not guessed at. Decided 2026-09-20 to report 3 rather than pad with duplicates.
+
+### D. Audit backlog (documented in round 5, deliberately not fixed)
+
+Two items found while building round 5. Each is written up so a future audit round can
+find every affected recipe in one pass. Neither has been fixed and no existing recipe was
+changed.
+
+- **D1. Pork-bone dishes omit the bones' contribution to the broth.** Thai FCD has no
+  bone or bone-broth record and the dictionary has no key for pork bones, so recipes whose
+  only pork is bones/bone-broth carry NO pork macros. The bones are named in each recipe's
+  `notes`, but kcal, protein and fat are understated (the bones' fat and gelatine dissolve
+  into the soup; how much is not measurable from the sources). Affected: th_373
+  (ต้มจับฉ่ายกระดูกหมู, 450 g bones omitted), th_378 (มะระต้มกระดูกหมู, 1 bone omitted),
+  th_310 (แกงจืดปวยเล้งหมูสับ, 3 bones omitted, minced pork is priced) and th_295
+  (ต้มจืดกะหล่ำม้วนหมูเด้ง, 3 cups pork-bone broth omitted, minced pork is priced). Related
+  but different: th_196, th_166 and th_299 price pork RIBS as lean pork `STD:958` (th_299
+  is listed under B; th_196 and th_166 are not yet), so they overstate lean meat rather
+  than omit it. Vegan/vegetarian tags are not at risk in
+  th_373 and th_378 because each also has a keyed animal ingredient (oyster sauce, fish
+  sauce); this was checked deliberately after the round-4 standing rule on false tags.
+  Resolve by finding a defensible record for bone broth (Thai FCD or a disclosed external
+  one), or by adding a dictionary key and a per-recipe estimate. Other bone-in recipes not
+  listed here have not been audited.
+- **D2. พริกหยวก is a dictionary synonym of bell_pepper, but th_342 leaves it out.**
+  `data/ingredients.json` lists พริกหยวก among bell_pepper's synonyms, and th_176
+  (หมูผัดพริกหยวก) and th_270 (พริกหยวกยัดไส้ทอด) treat it as bell_pepper. th_342
+  (หอยแมลงภู่ผัดพริกสด, round 3) lists พริกหยวก 2-3 pieces in its source but omitted it as
+  "not พริกหวาน", so it is neither keyed nor priced (a small amount; the effect on its
+  nutrition is minor). The two positions contradict each other. The underlying question
+  is whether พริกหยวก (a mild, thin, pale-green Thai pepper) and พริกหวาน (sweet bell
+  pepper) should be one dictionary key at all; they are different vegetables in cooking,
+  and merging them also affects text matching in `nlp/`. Resolve by either splitting the
+  dictionary entry or adding พริกหยวก to th_342 as bell_pepper, then re-running the round-3
+  checks. Not touched now; `nlp/` and the dictionary were not changed.
