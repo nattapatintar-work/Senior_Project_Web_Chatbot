@@ -1007,3 +1007,45 @@ explicit instruction; this entry exists so it isn't forgotten.
 
 > 🟡 **Medium** · **Impacts: next time `process_session()` is touched (likely the deferred
 > low-confidence-verification feature)** · Owner: You
+
+---
+
+# ------- Recipe DB round 4 (2026-09-20) -------
+
+## C19 — No dictionary key distinguishes vegetarian/vegan (เจ) curry pastes from regular ones
+
+> Found while sourcing round-4 recipes: แกงเหลืองถั่วงอกหัวโต เจ (a vegetarian yellow curry
+> with giant bean sprouts, Cookpad 15637807) had to be dropped because of this. Logged here,
+> not in `data/RECIPES_NOTES.md`, because it is a **dictionary schema gap**, not a per-recipe
+> judgement call. A future-improvement note only — nothing was changed.
+
+**Finding:** `data/ingredients.json` has exactly one key per curry paste, and every one of
+them is flagged `is_animal_product: true` (they normally contain shrimp paste):
+`green_curry_paste`, `red_curry_paste`, `yellow_curry_paste`, `massaman_curry_paste`,
+`sour_curry_paste`, and also `chili_paste` (น้ำพริกเผา). There is no separate key (or field)
+for the vegetarian/vegan (เจ / มังสวิรัติ) versions of these pastes, which are widely sold and
+cooked in Thailand.
+
+**Why it matters:** the vegetarian/vegan rules are derived mechanically from
+`is_animal_product` (`tools/derive_diet_tags.py`, `tests/test_recipes.py`). So a genuinely
+vegetarian/vegan curry that uses one of these pastes is automatically tagged
+`excluded_for: [vegetarian, vegan]` — a **false-negative exclusion**: a vegetarian user asking
+for such a dish will never be offered it. The mechanical tests also *forbid* correcting it by
+hand (`test_no_animal_products_means_vegan_is_not_excluded` runs the other way, and the
+forward tests demand the exclusion whenever an animal-flagged key is present).
+
+**The opposite-direction gap is related:** an animal ingredient with NO dictionary key (a
+chicken stock cube, bouillon) produces a *false-positive* vegan tag. Round 4 handled that
+case by dropping the dish (ซุปถั่วงอกหัวโต), by explicit decision: a mechanically-honest but
+actually-wrong vegan tag is not acceptable. The curry-paste gap is the mirror image and has no
+such workaround, since the paste key exists but is the wrong one.
+
+**Possible fixes (not chosen, for a future session):**
+- add vegetarian-variant keys (e.g. `red_curry_paste_vegetarian`, `is_animal_product: false`)
+  with matching Thai synonyms (พริกแกงเจ, พริกแกงมังสวิรัติ) so `extract()` can route to them;
+- or add an optional `vegetarian_variant` field to the paste entries that recipes can select;
+- either way `HEALTH_TAGS.md` and the two tag tests would need to allow the variant.
+
+**Severity:** 🟢 Low for the current 369-recipe database (no shipped recipe is affected; the
+one known case was dropped) · **Impacts: any future vegetarian/vegan curry recipe, and NLP
+matching of เจ paste terms** · Owner: You

@@ -2474,6 +2474,21 @@
       "protein": "PROTCNT"
     }
   },
+  "STD:651": {
+    "carb": 2.09,
+    "fat": 0.24,
+    "food_code": "D177",
+    "kcal": 27.0,
+    "name_en": "Mushroom, Chinese/straw, raw",
+    "name_th": "เห็ดฟาง/เห็ดบัว ดิบ",
+    "protein": 3.19,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
   "STD:658": {
     "carb": 3.05,
     "fat": 0.12,

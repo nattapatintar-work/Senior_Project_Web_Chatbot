@@ -245,13 +245,17 @@ amounts, §5 what the sources could not supply, and §6 coverage imbalance.)
 
 ### C. Coverage targets not met
 
-- **quail_egg landed at 5 main-ingredient recipes (target 6-9 not met).** Savory quail-egg
-  dishes are genuinely scarce in Thai cuisine. Most search results for "ไข่นกกระทา" are the
-  dessert ขนมไข่นกกระทา, which contains no quail egg at all and was rejected. Only two
-  further verifiable savory dishes were found in round 3 (th_346 green-curry fried quail
-  eggs, th_347 mixed-vegetable oyster-sauce stir-fry), on top of the existing three
-  (th_058, th_164, th_248). Decided 2026-09-20 to accept 5 and report the shortfall rather
-  than pad with an unfit or borderline dish.
+- **quail_egg: landed at 5 after round 3 (target 6-9 not met) — RESOLVED in round 4,
+  now 6.** Savory quail-egg dishes are genuinely scarce in Thai cuisine. Most search results
+  for "ไข่นกกระทา" are the dessert ขนมไข่นกกระทา, which contains no quail egg at all and was
+  rejected. Only two further verifiable savory dishes were found in round 3 (th_346
+  green-curry fried quail eggs, th_347 mixed-vegetable oyster-sauce stir-fry), on top of the
+  existing three (th_058, th_164, th_248). Decided 2026-09-20 to accept 5 and report the
+  shortfall rather than pad with an unfit or borderline dish. Round 4 then found a sixth
+  genuine dish while sourcing amaranth recipes — th_368 (ผัดผักโขมน้ำมันหอยและไข่นกกระทา,
+  amaranth stir-fried with boiled quail eggs) — taking quail_egg to 6 main-ingredient recipes,
+  so the 6-9 target is now met. Kept here as a record of why the count sat at 5 for a time; th_368's
+  own quantities are all assumed (its source gives none), so it is a weak-quantity dish.
 - **mussel landed at 5 main-ingredient recipes (target 6-9 not met).** The remaining
   verifiable mussel dishes were near-duplicates of stir-fries already in the database: a
   sixth candidate, ผัดโคตรหอยแมลงภู่ (onion + sweet basil), differs from th_342 (shallot +
