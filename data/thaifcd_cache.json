@@ -59,6 +59,21 @@
       "protein": "PROTCNT"
     }
   },
+  "STD:1058": {
+    "carb": 0.02,
+    "fat": 1.2,
+    "food_code": "G22",
+    "kcal": 78.0,
+    "name_en": "Spotted featherback, flesh, raw",
+    "name_th": "ปลากราย, ขูด, ดิบ",
+    "protein": 16.88,
+    "tags_used": {
+      "carb": "CHOAVLDF",
+      "fat": "FAT",
+      "kcal": "ENERC",
+      "protein": "PROTCNT"
+    }
+  },
   "STD:1084": {
     "carb": 0.0,
     "fat": 3.26,

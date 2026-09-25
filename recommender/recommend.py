@@ -203,11 +203,24 @@ def recommend(
 
     # Filter first, then score -- keeps the vector maths off dishes that could
     # never be returned regardless of similarity.
+    #
+    # Split into two sequential stages (health, then excluded on the
+    # survivors) instead of one combined `and`, specifically so the
+    # health_tags stage has an observable before/after count -- the final
+    # `candidates` result is identical to a combined filter either way (AND
+    # is order-independent for two pure boolean predicates over the same
+    # items), this only changes how it's computed, not what it produces.
+    health_passed = [
+        (i, recipe) for i, recipe in enumerate(_RECIPES) if _passes_health_filter(recipe, health_tags)
+    ]
+    print(
+        f"[recommend] health_tags={health_tags} filtered {len(_RECIPES)} candidates -> "
+        f"{len(health_passed)} passed",
+        flush=True,
+    )
+
     candidates = [
-        (i, recipe)
-        for i, recipe in enumerate(_RECIPES)
-        if _passes_health_filter(recipe, health_tags)
-        and _passes_excluded_filter(recipe, excluded)
+        (i, recipe) for i, recipe in health_passed if _passes_excluded_filter(recipe, excluded)
     ]
     if not candidates or not user_ingredients:
         return []

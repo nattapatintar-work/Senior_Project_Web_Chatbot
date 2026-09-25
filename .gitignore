@@ -40,3 +40,9 @@ data/incoming/
 .idea/
 Thumbs.db
 desktop.ini
+
+# ---------------------------------------------------------------------------
+# Scratch work
+# ---------------------------------------------------------------------------
+# Throwaway experimentation, not meant to enter permanent history.
+Experiment/

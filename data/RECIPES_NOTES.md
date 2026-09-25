@@ -267,6 +267,16 @@ amounts, §5 what the sources could not supply, and §6 coverage imbalance.)
   soups th_018/019/020 are not affected: their nutrition is `direct` (a whole-dish INMU
   record), so lemongrass is never priced separately there.
   Revisit if a fuller record (or a disclosed external one) turns up.
+- **th_399 (ผัดยอดฟักแม้วไฟแดง) prices chayote SHOOTS with the chayote FRUIT record.** The
+  dish uses ยอดฟักแม้ว (young shoots, 500 g), keyed as `chayote` because it is the same
+  plant as the ฟักแม้ว fruit in th_097, th_218 and th_285. Thai FCD's only chayote record
+  (`STD:586`, "young leaves") has all four macros blank, so nutrition comes from the USDA
+  fruit record `EXT:usda-chayote-raw` (19 kcal, 0.82 g protein per 100 g), the same
+  external record the fruit dishes use. Shoots are leafier than the fruit, so protein and
+  fibre are understated for this recipe (kcal is probably a little low as well). Accepted
+  as-is on 2026-09-20 with the disclosure already in its `notes`. Revisit if a shoots
+  record turns up, or split the dictionary entry (fruit vs shoots) if the difference
+  matters for recommendations.
 
 ### C. Coverage targets not met
 
