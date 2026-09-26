@@ -185,7 +185,9 @@ def recommend(
     Returns:
         A list of at most `top_k` dicts, best score first (each also carries
         "seasonings_matched": [...] -- the ticked seasonings this dish uses --
-        but only when the `seasonings` argument was passed):
+        but only when the `seasonings` argument was passed; every dish also
+        carries "cook_time_min", "recipe_source_url", "main_ingredients" and
+        "seasonings" -- the recipe's own display data for the web cards):
             {
                 "id":          "th_001",              # matches recipes.json
                 "name_th":     "ผัดกะเพราไก่",
@@ -282,6 +284,11 @@ def recommend(
             "missing": missing,
             "nutrition": dict(recipe["nutrition"]),
             "health_tags": list(recipe["health_tags"]),
+            # Display data for the web recipe cards (no effect on scoring).
+            "cook_time_min": recipe.get("cook_time_min"),
+            "recipe_source_url": recipe.get("recipe_source_url"),
+            "main_ingredients": list(recipe["main_ingredients"]),
+            "seasonings": list(recipe["seasonings"]),
         }
         if seasonings is not None:
             dish["seasonings_matched"] = matched_seasonings

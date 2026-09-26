@@ -127,6 +127,11 @@ class RecommendedRecipe(BaseModel):
     seasonings_matched: list[str]
     nutrition: dict[str, float | None]   # passed through as stored in recipes.json
     health_tags: list[str]
+    # Display data for the web recipe cards, straight from recipes.json.
+    cook_time_min: float | None = None
+    recipe_source_url: str | None = None
+    main_ingredients: list[str] = []
+    seasonings: list[str] = []            # the RECIPE's seasonings (seasonings_matched = the user's ticked subset)
 
 
 class UsedInputs(BaseModel):

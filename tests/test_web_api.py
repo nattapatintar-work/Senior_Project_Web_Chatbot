@@ -350,6 +350,11 @@ def test_recommend_uses_session_list_tags_excludes_and_seasonings(client):
         assert "clean" in dish["health_tags"]
         assert 0.0 <= dish["score"] <= 1.0
         assert "seasonings_matched" in dish
+        # display data the web recipe cards render
+        assert isinstance(dish["main_ingredients"], list) and dish["main_ingredients"]
+        assert isinstance(dish["seasonings"], list)
+        assert dish["recipe_source_url"].startswith("http")
+        assert dish["cook_time_min"] > 0
 
 
 def test_recommend_rejects_out_of_range_top_n(client):

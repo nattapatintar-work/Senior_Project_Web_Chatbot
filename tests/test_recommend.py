@@ -306,3 +306,26 @@ def test_boosted_score_stays_within_zero_to_one():
     _, seasonings = _top_dish_seasonings()
     for dish in recommend(_USER, top_k=400, seasonings=seasonings):
         assert 0.0 <= dish["score"] <= 1.0
+
+
+# ---------------------------------------------------------------------------
+# Display fields for the web recipe cards (no effect on scoring)
+# ---------------------------------------------------------------------------
+
+def test_every_dish_carries_the_recipes_own_display_fields():
+    by_id = {r["id"]: r for r in load_recipes()}
+    results = recommend(_USER, top_k=50)
+    assert results
+    for dish in results:
+        recipe = by_id[dish["id"]]
+        assert dish["cook_time_min"] == recipe["cook_time_min"]
+        assert dish["recipe_source_url"] == recipe["recipe_source_url"]
+        assert dish["main_ingredients"] == recipe["main_ingredients"]
+        assert dish["seasonings"] == recipe["seasonings"]
+
+
+def test_display_fields_do_not_change_scores_or_ranking():
+    plain = recommend(_USER, top_k=10)
+    assert [(d["id"], d["score"]) for d in plain] == [
+        (d["id"], d["score"]) for d in recommend(_USER, top_k=10, seasonings=None)
+    ]

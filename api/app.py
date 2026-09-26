@@ -112,7 +112,7 @@ if web_config.CORS_ORIGINS:
     app.add_middleware(
         CORSMiddleware,
         allow_origins=web_config.CORS_ORIGINS,
-        allow_methods=["POST", "OPTIONS"],
+        allow_methods=["GET", "POST", "OPTIONS"],
         allow_headers=["*"],
     )
 
