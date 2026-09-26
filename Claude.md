@@ -1,6 +1,9 @@
-# 🍳 Ingredient-to-Recipe Chatbot — Full Project Summary & Person 2 Roadmap
+# 🍳 FoodFridgeGreen — Web Chatbot Track
 
-> Combined reference document: project overview + detailed 12-week roadmap for Person 2 (Language & System).
+> A static-web, ChatGPT-style chatbot (FastAPI backend) that recommends Thai recipes
+> from ingredient photos + text. This is a **parallel track** to the LINE OA capstone,
+> **not a replacement for it**. This repo does **not** target LINE (see the Legacy
+> appendix at the bottom).
 
 ---
 
@@ -24,160 +27,151 @@
 
 ---
 
-# PART A — PROJECT OVERVIEW
+# PART A — WHAT THIS REPO IS
 
-## 1. What This Project Is
+## 1. Scope
 
-### 1.1 The Starting Problem
-People open the fridge, see a pile of random ingredients, and don't know what to cook. Ingredients expire and get thrown away — both a convenience problem and a household food-waste problem.
+### 1.1 Problem
+People open the fridge, see a pile of random ingredients, and don't know what to cook.
+Ingredients expire and get thrown away — a convenience problem and a household
+food-waste problem.
 
-### 1.2 What We're Building
-A **LINE chatbot** — users send a photo of ingredients, type a text message, or both, and the bot recommends recipes with nutrition info, filtered by health condition (clean / keto / vegetarian).
+### 1.2 This track vs. the LINE OA capstone
 
-### 1.3 ⚠️ The Reframed Research Angle
-Pilot testing found that **the LLM identifies ingredients with very high accuracy already.** This forced a reframe:
-
-| | Old Frame | **New Frame** |
-|---|---|---|
-| Question | "Is our model more accurate?" | **"If the LLM is already more accurate, is training our own model still worth it — and at what point does it become worth it?"** |
-| Problem with old frame | If the answer is "no," the project is uninteresting | **Can't be answered without experimentation**, and has genuine practical value |
-| Thai herbs group | Would require training galangal/ginger/fingerroot | **Cut** — no usable images available, saves 10-12 hours |
-
-> 📝 Reframing based on real pilot results looks more scientific than clinging to an original hypothesis the data doesn't support.
-
-### 1.4 ✅ The Original Goal Is Still Fully Intact
-
-| | Originally | Now |
-|---|---|---|
-| What problem does the system solve? | People with ingredients who don't know what to cook | **Same** |
-| What is the deliverable of the project? | A chatbot that helps users | **Cost-effectiveness numbers comparing two approaches** |
-
-> 📝 The chatbot shifted status from "the deliverable" to **"the context that makes the comparison meaningful"** — without it, the project becomes a floating benchmark that can't explain why 0.2s vs 5s latency actually matters.
-
----
-
-## 2. Core Objective
-
-### 2.1 Main Research Question
-> For ingredient identification used to recommend recipes, **when a large language model is already more accurate, is it still worth training a dedicated detection model — and where is the break-even point** — when considering cost, speed, and reliability?
-
-### 2.2 Four Objectives
-
-| # | Objective |
+| | Source |
 |---|---|
-| 1 | Develop an image-based ingredient detection model (YOLO11) and a Thai text extraction system (PyThaiNLP) |
-| **2** | **Evaluate comparative cost-effectiveness between the specialized model and the LLM across 4 dimensions** ← core of the project |
-| 3 | Design and evaluate a Hybrid Routing mechanism, finding the budget break-even point |
-| 4 | Build a recipe recommendation system and chatbot to serve as **a real testing environment** |
+| **Reused 100% from the LINE OA work** | NLP pipeline (dictionary + fuzzy matching + Trie + negation), TF-IDF recommender, `detect()` interface (YOLO/Gemini wrapper), recipe database |
+| **Newly built here** | Frontend chat UI, backend REST API layer (replaces the LINE webhook), new session/state management (no LINE reply token / push API), AWS deployment |
 
-**Details of Objective 4:**
-1. Build a recipe database of 40 menus (main/optional ingredients + seasonings + health tags + reference nutrition)
-2. Build a recommendation system (TF-IDF + cosine + health filter + partial match)
-3. Build a chatbot that accepts multiple input types (image/text/both + session buffer + Quick Reply)
-4. Apply Hybrid Routing from Objective 3 in practice (reading from `thresholds.yaml`)
-5. Evaluate recommendation quality on 30-40 cases, measured with Precision@3, Recall@5
-
-> ⚠️ Don't write Objective 4 as "for user convenience" — that's a weak justification. Write it as **"to serve as a real testing environment."**
-
-### 2.3 Measuring 4 Dimensions
-
-| Dimension | How Measured | Expected Result |
-|---|---|---|
-| Accuracy | Image-level F1 | LLM wins (expected 5-10%) |
-| Cost | Baht per 1,000 calls | **YOLO wins decisively** (free after training) |
-| Speed | Median + p95 latency | **YOLO wins decisively** (0.2s vs 3-8s) |
-| Reliability | Consistency + nutrition accuracy | **Our system wins** |
-
-**Expected headline finding:**
-> "Even though the LLM is 8% more accurate, using a hybrid approach at a 30% budget cuts cost by 70% and average latency by 60%, at a cost of only 3% accuracy."
+### 1.3 Parent research context
+The LINE OA capstone's research question — *when an LLM is already more accurate at
+identifying ingredients, is training a dedicated YOLO model still worth it, and where
+is the cost/speed/reliability break-even?* — is studied there. **This repo runs no
+experiments** and does not carry the Test-A/Test-B sets, budget sweep, random
+baseline, consistency or nutrition experiments. It is the product track.
 
 ---
 
-## 3. Component Breakdown
+## 2. Architecture
 
-### 3.1 CV — YOLO11
+- **Frontend:** static HTML/CSS/JS, ChatGPT-style chat UI.
+- **Backend:** FastAPI REST API running `detect()` (YOLO/Gemini), the NLP pipeline,
+  the intent classifier and the recommender.
+- **Transport:** plain HTTP. Images upload via multipart form directly — no webhook,
+  no reply token, no push API, no 2-step Content API fetch.
+- **Deploy:** AWS. YOLO inference needs a GPU instance (candidate: `g4dn.xlarge`),
+  which is **not** covered by the free tier — cost is the main risk (see Open Items).
 
-**What it does:**
+```
+browser (static UI) ⇄ FastAPI ─┬─ detect()           YOLO11 → Gemini fallback
+                               ├─ extract()          dictionary/fuzzy/Trie/negation
+                               ├─ intent classifier  LLM (confirm / reject / correction)
+                               └─ recommend()        TF-IDF + cosine + diet filter
+```
+
+---
+
+## 3. User Flow
+
+### 3.1 Seasoning tab (second tab, next to Chat)
+- Checklist of seasoning ingredients; the user ticks what they have.
+- Must be ticked **before** the chat starts — not editable mid-conversation (MVP).
+- Ticked seasonings are passed to the recommender alongside the ingredient list.
+
+### 3.2 Input
+- Pasting image(s) shows preview thumbnails **inside the input box**; nothing is sent
+  yet and the user can keep typing.
+- Two patterns: (a) paste image(s), type text, press Enter once; (b) paste image(s),
+  press Enter immediately with no text.
+- **Processing starts only on Enter.** Ingredients detected across all pasted images
+  are unioned into one set.
+
+### 3.3 Processing
+- No text → call `detect()` right away.
+- Text → the NLP pipeline must extract **three things from one mixed sentence**:
+  include ingredient, exclude ingredient, health tag
+  (e.g. "have chicken and egg, no pork, want it clean").
+
+### 3.4 Confirm loop
+1. Show the full combined ingredient list (image + text) and ask the user to confirm
+   — **free text only, no Quick Reply buttons.**
+2. An LLM **intent classifier** reads the reply → `confirm` / `reject` /
+   `confirm+correction` (e.g. "yeah that's right, but also add garlic").
+3. `reject` → show a checklist to tick off wrong ingredients + a text field to add
+   missing ones; on submit, **loop back to step 1** with the new list.
+4. `confirm` → the final list goes straight into the recommender.
+
+### 3.5 Reply
+Built from templates. The LLM never writes the reply text.
+
+---
+
+## 4. Components
+
+### 4.1 `detect()` — YOLO11 + Gemini fallback
 ```
 Input:  a photo of ingredients
-Output: [{"ingredient":"egg", "confidence":0.92},
-         {"ingredient":"tomato", "confidence":0.88},
-         {"ingredient":"onion", "confidence":0.31}]
+Output: [{"ingredient":"egg","confidence":0.92}, {"ingredient":"tomato","confidence":0.88}, ...]
 ```
-> Confidence (0-1) decides when to call the LLM.
-
-**Classes trained: 12-15 classes** — egg, chicken, pork, shrimp, tomato, onion, garlic, chili, carrot, cabbage, mushroom, lime, cucumber
-**Data source:** Roboflow Universe + supplemental Google Images/Kaggle
-
-**Training method:** Transfer Learning + Fine-tuning
+- **100** ingredients have a `yolo_class_id` in `data/ingredients.json`.
+- Transfer learning: use `yolo11n.pt`, **not** `yolo11n.yaml` (the latter trains from scratch).
+- **Routing rule (unchanged):**
 ```python
-from ultralytics import YOLO
-model = YOLO("yolo11n.pt")   # ← COCO weights = transfer learning
-model.train(data="data.yaml", epochs=100, save_period=10)   # ← full fine-tuning
+score = max(all confidences in the image)   # nothing detected = 0
+if score < THRESHOLD:
+    → call LLM (Gemini)
+else:
+    → use YOLO result (only items with conf >= 0.5)
 ```
-> ⚠️ Trap: must use `yolo11n.pt`, NOT `yolo11n.yaml` (the latter trains from scratch).
+  The rule looks at the image's *maximum* confidence, not per-item; low-confidence
+  detections are discarded to avoid false positives. Values come from `thresholds.yaml`
+  (defaults if absent).
 
-**Image count:**
-| Level | instances/class | Expected mAP |
-|---|---|---|
-| Minimum | 100-150 | 0.5-0.65 |
-| Recommended | 200-250 | 0.65-0.75 |
-
-Target: 15 classes × 200 = ~3,000 instances ≈ 1,200-1,800 images (an instance ≠ an image — one image with 3 tomatoes = 3 instances)
-
-> 💡 Diversity matters more than volume — 200 varied images beat 500 near-identical ones.
-
-**Dataset composition recommended:**
-| Type | Share | Reason |
-|---|---|---|
-| Single/multiple ingredients on table/cutting board | 60-70% | Matches real user behavior most closely + easy to label |
-| In fridge / in bags / occluded | 20-30% | Trains the model to handle hard conditions |
-| Plain stock photos | 10-20% | Helps learn basic per-class appearance |
-
-**Why not shoot entirely inside the fridge:** most fridge items are packaged (model learns "box" instead of "egg"), heavy occlusion (only 20-30% of object visible), labeling 3-4x slower, and real users typically take items out onto the table to photograph rather than photographing the whole fridge.
-
-### 3.2 NLP — PyThaiNLP + Dictionary
-
+### 4.2 NLP — `extract()`
 ```
-Input:  "I have shrimp and egg, want something clean, no pork"
+Input:  "I have shrimp and egg, want clean, no pork"
 Output: {"ingredients": ["shrimp","egg"], "health_tags": ["clean"], "excluded": ["pork"]}
 ```
+Pipeline: dictionary lookup → fuzzy matching (**threshold 85**) → **Trie** (prefix
+collisions) → negation detection. No trained NER model (labeling cost not worth it for
+a fixed vocabulary). English typos are recovered reliably; Thai typo recovery is a
+documented limitation (see `concern.md`).
 
-**3 capabilities:**
-| # | Capability | Example |
-|---|---|---|
-| 1 | Thai word segmentation (Thai has no spaces) | tokenize the sentence into words |
-| 2 | Fuzzy matching | misspelled ingredient → corrected ingredient |
-| 3 | Negation detection | "no pork" → exclude pork |
+### 4.3 Intent classifier (NEW)
+- **Input:** the user's free-text reply to the confirm-ingredients prompt.
+- **Output:** `confirm` / `reject` / `confirm+correction` (mixed in one sentence).
+- **Why an LLM:** keyword matching can't parse mixed sentences.
+- **STILL OPEN:** which LLM API (Gemini, already used for vision, or another), prompt
+  design, and error handling when the interpretation is ambiguous.
 
-> 📝 We deliberately don't train our own NER model — labeling thousands of sentences would take 3-4 weeks, not worth it for just 15-20 vocabulary terms.
+### 4.4 Recommender
+- TF-IDF + cosine similarity between the user's ingredient set and each recipe's
+  ingredient profile (scales fine to 400 recipes). Scoring is partial — a user is
+  never required to have every ingredient.
+- **Diet filter first:** filter recipes by `excluded_for` *before* computing similarity.
+  AND across requested tags. An excluded ingredient drops a dish only via
+  `main_ingredients`/`seasonings`, never `optional_ingredients`.
+- `missing` = main ingredients only; a missing optional is not a shopping-list item.
+- **Seasoning — Option A (decided):** seasonings the user ticked are **optional/bonus
+  only**. A recipe missing a wanted seasoning is still recommended, just scored lower
+  than one that matches the seasonings too.
+  > ⚠️ **Pending code change:** `recommender/recommend.py` (docstring ~line 35,
+  > `_recipe_document` ~line 95) still strips seasonings from both the recipe document
+  > and the user's list. That is the *old* rule and must be changed to implement
+  > Option A. The seasoning **weight** relative to main ingredients is **not decided**
+  > (open item).
+- > 📝 **TODO, not yet implemented:** `recommend()`'s TF-IDF vectorizer treats every
+  > ingredient key identically, regardless of whether it's photo-detectable
+  > (`yolo_class_id` set) or text-only (`null`). The idea, never built: weight
+  > non-YOLO ingredients lower, since a user is far less likely to have *typed* a
+  > text-only ingredient (e.g. `pla_ra`, `yanang`) than to have it visible in a photo.
+  > This would need a per-token weight vector multiplied against the TF-IDF matrix (or
+  > a second `TfidfVectorizer` fit separately), not a change to `_recipe_document()`'s
+  > main×2/optional×1 repetition scheme (that solves a different problem). A note for
+  > a future session to pick up deliberately, not to guess into `recommend.py`.
 
-**Why NLP is essential — 3 reasons:**
-1. Fills in items the image can't see (e.g. shrimp paste in a jar, not visible in photo)
-2. Health conditions can only come from text, never from an image
-3. Corrects misdetections ("that's not pork, it's chicken")
-
-> This is what makes the system genuinely **multimodal**, not just CV and NLP placed side by side.
-
-### 3.3 Recommender — Content-Based Filtering
-
-```
-Input:  ["chicken","garlic","chili"], health=["clean"]
-Output: [{"name":"Pad Kra Pao Chicken", "score":0.87,
-          "have":["chicken","garlic","chili"],
-          "missing":["holy_basil"],
-          "nutrition":{"kcal":450,...}}]
-```
-
-Menus are converted into vectors; user ingredients are converted the same way, then compared via cosine similarity. TF-IDF weighting ensures rare ingredients (like shrimp) matter more than ingredients present in every recipe (like oil). Scoring is partial — a user is never required to have every ingredient, since no one has a complete set at home.
-
-**40-menu database** covers Thai household dishes plus international dishes commonly cooked by Thais (fried rice, pad see ew, spaghetti) — because detected ingredients are universal, restricting the menu database to authentic Thai food only would create unmatchable cases.
-
-> ⚠️ Must reference real nutrition tables (Thai Food Composition Database / INMUCAL / Department of Health) — self-estimated nutrition data invalidates the nutrition experiment entirely.
-
-### 3.4 LLM — Gemini 3.5 Flash Lite
-
-**Must use the Flash Lite tier only**, verified from real account limits:
+### 4.5 LLM — Gemini Flash Lite
+**Flash Lite tier only**, verified from real account limits:
 
 | Model | RPM | RPD | Usable? |
 |---|---|---|---|
@@ -186,403 +180,177 @@ Menus are converted into vectors; user ingredients are converted the same way, t
 | Gemini 3.6 / 3.5 / 2.5 Flash | 5 | 20 | ❌ too limited |
 | Gemini Pro | 0 | 0 | ❌ no free-tier access |
 
-**3 roles:**
-1. **Image comparison baseline ⭐** — run on every image in the experiment
-2. Text comparison baseline — run on 60 sentences
-3. Runtime fallback — when YOLO isn't confident
+**Roles here:** (1) `detect()` fallback when YOLO isn't confident, (2) confirm/reject
+intent classifier (unless the open item picks a different provider).
 
-🚫 The LLM never selects the final menu (would make Recommender unmeasurable)
-🚫 The LLM never composes the reply text (templates are faster and save reply-token lifespan)
-
-**LLM testing rule:** every request must be independent — never ask within the same chat session, to avoid **context contamination** where the LLM sees prior context and "cheats" by inferring the topic, inflating results unrealistically.
-
-> ⚠️ Never list candidate classes in the prompt (e.g. "is this galangal, ginger, or fingerroot") — that's over-helping the model and makes the comparison unfair.
-
----
-
-## 4. Flow
-
-### 4.1 Production Flow
-```
-User sends photo/text on LINE
-        ↓
-Webhook receives → respond HTTP 200 immediately
-        ↓
-Buffer into session + wait 2.5-3s (debounce)
-        ↓
-   ┌────┴────┐
-[image]     [text]
-YOLO11      PyThaiNLP
-   ↓            ↓
-max conf    extraction failed /
-< threshold? negation detected?
-   ↓            ↓
-  LLM          LLM
-   └────┬───────┘
-        ↓
-Merge ingredients + health conditions
-        ↓
-Recommender: TF-IDF + cosine + health filter
-        ↓
-Top-3 menus + have/missing + nutrition
-        ↓
-Template response → reply token (free)
-```
-
-**Accepts 3 input types:** image only / text only / both. Multiple images merge into one session, deduped by keeping highest confidence, capped at 5 images.
-
-### 4.2 LLM Trigger Condition
-```python
-score = max(all confidences in the image)   # nothing detected = 0
-if score < THRESHOLD:
-    → call LLM
-else:
-    → use YOLO result (only items with conf >= 0.5)
-```
-> 💡 Rule looks at the image's maximum confidence, not per-item — if egg is high-confidence, don't call the LLM even if onion confidence is low; low-confidence detections get discarded to avoid false positives (shadows, stains mistaken for ingredients).
-
-### 4.3 Research Flow — a Separate Concern
-```
-eval/run_experiment.py  → runs YOLO + LLM on 100% of images   (one-time run)
-api/main.py              → production system, uses routing    (demo day)
-```
+Rules:
+- 🚫 The LLM never selects the final menu (would make the Recommender unmeasurable).
+- 🚫 The LLM never composes the reply text (templates).
+- Every request must be independent — never reuse a chat session, to avoid context
+  contamination.
+- Never list candidate classes in the prompt (e.g. "is this galangal, ginger, or
+  fingerroot") — over-helping the model.
+- Free-tier RPD (500) is a hard ceiling for a public web app — keep it in mind for the
+  classifier, which adds an LLM call per confirm turn.
 
 ---
 
-## 5. Evaluation
+## 5. Data Schema (verified against the real files)
 
-### 5.1 ⚠️ mAP Cannot Be Compared Across Systems
-YOLO produces bounding boxes; the LLM only produces a name list — mAP can't be computed for the LLM. **Image-level Precision/Recall/F1** is the main comparison metric across all 3 systems.
+**`data/ingredients.json` — 142 entries** (116 regular ingredients + 26 seasonings).
+Fields: `is_seasoning` (bool), `is_animal_product` (bool), `yolo_class_id`
+(100 non-null; `null` = text-only), `synonyms[]`, `confusable_with[]`, plus `name_th`.
 
-### 5.2 Test Sets
-| Set | Size | Split |
-|---|---|---|
-| Test-A (from internet) | 60 images | val 20 / test 40 |
-| Test-B (self-shot) ⭐ | 60 images | val 20 / test 40 |
-| Text | 60 sentences | dev 20 / test 40 |
-| Recommendations | 30-40 cases | ground truth from outsiders |
+**`data/recipes.json` — 400 recipes**, IDs `th_001`–`th_403` with **gaps at th_059,
+th_060, th_073** (IDs are never reused). Fields: `main_ingredients[]`,
+`optional_ingredients[]`, `seasonings[]`, `health_tags[]`, `excluded_for[]`, nutrition
+data (+ `nutrition_source`, `cook_time_min`, `recipe_source_url`).
 
-**Why both Test-A and Test-B matter:** the gap reveals **domain shift** — how much a model trained on public images degrades when it meets real-world conditions.
+**Health tags in use:** `clean`, `keto`, `vegetarian`, `vegan`.
 
-```
-YOLO on Test-A: F1 ~0.80   ← same distribution as training data
-YOLO on Test-B: F1 ~0.55   ← drops sharply
-LLM  on Test-A: F1 ~0.85
-LLM  on Test-B: F1 ~0.82   ← barely drops
-```
+**Diet filter source of truth:** `excluded_for` (single field read). Verified 100%
+consistent with the `is_animal_product` derivation across all 400 recipes, zero
+mismatches. **Keep `is_animal_product` as a validator** for future recipe additions to
+catch human error.
 
-🚨 The test set is opened exactly once, in Week 10 — never used to tune thresholds.
-⚠️ Test-B must never be used for training — if accidentally mixed in, the entire experiment is invalidated.
+---
 
-### 5.3 Finding the Threshold via "Choose a Budget"
-| Budget (% sent to LLM) | F1 | Cost/1000 | Avg latency |
-|---|---|---|---|
-| 0% (YOLO only) | 0.62 | 0 ฿ | 0.2s |
-| **30%** ⭐ | **0.84** | 45 ฿ | 1.5s |
-| 50% | 0.88 | 75 ฿ | 2.4s |
-| 100% (LLM only) | 0.91 | 150 ฿ | 4.2s |
+## 6. Recipe DB Rules
 
-*(illustrative numbers)* — this is the project's main result.
+- Nutrition must come from a **real, fetchable source** (Thai Food Composition
+  Database / INMUCAL / Department of Health) — never self-estimated.
+- Every recipe needs a real `recipe_source_url`; main/optional ingredients must come
+  from the current ingredient dictionary.
+- Basic seasonings live in `seasonings`, not in main/optional ingredients. (How they
+  score is governed by §4.4 Option A.)
+- **"Vegan" must exclude fish sauce and shrimp paste** — the most commonly missed detail.
+- Health tags must be verifiable (clean / keto / vegetarian / vegan).
+- Dessert/sweet dishes are allowed, not just savory. Same rules apply.
+- The recipe DB must **not be split** between people — differing standards create the
+  hardest-to-find bug. One owner, start to finish.
+- Menu mix: authentic Thai + international dishes commonly cooked by Thais (fried rice,
+  spaghetti), because detected ingredients are universal.
 
-### 5.4 Random Baseline — Must Not Be Cut
-| Method of choosing which images go to LLM (30% budget) | F1 |
+---
+
+## 7. Codebase Map
+
+| Path | Status |
 |---|---|
-| Random | 0.72 |
-| Confidence-based | **0.84** |
+| `data/ingredients.json`, `data/recipes.json` | **Reused as-is** |
+| `nlp/extract.py` | **Reused as-is** |
+| `recommender/recommend.py` | **Reused**, except the seasoning change in §4.4 |
+| `api/main.py` | **Legacy — LINE webhook; to be replaced** by the FastAPI REST layer |
+| `api/session.py` | **Legacy — 2.5s debounce buffer; to be replaced** (processing is now Enter-triggered) |
+| `api/confirmation.py` | **Legacy — Quick Reply "anything else?" state; to be replaced** by the free-text intent-classifier loop |
+| `api/mock_cv.py` | Mock `detect()` — keep until the real `detect()` is swapped in |
+| `api/config.py` | Review during API rewrite |
+| `tests/` | Existing tests for extract/recommend/recipes stay; `test_session.py` / `test_confirmation.py` go with their legacy modules |
 
-> This is the most important test — "is hybrid better than pure YOLO" is trivially true. The real question is whether the improvement comes from **smart routing** or just from calling the LLM more.
-
-### 5.5 Two Additional Experiments — Now Core, Not Optional
-
-**① Consistency test (~1hr):** send the same image through the system 5 times, measure variance. YOLO should answer identically every time; the LLM may vary 1-2 times out of 5 — an architectural limitation of LLMs, not something that goes away with newer versions.
-
-**② Nutrition experiment (~2hr):** ask the LLM 30 nutrition questions, compare against real reference tables. Must be asked separately from menu recommendation, or you can't isolate whether an error is a nutrition error or a wrong-menu error.
-
-### 5.6 Error Analysis
-| Image condition | YOLO F1 | LLM F1 |
-|---|---|---|
-| On table | 0.78 | 0.85 |
-| In fridge (heavy occlusion) | 0.45 | 0.79 |
-
-> The widening gap under hard conditions is a strong finding — the specialized model degrades much faster under occlusion, which is the realistic household scenario.
+**File ownership:** `data/`, `nlp/`, `recommender/`, `api/` and the web frontend are
+mine. `detect()` / `best.pt` / `thresholds.yaml` belong to Person 1 — **report bugs,
+don't fix them yourself.**
 
 ---
 
-## 6. Answering "Why Not Just Use ChatGPT?"
+# PART B — WEB TRACK MILESTONES
 
-**Layer 1 — Concede first:** "For a casual user who's just curious, ChatGPT is perfectly sufficient. This project doesn't claim to be more convenient or more accurate at reading images."
+- [ ] FastAPI endpoints (image upload multipart, chat turn, seasoning list)
+- [ ] Frontend chat UI with image paste → thumbnails in input box, Enter-to-send
+- [ ] Seasoning tab (tick before chat, locked mid-conversation)
+- [ ] Intent classifier (LLM) + ambiguity handling
+- [ ] Confirm/reject loop UI (checklist + add-text field → re-confirm)
+- [ ] Seasoning Option A implemented in `recommend.py` (+ weight decided)
+- [ ] Per-conversation state machine (extract → confirm → reject-edit → recommend)
+- [ ] Swap `mock_cv` for real `detect()` + `thresholds.yaml`
+- [ ] AWS deploy (instance chosen, cost checked)
+- [ ] End-to-end test: real photo → detect/NLP → confirm loop → recommender → reply
 
-**Layer 2 — "Free for the user" ≠ "free for whoever builds the service":** 1,000 users × 3 calls/day = 90,000 calls/month; the free tier caps at 500/day — it simply cannot support that. The real question isn't "what should one user use" but "how should whoever builds this service invest."
-
-**Layer 3 — Dimensions where our system genuinely wins (measurable):**
-| Aspect | Asking ChatGPT | Our system |
-|---|---|---|
-| Steps | Open app → photo → type prompt → read | Send photo on LINE → done |
-| Health conditions | Retype every time | Remembered in profile |
-| Recipes | Freshly generated, may hallucinate | Verified database |
-| Nutrition | Model's guess | Real sourced data |
-| Speed | 3-8s | 0.2s |
-| Consistency | Repeat query, different answer | 100% consistent |
-| Output | Free text | Structured JSON, usable by other systems |
-
-**Layer 4 — Wins that can't be measured in this project (used in discussion):** works offline (relevant for smart fridges/IoT), privacy (kitchen photos are personal; free-tier LLMs may train on them), full control and improvability (fix a misdetection by adding training images; version doesn't silently change).
-
-**Short answer:**
-> "This project doesn't claim to be better than ChatGPT. It answers: if you were building a real service with many users, how much could training your own model reduce cost, at what accuracy trade-off, and where's the right cutoff point?"
+(No dates set yet.)
 
 ---
 
-## 7. Budget
+## Open Items / Risks
 
-| Item | Cost |
+1. **Which LLM** for the confirm/reject classifier + prompt design + ambiguity handling.
+2. **AWS instance type** for YOLO inference (GPU cost control; not free tier).
+3. **Seasoning weight** in the TF-IDF vector relative to main ingredients.
+4. **Scope sign-off:** confirm with the academic advisor/team that this standalone web
+   track running in parallel with the LINE OA track is within agreed project scope.
+5. **Gemini 500 RPD quota:** the intent classifier and the `detect()` YOLO→Gemini
+   fallback draw from the same 500 requests/day Flash Lite budget (15 RPM). The
+   classifier fires on every confirm turn, and each `reject` loop (§3.4) triggers
+   another call, so one conversation can spend several requests. Load per user is
+   unmeasured; decide a mitigation (e.g. cap loop iterations, cheap keyword
+   short-circuit for plain "yes"/"no", separate key/model for the classifier) before
+   any public demo.
+
+---
+
+## License
+YOLO is **AGPL-3.0**, which requires the entire codebase (including custom-trained
+models) to be open source. Fix: keep the GitHub repo public with an AGPL-3.0 `LICENSE`
+file (already present).
+
+## Glossary
+
+| Term | Meaning |
 |---|---|
-| Colab Pro × 2 months | 700-850 ฿ |
-| LLM API | 0 ฿ (free tier sufficient) or 70-150 ฿ if comparing 2 tiers |
-| Ingredients for test shooting (normal groceries) | 150-250 ฿ |
-| **Total** | **850-1,250 ฿ → ~425-625 ฿ per person** |
-
-**Colab Pro:** ~100 compute units/month, T4 uses ~2 CU/hr; estimate 15-20 training runs × 2-3hrs = 80-100 CU. No background execution on Pro (that's Pro+ only) — must keep the tab open. Use `save_period=10` to checkpoint to Drive, and Kaggle as backup (30 free GPU hrs/week).
-
-**Biggest risk — LINE quota:** the Thai free LINE OA plan allows a limited number of messages/month with no top-up option; exceeding it silences the bot until next month. Reply messages don't count toward quota; push/broadcast/multicast do. Mitigation: rely on Reply as primary, push as fallback only; debounce 2.5-3s; use templates instead of re-calling the LLM on the slow path; create 2 LINE OA accounts (dev/demo) to double the free quota; check quota daily via `GET /v2/bot/message/quota/consumption` during weeks 8-10.
-
-**Deployment — laptop + Cloudflare Tunnel:** chosen because cloud cold starts (20-60s) can exceed the reply token's lifespan (10-30s). No cold start, 100% free HTTPS, easiest debugging, `.pt` weights work directly without ONNX conversion. Demo day must run on the local machine — never risk the cloud on presentation day.
-
-**License:** YOLO uses **AGPL-3.0** (a strict license requiring the entire codebase, including custom-trained models, to be open source). Free fix: make the GitHub repo public with an AGPL-3.0 LICENSE file — also good for the project (reproducibility, can be linked in the report).
+| PyThaiNLP | Python library for Thai text processing (word segmentation) |
+| Fuzzy matching | Matching words that are close but not identical |
+| Trie | Prefix tree; resolves ingredient names that are prefixes of others |
+| TF-IDF | Weighting where rarer ingredients count more |
+| Cosine similarity | 0–1 similarity between two vectors |
+| Intent classifier | LLM step that labels a free-text reply confirm / reject / confirm+correction |
+| Multipart form | HTTP upload format used to send images directly to the API |
 
 ---
 
-# PART B — PERSON 2 ROADMAP (Language & System)
+# APPENDIX — Legacy: LINE OA Track (NOT targeted by this repo)
 
-> Final deliverable: `recommend(ingredients, health_tags, excluded) → Top-3 menus`
+> Kept as historical reference only. Nothing below describes what this repo builds.
 
-## Overview
-
-Your work splits into 4 major chunks:
-1. **NLP** — turn Thai text into structured data the system can use (PyThaiNLP)
-2. **Recipe DB + Recommender** — the menu database and the matching/scoring system
-3. **LINE Bot / System** — receive user input, reply, manage sessions
-4. **Test-B photo shoot** — help Person 1 with image data collection (Week 2 only)
-
-Principles to hold onto throughout:
-- **Skeleton First** → write every function's skeleton by Week 2 (fake internals are fine at first), then upgrade later
-- **Never edit Person 1's files** — report bugs, don't fix them yourself
-- **dev/test are separate** — you can tune your dictionary/recommender on the dev set anytime, but the test set is off-limits (Person 1 holds it, opened only in Week 10)
-
-## Week 1 — Laying the Foundation
-
-**Main task: `ingredients.json` + synonyms**
-Build the "central dictionary" that connects CV (YOLO), NLP, and Recommender.
-```json
-{
-  "egg": {
-    "name_th": "ไข่ไก่",
-    "yolo_class_id": 0,
-    "synonyms": ["ไข่", "ไข่ไก่", "ไข่เป็ด", "egg"]
-  }
-}
+### L1. LINE production flow
 ```
-> This is the single most common failure point — if CV says "chicken egg" and NLP says "egg" with no synonym link, the recommender can't recognize them as the same ingredient.
-
-**Checklist:**
-- [x] Draft a list of 12-15 ingredients (coordinate with Person 1 to match what they'll train YOLO on)
-- [x] Day 4: 🔒 **Lock the ingredient list jointly with Person 1** (should not change easily after this)
-- [x] Days 5-7: write the skeleton for all files + understand Person 1's contract tests
-- [x] 📤 **Deliverable:** hand `ingredients.json` to Person 1 this week (if late, Person 1 can't merge the dataset)
-
-> 💡 **Beginner note — what's a contract test?** A test suite that checks whether your function returns data in the agreed shape (does it have the right keys, is confidence between 0-1, etc). If it fails, you're blocked from pushing to main. It's a checkpoint that prevents things from breaking later when everyone's code comes together.
-
-## Week 2 — Skeleton + Photo Shoot
-
-**Task 1: LINE Bot skeleton (mock)**
-Make the LINE Bot actually receive messages/photos and actually reply — using fake (mock) values for now.
-```python
-# nlp/extract.py — example mock
-def extract(text):
-    return {"ingredients": ["shrimp"], "health_tags": [], "excluded": []}
+User sends photo/text on LINE → Webhook receives → respond HTTP 200 immediately
+→ buffer into session + wait 2.5-3s (debounce) → [image] YOLO11 / [text] PyThaiNLP
+→ low conf / negation → LLM → merge → Recommender → Top-3 + have/missing + nutrition
+→ template response → reply token (free)
 ```
-Goal by end of Week 2: send a message to the LINE Bot and get a real reply back (even if the reply comes from mock data) + contract tests passing.
+Accepted image only / text only / both; multiple images merged into one session, deduped
+by highest confidence, capped at 5.
 
-**Task 2: Shoot + label batch_B (30 images)**
-- Shoot per the recommended split: single/multiple items on table ~70%, in-fridge/occluded ~20-30%
-- Don't shoot it all in one day — spread across 2-3 days at different times for lighting variety
-- Agree on the labeling guideline with Person 1 before shooting: does >70% occlusion count? does an item cut off at the frame edge count? etc.
+### L2. LINE-specific mechanics
+- **Reply token:** free, single-use, expires in 10-30s. Reply is primary; push is fallback only.
+- **Quick Reply:** confirm low-confidence ingredients ("Detected onion? [Yes] [No]").
+- **Biggest risk — LINE quota:** the Thai free OA plan has a limited monthly message
+  quota, no top-up; reply messages don't count, push/broadcast/multicast do. Mitigation:
+  Reply as primary, debounce 2.5-3s, templates, 2 OA accounts (dev/demo), daily check of
+  `GET /v2/bot/message/quota/consumption` in weeks 8-10.
+- **Deployment:** laptop + Cloudflare Tunnel, chosen because cloud cold starts (20-60s)
+  can exceed the reply token lifespan; demo day always ran locally.
 
-**Checklist:**
-- [x] LINE Bot replies successfully with mock data
-- [x] Contract tests pass
-- [ ] batch_B fully shot (30 images) + metadata logged (filename, ingredients, lighting, scene_type, occlusion)
-- [ ] Cross-check: label 10 of Person 1's images to align standards
+### L3. Old budget (LINE capstone)
+Colab Pro ×2 months 700-850 ฿; LLM API 0 ฿ (or 70-150 ฿ for two tiers); test groceries
+150-250 ฿. Total 850-1,250 ฿ (~425-625 ฿ per person).
 
-## Weeks 3-4 — Recipe DB (Your Heaviest Task)
+### L4. "Why not just use ChatGPT?" (capstone framing)
+Concede first (casual users are fine with ChatGPT); "free for the user" ≠ "free for
+whoever builds the service" (1,000 users × 3 calls/day = 90,000/month vs. a 500/day free
+cap); measurable wins: fewer steps, remembered health profile, verified recipe database,
+sourced nutrition, speed (0.2s vs 3-8s), 100% consistency, structured JSON output;
+unmeasured wins: offline use, privacy, full control over versioning.
 
-**Main task: 40-recipe database**
-```json
-{
-  "id": "th_001",
-  "name_th": "ผัดกะเพราไก่",
-  "main_ingredients": ["chicken", "garlic", "chili", "holy_basil"],
-  "optional_ingredients": ["egg", "onion"],
-  "seasonings": ["fish_sauce", "oyster_sauce", "sugar"],
-  "health_tags": ["clean"],
-  "excluded_for": ["vegetarian", "vegan"],
-  "nutrition": {"kcal": 450, "protein": 32, "fat": 18, "carb": 35},
-  "nutrition_source": "INMUCAL",
-  "cook_time_min": 15
-}
-```
+### L5. Original 40-recipe / 12-15 class scale
+The capstone began with a 40-menu DB and 12-15 YOLO classes; both are superseded by the
+numbers in §5 above.
 
-⚠️ **Critical cautions:**
-- Must reference real nutrition data (Thai Food Composition Database / INMUCAL / Department of Health) — never estimate; otherwise the nutrition experiment is invalid
-- Basic seasonings (fish sauce, sugar, etc.) don't count toward ingredient matching — everyone has them at home
-- **The definition of "vegan" must include fish sauce and shrimp paste** ← the most commonly missed detail
-- The Recipe DB must **not be split with anyone else** — differing standards (one person considers Pad Kra Pao "clean," the other doesn't) creates the hardest-to-find bug of all. Do it solo, start to finish.
-- **Note: dessert/sweet dishes are allowed in the recipe database, not just savory dishes** — this was clarified after an earlier session assumed savory-only. Same rules apply: main/optional ingredients from the current dictionary, real fetchable nutrition source, real recipe_source_url.
-
-**Checklist:**
-- [x] Find a reliable nutrition source before you start filling data
-- [x] Fill in all 40 menus (mix of authentic Thai + international dishes commonly cooked by Thais, e.g. fried rice, spaghetti)
-- [x] Define health tags so they're verifiable (clean/keto/vegetarian/vegan)
-- [x] Wait for the 🔒 canonical ingredient list window to close (Day 4 of Week 1) before you start filling — never fill before it's locked
-
-## Week 5 — NLP Comes Alive
-
-**Main task: NLP extraction + fuzzy matching**
-```
-Input:  "I have shrimp and egg, want clean, no pork"
-Output: {"ingredients": ["shrimp","egg"], "health_tags": ["clean"], "excluded": ["pork"]}
-```
-Three capabilities required:
-1. **Thai word segmentation** (PyThaiNLP) — Thai has no spaces, so you need a tokenizer first
-2. **Fuzzy matching** — catch near-miss misspellings
-3. **Negation detection** (also this week) — detect "no," "without," etc.
-
-> 💡 Don't train your own NER model (a model that learns to find ingredient names in a sentence) — that would need thousands of labeled sentences, not worth it for just 15-20 vocabulary terms. Dictionary + fuzzy matching is enough.
-
-**Checklist:**
-- [x] Thai word segmentation via PyThaiNLP working
-- [x] Fuzzy matching catches misspellings *(English typos reliably; Thai typo recovery is a documented limitation — see concern.md, Week 5 session log)*
-- [x] Negation detection catches "no X," "without X," etc.
-- [x] **Measure on your own dev set** (20 sentences) — no need to send this to anyone yet, tune freely *(22 sentences, 100% pass, `data/nlp_dev_set.json`)*
-
-## Week 6 — Check In + Be Ready for Extra Work
-
-- 10-minute sync with Person 1: who's more overloaded? If Person 1 is stuck on dataset merging (Weeks 3-4), some work may get shifted to you — e.g. writing the 60 test sentences, entering more nutrition data, or helping with the literature review.
-- Prepare mentally for this possibility — it's not abnormal.
-
-## Week 7 — Recommender (The Heart of Your Side)
-
-**Main task: Recommender via Content-Based Filtering**
-```
-Input:  ["chicken","garlic","chili"], health=["clean"]
-Output: [{"name":"Pad Kra Pao Chicken", "score":0.87,
-          "have":["chicken","garlic","chili"],
-          "missing":["holy_basil"],
-          "nutrition":{"kcal":450,...}}]
-```
-**How it works:**
-- Convert each menu into a vector representing which ingredients it uses
-- Apply TF-IDF weighting — rare ingredients (like shrimp) carry more weight than ingredients present in every recipe (like oil)
-- Measure similarity via cosine similarity (0-1, closer to 1 = more similar)
-- Scoring is partial — don't require a complete ingredient match, since no one has a full fridge
-
-> 💡 **Beginner note:** Don't worry about this needing to be "cutting-edge research" — the project docs explicitly say this is **implementation, not research**. TF-IDF + cosine is a standard, well-established method — nothing new needs to be invented here.
-
-**Checklist:**
-- [x] Convert menus into vectors
-- [x] Compute TF-IDF + cosine similarity
-- [x] Filter by health tags (excluded_for) *(AND across requested tags; excluded ingredients drop a dish only via `main_ingredients`/`seasonings`, never `optional_ingredients` — see `concern.md` session log)*
-- [x] Display "have" vs "need to buy" clearly separated *(`missing` is main-ingredients-only; a missing optional is not a shopping-list item)*
-- [x] Measure on your dev set first *(`data/recommender_dev_set.json`, 8 cases, all passing — `tools/run_recommender_dev_set.py`)*
-
-> 📝 **TODO, not yet implemented (recorded here so it stops being an unwritten
-> intention that only lives in conversation):** `recommend()`'s TF-IDF vectorizer
-> currently treats every ingredient key identically, regardless of whether it's
-> photo-detectable (`yolo_class_id` set in `data/ingredients.json`) or text-only
-> (`null`). The idea, never built: weight non-YOLO ingredients lower in the
-> similarity score, since a user is far less likely to have *typed* a text-only
-> ingredient (e.g. `pla_ra`, `yanang`) than to have it visible in a photo — so a
-> dish that only matches on text-only ingredients is a weaker signal than one
-> matching on photo-detectable ones. This would need a per-token weight vector
-> multiplied against the TF-IDF matrix (or a second `TfidfVectorizer` fit
-> separately), not a change to `_recipe_document()`'s current main×2/optional×1
-> repetition scheme, which is solving a different problem (mains vs. optionals,
-> not photo vs. text). Not attempted — this is a note for a future session to
-> pick up deliberately, not something to guess into `recommend.py` on the side.
-
-## Week 8 — Complete the Chat System
-
-Several tasks converge this week:
-
-| Task | Details |
-|---|---|
-| Session + debounce | merge photo+text that arrive at different times; wait 2.5-3s before processing |
-| Reply token strategy | use **Reply** as primary (free, doesn't count toward quota); push only as fallback |
-| Quick Reply | confirm low-confidence ingredients, e.g. "Detected onion? [Yes] [No]" |
-| Template response | assemble replies via template (not LLM — faster and preserves reply-token lifespan) |
-
-⚠️ Thai free LINE OA plan has a limited monthly message quota with no top-up option. Reply messages don't count toward quota; Push/Broadcast do — so design to rely on Reply as much as possible.
-
-📤 **Receiving from Person 1 this week:** `best.pt` + `detect()`, and `thresholds.yaml` — **not blocking**; if Person 1 isn't ready, keep using mocks, no need to wait.
-
-**Checklist:**
-- [ ] Session buffer + debounce working correctly (test sending photo+text out of order)
-- [ ] Reply token used as primary, with push fallback
-- [ ] Quick Reply working for low-confidence cases
-- [ ] Template response complete: menu + have/missing + nutrition
-
-## Week 9 — Swap Mocks for the Real Thing
-
-- Replace all mock functions with the real components from Person 1 (`detect()`, `thresholds.yaml`)
-- Test end-to-end: real photo → YOLO/LLM → NLP → Recommender → reply
-- Because Skeleton First was followed from the start, **this step should require no "re-merging."** If problems appear, it means the interface had an unclear agreement somewhere from the beginning.
-
-## Week 10 — Test Set Opens (Once)
-
-- Person 1 opens the test set to measure real results (you don't touch this test set)
-- Your side: **fix bugs** found during end-to-end testing
-- Careful: if you find a bug in Person 1's code, **report it, don't fix it yourself**
-
-## Weeks 11-12 — Analysis + Report Writing
-
-**Chapters you're responsible for writing:**
-- Background + literature review
-- Methodology: NLP + Recommender + System
-- Conclusion + limitations (half, then you merge with Person 1's half)
-
-## 📤 4 Cross-Handoff Points (Critical — Don't Miss These)
-
-| # | From→To | What | Week | If You're Late |
-|---|---|---|---|---|
-| 1 | **You → Person 1** | `ingredients.json` | 1 | Person 1 can't merge the dataset |
-| 2 | **You → Person 1** | `extract()` | 5 | Person 1 can't build the LLM text baseline |
-| 3 | Person 1 → You | `best.pt` + `detect()` | 8 | Not blocking — keep using mocks |
-| 4 | Person 1 → You | `thresholds.yaml` | 8 | Not blocking — use default values |
-
-> Notice that the first two handoffs (Weeks 1 and 5, both from you) block Person 1's progress — these deserve extra priority.
-
-## 📁 Files You Own (No One Else Edits These)
-```
-data/ingredients.json
-data/recipes.json
-data/test_b/batch_B/          (photos you shot)
-nlp/
-recommender/
-api/
-```
-
-## 🧠 Key Technical Terms (Beginner-Friendly Glossary)
-
-| Term | Plain-English Meaning |
-|---|---|
-| PyThaiNLP | A Python library for processing Thai text, e.g. word segmentation |
-| Fuzzy matching | Matching words that are close but not exactly spelled the same |
-| TF-IDF | A weighting method — rarer terms/ingredients get more weight, more importance |
-| Cosine similarity | A 0-1 number showing how similar two things are |
-| Debounce | Waiting briefly before processing, in case more data arrives (prevents duplicate firing) |
-| Reply token | A free reply code from LINE, usable only once, expires fast (10-30s) |
-| Contract test | A test suite checking whether your code returns data in the agreed format |
-| Overfitting | When a model/dictionary is tuned so well to data it's seen that it fails on new data |
+### L6. Old Person 2 roadmap and handoffs
+The 12-week Person 2 roadmap (Weeks 1-12) and the four cross-handoffs
+(`ingredients.json` → P1 wk 1, `extract()` → P1 wk 5, `best.pt`+`detect()` ← P1 wk 8,
+`thresholds.yaml` ← P1 wk 8) live in the LINE OA repo and in the git history of this file.
+Test-B photo shoot, Test-A/B splits and the experiment tables belong to that repo too.
 
 ---
 
-*Source: senior_project_summary.md — full project summary document*
+*Rewritten for the standalone web chatbot track. Full prior version: `git show HEAD:Claude.md`.*
