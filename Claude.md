@@ -257,14 +257,14 @@ don't fix them yourself.**
 
 # PART B — WEB TRACK MILESTONES
 
-- [ ] FastAPI endpoints (image upload multipart, chat turn, seasoning list)
+- [x] FastAPI endpoints (image upload multipart, chat turn, seasoning list) — `api/app.py`: /detect, /extract, /confirm, /correct, /seasoning, /recommend + /health
 - [ ] Frontend chat UI with image paste → thumbnails in input box, Enter-to-send
 - [ ] Seasoning tab (tick before chat, locked mid-conversation)
-- [ ] Intent classifier (LLM) + ambiguity handling
+- [x] Intent classifier (LLM) + ambiguity handling — `api/intent.py`, Claude Haiku 4.5, `unclear` intent, keyword fallback
 - [ ] Confirm/reject loop UI (checklist + add-text field → re-confirm)
-- [ ] Seasoning Option A implemented in `recommend.py` (+ weight decided)
-- [ ] Per-conversation state machine (extract → confirm → reject-edit → recommend)
-- [ ] Swap `mock_cv` for real `detect()` + `thresholds.yaml`
+- [ ] Seasoning Option A implemented in `recommend.py` (+ weight decided) — *implemented (additive bonus); `SEASONING_WEIGHT = 0.3` is still a placeholder, so this stays open*
+- [x] Per-conversation state machine (extract → confirm → reject-edit → recommend) — `api/state.py`, in-memory, 1 h idle TTL
+- [ ] Swap `mock_cv` for real `detect()` + `thresholds.yaml` — *`/detect` already runs the real YOLO wrapper and reads `thresholds.yaml`; open until Person 1 sets the real threshold (file currently at the temporary 0.01) and the Gemini fallback exists*
 - [ ] AWS deploy (instance chosen, cost checked)
 - [ ] End-to-end test: real photo → detect/NLP → confirm loop → recommender → reply
 
