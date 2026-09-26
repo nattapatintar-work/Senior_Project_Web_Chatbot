@@ -20,6 +20,7 @@ uvicorn>=0.30.0          # ASGI server:  uvicorn api.app:app --port 8000
 python-multipart>=0.0.9  # required by FastAPI to parse the /detect image upload
 slowapi>=0.1.9           # per-IP rate limiting
 httpx>=0.27.0            # FastAPI TestClient (tests/test_web_api.py)
+anthropic>=1.0.0         # /confirm intent classifier (api/intent.py, Claude Haiku 4.5)
 
 # --- NLP (Week 5) ----------------------------------------------------------
 pythainlp>=5.0.0         # Thai word segmentation; Thai has no spaces between

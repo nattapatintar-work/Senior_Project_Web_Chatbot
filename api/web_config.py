@@ -37,6 +37,14 @@ def anthropic_key_configured() -> bool:
     return not (key.startswith("your_") and key.endswith("_here"))
 
 
+# /confirm intent classifier (api/intent.py). Pinned snapshot of Claude Haiku 4.5:
+# cheap and fast enough for a short classification on the hot path of every
+# confirm turn. A slow call gives up quickly (no SDK retries) because a keyword
+# fallback exists and the user is waiting.
+INTENT_MODEL = "claude-haiku-4-5-20251001"
+INTENT_TIMEOUT_SECONDS = 5.0
+
+
 def mask_secret(value: str) -> str:
     """
     Safe-to-log form of a secret: first 4 characters + ellipsis, or "<unset>".

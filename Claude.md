@@ -141,8 +141,10 @@ documented limitation (see `concern.md`).
 - **Input:** the user's free-text reply to the confirm-ingredients prompt.
 - **Output:** `confirm` / `reject` / `confirm+correction` (mixed in one sentence).
 - **Why an LLM:** keyword matching can't parse mixed sentences.
-- **STILL OPEN:** which LLM API (Gemini, already used for vision, or another), prompt
-  design, and error handling when the interpretation is ambiguous.
+- **Decided:** Claude Haiku 4.5 via the Anthropic API (not Gemini). One forced tool call
+  returns the intent plus the user's own words for edits; `extract()` resolves those words
+  to canonical keys, so the model can't invent one. Ambiguity -> `unclear`. Any failure ->
+  keyword classifier + one `[intent] ...` log line. Key: `ANTHROPIC_API_KEY` in `.env`.
 
 ### 4.4 Recommender
 - TF-IDF + cosine similarity between the user's ingredient set and each recipe's
@@ -180,8 +182,8 @@ documented limitation (see `concern.md`).
 | Gemini 3.6 / 3.5 / 2.5 Flash | 5 | 20 | ❌ too limited |
 | Gemini Pro | 0 | 0 | ❌ no free-tier access |
 
-**Roles here:** (1) `detect()` fallback when YOLO isn't confident, (2) confirm/reject
-intent classifier (unless the open item picks a different provider).
+**Roles here:** (1) `detect()` fallback when YOLO isn't confident (not built yet). The
+confirm/reject intent classifier is **not** a Gemini role — it uses Claude Haiku 4.5 (§4.3).
 
 Rules:
 - 🚫 The LLM never selects the final menu (would make the Recommender unmeasurable).
@@ -190,8 +192,8 @@ Rules:
   contamination.
 - Never list candidate classes in the prompt (e.g. "is this galangal, ginger, or
   fingerroot") — over-helping the model.
-- Free-tier RPD (500) is a hard ceiling for a public web app — keep it in mind for the
-  classifier, which adds an LLM call per confirm turn.
+- Free-tier RPD (500) is a hard ceiling for a public web app; it now applies to the
+  `detect()` fallback only, since the classifier moved to the Anthropic API.
 
 ---
 
@@ -272,18 +274,21 @@ don't fix them yourself.**
 
 ## Open Items / Risks
 
-1. **Which LLM** for the confirm/reject classifier + prompt design + ambiguity handling.
+1. ~~**Which LLM** for the confirm/reject classifier~~ — **CLOSED:** Claude Haiku 4.5
+   (`claude-haiku-4-5-20251001`), forced `report_intent` tool call, keyword fallback on any
+   failure (`api/intent.py`). Ambiguous replies resolve to `unclear`, never a guess.
 2. **AWS instance type** for YOLO inference (GPU cost control; not free tier).
 3. **Seasoning weight** in the TF-IDF vector relative to main ingredients.
 4. **Scope sign-off:** confirm with the academic advisor/team that this standalone web
    track running in parallel with the LINE OA track is within agreed project scope.
-5. **Gemini 500 RPD quota:** the intent classifier and the `detect()` YOLO→Gemini
-   fallback draw from the same 500 requests/day Flash Lite budget (15 RPM). The
-   classifier fires on every confirm turn, and each `reject` loop (§3.4) triggers
-   another call, so one conversation can spend several requests. Load per user is
-   unmeasured; decide a mitigation (e.g. cap loop iterations, cheap keyword
-   short-circuit for plain "yes"/"no", separate key/model for the classifier) before
-   any public demo.
+5. **Gemini 500 RPD quota (`detect()` fallback only):** the intent classifier is no longer
+   on this budget — it moved to the Anthropic API and has its own cost/limit profile
+   (measured live, 8 calls: ~1,280 input + ~75 output tokens per `/confirm` on Haiku 4.5 at
+   $1/$5 per MTok, about $0.0016 per call, ~1.1 s average latency (0.95–1.5 s); limited by
+   the Anthropic account's rate limits and spend, not the Gemini free tier). Each `reject` loop (§3.4) still costs one more classifier call, so
+   the cost per conversation is unmeasured; the keyword fallback keeps `/confirm` working
+   through an API outage or rate limit. The Gemini free-tier ceiling (500/day, 15 RPM)
+   now applies only to the not-yet-built YOLO→Gemini `detect()` fallback.
 
 ---
 
