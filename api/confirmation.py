@@ -1,6 +1,10 @@
 """
 api/confirmation.py
 ====================
+LEGACY (LINE OA track) -- the web backend confirms via POST /confirm +
+api/intent.py and the stage machine in api/state.py. Kept until removal is
+approved; do not extend.
+
 Remembers, per user, that they have been asked "anything else?" after a
 debounce window closed — and what was already gathered — so the NEXT incoming
 message from that user can be told apart from a brand-new request.

@@ -1,6 +1,9 @@
 """
 api/main.py
 ===========
+LEGACY (LINE OA track) -- replaced by api/app.py (FastAPI web backend).
+Kept until removal is approved; do not extend.
+
 The LINE chatbot webhook.
 
 STATUS: Week 2 — real webhook, mock brains

@@ -245,3 +245,64 @@ def test_extract_then_recommend_end_to_end():
     pork_dishes = {r["id"] for r in load_recipes() if "pork" in r["main_ingredients"]}
     assert not (_ids(results) & pork_dishes)
     assert isinstance(results, list)
+
+
+# ---------------------------------------------------------------------------
+# Seasoning bonus (Option A): ticked seasonings only ever ADD to a score
+# ---------------------------------------------------------------------------
+
+_USER = ["chicken", "garlic"]
+
+
+def _top_dish_seasonings() -> tuple[dict, list[str]]:
+    """The best plain-cosine dish for _USER, plus that recipe's own seasonings."""
+    top = recommend(_USER, top_k=1)[0]
+    recipe = next(r for r in load_recipes() if r["id"] == top["id"])
+    return top, list(recipe["seasonings"])
+
+
+def test_no_seasonings_argument_is_identical_to_before():
+    plain = recommend(_USER, top_k=10)
+    assert recommend(_USER, top_k=10, seasonings=None) == plain
+    assert "seasonings_matched" not in plain[0]
+
+
+def test_ticking_a_dishs_seasonings_never_lowers_its_score():
+    top, seasonings = _top_dish_seasonings()
+    assert seasonings, "test needs a top dish that lists seasonings"
+    boosted = next(
+        d for d in recommend(_USER, top_k=400, seasonings=seasonings) if d["id"] == top["id"]
+    )
+    assert boosted["score"] >= top["score"]
+    assert boosted["seasonings_matched"] == sorted(seasonings)
+
+
+def test_a_missing_ticked_seasoning_does_not_drop_the_dish():
+    from recommender.recommend import _KNOWN_INGREDIENTS
+
+    top, seasonings = _top_dish_seasonings()
+    unused = next(
+        key for key, e in _KNOWN_INGREDIENTS.items()
+        if e.get("is_seasoning") and key not in seasonings
+    )
+    ids_with = _ids(recommend(_USER, top_k=400, seasonings=[unused]))
+    assert top["id"] in ids_with
+    assert ids_with == _ids(recommend(_USER, top_k=400))
+
+
+def test_non_seasoning_keys_in_seasonings_are_ignored():
+    plain = recommend(_USER, top_k=10)
+    ignored = recommend(_USER, top_k=10, seasonings=["chicken", "not_a_real_key"])
+    assert [(d["id"], d["score"]) for d in ignored] == [(d["id"], d["score"]) for d in plain]
+
+
+def test_seasonings_alone_still_return_nothing():
+    """The bonus never resurrects a dish with zero ingredient cosine."""
+    assert recommend([], seasonings=["fish_sauce", "sugar"]) == []
+    assert recommend(["fish_sauce"], seasonings=["fish_sauce"]) == []
+
+
+def test_boosted_score_stays_within_zero_to_one():
+    _, seasonings = _top_dish_seasonings()
+    for dish in recommend(_USER, top_k=400, seasonings=seasonings):
+        assert 0.0 <= dish["score"] <= 1.0

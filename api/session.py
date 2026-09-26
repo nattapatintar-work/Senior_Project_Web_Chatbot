@@ -1,6 +1,10 @@
 """
 api/session.py
 ==============
+LEGACY (LINE OA track) -- the web backend has no debounce (processing starts
+on Enter) and uses api/state.py instead. Kept until removal is approved; do
+not extend.
+
 Collects the messages one user sends in quick succession and processes them as
 a single request.
 

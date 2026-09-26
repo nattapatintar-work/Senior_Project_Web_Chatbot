@@ -14,6 +14,13 @@ python-dotenv>=1.0.0     # load secrets from a .env file instead of hardcoding
                          # them — a leaked channel token lets anyone post as
                          # your bot, so .env must never be committed to git
 
+# --- Web chatbot backend (api/app.py) ----------------------------------------
+fastapi>=0.115.0         # REST framework for the six web endpoints
+uvicorn>=0.30.0          # ASGI server:  uvicorn api.app:app --port 8000
+python-multipart>=0.0.9  # required by FastAPI to parse the /detect image upload
+slowapi>=0.1.9           # per-IP rate limiting
+httpx>=0.27.0            # FastAPI TestClient (tests/test_web_api.py)
+
 # --- NLP (Week 5) ----------------------------------------------------------
 pythainlp>=5.0.0         # Thai word segmentation; Thai has no spaces between
                          # words, so text must be tokenized before matching

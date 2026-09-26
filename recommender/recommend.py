@@ -29,12 +29,18 @@ Missing MAIN ingredients are reported in "missing" as a shopping list;
 optional ingredients never block a dish and never show up as "missing" --
 they show up in "have" only if the user happens to have them.
 
-SEASONINGS NEVER INFLUENCE MATCHING. Claude.md:427 -- everyone has fish sauce
-and sugar at home, so they must not affect which dish wins. Two places this
-is enforced:
-    - a recipe's `seasonings` list is never part of its TF-IDF document
-    - a user's ingredients list has seasonings stripped before it is
-      vectorised, so typing "fish_sauce" cannot itself boost a score
+SEASONINGS ARE A BONUS, NEVER A REQUIREMENT (Option A, web track). Two rules:
+    - a recipe's `seasonings` list is never part of its TF-IDF document, and a
+      user's `ingredients` list still has seasonings stripped before it is
+      vectorised -- so typing "fish_sauce" in free text cannot boost a score
+    - seasonings the user explicitly ticked arrive through the separate
+      `seasonings` argument and add a bonus AFTER the cosine score:
+          score = min(1.0, cosine + SEASONING_WEIGHT * overlap)
+          overlap = |ticked & recipe.seasonings| / |recipe.seasonings|
+      A recipe missing a ticked seasoning is still returned, just scored lower
+      than one that matches it. The bonus never resurrects a dish whose
+      ingredient cosine is 0 ("nothing in common is not a recommendation").
+      With seasonings=None the output is identical to the pre-Option-A code.
 
 Excluded ingredients ("no pork") only drop a dish if that ingredient is in
 main_ingredients or seasonings. An excluded ingredient in optional_ingredients
@@ -61,6 +67,12 @@ from nlp.extract import load_ingredients
 # Where the recipe database lives. __file__ is this file's own path, so this
 # works no matter which folder you run python from.
 RECIPES_PATH = Path(__file__).parent.parent / "data" / "recipes.json"
+
+# How much a fully matched seasoning list is worth, on the same 0-1 scale as the
+# cosine score (a recipe whose every seasoning the user ticked gains this much).
+# Not yet decided -- an open item in Claude.md; kept as one named constant so it
+# can be tuned without touching the scoring logic.
+SEASONING_WEIGHT = 0.3
 
 
 def load_recipes() -> list[dict]:
@@ -151,6 +163,7 @@ def recommend(
     health_tags: list[str] | None = None,
     excluded: list[str] | None = None,
     top_k: int = 3,
+    seasonings: list[str] | None = None,
 ) -> list[dict]:
     """
     Score every dish against what the user has, return the best `top_k`.
@@ -164,9 +177,15 @@ def recommend(
                      these as a main ingredient or seasoning is dropped
                      entirely; as an optional ingredient it is kept.
         top_k:       how many dishes to return. Defaults to 3.
+        seasonings:  seasoning keys the user ticked, e.g. ["fish_sauce"]. Bonus
+                     only (see the module docstring); None or [] leaves every
+                     score exactly as the plain cosine computes it. Non-seasoning
+                     keys passed here are ignored.
 
     Returns:
-        A list of at most `top_k` dicts, best score first:
+        A list of at most `top_k` dicts, best score first (each also carries
+        "seasonings_matched": [...] -- the ticked seasonings this dish uses --
+        but only when the `seasonings` argument was passed):
             {
                 "id":          "th_001",              # matches recipes.json
                 "name_th":     "ผัดกะเพราไก่",
@@ -193,9 +212,13 @@ def recommend(
     health_tags = health_tags or []
     excluded = excluded or []
 
-    # Seasonings never influence matching (Claude.md:427) -- strip them from
-    # the user's own list before anything else touches it. Typing "fish_sauce"
-    # must not itself boost any dish's score.
+    # Seasonings typed into `ingredients` never influence matching -- strip
+    # them from the user's own list before anything else touches it. Typing
+    # "fish_sauce" must not itself boost any dish's score. Ticked seasonings
+    # take the separate, explicit `seasonings` path below (bonus only).
+    ticked_seasonings = {
+        key for key in (seasonings or []) if _is_seasoning(key, _KNOWN_INGREDIENTS)
+    }
     user_ingredients = [
         key for key in ingredients if not _is_seasoning(key, _KNOWN_INGREDIENTS)
     ]
@@ -237,24 +260,32 @@ def recommend(
         # Clamp + round: cosine similarity can return a float epsilon over
         # 1.0 (e.g. 1.0000000000000002) due to floating-point rounding in the
         # dot product, which would otherwise fail the 0.0-1.0 contract.
-        score = round(min(1.0, max(0.0, float(raw_score))), 2)
+        matched_seasonings = sorted(set(recipe["seasonings"]) & ticked_seasonings)
+        if recipe["seasonings"]:
+            overlap = len(matched_seasonings) / len(recipe["seasonings"])
+        else:
+            overlap = 0.0
+        score = round(
+            min(1.0, max(0.0, float(raw_score) + SEASONING_WEIGHT * overlap)), 2
+        )
 
         mains = set(recipe["main_ingredients"])
         optionals = set(recipe["optional_ingredients"])
         have = sorted((mains | optionals) & user_set)
         missing = sorted(mains - user_set)
 
-        scored.append(
-            {
-                "id": recipe["id"],
-                "name_th": recipe["name_th"],
-                "score": score,
-                "have": have,
-                "missing": missing,
-                "nutrition": dict(recipe["nutrition"]),
-                "health_tags": list(recipe["health_tags"]),
-            }
-        )
+        dish = {
+            "id": recipe["id"],
+            "name_th": recipe["name_th"],
+            "score": score,
+            "have": have,
+            "missing": missing,
+            "nutrition": dict(recipe["nutrition"]),
+            "health_tags": list(recipe["health_tags"]),
+        }
+        if seasonings is not None:
+            dish["seasonings_matched"] = matched_seasonings
+        scored.append(dish)
 
     scored.sort(key=lambda dish: dish["score"], reverse=True)
     return scored[:top_k]
