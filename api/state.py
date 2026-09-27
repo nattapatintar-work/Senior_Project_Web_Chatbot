@@ -78,6 +78,16 @@ class SessionState:
         Same rule extract() uses inside one sentence, applied across sentences:
         a later "no X" beats an earlier "X", and a later "X" beats an earlier
         "no X".
+
+        health_tags is a REPLACE, not a merge, unlike ingredients/exclude
+        above. It represents "what the user currently wants," not everything
+        ever mentioned: recommend()'s _passes_health_filter is a hard AND
+        across every tag in the list, so accumulating "keto" then "vegan"
+        across turns would require a dish match both at once, which is
+        usually zero recipes. Saying "เปลี่ยนเป็นวีแกน" after "กินคีโต" must
+        leave health_tags == ["vegan"], not ["keto", "vegan"]. A message that
+        mentions no tag at all leaves the existing preference alone -- only
+        replace when this parse actually found one or more tags.
         """
         for key in parsed["ingredients"]:
             if key in self.exclude:
@@ -88,9 +98,8 @@ class SessionState:
             if key not in self.exclude:
                 self.exclude.append(key)
             self.remove_ingredients([key])
-        for tag in parsed["health_tags"]:
-            if tag not in self.health_tags:
-                self.health_tags.append(tag)
+        if parsed["health_tags"]:
+            self.health_tags = list(dict.fromkeys(parsed["health_tags"]))
 
     def remove_ingredients(self, keys: list[str]) -> None:
         """

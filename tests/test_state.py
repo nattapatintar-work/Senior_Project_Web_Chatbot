@@ -1,0 +1,61 @@
+"""
+tests/test_state.py
+====================
+Unit tests for api/state.py's SessionState, in particular
+apply_text_result()'s health_tags REPLACE semantics (not accumulate) --
+see the session-log rationale in that method's docstring.
+
+Run with:
+    pytest tests/test_state.py -v
+"""
+
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from api.state import SessionState
+
+
+def _parsed(ingredients=(), excluded=(), health_tags=()):
+    return {"ingredients": list(ingredients), "excluded": list(excluded), "health_tags": list(health_tags)}
+
+
+def test_a_second_health_tag_replaces_the_first_not_accumulates():
+    sess = SessionState(session_id="s1")
+    sess.apply_text_result(_parsed(health_tags=["keto"]))
+    assert sess.health_tags == ["keto"]
+
+    sess.apply_text_result(_parsed(health_tags=["vegan"]))
+    assert sess.health_tags == ["vegan"], "must replace, not accumulate to ['keto', 'vegan']"
+
+
+def test_a_turn_with_no_health_tag_mention_leaves_the_preference_unchanged():
+    sess = SessionState(session_id="s2")
+    sess.apply_text_result(_parsed(ingredients=["chicken"], health_tags=["keto"]))
+    assert sess.health_tags == ["keto"]
+
+    sess.apply_text_result(_parsed(ingredients=["garlic"]))  # no health tag in this message
+    assert sess.health_tags == ["keto"], "a turn that mentions no tag must not clear the existing preference"
+
+
+def test_the_very_first_message_with_no_health_tag_leaves_it_empty():
+    sess = SessionState(session_id="s3")
+    sess.apply_text_result(_parsed(ingredients=["chicken"]))
+    assert sess.health_tags == []
+
+
+def test_multiple_tags_in_one_message_replace_together_and_are_deduped():
+    sess = SessionState(session_id="s4")
+    sess.apply_text_result(_parsed(health_tags=["keto"]))
+    sess.apply_text_result(_parsed(health_tags=["clean", "vegan", "clean"]))
+    assert sess.health_tags == ["clean", "vegan"]
+
+
+def test_ingredient_include_exclude_merging_is_unaffected_by_the_health_tag_change():
+    sess = SessionState(session_id="s5")
+    sess.apply_text_result(_parsed(ingredients=["chicken"], health_tags=["keto"]))
+    sess.apply_text_result(_parsed(ingredients=["garlic"], excluded=["pork"], health_tags=["vegan"]))
+    assert sess.ingredients == ["chicken", "garlic"]
+    assert sess.exclude == ["pork"]
+    assert sess.health_tags == ["vegan"]

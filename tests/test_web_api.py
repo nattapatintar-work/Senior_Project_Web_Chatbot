@@ -181,6 +181,14 @@ def test_extract_rejects_empty_text(client):
     assert client.post("/extract", json={"text": ""}).status_code == 422
 
 
+def test_a_second_extract_with_a_new_health_tag_replaces_not_accumulates(client):
+    sid = _start_session_with_text(client, "อยากกินคีโต")
+    assert client.post("/extract", json={"text": "มีไก่", "session_id": sid}).json()["health_tags"] == []
+    body = client.post("/extract", json={"text": "เปลี่ยนเป็นวีแกน", "session_id": sid}).json()
+    assert body["health_tags"] == ["vegan"]
+    assert state.store.get(sid).health_tags == ["vegan"], "session preference must not accumulate ['keto', 'vegan']"
+
+
 # ---------------------------------------------------------------------------
 # /confirm  (keyword stub -- see api/intent.py)
 # ---------------------------------------------------------------------------
