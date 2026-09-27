@@ -203,6 +203,15 @@ def _resolve_token(token: str) -> str | None:
     return _SYNONYM_INDEX[candidate]
 
 
+def resolve_token(token: str) -> str | None:
+    """
+    Public wrapper around _resolve_token, for other modules (e.g.
+    nlp/extract_bert.py) that need to map a raw string to a canonical key
+    without duplicating the synonym-index/fuzzy-match logic.
+    """
+    return _resolve_token(token)
+
+
 def extract(text: str) -> dict:
     """
     Pull ingredients, health tags, and exclusions out of a Thai sentence.

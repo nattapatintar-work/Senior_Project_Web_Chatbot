@@ -33,6 +33,11 @@ data/incoming/
 # Trained YOLO weights from Person 1 — often 50MB+, too big for git.
 *.pt
 
+# Exported BERT NER model weights (models/bert_ner/) — same reason, too big
+# for git. Config/tokenizer json files in that folder stay trackable.
+*.safetensors
+*.bin
+
 # ---------------------------------------------------------------------------
 # Editors / OS
 # ---------------------------------------------------------------------------

@@ -44,6 +44,13 @@ def anthropic_key_configured() -> bool:
 INTENT_MODEL = "claude-haiku-4-5-20251001"
 INTENT_TIMEOUT_SECONDS = 5.0
 
+# /extract_bert fallback (nlp/extract_bert.py). BERT's confidence score barely
+# separates correct from incorrect predictions (ablation: mean TP confidence
+# 0.996 vs. mean FP confidence 0.994), so this fallback is expected to trigger
+# often, not rarely -- Sonnet, not Haiku, was chosen for that reason.
+EXTRACTION_LLM_MODEL = "claude-sonnet-5"
+EXTRACTION_LLM_TIMEOUT_SECONDS = 8.0
+
 
 def mask_secret(value: str) -> str:
     """
@@ -75,6 +82,19 @@ def _load_confidence_threshold() -> float:
 
 
 CONFIDENCE_THRESHOLD = _load_confidence_threshold()
+
+
+# --- BERT NER (nlp/extract_bert.py, POST /extract_bert) ----------------------
+
+# Where the exported fine-tuned WangchanBERTa NER model lives: model weights
+# (.safetensors/.bin), tokenizer files, and label_config.json. Not committed
+# to git (see .gitignore) -- copy the exported model folder here, or point
+# this elsewhere with the env var. Missing folder does not crash the app: it
+# only makes /extract_bert return 503 (same non-fatal posture as the
+# threshold/API-key config above).
+BERT_NER_MODEL_PATH = Path(
+    os.getenv("BERT_NER_MODEL_PATH", str(PROJECT_ROOT / "models" / "bert_ner"))
+)
 
 
 # --- Uploads -----------------------------------------------------------------

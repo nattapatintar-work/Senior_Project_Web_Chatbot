@@ -10,13 +10,16 @@ Run:   uvicorn api.app:app --port 8000
 
 THE FLOW THESE SIX ENDPOINTS SERVE  (see Claude.md §3)
 --------------------------------------------------------
-    POST /seasoning   tick seasonings (before the chat starts; then locked)
-    POST /detect      photo(s)  -> ingredients          } either or both;
-    POST /extract     text      -> include/exclude/tags } same session_id
-    POST /confirm     free-text reply -> confirm / reject / confirm+correction / unclear
-    POST /correct     checklist removals + typed additions (after a reject)
-    POST /recommend   confirmed list -> top-N recipes
-    GET  /health      load-balancer check ({"status","detector"}); not rate limited
+    POST /seasoning     tick seasonings (before the chat starts; then locked)
+    POST /detect        photo(s)  -> ingredients          } either or both;
+    POST /extract       text      -> include/exclude/tags } same session_id
+    POST /extract_bert  experimental: WangchanBERTa NER + Claude Sonnet 5
+                        fallback (nlp/extract_bert.py); side-by-side with
+                        /extract above, not used by any existing UI flow
+    POST /confirm       free-text reply -> confirm / reject / confirm+correction / unclear
+    POST /correct       checklist removals + typed additions (after a reject)
+    POST /recommend     confirmed list -> top-N recipes
+    GET  /health        load-balancer check ({"status","detector"}); not rate limited
 
 Everything reused as-is: nlp.extract.extract(), recommender.recommend.recommend()
 (seasoning bonus is its one change), api.mock_cv.detect() (the real YOLO wrapper
@@ -49,6 +52,7 @@ from slowapi.errors import RateLimitExceeded
 
 from api import intent, schemas, state, web_config
 from nlp.extract import extract, load_ingredients
+from nlp.extract_bert import extract_bert
 from recommender.recommend import recommend
 
 _INGREDIENTS = load_ingredients()
@@ -251,6 +255,37 @@ def detect_endpoint(
 def extract_endpoint(request: Request, body: schemas.ExtractRequest):
     sess = _session(body.session_id, create=True)
     parsed = extract(body.text)
+
+    with state.store.lock:
+        sess.apply_text_result(parsed)
+        sess.stage = state.STAGE_AWAITING_CONFIRM
+        return schemas.ExtractResponse(
+            session_id=sess.session_id,
+            include=parsed["ingredients"],
+            exclude=parsed["excluded"],
+            health_tags=parsed["health_tags"],
+            ingredients=sess.ingredients,
+            stage=sess.stage,
+        )
+
+
+# ===========================================================================
+# POST /extract_bert
+# ===========================================================================
+# Experimental, side-by-side text extractor: WangchanBERTa NER primary,
+# Claude Sonnet 5 fallback (see nlp/extract_bert.py). NOT used by any
+# existing UI flow -- exists so the BERT model can be compared against the
+# production /extract above before any decision to switch. Its "excluded"
+# output is always empty (documented gap in nlp/extract_bert.py's docstring).
+
+@app.post("/extract_bert", response_model=schemas.ExtractResponse)
+@limiter.limit(web_config.LIMIT_DEFAULT)
+def extract_bert_endpoint(request: Request, body: schemas.ExtractRequest):
+    sess = _session(body.session_id, create=True)
+    try:
+        parsed = extract_bert(body.text)
+    except FileNotFoundError:
+        raise HTTPException(503, "BERT NER model not configured on this server")
 
     with state.store.lock:
         sess.apply_text_result(parsed)

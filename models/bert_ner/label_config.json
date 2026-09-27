@@ -1,0 +1,17 @@
+{
+  "LABEL_LIST": [
+    "O",
+    "B-ING",
+    "I-ING",
+    "B-HEALTH",
+    "I-HEALTH"
+  ],
+  "id2label": {
+    "0": "O",
+    "1": "B-ING",
+    "2": "I-ING",
+    "3": "B-HEALTH",
+    "4": "I-HEALTH"
+  },
+  "confidence_threshold": 0.8
+}

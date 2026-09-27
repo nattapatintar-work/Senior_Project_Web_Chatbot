@@ -27,6 +27,12 @@ pythainlp>=5.0.0         # Thai word segmentation; Thai has no spaces between
                          # words, so text must be tokenized before matching
 rapidfuzz>=3.0.0         # fuzzy matching for typos in ingredient names
 
+# --- BERT NER (nlp/extract_bert.py, POST /extract_bert) ---------------------
+transformers>=4.40.0     # WangchanBERTa NER model (fine-tuned, exported separately)
+sentencepiece>=0.2.0     # WangchanBERTa's tokenizer needs this
+                         # torch is already pulled in transitively via
+                         # ultralytics below -- no separate pin needed here.
+
 # --- Recommender (Week 7) --------------------------------------------------
 scikit-learn>=1.4.0      # TfidfVectorizer + cosine_similarity, both built in
 
