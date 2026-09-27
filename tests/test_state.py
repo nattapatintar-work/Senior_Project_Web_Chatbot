@@ -59,3 +59,33 @@ def test_ingredient_include_exclude_merging_is_unaffected_by_the_health_tag_chan
     assert sess.ingredients == ["chicken", "garlic"]
     assert sess.exclude == ["pork"]
     assert sess.health_tags == ["vegan"]
+
+
+# ---------------------------------------------------------------------------
+# start_new_round() -- resets a finished meal-request cycle, keeps seasonings
+# ---------------------------------------------------------------------------
+
+def test_start_new_round_clears_ingredients_exclusions_and_health_tags():
+    sess = SessionState(session_id="s6")
+    sess.detected["egg"] = 0.9
+    sess.apply_text_result(_parsed(ingredients=["shrimp"], excluded=["pork"], health_tags=["clean"]))
+    sess.reject_count = 2
+
+    sess.start_new_round()
+
+    assert sess.detected == {}
+    assert sess.include == []
+    assert sess.exclude == []
+    assert sess.health_tags == []
+    assert sess.reject_count == 0
+    assert sess.ingredients == []
+
+
+def test_start_new_round_does_not_touch_seasonings():
+    sess = SessionState(session_id="s7")
+    sess.seasonings = ["fish_sauce", "sugar"]
+    sess.apply_text_result(_parsed(ingredients=["chicken"]))
+
+    sess.start_new_round()
+
+    assert sess.seasonings == ["fish_sauce", "sugar"]

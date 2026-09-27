@@ -101,6 +101,26 @@ class SessionState:
         if parsed["health_tags"]:
             self.health_tags = list(dict.fromkeys(parsed["health_tags"]))
 
+    def start_new_round(self) -> None:
+        """
+        Clear everything about the CURRENT meal request so the next
+        /extract, /extract_bert, or /detect starts a fresh list instead of
+        merging onto an already-finished one. Called only when the session
+        is sitting at STAGE_CONFIRMED -- i.e. the user already went through
+        a full confirm (and, in the real UI, /recommend) cycle, so any new
+        input from here on describes a new meal, not an addition to the
+        old one.
+
+        seasonings is NOT cleared: it's ticked once per session on the
+        seasoning tab and locked before the chat starts (Claude.md Section
+        3.1), independent of any individual meal-request cycle.
+        """
+        self.detected.clear()
+        self.include.clear()
+        self.exclude.clear()
+        self.health_tags.clear()
+        self.reject_count = 0
+
     def remove_ingredients(self, keys: list[str]) -> None:
         """
         Drop keys from the list without banning dishes that use them. Used for

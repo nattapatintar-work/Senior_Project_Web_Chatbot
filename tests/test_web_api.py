@@ -380,6 +380,68 @@ def test_recommend_with_no_match_is_an_empty_200(client):
 
 
 # ---------------------------------------------------------------------------
+# A completed confirm/recommend cycle starts fresh on the next input,
+# instead of merging onto the already-recommended list
+# ---------------------------------------------------------------------------
+
+def test_extract_after_a_completed_cycle_replaces_not_merges(client):
+    sid = _start_session_with_text(client, "chicken and egg")
+    _confirm(client, sid, "yes")
+    client.post("/recommend", json={"session_id": sid})  # completes the cycle; stage stays "confirmed"
+
+    body = client.post("/extract", json={"text": "fish and crab", "session_id": sid}).json()
+    assert body["ingredients"] == ["fish", "crab"]
+    assert "chicken" not in body["ingredients"] and "egg" not in body["ingredients"]
+    assert body["stage"] == "awaiting_confirm"
+
+
+def test_extract_bert_after_a_completed_cycle_replaces_not_merges(monkeypatch, client):
+    # app.py imports extract_bert by name (`from nlp.extract_bert import extract_bert`),
+    # so the patch target is app_module's own binding, not the source module's.
+    monkeypatch.setattr(
+        app_module, "extract_bert", lambda text: {"ingredients": ["chicken"], "health_tags": [], "excluded": []}
+    )
+    sid = client.post("/extract_bert", json={"text": "x"}).json()["session_id"]
+    _confirm(client, sid, "yes")
+    client.post("/recommend", json={"session_id": sid})
+
+    monkeypatch.setattr(
+        app_module, "extract_bert", lambda text: {"ingredients": ["fish"], "health_tags": [], "excluded": []}
+    )
+    body = client.post("/extract_bert", json={"text": "y", "session_id": sid}).json()
+    assert body["ingredients"] == ["fish"]
+
+
+def test_detect_after_a_completed_cycle_replaces_not_merges(client, stub_detections):
+    stub_detections[:] = [{"ingredient": "chicken", "confidence": 0.9}]
+    sid = _upload(client).json()["session_id"]
+    _confirm(client, sid, "yes")
+    client.post("/recommend", json={"session_id": sid})
+
+    stub_detections[:] = [{"ingredient": "fish", "confidence": 0.9}]
+    body = _upload(client, session_id=sid).json()
+    assert body["ingredients"] == ["fish"]
+    assert "chicken" not in body["ingredients"]
+
+
+def test_extract_before_confirm_still_merges_as_before(client):
+    """The reject/correct loop's legitimate accumulation must be unaffected."""
+    sid = _start_session_with_text(client, "chicken")
+    body = client.post("/extract", json={"text": "egg", "session_id": sid}).json()
+    assert body["ingredients"] == ["chicken", "egg"]
+
+
+def test_seasonings_survive_a_completed_cycle_reset(client):
+    sid = client.post("/seasoning", json={"seasonings": ["fish_sauce"]}).json()["session_id"]
+    client.post("/extract", json={"text": "chicken", "session_id": sid})
+    _confirm(client, sid, "yes")
+    client.post("/recommend", json={"session_id": sid})
+
+    client.post("/extract", json={"text": "fish", "session_id": sid})
+    assert state.store.get(sid).seasonings == ["fish_sauce"]
+
+
+# ---------------------------------------------------------------------------
 # Whole flow, sessions, rate limiting, secrets
 # ---------------------------------------------------------------------------
 

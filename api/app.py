@@ -227,6 +227,10 @@ def detect_endpoint(
         )
 
     with state.store.lock:
+        if sess.stage == state.STAGE_CONFIRMED:
+            # Same reset as /extract and /extract_bert: a prior confirm cycle
+            # already finished, so new photos describe a new meal.
+            sess.start_new_round()
         sess.add_detected(union)
         sess.stage = state.STAGE_AWAITING_CONFIRM
         combined = sess.ingredients
@@ -257,6 +261,11 @@ def extract_endpoint(request: Request, body: schemas.ExtractRequest):
     parsed = extract(body.text)
 
     with state.store.lock:
+        if sess.stage == state.STAGE_CONFIRMED:
+            # A prior confirm (and, in the real UI, /recommend) cycle already
+            # finished on this session -- new text describes a new meal, not
+            # an addition to the one that was just recommended.
+            sess.start_new_round()
         sess.apply_text_result(parsed)
         sess.stage = state.STAGE_AWAITING_CONFIRM
         return schemas.ExtractResponse(
@@ -272,14 +281,13 @@ def extract_endpoint(request: Request, body: schemas.ExtractRequest):
 # ===========================================================================
 # POST /extract_bert
 # ===========================================================================
-# Experimental, side-by-side text extractor: WangchanBERTa NER primary,
-# Claude Sonnet 5 fallback, plus a rule-based negation pass (see
-# nlp/extract_bert.py). NOT used by any existing UI flow -- exists so the
-# BERT model can be compared against the production /extract above before
-# any decision to switch. Its "excluded" output comes from a raw-text
-# heuristic, not a model or /extract's tokenizer-based scan -- see
-# nlp/extract_bert.py's docstring for what that heuristic does and does not
-# catch.
+# WangchanBERTa NER primary, Claude Sonnet 5 fallback, plus a rule-based
+# negation pass (see nlp/extract_bert.py). This is now the live frontend's
+# primary text extractor (web/js/api.js), not just a side-by-side test
+# endpoint -- /extract above stays untouched as a working fallback route.
+# extract_bert()'s "excluded" output comes from a raw-text heuristic, not a
+# model or /extract's tokenizer-based scan -- see nlp/extract_bert.py's
+# docstring for what that heuristic does and does not catch.
 
 @app.post("/extract_bert", response_model=schemas.ExtractResponse)
 @limiter.limit(web_config.LIMIT_DEFAULT)
@@ -291,6 +299,8 @@ def extract_bert_endpoint(request: Request, body: schemas.ExtractRequest):
         raise HTTPException(503, "BERT NER model not configured on this server")
 
     with state.store.lock:
+        if sess.stage == state.STAGE_CONFIRMED:
+            sess.start_new_round()
         sess.apply_text_result(parsed)
         sess.stage = state.STAGE_AWAITING_CONFIRM
         return schemas.ExtractResponse(
