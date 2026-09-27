@@ -98,7 +98,10 @@
       },
 
       extract: function (sessionId, text) {
-        return postJson("/extract", { text: text, session_id: sessionId || null });
+        // BERT NER primary extractor (+ rule-based negation post-processing),
+        // not the dictionary/fuzzy/Trie /extract route. Same ExtractResponse
+        // shape either way -- rollback is just switching this string back.
+        return postJson("/extract_bert", { text: text, session_id: sessionId || null });
       },
 
       confirm: function (sessionId, reply) {

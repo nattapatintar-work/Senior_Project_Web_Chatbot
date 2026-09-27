@@ -42,7 +42,7 @@ test("JSON endpoints post the exact payloads the backend expects", async () => {
   const sent = f.calls.map((c) => [c.url, c.init.method, JSON.parse(c.init.body)]);
   assert.deepEqual(sent, [
     ["http://host:8000/seasoning", "POST", { session_id: null, seasonings: ["sugar"] }],
-    ["http://host:8000/extract", "POST", { text: "มีไก่", session_id: SID }],
+    ["http://host:8000/extract_bert", "POST", { text: "มีไก่", session_id: SID }],
     ["http://host:8000/confirm", "POST", { session_id: SID, reply: "ใช่" }],
     ["http://host:8000/correct", "POST", { session_id: SID, exclude: ["egg"], add_text: "กระเทียม" }],
     ["http://host:8000/correct", "POST", { session_id: SID, exclude: ["egg"] }],
