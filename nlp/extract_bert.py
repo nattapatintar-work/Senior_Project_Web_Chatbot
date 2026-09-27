@@ -42,20 +42,35 @@ HOW IT WORKS
    self-reported entity type, since the resolver is grounded in the
    dictionaries and the model can mislabel type.
 
-KNOWN GAP: NO EXCLUSION DETECTION
-----------------------------------
-The label schema here is two entity types only: ING, HEALTH. Neither the
-fine-tuned model nor the ported LLM prompt has a way to represent negation
-("no pork"), unlike nlp.extract.extract()'s two-token "ไม่" + verb scan.
-So extract_bert()'s "excluded" key is always []. This is a real, named
-functional gap versus /extract, not an oversight -- see Claude.md's working
-style rule about naming why something doesn't make it into a result.
+4. apply_negation_cues(text, entities) -- a NegEx-style rule-based pass, run
+   on whichever entity list won (BERT's or the LLM's), after the fallback
+   decision and before resolution. For each entity it looks backward, up to
+   the previous entity's end or a fixed character window (whichever is
+   closer), for a negation cue substring ("ไม่เอา", "ไม่ใส่", "ไม่มี", the
+   same NEGATION_VERBS nlp.extract.py's own tokenizer-based scan uses, just
+   pre-combined for raw-text substring search). A matching ING entity is
+   marked negated=True and routed to "excluded" instead of "ingredients".
+
+KNOWN GAP: NEGATION DETECTION IS A RAW-TEXT HEURISTIC, NOT PARITY WITH /extract
+--------------------------------------------------------------------------------
+The label schema here is two entity types only: ING, HEALTH -- there is no
+model-level negation type. apply_negation_cues() (above) covers the common
+case ("ไม่เอาหมู") without retraining, but it is NOT the same mechanism as
+nlp.extract.extract()'s tokenizer-based two-token scan, and two limitations
+remain, both left as-is on purpose rather than silently glossed over:
+  - HEALTH entities are never marked negated, even if a cue sits in their
+    window -- negated health tags ("ไม่กินคีโต") are rarer and out of scope
+    for this pass.
+  - The cue must fall within NEGATION_CUE_WINDOW_CHARS characters of the
+    entity's start (and not cross into a preceding entity's span). A cue
+    further back in a long clause will be missed, unlike /extract's
+    tokenizer scan, which has no such window limit.
 """
 
 import json
 import threading
 
-from nlp.extract import resolve_token
+from nlp.extract import NEGATION_CUES, resolve_token
 
 # ===========================================================================
 # Model + label config loading (lazy, thread-safe singleton)
@@ -259,12 +274,49 @@ def predict_entities_llm(text: str) -> list[dict]:
 
 
 # ===========================================================================
+# Negation post-processing (NegEx-style rule-based pass, no model involved)
+# ===========================================================================
+
+# Tune if needed after testing on real examples.
+NEGATION_CUE_WINDOW_CHARS = 10
+
+
+def apply_negation_cues(text: str, entities: list[dict]) -> list[dict]:
+    """
+    For each entity, look back from its start position (up to the previous
+    entity's end, or a fixed character window, whichever is closer) for a
+    negation cue substring. If found, mark entity["negated"] = True. Does
+    not mutate entity["type"] -- "what BERT/LLM predicted" and "polarity
+    decision" stay separate concerns for debuggability.
+
+    Bounding the window at the previous entity's end (not just a flat
+    character count) matters: without it, "ไม่เอาหมู เอาไก่แทน" would let
+    the "ไม่" that belongs to หมู leak into ไก่'s window too.
+    """
+    entities_sorted = sorted(entities, key=lambda e: e["start"])
+    prev_end = 0
+    for e in entities_sorted:
+        window_start = max(prev_end, e["start"] - NEGATION_CUE_WINDOW_CHARS)
+        window = text[window_start:e["start"]]
+        e["negated"] = any(cue in window for cue in NEGATION_CUES)
+        prev_end = e["end"]
+    return entities_sorted
+
+
+# ===========================================================================
 # Public entry point
 # ===========================================================================
 
 def _resolve_entities(entities: list[dict]) -> dict:
-    """Map raw entity spans to canonical keys, dropping anything unresolvable."""
+    """
+    Map raw entity spans to canonical keys, dropping anything unresolvable.
+
+    A negated ING entity (see apply_negation_cues above) routes to excluded
+    instead of ingredients. HEALTH entities are never affected by the
+    negated flag, even if one is set -- see the module docstring's KNOWN GAP.
+    """
     ingredients: list[str] = []
+    excluded: list[str] = []
     health_tags: list[str] = []
     for entity in entities:
         resolved = resolve_token(entity["value"].strip())
@@ -274,9 +326,17 @@ def _resolve_entities(entities: list[dict]) -> dict:
             tag = resolved.removeprefix("health:")
             if tag not in health_tags:
                 health_tags.append(tag)
+        elif entity.get("negated"):
+            if resolved not in excluded:
+                excluded.append(resolved)
         elif resolved not in ingredients:
             ingredients.append(resolved)
-    return {"ingredients": ingredients, "health_tags": health_tags, "excluded": []}
+
+    # Same rule as nlp.extract.extract(): a key is never allowed in both
+    # lists at once, and excluded wins.
+    ingredients = [key for key in ingredients if key not in excluded]
+
+    return {"ingredients": ingredients, "health_tags": health_tags, "excluded": excluded}
 
 
 def extract_bert(text: str) -> dict:
@@ -284,8 +344,10 @@ def extract_bert(text: str) -> dict:
     BERT-primary text extraction for POST /extract_bert.
 
     Returns the same three-key contract as nlp.extract.extract():
-        {"ingredients": [...], "health_tags": [...], "excluded": []}
-    "excluded" is always empty -- see the module docstring's KNOWN GAP.
+        {"ingredients": [...], "health_tags": [...], "excluded": [...]}
+    "excluded" comes only from apply_negation_cues's rule-based scan, not
+    from any model -- see the module docstring's KNOWN GAP for what that
+    heuristic does and does not catch.
 
     Raises FileNotFoundError if the BERT model folder isn't configured on
     this server; the caller (api/app.py) turns that into a 503.
@@ -297,4 +359,5 @@ def extract_bert(text: str) -> dict:
     if not entities or any(e["confidence"] < threshold for e in entities):
         entities = predict_entities_llm(text)
 
+    entities = apply_negation_cues(text, entities)
     return _resolve_entities(entities)

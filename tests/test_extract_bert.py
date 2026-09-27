@@ -41,6 +41,13 @@ def entity(value, ent_type="ING", confidence=0.99):
     return {"type": ent_type, "start": 0, "end": len(value), "value": value, "confidence": confidence}
 
 
+def entity_in(text, value, ent_type="ING", confidence=0.99):
+    """Like entity(), but with start/end resolved to value's real position in text."""
+    idx = text.find(value)
+    assert idx != -1, f"{value!r} not found in {text!r}"
+    return {"type": ent_type, "start": idx, "end": idx + len(value), "value": value, "confidence": confidence}
+
+
 # ---------------------------------------------------------------------------
 # Routing: BERT primary, whole-sentence fallback to the LLM
 # ---------------------------------------------------------------------------
@@ -175,13 +182,84 @@ def test_extract_bert_returns_the_three_agreed_keys(monkeypatch, label_config):
     assert all(isinstance(v, list) for v in result.values())
 
 
-def test_excluded_is_always_empty_known_gap(monkeypatch, label_config):
-    """Documented gap: neither entity schema has a negation type, so excluded never fills."""
-    monkeypatch.setattr(
-        extract_bert, "predict_entities_bert_with_confidence", lambda text: [entity("ไก่"), entity("คลีน", ent_type="HEALTH")]
-    )
-    result = extract_bert.extract_bert("ไม่เอาไก่ อยากกินคลีน")
+def test_health_tags_are_unaffected_by_a_negation_cue_in_their_window():
+    """Documented scope limit: HEALTH is never routed to excluded, cue or not."""
+    text = "ไม่เอาคลีน"
+    entities = extract_bert.apply_negation_cues(text, [entity_in(text, "คลีน", ent_type="HEALTH")])
+    result = extract_bert._resolve_entities(entities)
+    assert result["health_tags"] == ["clean"]
     assert result["excluded"] == []
+
+
+# ---------------------------------------------------------------------------
+# apply_negation_cues() -- NegEx-style rule-based negation, no model involved
+# ---------------------------------------------------------------------------
+
+def test_negated_ingredient_is_routed_to_excluded():
+    text = "ไม่เอาหมูนะ"
+    entities = extract_bert.apply_negation_cues(text, [entity_in(text, "หมู")])
+    result = extract_bert._resolve_entities(entities)
+    assert result["excluded"] == ["pork"]
+    assert result["ingredients"] == []
+
+
+def test_mixed_sentence_splits_include_and_exclude_correctly():
+    text = "มีข้าวอยู่ แต่ไม่เอาหมูนะ"
+    entities = extract_bert.apply_negation_cues(
+        text, [entity_in(text, "ข้าว"), entity_in(text, "หมู")]
+    )
+    result = extract_bert._resolve_entities(entities)
+    assert result["ingredients"] == ["rice"]
+    assert result["excluded"] == ["pork"]
+
+
+def test_negation_window_does_not_cross_into_the_previous_entity():
+    """The 'ไม่' that negates หมู must not also negate ไก่ right after it."""
+    text = "ไม่เอาหมู เอาไก่แทน"
+    entities = extract_bert.apply_negation_cues(
+        text, [entity_in(text, "หมู"), entity_in(text, "ไก่")]
+    )
+    result = extract_bert._resolve_entities(entities)
+    assert result["excluded"] == ["pork"]
+    assert result["ingredients"] == ["chicken"]
+
+
+def test_no_cue_at_all_is_not_a_false_positive():
+    text = "มีหมูอยู่"
+    entities = extract_bert.apply_negation_cues(text, [entity_in(text, "หมู")])
+    result = extract_bert._resolve_entities(entities)
+    assert result["ingredients"] == ["pork"]
+    assert result["excluded"] == []
+
+
+def test_negation_applies_after_whichever_path_won(monkeypatch, label_config):
+    """End-to-end through extract_bert(): the fallback's entities get the same negation pass."""
+    monkeypatch.setattr(extract_bert, "predict_entities_bert_with_confidence", lambda text: [])
+    monkeypatch.setattr(
+        extract_bert, "predict_entities_llm", lambda text: [entity_in(text, "หมู")]
+    )
+    result = extract_bert.extract_bert("ไม่เอาหมูนะ")
+    assert result["excluded"] == ["pork"]
+    assert result["ingredients"] == []
+
+
+def test_a_key_negated_and_affirmed_in_the_same_message_ends_up_excluded_only():
+    """Mirrors nlp.extract.extract()'s own rule: excluded wins, never both lists."""
+    text = "มีหมู ไม่เอาหมู"
+    # entity_in() only finds the FIRST occurrence of a value, and this text
+    # mentions "หมู" twice, so both spans are built explicitly here instead.
+    first = text.find("หมู")
+    second = text.find("หมู", first + 1)
+    entities = extract_bert.apply_negation_cues(
+        text,
+        [
+            {"type": "ING", "start": first, "end": first + 3, "value": "หมู", "confidence": 0.99},
+            {"type": "ING", "start": second, "end": second + 3, "value": "หมู", "confidence": 0.99},
+        ],
+    )
+    result = extract_bert._resolve_entities(entities)
+    assert result["excluded"] == ["pork"]
+    assert result["ingredients"] == []
 
 
 # ---------------------------------------------------------------------------

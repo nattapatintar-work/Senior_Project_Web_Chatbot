@@ -95,6 +95,12 @@ HEALTH_TERMS_PATH = Path(__file__).parent.parent / "data" / "health_terms.json"
 # TWO-TOKEN SEQUENCE ("ไม่" followed by one of these), not a single token.
 NEGATION_VERBS = {"เอา", "ใส่", "มี"}
 
+# Same cues as above, pre-combined into the literal substrings that appear
+# in raw (untokenized) text -- "ไม่เอา", "ไม่ใส่", "ไม่มี". Used by
+# nlp/extract_bert.py's negation post-processing, which works on raw text
+# and has no tokenizer step to split "ไม่" from its verb.
+NEGATION_CUES = tuple(f"ไม่{verb}" for verb in sorted(NEGATION_VERBS))
+
 # A token shorter than this never goes through fuzzy matching. Short Thai
 # tokens are common function words ("มี", "กับ", "ใส่") and short synonyms
 # ("นม", "เนย") that a loose fuzzy cutoff would false-positive on constantly

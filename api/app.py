@@ -273,10 +273,13 @@ def extract_endpoint(request: Request, body: schemas.ExtractRequest):
 # POST /extract_bert
 # ===========================================================================
 # Experimental, side-by-side text extractor: WangchanBERTa NER primary,
-# Claude Sonnet 5 fallback (see nlp/extract_bert.py). NOT used by any
-# existing UI flow -- exists so the BERT model can be compared against the
-# production /extract above before any decision to switch. Its "excluded"
-# output is always empty (documented gap in nlp/extract_bert.py's docstring).
+# Claude Sonnet 5 fallback, plus a rule-based negation pass (see
+# nlp/extract_bert.py). NOT used by any existing UI flow -- exists so the
+# BERT model can be compared against the production /extract above before
+# any decision to switch. Its "excluded" output comes from a raw-text
+# heuristic, not a model or /extract's tokenizer-based scan -- see
+# nlp/extract_bert.py's docstring for what that heuristic does and does not
+# catch.
 
 @app.post("/extract_bert", response_model=schemas.ExtractResponse)
 @limiter.limit(web_config.LIMIT_DEFAULT)
