@@ -197,9 +197,11 @@ def predict_entities_bert_with_confidence(text: str) -> list[dict]:
     Run the fine-tuned WangchanBERTa NER model and decode its BIO tags into
     character-span entities, each carrying a 0-1 confidence score (average
     softmax probability of its predicted label, averaged over the entity's
-    tokens). Ported as-is from the notebook that trained and ablated this
-    model -- do not "improve" the decoding logic here without re-running
-    that ablation.
+    tokens). Ported from the notebook that trained and ablated this model --
+    do not "improve" the decoding logic here without re-running that
+    ablation. The one deliberate deviation: a bare "▁" token whose offsets lie
+    inside the next token's offsets is skipped (see the comment in the loop),
+    because it produced stray one-character entities.
     """
     import torch
     import torch.nn.functional as F
@@ -235,8 +237,19 @@ def predict_entities_bert_with_confidence(text: str) -> list[dict]:
                 }
             )
 
-    for (start, end), label, conf in zip(offsets, pred_labels, confs):
+    next_offsets = offsets[1:] + [(0, 0)]
+    for (start, end), (next_start, next_end), label, conf in zip(offsets, next_offsets, pred_labels, confs):
         if start == end:  # special tokens ([CLS], [SEP], padding)
+            continue
+        if next_start != next_end and next_start <= start and end <= next_end:
+            # A bare sentencepiece word-boundary "▁" token (it comes before a word whose first
+            # piece is a single character, e.g. "ไ", "ถ") is given the offset of that first
+            # CHARACTER, so its span sits inside the next token's span. The model tags it
+            # B-ING, which used to decode into a spurious one-character entity ("ไ") next to the
+            # real word. It carries no text of its own: end the current entity (as before) and
+            # let the next token start the next one.
+            flush()
+            cur_type, cur_start, cur_end, cur_confs = None, None, None, []
             continue
         if label == "O":
             flush()

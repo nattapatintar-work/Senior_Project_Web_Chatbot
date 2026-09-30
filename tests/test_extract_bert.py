@@ -423,3 +423,160 @@ def test_bert_status_reports_unavailable_pending_and_loaded(monkeypatch, tmp_pat
 
     monkeypatch.setattr(extract_bert, "_model", object())
     assert extract_bert.bert_status() == "loaded"
+
+
+# ---------------------------------------------------------------------------
+# Stray one-character "unknown" spans: a bare sentencepiece word-boundary "▁" token
+# is given the offset of the first CHARACTER of the next word and is tagged B-ING.
+# It used to decode into an extra entity ("ไ", "ห", "ถ"...) next to the real word.
+# ---------------------------------------------------------------------------
+
+O, B_ING, I_ING = 0, 1, 2
+
+
+def install_fake_bert(monkeypatch, tokens):
+    """
+    Fake tokenizer + model that emit exactly `tokens` = [(start, end, label_id), ...] between
+    <s> and </s> (offset (0, 0), like the real tokenizer). Every label gets a one-hot logit, so
+    every confidence is ~1.0 and extract_bert() never falls back to the LLM.
+    """
+    import torch
+
+    seq = [(0, 0, O), *tokens, (0, 0, O)]
+    config = {
+        "LABEL_LIST": ["O", "B-ING", "I-ING", "B-HEALTH", "I-HEALTH"],
+        "id2label": {0: "O", 1: "B-ING", 2: "I-ING", 3: "B-HEALTH", 4: "I-HEALTH"},
+        "confidence_threshold": THRESHOLD,
+    }
+
+    class FakeTokenizer:
+        def __call__(self, text, return_tensors, truncation, max_length, return_offsets_mapping):
+            return {
+                "input_ids": torch.zeros((1, len(seq)), dtype=torch.long),
+                "attention_mask": torch.ones((1, len(seq)), dtype=torch.long),
+                "offset_mapping": torch.tensor([[[s, e] for s, e, _ in seq]]),
+            }
+
+    class FakeModel:
+        device = "cpu"
+
+        def __call__(self, **kwargs):
+            logits = torch.zeros((1, len(seq), 5))
+            for i, (_, _, label) in enumerate(seq):
+                logits[0, i, label] = 10.0
+            return type("Out", (), {"logits": logits})()
+
+    monkeypatch.setattr(
+        extract_bert, "_get_model_and_config", lambda: (FakeModel(), FakeTokenizer(), config)
+    )
+
+
+def test_a_bare_word_boundary_token_makes_no_stray_entity(monkeypatch):
+    text = "ไก่ ไข่"
+    install_fake_bert(
+        monkeypatch, [(0, 1, B_ING), (0, 3, B_ING), (4, 5, B_ING), (4, 7, B_ING)]   # "▁" "ไก่" "▁" "ไข่"
+    )
+    entities = extract_bert.predict_entities_bert_with_confidence(text)
+    assert [(e["start"], e["end"], e["value"]) for e in entities] == [(0, 3, "ไก่"), (4, 7, "ไข่")]
+
+    result = extract_bert.extract_bert(text)
+    assert result["ingredients"] == ["chicken", "egg"]
+    assert result["unknown"] == []
+
+
+def test_multi_token_words_still_merge_after_a_skipped_boundary_token(monkeypatch):
+    text = "ไส้กรอก ถั่วแปบ"
+    install_fake_bert(
+        monkeypatch,
+        [(0, 1, B_ING), (0, 7, B_ING), (8, 9, B_ING), (8, 12, B_ING), (12, 14, I_ING), (14, 15, I_ING)],
+    )
+    entities = extract_bert.predict_entities_bert_with_confidence(text)
+    assert [e["value"] for e in entities] == ["ไส้กรอก", "ถั่วแปบ"]
+
+
+def test_a_boundary_token_still_ends_the_previous_entity_before_an_i_tag(monkeypatch):
+    """Same grouping as before the fix: an I- tag right after a boundary token does not extend the word before it."""
+    text = "พริก ไทย"
+    install_fake_bert(monkeypatch, [(0, 4, B_ING), (5, 6, B_ING), (5, 8, I_ING)])
+    entities = extract_bert.predict_entities_bert_with_confidence(text)
+    assert [e["value"] for e in entities] == ["พริก", "ไทย"]
+
+
+def test_a_real_unknown_word_is_still_reported_alone(monkeypatch):
+    text = "ไก่ มังคุด"
+    install_fake_bert(monkeypatch, [(0, 3, B_ING), (4, 5, B_ING), (4, 10, B_ING)])   # "ไก่" "▁" "มังคุด"
+    result = extract_bert.extract_bert(text)
+    assert result["ingredients"] == ["chicken"]
+    assert result["unknown"] == ["มังคุด"]
+
+
+def test_a_token_that_merely_touches_the_next_one_is_not_skipped(monkeypatch):
+    """Adjacent, non-overlapping tokens are ordinary pieces of a word, never dropped."""
+    text = "ไก่ไข่"
+    install_fake_bert(monkeypatch, [(0, 3, B_ING), (3, 6, B_ING)])
+    entities = extract_bert.predict_entities_bert_with_confidence(text)
+    assert [e["value"] for e in entities] == ["ไก่", "ไข่"]
+
+
+# ---- the same inputs against the REAL local model (skipped where the git-ignored weights are absent)
+
+needs_real_model = pytest.mark.skipif(
+    extract_bert.bert_status() == "unavailable", reason="BERT weights are not on this machine"
+)
+
+
+@pytest.fixture
+def real_bert():
+    """Use the real model for one test, then put the module back the way the other tests expect it."""
+    saved = (extract_bert._model, extract_bert._tokenizer, extract_bert._label_config, extract_bert._load_failure)
+    yield
+    (extract_bert._model, extract_bert._tokenizer, extract_bert._label_config, extract_bert._load_failure) = saved
+
+
+def bert_only(text):
+    """BERT decode + negation + resolution, no LLM/keyword fallback in between (asserts BERT is confident)."""
+    _, _, config = extract_bert._get_model_and_config()
+    entities = extract_bert.predict_entities_bert_with_confidence(text)
+    assert entities and all(e["confidence"] >= config["confidence_threshold"] for e in entities), (
+        "BERT is unsure about this input, so the app would use the LLM fallback instead"
+    )
+    return extract_bert._resolve_entities(extract_bert.apply_negation_cues(text, entities))
+
+
+@needs_real_model
+@pytest.mark.parametrize(
+    "text",
+    ["ไก่ ไข่", "ไส้กรอก ถั่วแปบ", "ไข่", "หมู", "ไม่เอาไก่ ใส่ไข่"],
+)
+def test_real_model_recognised_words_leave_no_unknown(real_bert, text):
+    assert bert_only(text)["unknown"] == []
+
+
+@needs_real_model
+def test_real_model_reports_only_the_real_unknown_word(real_bert):
+    assert bert_only("ไก่ มังคุด")["unknown"] == ["มังคุด"]
+    negated = bert_only("ไม่ใช่ไก่ แต่เป็นมังคุด")
+    assert negated["unknown"] == ["มังคุด"]
+    assert negated["ingredients"] == ["chicken"]
+
+
+@needs_real_model
+def test_real_model_a_dish_name_the_dictionary_lacks_is_a_genuine_unknown(real_bert):
+    """"ไข่เจียว" (omelette) is a dish name, not an ingredient key: it is reported, the ingredient next to it is kept."""
+    result = bert_only("ไข่เจียว หมูสับ")
+    assert result["ingredients"] == ["minced_meat"]
+    assert result["unknown"] == ["ไข่เจียว"]
+
+
+@needs_real_model
+def test_real_model_no_case_ever_reports_a_one_character_unknown(real_bert):
+    for text in ["ไก่ ไข่", "หมู", "ไก่ มังคุด", "ไข่เจียว หมูสับ", "ไส้กรอก ถั่วแปบ"]:
+        assert all(len(word) > 1 for word in bert_only(text)["unknown"]), text
+
+
+@needs_real_model
+def test_real_model_punctuated_list_goes_through_extract_bert_without_a_stray_unknown(real_bert):
+    """BERT tags the comma with low confidence here, so this input takes the fallback path (keyword extract, no key in tests)."""
+    result = extract_bert.extract_bert("ไก่, ไข่ และ หมู")
+    assert sorted(result["ingredients"]) == ["chicken", "egg", "pork"]
+    assert result["unknown"] == []
