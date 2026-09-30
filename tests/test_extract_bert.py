@@ -14,11 +14,13 @@ Run with:
 import json
 import sys
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
+from api import web_config
 from nlp import extract_bert
 
 THRESHOLD = 0.8
@@ -35,6 +37,12 @@ def label_config(monkeypatch):
         extract_bert, "_get_model_and_config", lambda: (None, None, config)
     )
     return config
+
+
+@pytest.fixture
+def llm_enabled(monkeypatch):
+    """extract_bert() only attempts the LLM fallback when a key is configured; tests/conftest.py blanks it."""
+    monkeypatch.setattr(web_config, "ANTHROPIC_API_KEY", "sk-ant-api03-FAKEKEYFORTESTS-do-not-leak")
 
 
 def entity(value, ent_type="ING", confidence=0.99):
@@ -66,7 +74,7 @@ def test_high_confidence_bert_result_is_used_as_is(monkeypatch, label_config):
     assert result["ingredients"] == ["chicken"]
 
 
-def test_zero_bert_entities_triggers_the_llm_fallback(monkeypatch, label_config):
+def test_zero_bert_entities_triggers_the_llm_fallback(monkeypatch, label_config, llm_enabled):
     monkeypatch.setattr(extract_bert, "predict_entities_bert_with_confidence", lambda text: [])
     monkeypatch.setattr(
         extract_bert, "predict_entities_llm", lambda text: [entity("ไข่", confidence=None)]
@@ -76,7 +84,7 @@ def test_zero_bert_entities_triggers_the_llm_fallback(monkeypatch, label_config)
     assert result["ingredients"] == ["egg"]
 
 
-def test_one_low_confidence_entity_discards_the_whole_bert_result(monkeypatch, label_config):
+def test_one_low_confidence_entity_discards_the_whole_bert_result(monkeypatch, label_config, llm_enabled):
     """Whole-sentence fallback: one weak entity throws out BERT's other, confident entities too."""
     monkeypatch.setattr(
         extract_bert,
@@ -156,7 +164,7 @@ def test_unresolvable_entity_is_dropped_not_invented(monkeypatch, label_config):
         extract_bert, "predict_entities_bert_with_confidence", lambda text: [entity("zzzqqqnotaword")]
     )
     result = extract_bert.extract_bert("x")
-    assert result == {"ingredients": [], "health_tags": [], "excluded": []}
+    assert result == {"ingredients": [], "health_tags": [], "excluded": [], "unknown": ["zzzqqqnotaword"]}
 
 
 def test_duplicate_entities_are_not_repeated(monkeypatch, label_config):
@@ -170,7 +178,7 @@ def test_duplicate_entities_are_not_repeated(monkeypatch, label_config):
 
 
 # ---------------------------------------------------------------------------
-# Contract: same three keys as nlp.extract.extract(), excluded always empty
+# Contract: the three keys of nlp.extract.extract(), plus "unknown"
 # ---------------------------------------------------------------------------
 
 def test_extract_bert_returns_the_three_agreed_keys(monkeypatch, label_config):
@@ -178,7 +186,7 @@ def test_extract_bert_returns_the_three_agreed_keys(monkeypatch, label_config):
     monkeypatch.setattr(extract_bert, "predict_entities_llm", lambda text: [])
 
     result = extract_bert.extract_bert("")
-    assert set(result.keys()) == {"ingredients", "health_tags", "excluded"}
+    assert set(result.keys()) == {"ingredients", "health_tags", "excluded", "unknown"}
     assert all(isinstance(v, list) for v in result.values())
 
 
@@ -232,7 +240,7 @@ def test_no_cue_at_all_is_not_a_false_positive():
     assert result["excluded"] == []
 
 
-def test_negation_applies_after_whichever_path_won(monkeypatch, label_config):
+def test_negation_applies_after_whichever_path_won(monkeypatch, label_config, llm_enabled):
     """End-to-end through extract_bert(): the fallback's entities get the same negation pass."""
     monkeypatch.setattr(extract_bert, "predict_entities_bert_with_confidence", lambda text: [])
     monkeypatch.setattr(
@@ -308,3 +316,110 @@ def test_bio_decode_merges_consecutive_i_tags_into_one_span(monkeypatch):
     assert entities[0]["value"] == text
     assert entities[0]["type"] == "ING"
     assert 0.0 <= entities[0]["confidence"] <= 1.0
+
+
+# ---------------------------------------------------------------------------
+# "unknown": spans the model labelled ING that no dictionary key covers
+# ---------------------------------------------------------------------------
+
+def test_unresolvable_ing_span_is_reported_as_unknown_and_resolved_ones_are_not(monkeypatch, label_config):
+    monkeypatch.setattr(
+        extract_bert,
+        "predict_entities_bert_with_confidence",
+        lambda text: [entity("มังคุด"), entity("ไก่")],
+    )
+    result = extract_bert.extract_bert("x")
+    assert result["ingredients"] == ["chicken"]
+    assert result["unknown"] == ["มังคุด"]
+
+
+def test_unknown_is_deduplicated_stripped_and_ignores_health_spans(monkeypatch, label_config):
+    monkeypatch.setattr(
+        extract_bert,
+        "predict_entities_bert_with_confidence",
+        lambda text: [entity(" มังคุด "), entity("มังคุด"), entity("zzzqqq", ent_type="HEALTH")],
+    )
+    result = extract_bert.extract_bert("x")
+    assert result["unknown"] == ["มังคุด"]      # once, stripped; the unresolved HEALTH span is not an ingredient
+    assert result["health_tags"] == []
+
+
+def test_a_negated_unknown_word_is_still_reported(monkeypatch, label_config):
+    text = "ไม่เอามังคุด"
+    monkeypatch.setattr(
+        extract_bert, "predict_entities_bert_with_confidence", lambda t: [entity_in(text, "มังคุด")]
+    )
+    result = extract_bert.extract_bert(text)
+    assert result["unknown"] == ["มังคุด"] and result["excluded"] == []
+
+
+def test_the_keyword_fallback_never_reports_unknown(monkeypatch):
+    """Unresolved keyword tokens are not known to be ingredients, so unknown stays []."""
+
+    def _no_model():
+        raise FileNotFoundError("no model here")
+
+    monkeypatch.setattr(extract_bert, "_get_model_and_config", _no_model)
+    monkeypatch.setattr(extract_bert, "_warned", set())
+    result = extract_bert.extract_bert("มีมังคุดกับไก่")
+    assert result["unknown"] == []
+    assert result["ingredients"] == ["chicken"]
+
+
+# ---------------------------------------------------------------------------
+# predict_entities_llm(): a valid [] is "no entities"; unusable output raises
+# so extract_bert() can degrade to the keyword path
+# ---------------------------------------------------------------------------
+
+class _FakeLLM:
+    def __init__(self, text):
+        self.text, self.calls = text, []
+        self.messages = SimpleNamespace(create=self._create)
+
+    def _create(self, **kwargs):
+        self.calls.append(kwargs)
+        return SimpleNamespace(content=[SimpleNamespace(text=self.text)])
+
+
+def test_llm_valid_empty_list_means_no_entities(monkeypatch):
+    monkeypatch.setattr(extract_bert, "_get_client", lambda: _FakeLLM("[]"))
+    assert extract_bert.predict_entities_llm("x") == []
+
+
+@pytest.mark.parametrize("bad", ["nope", "", "{}", '["ไก่"]'])
+def test_llm_unusable_output_raises(monkeypatch, bad):
+    monkeypatch.setattr(extract_bert, "_get_client", lambda: _FakeLLM(bad))
+    with pytest.raises(extract_bert._BadLLMResponse):
+        extract_bert.predict_entities_llm("ไก่")
+
+
+def test_llm_call_uses_the_configured_extraction_model(monkeypatch):
+    fake = _FakeLLM("[]")
+    monkeypatch.setattr(extract_bert, "_get_client", lambda: fake)
+    monkeypatch.setattr(web_config, "EXTRACTION_LLM_MODEL", "some-account-model-id")
+    extract_bert.predict_entities_llm("x")
+    assert fake.calls[0]["model"] == "some-account-model-id"
+
+
+# ---------------------------------------------------------------------------
+# bert_status() for /health: never loads anything
+# ---------------------------------------------------------------------------
+
+def test_bert_status_reports_unavailable_pending_and_loaded(monkeypatch, tmp_path):
+    monkeypatch.setattr(extract_bert, "_model", None)
+    monkeypatch.setattr(extract_bert, "_load_failure", None)
+
+    monkeypatch.setattr(extract_bert, "_model_path", lambda: tmp_path / "missing")
+    assert extract_bert.bert_status() == "unavailable"
+
+    monkeypatch.setattr(extract_bert, "_model_path", lambda: tmp_path)
+    (tmp_path / "label_config.json").write_text("{}", encoding="utf-8")
+    assert extract_bert.bert_status() == "unavailable"          # config only, no weights (what git has)
+    (tmp_path / "model.safetensors").write_bytes(b"")
+    assert extract_bert.bert_status() == "pending"
+
+    monkeypatch.setattr(extract_bert, "_load_failure", RuntimeError("corrupt"))
+    assert extract_bert.bert_status() == "unavailable"
+
+    monkeypatch.setattr(extract_bert, "_model", object())
+    assert extract_bert.bert_status() == "loaded"

@@ -30,7 +30,9 @@ guessed into a state change):
     reject              "no, that's wrong"        -> the UI shows a checklist
     confirm+correction  names specific edits, with or without saying yes
                         ("also add garlic", "เพิ่มไข่ด้วย") -> edits are applied
-                        and the updated list is shown for confirmation again
+                        and the updated list is shown for confirmation again.
+                        An LLM `reject` that comes with non-empty phrases is treated
+                        the same way (if at least one phrase resolves to a key)
     unclear             none of the above -> the UI re-asks
 
 The keyword fallback is stricter than the LLM: an edit with no confirm word
@@ -192,6 +194,13 @@ def _parse_response(response, current_ingredients: list[str]) -> IntentResult:
         raise _BadLLMResponse("intent is not one of the four allowed values")
     add_phrases = _phrase_list(data.get("add_phrases"), "add_phrases")
     remove_phrases = _phrase_list(data.get("remove_phrases"), "remove_phrases")
+
+    if intent == REJECT and (add_phrases or remove_phrases):
+        # "Reject" that also names the edits ("ไม่ใช่ไก่ แต่เป็นหมู") is a correction: apply
+        # it rather than making the user redo it in the checklist. If none of the phrases
+        # resolves to a dictionary key, the check below still fails safe to `unclear`.
+        print("[intent] LLM label=reject with phrases -> treated as confirm+correction", flush=True)
+        intent = CONFIRM_AND_CORRECT
 
     if intent != CONFIRM_AND_CORRECT:
         # Phrases on any other intent means the label and the content disagree.

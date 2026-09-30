@@ -13,13 +13,13 @@ THE FLOW THESE SIX ENDPOINTS SERVE  (see Claude.md §3)
     POST /seasoning     tick seasonings (before the chat starts; then locked)
     POST /detect        photo(s)  -> ingredients          } either or both;
     POST /extract       text      -> include/exclude/tags } same session_id
-    POST /extract_bert  experimental: WangchanBERTa NER + Claude Sonnet 5
-                        fallback (nlp/extract_bert.py); side-by-side with
-                        /extract above, not used by any existing UI flow
+    POST /extract_bert  the live frontend's text extractor: WangchanBERTa NER +
+                        Claude fallback (nlp/extract_bert.py); degrades to the
+                        /extract keyword path if the model or the LLM is unavailable
     POST /confirm       free-text reply -> confirm / reject / confirm+correction / unclear
     POST /correct       checklist removals + typed additions (after a reject)
     POST /recommend     confirmed list -> top-N recipes
-    GET  /health        load-balancer check ({"status","detector"}); not rate limited
+    GET  /health        load-balancer check ({"status","detector","bert"}); not rate limited
 
 Everything reused as-is: nlp.extract.extract(), recommender.recommend.recommend()
 (seasoning bonus is its one change), api.mock_cv.detect() (the real YOLO wrapper
@@ -52,7 +52,7 @@ from slowapi.errors import RateLimitExceeded
 
 from api import intent, schemas, state, web_config
 from nlp.extract import extract, load_ingredients
-from nlp.extract_bert import extract_bert
+from nlp.extract_bert import bert_status, extract_bert
 from recommender.recommend import recommend
 
 _INGREDIENTS = load_ingredients()
@@ -165,7 +165,13 @@ def _detect_one_image(detector, path: str) -> dict[str, float]:
 @app.get("/health")
 def health_endpoint(request: Request):
     detector = getattr(request.app.state, "detector", None)
-    return {"status": "ok", "detector": "loaded" if detector else "unavailable"}
+    return {
+        "status": "ok",
+        "detector": "loaded" if detector else "unavailable",
+        # "loaded" | "pending" (weights on disk, loads on first text request) | "unavailable"
+        # (text falls back to the keyword extractor).
+        "bert": bert_status(),
+    }
 
 
 # ===========================================================================
@@ -268,6 +274,8 @@ def extract_endpoint(request: Request, body: schemas.ExtractRequest):
             sess.start_new_round()
         sess.apply_text_result(parsed)
         sess.stage = state.STAGE_AWAITING_CONFIRM
+        # `unknown` stays [] on this keyword path: extract() only sees tokens, and an
+        # unresolved token is not known to have been meant as an ingredient.
         return schemas.ExtractResponse(
             session_id=sess.session_id,
             include=parsed["ingredients"],
@@ -293,10 +301,9 @@ def extract_endpoint(request: Request, body: schemas.ExtractRequest):
 @limiter.limit(web_config.LIMIT_DEFAULT)
 def extract_bert_endpoint(request: Request, body: schemas.ExtractRequest):
     sess = _session(body.session_id, create=True)
-    try:
-        parsed = extract_bert(body.text)
-    except FileNotFoundError:
-        raise HTTPException(503, "BERT NER model not configured on this server")
+    # extract_bert() never raises for a missing model or a failed LLM fallback: it
+    # degrades to the keyword extract() path itself (nlp/extract_bert.py).
+    parsed = extract_bert(body.text)
 
     with state.store.lock:
         if sess.stage == state.STAGE_CONFIRMED:
@@ -310,6 +317,7 @@ def extract_bert_endpoint(request: Request, body: schemas.ExtractRequest):
             health_tags=parsed["health_tags"],
             ingredients=sess.ingredients,
             stage=sess.stage,
+            unknown=parsed.get("unknown", []),
         )
 
 
@@ -333,8 +341,12 @@ def confirm_endpoint(request: Request, body: schemas.ConfirmRequest):
         elif result.intent == intent.CONFIRM_AND_CORRECT:
             # Apply the correction, then ask again: the user confirmed the OLD
             # list, so the corrected one gets its own confirmation (same as /correct).
+            # A removal here fixes the list ("not chicken, pork"); it is not a dietary
+            # "no", so it must not ban dishes (ban_excluded=False), same as the /correct
+            # checklist. An earlier first-message "no X" stays in `exclude`.
             sess.apply_text_result(
-                {"ingredients": result.add, "excluded": result.remove, "health_tags": []}
+                {"ingredients": result.add, "excluded": result.remove, "health_tags": []},
+                ban_excluded=False,
             )
             sess.stage = state.STAGE_AWAITING_CONFIRM
             corrections = schemas.Corrections(add=result.add, remove=result.remove)

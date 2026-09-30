@@ -57,6 +57,9 @@ class ExtractResponse(BaseModel):
     health_tags: list[str]
     ingredients: list[str]
     stage: Stage
+    # Words the BERT/LLM path labelled as ingredients but the dictionary has no key
+    # for (e.g. "มังคุด"). Optional so older clients keep working; always [] from /extract.
+    unknown: list[str] = []
 
 
 # --- POST /confirm -------------------------------------------------------------

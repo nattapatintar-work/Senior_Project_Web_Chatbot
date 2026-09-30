@@ -48,7 +48,7 @@ INTENT_TIMEOUT_SECONDS = 5.0
 # separates correct from incorrect predictions (ablation: mean TP confidence
 # 0.996 vs. mean FP confidence 0.994), so this fallback is expected to trigger
 # often, not rarely -- Sonnet, not Haiku, was chosen for that reason.
-EXTRACTION_LLM_MODEL = "claude-sonnet-5"
+EXTRACTION_LLM_MODEL = os.getenv("EXTRACTION_LLM_MODEL", "claude-sonnet-5").strip() or "claude-sonnet-5"
 EXTRACTION_LLM_TIMEOUT_SECONDS = 8.0
 
 

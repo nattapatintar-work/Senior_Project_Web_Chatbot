@@ -71,13 +71,20 @@ class SessionState:
         for key, confidence in detections.items():
             self.detected[key] = max(confidence, self.detected.get(key, 0.0))
 
-    def apply_text_result(self, parsed: dict) -> None:
+    def apply_text_result(self, parsed: dict, ban_excluded: bool = True) -> None:
         """
         Merge an nlp.extract.extract() result into the session.
 
         Same rule extract() uses inside one sentence, applied across sentences:
         a later "no X" beats an earlier "X", and a later "X" beats an earlier
         "no X".
+
+        ban_excluded (default True: "no X" in typed text bans dishes with X):
+        pass False for a REMOVAL that is a correction of the ingredient list, not
+        a dietary "no" -- /confirm's confirm+correction ("it isn't chicken, it's
+        pork"). Then parsed["excluded"] only takes the key out of the list, like
+        remove_ingredients() / the /correct checklist, and `exclude` is left
+        exactly as it was (a key already banned by an earlier "no X" stays banned).
 
         health_tags is a REPLACE, not a merge, unlike ingredients/exclude
         above. It represents "what the user currently wants," not everything
@@ -95,7 +102,7 @@ class SessionState:
             if key not in self.include:
                 self.include.append(key)
         for key in parsed["excluded"]:
-            if key not in self.exclude:
+            if ban_excluded and key not in self.exclude:
                 self.exclude.append(key)
             self.remove_ingredients([key])
         if parsed["health_tags"]:

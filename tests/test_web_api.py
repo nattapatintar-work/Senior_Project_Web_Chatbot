@@ -11,15 +11,24 @@ Run with:
 
 import sys
 from pathlib import Path
+from types import SimpleNamespace
 
+import anthropic
 import pytest
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
+
+try:  # anthropic 1.x is built on httpx2
+    import httpx2 as httpx
+except ImportError:  # pragma: no cover
+    import httpx
 
 from fastapi.testclient import TestClient
 
 from api import app as app_module
 from api import state, web_config
+from nlp import extract_bert
+from nlp.extract import extract
 
 PNG = ("photo.png", b"\x89PNG-not-really", "image/png")
 
@@ -61,13 +70,16 @@ def _start_session_with_text(client, text="chicken and egg"):
 def test_health_reports_the_detector_and_is_never_rate_limited(client):
     codes = [client.get("/health").status_code for _ in range(30)]
     assert codes == [200] * 30
-    assert client.get("/health").json() == {"status": "ok", "detector": "loaded"}
+    body = client.get("/health").json()
+    assert body["status"] == "ok" and body["detector"] == "loaded"
+    assert body["bert"] in ("loaded", "pending", "unavailable")
 
 
 def test_health_says_unavailable_without_weights(monkeypatch):
     monkeypatch.setattr(app_module, "_load_detector", lambda: None)
     with TestClient(app_module.app) as c:
-        assert c.get("/health").json() == {"status": "ok", "detector": "unavailable"}
+        body = c.get("/health").json()
+        assert body["status"] == "ok" and body["detector"] == "unavailable"
 
 
 # ---------------------------------------------------------------------------
@@ -511,3 +523,246 @@ def test_secret_helpers_never_expose_the_full_key(monkeypatch):
     assert web_config.anthropic_key_configured() is False
     monkeypatch.setattr(web_config, "ANTHROPIC_API_KEY", "sk-ant-real")
     assert web_config.anthropic_key_configured() is True
+
+
+# ---------------------------------------------------------------------------
+# /extract_bert: an LLM-fallback failure degrades to the keyword extract()
+# (was: HTTP 500). BERT itself is stubbed to "found nothing", which is the
+# input that triggers the Sonnet fallback.
+# ---------------------------------------------------------------------------
+
+FAKE_KEY = "sk-ant-api03-FAKEKEYFORTESTS-do-not-leak"
+KEYWORD_TEXT = "มีไก่กับไข่"
+_REQ = httpx.Request("POST", "https://api.anthropic.com/v1/messages")
+
+
+def _status_error(cls, status):
+    return cls("boom", response=httpx.Response(status, request=_REQ, headers={"request-id": "req_abc"}), body=None)
+
+
+class _FakeLLMClient:
+    """Stands in for anthropic.Anthropic: records calls, returns text or raises."""
+
+    def __init__(self, result):
+        self.result = result
+        self.calls = []
+        self.messages = SimpleNamespace(create=self._create)
+
+    def _create(self, **kwargs):
+        self.calls.append(kwargs)
+        if isinstance(self.result, Exception):
+            raise self.result
+        return SimpleNamespace(content=[SimpleNamespace(text=self.result)])
+
+
+@pytest.fixture
+def bert_finds_nothing(monkeypatch):
+    """BERT 'loaded' and finding no entities, so extract_bert() goes to the LLM fallback."""
+    config = {"LABEL_LIST": [], "id2label": {}, "confidence_threshold": 0.8}
+    monkeypatch.setattr(extract_bert, "_get_model_and_config", lambda: (None, None, config))
+    monkeypatch.setattr(extract_bert, "predict_entities_bert_with_confidence", lambda text: [])
+
+
+@pytest.fixture
+def llm_client(monkeypatch):
+    """Enable the LLM path (fake key) and return a function that installs a fake client."""
+    monkeypatch.setattr(web_config, "ANTHROPIC_API_KEY", FAKE_KEY)
+
+    def install(result):
+        fake = _FakeLLMClient(result)
+        monkeypatch.setattr(extract_bert, "_get_client", lambda: fake)
+        return fake
+
+    return install
+
+
+@pytest.fixture
+def lenient_client(monkeypatch):
+    """Like `client`, but a server error comes back as an HTTP 500 instead of raising in the test."""
+    monkeypatch.setattr(app_module, "_load_detector", lambda: None)
+    state.store.clear()
+    app_module.limiter.reset()
+    with TestClient(app_module.app, raise_server_exceptions=False) as c:
+        yield c
+    state.store.clear()
+    app_module.limiter.reset()
+
+
+LLM_FAILURES = {
+    "timeout": anthropic.APITimeoutError(request=_REQ),
+    "connection": anthropic.APIConnectionError(request=_REQ),
+    "rate_limit_429": _status_error(anthropic.RateLimitError, 429),
+    "auth_401": _status_error(anthropic.AuthenticationError, 401),
+    "server_500": _status_error(anthropic.InternalServerError, 500),
+    # Item 2: a model id the account does not have / the API rejects
+    "model_not_found_404": _status_error(anthropic.NotFoundError, 404),
+    "model_rejected_400": _status_error(anthropic.BadRequestError, 400),
+    "unexpected": RuntimeError("something else entirely"),
+}
+
+
+@pytest.mark.parametrize("failure", list(LLM_FAILURES), ids=list(LLM_FAILURES))
+def test_extract_bert_llm_failure_falls_back_to_keyword_extract(
+    failure, lenient_client, bert_finds_nothing, llm_client, capsys
+):
+    llm_client(LLM_FAILURES[failure])
+    r = lenient_client.post("/extract_bert", json={"text": KEYWORD_TEXT})
+    assert r.status_code == 200, r.text
+    body = r.json()
+    keyword = extract(KEYWORD_TEXT)
+    assert body["include"] == keyword["ingredients"] and body["include"]
+    assert body["exclude"] == keyword["excluded"]
+    assert body["health_tags"] == keyword["health_tags"]
+    assert body["stage"] == "awaiting_confirm"
+    out = capsys.readouterr().out
+    assert out.count("[extract] LLM fallback failed") == 1  # exactly one line per failure
+    assert FAKE_KEY not in out and KEYWORD_TEXT not in out  # never the key or the user's text
+
+
+@pytest.mark.parametrize("bad", ["this is not json", '{"value": "ไก่"}', '["ไก่"]', ""])
+def test_extract_bert_unusable_llm_output_falls_back_to_keyword_extract(
+    bad, lenient_client, bert_finds_nothing, llm_client
+):
+    llm_client(bad)
+    r = lenient_client.post("/extract_bert", json={"text": KEYWORD_TEXT})
+    assert r.status_code == 200, r.text
+    assert r.json()["include"] == extract(KEYWORD_TEXT)["ingredients"]
+
+
+def test_extract_bert_without_an_api_key_skips_the_llm_and_uses_keyword(
+    monkeypatch, lenient_client, bert_finds_nothing
+):
+    def _must_not_build_a_client():
+        raise AssertionError("no key configured: the LLM client must not even be built")
+
+    monkeypatch.setattr(extract_bert, "_get_client", _must_not_build_a_client)
+    r = lenient_client.post("/extract_bert", json={"text": KEYWORD_TEXT})
+    assert r.status_code == 200, r.text
+    assert r.json()["include"] == extract(KEYWORD_TEXT)["ingredients"]
+
+
+def test_extract_bert_a_working_llm_is_still_used(lenient_client, bert_finds_nothing, llm_client):
+    fake = llm_client('[{"value": "ไข่", "type": "ING"}]')
+    r = lenient_client.post("/extract_bert", json={"text": "อยากได้ไข่"})
+    assert r.status_code == 200, r.text
+    assert r.json()["include"] == ["egg"]
+    assert len(fake.calls) == 1
+
+
+# ---------------------------------------------------------------------------
+# Item 2: the extraction model id is overridable; a rejected id never 500s
+# (the 404/400 cases are in LLM_FAILURES above)
+# ---------------------------------------------------------------------------
+
+def _model_id_in_a_fresh_process(env_value):
+    import os
+    import subprocess
+
+    env = {k: v for k, v in os.environ.items() if k != "EXTRACTION_LLM_MODEL"}
+    if env_value is not None:
+        env["EXTRACTION_LLM_MODEL"] = env_value
+    out = subprocess.run(
+        [sys.executable, "-c", "from api import web_config; print(web_config.EXTRACTION_LLM_MODEL)"],
+        cwd=Path(__file__).parent.parent, env=env, capture_output=True, text=True, check=True,
+    )
+    return out.stdout.strip()
+
+
+def test_extraction_model_id_defaults_and_is_overridable_by_env():
+    assert _model_id_in_a_fresh_process(None) == "claude-sonnet-5"        # default unchanged
+    assert _model_id_in_a_fresh_process("") == "claude-sonnet-5"          # blank = unset
+    assert _model_id_in_a_fresh_process("my-account-model") == "my-account-model"
+
+
+# ---------------------------------------------------------------------------
+# Item 3: BERT model absent / unloadable -> keyword extract(), one warning, /health says so
+# ---------------------------------------------------------------------------
+
+@pytest.fixture
+def bert_absent(monkeypatch, tmp_path):
+    monkeypatch.setattr(extract_bert, "_model", None)
+    monkeypatch.setattr(extract_bert, "_load_failure", None)
+    monkeypatch.setattr(extract_bert, "_warned", set())
+    monkeypatch.setattr(extract_bert, "_model_path", lambda: tmp_path / "no_such_model_folder")
+
+
+def test_missing_bert_model_falls_back_to_keyword_and_warns_once(lenient_client, bert_absent, capsys):
+    for _ in range(3):
+        r = lenient_client.post("/extract_bert", json={"text": KEYWORD_TEXT})
+        assert r.status_code == 200, r.text            # was 503
+        body = r.json()
+        assert body["include"] == extract(KEYWORD_TEXT)["ingredients"] and body["include"]
+        assert body["unknown"] == []
+    out = capsys.readouterr().out
+    assert out.count("[extract] BERT model unavailable") == 1     # once per process, not per request
+
+
+def test_health_reports_bert_unavailable_when_the_model_is_missing(lenient_client, bert_absent):
+    body = lenient_client.get("/health").json()
+    assert body["bert"] == "unavailable"
+    assert body["status"] == "ok"
+
+
+def test_a_model_that_fails_to_load_is_tried_once_then_keyword(
+    monkeypatch, lenient_client, bert_absent, tmp_path, capsys
+):
+    """Present but unloadable (corrupt weights, torch missing): not retried, under the model lock, per request."""
+    attempts = []
+
+    def _boom(path):
+        attempts.append(path)
+        raise RuntimeError("corrupt weights")
+
+    fake_transformers = SimpleNamespace(
+        AutoTokenizer=SimpleNamespace(from_pretrained=_boom),
+        AutoModelForTokenClassification=SimpleNamespace(from_pretrained=_boom),
+    )
+    monkeypatch.setitem(sys.modules, "transformers", fake_transformers)
+    monkeypatch.setattr(extract_bert, "_model_path", lambda: tmp_path)
+    monkeypatch.setattr(extract_bert, "_load_label_config", lambda path: {})
+
+    for _ in range(3):
+        r = lenient_client.post("/extract_bert", json={"text": KEYWORD_TEXT})
+        assert r.status_code == 200, r.text
+        assert r.json()["include"] == extract(KEYWORD_TEXT)["ingredients"]
+    assert len(attempts) == 1
+    assert capsys.readouterr().out.count("[extract] BERT model unavailable") == 1
+    assert lenient_client.get("/health").json()["bert"] == "unavailable"
+
+
+# ---------------------------------------------------------------------------
+# Item 4: `unknown` in ExtractResponse
+# ---------------------------------------------------------------------------
+
+def test_extract_bert_reports_unknown_ingredient_words(monkeypatch, client):
+    config = {"LABEL_LIST": [], "id2label": {}, "confidence_threshold": 0.8}
+    monkeypatch.setattr(extract_bert, "_get_model_and_config", lambda: (None, None, config))
+    monkeypatch.setattr(
+        extract_bert,
+        "predict_entities_bert_with_confidence",
+        lambda t: [
+            {"type": "ING", "start": 2, "end": 8, "value": "มังคุด", "confidence": 0.99},
+            {"type": "ING", "start": 12, "end": 15, "value": "ไก่", "confidence": 0.99},
+        ],
+    )
+    r = client.post("/extract_bert", json={"text": "มีมังคุดกับไก่"})
+    assert r.status_code == 200, r.text
+    body = r.json()
+    assert body["unknown"] == ["มังคุด"]
+    assert body["include"] == ["chicken"] and body["ingredients"] == ["chicken"]
+    assert body["stage"] == "awaiting_confirm"       # the confirm flow is unchanged
+
+
+def test_extract_keyword_path_leaves_unknown_empty(client):
+    body = client.post("/extract", json={"text": "มีมังคุดกับไก่"}).json()
+    assert body["unknown"] == []
+    assert body["include"] == ["chicken"]
+
+
+def test_unknown_defaults_to_empty_when_the_extractor_does_not_supply_it(monkeypatch, client):
+    """Old-shaped extractor results (three keys) still work: the field is optional."""
+    monkeypatch.setattr(
+        app_module, "extract_bert", lambda text: {"ingredients": ["egg"], "health_tags": [], "excluded": []}
+    )
+    body = client.post("/extract_bert", json={"text": "x"}).json()
+    assert body["unknown"] == [] and body["include"] == ["egg"]

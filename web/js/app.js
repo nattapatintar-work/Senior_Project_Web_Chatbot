@@ -609,6 +609,9 @@
       var out = [];
       var skipped = detected && detected.images_skipped ? detected.images_skipped.length : 0;
       if (skipped) out.push({ id: nid("n"), role: "note", text: "ข้ามรูปที่ใช้ไม่ได้ " + skipped + " รูป", error: true });
+      // Words the server read as ingredients but has no dictionary key for: tell the user, don't block the flow.
+      var unknownNote = extracted ? L.unknownNote(extracted.unknown) : "";
+      if (unknownNote) out.push({ id: nid("n"), role: "note", text: unknownNote });
 
       S.page = 0;
       S.moreAvailable = false;
@@ -637,14 +640,11 @@
       } else if (resp.intent === "confirm+correction") {
         var add = resp.corrections.add || [];
         var remove = resp.corrections.remove || [];
-        S.textKeys = L.unionInOrder(S.textKeys, add);
-        S.excluded = L.unionInOrder(S.excluded, remove);
-        // A removed item already shows as a struck chip in its own group; an exclusion of something that was
-        // never listed has no such chip, so it stays in the "ไม่เอา" group to be acknowledged.
-        var shownStruck = function (k) { return remove.indexOf(k) !== -1 && (S.photoKeys.indexOf(k) !== -1 || S.textKeys.indexOf(k) !== -1); };
-        replaceTyping([updatedList(add, remove, S.excluded.filter(function (k) { return !shownStruck(k); }))]);
-        S.photoKeys = S.photoKeys.filter(function (k) { return remove.indexOf(k) === -1; });
-        S.textKeys = S.textKeys.filter(function (k) { return remove.indexOf(k) === -1; });
+        // A removal is a struck chip only; it is NOT a "ไม่เอา" entry (the backend does not ban dishes for it).
+        var next = L.applyConfirmCorrection(S, add, remove);
+        replaceTyping([updatedList(add, remove, next.view)]);
+        S.photoKeys = next.photoKeys;
+        S.textKeys = next.textKeys;
         S.phase = "await_confirm";
       } else if (resp.intent === "reject") {
         S.phase = "await_correction";
@@ -656,8 +656,8 @@
   }
 
   /** Bubble shown after the list changed: chips +added / struck removed, then the confirm prompt again. */
-  function updatedList(added, removed, excludedToShow) {
-    var view = { photoKeys: S.photoKeys, textKeys: S.textKeys, excluded: excludedToShow, healthTags: S.healthTags, combined: S.combined };
+  function updatedList(added, removed, view) {
+    view = view || { photoKeys: S.photoKeys, textKeys: S.textKeys, excluded: S.excluded, healthTags: S.healthTags, combined: S.combined };
     var list = { id: nid("list"), role: "bot", kind: "list", text: "อัปเดตรายการแล้ว", groups: L.buildGroups(view, { added: added, removed: removed }, NAMES, S.extraNames), footer: CONFIRM_PROMPT };
     S.lastListId = list.id;
     return list;
@@ -724,7 +724,7 @@
         replaceTyping([out]);
       } else {
         S.phase = "await_confirm";
-        replaceTyping([updatedList(resp.added, resp.removed, S.excluded)]);
+        replaceTyping([updatedList(resp.added, resp.removed)]);
       }
       // wrong detections are dropped for good (they are NOT banned dishes: only a typed "no X" does that)
       S.photoKeys = S.photoKeys.filter(function (k) { return resp.removed.indexOf(k) === -1; });

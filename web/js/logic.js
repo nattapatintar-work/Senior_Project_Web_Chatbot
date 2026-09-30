@@ -156,8 +156,47 @@
     return groups;
   };
 
+  /**
+   * UI lists after a /confirm confirm+correction (`add` / `remove` are the server's resolved keys).
+   *
+   * A removal FIXES the list ("not chicken, pork"): it shows as a struck chip and never goes into
+   * `excluded`, because the backend no longer bans dishes for it (api/app.py: ban_excluded=False).
+   * `excluded` only holds typed "no X" from ExtractResponse.exclude, so it is passed through untouched:
+   * an item excluded by the first message stays in the "ไม่เอา" group even if it is removed again here.
+   *
+   * @returns { view, photoKeys, textKeys }
+   *   view       what buildGroups needs for THIS bubble; removed keys are still in the key lists so they
+   *              render struck-through
+   *   photoKeys / textKeys   the lists to keep afterwards (removed keys dropped)
+   */
+  logic.applyConfirmCorrection = function (s, add, remove) {
+    add = add || [];
+    remove = remove || [];
+    var textKeys = logic.unionInOrder(s.textKeys, add);
+    var without = function (keys) { return keys.filter(function (k) { return remove.indexOf(k) === -1; }); };
+    return {
+      view: { photoKeys: s.photoKeys, textKeys: textKeys, excluded: s.excluded, healthTags: s.healthTags, combined: s.combined },
+      photoKeys: without(s.photoKeys),
+      textKeys: without(textKeys),
+    };
+  };
+
   logic.chipText = function (item) {
     return (item.mode === "added" ? "+ " : "") + item.label;
+  };
+
+  /**
+   * Note for words the server labelled as ingredients but has no key for (ExtractResponse.unknown).
+   * Informational only: the confirm flow carries on. Returns "" when there is nothing to say.
+   * Capped so a long pasted text can't produce a wall of words.
+   */
+  logic.MAX_UNKNOWN_SHOWN = 5;
+  logic.unknownNote = function (words) {
+    var list = (words || []).filter(function (w) { return typeof w === "string" && w.trim(); });
+    if (!list.length) return "";
+    var shown = list.slice(0, logic.MAX_UNKNOWN_SHOWN).map(function (w) { return w.trim(); });
+    var more = list.length > shown.length ? " และอีก " + (list.length - shown.length) + " รายการ" : "";
+    return "ไม่พบวัตถุดิบเหล่านี้ในระบบ: " + shown.join(", ") + more;
   };
 
   logic.unionInOrder = function (base, more) {

@@ -218,3 +218,77 @@ test("image limits match the backend (5 images, 8 MB, jpeg/png/webp)", () => {
   assert.equal(L.MAX_IMAGE_BYTES, 8 * 1024 * 1024);
   assert.deepEqual(L.ALLOWED_IMAGE_TYPES, ["image/jpeg", "image/png", "image/webp"]);
 });
+
+// ---------------------------------------------------------------- unknown ingredient words
+test("unknownNote lists words the server could not match, and is empty when there are none", () => {
+  assert.equal(L.unknownNote(undefined), "");
+  assert.equal(L.unknownNote([]), "");
+  assert.equal(L.unknownNote(["", "  "]), "");
+  assert.equal(L.unknownNote(["มังคุด"]), "ไม่พบวัตถุดิบเหล่านี้ในระบบ: มังคุด");
+  assert.equal(L.unknownNote([" มังคุด ", "ลำไย"]), "ไม่พบวัตถุดิบเหล่านี้ในระบบ: มังคุด, ลำไย");
+});
+
+test("unknownNote caps the words shown and says how many more there are", () => {
+  var many = ["a", "b", "c", "d", "e", "f", "g"];
+  assert.equal(L.unknownNote(many), "ไม่พบวัตถุดิบเหล่านี้ในระบบ: a, b, c, d, e และอีก 2 รายการ");
+});
+
+// ---------------------------------------------------------------- /confirm removals vs the "ไม่เอา" group
+// The backend no longer bans dishes for a removal made at /confirm (ban_excluded=False), so the UI must not
+// list it under "ไม่เอา". Only typed "no X" (ExtractResponse.exclude) belongs there.
+const NAMES_PORK = Object.assign({ pork: "หมู", chili: "พริก" }, NAMES);
+const sourcesOf = (groups) => groups.map((x) => x.source);
+
+test("confirm removal is a struck chip in the list and is NOT an excluded (ไม่เอา) entry", () => {
+  const s = { photoKeys: ["chicken", "egg"], textKeys: [], excluded: [], healthTags: [], combined: ["egg", "pork"] };
+  const next = L.applyConfirmCorrection(s, ["pork"], ["chicken"]);
+  const g = L.buildGroups(next.view, { added: ["pork"], removed: ["chicken"] }, NAMES_PORK);
+
+  assert.ok(!sourcesOf(g).includes("excluded"));
+  assert.deepEqual(next.view.excluded, []);
+  assert.deepEqual(g[0].items, [{ label: "ไก่", mode: "removed" }, { label: "ไข่ไก่", mode: "plain" }]);   // struck chip, other chip stays
+  assert.deepEqual(g[1].items, [{ label: "หมู", mode: "added" }]);                                           // new ingredient shown with "+"
+  assert.equal(L.chipText(g[1].items[0]), "+ หมู");
+  // the lists kept afterwards no longer carry the removed key, so the NEXT bubble does not show it again
+  assert.deepEqual(next.photoKeys, ["egg"]);
+  assert.deepEqual(next.textKeys, ["pork"]);
+});
+
+test("first-message negation still shows in the excluded (ไม่เอา) group, also after a later correction", () => {
+  const s = { photoKeys: [], textKeys: ["egg", "chicken"], excluded: ["pork"], healthTags: [], combined: ["egg", "chicken"] };
+  const first = L.buildGroups(s, {}, NAMES_PORK);
+  assert.deepEqual(sourcesOf(first), ["text", "excluded"]);
+  assert.deepEqual(first[1].items, [{ label: "หมู", mode: "removed" }]);
+
+  const next = L.applyConfirmCorrection(s, ["garlic"], []);
+  const after = L.buildGroups(next.view, { added: ["garlic"], removed: [] }, NAMES_PORK);
+  assert.deepEqual(next.view.excluded, ["pork"]);
+  assert.ok(sourcesOf(after).includes("excluded"));
+});
+
+test("removing an item that the first message excluded leaves it in the excluded group", () => {
+  const s = { photoKeys: [], textKeys: ["egg", "chicken"], excluded: ["pork"], healthTags: [], combined: ["egg", "chicken"] };
+  const next = L.applyConfirmCorrection(s, [], ["pork"]);
+  const g = L.buildGroups(next.view, { added: [], removed: ["pork"] }, NAMES_PORK);
+
+  assert.deepEqual(next.view.excluded, ["pork"]);                                   // the backend still bans it
+  const excluded = g.find((x) => x.source === "excluded");
+  assert.deepEqual(excluded.items, [{ label: "หมู", mode: "removed" }]);
+  const text = g.find((x) => x.source === "text");
+  assert.ok(!text.items.some((i) => i.label === "หมู"));                            // and no duplicate struck chip
+});
+
+test("removing something that was never listed shows nothing and adds no excluded entry", () => {
+  const s = { photoKeys: ["chicken"], textKeys: [], excluded: [], healthTags: [], combined: ["chicken"] };
+  const next = L.applyConfirmCorrection(s, [], ["chili"]);
+  const g = L.buildGroups(next.view, { added: [], removed: ["chili"] }, NAMES_PORK);
+  assert.deepEqual(sourcesOf(g), ["photo"]);
+  assert.deepEqual(g[0].items, [{ label: "ไก่", mode: "plain" }]);
+});
+
+test("applyConfirmCorrection does not mutate the state it is given", () => {
+  const s = { photoKeys: ["chicken", "egg"], textKeys: ["garlic"], excluded: ["pork"], healthTags: [], combined: ["egg"] };
+  const copy = JSON.parse(JSON.stringify(s));
+  L.applyConfirmCorrection(s, ["rice"], ["chicken"]);
+  assert.deepEqual(s, copy);
+});

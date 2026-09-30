@@ -89,3 +89,40 @@ def test_start_new_round_does_not_touch_seasonings():
     sess.start_new_round()
 
     assert sess.seasonings == ["fish_sauce", "sugar"]
+
+
+# ---------------------------------------------------------------------------
+# apply_text_result(ban_excluded=False) -- /confirm's removals fix the list, they do not ban dishes
+# ---------------------------------------------------------------------------
+
+def test_a_removal_with_ban_excluded_false_leaves_exclude_untouched():
+    sess = SessionState(session_id="s8")
+    sess.detected["chicken"] = 0.9
+    sess.include.append("egg")
+
+    sess.apply_text_result(_parsed(ingredients=["pork"], excluded=["chicken"]), ban_excluded=False)
+
+    assert sess.ingredients == ["egg", "pork"]
+    assert sess.exclude == []
+
+
+def test_a_removal_with_ban_excluded_false_keeps_an_earlier_first_message_exclusion():
+    sess = SessionState(session_id="s9")
+    sess.apply_text_result(_parsed(ingredients=["egg"], excluded=["pork"]))          # "no pork" in the first message
+    assert sess.exclude == ["pork"]
+
+    sess.apply_text_result(_parsed(excluded=["pork"]), ban_excluded=False)
+
+    assert sess.exclude == ["pork"]
+
+
+def test_default_still_bans_and_other_fields_are_unaffected_by_the_flag():
+    default = SessionState(session_id="s10")
+    default.apply_text_result(_parsed(ingredients=["garlic"], excluded=["pork"], health_tags=["keto"]))
+    assert default.exclude == ["pork"]
+
+    flagged = SessionState(session_id="s11")
+    flagged.apply_text_result(_parsed(ingredients=["garlic"], excluded=["pork"], health_tags=["keto"]), ban_excluded=False)
+    assert flagged.ingredients == default.ingredients == ["garlic"]
+    assert flagged.health_tags == default.health_tags == ["keto"]
+    assert flagged.exclude == []

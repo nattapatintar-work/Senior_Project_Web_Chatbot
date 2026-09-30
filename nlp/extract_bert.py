@@ -7,10 +7,24 @@ production POST /extract route (nlp.extract.extract(), dictionary + fuzzy +
 Trie) -- it exists so the BERT model can be tested side by side with it
 before any decision to switch.
 
-    extract_bert(text) -> {"ingredients": [...], "health_tags": [...], "excluded": []}
+    extract_bert(text) -> {"ingredients": [...], "health_tags": [...], "excluded": [...],
+                           "unknown": [...]}
 
-Same three-key contract as nlp.extract.extract() (see that module's
-docstring), except "excluded" is always empty here -- see "KNOWN GAP" below.
+The same three keys as nlp.extract.extract() (see that module's docstring),
+plus "unknown": the raw words an entity labelled ING carried that resolved to
+no dictionary key (e.g. "มังคุด"), so the UI can say so instead of dropping
+them silently. "excluded" comes from the rule-based negation pass -- see
+"KNOWN GAP" below.
+
+DEGRADES TO THE KEYWORD PATH, NEVER FAILS
+-----------------------------------------
+extract_bert() falls back to nlp.extract.extract() (with "unknown" == [] --
+unresolved keyword tokens are not known to be ingredients) when
+  - the BERT model can't be loaded (folder/weights absent, transformers/torch
+    missing, corrupt files): one warning per process, then silent; or
+  - the Sonnet fallback fails for ANY reason (no key, timeout, 429, a rejected
+    model id, unparseable output): one `[extract] ...` log line per failure,
+    same pattern as api/intent.py. Never the key, never the user's text.
 
 HOW IT WORKS
 ------------
@@ -69,8 +83,9 @@ remain, both left as-is on purpose rather than silently glossed over:
 
 import json
 import threading
+import time
 
-from nlp.extract import NEGATION_CUES, resolve_token
+from nlp.extract import NEGATION_CUES, extract, resolve_token
 
 # ===========================================================================
 # Model + label config loading (lazy, thread-safe singleton)
@@ -80,6 +95,22 @@ _model = None
 _tokenizer = None
 _label_config = None
 _model_lock = threading.Lock()
+
+# Set when loading failed for a reason other than "folder not there" (missing
+# transformers/torch, corrupt weights). Remembered so a slow failing load is not
+# retried, under _model_lock, on every request. A missing folder is NOT
+# remembered: checking it is free, so dropping the model in works without a restart.
+_load_failure = None
+_warned: set[str] = set()   # warning keys already printed (each is logged once per process)
+_warned_lock = threading.Lock()
+
+
+def _warn_once(key: str, message: str) -> None:
+    with _warned_lock:
+        if key in _warned:
+            return
+        _warned.add(key)
+    print(message, flush=True)
 
 
 def _model_path():
@@ -114,20 +145,47 @@ def _get_model_and_config():
     installed or the model folder present -- the failure then surfaces as a
     503 from POST /extract_bert instead of at startup.
     """
-    global _model, _tokenizer, _label_config
+    global _model, _tokenizer, _label_config, _load_failure
     with _model_lock:
         if _model is None:
+            if _load_failure is not None:
+                raise _load_failure
             model_path = _model_path()
             if not model_path.exists():
                 raise FileNotFoundError(f"BERT NER model folder not found: {model_path}")
 
-            from transformers import AutoModelForTokenClassification, AutoTokenizer
+            try:
+                from transformers import AutoModelForTokenClassification, AutoTokenizer
 
-            _label_config = _load_label_config(model_path)
-            _tokenizer = AutoTokenizer.from_pretrained(str(model_path))
-            _model = AutoModelForTokenClassification.from_pretrained(str(model_path))
-            _model.eval()
+                label_config = _load_label_config(model_path)
+                tokenizer = AutoTokenizer.from_pretrained(str(model_path))
+                model = AutoModelForTokenClassification.from_pretrained(str(model_path))
+                model.eval()
+            except FileNotFoundError:
+                raise  # a missing file is re-checked on the next request
+            except Exception as exc:  # noqa: BLE001 - remember any other load failure
+                _load_failure = exc
+                raise
+            _label_config, _tokenizer, _model = label_config, tokenizer, model
         return _model, _tokenizer, _label_config
+
+
+def bert_status() -> str:
+    """
+    For /health, without importing torch or loading anything:
+        "loaded"       the model is in memory
+        "unavailable"  the weights are missing, or a load already failed
+        "pending"      weights are on disk; they load on the first text request
+    """
+    if _model is not None:
+        return "loaded"
+    if _load_failure is not None:
+        return "unavailable"
+    path = _model_path()
+    has_weights = path.is_dir() and any(
+        [*path.glob("*.safetensors"), *path.glob("pytorch_model*.bin")]
+    )
+    return "pending" if has_weights and (path / "label_config.json").exists() else "unavailable"
 
 
 # ===========================================================================
@@ -212,6 +270,10 @@ LLM_PROMPT = """\
 
 ข้อความ: {text}"""
 
+class _BadLLMResponse(Exception):
+    """The API call worked but its answer can't be used. Message is ours: no user text."""
+
+
 _client = None
 _client_lock = threading.Lock()
 
@@ -240,9 +302,11 @@ def _get_client():
 def predict_entities_llm(text: str) -> list[dict]:
     """
     Claude Sonnet 5 fallback, same prompt/parsing validated in the Colab
-    ablation (F1 0.774, 0% hallucination on the "unclear" category). Fails
-    closed to [] on anything unparseable -- no entities is a safe answer,
-    a crash is not.
+    ablation (F1 0.774, 0% hallucination on the "unclear" category).
+
+    A valid answer of [] means "no entities". Anything unusable -- not JSON,
+    not a list of {"value","type"} objects -- raises _BadLLMResponse, and so
+    does any API error; extract_bert() catches it and uses the keyword path.
     """
     from api import web_config
 
@@ -262,7 +326,9 @@ def predict_entities_llm(text: str) -> list[dict]:
     try:
         found = json.loads(raw)
     except json.JSONDecodeError:
-        return []  # fail closed: no entities rather than a crash
+        raise _BadLLMResponse("output is not JSON") from None
+    if not isinstance(found, list) or not all(isinstance(item, dict) for item in found):
+        raise _BadLLMResponse("output is not a list of objects")
 
     entities = []
     for item in found:
@@ -318,9 +384,16 @@ def _resolve_entities(entities: list[dict]) -> dict:
     ingredients: list[str] = []
     excluded: list[str] = []
     health_tags: list[str] = []
+    unknown: list[str] = []
     for entity in entities:
-        resolved = resolve_token(entity["value"].strip())
+        value = entity["value"].strip()
+        resolved = resolve_token(value)
         if resolved is None:
+            # The model labelled this span an ingredient but the dictionary has no
+            # key for it: report it rather than dropping it silently. HEALTH spans
+            # that don't resolve are not "unknown ingredients", so they stay dropped.
+            if entity.get("type") == "ING" and value and value not in unknown:
+                unknown.append(value)
             continue
         if resolved.startswith("health:"):
             tag = resolved.removeprefix("health:")
@@ -336,28 +409,87 @@ def _resolve_entities(entities: list[dict]) -> dict:
     # lists at once, and excluded wins.
     ingredients = [key for key in ingredients if key not in excluded]
 
-    return {"ingredients": ingredients, "health_tags": health_tags, "excluded": excluded}
+    return {
+        "ingredients": ingredients,
+        "health_tags": health_tags,
+        "excluded": excluded,
+        "unknown": unknown,
+    }
+
+
+def _keyword_result(text: str) -> dict:
+    """
+    The keyword path (nlp.extract.extract) in extract_bert()'s shape.
+
+    "unknown" is always [] here: extract() only sees tokens, and an unresolved
+    keyword token is not known to have been meant as an ingredient (most
+    tokens are function words like "มี" or "กับ"), so reporting them would
+    flood the user with false "not in the system" notes.
+    """
+    return {**extract(text), "unknown": []}
+
+
+def _log_llm_fallback(exc: Exception, elapsed_ms: float) -> None:
+    """
+    One line per failure: which failure, never the user's text or the key. Only
+    our own _BadLLMResponse messages are echoed (same rule as api/intent.py).
+    """
+    parts = [type(exc).__name__]
+    status = getattr(exc, "status_code", None)
+    if status:
+        parts.append(f"status={status}")
+    request_id = getattr(exc, "request_id", None)
+    if request_id:
+        parts.append(f"request_id={request_id}")
+    if isinstance(exc, _BadLLMResponse):
+        parts.append(str(exc))
+    print(
+        f"[extract] LLM fallback failed ({', '.join(parts)}, {elapsed_ms:.0f}ms) "
+        f"-> keyword extract()",
+        flush=True,
+    )
 
 
 def extract_bert(text: str) -> dict:
     """
     BERT-primary text extraction for POST /extract_bert.
 
-    Returns the same three-key contract as nlp.extract.extract():
-        {"ingredients": [...], "health_tags": [...], "excluded": [...]}
+    Returns nlp.extract.extract()'s three keys plus "unknown":
+        {"ingredients": [...], "health_tags": [...], "excluded": [...], "unknown": [...]}
     "excluded" comes only from apply_negation_cues's rule-based scan, not
     from any model -- see the module docstring's KNOWN GAP for what that
     heuristic does and does not catch.
 
-    Raises FileNotFoundError if the BERT model folder isn't configured on
-    this server; the caller (api/app.py) turns that into a 503.
+    Never raises for a missing model or a failed LLM fallback: both degrade
+    to the keyword extract() path (see the module docstring).
     """
-    _, _, label_config = _get_model_and_config()
+    from api import web_config
+
+    try:
+        _, _, label_config = _get_model_and_config()
+    except Exception as exc:  # noqa: BLE001 - any load failure means "no BERT"
+        _warn_once(
+            "bert_unavailable",
+            f"[extract] BERT model unavailable ({type(exc).__name__}: "
+            f"{_model_path()}) -> using keyword extract() for text input",
+        )
+        return _keyword_result(text)
     threshold = label_config["confidence_threshold"]
 
     entities = predict_entities_bert_with_confidence(text)
     if not entities or any(e["confidence"] < threshold for e in entities):
-        entities = predict_entities_llm(text)
+        if not web_config.anthropic_key_configured():
+            _warn_once(
+                "llm_no_key",
+                "[extract] ANTHROPIC_API_KEY not configured: BERT-unsure text uses keyword extract()",
+            )
+            return _keyword_result(text)
+        started = time.monotonic()
+        try:
+            entities = predict_entities_llm(text)
+        except Exception as exc:  # noqa: BLE001 - by design, ANY failure must fall back
+            _log_llm_fallback(exc, (time.monotonic() - started) * 1000)
+            return _keyword_result(text)
 
     entities = apply_negation_cues(text, entities)
     return _resolve_entities(entities)

@@ -171,10 +171,31 @@ def test_correction_with_no_resolvable_phrase_is_unclear(llm, capsys):
     assert "no phrase resolved" in capsys.readouterr().out
 
 
-@pytest.mark.parametrize("name", ["confirm", "reject", "unclear"])
+@pytest.mark.parametrize("name", ["confirm", "unclear"])
 def test_phrases_on_a_non_correction_label_are_unclear(llm, name):
     llm(answer(name, add=["กระเทียม"]))
     assert intent.classify_intent("x", CURRENT) == intent.IntentResult("unclear")
+
+
+# `reject` used to be in the parametrization above (phrases on it -> unclear, edit dropped).
+# Deliberately changed: a reject that names the edits is a correction and is applied.
+
+def test_reject_with_resolvable_phrases_is_treated_as_a_correction(llm, capsys):
+    llm(answer("reject", add=["กระเทียม"], remove=["ไข่"]))
+    result = intent.classify_intent("x", CURRENT)
+    assert result == intent.IntentResult("confirm+correction", add=["garlic"], remove=["egg"])
+    assert "treated as confirm+correction" in capsys.readouterr().out
+
+
+def test_reject_with_only_unresolvable_phrases_is_still_unclear(llm, capsys):
+    llm(answer("reject", add=["zzzqqq"], remove=["qqqzzz"]))
+    assert intent.classify_intent("x", CURRENT) == intent.IntentResult("unclear")
+    assert "no phrase resolved" in capsys.readouterr().out
+
+
+def test_reject_without_phrases_is_still_a_plain_reject(llm):
+    llm(answer("reject"))
+    assert intent.classify_intent("x", CURRENT) == intent.IntentResult("reject")
 
 
 # ---------------------------------------------------------------------------
