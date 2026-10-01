@@ -1,0 +1,915 @@
+[
+ {
+  "id": "A1",
+  "text_th": "มีไข่",
+  "ingredients": [
+   "egg"
+  ],
+  "health_tags": [],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "ไข่ต้ม",
+    "cat": "savory",
+    "cosine": 1.0,
+    "score": 5
+   },
+   {
+    "name": "ทองหยอด",
+    "cat": "dessert",
+    "cosine": 1.0,
+    "score": 2
+   },
+   {
+    "name": "ฝอยทอง",
+    "cat": "dessert",
+    "cosine": 1.0,
+    "score": 2
+   }
+  ]
+ },
+ {
+  "id": "A2",
+  "text_th": "มีไก่",
+  "ingredients": [
+   "chicken"
+  ],
+  "health_tags": [],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "ไก่อบซอส",
+    "cat": "savory",
+    "cosine": 0.89,
+    "score": 5
+   },
+   {
+    "name": "แกงพะแนงไก่",
+    "cat": "savory",
+    "cosine": 0.88,
+    "score": 5
+   },
+   {
+    "name": "ผัดเผ็ดไก่",
+    "cat": "savory",
+    "cosine": 0.77,
+    "score": 5
+   }
+  ]
+ },
+ {
+  "id": "A3",
+  "text_th": "มีหมู",
+  "ingredients": [
+   "pork"
+  ],
+  "health_tags": [],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "ต้มพะโล้",
+    "cat": "savory",
+    "cosine": 0.72,
+    "score": 4
+   },
+   {
+    "name": "แกงคั่วซี่โครงหมูใบมะกรูด",
+    "cat": "savory",
+    "cosine": 0.62,
+    "score": 4
+   },
+   {
+    "name": "หมูผัดพริกหยวก",
+    "cat": "savory",
+    "cosine": 0.62,
+    "score": 4
+   }
+  ]
+ },
+ {
+  "id": "A4",
+  "text_th": "มีกุ้ง",
+  "ingredients": [
+   "shrimp"
+  ],
+  "health_tags": [],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "ทอดมันกุ้ง",
+    "cat": "savory",
+    "cosine": 0.85,
+    "score": 5
+   },
+   {
+    "name": "กะหล่ำปลีผัดกุ้ง",
+    "cat": "savory",
+    "cosine": 0.58,
+    "score": 4
+   },
+   {
+    "name": "ก้อยกุ้ง",
+    "cat": "savory",
+    "cosine": 0.56,
+    "score": 5
+   }
+  ]
+ },
+ {
+  "id": "A5",
+  "text_th": "มีเต้าหู้",
+  "ingredients": [
+   "tofu"
+  ],
+  "health_tags": [],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "เต้าหู้ทอดซอสมะขาม",
+    "cat": "savory",
+    "cosine": 0.83,
+    "score": 5
+   },
+   {
+    "name": "เต้าหู้ยัดไส้นึ่งซีอิ๊ว",
+    "cat": "savory",
+    "cosine": 0.74,
+    "score": 4
+   },
+   {
+    "name": "กะเพราเต้าหู้",
+    "cat": "savory",
+    "cosine": 0.69,
+    "score": 3
+   }
+  ]
+ },
+ {
+  "id": "A6",
+  "text_th": "มีหมูสับ",
+  "ingredients": [
+   "minced_meat"
+  ],
+  "health_tags": [],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "ผัดแครอทใส่หมูสับ",
+    "cat": "savory",
+    "cosine": 0.61,
+    "score": 4
+   },
+   {
+    "name": "หมูสับผัดโหระพา",
+    "cat": "savory",
+    "cosine": 0.58,
+    "score": 4
+   },
+   {
+    "name": "ขึ้นฉ่ายผัดหมูสับ",
+    "cat": "savory",
+    "cosine": 0.57,
+    "score": 4
+   }
+  ]
+ },
+ {
+  "id": "B1",
+  "text_th": "มีไข่ กับมะเขือเทศ",
+  "ingredients": [
+   "egg",
+   "tomato"
+  ],
+  "health_tags": [],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "ไข่ต้ม",
+    "cat": "savory",
+    "cosine": 0.55,
+    "score": 5
+   },
+   {
+    "name": "ทองหยอด",
+    "cat": "dessert",
+    "cosine": 0.55,
+    "score": 2
+   },
+   {
+    "name": "ฝอยทอง",
+    "cat": "dessert",
+    "cosine": 0.55,
+    "score": 2
+   }
+  ]
+ },
+ {
+  "id": "B2",
+  "text_th": "มีไก่ กับข้าว",
+  "ingredients": [
+   "chicken",
+   "rice"
+  ],
+  "health_tags": [],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "ข้าวราดไก่ผัดใบกะเพรา",
+    "cat": "savory",
+    "cosine": 0.74,
+    "score": 4
+   },
+   {
+    "name": "ข้าวหมกไก่",
+    "cat": "savory",
+    "cosine": 0.65,
+    "score": 4
+   },
+   {
+    "name": "ไก่อบซอส",
+    "cat": "savory",
+    "cosine": 0.54,
+    "score": 5
+   }
+  ]
+ },
+ {
+  "id": "B3",
+  "text_th": "มีหมู กระเทียม พริก",
+  "ingredients": [
+   "pork",
+   "garlic",
+   "chili"
+  ],
+  "health_tags": [],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "หมูผัดขึ้นฉ่าย",
+    "cat": "savory",
+    "cosine": 0.61,
+    "score": 4
+   },
+   {
+    "name": "คะน้าหมูกรอบ",
+    "cat": "savory",
+    "cosine": 0.59,
+    "score": 4
+   },
+   {
+    "name": "หมูย่างเกาหลีห่อผักสลัดคอส",
+    "cat": "savory",
+    "cosine": 0.59,
+    "score": 4
+   }
+  ]
+ },
+ {
+  "id": "B4",
+  "text_th": "มีกุ้ง ตะไคร้ ข่า",
+  "ingredients": [
+   "shrimp",
+   "lemongrass",
+   "galangal"
+  ],
+  "health_tags": [],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "ต้มยำกุ้ง",
+    "cat": "savory",
+    "cosine": 0.77,
+    "score": 4
+   },
+   {
+    "name": "ต้มยำไก่",
+    "cat": "savory",
+    "cosine": 0.6,
+    "score": 4
+   },
+   {
+    "name": "ต้มข่าไก่",
+    "cat": "savory",
+    "cosine": 0.59,
+    "score": 4
+   }
+  ]
+ },
+ {
+  "id": "B5",
+  "text_th": "มีปลา กับขิง",
+  "ingredients": [
+   "fish",
+   "ginger"
+  ],
+  "health_tags": [],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "ปลาทับทิมนึ่งขิง",
+    "cat": "savory",
+    "cosine": 0.69,
+    "score": 4
+   },
+   {
+    "name": "ปลากระพงผัดขึ้นฉ่าย",
+    "cat": "savory",
+    "cosine": 0.64,
+    "score": 4
+   },
+   {
+    "name": "ปลานึ่งมะนาว",
+    "cat": "savory",
+    "cosine": 0.5,
+    "score": 4
+   }
+  ]
+ },
+ {
+  "id": "B6",
+  "text_th": "มีเนื้อ กับใบโหระพา",
+  "ingredients": [
+   "beef",
+   "basil"
+  ],
+  "health_tags": [],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "เนื้อผัดน้ำมันหอย",
+    "cat": "savory",
+    "cosine": 0.63,
+    "score": 5
+   },
+   {
+    "name": "แกงเผ็ดเนื้อ",
+    "cat": "savory",
+    "cosine": 0.6,
+    "score": 3
+   },
+   {
+    "name": "ไข่เจียวใบโหระพา",
+    "cat": "savory",
+    "cosine": 0.56,
+    "score": 4
+   }
+  ]
+ },
+ {
+  "id": "B7",
+  "text_th": "มีหมูสับ ไข่ ใบกะเพรา",
+  "ingredients": [
+   "minced_meat",
+   "egg",
+   "holy_basil"
+  ],
+  "health_tags": [],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "มะเขือยาวผัดหมูสับ",
+    "cat": "savory",
+    "cosine": 0.49,
+    "score": 4
+   },
+   {
+    "name": "กะเพราเต้าหู้",
+    "cat": "savory",
+    "cosine": 0.46,
+    "score": 3
+   },
+   {
+    "name": "หอยลายผัดพริกเผา",
+    "cat": "savory",
+    "cosine": 0.46,
+    "score": 4
+   }
+  ]
+ },
+ {
+  "id": "B8",
+  "text_th": "มีกะหล่ำปลี แครอท ไข่",
+  "ingredients": [
+   "cabbage",
+   "carrot",
+   "egg"
+  ],
+  "health_tags": [],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "กะหล่ำปลีผัดไข่",
+    "cat": "savory",
+    "cosine": 0.83,
+    "score": 5
+   },
+   {
+    "name": "แครอทไข่",
+    "cat": "savory",
+    "cosine": 0.7,
+    "score": 5
+   },
+   {
+    "name": "ยำกะหล่ำกรอบ",
+    "cat": "savory",
+    "cosine": 0.62,
+    "score": 5
+   }
+  ]
+ },
+ {
+  "id": "C1",
+  "text_th": "มีไก่ อยากกินคลีน",
+  "ingredients": [
+   "chicken"
+  ],
+  "health_tags": [
+   "clean"
+  ],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "ผัดเผ็ดไก่",
+    "cat": "savory",
+    "cosine": 0.77,
+    "score": 5
+   },
+   {
+    "name": "ผัดพริกขิงไก่ใส่ถั่วฝักยาว",
+    "cat": "savory",
+    "cosine": 0.6,
+    "score": 4
+   },
+   {
+    "name": "ผักโขมผัดไก่",
+    "cat": "savory",
+    "cosine": 0.55,
+    "score": 4
+   }
+  ]
+ },
+ {
+  "id": "C2",
+  "text_th": "มีไข่ อยากกินคีโต",
+  "ingredients": [
+   "egg"
+  ],
+  "health_tags": [
+   "keto"
+  ],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "ไข่ต้ม",
+    "cat": "savory",
+    "cosine": 1.0,
+    "score": 5
+   },
+   {
+    "name": "ไข่เจียว",
+    "cat": "savory",
+    "cosine": 0.87,
+    "score": 5
+   },
+   {
+    "name": "ไข่ตุ๋น",
+    "cat": "savory",
+    "cosine": 0.75,
+    "score": 5
+   }
+  ]
+ },
+ {
+  "id": "C3",
+  "text_th": "มีเต้าหู้ เห็ดหอม กินวีแกน",
+  "ingredients": [
+   "tofu",
+   "shiitake"
+  ],
+  "health_tags": [
+   "vegan"
+  ],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "ผัดผักกวางตุ้งมังสวิรัติใส่เต้าหู้เห็ดหอม",
+    "cat": "savory",
+    "cosine": 0.78,
+    "score": 4
+   },
+   {
+    "name": "เต้าหู้ทอดซอสมะขาม",
+    "cat": "savory",
+    "cosine": 0.6,
+    "score": 5
+   },
+   {
+    "name": "กะเพราเต้าหู้",
+    "cat": "savory",
+    "cosine": 0.5,
+    "score": 3
+   }
+  ]
+ },
+ {
+  "id": "C4",
+  "text_th": "มีกะหล่ำปลี แครอท กินเจ(มังสวิรัติ)",
+  "ingredients": [
+   "cabbage",
+   "carrot"
+  ],
+  "health_tags": [
+   "vegetarian"
+  ],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "แครอทไข่",
+    "cat": "savory",
+    "cosine": 0.49,
+    "score": 4
+   },
+   {
+    "name": "ตะโก้แครอท",
+    "cat": "dessert",
+    "cosine": 0.42,
+    "score": 2
+   },
+   {
+    "name": "เค้กแครอท",
+    "cat": "dessert",
+    "cosine": 0.37,
+    "score": 2
+   }
+  ]
+ },
+ {
+  "id": "C5",
+  "text_th": "มีกุ้ง อยากกินคีโต",
+  "ingredients": [
+   "shrimp"
+  ],
+  "health_tags": [
+   "keto"
+  ],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "ทอดมันกุ้ง",
+    "cat": "savory",
+    "cosine": 0.85,
+    "score": 5
+   },
+   {
+    "name": "กะหล่ำปลีผัดกุ้ง",
+    "cat": "savory",
+    "cosine": 0.58,
+    "score": 4
+   },
+   {
+    "name": "ก้อยกุ้ง",
+    "cat": "savory",
+    "cosine": 0.56,
+    "score": 5
+   }
+  ]
+ },
+ {
+  "id": "C6",
+  "text_th": "มีฟักทอง กินวีแกน",
+  "ingredients": [
+   "pumpkin"
+  ],
+  "health_tags": [
+   "vegan"
+  ],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "แกงบวดฟักทอง",
+    "cat": "dessert",
+    "cosine": 1.0,
+    "score": 2
+   },
+   {
+    "name": "ฟักทองทอด",
+    "cat": "dessert",
+    "cosine": 0.75,
+    "score": 2
+   },
+   {
+    "name": "แกงบวดเผือก",
+    "cat": "dessert",
+    "cosine": 0.69,
+    "score": 2
+   }
+  ]
+ },
+ {
+  "id": "D1",
+  "text_th": "มีไก่ ไข่ ไม่เอาพริก",
+  "ingredients": [
+   "chicken",
+   "egg"
+  ],
+  "health_tags": [],
+  "excluded": [
+   "chili"
+  ],
+  "preview_top3": [
+   {
+    "name": "ไก่อบซอส",
+    "cat": "savory",
+    "cosine": 0.71,
+    "score": 5
+   },
+   {
+    "name": "แกงพะแนงไก่",
+    "cat": "savory",
+    "cosine": 0.7,
+    "score": 5
+   },
+   {
+    "name": "ซีซาร์สลัดอกไก่ไข่ต้ม",
+    "cat": "savory",
+    "cosine": 0.66,
+    "score": 4
+   }
+  ]
+ },
+ {
+  "id": "D2",
+  "text_th": "มีหมู กระเทียม ไม่เอาพริก",
+  "ingredients": [
+   "pork",
+   "garlic"
+  ],
+  "health_tags": [],
+  "excluded": [
+   "chili"
+  ],
+  "preview_top3": [
+   {
+    "name": "ต้มพะโล้",
+    "cat": "savory",
+    "cosine": 0.63,
+    "score": 4
+   },
+   {
+    "name": "หมูผัดพริกหยวก",
+    "cat": "savory",
+    "cosine": 0.63,
+    "score": 4
+   },
+   {
+    "name": "หมูผัดขึ้นฉ่าย",
+    "cat": "savory",
+    "cosine": 0.6,
+    "score": 4
+   }
+  ]
+ },
+ {
+  "id": "D3",
+  "text_th": "มีกุ้ง ไข่ ไม่เอากระเทียม",
+  "ingredients": [
+   "shrimp",
+   "egg"
+  ],
+  "health_tags": [],
+  "excluded": [
+   "garlic"
+  ],
+  "preview_top3": [
+   {
+    "name": "ทอดมันกุ้ง",
+    "cat": "savory",
+    "cosine": 0.66,
+    "score": 5
+   },
+   {
+    "name": "ไข่ต้ม",
+    "cat": "savory",
+    "cosine": 0.62,
+    "score": 5
+   },
+   {
+    "name": "ทองหยอด",
+    "cat": "dessert",
+    "cosine": 0.62,
+    "score": 2
+   }
+  ]
+ },
+ {
+  "id": "D4",
+  "text_th": "มีไก่ ข้าว ไม่เอาผักชี",
+  "ingredients": [
+   "chicken",
+   "rice"
+  ],
+  "health_tags": [],
+  "excluded": [
+   "coriander"
+  ],
+  "preview_top3": [
+   {
+    "name": "ข้าวราดไก่ผัดใบกะเพรา",
+    "cat": "savory",
+    "cosine": 0.74,
+    "score": 4
+   },
+   {
+    "name": "ข้าวหมกไก่",
+    "cat": "savory",
+    "cosine": 0.65,
+    "score": 4
+   },
+   {
+    "name": "ไก่อบซอส",
+    "cat": "savory",
+    "cosine": 0.54,
+    "score": 5
+   }
+  ]
+ },
+ {
+  "id": "E1",
+  "text_th": "มีกล้วย",
+  "ingredients": [
+   "banana"
+  ],
+  "health_tags": [],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "กล้วยบวชชี",
+    "cat": "dessert",
+    "cosine": 1.0,
+    "score": 2
+   },
+   {
+    "name": "กล้วยเชื่อม",
+    "cat": "dessert",
+    "cosine": 1.0,
+    "score": 2
+   },
+   {
+    "name": "กล้วยปิ้ง",
+    "cat": "dessert",
+    "cosine": 1.0,
+    "score": 2
+   }
+  ]
+ },
+ {
+  "id": "E2",
+  "text_th": "มีมะพร้าว ฟักทอง",
+  "ingredients": [
+   "coconut",
+   "pumpkin"
+  ],
+  "health_tags": [],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "แกงบวดฟักทอง",
+    "cat": "dessert",
+    "cosine": 0.76,
+    "score": 2
+   },
+   {
+    "name": "สังขยาฟักทอง",
+    "cat": "dessert",
+    "cosine": 0.66,
+    "score": 2
+   },
+   {
+    "name": "มะพร้าวแก้ว",
+    "cat": "dessert",
+    "cosine": 0.65,
+    "score": 2
+   }
+  ]
+ },
+ {
+  "id": "E3",
+  "text_th": "มีเส้นก๋วยเตี๋ยว(เส้นเล็ก)",
+  "ingredients": [
+   "rice_noodle"
+  ],
+  "health_tags": [],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "ก๋วยเตี๋ยวผัดขี้เมา",
+    "cat": "savory",
+    "cosine": 0.65,
+    "score": 3
+   },
+   {
+    "name": "ก๋วยเตี๋ยวเส้นใหญ่ผัดซีอิ๊วหมู",
+    "cat": "savory",
+    "cosine": 0.65,
+    "score": 3
+   }
+  ]
+ },
+ {
+  "id": "E4",
+  "text_th": "มีไข่ ไก่ กุ้ง หมู ผักหลายอย่าง (5 อย่าง)",
+  "ingredients": [
+   "egg",
+   "chicken",
+   "shrimp",
+   "pork",
+   "carrot"
+  ],
+  "health_tags": [],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "แครอทไข่",
+    "cat": "savory",
+    "cosine": 0.59,
+    "score": 5
+   },
+   {
+    "name": "ต้มพะโล้",
+    "cat": "savory",
+    "cosine": 0.54,
+    "score": 5
+   },
+   {
+    "name": "ไข่ตุ๋น",
+    "cat": "savory",
+    "cosine": 0.51,
+    "score": 5
+   }
+  ]
+ },
+ {
+  "id": "E5",
+  "text_th": "มีข้าวเหนียว กล้วย",
+  "ingredients": [
+   "glutinous_rice",
+   "banana"
+  ],
+  "health_tags": [],
+  "excluded": [],
+  "preview_top3": [
+   {
+    "name": "ข้าวต้มมัด",
+    "cat": "dessert",
+    "cosine": 1.0,
+    "score": 2
+   },
+   {
+    "name": "ข้าวเหนียวปิ้ง",
+    "cat": "dessert",
+    "cosine": 1.0,
+    "score": 2
+   },
+   {
+    "name": "กล้วยบวชชี",
+    "cat": "dessert",
+    "cosine": 0.72,
+    "score": 2
+   }
+  ]
+ },
+ {
+  "id": "E6",
+  "text_th": "มีเต้าหู้ เห็ดหอม วีแกน ไม่เอาพริก",
+  "ingredients": [
+   "tofu",
+   "shiitake"
+  ],
+  "health_tags": [
+   "vegan"
+  ],
+  "excluded": [
+   "chili"
+  ],
+  "preview_top3": [
+   {
+    "name": "ผัดผักกวางตุ้งมังสวิรัติใส่เต้าหู้เห็ดหอม",
+    "cat": "savory",
+    "cosine": 0.78,
+    "score": 4
+   },
+   {
+    "name": "เต้าหู้ทอดซอสมะขาม",
+    "cat": "savory",
+    "cosine": 0.6,
+    "score": 5
+   },
+   {
+    "name": "ผัดถั่วงอกหัวโตเต้าหู้",
+    "cat": "savory",
+    "cosine": 0.48,
+    "score": 4
+   }
+  ]
+ }
+]
