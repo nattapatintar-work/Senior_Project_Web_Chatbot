@@ -74,6 +74,12 @@ RECIPES_PATH = Path(__file__).parent.parent / "data" / "recipes.json"
 # can be tuned without touching the scoring logic.
 SEASONING_WEIGHT = 0.3
 
+# Recipe `category` values that recommend() never returns. A condiment (a sauce, a pickle, a
+# crispy-shallot topping) is something served WITH a dish, not a dish a user asks for, so it is
+# dropped before scoring however well its ingredients match. Always on, not a parameter.
+# Recipes with no `category` field are never excluded.
+EXCLUDED_CATEGORIES = {"condiment"}
+
 
 def load_recipes() -> list[dict]:
     """
@@ -156,6 +162,11 @@ def _passes_excluded_filter(recipe: dict, excluded: list[str]) -> bool:
     """
     hard_ingredients = set(recipe["main_ingredients"]) | set(recipe["seasonings"])
     return not (hard_ingredients & set(excluded))
+
+
+def _passes_category_filter(recipe: dict) -> bool:
+    """False for a recipe whose category is in EXCLUDED_CATEGORIES (a missing category passes)."""
+    return recipe.get("category") not in EXCLUDED_CATEGORIES
 
 
 def recommend(
@@ -245,7 +256,9 @@ def recommend(
     )
 
     candidates = [
-        (i, recipe) for i, recipe in health_passed if _passes_excluded_filter(recipe, excluded)
+        (i, recipe)
+        for i, recipe in health_passed
+        if _passes_excluded_filter(recipe, excluded) and _passes_category_filter(recipe)
     ]
     if not candidates or not user_ingredients:
         return []

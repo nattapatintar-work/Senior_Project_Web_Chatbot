@@ -245,18 +245,24 @@ def test_every_recipe_cites_where_its_ingredient_list_came_from():
         assert url.startswith("http"), f"{recipe['id']}: recipe_source_url '{url}' is not a URL"
 
 
-def test_every_recipe_has_a_valid_dessert_or_savory_category():
+CATEGORIES = ("savory", "dessert", "snack", "drink", "condiment")
+
+
+def test_every_recipe_has_a_valid_category():
     """
-    category distinguishes dessert dishes from savory ones -- added after a
-    session where the only way to answer "how many desserts are there" was
-    to hand-count recipe ID ranges from build logs, which isn't a real,
-    checkable field and would silently go stale the next time a recipe is
-    added without updating that manual tracking.
+    category says what kind of dish a recipe is -- added after a session where
+    the only way to answer "how many desserts are there" was to hand-count
+    recipe ID ranges from build logs, which isn't a real, checkable field and
+    would silently go stale the next time a recipe is added without updating
+    that manual tracking. It was savory/dessert only; snack, drink and
+    condiment were added after a re-audit found drinks, fried snacks and
+    sauces sitting in the dessert and savory buckets. recommend() never
+    returns a condiment (recommender.recommend.EXCLUDED_CATEGORIES).
     """
     for recipe in load_recipes():
         assert "category" in recipe, f"{recipe['id']} has no category"
-        assert recipe["category"] in ("dessert", "savory"), (
-            f"{recipe['id']}: category '{recipe['category']}' is not 'dessert' or 'savory'"
+        assert recipe["category"] in CATEGORIES, (
+            f"{recipe['id']}: category '{recipe['category']}' is not one of {CATEGORIES}"
         )
 
 

@@ -329,3 +329,69 @@ def test_display_fields_do_not_change_scores_or_ranking():
     assert [(d["id"], d["score"]) for d in plain] == [
         (d["id"], d["score"]) for d in recommend(_USER, top_k=10, seasonings=None)
     ]
+
+
+# ---------------------------------------------------------------------------
+# Category filter: a condiment is never recommended (EXCLUDED_CATEGORIES)
+# ---------------------------------------------------------------------------
+
+import pytest
+
+from recommender import recommend as rec_module
+
+CONDIMENT_IDS = {"th_173", "th_174", "th_221", "th_263"}   # มะนาวดอง, หอมเจียว, น้ำจิ้มผักชี, อาจาด
+
+
+def _category_by_id() -> dict[str, str]:
+    return {recipe["id"]: recipe["category"] for recipe in load_recipes()}
+
+
+def test_the_four_condiment_recipes_are_labelled_condiment():
+    """Guards the data these tests rely on: if a label changes, the tests below stop proving anything."""
+    categories = _category_by_id()
+    assert {i for i, c in categories.items() if c == "condiment"} == CONDIMENT_IDS
+
+
+def test_a_condiment_never_appears_even_as_a_perfect_ingredient_match(monkeypatch):
+    # th_174 (หอมเจียว) has shallot as its only main ingredient: a perfect match for ["shallot"].
+    assert "th_174" not in _ids(recommend(["shallot"], top_k=400))
+
+    # every condiment, queried with exactly its own main ingredients, stays out of the results
+    by_id = {recipe["id"]: recipe for recipe in load_recipes()}
+    for condiment_id in CONDIMENT_IDS:
+        results = recommend(by_id[condiment_id]["main_ingredients"], top_k=400)
+        assert not (CONDIMENT_IDS & _ids(results)), condiment_id
+
+    # ...and it is the filter that removes them: switched off, th_174 is returned for the same query
+    monkeypatch.setattr(rec_module, "EXCLUDED_CATEGORIES", set())
+    assert "th_174" in _ids(recommend(["shallot"], top_k=400))
+
+
+@pytest.mark.parametrize(
+    "recipe_id, category, query",
+    [
+        ("th_001", "savory", ["egg"]),          # ไข่เจียว
+        ("th_049", "dessert", ["banana"]),      # กล้วยบวชชี
+        ("th_004", "snack", ["potato"]),        # มันฝรั่งทอด
+        ("th_242", "drink", ["lime"]),          # น้ำมะนาว
+    ],
+)
+def test_savory_dessert_snack_and_drink_recipes_still_appear(recipe_id, category, query):
+    assert _category_by_id()[recipe_id] == category
+    assert recipe_id in _ids(recommend(query, top_k=400))
+
+
+def test_a_recipe_with_no_category_field_is_not_excluded(monkeypatch):
+    recipe = next(r for r in rec_module._RECIPES if r["id"] == "th_174")       # currently a condiment
+    assert "th_174" not in _ids(recommend(["shallot"], top_k=400))
+    monkeypatch.delitem(recipe, "category")                                      # restored after the test
+    assert "category" not in recipe
+    assert "th_174" in _ids(recommend(["shallot"], top_k=400))
+
+
+def test_category_filter_helper_and_constant():
+    assert rec_module.EXCLUDED_CATEGORIES == {"condiment"}
+    assert rec_module._passes_category_filter({"category": "condiment"}) is False
+    for category in ("savory", "dessert", "snack", "drink", None):
+        assert rec_module._passes_category_filter({"category": category}) is True
+    assert rec_module._passes_category_filter({}) is True
