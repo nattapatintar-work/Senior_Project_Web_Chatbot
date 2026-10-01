@@ -104,6 +104,8 @@
       messages: [], text: "", atts: [], busy: false, anchor: null,
       seq: 0, attSeq: 0,
       photoKeys: [], textKeys: [], excluded: [], healthTags: [], combined: [],
+      category: L.DEFAULT_CATEGORY,                // the category picker's choice for this round
+      categoryEmpty: false,                        // the server said the chosen category has nothing (picker stays live)
       page: 0, moreAvailable: false, lastListId: null, extraNames: {},
     };
   }
@@ -233,6 +235,8 @@
     var body = [];
     if (m.text) body.push(h("div", { class: "bubble-text", text: m.text }));
     if (m.kind === "list") body.push(renderGroups(m.groups));
+    // the picker lives in the ingredient-confirm screen, only in the newest list bubble
+    if (m.kind === "list" && m.id === S.lastListId) body.push(renderCategoryPicker());
     if (m.footer) body.push(h("div", { class: "bubble-footer", text: m.footer }));
     if (m.retry) {
       body.push(h("button", {
@@ -241,6 +245,33 @@
       }));
     }
     return botShell(m, [h("div", { class: "bubble" }, body)]);
+  }
+
+  /** all / savory / dessert as segmented buttons (aria-pressed); read-only once results are shown. */
+  function renderCategoryPicker() {
+    var enabled = L.categoryPickerEnabled(S.phase, S.busy, S.categoryEmpty);
+    return h("div", { class: "seg", role: "group", "aria-label": "ประเภทเมนู" }, L.CATEGORIES.map(function (pair) {
+      var value = pair[0];
+      return h("button", {
+        type: "button", class: "seg-btn", text: pair[1], "data-fid": "cat:" + value,
+        "aria-pressed": String(S.category === value), disabled: !enabled,
+        on: { click: function () { setCategory(value); } },
+      });
+    }));
+  }
+
+  function setCategory(value) {
+    var next = L.normalizeCategory(value);
+    var action = L.categoryClickAction(S.phase, S.busy, S.categoryEmpty, S.category, next);
+    if (action === "ignore") return;
+    S.category = next;
+    if (action === "rerequest") runOp(opRecommend());     // the chosen category was empty: try another, same session
+    else render({ keepScroll: true });
+  }
+
+  /** First page of recommendations again, with whatever category is now chosen (nothing else is reset). */
+  function opRecommend() {
+    return async function () { await recommendPage(0); };
   }
 
   function renderGroups(groups) {
@@ -517,6 +548,7 @@
     S.locked = false;
     S.phase = "compose";
     S.photoKeys = []; S.textKeys = []; S.excluded = []; S.healthTags = []; S.combined = [];
+    S.category = L.DEFAULT_CATEGORY; S.categoryEmpty = false;
     S.page = 0; S.moreAvailable = false;
     S.messages = withoutTyping().concat([{ id: nid("n"), role: "note", text: err.message, error: true }]);
     S.busy = false;
@@ -584,6 +616,8 @@
     return async function () {
       var st = S;
       await ensureSession();
+      // New input after results were shown starts a new round (the server resets its copy in start_new_round()).
+      if (L.shouldResetCategory(S.phase)) { S.category = L.DEFAULT_CATEGORY; S.categoryEmpty = false; }
       if (atts.length && !detected) {
         var d = await api.detect(S.sid, atts.map(function (a) { return a.blob; }));
         guard(st);
@@ -675,15 +709,16 @@
 
   async function recommendPage(page) {
     var st = S;
-    var resp = await api.recommend(S.sid, L.topNForPage(page));
+    var resp = await api.recommend(S.sid, L.topNForPage(page), S.category);
     guard(st);
     var slice = L.sliceForPage(resp.recipes, page);
     S.phase = "results";
+    // The picker stays live only while the chosen category is the reason for an empty first page.
+    S.categoryEmpty = page === 0 && !slice.length && resp.empty_for_category === true;
     if (!slice.length) {
       S.moreAvailable = false;
-      replaceTyping([botText(page === 0
-        ? "ยังไม่พบเมนูที่ตรงกับวัตถุดิบที่มี ลองเพิ่มวัตถุดิบดูนะ"
-        : "ไม่มีเมนูเพิ่มเติมแล้ว ลองเพิ่มวัตถุดิบเพื่อค้นหาใหม่ได้เลย")]);
+      if (S.categoryEmpty) S.anchor = S.lastListId;       // keep the picker in view: it is the way out
+      replaceTyping([botText(L.emptyRecommendMessage(page, S.category, resp.empty_for_category))]);
       return;
     }
     S.page = page;

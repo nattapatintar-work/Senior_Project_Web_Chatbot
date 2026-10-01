@@ -98,6 +98,64 @@
   };
 
   // ---------------------------------------------------------------------
+  // Category picker (all / savory / dessert): the hard filter POST /recommend applies before scoring.
+  // "all" is the only mode that includes snack and drink recipes; condiments are never shown.
+  // ---------------------------------------------------------------------
+
+  /** [value, Thai label] in display order; the values are exactly what the backend accepts. */
+  logic.CATEGORIES = [["all", "ทั้งหมด"], ["savory", "อาหารคาว"], ["dessert", "ขนมหวาน"]];
+  logic.DEFAULT_CATEGORY = "all";
+
+  /** Anything that is not one of the three values falls back to "all". */
+  logic.normalizeCategory = function (value) {
+    var known = logic.CATEGORIES.some(function (pair) { return pair[0] === value; });
+    return known ? value : logic.DEFAULT_CATEGORY;
+  };
+
+  /** A new round (any new input after results were shown) starts from "all" again, like the server's start_new_round(). */
+  logic.shouldResetCategory = function (phase) { return phase === "results"; };
+
+  /**
+   * The picker is live while the list waits for confirmation. Once results are out it is read-only, EXCEPT
+   * when the chosen category came back empty (`emptyForCategory`, the server's flag): then it stays live so
+   * the user can pick another option instead of hitting a dead end.
+   */
+  logic.categoryPickerEnabled = function (phase, busy, emptyForCategory) {
+    if (busy) return false;
+    return phase === "await_confirm" || phase === "await_correction" || (phase === "results" && emptyForCategory === true);
+  };
+
+  /**
+   * What a click on a picker option does:
+   *   "ignore"     the picker is not live, or (dead-end state) the option is already the chosen one
+   *   "set"        before confirmation: just remember the choice (it is sent with /recommend)
+   *   "rerequest"  the chosen category was empty: ask /recommend for the first page again with the new one
+   *                (same session and ingredients, nothing reset)
+   */
+  logic.categoryClickAction = function (phase, busy, emptyForCategory, current, next) {
+    if (!logic.categoryPickerEnabled(phase, busy, emptyForCategory)) return "ignore";
+    if (phase === "results") return next === current ? "ignore" : "rerequest";
+    return "set";
+  };
+
+  /** Shown when the chosen category has nothing for these ingredients (but "all" would). "" for any other category. */
+  logic.categoryEmptyMessage = function (category) {
+    if (category === "savory") return "ไม่พบอาหารคาวที่ใช้วัตถุดิบเหล่านี้ได้";
+    if (category === "dessert") return "ไม่พบขนมหวานที่ใช้วัตถุดิบเหล่านี้ได้";
+    return "";
+  };
+
+  /**
+   * Message for an empty /recommend page. `emptyForCategory` is the server's flag (true only when the
+   * chosen category is empty although "all" is not); otherwise the pre-existing wording is kept.
+   */
+  logic.emptyRecommendMessage = function (page, category, emptyForCategory) {
+    if (page > 0) return "ไม่มีเมนูเพิ่มเติมแล้ว ลองเพิ่มวัตถุดิบเพื่อค้นหาใหม่ได้เลย";
+    var forCategory = emptyForCategory ? logic.categoryEmptyMessage(category) : "";
+    return forCategory || "ยังไม่พบเมนูที่ตรงกับวัตถุดิบที่มี ลองเพิ่มวัตถุดิบดูนะ";
+  };
+
+  // ---------------------------------------------------------------------
   // Ingredient-list bubble (groups of chips)
   // ---------------------------------------------------------------------
 

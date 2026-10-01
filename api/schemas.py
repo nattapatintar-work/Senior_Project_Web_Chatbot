@@ -17,6 +17,8 @@ SESSION_ID_REGEX = r"^[0-9a-f]{32}$"
 
 Stage = Literal["new", "awaiting_confirm", "awaiting_correction", "confirmed"]
 Intent = Literal["confirm", "reject", "confirm+correction", "unclear"]
+# The category picker (same values as recommender.recommend.CATEGORY_CHOICES; a test pins that).
+Category = Literal["all", "savory", "dessert"]
 
 
 # --- shared ------------------------------------------------------------------
@@ -119,6 +121,8 @@ class SeasoningResponse(BaseModel):
 class RecommendRequest(BaseModel):
     session_id: str = Field(pattern=SESSION_ID_REGEX)
     top_n: int = Field(default=3, ge=1, le=10)
+    # The picker's choice. Omitted = "all"; anything but the three values is a 422.
+    category: Category = "all"
 
 
 class RecommendedRecipe(BaseModel):
@@ -142,6 +146,7 @@ class UsedInputs(BaseModel):
     exclude: list[str]
     health_tags: list[str]
     seasonings: list[str]
+    category: Category = "all"
 
 
 class RecommendResponse(BaseModel):
@@ -149,3 +154,6 @@ class RecommendResponse(BaseModel):
     used: UsedInputs
     recipes: list[RecommendedRecipe]
     count: int
+    # True only when nothing matched the chosen category ("savory" / "dessert") although the same
+    # ingredients DO match something in "all" mode, so the UI can say "no savory/dessert found".
+    empty_for_category: bool = False

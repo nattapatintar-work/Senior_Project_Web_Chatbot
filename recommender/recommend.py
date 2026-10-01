@@ -80,6 +80,11 @@ SEASONING_WEIGHT = 0.3
 # Recipes with no `category` field are never excluded.
 EXCLUDED_CATEGORIES = {"condiment"}
 
+# What recommend()'s `category` argument accepts. "all" (or None) applies no category filter, so
+# snack and drink recipes are returned only then; "savory" / "dessert" keep only recipes whose
+# `category` equals it. EXCLUDED_CATEGORIES applies in every mode.
+CATEGORY_CHOICES = ("all", "savory", "dessert")
+
 
 def load_recipes() -> list[dict]:
     """
@@ -169,12 +174,24 @@ def _passes_category_filter(recipe: dict) -> bool:
     return recipe.get("category") not in EXCLUDED_CATEGORIES
 
 
+def _passes_category_choice(recipe: dict, category: str | None) -> bool:
+    """
+    The user's category choice as a hard filter. None / "all" keeps everything; "savory" /
+    "dessert" keep only recipes whose `category` equals it (a recipe with no category key
+    therefore does not match either).
+    """
+    if category is None or category == "all":
+        return True
+    return recipe.get("category") == category
+
+
 def recommend(
     ingredients: list[str],
     health_tags: list[str] | None = None,
     excluded: list[str] | None = None,
     top_k: int = 3,
     seasonings: list[str] | None = None,
+    category: str | None = None,
 ) -> list[dict]:
     """
     Score every dish against what the user has, return the best `top_k`.
@@ -192,6 +209,13 @@ def recommend(
                      only (see the module docstring); None or [] leaves every
                      score exactly as the plain cosine computes it. Non-seasoning
                      keys passed here are ignored.
+        category:    the user's category choice, a hard filter applied before
+                     scoring (see CATEGORY_CHOICES): None or "all" = no filter
+                     (the only mode that returns snack and drink recipes),
+                     "savory" / "dessert" = only recipes of that category.
+                     Condiments are never returned. Any other value raises
+                     ValueError. With the default, results are exactly what
+                     they were before this argument existed.
 
     Returns:
         A list of at most `top_k` dicts, best score first (each also carries
@@ -222,6 +246,8 @@ def recommend(
         later calls. It is a classic Python bug. Using None and converting
         inside the function avoids it.
     """
+    if category is not None and category not in CATEGORY_CHOICES:
+        raise ValueError(f"category must be None or one of {CATEGORY_CHOICES}, got {category!r}")
     health_tags = health_tags or []
     excluded = excluded or []
 
@@ -258,7 +284,9 @@ def recommend(
     candidates = [
         (i, recipe)
         for i, recipe in health_passed
-        if _passes_excluded_filter(recipe, excluded) and _passes_category_filter(recipe)
+        if _passes_excluded_filter(recipe, excluded)
+        and _passes_category_filter(recipe)
+        and _passes_category_choice(recipe, category)
     ]
     if not candidates or not user_ingredients:
         return []

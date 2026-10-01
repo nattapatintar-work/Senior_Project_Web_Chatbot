@@ -443,20 +443,38 @@ def recommend_endpoint(request: Request, body: schemas.RecommendRequest):
     with state.store.lock:
         if sess.stage != state.STAGE_CONFIRMED:
             raise HTTPException(409, "ingredients not confirmed yet: call /confirm first")
+        # The picker's choice rides on this request (every page of "ขอเพิ่ม" re-sends it) and is
+        # kept in the session like the list and the tags; start_new_round() resets it to "all".
+        sess.category = body.category
         used = schemas.UsedInputs(
             ingredients=sess.ingredients,
             exclude=list(sess.exclude),
             health_tags=list(sess.health_tags),
             seasonings=list(sess.seasonings),
+            category=sess.category,
         )
 
-    results = recommend(
-        ingredients=used.ingredients,
-        health_tags=used.health_tags,
-        excluded=used.exclude,
-        top_k=body.top_n,
-        seasonings=used.seasonings,
+    def run(category: str, top_k: int) -> list[dict]:
+        return recommend(
+            ingredients=used.ingredients,
+            health_tags=used.health_tags,
+            excluded=used.exclude,
+            top_k=top_k,
+            seasonings=used.seasonings,
+            category=category,
+        )
+
+    results = run(used.category, body.top_n)
+
+    # Nothing in the chosen category: is that the category's fault, or would "all" be empty too?
+    # One extra cheap call, only in the already-empty case, so the UI can pick the right message.
+    empty_for_category = (
+        not results and used.category != "all" and bool(run("all", 1))
     )
     return schemas.RecommendResponse(
-        session_id=sess.session_id, used=used, recipes=results, count=len(results)
+        session_id=sess.session_id,
+        used=used,
+        recipes=results,
+        count=len(results),
+        empty_for_category=empty_for_category,
     )

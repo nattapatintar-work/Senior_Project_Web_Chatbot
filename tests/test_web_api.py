@@ -766,3 +766,109 @@ def test_unknown_defaults_to_empty_when_the_extractor_does_not_supply_it(monkeyp
     )
     body = client.post("/extract_bert", json={"text": "x"}).json()
     assert body["unknown"] == [] and body["include"] == ["egg"]
+
+
+# ---------------------------------------------------------------------------
+# Category picker on POST /recommend ("all" | "savory" | "dessert"; omitted = "all")
+# ---------------------------------------------------------------------------
+
+def _confirmed_session(client, text):
+    """A session whose list came from `text` and is confirmed, ready for /recommend."""
+    sid = client.post("/extract", json={"text": text}).json()["session_id"]
+    assert _confirm(client, sid, "yes").json()["stage"] == "confirmed"
+    return sid
+
+
+def _recommend(client, sid, **extra):
+    return client.post("/recommend", json={"session_id": sid, **extra})
+
+
+def _categories_in(body):
+    from recommender.recommend import load_recipes
+
+    by_id = {recipe["id"]: recipe["category"] for recipe in load_recipes()}
+    return {by_id[dish["id"]] for dish in body["recipes"]}
+
+
+@pytest.mark.parametrize("category", ["all", "savory", "dessert"])
+def test_recommend_accepts_each_category_and_echoes_it(client, category):
+    sid = _confirmed_session(client, "egg")
+    r = _recommend(client, sid, category=category)
+    assert r.status_code == 200, r.text
+    assert r.json()["used"]["category"] == category
+
+
+@pytest.mark.parametrize("bad", ["snack", "drink", "condiment", "SAVORY", "", None, 3, ["savory"]])
+def test_recommend_rejects_any_other_category_value(client, bad):
+    sid = _confirmed_session(client, "egg")
+    assert _recommend(client, sid, category=bad).status_code == 422
+
+
+def test_a_missing_category_means_all(client):
+    sid = _confirmed_session(client, "egg")
+    plain = _recommend(client, sid, top_n=10).json()
+    explicit = _recommend(client, sid, top_n=10, category="all").json()
+    assert plain["used"]["category"] == "all"
+    assert [d["id"] for d in plain["recipes"]] == [d["id"] for d in explicit["recipes"]]
+    assert plain["empty_for_category"] is False
+
+
+def test_recommend_filters_by_the_chosen_category(client):
+    sid = _confirmed_session(client, "banana")
+    allowed = {"savory": {"savory"}, "dessert": {"dessert"}}
+    for category in ("savory", "dessert"):
+        body = _recommend(client, sid, top_n=10, category=category).json()
+        assert _categories_in(body) <= allowed[category]
+    assert _categories_in(_recommend(client, sid, top_n=10, category="dessert").json()) == {"dessert"}
+    assert "condiment" not in _categories_in(_recommend(client, sid, top_n=10, category="all").json())
+
+
+def test_nothing_in_the_chosen_category_sets_empty_for_category(client):
+    # rambutan appears only in desserts; squid only in savory dishes
+    rambutan = _confirmed_session(client, "rambutan")
+    body = _recommend(client, rambutan, category="savory").json()
+    assert body["recipes"] == [] and body["count"] == 0 and body["empty_for_category"] is True
+    body = _recommend(client, rambutan, category="dessert").json()
+    assert body["count"] > 0 and body["empty_for_category"] is False
+    assert _recommend(client, rambutan, category="all").json()["count"] > 0
+
+    squid = _confirmed_session(client, "squid")
+    body = _recommend(client, squid, category="dessert").json()
+    assert body["count"] == 0 and body["empty_for_category"] is True
+    assert _recommend(client, squid, category="savory").json()["count"] > 0
+
+
+def test_empty_in_every_mode_is_not_blamed_on_the_category(client):
+    sid = _confirmed_session(client, "fish sauce")          # a seasoning-only list matches nothing anywhere
+    for category in ("all", "savory", "dessert"):
+        body = _recommend(client, sid, category=category).json()
+        assert body["count"] == 0
+        assert body["empty_for_category"] is False, category
+
+
+def test_the_category_is_kept_in_the_session_and_reset_when_a_new_round_starts(client):
+    sid = _confirmed_session(client, "egg")
+    assert state.store.get(sid).category == "all"
+    _recommend(client, sid, category="dessert")
+    assert state.store.get(sid).category == "dessert"
+
+    # the cycle is finished (stage "confirmed"), so new input starts a new round and clears the choice
+    assert client.post("/extract", json={"text": "pork", "session_id": sid}).status_code == 200
+    assert state.store.get(sid).category == "all"
+    assert state.store.get(sid).stage == "awaiting_confirm"
+
+
+def test_a_choice_does_not_leak_into_the_next_recommend_call(client):
+    sid = _confirmed_session(client, "egg")
+    _recommend(client, sid, category="dessert")
+    body = _recommend(client, sid).json()                   # omitted -> "all", not the previous "dessert"
+    assert body["used"]["category"] == "all"
+
+
+def test_the_schema_literal_matches_the_recommenders_choices():
+    from typing import get_args
+
+    from api import schemas
+    from recommender.recommend import CATEGORY_CHOICES
+
+    assert get_args(schemas.Category) == CATEGORY_CHOICES == ("all", "savory", "dessert")

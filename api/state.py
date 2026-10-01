@@ -56,6 +56,9 @@ class SessionState:
     health_tags: list[str] = field(default_factory=list)
     # ticked on the seasoning tab; bonus-only in the recommender
     seasonings: list[str] = field(default_factory=list)
+    # the category picker's choice for the current round ("all" | "savory" | "dessert"); written
+    # by /recommend, reset to "all" by start_new_round()
+    category: str = "all"
 
     stage: str = STAGE_NEW
     reject_count: int = 0
@@ -118,6 +121,9 @@ class SessionState:
         input from here on describes a new meal, not an addition to the
         old one.
 
+        The category choice goes back to "all": like the ingredients and
+        health tags it belongs to the meal request that just finished.
+
         seasonings is NOT cleared: it's ticked once per session on the
         seasoning tab and locked before the chat starts (Claude.md Section
         3.1), independent of any individual meal-request cycle.
@@ -126,6 +132,7 @@ class SessionState:
         self.include.clear()
         self.exclude.clear()
         self.health_tags.clear()
+        self.category = "all"
         self.reject_count = 0
 
     def remove_ingredients(self, keys: list[str]) -> None:

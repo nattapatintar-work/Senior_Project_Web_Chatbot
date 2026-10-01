@@ -143,3 +143,17 @@ test("detect uses its own (longer) timeout", async () => {
   await assert.rejects(a.detect(SID, [new File(["x"], "a.jpg")]), (e) => e.kind === "timeout");
   assert.ok(Date.now() - t0 >= 100, "detect should wait for detectTimeoutMs, not timeoutMs");
 });
+
+test("recommend sends the category only when one is given (the server treats a missing one as all)", async () => {
+  const f = fakeFetch({ status: 200, body: { ok: 1 } }, { status: 200, body: { ok: 2 } }, { status: 200, body: { ok: 3 } });
+  const a = api(f);
+  await a.recommend(SID, 3, "dessert");
+  await a.recommend(SID, 6, "all");
+  await a.recommend(SID, 3);
+
+  assert.deepEqual(f.calls.map((c) => JSON.parse(c.init.body)), [
+    { session_id: SID, top_n: 3, category: "dessert" },
+    { session_id: SID, top_n: 6, category: "all" },
+    { session_id: SID, top_n: 3 },
+  ]);
+});

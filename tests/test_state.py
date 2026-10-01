@@ -126,3 +126,29 @@ def test_default_still_bans_and_other_fields_are_unaffected_by_the_flag():
     assert flagged.ingredients == default.ingredients == ["garlic"]
     assert flagged.health_tags == default.health_tags == ["keto"]
     assert flagged.exclude == []
+
+
+# ---------------------------------------------------------------------------
+# category picker choice: per-round state, reset by start_new_round()
+# ---------------------------------------------------------------------------
+
+def test_the_category_defaults_to_all():
+    assert SessionState(session_id="c1").category == "all"
+
+
+def test_start_new_round_resets_the_category_to_all():
+    sess = SessionState(session_id="c2")
+    sess.category = "dessert"
+    sess.apply_text_result(_parsed(ingredients=["egg"]))
+
+    sess.start_new_round()
+
+    assert sess.category == "all"
+
+
+def test_apply_text_result_never_touches_the_category():
+    sess = SessionState(session_id="c3")
+    sess.category = "savory"
+    sess.apply_text_result(_parsed(ingredients=["egg"], excluded=["pork"], health_tags=["keto"]))
+    sess.apply_text_result(_parsed(ingredients=["pork"]), ban_excluded=False)
+    assert sess.category == "savory"

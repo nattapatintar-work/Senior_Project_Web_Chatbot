@@ -114,8 +114,11 @@
         return postJson("/correct", payload);
       },
 
-      recommend: function (sessionId, topN) {
-        return postJson("/recommend", { session_id: sessionId, top_n: topN });
+      /** category: "all" | "savory" | "dessert"; left out of the payload when not given (the server then means "all"). */
+      recommend: function (sessionId, topN, category) {
+        var payload = { session_id: sessionId, top_n: topN };
+        if (category !== undefined) payload.category = category;
+        return postJson("/recommend", payload);
       },
     };
   };

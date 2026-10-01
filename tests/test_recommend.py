@@ -395,3 +395,85 @@ def test_category_filter_helper_and_constant():
     for category in ("savory", "dessert", "snack", "drink", None):
         assert rec_module._passes_category_filter({"category": category}) is True
     assert rec_module._passes_category_filter({}) is True
+
+
+# ---------------------------------------------------------------------------
+# Category picker: recommend(category=...) is a hard filter applied before scoring
+# ---------------------------------------------------------------------------
+
+PICKER_QUERIES = (["egg"], ["pork"], ["banana"], ["chicken", "egg"], ["potato"], ["lime"], ["pineapple"])
+
+
+def _categories_of(results: list[dict]) -> set[str]:
+    by_id = _category_by_id()
+    return {by_id[i] for i in _ids(results)}
+
+
+def test_savory_mode_returns_only_savory_recipes():
+    assert recommend(["pork"], top_k=400, category="savory")          # the filter does not empty a savory query
+    for query in PICKER_QUERIES:
+        assert _categories_of(recommend(query, top_k=400, category="savory")) <= {"savory"}, query
+
+
+def test_dessert_mode_returns_only_dessert_recipes():
+    assert recommend(["banana"], top_k=400, category="dessert")
+    for query in PICKER_QUERIES:
+        assert _categories_of(recommend(query, top_k=400, category="dessert")) <= {"dessert"}, query
+
+
+def test_all_mode_can_return_savory_dessert_snack_and_drink():
+    seen = set()
+    for query in PICKER_QUERIES:
+        seen |= _categories_of(recommend(query, top_k=400, category="all"))
+    assert seen == {"savory", "dessert", "snack", "drink"}          # and never condiment
+
+
+def test_snack_and_drink_recipes_appear_only_in_all_mode():
+    assert "th_004" in _ids(recommend(["potato"], top_k=400, category="all"))        # snack
+    assert "th_242" in _ids(recommend(["lime"], top_k=400, category="all"))          # drink
+    for mode in ("savory", "dessert"):
+        assert not ({"th_004", "th_242"} & _ids(recommend(["potato", "lime"], top_k=400, category=mode)))
+
+
+def test_all_mode_is_the_union_of_savory_dessert_snack_and_drink_results():
+    results = {mode: _ids(recommend(["banana"], top_k=400, category=mode)) for mode in ("all", "savory", "dessert")}
+    assert results["savory"] | results["dessert"] <= results["all"]
+    extra = results["all"] - results["savory"] - results["dessert"]
+    assert extra and {_category_by_id()[i] for i in extra} <= {"snack", "drink"}
+
+
+@pytest.mark.parametrize("category", [None, "all", "savory", "dessert"])
+def test_a_condiment_never_appears_in_any_category_mode(category):
+    by_id = {recipe["id"]: recipe for recipe in load_recipes()}
+    for condiment_id in CONDIMENT_IDS:
+        results = recommend(by_id[condiment_id]["main_ingredients"], top_k=400, category=category)
+        assert not (CONDIMENT_IDS & _ids(results)), (category, condiment_id)
+
+
+def test_the_default_is_identical_to_all_and_to_not_passing_the_argument():
+    for query in PICKER_QUERIES:
+        for top_k in (3, 10):
+            base = recommend(query, top_k=top_k)
+            assert recommend(query, top_k=top_k, category=None) == base
+            assert recommend(query, top_k=top_k, category="all") == base
+
+
+@pytest.mark.parametrize("bad", ["snack", "drink", "condiment", "SAVORY", " savory", "", "everything"])
+def test_an_unknown_category_raises(bad):
+    with pytest.raises(ValueError):
+        recommend(["egg"], category=bad)
+
+
+def test_a_recipe_without_a_category_key_matches_all_mode_only(monkeypatch):
+    recipe = next(r for r in rec_module._RECIPES if r["id"] == "th_174")       # a condiment today
+    monkeypatch.delitem(recipe, "category")
+    assert "th_174" in _ids(recommend(["shallot"], top_k=400, category="all"))
+    assert "th_174" in _ids(recommend(["shallot"], top_k=400))
+    for mode in ("savory", "dessert"):
+        assert "th_174" not in _ids(recommend(["shallot"], top_k=400, category=mode))
+
+
+def test_the_category_filter_runs_before_scoring_so_it_cannot_change_scores():
+    everything = {d["id"]: d["score"] for d in recommend(["egg"], top_k=400, category="all")}
+    savory = {d["id"]: d["score"] for d in recommend(["egg"], top_k=400, category="savory")}
+    assert savory and all(everything[i] == score for i, score in savory.items())

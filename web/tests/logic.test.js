@@ -292,3 +292,79 @@ test("applyConfirmCorrection does not mutate the state it is given", () => {
   L.applyConfirmCorrection(s, ["rice"], ["chicken"]);
   assert.deepEqual(s, copy);
 });
+
+// ---------------------------------------------------------------- category picker (all / savory / dessert)
+test("the picker offers exactly all / savory / dessert, in that order, with the agreed Thai labels", () => {
+  assert.deepEqual(L.CATEGORIES, [["all", "ทั้งหมด"], ["savory", "อาหารคาว"], ["dessert", "ขนมหวาน"]]);
+  assert.equal(L.DEFAULT_CATEGORY, "all");
+});
+
+test("normalizeCategory keeps the three values and sends anything else back to all", () => {
+  ["all", "savory", "dessert"].forEach((v) => assert.equal(L.normalizeCategory(v), v));
+  ["snack", "drink", "condiment", "SAVORY", "", null, undefined, 3].forEach((v) => assert.equal(L.normalizeCategory(v), "all"));
+});
+
+test("a new input after results were shown resets the choice; no other phase does", () => {
+  assert.equal(L.shouldResetCategory("results"), true);
+  ["compose", "await_confirm", "await_correction"].forEach((p) => assert.equal(L.shouldResetCategory(p), false));
+});
+
+test("the picker is live only while the list awaits confirmation and nothing is in flight", () => {
+  assert.equal(L.categoryPickerEnabled("await_confirm", false), true);
+  assert.equal(L.categoryPickerEnabled("await_correction", false), true);
+  assert.equal(L.categoryPickerEnabled("await_confirm", true), false);      // a request is running
+  assert.equal(L.categoryPickerEnabled("results", false), false);           // read-only once results are shown
+  assert.equal(L.categoryPickerEnabled("compose", false), false);
+});
+
+test("zero-result messages: the two category sentences, nothing for all", () => {
+  assert.equal(L.categoryEmptyMessage("savory"), "ไม่พบอาหารคาวที่ใช้วัตถุดิบเหล่านี้ได้");
+  assert.equal(L.categoryEmptyMessage("dessert"), "ไม่พบขนมหวานที่ใช้วัตถุดิบเหล่านี้ได้");
+  assert.equal(L.categoryEmptyMessage("all"), "");
+});
+
+test("emptyRecommendMessage: category sentence only for an empty first page the server blames on the category", () => {
+  const generic = "ยังไม่พบเมนูที่ตรงกับวัตถุดิบที่มี ลองเพิ่มวัตถุดิบดูนะ";
+  const noMore = "ไม่มีเมนูเพิ่มเติมแล้ว ลองเพิ่มวัตถุดิบเพื่อค้นหาใหม่ได้เลย";
+  assert.equal(L.emptyRecommendMessage(0, "savory", true), "ไม่พบอาหารคาวที่ใช้วัตถุดิบเหล่านี้ได้");
+  assert.equal(L.emptyRecommendMessage(0, "dessert", true), "ไม่พบขนมหวานที่ใช้วัตถุดิบเหล่านี้ได้");
+  assert.equal(L.emptyRecommendMessage(0, "savory", false), generic);      // "all" would be empty too: existing behavior
+  assert.equal(L.emptyRecommendMessage(0, "all", false), generic);
+  assert.equal(L.emptyRecommendMessage(0, "all", true), generic);          // a flag without a category sentence falls back
+  assert.equal(L.emptyRecommendMessage(0, "savory", undefined), generic);  // older server: no flag
+  assert.equal(L.emptyRecommendMessage(1, "savory", true), noMore);        // later pages keep their own wording
+});
+
+// ---------------------------------------------------------------- picker: no dead end after an empty category
+test("after results the picker stays locked, unless the chosen category came back empty", () => {
+  assert.equal(L.categoryPickerEnabled("results", false, true), true);        // empty_for_category: the way out
+  assert.equal(L.categoryPickerEnabled("results", false, false), false);      // results shown: locked
+  assert.equal(L.categoryPickerEnabled("results", false, undefined), false);  // flag absent: locked
+  assert.equal(L.categoryPickerEnabled("results", false, "true"), false);     // only a real true counts
+  assert.equal(L.categoryPickerEnabled("results", true, true), false);        // a request is running
+  assert.equal(L.categoryPickerEnabled("compose", false, true), false);       // the flag means nothing outside "results"
+  ["await_confirm", "await_correction"].forEach((p) => {
+    assert.equal(L.categoryPickerEnabled(p, false, false), true);             // before confirmation: unchanged
+    assert.equal(L.categoryPickerEnabled(p, false, true), true);
+    assert.equal(L.categoryPickerEnabled(p, true, false), false);
+  });
+});
+
+test("a click before confirmation just remembers the choice", () => {
+  assert.equal(L.categoryClickAction("await_confirm", false, false, "all", "dessert"), "set");
+  assert.equal(L.categoryClickAction("await_correction", false, false, "savory", "all"), "set");
+});
+
+test("a click in the dead-end state asks for the first page again with the new category", () => {
+  assert.equal(L.categoryClickAction("results", false, true, "savory", "dessert"), "rerequest");
+  assert.equal(L.categoryClickAction("results", false, true, "savory", "all"), "rerequest");
+  assert.equal(L.categoryClickAction("results", false, true, "dessert", "savory"), "rerequest");
+});
+
+test("clicks that must do nothing: already-chosen option, locked picker, request in flight", () => {
+  assert.equal(L.categoryClickAction("results", false, true, "savory", "savory"), "ignore");   // nothing new to ask
+  assert.equal(L.categoryClickAction("results", false, false, "savory", "dessert"), "ignore"); // results shown: locked
+  assert.equal(L.categoryClickAction("results", true, true, "savory", "dessert"), "ignore");   // busy
+  assert.equal(L.categoryClickAction("await_confirm", true, false, "all", "dessert"), "ignore");
+  assert.equal(L.categoryClickAction("compose", false, false, "all", "dessert"), "ignore");
+});
