@@ -1,0 +1,3006 @@
+{
+  "comparisons": [
+    {
+      "query": "F1",
+      "candidate_weight": 0.0,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_011",
+        "th_007",
+        "th_014"
+      ],
+      "reference_top3": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "status": "different"
+    },
+    {
+      "query": "F1",
+      "candidate_weight": 0.15,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "reference_top3": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "status": "identical"
+    },
+    {
+      "query": "F1",
+      "candidate_weight": 0.5,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_007",
+        "th_011",
+        "th_006"
+      ],
+      "reference_top3": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "status": "reordered"
+    },
+    {
+      "query": "F2",
+      "candidate_weight": 0.0,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_021",
+        "th_166",
+        "th_176"
+      ],
+      "reference_top3": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "status": "different"
+    },
+    {
+      "query": "F2",
+      "candidate_weight": 0.15,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_021",
+        "th_176",
+        "th_394"
+      ],
+      "reference_top3": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "status": "different"
+    },
+    {
+      "query": "F2",
+      "candidate_weight": 0.5,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_165",
+        "th_176",
+        "th_188"
+      ],
+      "reference_top3": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "status": "different"
+    },
+    {
+      "query": "F3",
+      "candidate_weight": 0.0,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_022",
+        "th_296",
+        "th_157"
+      ],
+      "reference_top3": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "status": "different"
+    },
+    {
+      "query": "F3",
+      "candidate_weight": 0.15,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "reference_top3": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "status": "identical"
+    },
+    {
+      "query": "F3",
+      "candidate_weight": 0.5,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_022",
+        "th_085",
+        "th_097"
+      ],
+      "reference_top3": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "status": "different"
+    },
+    {
+      "query": "F4",
+      "candidate_weight": 0.0,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_293",
+        "th_291",
+        "th_292"
+      ],
+      "reference_top3": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "status": "different"
+    },
+    {
+      "query": "F4",
+      "candidate_weight": 0.15,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_293",
+        "th_291",
+        "th_042"
+      ],
+      "reference_top3": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "status": "reordered"
+    },
+    {
+      "query": "F4",
+      "candidate_weight": 0.5,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_293",
+        "th_042",
+        "th_207"
+      ],
+      "reference_top3": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "status": "different"
+    },
+    {
+      "query": "F5",
+      "candidate_weight": 0.0,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_002",
+        "th_096",
+        "th_108"
+      ],
+      "reference_top3": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "status": "different"
+    },
+    {
+      "query": "F5",
+      "candidate_weight": 0.15,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_096",
+        "th_108",
+        "th_153"
+      ],
+      "reference_top3": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "status": "different"
+    },
+    {
+      "query": "F5",
+      "candidate_weight": 0.5,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "reference_top3": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "status": "identical"
+    },
+    {
+      "query": "F6",
+      "candidate_weight": 0.0,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_029",
+        "th_203",
+        "th_011"
+      ],
+      "reference_top3": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "status": "different"
+    },
+    {
+      "query": "F6",
+      "candidate_weight": 0.15,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_203",
+        "th_029",
+        "th_326"
+      ],
+      "reference_top3": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "status": "reordered"
+    },
+    {
+      "query": "F6",
+      "candidate_weight": 0.5,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_203",
+        "th_326",
+        "th_047"
+      ],
+      "reference_top3": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "status": "different"
+    },
+    {
+      "query": "F7",
+      "candidate_weight": 0.0,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_019",
+        "th_020",
+        "th_018"
+      ],
+      "reference_top3": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "status": "different"
+    },
+    {
+      "query": "F7",
+      "candidate_weight": 0.15,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_019",
+        "th_020",
+        "th_018"
+      ],
+      "reference_top3": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "status": "different"
+    },
+    {
+      "query": "F7",
+      "candidate_weight": 0.5,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "reference_top3": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "status": "identical"
+    },
+    {
+      "query": "F8",
+      "candidate_weight": 0.0,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_396",
+        "th_171",
+        "th_172"
+      ],
+      "reference_top3": [
+        "th_171",
+        "th_396",
+        "th_169"
+      ],
+      "status": "different"
+    },
+    {
+      "query": "F8",
+      "candidate_weight": 0.15,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_171",
+        "th_396",
+        "th_169"
+      ],
+      "reference_top3": [
+        "th_171",
+        "th_396",
+        "th_169"
+      ],
+      "status": "identical"
+    },
+    {
+      "query": "F8",
+      "candidate_weight": 0.5,
+      "reference_weight": 0.3,
+      "candidate_top3": [
+        "th_171",
+        "th_396",
+        "th_169"
+      ],
+      "reference_top3": [
+        "th_171",
+        "th_396",
+        "th_169"
+      ],
+      "status": "identical"
+    }
+  ],
+  "controls": [
+    {
+      "query": "F1",
+      "other_query": "F5",
+      "real_top3": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "foreign_top3": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "status": "judged"
+    },
+    {
+      "query": "F2",
+      "other_query": "F6",
+      "real_top3": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "foreign_top3": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "status": "judged"
+    },
+    {
+      "query": "F3",
+      "other_query": "F7",
+      "real_top3": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "foreign_top3": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "status": "judged"
+    },
+    {
+      "query": "F4",
+      "other_query": "F8",
+      "real_top3": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "foreign_top3": [
+        "th_171",
+        "th_396",
+        "th_169"
+      ],
+      "status": "judged"
+    },
+    {
+      "query": "F5",
+      "other_query": "F1",
+      "real_top3": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "foreign_top3": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "status": "judged"
+    },
+    {
+      "query": "F6",
+      "other_query": "F2",
+      "real_top3": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "foreign_top3": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "status": "judged"
+    },
+    {
+      "query": "F7",
+      "other_query": "F3",
+      "real_top3": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "foreign_top3": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "status": "judged"
+    },
+    {
+      "query": "F8",
+      "other_query": "F4",
+      "real_top3": [
+        "th_171",
+        "th_396",
+        "th_169"
+      ],
+      "foreign_top3": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "status": "judged"
+    }
+  ],
+  "calls": [
+    {
+      "call_id": "c001",
+      "kind": "compare",
+      "query": "F1",
+      "list_a": [
+        "th_011",
+        "th_007",
+        "th_014"
+      ],
+      "list_b": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 1,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c002",
+      "kind": "compare",
+      "query": "F1",
+      "list_a": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "list_b": [
+        "th_011",
+        "th_007",
+        "th_014"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 1,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c003",
+      "kind": "compare",
+      "query": "F1",
+      "list_a": [
+        "th_011",
+        "th_007",
+        "th_014"
+      ],
+      "list_b": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 2,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c004",
+      "kind": "compare",
+      "query": "F1",
+      "list_a": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "list_b": [
+        "th_011",
+        "th_007",
+        "th_014"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 2,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c005",
+      "kind": "compare",
+      "query": "F1",
+      "list_a": [
+        "th_011",
+        "th_007",
+        "th_014"
+      ],
+      "list_b": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 3,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c006",
+      "kind": "compare",
+      "query": "F1",
+      "list_a": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "list_b": [
+        "th_011",
+        "th_007",
+        "th_014"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 3,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c007",
+      "kind": "compare",
+      "query": "F1",
+      "list_a": [
+        "th_007",
+        "th_011",
+        "th_006"
+      ],
+      "list_b": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.5,
+      "run": 1,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c008",
+      "kind": "compare",
+      "query": "F1",
+      "list_a": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "list_b": [
+        "th_007",
+        "th_011",
+        "th_006"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.5,
+      "run": 1,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c009",
+      "kind": "compare",
+      "query": "F1",
+      "list_a": [
+        "th_007",
+        "th_011",
+        "th_006"
+      ],
+      "list_b": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.5,
+      "run": 2,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c010",
+      "kind": "compare",
+      "query": "F1",
+      "list_a": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "list_b": [
+        "th_007",
+        "th_011",
+        "th_006"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.5,
+      "run": 2,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c011",
+      "kind": "compare",
+      "query": "F1",
+      "list_a": [
+        "th_007",
+        "th_011",
+        "th_006"
+      ],
+      "list_b": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.5,
+      "run": 3,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c012",
+      "kind": "compare",
+      "query": "F1",
+      "list_a": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "list_b": [
+        "th_007",
+        "th_011",
+        "th_006"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.5,
+      "run": 3,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c013",
+      "kind": "compare",
+      "query": "F2",
+      "list_a": [
+        "th_021",
+        "th_166",
+        "th_176"
+      ],
+      "list_b": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 1,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c014",
+      "kind": "compare",
+      "query": "F2",
+      "list_a": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "list_b": [
+        "th_021",
+        "th_166",
+        "th_176"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 1,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c015",
+      "kind": "compare",
+      "query": "F2",
+      "list_a": [
+        "th_021",
+        "th_166",
+        "th_176"
+      ],
+      "list_b": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 2,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c016",
+      "kind": "compare",
+      "query": "F2",
+      "list_a": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "list_b": [
+        "th_021",
+        "th_166",
+        "th_176"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 2,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c017",
+      "kind": "compare",
+      "query": "F2",
+      "list_a": [
+        "th_021",
+        "th_166",
+        "th_176"
+      ],
+      "list_b": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 3,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c018",
+      "kind": "compare",
+      "query": "F2",
+      "list_a": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "list_b": [
+        "th_021",
+        "th_166",
+        "th_176"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 3,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c019",
+      "kind": "compare",
+      "query": "F2",
+      "list_a": [
+        "th_021",
+        "th_176",
+        "th_394"
+      ],
+      "list_b": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.15,
+      "run": 1,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c020",
+      "kind": "compare",
+      "query": "F2",
+      "list_a": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "list_b": [
+        "th_021",
+        "th_176",
+        "th_394"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.15,
+      "run": 1,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c021",
+      "kind": "compare",
+      "query": "F2",
+      "list_a": [
+        "th_021",
+        "th_176",
+        "th_394"
+      ],
+      "list_b": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.15,
+      "run": 2,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c022",
+      "kind": "compare",
+      "query": "F2",
+      "list_a": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "list_b": [
+        "th_021",
+        "th_176",
+        "th_394"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.15,
+      "run": 2,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c023",
+      "kind": "compare",
+      "query": "F2",
+      "list_a": [
+        "th_021",
+        "th_176",
+        "th_394"
+      ],
+      "list_b": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.15,
+      "run": 3,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c024",
+      "kind": "compare",
+      "query": "F2",
+      "list_a": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "list_b": [
+        "th_021",
+        "th_176",
+        "th_394"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.15,
+      "run": 3,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c025",
+      "kind": "compare",
+      "query": "F2",
+      "list_a": [
+        "th_165",
+        "th_176",
+        "th_188"
+      ],
+      "list_b": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.5,
+      "run": 1,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c026",
+      "kind": "compare",
+      "query": "F2",
+      "list_a": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "list_b": [
+        "th_165",
+        "th_176",
+        "th_188"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.5,
+      "run": 1,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c027",
+      "kind": "compare",
+      "query": "F2",
+      "list_a": [
+        "th_165",
+        "th_176",
+        "th_188"
+      ],
+      "list_b": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.5,
+      "run": 2,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c028",
+      "kind": "compare",
+      "query": "F2",
+      "list_a": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "list_b": [
+        "th_165",
+        "th_176",
+        "th_188"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.5,
+      "run": 2,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c029",
+      "kind": "compare",
+      "query": "F2",
+      "list_a": [
+        "th_165",
+        "th_176",
+        "th_188"
+      ],
+      "list_b": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.5,
+      "run": 3,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c030",
+      "kind": "compare",
+      "query": "F2",
+      "list_a": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "list_b": [
+        "th_165",
+        "th_176",
+        "th_188"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.5,
+      "run": 3,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c031",
+      "kind": "compare",
+      "query": "F3",
+      "list_a": [
+        "th_022",
+        "th_296",
+        "th_157"
+      ],
+      "list_b": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 1,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c032",
+      "kind": "compare",
+      "query": "F3",
+      "list_a": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "list_b": [
+        "th_022",
+        "th_296",
+        "th_157"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 1,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c033",
+      "kind": "compare",
+      "query": "F3",
+      "list_a": [
+        "th_022",
+        "th_296",
+        "th_157"
+      ],
+      "list_b": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 2,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c034",
+      "kind": "compare",
+      "query": "F3",
+      "list_a": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "list_b": [
+        "th_022",
+        "th_296",
+        "th_157"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 2,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c035",
+      "kind": "compare",
+      "query": "F3",
+      "list_a": [
+        "th_022",
+        "th_296",
+        "th_157"
+      ],
+      "list_b": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 3,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c036",
+      "kind": "compare",
+      "query": "F3",
+      "list_a": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "list_b": [
+        "th_022",
+        "th_296",
+        "th_157"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 3,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c037",
+      "kind": "compare",
+      "query": "F3",
+      "list_a": [
+        "th_022",
+        "th_085",
+        "th_097"
+      ],
+      "list_b": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.5,
+      "run": 1,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c038",
+      "kind": "compare",
+      "query": "F3",
+      "list_a": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "list_b": [
+        "th_022",
+        "th_085",
+        "th_097"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.5,
+      "run": 1,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c039",
+      "kind": "compare",
+      "query": "F3",
+      "list_a": [
+        "th_022",
+        "th_085",
+        "th_097"
+      ],
+      "list_b": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.5,
+      "run": 2,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c040",
+      "kind": "compare",
+      "query": "F3",
+      "list_a": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "list_b": [
+        "th_022",
+        "th_085",
+        "th_097"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.5,
+      "run": 2,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c041",
+      "kind": "compare",
+      "query": "F3",
+      "list_a": [
+        "th_022",
+        "th_085",
+        "th_097"
+      ],
+      "list_b": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.5,
+      "run": 3,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c042",
+      "kind": "compare",
+      "query": "F3",
+      "list_a": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "list_b": [
+        "th_022",
+        "th_085",
+        "th_097"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.5,
+      "run": 3,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c043",
+      "kind": "compare",
+      "query": "F4",
+      "list_a": [
+        "th_293",
+        "th_291",
+        "th_292"
+      ],
+      "list_b": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 1,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c044",
+      "kind": "compare",
+      "query": "F4",
+      "list_a": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "list_b": [
+        "th_293",
+        "th_291",
+        "th_292"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 1,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c045",
+      "kind": "compare",
+      "query": "F4",
+      "list_a": [
+        "th_293",
+        "th_291",
+        "th_292"
+      ],
+      "list_b": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 2,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c046",
+      "kind": "compare",
+      "query": "F4",
+      "list_a": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "list_b": [
+        "th_293",
+        "th_291",
+        "th_292"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 2,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c047",
+      "kind": "compare",
+      "query": "F4",
+      "list_a": [
+        "th_293",
+        "th_291",
+        "th_292"
+      ],
+      "list_b": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 3,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c048",
+      "kind": "compare",
+      "query": "F4",
+      "list_a": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "list_b": [
+        "th_293",
+        "th_291",
+        "th_292"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 3,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c049",
+      "kind": "compare",
+      "query": "F4",
+      "list_a": [
+        "th_293",
+        "th_291",
+        "th_042"
+      ],
+      "list_b": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.15,
+      "run": 1,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c050",
+      "kind": "compare",
+      "query": "F4",
+      "list_a": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "list_b": [
+        "th_293",
+        "th_291",
+        "th_042"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.15,
+      "run": 1,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c051",
+      "kind": "compare",
+      "query": "F4",
+      "list_a": [
+        "th_293",
+        "th_291",
+        "th_042"
+      ],
+      "list_b": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.15,
+      "run": 2,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c052",
+      "kind": "compare",
+      "query": "F4",
+      "list_a": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "list_b": [
+        "th_293",
+        "th_291",
+        "th_042"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.15,
+      "run": 2,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c053",
+      "kind": "compare",
+      "query": "F4",
+      "list_a": [
+        "th_293",
+        "th_291",
+        "th_042"
+      ],
+      "list_b": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.15,
+      "run": 3,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c054",
+      "kind": "compare",
+      "query": "F4",
+      "list_a": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "list_b": [
+        "th_293",
+        "th_291",
+        "th_042"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.15,
+      "run": 3,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c055",
+      "kind": "compare",
+      "query": "F4",
+      "list_a": [
+        "th_293",
+        "th_042",
+        "th_207"
+      ],
+      "list_b": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.5,
+      "run": 1,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c056",
+      "kind": "compare",
+      "query": "F4",
+      "list_a": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "list_b": [
+        "th_293",
+        "th_042",
+        "th_207"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.5,
+      "run": 1,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c057",
+      "kind": "compare",
+      "query": "F4",
+      "list_a": [
+        "th_293",
+        "th_042",
+        "th_207"
+      ],
+      "list_b": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.5,
+      "run": 2,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c058",
+      "kind": "compare",
+      "query": "F4",
+      "list_a": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "list_b": [
+        "th_293",
+        "th_042",
+        "th_207"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.5,
+      "run": 2,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c059",
+      "kind": "compare",
+      "query": "F4",
+      "list_a": [
+        "th_293",
+        "th_042",
+        "th_207"
+      ],
+      "list_b": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.5,
+      "run": 3,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c060",
+      "kind": "compare",
+      "query": "F4",
+      "list_a": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "list_b": [
+        "th_293",
+        "th_042",
+        "th_207"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.5,
+      "run": 3,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c061",
+      "kind": "compare",
+      "query": "F5",
+      "list_a": [
+        "th_002",
+        "th_096",
+        "th_108"
+      ],
+      "list_b": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 1,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c062",
+      "kind": "compare",
+      "query": "F5",
+      "list_a": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "list_b": [
+        "th_002",
+        "th_096",
+        "th_108"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 1,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c063",
+      "kind": "compare",
+      "query": "F5",
+      "list_a": [
+        "th_002",
+        "th_096",
+        "th_108"
+      ],
+      "list_b": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 2,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c064",
+      "kind": "compare",
+      "query": "F5",
+      "list_a": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "list_b": [
+        "th_002",
+        "th_096",
+        "th_108"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 2,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c065",
+      "kind": "compare",
+      "query": "F5",
+      "list_a": [
+        "th_002",
+        "th_096",
+        "th_108"
+      ],
+      "list_b": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 3,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c066",
+      "kind": "compare",
+      "query": "F5",
+      "list_a": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "list_b": [
+        "th_002",
+        "th_096",
+        "th_108"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 3,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c067",
+      "kind": "compare",
+      "query": "F5",
+      "list_a": [
+        "th_096",
+        "th_108",
+        "th_153"
+      ],
+      "list_b": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.15,
+      "run": 1,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c068",
+      "kind": "compare",
+      "query": "F5",
+      "list_a": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "list_b": [
+        "th_096",
+        "th_108",
+        "th_153"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.15,
+      "run": 1,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c069",
+      "kind": "compare",
+      "query": "F5",
+      "list_a": [
+        "th_096",
+        "th_108",
+        "th_153"
+      ],
+      "list_b": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.15,
+      "run": 2,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c070",
+      "kind": "compare",
+      "query": "F5",
+      "list_a": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "list_b": [
+        "th_096",
+        "th_108",
+        "th_153"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.15,
+      "run": 2,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c071",
+      "kind": "compare",
+      "query": "F5",
+      "list_a": [
+        "th_096",
+        "th_108",
+        "th_153"
+      ],
+      "list_b": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.15,
+      "run": 3,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c072",
+      "kind": "compare",
+      "query": "F5",
+      "list_a": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "list_b": [
+        "th_096",
+        "th_108",
+        "th_153"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.15,
+      "run": 3,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c073",
+      "kind": "compare",
+      "query": "F6",
+      "list_a": [
+        "th_029",
+        "th_203",
+        "th_011"
+      ],
+      "list_b": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 1,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c074",
+      "kind": "compare",
+      "query": "F6",
+      "list_a": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "list_b": [
+        "th_029",
+        "th_203",
+        "th_011"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 1,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c075",
+      "kind": "compare",
+      "query": "F6",
+      "list_a": [
+        "th_029",
+        "th_203",
+        "th_011"
+      ],
+      "list_b": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 2,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c076",
+      "kind": "compare",
+      "query": "F6",
+      "list_a": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "list_b": [
+        "th_029",
+        "th_203",
+        "th_011"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 2,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c077",
+      "kind": "compare",
+      "query": "F6",
+      "list_a": [
+        "th_029",
+        "th_203",
+        "th_011"
+      ],
+      "list_b": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 3,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c078",
+      "kind": "compare",
+      "query": "F6",
+      "list_a": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "list_b": [
+        "th_029",
+        "th_203",
+        "th_011"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 3,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c079",
+      "kind": "compare",
+      "query": "F6",
+      "list_a": [
+        "th_203",
+        "th_029",
+        "th_326"
+      ],
+      "list_b": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.15,
+      "run": 1,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c080",
+      "kind": "compare",
+      "query": "F6",
+      "list_a": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "list_b": [
+        "th_203",
+        "th_029",
+        "th_326"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.15,
+      "run": 1,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c081",
+      "kind": "compare",
+      "query": "F6",
+      "list_a": [
+        "th_203",
+        "th_029",
+        "th_326"
+      ],
+      "list_b": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.15,
+      "run": 2,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c082",
+      "kind": "compare",
+      "query": "F6",
+      "list_a": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "list_b": [
+        "th_203",
+        "th_029",
+        "th_326"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.15,
+      "run": 2,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c083",
+      "kind": "compare",
+      "query": "F6",
+      "list_a": [
+        "th_203",
+        "th_029",
+        "th_326"
+      ],
+      "list_b": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.15,
+      "run": 3,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c084",
+      "kind": "compare",
+      "query": "F6",
+      "list_a": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "list_b": [
+        "th_203",
+        "th_029",
+        "th_326"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.15,
+      "run": 3,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c085",
+      "kind": "compare",
+      "query": "F6",
+      "list_a": [
+        "th_203",
+        "th_326",
+        "th_047"
+      ],
+      "list_b": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.5,
+      "run": 1,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c086",
+      "kind": "compare",
+      "query": "F6",
+      "list_a": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "list_b": [
+        "th_203",
+        "th_326",
+        "th_047"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.5,
+      "run": 1,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c087",
+      "kind": "compare",
+      "query": "F6",
+      "list_a": [
+        "th_203",
+        "th_326",
+        "th_047"
+      ],
+      "list_b": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.5,
+      "run": 2,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c088",
+      "kind": "compare",
+      "query": "F6",
+      "list_a": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "list_b": [
+        "th_203",
+        "th_326",
+        "th_047"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.5,
+      "run": 2,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c089",
+      "kind": "compare",
+      "query": "F6",
+      "list_a": [
+        "th_203",
+        "th_326",
+        "th_047"
+      ],
+      "list_b": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.5,
+      "run": 3,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c090",
+      "kind": "compare",
+      "query": "F6",
+      "list_a": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "list_b": [
+        "th_203",
+        "th_326",
+        "th_047"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.5,
+      "run": 3,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c091",
+      "kind": "compare",
+      "query": "F7",
+      "list_a": [
+        "th_019",
+        "th_020",
+        "th_018"
+      ],
+      "list_b": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 1,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c092",
+      "kind": "compare",
+      "query": "F7",
+      "list_a": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "list_b": [
+        "th_019",
+        "th_020",
+        "th_018"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 1,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c093",
+      "kind": "compare",
+      "query": "F7",
+      "list_a": [
+        "th_019",
+        "th_020",
+        "th_018"
+      ],
+      "list_b": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 2,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c094",
+      "kind": "compare",
+      "query": "F7",
+      "list_a": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "list_b": [
+        "th_019",
+        "th_020",
+        "th_018"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 2,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c095",
+      "kind": "compare",
+      "query": "F7",
+      "list_a": [
+        "th_019",
+        "th_020",
+        "th_018"
+      ],
+      "list_b": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 3,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c096",
+      "kind": "compare",
+      "query": "F7",
+      "list_a": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "list_b": [
+        "th_019",
+        "th_020",
+        "th_018"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 3,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c097",
+      "kind": "compare",
+      "query": "F7",
+      "list_a": [
+        "th_019",
+        "th_020",
+        "th_018"
+      ],
+      "list_b": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.15,
+      "run": 1,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c098",
+      "kind": "compare",
+      "query": "F7",
+      "list_a": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "list_b": [
+        "th_019",
+        "th_020",
+        "th_018"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.15,
+      "run": 1,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c099",
+      "kind": "compare",
+      "query": "F7",
+      "list_a": [
+        "th_019",
+        "th_020",
+        "th_018"
+      ],
+      "list_b": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.15,
+      "run": 2,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c100",
+      "kind": "compare",
+      "query": "F7",
+      "list_a": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "list_b": [
+        "th_019",
+        "th_020",
+        "th_018"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.15,
+      "run": 2,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c101",
+      "kind": "compare",
+      "query": "F7",
+      "list_a": [
+        "th_019",
+        "th_020",
+        "th_018"
+      ],
+      "list_b": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.15,
+      "run": 3,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c102",
+      "kind": "compare",
+      "query": "F7",
+      "list_a": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "list_b": [
+        "th_019",
+        "th_020",
+        "th_018"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.15,
+      "run": 3,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c103",
+      "kind": "compare",
+      "query": "F8",
+      "list_a": [
+        "th_396",
+        "th_171",
+        "th_172"
+      ],
+      "list_b": [
+        "th_171",
+        "th_396",
+        "th_169"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 1,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c104",
+      "kind": "compare",
+      "query": "F8",
+      "list_a": [
+        "th_171",
+        "th_396",
+        "th_169"
+      ],
+      "list_b": [
+        "th_396",
+        "th_171",
+        "th_172"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 1,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c105",
+      "kind": "compare",
+      "query": "F8",
+      "list_a": [
+        "th_396",
+        "th_171",
+        "th_172"
+      ],
+      "list_b": [
+        "th_171",
+        "th_396",
+        "th_169"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 2,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c106",
+      "kind": "compare",
+      "query": "F8",
+      "list_a": [
+        "th_171",
+        "th_396",
+        "th_169"
+      ],
+      "list_b": [
+        "th_396",
+        "th_171",
+        "th_172"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 2,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c107",
+      "kind": "compare",
+      "query": "F8",
+      "list_a": [
+        "th_396",
+        "th_171",
+        "th_172"
+      ],
+      "list_b": [
+        "th_171",
+        "th_396",
+        "th_169"
+      ],
+      "a_is": "candidate",
+      "b_is": "reference",
+      "candidate_weight": 0.0,
+      "run": 3,
+      "order": "cand_first"
+    },
+    {
+      "call_id": "c108",
+      "kind": "compare",
+      "query": "F8",
+      "list_a": [
+        "th_171",
+        "th_396",
+        "th_169"
+      ],
+      "list_b": [
+        "th_396",
+        "th_171",
+        "th_172"
+      ],
+      "a_is": "reference",
+      "b_is": "candidate",
+      "candidate_weight": 0.0,
+      "run": 3,
+      "order": "ref_first"
+    },
+    {
+      "call_id": "c109",
+      "kind": "control",
+      "query": "F1",
+      "list_a": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "list_b": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "a_is": "real",
+      "b_is": "foreign",
+      "other_query": "F5",
+      "run": 1,
+      "order": "real_first"
+    },
+    {
+      "call_id": "c110",
+      "kind": "control",
+      "query": "F1",
+      "list_a": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "list_b": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "a_is": "foreign",
+      "b_is": "real",
+      "other_query": "F5",
+      "run": 1,
+      "order": "foreign_first"
+    },
+    {
+      "call_id": "c111",
+      "kind": "control",
+      "query": "F2",
+      "list_a": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "list_b": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "a_is": "real",
+      "b_is": "foreign",
+      "other_query": "F6",
+      "run": 1,
+      "order": "real_first"
+    },
+    {
+      "call_id": "c112",
+      "kind": "control",
+      "query": "F2",
+      "list_a": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "list_b": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "a_is": "foreign",
+      "b_is": "real",
+      "other_query": "F6",
+      "run": 1,
+      "order": "foreign_first"
+    },
+    {
+      "call_id": "c113",
+      "kind": "control",
+      "query": "F3",
+      "list_a": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "list_b": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "a_is": "real",
+      "b_is": "foreign",
+      "other_query": "F7",
+      "run": 1,
+      "order": "real_first"
+    },
+    {
+      "call_id": "c114",
+      "kind": "control",
+      "query": "F3",
+      "list_a": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "list_b": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "a_is": "foreign",
+      "b_is": "real",
+      "other_query": "F7",
+      "run": 1,
+      "order": "foreign_first"
+    },
+    {
+      "call_id": "c115",
+      "kind": "control",
+      "query": "F4",
+      "list_a": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "list_b": [
+        "th_171",
+        "th_396",
+        "th_169"
+      ],
+      "a_is": "real",
+      "b_is": "foreign",
+      "other_query": "F8",
+      "run": 1,
+      "order": "real_first"
+    },
+    {
+      "call_id": "c116",
+      "kind": "control",
+      "query": "F4",
+      "list_a": [
+        "th_171",
+        "th_396",
+        "th_169"
+      ],
+      "list_b": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "a_is": "foreign",
+      "b_is": "real",
+      "other_query": "F8",
+      "run": 1,
+      "order": "foreign_first"
+    },
+    {
+      "call_id": "c117",
+      "kind": "control",
+      "query": "F5",
+      "list_a": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "list_b": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "a_is": "real",
+      "b_is": "foreign",
+      "other_query": "F1",
+      "run": 1,
+      "order": "real_first"
+    },
+    {
+      "call_id": "c118",
+      "kind": "control",
+      "query": "F5",
+      "list_a": [
+        "th_011",
+        "th_007",
+        "th_006"
+      ],
+      "list_b": [
+        "th_096",
+        "th_108",
+        "th_003"
+      ],
+      "a_is": "foreign",
+      "b_is": "real",
+      "other_query": "F1",
+      "run": 1,
+      "order": "foreign_first"
+    },
+    {
+      "call_id": "c119",
+      "kind": "control",
+      "query": "F6",
+      "list_a": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "list_b": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "a_is": "real",
+      "b_is": "foreign",
+      "other_query": "F2",
+      "run": 1,
+      "order": "real_first"
+    },
+    {
+      "call_id": "c120",
+      "kind": "control",
+      "query": "F6",
+      "list_a": [
+        "th_176",
+        "th_165",
+        "th_021"
+      ],
+      "list_b": [
+        "th_203",
+        "th_326",
+        "th_029"
+      ],
+      "a_is": "foreign",
+      "b_is": "real",
+      "other_query": "F2",
+      "run": 1,
+      "order": "foreign_first"
+    },
+    {
+      "call_id": "c121",
+      "kind": "control",
+      "query": "F7",
+      "list_a": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "list_b": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "a_is": "real",
+      "b_is": "foreign",
+      "other_query": "F3",
+      "run": 1,
+      "order": "real_first"
+    },
+    {
+      "call_id": "c122",
+      "kind": "control",
+      "query": "F7",
+      "list_a": [
+        "th_022",
+        "th_300",
+        "th_085"
+      ],
+      "list_b": [
+        "th_019",
+        "th_020",
+        "th_157"
+      ],
+      "a_is": "foreign",
+      "b_is": "real",
+      "other_query": "F3",
+      "run": 1,
+      "order": "foreign_first"
+    },
+    {
+      "call_id": "c123",
+      "kind": "control",
+      "query": "F8",
+      "list_a": [
+        "th_171",
+        "th_396",
+        "th_169"
+      ],
+      "list_b": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "a_is": "real",
+      "b_is": "foreign",
+      "other_query": "F4",
+      "run": 1,
+      "order": "real_first"
+    },
+    {
+      "call_id": "c124",
+      "kind": "control",
+      "query": "F8",
+      "list_a": [
+        "th_293",
+        "th_042",
+        "th_291"
+      ],
+      "list_b": [
+        "th_171",
+        "th_396",
+        "th_169"
+      ],
+      "a_is": "foreign",
+      "b_is": "real",
+      "other_query": "F4",
+      "run": 1,
+      "order": "foreign_first"
+    }
+  ],
+  "n_calls": 124,
+  "n_identical": 6,
+  "settings": {
+    "runs": 3,
+    "candidate_weights": [
+      0.0,
+      0.15,
+      0.5
+    ],
+    "reference_weight": 0.3
+  },
+  "mode": "REAL",
+  "model": "claude-sonnet-5",
+  "max_calls": 150
+}

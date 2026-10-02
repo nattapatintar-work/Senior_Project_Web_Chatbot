@@ -1,0 +1,273 @@
+{
+  "mode": "REAL",
+  "model": "claude-sonnet-5",
+  "settings": {
+    "runs": 3,
+    "candidate_weights": [
+      0.0,
+      0.15,
+      0.5
+    ],
+    "reference_weight": 0.3
+  },
+  "calls_recorded": 124,
+  "status_counts": {
+    "ok": 123,
+    "parse_error": 1
+  },
+  "identical_pairs_skipped": 6,
+  "win_rate_per_weight": {
+    "0.0": {
+      "candidate_weight": 0.0,
+      "judged_pairs": 8,
+      "identical_pairs": 0,
+      "calls": 48,
+      "valid_calls": 48,
+      "wins": 7,
+      "ties": 0,
+      "losses": 41,
+      "win_rate_vs_reference": 0.1458
+    },
+    "0.15": {
+      "candidate_weight": 0.15,
+      "judged_pairs": 5,
+      "identical_pairs": 3,
+      "calls": 30,
+      "valid_calls": 30,
+      "wins": 9,
+      "ties": 0,
+      "losses": 21,
+      "win_rate_vs_reference": 0.3
+    },
+    "0.5": {
+      "candidate_weight": 0.5,
+      "judged_pairs": 5,
+      "identical_pairs": 3,
+      "calls": 30,
+      "valid_calls": 29,
+      "wins": 9,
+      "ties": 11,
+      "losses": 9,
+      "win_rate_vs_reference": 0.5
+    }
+  },
+  "win_rate_overall": {
+    "valid_calls": 107,
+    "wins": 25,
+    "ties": 11,
+    "losses": 71,
+    "win_rate_vs_reference": 0.285
+  },
+  "position_bias": {
+    "comparisons": {
+      "valid_calls": 107,
+      "share_A": 0.486
+    },
+    "controls": {
+      "valid_calls": 16,
+      "share_A": 0.5
+    },
+    "all": {
+      "valid_calls": 123,
+      "share_A": 0.4878
+    }
+  },
+  "order_consistency": {
+    "pairs_with_both_orders": 53,
+    "consistent_share": 0.7547
+  },
+  "self_consistency": {
+    "runs_per_cell": 3,
+    "cells_total": 36,
+    "cells_with_all_runs_valid": 35,
+    "all_runs_agree_share": 0.8571
+  },
+  "negative_controls": {
+    "valid_calls": 16,
+    "calls": 16,
+    "real_wins": 16,
+    "ties": 0,
+    "foreign_wins": 0,
+    "accuracy": 1.0,
+    "min_accuracy_to_trust": 0.875,
+    "judge_reliable": true
+  },
+  "per_query": [
+    {
+      "query": "F1",
+      "weights": {
+        "0.0": {
+          "top3_change_vs_reference": "different",
+          "judge": "0W/0T/6L of 6 valid calls",
+          "win_rate_vs_reference": 0.0
+        },
+        "0.15": {
+          "top3_change_vs_reference": "identical",
+          "judge": "not judged (identical)",
+          "win_rate_vs_reference": null
+        },
+        "0.5": {
+          "top3_change_vs_reference": "reordered",
+          "judge": "0W/5T/1L of 6 valid calls",
+          "win_rate_vs_reference": 0.4167
+        }
+      }
+    },
+    {
+      "query": "F2",
+      "weights": {
+        "0.0": {
+          "top3_change_vs_reference": "different",
+          "judge": "0W/0T/6L of 6 valid calls",
+          "win_rate_vs_reference": 0.0
+        },
+        "0.15": {
+          "top3_change_vs_reference": "different",
+          "judge": "0W/0T/6L of 6 valid calls",
+          "win_rate_vs_reference": 0.0
+        },
+        "0.5": {
+          "top3_change_vs_reference": "different",
+          "judge": "3W/0T/2L of 5 valid calls",
+          "win_rate_vs_reference": 0.6
+        }
+      }
+    },
+    {
+      "query": "F3",
+      "weights": {
+        "0.0": {
+          "top3_change_vs_reference": "different",
+          "judge": "0W/0T/6L of 6 valid calls",
+          "win_rate_vs_reference": 0.0
+        },
+        "0.15": {
+          "top3_change_vs_reference": "identical",
+          "judge": "not judged (identical)",
+          "win_rate_vs_reference": null
+        },
+        "0.5": {
+          "top3_change_vs_reference": "different",
+          "judge": "0W/6T/0L of 6 valid calls",
+          "win_rate_vs_reference": 0.5
+        }
+      }
+    },
+    {
+      "query": "F4",
+      "weights": {
+        "0.0": {
+          "top3_change_vs_reference": "different",
+          "judge": "2W/0T/4L of 6 valid calls",
+          "win_rate_vs_reference": 0.3333
+        },
+        "0.15": {
+          "top3_change_vs_reference": "reordered",
+          "judge": "0W/0T/6L of 6 valid calls",
+          "win_rate_vs_reference": 0.0
+        },
+        "0.5": {
+          "top3_change_vs_reference": "different",
+          "judge": "6W/0T/0L of 6 valid calls",
+          "win_rate_vs_reference": 1.0
+        }
+      }
+    },
+    {
+      "query": "F5",
+      "weights": {
+        "0.0": {
+          "top3_change_vs_reference": "different",
+          "judge": "0W/0T/6L of 6 valid calls",
+          "win_rate_vs_reference": 0.0
+        },
+        "0.15": {
+          "top3_change_vs_reference": "different",
+          "judge": "0W/0T/6L of 6 valid calls",
+          "win_rate_vs_reference": 0.0
+        },
+        "0.5": {
+          "top3_change_vs_reference": "identical",
+          "judge": "not judged (identical)",
+          "win_rate_vs_reference": null
+        }
+      }
+    },
+    {
+      "query": "F6",
+      "weights": {
+        "0.0": {
+          "top3_change_vs_reference": "different",
+          "judge": "1W/0T/5L of 6 valid calls",
+          "win_rate_vs_reference": 0.1667
+        },
+        "0.15": {
+          "top3_change_vs_reference": "reordered",
+          "judge": "6W/0T/0L of 6 valid calls",
+          "win_rate_vs_reference": 1.0
+        },
+        "0.5": {
+          "top3_change_vs_reference": "different",
+          "judge": "0W/0T/6L of 6 valid calls",
+          "win_rate_vs_reference": 0.0
+        }
+      }
+    },
+    {
+      "query": "F7",
+      "weights": {
+        "0.0": {
+          "top3_change_vs_reference": "different",
+          "judge": "1W/0T/5L of 6 valid calls",
+          "win_rate_vs_reference": 0.1667
+        },
+        "0.15": {
+          "top3_change_vs_reference": "different",
+          "judge": "3W/0T/3L of 6 valid calls",
+          "win_rate_vs_reference": 0.5
+        },
+        "0.5": {
+          "top3_change_vs_reference": "identical",
+          "judge": "not judged (identical)",
+          "win_rate_vs_reference": null
+        }
+      }
+    },
+    {
+      "query": "F8",
+      "weights": {
+        "0.0": {
+          "top3_change_vs_reference": "different",
+          "judge": "3W/0T/3L of 6 valid calls",
+          "win_rate_vs_reference": 0.5
+        },
+        "0.15": {
+          "top3_change_vs_reference": "identical",
+          "judge": "not judged (identical)",
+          "win_rate_vs_reference": null
+        },
+        "0.5": {
+          "top3_change_vs_reference": "identical",
+          "judge": "not judged (identical)",
+          "win_rate_vs_reference": null
+        }
+      }
+    }
+  ],
+  "token_totals": {
+    "input": 240694,
+    "output": 33986
+  },
+  "adaptations": [
+    "temperature switched off after an HTTP 400"
+  ],
+  "limitations": [
+    "Only 8 queries (group F).",
+    "The F pairs were chosen so that the ranking changes with the seasonings, so the share of changed rankings says nothing about real use.",
+    "The judge measures agreement with the three stated criteria, not user satisfaction.",
+    "There are no human labels to calibrate the judge against.",
+    "The judge is a Claude model and the criteria were written by us.",
+    "The judge model id is UNVERIFIED against the API (claude-sonnet-5 unless JUDGE_MODEL was set).",
+    "Win rates are over a small number of calls and carry no confidence interval."
+  ]
+}

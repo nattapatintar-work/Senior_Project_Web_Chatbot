@@ -1,0 +1,19 @@
+{
+  "mode": "REAL",
+  "model": "claude-sonnet-5",
+  "planned_calls": 124,
+  "judged_calls": 124,
+  "requests_made": 129,
+  "status_counts": {
+    "ok": 123,
+    "parse_error": 1
+  },
+  "token_totals": {
+    "input": 240694,
+    "output": 33986
+  },
+  "adaptations": [
+    "temperature switched off after an HTTP 400"
+  ],
+  "aborted": null
+}
