@@ -10,6 +10,15 @@ Reads   data/eval/test_set_draft_v1.json   (the `preview_top3` field is ignored:
                                             it came from an external simulation)
 Writes  data/eval/baseline_top3.json       (deterministic: rerun = identical file)
 
+Other inputs/outputs: build(test_set_path) and dump(test_set_path, out_path) take explicit paths
+(the defaults above are unchanged). The input may be a flat list of queries or an object with a
+"queries" list (data/eval/test_set_extra_v1.json). A query may carry two optional fields:
+    "seasonings"  list of ticked seasoning keys   (default: SEASONINGS_TICKED, i.e. [])
+    "category"    "all" / "savory" / "dessert"    (default: None, i.e. no argument as before)
+Queries without them make exactly the call they always made, and their output keeps exactly the
+keys it always had; only a query that carries a field gets `seasonings` / `category` (and
+`paired_with`, if present) in its record and `seasonings_matched` in its result rows.
+
 No LLM, no network, no API key. Only recommender.recommend() runs.
 
 HOW THE CALL MIRRORS POST /recommend (api/app.py:428-450)
@@ -56,6 +65,35 @@ def _load_json(path: Path):
         return json.load(f)
 
 
+def _load_queries(path: Path) -> list[dict]:
+    """The queries of a test-set file: a flat list, or an object with a "queries" list."""
+    data = _load_json(path)
+    return data["queries"] if isinstance(data, dict) else data
+
+
+def _has_call_fields(query: dict) -> bool:
+    """True if the query carries its own seasonings and/or category (the extra test set does)."""
+    return "seasonings" in query or "category" in query
+
+
+def _call_args(query: dict) -> dict:
+    """The seasonings and category handed to recommend(); the defaults reproduce the old call exactly."""
+    return {
+        "seasonings": list(query.get("seasonings", SEASONINGS_TICKED)),
+        "category": query.get("category"),
+    }
+
+
+def _source_label(path: Path) -> str:
+    if path == TEST_SET_PATH:
+        return "data/eval/test_set_draft_v1.json (preview_top3 ignored)"
+    try:
+        shown = path.resolve().relative_to(ROOT).as_posix()
+    except ValueError:
+        shown = path.name
+    return f"{shown} (any preview_top3 field is ignored)"
+
+
 def _names(keys: list[str], ingredients: dict) -> list[str | None]:
     """Thai name per key, from ingredients.json's `name_th`. None if the key is unknown."""
     return [ingredients.get(key, {}).get("name_th") for key in keys]
@@ -86,11 +124,11 @@ def _dictionary_issues(query: dict, ingredients: dict, health_tags: set[str]) ->
     }
 
 
-def _result_row(rank: int, dish: dict, recipe: dict, ingredients: dict) -> dict:
+def _result_row(rank: int, dish: dict, recipe: dict, ingredients: dict, with_call_fields: bool = False) -> dict:
     main, optional, seasonings = (
         recipe["main_ingredients"], recipe["optional_ingredients"], recipe["seasonings"],
     )
-    return {
+    row = {
         "rank": rank,
         "id": dish["id"],
         "name_th": dish["name_th"],
@@ -107,10 +145,15 @@ def _result_row(rank: int, dish: dict, recipe: dict, ingredients: dict) -> dict:
         "have": dish["have"],
         "missing": dish["missing"],
     }
+    if with_call_fields:
+        # the seasonings the user ticked that this recipe uses (recommend() returns it when seasonings is not None)
+        row["seasonings_matched"] = dish.get("seasonings_matched", [])
+    return row
 
 
-def build() -> dict:
-    test_set = _load_json(TEST_SET_PATH)
+def build(test_set_path: Path = TEST_SET_PATH) -> dict:
+    test_set = _load_queries(test_set_path)
+    per_query_call = any(_has_call_fields(q) for q in test_set)
     ingredients = _load_json(INGREDIENTS_PATH)
     health_terms = {k for k in _load_json(HEALTH_TERMS_PATH) if not k.startswith("_")}
     recipes = load_recipes()
@@ -119,22 +162,33 @@ def build() -> dict:
     queries = []
     for query in test_set:
         view = _session_view(query)
+        args = _call_args(query)
+        with_fields = _has_call_fields(query)
         with contextlib.redirect_stdout(io.StringIO()):     # swallow recommend()'s log line
             dishes = recommend(
                 ingredients=view["ingredients"],
                 health_tags=view["health_tags"],
                 excluded=view["excluded"],
                 top_k=TOP_K,
-                seasonings=list(SEASONINGS_TICKED),
+                seasonings=args["seasonings"],
+                category=args["category"],
             )
-        results = [_result_row(i, d, by_id[d["id"]], ingredients) for i, d in enumerate(dishes, start=1)]
-        queries.append({
+        results = [_result_row(i, d, by_id[d["id"]], ingredients, with_fields)
+                   for i, d in enumerate(dishes, start=1)]
+        record = {
             "id": query["id"],
             "group": query["id"][0],
             "text_th": query["text_th"],
             "ingredients": query["ingredients"],
             "health_tags": query["health_tags"],
             "excluded": query["excluded"],
+        }
+        if with_fields:     # only queries that carry the fields get the extra keys
+            record["seasonings"] = args["seasonings"]
+            record["category"] = args["category"]
+            if "paired_with" in query:
+                record["paired_with"] = query["paired_with"]
+        record.update({
             "used_ingredients": view["ingredients"],
             "n_returned": len(results),
             # kept, never hidden: fewer than 3 (or none) returned
@@ -143,27 +197,39 @@ def build() -> dict:
             "dictionary_issues": _dictionary_issues(query, ingredients, health_terms),
             "results": results,
         })
+        queries.append(record)
 
+    if per_query_call:
+        call = ("recommend(ingredients=used_ingredients, health_tags, excluded, top_k=3, "
+                "seasonings=<the query's seasonings, default []>, category=<the query's category, default None>)")
+    else:
+        call = "recommend(ingredients=used_ingredients, health_tags, excluded, top_k=3, seasonings=[])"
     return {
         "meta": {
-            "source": "data/eval/test_set_draft_v1.json (preview_top3 ignored)",
+            "source": _source_label(test_set_path),
             "top_k": TOP_K,
             "seasonings_ticked": SEASONINGS_TICKED,
             "catalog_size": len(recipes),
             "n_queries": len(queries),
-            "call": "recommend(ingredients=used_ingredients, health_tags, excluded, top_k=3, seasonings=[])",
+            "call": call,
         },
         "queries": queries,
     }
 
 
+def dump(test_set_path: Path = TEST_SET_PATH, out_path: Path = OUT_PATH) -> dict:
+    """Build the top-3 dump for `test_set_path` and write it to `out_path` (defaults: the old baseline paths)."""
+    data = build(test_set_path)
+    with open(out_path, "w", encoding="utf-8", newline="\n") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+    return data
+
+
 def main() -> None:
     if not TEST_SET_PATH.exists():
         sys.exit(f"missing input: {TEST_SET_PATH}")
-    data = build()
-    with open(OUT_PATH, "w", encoding="utf-8", newline="\n") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-        f.write("\n")
+    data = dump()
     short = [q["id"] for q in data["queries"] if q["short"]]
     print(f"wrote {OUT_PATH.relative_to(ROOT)}: {len(data['queries'])} queries, "
           f"{len(short)} with fewer than {TOP_K} results {short}")

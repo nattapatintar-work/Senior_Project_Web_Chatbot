@@ -1,0 +1,225 @@
+{
+  "_readme": "Extra recommender test set, groups F and G, drafted to exercise what groups A-E never do. Group F re-uses the ingredients of an existing A/B query and ticks 1-3 seasonings (the seasoning bonus, SEASONING_WEIGHT, recommender/recommend.py). Group G re-uses the ingredients of an existing query with category = savory or dessert (the category picker). Every query has health_tags = [] and excluded = [], so the only changed factor is the seasonings or the category. 'paired_with' names the existing query in data/eval/test_set_draft_v1.json that has the same ingredients, no seasonings and category 'all'. Fields follow test_set_draft_v1.json (id, text_th, ingredients, health_tags, excluded) plus seasonings, category, purpose and paired_with; preview_top3 is deliberately not included. text_th is display text only: the evaluation uses the keys. Shape follows data/recommender_dev_set.json ({_readme, ..., list}). The existing eval pipeline cannot score these queries yet: tools/eval_dump_top3.py passes no per-query seasonings or category, and tools/eval_rule_score.py GROUPS stops at E.",
+  "notes": {
+    "zero_or_thin_category_results": "Expected behavior, not a bug. Counts of recipes with a positive match in the 390-recipe catalog: dessert mode returns 0 recipes for the ingredient sets of A2 (chicken), A3 (pork), A4 (shrimp), A5 (tofu), A6 (minced_meat), B4 (shrimp, lemongrass, galangal), B5 (fish, ginger), B6 (beef, basil) and E3 (rice_noodle); savory mode returns 0 for E1 (banana) and only 2 for E5 (glutinous_rice, banana). Group G uses only sets that have both categories: A1 egg (48 savory / 23 dessert), E2 coconut + pumpkin (7 / 18), B8 cabbage + carrot + egg (73 / 24)."
+  },
+  "queries": [
+    {
+      "id": "F1",
+      "paired_with": "A2",
+      "text_th": "มีไก่ มีน้ำตาล",
+      "ingredients": [
+        "chicken"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [
+        "sugar"
+      ],
+      "category": "all",
+      "purpose": "Ticking sugar replaces th_014 with th_006 (a sugar recipe) in the top 3 of the chicken query."
+    },
+    {
+      "id": "F2",
+      "paired_with": "A3",
+      "text_th": "มีหมู มีน้ำตาล กับซีอิ๊วขาว",
+      "ingredients": [
+        "pork"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [
+        "sugar",
+        "soy_sauce"
+      ],
+      "category": "all",
+      "purpose": "Sugar and soy sauce promote th_176 and th_165 (both match both seasonings) and push th_021 from first to third."
+    },
+    {
+      "id": "F3",
+      "paired_with": "A4",
+      "text_th": "มีกุ้ง มีน้ำมันพืช น้ำมันหอย กับซีอิ๊วขาว",
+      "ingredients": [
+        "shrimp"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [
+        "vegetable_oil",
+        "oyster_sauce",
+        "soy_sauce"
+      ],
+      "category": "all",
+      "purpose": "Three seasonings replace th_296 and th_157 with th_300 and th_085 (both match all three); th_022 stays first."
+    },
+    {
+      "id": "F4",
+      "paired_with": "A5",
+      "text_th": "มีเต้าหู้ มีซีอิ๊วขาว",
+      "ingredients": [
+        "tofu"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [
+        "soy_sauce"
+      ],
+      "category": "all",
+      "purpose": "Soy sauce brings th_042 into the top 3 in place of th_292, in a small 10-recipe candidate pool."
+    },
+    {
+      "id": "F5",
+      "paired_with": "B1",
+      "text_th": "มีไข่ กับมะเขือเทศ มีน้ำตาล กับน้ำปลา",
+      "ingredients": [
+        "egg",
+        "tomato"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [
+        "sugar",
+        "fish_sauce"
+      ],
+      "category": "all",
+      "purpose": "Sugar and fish sauce move the sugar-only desserts th_096 and th_108 to ranks 1-2 and drop th_002 out of the top 3."
+    },
+    {
+      "id": "F6",
+      "paired_with": "B2",
+      "text_th": "มีไก่ กับข้าว มีน้ำตาล กับเกลือ",
+      "ingredients": [
+        "chicken",
+        "rice"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [
+        "sugar",
+        "salt"
+      ],
+      "category": "all",
+      "purpose": "Sugar and salt put th_203 (matches both) first, ahead of th_029 (matches neither)."
+    },
+    {
+      "id": "F7",
+      "paired_with": "B4",
+      "text_th": "มีกุ้ง ตะไคร้ ข่า มีน้ำปลา กับข้าวคั่ว",
+      "ingredients": [
+        "shrimp",
+        "lemongrass",
+        "galangal"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [
+        "fish_sauce",
+        "roasted_rice_powder"
+      ],
+      "category": "all",
+      "purpose": "Fish sauce and roasted rice powder bring th_157 (matches both) into the top 3 in place of th_018."
+    },
+    {
+      "id": "F8",
+      "paired_with": "B5",
+      "text_th": "มีปลา กับขิง มีน้ำตาล ซีอิ๊วขาว กับน้ำมันหอย",
+      "ingredients": [
+        "fish",
+        "ginger"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [
+        "sugar",
+        "soy_sauce",
+        "oyster_sauce"
+      ],
+      "category": "all",
+      "purpose": "Three seasonings swap ranks 1 and 2 (th_171 first) and bring th_169 in for th_172."
+    },
+    {
+      "id": "G1",
+      "paired_with": "A1",
+      "text_th": "มีไข่ อยากกินอาหารคาว",
+      "ingredients": [
+        "egg"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [],
+      "category": "savory",
+      "purpose": "Savory mode removes the egg-and-sugar sweets th_096 and th_108 that sit at ranks 2-3 of the 'all' list."
+    },
+    {
+      "id": "G2",
+      "paired_with": "A1",
+      "text_th": "มีไข่ อยากกินขนมหวาน",
+      "ingredients": [
+        "egg"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [],
+      "category": "dessert",
+      "purpose": "Dessert mode returns only the sweets: th_096, th_108 and th_153, tied at 1.0."
+    },
+    {
+      "id": "G3",
+      "paired_with": "E2",
+      "text_th": "มีมะพร้าว ฟักทอง อยากกินอาหารคาว",
+      "ingredients": [
+        "coconut",
+        "pumpkin"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [],
+      "category": "savory",
+      "purpose": "Savory mode returns only 7 recipes for coconut and pumpkin, none of the sweets that top the 'all' list."
+    },
+    {
+      "id": "G4",
+      "paired_with": "E2",
+      "text_th": "มีมะพร้าว ฟักทอง อยากกินขนมหวาน",
+      "ingredients": [
+        "coconut",
+        "pumpkin"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [],
+      "category": "dessert",
+      "purpose": "Dessert mode returns the same top 3 as 'all' (th_101, th_095, th_214) from 18 matching sweets."
+    },
+    {
+      "id": "G5",
+      "paired_with": "B8",
+      "text_th": "มีกะหล่ำปลี แครอท ไข่ อยากกินอาหารคาว",
+      "ingredients": [
+        "cabbage",
+        "carrot",
+        "egg"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [],
+      "category": "savory",
+      "purpose": "Savory mode leaves the top 3 unchanged versus 'all' (th_294, th_297, th_031); only lower-ranked sweets are removed."
+    },
+    {
+      "id": "G6",
+      "paired_with": "B8",
+      "text_th": "มีกะหล่ำปลี แครอท ไข่ อยากกินขนมหวาน",
+      "ingredients": [
+        "cabbage",
+        "carrot",
+        "egg"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [],
+      "category": "dessert",
+      "purpose": "Dessert mode surfaces sweets (th_215, th_096, th_108) that never appear in the top 3 of the 'all' list."
+    }
+  ]
+}

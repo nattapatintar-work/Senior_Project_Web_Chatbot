@@ -1,0 +1,2305 @@
+{
+  "meta": {
+    "source": "data/eval/test_set_extra_v1.json (any preview_top3 field is ignored)",
+    "top_k": 3,
+    "seasonings_ticked": [],
+    "catalog_size": 390,
+    "n_queries": 14,
+    "call": "recommend(ingredients=used_ingredients, health_tags, excluded, top_k=3, seasonings=<the query's seasonings, default []>, category=<the query's category, default None>)"
+  },
+  "queries": [
+    {
+      "id": "F1",
+      "group": "F",
+      "text_th": "มีไก่ มีน้ำตาล",
+      "ingredients": [
+        "chicken"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [
+        "sugar"
+      ],
+      "category": "all",
+      "paired_with": "A2",
+      "used_ingredients": [
+        "chicken"
+      ],
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "dictionary_issues": {
+        "unknown_ingredients": [],
+        "unknown_excluded": [],
+        "unknown_health_tags": [],
+        "seasoning_keys_in_ingredients": [],
+        "ingredients_also_excluded": []
+      },
+      "results": [
+        {
+          "rank": 1,
+          "id": "th_011",
+          "name_th": "ไก่อบซอส",
+          "category": "savory",
+          "main_ingredients": [
+            "chicken"
+          ],
+          "main_ingredients_th": [
+            "เนื้อไก่"
+          ],
+          "optional_ingredients": [
+            "onion"
+          ],
+          "optional_ingredients_th": [
+            "หอมหัวใหญ่"
+          ],
+          "seasonings": [
+            "soy_sauce",
+            "oyster_sauce",
+            "sugar",
+            "pepper"
+          ],
+          "seasonings_th": [
+            "ซีอิ๊วขาว",
+            "น้ำมันหอย",
+            "น้ำตาล",
+            "พริกไทย"
+          ],
+          "health_tags": [],
+          "excluded_for": [
+            "vegetarian",
+            "vegan"
+          ],
+          "score": 0.97,
+          "have": [
+            "chicken"
+          ],
+          "missing": [],
+          "seasonings_matched": [
+            "sugar"
+          ]
+        },
+        {
+          "rank": 2,
+          "id": "th_007",
+          "name_th": "แกงพะแนงไก่",
+          "category": "savory",
+          "main_ingredients": [
+            "chicken"
+          ],
+          "main_ingredients_th": [
+            "เนื้อไก่"
+          ],
+          "optional_ingredients": [
+            "kaffir_lime_leaf"
+          ],
+          "optional_ingredients_th": [
+            "ใบมะกรูด"
+          ],
+          "seasonings": [
+            "red_curry_paste",
+            "coconut_milk",
+            "fish_sauce",
+            "sugar"
+          ],
+          "seasonings_th": [
+            "พริกแกงเผ็ด",
+            "กะทิ",
+            "น้ำปลา",
+            "น้ำตาล"
+          ],
+          "health_tags": [],
+          "excluded_for": [
+            "vegetarian",
+            "vegan"
+          ],
+          "score": 0.96,
+          "have": [
+            "chicken"
+          ],
+          "missing": [],
+          "seasonings_matched": [
+            "sugar"
+          ]
+        },
+        {
+          "rank": 3,
+          "id": "th_006",
+          "name_th": "แกงเผ็ดไก่",
+          "category": "savory",
+          "main_ingredients": [
+            "chicken"
+          ],
+          "main_ingredients_th": [
+            "เนื้อไก่"
+          ],
+          "optional_ingredients": [
+            "basil",
+            "eggplant"
+          ],
+          "optional_ingredients_th": [
+            "โหระพา",
+            "มะเขือยาว"
+          ],
+          "seasonings": [
+            "red_curry_paste",
+            "coconut_milk",
+            "fish_sauce",
+            "sugar"
+          ],
+          "seasonings_th": [
+            "พริกแกงเผ็ด",
+            "กะทิ",
+            "น้ำปลา",
+            "น้ำตาล"
+          ],
+          "health_tags": [
+            "keto"
+          ],
+          "excluded_for": [
+            "vegetarian",
+            "vegan"
+          ],
+          "score": 0.81,
+          "have": [
+            "chicken"
+          ],
+          "missing": [],
+          "seasonings_matched": [
+            "sugar"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F2",
+      "group": "F",
+      "text_th": "มีหมู มีน้ำตาล กับซีอิ๊วขาว",
+      "ingredients": [
+        "pork"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [
+        "sugar",
+        "soy_sauce"
+      ],
+      "category": "all",
+      "paired_with": "A3",
+      "used_ingredients": [
+        "pork"
+      ],
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "dictionary_issues": {
+        "unknown_ingredients": [],
+        "unknown_excluded": [],
+        "unknown_health_tags": [],
+        "seasoning_keys_in_ingredients": [],
+        "ingredients_also_excluded": []
+      },
+      "results": [
+        {
+          "rank": 1,
+          "id": "th_176",
+          "name_th": "หมูผัดพริกหยวก",
+          "category": "savory",
+          "main_ingredients": [
+            "pork",
+            "bell_pepper"
+          ],
+          "main_ingredients_th": [
+            "เนื้อหมู",
+            "พริกหวาน"
+          ],
+          "optional_ingredients": [
+            "garlic",
+            "onion"
+          ],
+          "optional_ingredients_th": [
+            "กระเทียม",
+            "หอมหัวใหญ่"
+          ],
+          "seasonings": [
+            "oyster_sauce",
+            "soy_sauce",
+            "sugar"
+          ],
+          "seasonings_th": [
+            "น้ำมันหอย",
+            "ซีอิ๊วขาว",
+            "น้ำตาล"
+          ],
+          "health_tags": [
+            "keto"
+          ],
+          "excluded_for": [
+            "vegan",
+            "vegetarian"
+          ],
+          "score": 0.82,
+          "have": [
+            "pork"
+          ],
+          "missing": [
+            "bell_pepper"
+          ],
+          "seasonings_matched": [
+            "soy_sauce",
+            "sugar"
+          ]
+        },
+        {
+          "rank": 2,
+          "id": "th_165",
+          "name_th": "ผัดมันแกว",
+          "category": "savory",
+          "main_ingredients": [
+            "jicama",
+            "pork",
+            "egg"
+          ],
+          "main_ingredients_th": [
+            "มันแกว",
+            "เนื้อหมู",
+            "ไข่ไก่"
+          ],
+          "optional_ingredients": [
+            "garlic"
+          ],
+          "optional_ingredients_th": [
+            "กระเทียม"
+          ],
+          "seasonings": [
+            "soy_sauce",
+            "sugar"
+          ],
+          "seasonings_th": [
+            "ซีอิ๊วขาว",
+            "น้ำตาล"
+          ],
+          "health_tags": [],
+          "excluded_for": [
+            "vegan",
+            "vegetarian"
+          ],
+          "score": 0.81,
+          "have": [
+            "pork"
+          ],
+          "missing": [
+            "egg",
+            "jicama"
+          ],
+          "seasonings_matched": [
+            "soy_sauce",
+            "sugar"
+          ]
+        },
+        {
+          "rank": 3,
+          "id": "th_021",
+          "name_th": "ต้มพะโล้",
+          "category": "savory",
+          "main_ingredients": [
+            "pork",
+            "egg"
+          ],
+          "main_ingredients_th": [
+            "เนื้อหมู",
+            "ไข่ไก่"
+          ],
+          "optional_ingredients": [
+            "tofu"
+          ],
+          "optional_ingredients_th": [
+            "เต้าหู้ขาว"
+          ],
+          "seasonings": [
+            "dark_soy_sauce",
+            "sugar",
+            "salt",
+            "pepper"
+          ],
+          "seasonings_th": [
+            "ซีอิ๊วดำ",
+            "น้ำตาล",
+            "เกลือ",
+            "พริกไทย"
+          ],
+          "health_tags": [],
+          "excluded_for": [
+            "vegetarian",
+            "vegan"
+          ],
+          "score": 0.79,
+          "have": [
+            "pork"
+          ],
+          "missing": [
+            "egg"
+          ],
+          "seasonings_matched": [
+            "sugar"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F3",
+      "group": "F",
+      "text_th": "มีกุ้ง มีน้ำมันพืช น้ำมันหอย กับซีอิ๊วขาว",
+      "ingredients": [
+        "shrimp"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [
+        "vegetable_oil",
+        "oyster_sauce",
+        "soy_sauce"
+      ],
+      "category": "all",
+      "paired_with": "A4",
+      "used_ingredients": [
+        "shrimp"
+      ],
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "dictionary_issues": {
+        "unknown_ingredients": [],
+        "unknown_excluded": [],
+        "unknown_health_tags": [],
+        "seasoning_keys_in_ingredients": [],
+        "ingredients_also_excluded": []
+      },
+      "results": [
+        {
+          "rank": 1,
+          "id": "th_022",
+          "name_th": "ทอดมันกุ้ง",
+          "category": "savory",
+          "main_ingredients": [
+            "shrimp"
+          ],
+          "main_ingredients_th": [
+            "กุ้ง"
+          ],
+          "optional_ingredients": [
+            "yardlong_bean"
+          ],
+          "optional_ingredients_th": [
+            "ถั่วฝักยาว"
+          ],
+          "seasonings": [
+            "red_curry_paste",
+            "vegetable_oil"
+          ],
+          "seasonings_th": [
+            "พริกแกงเผ็ด",
+            "น้ำมันพืช"
+          ],
+          "health_tags": [
+            "keto"
+          ],
+          "excluded_for": [
+            "vegetarian",
+            "vegan"
+          ],
+          "score": 1.0,
+          "have": [
+            "shrimp"
+          ],
+          "missing": [],
+          "seasonings_matched": [
+            "vegetable_oil"
+          ]
+        },
+        {
+          "rank": 2,
+          "id": "th_300",
+          "name_th": "ผัดดอกกะหล่ำใส่กุ้ง",
+          "category": "savory",
+          "main_ingredients": [
+            "cauliflower",
+            "shrimp"
+          ],
+          "main_ingredients_th": [
+            "กะหล่ำดอก",
+            "กุ้ง"
+          ],
+          "optional_ingredients": [
+            "garlic",
+            "chili"
+          ],
+          "optional_ingredients_th": [
+            "กระเทียม",
+            "พริก"
+          ],
+          "seasonings": [
+            "oyster_sauce",
+            "soy_sauce",
+            "vegetable_oil"
+          ],
+          "seasonings_th": [
+            "น้ำมันหอย",
+            "ซีอิ๊วขาว",
+            "น้ำมันพืช"
+          ],
+          "health_tags": [
+            "clean",
+            "keto"
+          ],
+          "excluded_for": [
+            "vegan",
+            "vegetarian"
+          ],
+          "score": 0.84,
+          "have": [
+            "shrimp"
+          ],
+          "missing": [
+            "cauliflower"
+          ],
+          "seasonings_matched": [
+            "oyster_sauce",
+            "soy_sauce",
+            "vegetable_oil"
+          ]
+        },
+        {
+          "rank": 3,
+          "id": "th_085",
+          "name_th": "หน่อไม้ฝรั่งผัดกุ้ง",
+          "category": "savory",
+          "main_ingredients": [
+            "asparagus",
+            "shrimp"
+          ],
+          "main_ingredients_th": [
+            "หน่อไม้ฝรั่ง",
+            "กุ้ง"
+          ],
+          "optional_ingredients": [
+            "garlic"
+          ],
+          "optional_ingredients_th": [
+            "กระเทียม"
+          ],
+          "seasonings": [
+            "oyster_sauce",
+            "soy_sauce",
+            "vegetable_oil"
+          ],
+          "seasonings_th": [
+            "น้ำมันหอย",
+            "ซีอิ๊วขาว",
+            "น้ำมันพืช"
+          ],
+          "health_tags": [
+            "clean",
+            "keto"
+          ],
+          "excluded_for": [
+            "vegetarian",
+            "vegan"
+          ],
+          "score": 0.83,
+          "have": [
+            "shrimp"
+          ],
+          "missing": [
+            "asparagus"
+          ],
+          "seasonings_matched": [
+            "oyster_sauce",
+            "soy_sauce",
+            "vegetable_oil"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F4",
+      "group": "F",
+      "text_th": "มีเต้าหู้ มีซีอิ๊วขาว",
+      "ingredients": [
+        "tofu"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [
+        "soy_sauce"
+      ],
+      "category": "all",
+      "paired_with": "A5",
+      "used_ingredients": [
+        "tofu"
+      ],
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "dictionary_issues": {
+        "unknown_ingredients": [],
+        "unknown_excluded": [],
+        "unknown_health_tags": [],
+        "seasoning_keys_in_ingredients": [],
+        "ingredients_also_excluded": []
+      },
+      "results": [
+        {
+          "rank": 1,
+          "id": "th_293",
+          "name_th": "เต้าหู้ทอดซอสมะขาม",
+          "category": "savory",
+          "main_ingredients": [
+            "tofu"
+          ],
+          "main_ingredients_th": [
+            "เต้าหู้ขาว"
+          ],
+          "optional_ingredients": [
+            "shallot",
+            "mint_leaves",
+            "chili"
+          ],
+          "optional_ingredients_th": [
+            "หอมแดง",
+            "สะระแหน่",
+            "พริก"
+          ],
+          "seasonings": [
+            "tamarind_paste",
+            "sugar",
+            "soy_sauce",
+            "vegetable_oil"
+          ],
+          "seasonings_th": [
+            "น้ำมะขามเปียก",
+            "น้ำตาล",
+            "ซีอิ๊วขาว",
+            "น้ำมันพืช"
+          ],
+          "health_tags": [
+            "vegan",
+            "vegetarian"
+          ],
+          "excluded_for": [],
+          "score": 0.9,
+          "have": [
+            "tofu"
+          ],
+          "missing": [],
+          "seasonings_matched": [
+            "soy_sauce"
+          ]
+        },
+        {
+          "rank": 2,
+          "id": "th_042",
+          "name_th": "ผัดถั่วงอกหัวโตเต้าหู้",
+          "category": "savory",
+          "main_ingredients": [
+            "soybean_sprouts",
+            "tofu"
+          ],
+          "main_ingredients_th": [
+            "ถั่วงอกหัวโต",
+            "เต้าหู้ขาว"
+          ],
+          "optional_ingredients": [
+            "green_onion"
+          ],
+          "optional_ingredients_th": [
+            "ต้นหอม"
+          ],
+          "seasonings": [
+            "soy_sauce",
+            "vegetable_oil"
+          ],
+          "seasonings_th": [
+            "ซีอิ๊วขาว",
+            "น้ำมันพืช"
+          ],
+          "health_tags": [
+            "clean",
+            "keto",
+            "vegetarian",
+            "vegan"
+          ],
+          "excluded_for": [],
+          "score": 0.81,
+          "have": [
+            "tofu"
+          ],
+          "missing": [
+            "soybean_sprouts"
+          ],
+          "seasonings_matched": [
+            "soy_sauce"
+          ]
+        },
+        {
+          "rank": 3,
+          "id": "th_291",
+          "name_th": "เต้าหู้ยัดไส้นึ่งซีอิ๊ว",
+          "category": "savory",
+          "main_ingredients": [
+            "tofu",
+            "minced_meat"
+          ],
+          "main_ingredients_th": [
+            "เต้าหู้ขาว",
+            "เนื้อสัตว์สับ"
+          ],
+          "optional_ingredients": [
+            "shiitake",
+            "green_onion",
+            "chili"
+          ],
+          "optional_ingredients_th": [
+            "เห็ดหอม",
+            "ต้นหอม",
+            "พริก"
+          ],
+          "seasonings": [
+            "soy_sauce",
+            "oyster_sauce",
+            "sugar",
+            "pepper"
+          ],
+          "seasonings_th": [
+            "ซีอิ๊วขาว",
+            "น้ำมันหอย",
+            "น้ำตาล",
+            "พริกไทย"
+          ],
+          "health_tags": [],
+          "excluded_for": [
+            "vegan",
+            "vegetarian"
+          ],
+          "score": 0.81,
+          "have": [
+            "tofu"
+          ],
+          "missing": [
+            "minced_meat"
+          ],
+          "seasonings_matched": [
+            "soy_sauce"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F5",
+      "group": "F",
+      "text_th": "มีไข่ กับมะเขือเทศ มีน้ำตาล กับน้ำปลา",
+      "ingredients": [
+        "egg",
+        "tomato"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [
+        "sugar",
+        "fish_sauce"
+      ],
+      "category": "all",
+      "paired_with": "B1",
+      "used_ingredients": [
+        "egg",
+        "tomato"
+      ],
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "dictionary_issues": {
+        "unknown_ingredients": [],
+        "unknown_excluded": [],
+        "unknown_health_tags": [],
+        "seasoning_keys_in_ingredients": [],
+        "ingredients_also_excluded": []
+      },
+      "results": [
+        {
+          "rank": 1,
+          "id": "th_096",
+          "name_th": "ทองหยอด",
+          "category": "dessert",
+          "main_ingredients": [
+            "egg"
+          ],
+          "main_ingredients_th": [
+            "ไข่ไก่"
+          ],
+          "optional_ingredients": [],
+          "optional_ingredients_th": [],
+          "seasonings": [
+            "sugar"
+          ],
+          "seasonings_th": [
+            "น้ำตาล"
+          ],
+          "health_tags": [
+            "vegetarian"
+          ],
+          "excluded_for": [
+            "vegan"
+          ],
+          "score": 0.85,
+          "have": [
+            "egg"
+          ],
+          "missing": [],
+          "seasonings_matched": [
+            "sugar"
+          ]
+        },
+        {
+          "rank": 2,
+          "id": "th_108",
+          "name_th": "ฝอยทอง",
+          "category": "dessert",
+          "main_ingredients": [
+            "egg"
+          ],
+          "main_ingredients_th": [
+            "ไข่ไก่"
+          ],
+          "optional_ingredients": [],
+          "optional_ingredients_th": [],
+          "seasonings": [
+            "sugar"
+          ],
+          "seasonings_th": [
+            "น้ำตาล"
+          ],
+          "health_tags": [
+            "vegetarian"
+          ],
+          "excluded_for": [
+            "vegan"
+          ],
+          "score": 0.85,
+          "have": [
+            "egg"
+          ],
+          "missing": [],
+          "seasonings_matched": [
+            "sugar"
+          ]
+        },
+        {
+          "rank": 3,
+          "id": "th_003",
+          "name_th": "ไข่ตุ๋น",
+          "category": "savory",
+          "main_ingredients": [
+            "egg"
+          ],
+          "main_ingredients_th": [
+            "ไข่ไก่"
+          ],
+          "optional_ingredients": [
+            "green_onion",
+            "carrot"
+          ],
+          "optional_ingredients_th": [
+            "ต้นหอม",
+            "แครอท"
+          ],
+          "seasonings": [
+            "fish_sauce"
+          ],
+          "seasonings_th": [
+            "น้ำปลา"
+          ],
+          "health_tags": [
+            "clean",
+            "keto"
+          ],
+          "excluded_for": [
+            "vegetarian",
+            "vegan"
+          ],
+          "score": 0.71,
+          "have": [
+            "egg"
+          ],
+          "missing": [],
+          "seasonings_matched": [
+            "fish_sauce"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F6",
+      "group": "F",
+      "text_th": "มีไก่ กับข้าว มีน้ำตาล กับเกลือ",
+      "ingredients": [
+        "chicken",
+        "rice"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [
+        "sugar",
+        "salt"
+      ],
+      "category": "all",
+      "paired_with": "B2",
+      "used_ingredients": [
+        "chicken",
+        "rice"
+      ],
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "dictionary_issues": {
+        "unknown_ingredients": [],
+        "unknown_excluded": [],
+        "unknown_health_tags": [],
+        "seasoning_keys_in_ingredients": [],
+        "ingredients_also_excluded": []
+      },
+      "results": [
+        {
+          "rank": 1,
+          "id": "th_203",
+          "name_th": "ข้าวหมกไก่",
+          "category": "savory",
+          "main_ingredients": [
+            "chicken",
+            "rice",
+            "turmeric"
+          ],
+          "main_ingredients_th": [
+            "เนื้อไก่",
+            "ข้าวสวย",
+            "ขมิ้นชัน"
+          ],
+          "optional_ingredients": [
+            "ginger",
+            "garlic",
+            "shallot",
+            "cucumber",
+            "cabbage"
+          ],
+          "optional_ingredients_th": [
+            "ขิง",
+            "กระเทียม",
+            "หอมแดง",
+            "แตงกวา",
+            "กะหล่ำปลี"
+          ],
+          "seasonings": [
+            "yellow_curry_paste",
+            "salt",
+            "sugar"
+          ],
+          "seasonings_th": [
+            "พริกแกงกะหรี่",
+            "เกลือ",
+            "น้ำตาล"
+          ],
+          "health_tags": [],
+          "excluded_for": [
+            "vegan",
+            "vegetarian"
+          ],
+          "score": 0.85,
+          "have": [
+            "chicken",
+            "rice"
+          ],
+          "missing": [
+            "turmeric"
+          ],
+          "seasonings_matched": [
+            "salt",
+            "sugar"
+          ]
+        },
+        {
+          "rank": 2,
+          "id": "th_326",
+          "name_th": "ข้าวต้มหอยนางรม",
+          "category": "savory",
+          "main_ingredients": [
+            "oyster",
+            "rice"
+          ],
+          "main_ingredients_th": [
+            "หอยนางรม",
+            "ข้าวสวย"
+          ],
+          "optional_ingredients": [
+            "ginger",
+            "garlic",
+            "celery",
+            "coriander"
+          ],
+          "optional_ingredients_th": [
+            "ขิง",
+            "กระเทียม",
+            "ขึ้นฉ่าย",
+            "ผักชี"
+          ],
+          "seasonings": [
+            "salt"
+          ],
+          "seasonings_th": [
+            "เกลือ"
+          ],
+          "health_tags": [
+            "clean"
+          ],
+          "excluded_for": [
+            "vegan",
+            "vegetarian"
+          ],
+          "score": 0.78,
+          "have": [
+            "rice"
+          ],
+          "missing": [
+            "oyster"
+          ],
+          "seasonings_matched": [
+            "salt"
+          ]
+        },
+        {
+          "rank": 3,
+          "id": "th_029",
+          "name_th": "ข้าวราดไก่ผัดใบกะเพรา",
+          "category": "savory",
+          "main_ingredients": [
+            "rice",
+            "chicken",
+            "holy_basil",
+            "chili"
+          ],
+          "main_ingredients_th": [
+            "ข้าวสวย",
+            "เนื้อไก่",
+            "กะเพรา",
+            "พริก"
+          ],
+          "optional_ingredients": [
+            "garlic",
+            "yardlong_bean"
+          ],
+          "optional_ingredients_th": [
+            "กระเทียม",
+            "ถั่วฝักยาว"
+          ],
+          "seasonings": [
+            "fish_sauce",
+            "oyster_sauce",
+            "soy_sauce",
+            "vegetable_oil"
+          ],
+          "seasonings_th": [
+            "น้ำปลา",
+            "น้ำมันหอย",
+            "ซีอิ๊วขาว",
+            "น้ำมันพืช"
+          ],
+          "health_tags": [],
+          "excluded_for": [
+            "vegetarian",
+            "vegan"
+          ],
+          "score": 0.74,
+          "have": [
+            "chicken",
+            "rice"
+          ],
+          "missing": [
+            "chili",
+            "holy_basil"
+          ],
+          "seasonings_matched": []
+        }
+      ]
+    },
+    {
+      "id": "F7",
+      "group": "F",
+      "text_th": "มีกุ้ง ตะไคร้ ข่า มีน้ำปลา กับข้าวคั่ว",
+      "ingredients": [
+        "shrimp",
+        "lemongrass",
+        "galangal"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [
+        "fish_sauce",
+        "roasted_rice_powder"
+      ],
+      "category": "all",
+      "paired_with": "B4",
+      "used_ingredients": [
+        "shrimp",
+        "lemongrass",
+        "galangal"
+      ],
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "dictionary_issues": {
+        "unknown_ingredients": [],
+        "unknown_excluded": [],
+        "unknown_health_tags": [],
+        "seasoning_keys_in_ingredients": [],
+        "ingredients_also_excluded": []
+      },
+      "results": [
+        {
+          "rank": 1,
+          "id": "th_019",
+          "name_th": "ต้มยำกุ้ง",
+          "category": "savory",
+          "main_ingredients": [
+            "shrimp",
+            "straw_mushroom",
+            "lemongrass",
+            "galangal"
+          ],
+          "main_ingredients_th": [
+            "กุ้ง",
+            "เห็ดฟาง",
+            "ตะไคร้",
+            "ข่า"
+          ],
+          "optional_ingredients": [
+            "kaffir_lime_leaf",
+            "lime",
+            "coriander",
+            "chili"
+          ],
+          "optional_ingredients_th": [
+            "ใบมะกรูด",
+            "มะนาว",
+            "ผักชี",
+            "พริก"
+          ],
+          "seasonings": [
+            "fish_sauce",
+            "chili_paste"
+          ],
+          "seasonings_th": [
+            "น้ำปลา",
+            "น้ำพริกเผา"
+          ],
+          "health_tags": [
+            "keto"
+          ],
+          "excluded_for": [
+            "vegetarian",
+            "vegan"
+          ],
+          "score": 0.92,
+          "have": [
+            "galangal",
+            "lemongrass",
+            "shrimp"
+          ],
+          "missing": [
+            "straw_mushroom"
+          ],
+          "seasonings_matched": [
+            "fish_sauce"
+          ]
+        },
+        {
+          "rank": 2,
+          "id": "th_020",
+          "name_th": "ต้มยำไก่",
+          "category": "savory",
+          "main_ingredients": [
+            "chicken",
+            "straw_mushroom",
+            "lemongrass",
+            "galangal"
+          ],
+          "main_ingredients_th": [
+            "เนื้อไก่",
+            "เห็ดฟาง",
+            "ตะไคร้",
+            "ข่า"
+          ],
+          "optional_ingredients": [
+            "lime",
+            "chili",
+            "coriander"
+          ],
+          "optional_ingredients_th": [
+            "มะนาว",
+            "พริก",
+            "ผักชี"
+          ],
+          "seasonings": [
+            "fish_sauce"
+          ],
+          "seasonings_th": [
+            "น้ำปลา"
+          ],
+          "health_tags": [
+            "clean",
+            "keto"
+          ],
+          "excluded_for": [
+            "vegetarian",
+            "vegan"
+          ],
+          "score": 0.9,
+          "have": [
+            "galangal",
+            "lemongrass"
+          ],
+          "missing": [
+            "chicken",
+            "straw_mushroom"
+          ],
+          "seasonings_matched": [
+            "fish_sauce"
+          ]
+        },
+        {
+          "rank": 3,
+          "id": "th_157",
+          "name_th": "ก้อยกุ้ง",
+          "category": "savory",
+          "main_ingredients": [
+            "shrimp"
+          ],
+          "main_ingredients_th": [
+            "กุ้ง"
+          ],
+          "optional_ingredients": [
+            "shallot",
+            "chili",
+            "lemongrass",
+            "mint_leaves",
+            "green_onion",
+            "coriander",
+            "kaffir_lime_leaf",
+            "lime"
+          ],
+          "optional_ingredients_th": [
+            "หอมแดง",
+            "พริก",
+            "ตะไคร้",
+            "สะระแหน่",
+            "ต้นหอม",
+            "ผักชี",
+            "ใบมะกรูด",
+            "มะนาว"
+          ],
+          "seasonings": [
+            "fish_sauce",
+            "roasted_rice_powder"
+          ],
+          "seasonings_th": [
+            "น้ำปลา",
+            "ข้าวคั่ว"
+          ],
+          "health_tags": [
+            "clean",
+            "keto"
+          ],
+          "excluded_for": [
+            "vegan",
+            "vegetarian"
+          ],
+          "score": 0.76,
+          "have": [
+            "lemongrass",
+            "shrimp"
+          ],
+          "missing": [],
+          "seasonings_matched": [
+            "fish_sauce",
+            "roasted_rice_powder"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F8",
+      "group": "F",
+      "text_th": "มีปลา กับขิง มีน้ำตาล ซีอิ๊วขาว กับน้ำมันหอย",
+      "ingredients": [
+        "fish",
+        "ginger"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [
+        "sugar",
+        "soy_sauce",
+        "oyster_sauce"
+      ],
+      "category": "all",
+      "paired_with": "B5",
+      "used_ingredients": [
+        "fish",
+        "ginger"
+      ],
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "dictionary_issues": {
+        "unknown_ingredients": [],
+        "unknown_excluded": [],
+        "unknown_health_tags": [],
+        "seasoning_keys_in_ingredients": [],
+        "ingredients_also_excluded": []
+      },
+      "results": [
+        {
+          "rank": 1,
+          "id": "th_171",
+          "name_th": "ปลากระพงผัดขึ้นฉ่าย",
+          "category": "savory",
+          "main_ingredients": [
+            "fish",
+            "celery"
+          ],
+          "main_ingredients_th": [
+            "ปลา",
+            "ขึ้นฉ่าย"
+          ],
+          "optional_ingredients": [
+            "garlic",
+            "ginger",
+            "chili",
+            "tapioca_starch"
+          ],
+          "optional_ingredients_th": [
+            "กระเทียม",
+            "ขิง",
+            "พริก",
+            "แป้งมันสำปะหลัง"
+          ],
+          "seasonings": [
+            "soy_sauce",
+            "oyster_sauce",
+            "sugar"
+          ],
+          "seasonings_th": [
+            "ซีอิ๊วขาว",
+            "น้ำมันหอย",
+            "น้ำตาล"
+          ],
+          "health_tags": [
+            "keto"
+          ],
+          "excluded_for": [
+            "vegan",
+            "vegetarian"
+          ],
+          "score": 0.94,
+          "have": [
+            "fish",
+            "ginger"
+          ],
+          "missing": [
+            "celery"
+          ],
+          "seasonings_matched": [
+            "oyster_sauce",
+            "soy_sauce",
+            "sugar"
+          ]
+        },
+        {
+          "rank": 2,
+          "id": "th_396",
+          "name_th": "ปลาทับทิมนึ่งขิง",
+          "category": "savory",
+          "main_ingredients": [
+            "fish",
+            "ginger",
+            "celery"
+          ],
+          "main_ingredients_th": [
+            "ปลา",
+            "ขิง",
+            "ขึ้นฉ่าย"
+          ],
+          "optional_ingredients": [
+            "green_onion",
+            "chili",
+            "shiitake",
+            "garlic",
+            "galangal",
+            "lemongrass"
+          ],
+          "optional_ingredients_th": [
+            "ต้นหอม",
+            "พริก",
+            "เห็ดหอม",
+            "กระเทียม",
+            "ข่า",
+            "ตะไคร้"
+          ],
+          "seasonings": [
+            "soy_sauce",
+            "sugar",
+            "vegetable_oil"
+          ],
+          "seasonings_th": [
+            "ซีอิ๊วขาว",
+            "น้ำตาล",
+            "น้ำมันพืช"
+          ],
+          "health_tags": [
+            "keto"
+          ],
+          "excluded_for": [
+            "vegan",
+            "vegetarian"
+          ],
+          "score": 0.89,
+          "have": [
+            "fish",
+            "ginger"
+          ],
+          "missing": [
+            "celery"
+          ],
+          "seasonings_matched": [
+            "soy_sauce",
+            "sugar"
+          ]
+        },
+        {
+          "rank": 3,
+          "id": "th_169",
+          "name_th": "ปลาทูผัดใบโหระพา",
+          "category": "savory",
+          "main_ingredients": [
+            "fish",
+            "basil"
+          ],
+          "main_ingredients_th": [
+            "ปลา",
+            "โหระพา"
+          ],
+          "optional_ingredients": [
+            "garlic",
+            "chili"
+          ],
+          "optional_ingredients_th": [
+            "กระเทียม",
+            "พริก"
+          ],
+          "seasonings": [
+            "soy_sauce",
+            "oyster_sauce",
+            "sugar"
+          ],
+          "seasonings_th": [
+            "ซีอิ๊วขาว",
+            "น้ำมันหอย",
+            "น้ำตาล"
+          ],
+          "health_tags": [
+            "keto"
+          ],
+          "excluded_for": [
+            "vegan",
+            "vegetarian"
+          ],
+          "score": 0.78,
+          "have": [
+            "fish"
+          ],
+          "missing": [
+            "basil"
+          ],
+          "seasonings_matched": [
+            "oyster_sauce",
+            "soy_sauce",
+            "sugar"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G1",
+      "group": "G",
+      "text_th": "มีไข่ อยากกินอาหารคาว",
+      "ingredients": [
+        "egg"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [],
+      "category": "savory",
+      "paired_with": "A1",
+      "used_ingredients": [
+        "egg"
+      ],
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "dictionary_issues": {
+        "unknown_ingredients": [],
+        "unknown_excluded": [],
+        "unknown_health_tags": [],
+        "seasoning_keys_in_ingredients": [],
+        "ingredients_also_excluded": []
+      },
+      "results": [
+        {
+          "rank": 1,
+          "id": "th_002",
+          "name_th": "ไข่ต้ม",
+          "category": "savory",
+          "main_ingredients": [
+            "egg"
+          ],
+          "main_ingredients_th": [
+            "ไข่ไก่"
+          ],
+          "optional_ingredients": [],
+          "optional_ingredients_th": [],
+          "seasonings": [],
+          "seasonings_th": [],
+          "health_tags": [
+            "clean",
+            "keto",
+            "vegetarian"
+          ],
+          "excluded_for": [
+            "vegan"
+          ],
+          "score": 1.0,
+          "have": [
+            "egg"
+          ],
+          "missing": [],
+          "seasonings_matched": []
+        },
+        {
+          "rank": 2,
+          "id": "th_001",
+          "name_th": "ไข่เจียว",
+          "category": "savory",
+          "main_ingredients": [
+            "egg"
+          ],
+          "main_ingredients_th": [
+            "ไข่ไก่"
+          ],
+          "optional_ingredients": [
+            "green_onion"
+          ],
+          "optional_ingredients_th": [
+            "ต้นหอม"
+          ],
+          "seasonings": [
+            "fish_sauce",
+            "vegetable_oil"
+          ],
+          "seasonings_th": [
+            "น้ำปลา",
+            "น้ำมันพืช"
+          ],
+          "health_tags": [
+            "keto"
+          ],
+          "excluded_for": [
+            "vegetarian",
+            "vegan"
+          ],
+          "score": 0.87,
+          "have": [
+            "egg"
+          ],
+          "missing": [],
+          "seasonings_matched": []
+        },
+        {
+          "rank": 3,
+          "id": "th_003",
+          "name_th": "ไข่ตุ๋น",
+          "category": "savory",
+          "main_ingredients": [
+            "egg"
+          ],
+          "main_ingredients_th": [
+            "ไข่ไก่"
+          ],
+          "optional_ingredients": [
+            "green_onion",
+            "carrot"
+          ],
+          "optional_ingredients_th": [
+            "ต้นหอม",
+            "แครอท"
+          ],
+          "seasonings": [
+            "fish_sauce"
+          ],
+          "seasonings_th": [
+            "น้ำปลา"
+          ],
+          "health_tags": [
+            "clean",
+            "keto"
+          ],
+          "excluded_for": [
+            "vegetarian",
+            "vegan"
+          ],
+          "score": 0.75,
+          "have": [
+            "egg"
+          ],
+          "missing": [],
+          "seasonings_matched": []
+        }
+      ]
+    },
+    {
+      "id": "G2",
+      "group": "G",
+      "text_th": "มีไข่ อยากกินขนมหวาน",
+      "ingredients": [
+        "egg"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [],
+      "category": "dessert",
+      "paired_with": "A1",
+      "used_ingredients": [
+        "egg"
+      ],
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "dictionary_issues": {
+        "unknown_ingredients": [],
+        "unknown_excluded": [],
+        "unknown_health_tags": [],
+        "seasoning_keys_in_ingredients": [],
+        "ingredients_also_excluded": []
+      },
+      "results": [
+        {
+          "rank": 1,
+          "id": "th_096",
+          "name_th": "ทองหยอด",
+          "category": "dessert",
+          "main_ingredients": [
+            "egg"
+          ],
+          "main_ingredients_th": [
+            "ไข่ไก่"
+          ],
+          "optional_ingredients": [],
+          "optional_ingredients_th": [],
+          "seasonings": [
+            "sugar"
+          ],
+          "seasonings_th": [
+            "น้ำตาล"
+          ],
+          "health_tags": [
+            "vegetarian"
+          ],
+          "excluded_for": [
+            "vegan"
+          ],
+          "score": 1.0,
+          "have": [
+            "egg"
+          ],
+          "missing": [],
+          "seasonings_matched": []
+        },
+        {
+          "rank": 2,
+          "id": "th_108",
+          "name_th": "ฝอยทอง",
+          "category": "dessert",
+          "main_ingredients": [
+            "egg"
+          ],
+          "main_ingredients_th": [
+            "ไข่ไก่"
+          ],
+          "optional_ingredients": [],
+          "optional_ingredients_th": [],
+          "seasonings": [
+            "sugar"
+          ],
+          "seasonings_th": [
+            "น้ำตาล"
+          ],
+          "health_tags": [
+            "vegetarian"
+          ],
+          "excluded_for": [
+            "vegan"
+          ],
+          "score": 1.0,
+          "have": [
+            "egg"
+          ],
+          "missing": [],
+          "seasonings_matched": []
+        },
+        {
+          "rank": 3,
+          "id": "th_153",
+          "name_th": "คัสตาร์ดคาราเมล",
+          "category": "dessert",
+          "main_ingredients": [
+            "egg"
+          ],
+          "main_ingredients_th": [
+            "ไข่ไก่"
+          ],
+          "optional_ingredients": [],
+          "optional_ingredients_th": [],
+          "seasonings": [
+            "milk",
+            "sugar"
+          ],
+          "seasonings_th": [
+            "นม",
+            "น้ำตาล"
+          ],
+          "health_tags": [
+            "vegetarian"
+          ],
+          "excluded_for": [
+            "vegan"
+          ],
+          "score": 1.0,
+          "have": [
+            "egg"
+          ],
+          "missing": [],
+          "seasonings_matched": []
+        }
+      ]
+    },
+    {
+      "id": "G3",
+      "group": "G",
+      "text_th": "มีมะพร้าว ฟักทอง อยากกินอาหารคาว",
+      "ingredients": [
+        "coconut",
+        "pumpkin"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [],
+      "category": "savory",
+      "paired_with": "E2",
+      "used_ingredients": [
+        "coconut",
+        "pumpkin"
+      ],
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "dictionary_issues": {
+        "unknown_ingredients": [],
+        "unknown_excluded": [],
+        "unknown_health_tags": [],
+        "seasoning_keys_in_ingredients": [],
+        "ingredients_also_excluded": []
+      },
+      "results": [
+        {
+          "rank": 1,
+          "id": "th_036",
+          "name_th": "ผัดฟักทองใส่ไข่",
+          "category": "savory",
+          "main_ingredients": [
+            "pumpkin",
+            "egg",
+            "garlic"
+          ],
+          "main_ingredients_th": [
+            "ฟักทอง",
+            "ไข่ไก่",
+            "กระเทียม"
+          ],
+          "optional_ingredients": [
+            "green_onion"
+          ],
+          "optional_ingredients_th": [
+            "ต้นหอม"
+          ],
+          "seasonings": [
+            "vegetable_oil",
+            "fish_sauce"
+          ],
+          "seasonings_th": [
+            "น้ำมันพืช",
+            "น้ำปลา"
+          ],
+          "health_tags": [
+            "clean"
+          ],
+          "excluded_for": [
+            "vegetarian",
+            "vegan"
+          ],
+          "score": 0.6,
+          "have": [
+            "pumpkin"
+          ],
+          "missing": [
+            "egg",
+            "garlic"
+          ],
+          "seasonings_matched": []
+        },
+        {
+          "rank": 2,
+          "id": "th_016",
+          "name_th": "แกงป่าฟักทองใส่หมู",
+          "category": "savory",
+          "main_ingredients": [
+            "pork",
+            "pumpkin"
+          ],
+          "main_ingredients_th": [
+            "เนื้อหมู",
+            "ฟักทอง"
+          ],
+          "optional_ingredients": [
+            "basil",
+            "yardlong_bean"
+          ],
+          "optional_ingredients_th": [
+            "โหระพา",
+            "ถั่วฝักยาว"
+          ],
+          "seasonings": [
+            "red_curry_paste",
+            "fish_sauce"
+          ],
+          "seasonings_th": [
+            "พริกแกงเผ็ด",
+            "น้ำปลา"
+          ],
+          "health_tags": [
+            "clean",
+            "keto"
+          ],
+          "excluded_for": [
+            "vegetarian",
+            "vegan"
+          ],
+          "score": 0.54,
+          "have": [
+            "pumpkin"
+          ],
+          "missing": [
+            "pork"
+          ],
+          "seasonings_matched": []
+        },
+        {
+          "rank": 3,
+          "id": "th_043",
+          "name_th": "แกงเลียงกุ้ง",
+          "category": "savory",
+          "main_ingredients": [
+            "pumpkin",
+            "shrimp",
+            "maenglak"
+          ],
+          "main_ingredients_th": [
+            "ฟักทอง",
+            "กุ้ง",
+            "แมงลัก"
+          ],
+          "optional_ingredients": [
+            "chili"
+          ],
+          "optional_ingredients_th": [
+            "พริก"
+          ],
+          "seasonings": [
+            "fish_sauce",
+            "shrimp_paste"
+          ],
+          "seasonings_th": [
+            "น้ำปลา",
+            "กะปิ"
+          ],
+          "health_tags": [
+            "clean"
+          ],
+          "excluded_for": [
+            "vegetarian",
+            "vegan"
+          ],
+          "score": 0.45,
+          "have": [
+            "pumpkin"
+          ],
+          "missing": [
+            "maenglak",
+            "shrimp"
+          ],
+          "seasonings_matched": []
+        }
+      ]
+    },
+    {
+      "id": "G4",
+      "group": "G",
+      "text_th": "มีมะพร้าว ฟักทอง อยากกินขนมหวาน",
+      "ingredients": [
+        "coconut",
+        "pumpkin"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [],
+      "category": "dessert",
+      "paired_with": "E2",
+      "used_ingredients": [
+        "coconut",
+        "pumpkin"
+      ],
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "dictionary_issues": {
+        "unknown_ingredients": [],
+        "unknown_excluded": [],
+        "unknown_health_tags": [],
+        "seasoning_keys_in_ingredients": [],
+        "ingredients_also_excluded": []
+      },
+      "results": [
+        {
+          "rank": 1,
+          "id": "th_101",
+          "name_th": "แกงบวดฟักทอง",
+          "category": "dessert",
+          "main_ingredients": [
+            "pumpkin"
+          ],
+          "main_ingredients_th": [
+            "ฟักทอง"
+          ],
+          "optional_ingredients": [],
+          "optional_ingredients_th": [],
+          "seasonings": [
+            "coconut_milk",
+            "sugar"
+          ],
+          "seasonings_th": [
+            "กะทิ",
+            "น้ำตาล"
+          ],
+          "health_tags": [
+            "vegetarian",
+            "vegan"
+          ],
+          "excluded_for": [],
+          "score": 0.76,
+          "have": [
+            "pumpkin"
+          ],
+          "missing": [],
+          "seasonings_matched": []
+        },
+        {
+          "rank": 2,
+          "id": "th_095",
+          "name_th": "สังขยาฟักทอง",
+          "category": "dessert",
+          "main_ingredients": [
+            "pumpkin",
+            "egg"
+          ],
+          "main_ingredients_th": [
+            "ฟักทอง",
+            "ไข่ไก่"
+          ],
+          "optional_ingredients": [],
+          "optional_ingredients_th": [],
+          "seasonings": [
+            "coconut_milk",
+            "sugar"
+          ],
+          "seasonings_th": [
+            "กะทิ",
+            "น้ำตาล"
+          ],
+          "health_tags": [
+            "vegetarian"
+          ],
+          "excluded_for": [
+            "vegan"
+          ],
+          "score": 0.66,
+          "have": [
+            "pumpkin"
+          ],
+          "missing": [
+            "egg"
+          ],
+          "seasonings_matched": []
+        },
+        {
+          "rank": 3,
+          "id": "th_214",
+          "name_th": "มะพร้าวแก้ว",
+          "category": "dessert",
+          "main_ingredients": [
+            "coconut"
+          ],
+          "main_ingredients_th": [
+            "มะพร้าว"
+          ],
+          "optional_ingredients": [],
+          "optional_ingredients_th": [],
+          "seasonings": [
+            "sugar",
+            "salt"
+          ],
+          "seasonings_th": [
+            "น้ำตาล",
+            "เกลือ"
+          ],
+          "health_tags": [
+            "vegan",
+            "vegetarian"
+          ],
+          "excluded_for": [],
+          "score": 0.65,
+          "have": [
+            "coconut"
+          ],
+          "missing": [],
+          "seasonings_matched": []
+        }
+      ]
+    },
+    {
+      "id": "G5",
+      "group": "G",
+      "text_th": "มีกะหล่ำปลี แครอท ไข่ อยากกินอาหารคาว",
+      "ingredients": [
+        "cabbage",
+        "carrot",
+        "egg"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [],
+      "category": "savory",
+      "paired_with": "B8",
+      "used_ingredients": [
+        "cabbage",
+        "carrot",
+        "egg"
+      ],
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "dictionary_issues": {
+        "unknown_ingredients": [],
+        "unknown_excluded": [],
+        "unknown_health_tags": [],
+        "seasoning_keys_in_ingredients": [],
+        "ingredients_also_excluded": []
+      },
+      "results": [
+        {
+          "rank": 1,
+          "id": "th_294",
+          "name_th": "กะหล่ำปลีผัดไข่",
+          "category": "savory",
+          "main_ingredients": [
+            "cabbage",
+            "egg"
+          ],
+          "main_ingredients_th": [
+            "กะหล่ำปลี",
+            "ไข่ไก่"
+          ],
+          "optional_ingredients": [],
+          "optional_ingredients_th": [],
+          "seasonings": [
+            "oyster_sauce",
+            "vegetable_oil"
+          ],
+          "seasonings_th": [
+            "น้ำมันหอย",
+            "น้ำมันพืช"
+          ],
+          "health_tags": [
+            "clean",
+            "keto"
+          ],
+          "excluded_for": [
+            "vegan",
+            "vegetarian"
+          ],
+          "score": 0.83,
+          "have": [
+            "cabbage",
+            "egg"
+          ],
+          "missing": [],
+          "seasonings_matched": []
+        },
+        {
+          "rank": 2,
+          "id": "th_297",
+          "name_th": "แครอทไข่",
+          "category": "savory",
+          "main_ingredients": [
+            "carrot",
+            "egg"
+          ],
+          "main_ingredients_th": [
+            "แครอท",
+            "ไข่ไก่"
+          ],
+          "optional_ingredients": [],
+          "optional_ingredients_th": [],
+          "seasonings": [
+            "vegetable_oil"
+          ],
+          "seasonings_th": [
+            "น้ำมันพืช"
+          ],
+          "health_tags": [
+            "clean",
+            "keto",
+            "vegetarian"
+          ],
+          "excluded_for": [
+            "vegan"
+          ],
+          "score": 0.7,
+          "have": [
+            "carrot",
+            "egg"
+          ],
+          "missing": [],
+          "seasonings_matched": []
+        },
+        {
+          "rank": 3,
+          "id": "th_031",
+          "name_th": "ผัดผักรวมมิตร",
+          "category": "savory",
+          "main_ingredients": [
+            "cabbage",
+            "carrot",
+            "cauliflower",
+            "garlic"
+          ],
+          "main_ingredients_th": [
+            "กะหล่ำปลี",
+            "แครอท",
+            "กะหล่ำดอก",
+            "กระเทียม"
+          ],
+          "optional_ingredients": [
+            "broccoli",
+            "bell_pepper"
+          ],
+          "optional_ingredients_th": [
+            "บรอกโคลี",
+            "พริกหวาน"
+          ],
+          "seasonings": [
+            "vegetable_oil",
+            "oyster_sauce",
+            "soy_sauce"
+          ],
+          "seasonings_th": [
+            "น้ำมันพืช",
+            "น้ำมันหอย",
+            "ซีอิ๊วขาว"
+          ],
+          "health_tags": [
+            "clean",
+            "keto"
+          ],
+          "excluded_for": [
+            "vegetarian",
+            "vegan"
+          ],
+          "score": 0.62,
+          "have": [
+            "cabbage",
+            "carrot"
+          ],
+          "missing": [
+            "cauliflower",
+            "garlic"
+          ],
+          "seasonings_matched": []
+        }
+      ]
+    },
+    {
+      "id": "G6",
+      "group": "G",
+      "text_th": "มีกะหล่ำปลี แครอท ไข่ อยากกินขนมหวาน",
+      "ingredients": [
+        "cabbage",
+        "carrot",
+        "egg"
+      ],
+      "health_tags": [],
+      "excluded": [],
+      "seasonings": [],
+      "category": "dessert",
+      "paired_with": "B8",
+      "used_ingredients": [
+        "cabbage",
+        "carrot",
+        "egg"
+      ],
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "dictionary_issues": {
+        "unknown_ingredients": [],
+        "unknown_excluded": [],
+        "unknown_health_tags": [],
+        "seasoning_keys_in_ingredients": [],
+        "ingredients_also_excluded": []
+      },
+      "results": [
+        {
+          "rank": 1,
+          "id": "th_215",
+          "name_th": "เค้กแครอท",
+          "category": "dessert",
+          "main_ingredients": [
+            "carrot",
+            "wheat_flour",
+            "egg"
+          ],
+          "main_ingredients_th": [
+            "แครอท",
+            "แป้งสาลี",
+            "ไข่ไก่"
+          ],
+          "optional_ingredients": [],
+          "optional_ingredients_th": [],
+          "seasonings": [
+            "sugar",
+            "baking_powder",
+            "vegetable_oil"
+          ],
+          "seasonings_th": [
+            "น้ำตาล",
+            "ผงฟู",
+            "น้ำมันพืช"
+          ],
+          "health_tags": [
+            "vegetarian"
+          ],
+          "excluded_for": [
+            "vegan"
+          ],
+          "score": 0.54,
+          "have": [
+            "carrot",
+            "egg"
+          ],
+          "missing": [
+            "wheat_flour"
+          ],
+          "seasonings_matched": []
+        },
+        {
+          "rank": 2,
+          "id": "th_096",
+          "name_th": "ทองหยอด",
+          "category": "dessert",
+          "main_ingredients": [
+            "egg"
+          ],
+          "main_ingredients_th": [
+            "ไข่ไก่"
+          ],
+          "optional_ingredients": [],
+          "optional_ingredients_th": [],
+          "seasonings": [
+            "sugar"
+          ],
+          "seasonings_th": [
+            "น้ำตาล"
+          ],
+          "health_tags": [
+            "vegetarian"
+          ],
+          "excluded_for": [
+            "vegan"
+          ],
+          "score": 0.42,
+          "have": [
+            "egg"
+          ],
+          "missing": [],
+          "seasonings_matched": []
+        },
+        {
+          "rank": 3,
+          "id": "th_108",
+          "name_th": "ฝอยทอง",
+          "category": "dessert",
+          "main_ingredients": [
+            "egg"
+          ],
+          "main_ingredients_th": [
+            "ไข่ไก่"
+          ],
+          "optional_ingredients": [],
+          "optional_ingredients_th": [],
+          "seasonings": [
+            "sugar"
+          ],
+          "seasonings_th": [
+            "น้ำตาล"
+          ],
+          "health_tags": [
+            "vegetarian"
+          ],
+          "excluded_for": [
+            "vegan"
+          ],
+          "score": 0.42,
+          "have": [
+            "egg"
+          ],
+          "missing": [],
+          "seasonings_matched": []
+        }
+      ]
+    }
+  ]
+}

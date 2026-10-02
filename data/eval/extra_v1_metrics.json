@@ -1,0 +1,933 @@
+{
+  "provenance": {
+    "git_head": "0618189",
+    "recipes": 390,
+    "categories": {
+      "savory": 292,
+      "dessert": 98
+    },
+    "RUBRIC_VERSION": "v2",
+    "inputs": [
+      "test_set_extra_v1.json",
+      "post_rubric_v2_top3.json",
+      "test_set_draft_v1.json"
+    ]
+  },
+  "caveats": {
+    "F": "The F set was selected so that every pair changes its top-3, so \"N of N changed\" measures how sensitive the ranking is to the seasoning weight (SEASONING_WEIGHT), not how often ticking seasonings changes results in real use.",
+    "G": "For dessert-mode queries only the uncapped variant is reported: DESSERT_TOTAL_CAP (2) is below both pass lines (3 and 4), so a capped variant can never pass a dessert.",
+    "rubric": "The rule rubric scores ingredient overlap only (A/B/C), so it cannot see the seasoning bonus; its totals are shown only to check whether quality under that rubric moved."
+  },
+  "F": {
+    "queries": [
+      {
+        "id": "F1",
+        "paired_with": "A2",
+        "ingredients": [
+          "chicken"
+        ],
+        "seasonings": [
+          "sugar"
+        ],
+        "top3_without": [
+          "th_011",
+          "th_007",
+          "th_014"
+        ],
+        "top3_with": [
+          "th_011",
+          "th_007",
+          "th_006"
+        ],
+        "top3_changed": true,
+        "positions_changed": 1,
+        "items_replaced": {
+          "count": 1,
+          "dropped": [
+            "th_014"
+          ],
+          "added": [
+            "th_006"
+          ]
+        },
+        "rank_changes_of_surviving_items": [],
+        "mean_overlap_without": 0.1667,
+        "mean_overlap_with": 0.25,
+        "mean_overlap_delta": 0.0833,
+        "rubric_without": {
+          "totals_capped": [
+            5,
+            5,
+            5
+          ],
+          "totals_uncapped": [
+            5,
+            5,
+            5
+          ],
+          "mean_total_capped": 5.0,
+          "mean_total_uncapped": 5.0
+        },
+        "rubric_with": {
+          "totals_capped": [
+            5,
+            5,
+            5
+          ],
+          "totals_uncapped": [
+            5,
+            5,
+            5
+          ],
+          "mean_total_capped": 5.0,
+          "mean_total_uncapped": 5.0
+        },
+        "mean_total_uncapped_delta": 0.0,
+        "mean_total_capped_delta": 0.0
+      },
+      {
+        "id": "F2",
+        "paired_with": "A3",
+        "ingredients": [
+          "pork"
+        ],
+        "seasonings": [
+          "sugar",
+          "soy_sauce"
+        ],
+        "top3_without": [
+          "th_021",
+          "th_166",
+          "th_176"
+        ],
+        "top3_with": [
+          "th_176",
+          "th_165",
+          "th_021"
+        ],
+        "top3_changed": true,
+        "positions_changed": 3,
+        "items_replaced": {
+          "count": 1,
+          "dropped": [
+            "th_166"
+          ],
+          "added": [
+            "th_165"
+          ]
+        },
+        "rank_changes_of_surviving_items": [
+          {
+            "id": "th_021",
+            "rank_without": 1,
+            "rank_with": 3
+          },
+          {
+            "id": "th_176",
+            "rank_without": 3,
+            "rank_with": 1
+          }
+        ],
+        "mean_overlap_without": 0.3889,
+        "mean_overlap_with": 0.6389,
+        "mean_overlap_delta": 0.25,
+        "rubric_without": {
+          "totals_capped": [
+            4,
+            4,
+            4
+          ],
+          "totals_uncapped": [
+            4,
+            4,
+            4
+          ],
+          "mean_total_capped": 4.0,
+          "mean_total_uncapped": 4.0
+        },
+        "rubric_with": {
+          "totals_capped": [
+            4,
+            3,
+            4
+          ],
+          "totals_uncapped": [
+            4,
+            3,
+            4
+          ],
+          "mean_total_capped": 3.6667,
+          "mean_total_uncapped": 3.6667
+        },
+        "mean_total_uncapped_delta": -0.3333,
+        "mean_total_capped_delta": -0.3333
+      },
+      {
+        "id": "F3",
+        "paired_with": "A4",
+        "ingredients": [
+          "shrimp"
+        ],
+        "seasonings": [
+          "vegetable_oil",
+          "oyster_sauce",
+          "soy_sauce"
+        ],
+        "top3_without": [
+          "th_022",
+          "th_296",
+          "th_157"
+        ],
+        "top3_with": [
+          "th_022",
+          "th_300",
+          "th_085"
+        ],
+        "top3_changed": true,
+        "positions_changed": 2,
+        "items_replaced": {
+          "count": 2,
+          "dropped": [
+            "th_296",
+            "th_157"
+          ],
+          "added": [
+            "th_300",
+            "th_085"
+          ]
+        },
+        "rank_changes_of_surviving_items": [],
+        "mean_overlap_without": 0.3889,
+        "mean_overlap_with": 0.8333,
+        "mean_overlap_delta": 0.4444,
+        "rubric_without": {
+          "totals_capped": [
+            5,
+            4,
+            5
+          ],
+          "totals_uncapped": [
+            5,
+            4,
+            5
+          ],
+          "mean_total_capped": 4.6667,
+          "mean_total_uncapped": 4.6667
+        },
+        "rubric_with": {
+          "totals_capped": [
+            5,
+            4,
+            4
+          ],
+          "totals_uncapped": [
+            5,
+            4,
+            4
+          ],
+          "mean_total_capped": 4.3333,
+          "mean_total_uncapped": 4.3333
+        },
+        "mean_total_uncapped_delta": -0.3334,
+        "mean_total_capped_delta": -0.3334
+      },
+      {
+        "id": "F4",
+        "paired_with": "A5",
+        "ingredients": [
+          "tofu"
+        ],
+        "seasonings": [
+          "soy_sauce"
+        ],
+        "top3_without": [
+          "th_293",
+          "th_291",
+          "th_292"
+        ],
+        "top3_with": [
+          "th_293",
+          "th_042",
+          "th_291"
+        ],
+        "top3_changed": true,
+        "positions_changed": 2,
+        "items_replaced": {
+          "count": 1,
+          "dropped": [
+            "th_292"
+          ],
+          "added": [
+            "th_042"
+          ]
+        },
+        "rank_changes_of_surviving_items": [
+          {
+            "id": "th_291",
+            "rank_without": 2,
+            "rank_with": 3
+          }
+        ],
+        "mean_overlap_without": 0.25,
+        "mean_overlap_with": 0.3333,
+        "mean_overlap_delta": 0.0833,
+        "rubric_without": {
+          "totals_capped": [
+            5,
+            4,
+            3
+          ],
+          "totals_uncapped": [
+            5,
+            4,
+            3
+          ],
+          "mean_total_capped": 4.0,
+          "mean_total_uncapped": 4.0
+        },
+        "rubric_with": {
+          "totals_capped": [
+            5,
+            4,
+            4
+          ],
+          "totals_uncapped": [
+            5,
+            4,
+            4
+          ],
+          "mean_total_capped": 4.3333,
+          "mean_total_uncapped": 4.3333
+        },
+        "mean_total_uncapped_delta": 0.3333,
+        "mean_total_capped_delta": 0.3333
+      },
+      {
+        "id": "F5",
+        "paired_with": "B1",
+        "ingredients": [
+          "egg",
+          "tomato"
+        ],
+        "seasonings": [
+          "sugar",
+          "fish_sauce"
+        ],
+        "top3_without": [
+          "th_002",
+          "th_096",
+          "th_108"
+        ],
+        "top3_with": [
+          "th_096",
+          "th_108",
+          "th_003"
+        ],
+        "top3_changed": true,
+        "positions_changed": 3,
+        "items_replaced": {
+          "count": 1,
+          "dropped": [
+            "th_002"
+          ],
+          "added": [
+            "th_003"
+          ]
+        },
+        "rank_changes_of_surviving_items": [
+          {
+            "id": "th_096",
+            "rank_without": 2,
+            "rank_with": 1
+          },
+          {
+            "id": "th_108",
+            "rank_without": 3,
+            "rank_with": 2
+          }
+        ],
+        "mean_overlap_without": 0.6667,
+        "mean_overlap_with": 1.0,
+        "mean_overlap_delta": 0.3333,
+        "rubric_without": {
+          "totals_capped": [
+            5,
+            2,
+            2
+          ],
+          "totals_uncapped": [
+            5,
+            4,
+            4
+          ],
+          "mean_total_capped": 3.0,
+          "mean_total_uncapped": 4.3333
+        },
+        "rubric_with": {
+          "totals_capped": [
+            2,
+            2,
+            5
+          ],
+          "totals_uncapped": [
+            4,
+            4,
+            5
+          ],
+          "mean_total_capped": 3.0,
+          "mean_total_uncapped": 4.3333
+        },
+        "mean_total_uncapped_delta": 0.0,
+        "mean_total_capped_delta": 0.0
+      },
+      {
+        "id": "F6",
+        "paired_with": "B2",
+        "ingredients": [
+          "chicken",
+          "rice"
+        ],
+        "seasonings": [
+          "sugar",
+          "salt"
+        ],
+        "top3_without": [
+          "th_029",
+          "th_203",
+          "th_011"
+        ],
+        "top3_with": [
+          "th_203",
+          "th_326",
+          "th_029"
+        ],
+        "top3_changed": true,
+        "positions_changed": 3,
+        "items_replaced": {
+          "count": 1,
+          "dropped": [
+            "th_011"
+          ],
+          "added": [
+            "th_326"
+          ]
+        },
+        "rank_changes_of_surviving_items": [
+          {
+            "id": "th_029",
+            "rank_without": 1,
+            "rank_with": 3
+          },
+          {
+            "id": "th_203",
+            "rank_without": 2,
+            "rank_with": 1
+          }
+        ],
+        "mean_overlap_without": 0.3056,
+        "mean_overlap_with": 0.5556,
+        "mean_overlap_delta": 0.25,
+        "rubric_without": {
+          "totals_capped": [
+            4,
+            4,
+            5
+          ],
+          "totals_uncapped": [
+            4,
+            4,
+            5
+          ],
+          "mean_total_capped": 4.3333,
+          "mean_total_uncapped": 4.3333
+        },
+        "rubric_with": {
+          "totals_capped": [
+            4,
+            4,
+            4
+          ],
+          "totals_uncapped": [
+            4,
+            4,
+            4
+          ],
+          "mean_total_capped": 4.0,
+          "mean_total_uncapped": 4.0
+        },
+        "mean_total_uncapped_delta": -0.3333,
+        "mean_total_capped_delta": -0.3333
+      },
+      {
+        "id": "F7",
+        "paired_with": "B4",
+        "ingredients": [
+          "shrimp",
+          "lemongrass",
+          "galangal"
+        ],
+        "seasonings": [
+          "fish_sauce",
+          "roasted_rice_powder"
+        ],
+        "top3_without": [
+          "th_019",
+          "th_020",
+          "th_018"
+        ],
+        "top3_with": [
+          "th_019",
+          "th_020",
+          "th_157"
+        ],
+        "top3_changed": true,
+        "positions_changed": 1,
+        "items_replaced": {
+          "count": 1,
+          "dropped": [
+            "th_018"
+          ],
+          "added": [
+            "th_157"
+          ]
+        },
+        "rank_changes_of_surviving_items": [],
+        "mean_overlap_without": 0.6667,
+        "mean_overlap_with": 0.8333,
+        "mean_overlap_delta": 0.1666,
+        "rubric_without": {
+          "totals_capped": [
+            4,
+            4,
+            4
+          ],
+          "totals_uncapped": [
+            4,
+            4,
+            4
+          ],
+          "mean_total_capped": 4.0,
+          "mean_total_uncapped": 4.0
+        },
+        "rubric_with": {
+          "totals_capped": [
+            4,
+            4,
+            5
+          ],
+          "totals_uncapped": [
+            4,
+            4,
+            5
+          ],
+          "mean_total_capped": 4.3333,
+          "mean_total_uncapped": 4.3333
+        },
+        "mean_total_uncapped_delta": 0.3333,
+        "mean_total_capped_delta": 0.3333
+      },
+      {
+        "id": "F8",
+        "paired_with": "B5",
+        "ingredients": [
+          "fish",
+          "ginger"
+        ],
+        "seasonings": [
+          "sugar",
+          "soy_sauce",
+          "oyster_sauce"
+        ],
+        "top3_without": [
+          "th_396",
+          "th_171",
+          "th_172"
+        ],
+        "top3_with": [
+          "th_171",
+          "th_396",
+          "th_169"
+        ],
+        "top3_changed": true,
+        "positions_changed": 3,
+        "items_replaced": {
+          "count": 1,
+          "dropped": [
+            "th_172"
+          ],
+          "added": [
+            "th_169"
+          ]
+        },
+        "rank_changes_of_surviving_items": [
+          {
+            "id": "th_396",
+            "rank_without": 1,
+            "rank_with": 2
+          },
+          {
+            "id": "th_171",
+            "rank_without": 2,
+            "rank_with": 1
+          }
+        ],
+        "mean_overlap_without": 0.7222,
+        "mean_overlap_with": 0.8889,
+        "mean_overlap_delta": 0.1667,
+        "rubric_without": {
+          "totals_capped": [
+            4,
+            4,
+            4
+          ],
+          "totals_uncapped": [
+            4,
+            4,
+            4
+          ],
+          "mean_total_capped": 4.0,
+          "mean_total_uncapped": 4.0
+        },
+        "rubric_with": {
+          "totals_capped": [
+            4,
+            4,
+            4
+          ],
+          "totals_uncapped": [
+            4,
+            4,
+            4
+          ],
+          "mean_total_capped": 4.0,
+          "mean_total_uncapped": 4.0
+        },
+        "mean_total_uncapped_delta": 0.0,
+        "mean_total_capped_delta": 0.0
+      }
+    ],
+    "aggregate": {
+      "n_pairs": 8,
+      "n_top3_changed": 8,
+      "mean_positions_changed": 2.25,
+      "mean_items_replaced": 1.125,
+      "mean_overlap_without": 0.4445,
+      "mean_overlap_with": 0.6667,
+      "mean_overlap_delta": 0.2222,
+      "mean_total_uncapped_without": 4.2917,
+      "mean_total_uncapped_with": 4.25,
+      "mean_total_capped_without": 4.125,
+      "mean_total_capped_with": 4.0833,
+      "caveat": "The F set was selected so that every pair changes its top-3, so \"N of N changed\" measures how sensitive the ranking is to the seasoning weight (SEASONING_WEIGHT), not how often ticking seasonings changes results in real use."
+    }
+  },
+  "G": {
+    "queries": [
+      {
+        "id": "G1",
+        "paired_with": "A1",
+        "ingredients": [
+          "egg"
+        ],
+        "category": "savory",
+        "top3": [
+          "th_002",
+          "th_001",
+          "th_003"
+        ],
+        "n_returned": 3,
+        "results_available": 48,
+        "zero_results": false,
+        "leaked_ids": [],
+        "category_leak_rate": 0.0,
+        "totals_uncapped": [
+          5,
+          5,
+          5
+        ],
+        "mean_total_uncapped": 5.0,
+        "lenient_share_uncapped": 1.0,
+        "strict_share_uncapped": 1.0,
+        "capped_reported": true,
+        "totals_capped": [
+          5,
+          5,
+          5
+        ],
+        "mean_total_capped": 5.0,
+        "top3_same_as_paired_all": false
+      },
+      {
+        "id": "G2",
+        "paired_with": "A1",
+        "ingredients": [
+          "egg"
+        ],
+        "category": "dessert",
+        "top3": [
+          "th_096",
+          "th_108",
+          "th_153"
+        ],
+        "n_returned": 3,
+        "results_available": 23,
+        "zero_results": false,
+        "leaked_ids": [],
+        "category_leak_rate": 0.0,
+        "totals_uncapped": [
+          4,
+          4,
+          4
+        ],
+        "mean_total_uncapped": 4.0,
+        "lenient_share_uncapped": 1.0,
+        "strict_share_uncapped": 1.0,
+        "capped_reported": false,
+        "capped_note": "For dessert-mode queries only the uncapped variant is reported: DESSERT_TOTAL_CAP (2) is below both pass lines (3 and 4), so a capped variant can never pass a dessert.",
+        "top3_same_as_paired_all": false
+      },
+      {
+        "id": "G3",
+        "paired_with": "E2",
+        "ingredients": [
+          "coconut",
+          "pumpkin"
+        ],
+        "category": "savory",
+        "top3": [
+          "th_036",
+          "th_016",
+          "th_043"
+        ],
+        "n_returned": 3,
+        "results_available": 7,
+        "zero_results": false,
+        "leaked_ids": [],
+        "category_leak_rate": 0.0,
+        "totals_uncapped": [
+          3,
+          4,
+          3
+        ],
+        "mean_total_uncapped": 3.3333,
+        "lenient_share_uncapped": 1.0,
+        "strict_share_uncapped": 0.3333,
+        "capped_reported": true,
+        "totals_capped": [
+          3,
+          4,
+          3
+        ],
+        "mean_total_capped": 3.3333,
+        "top3_same_as_paired_all": false
+      },
+      {
+        "id": "G4",
+        "paired_with": "E2",
+        "ingredients": [
+          "coconut",
+          "pumpkin"
+        ],
+        "category": "dessert",
+        "top3": [
+          "th_101",
+          "th_095",
+          "th_214"
+        ],
+        "n_returned": 3,
+        "results_available": 18,
+        "zero_results": false,
+        "leaked_ids": [],
+        "category_leak_rate": 0.0,
+        "totals_uncapped": [
+          4,
+          3,
+          4
+        ],
+        "mean_total_uncapped": 3.6667,
+        "lenient_share_uncapped": 1.0,
+        "strict_share_uncapped": 0.6667,
+        "capped_reported": false,
+        "capped_note": "For dessert-mode queries only the uncapped variant is reported: DESSERT_TOTAL_CAP (2) is below both pass lines (3 and 4), so a capped variant can never pass a dessert.",
+        "top3_same_as_paired_all": true
+      },
+      {
+        "id": "G5",
+        "paired_with": "B8",
+        "ingredients": [
+          "cabbage",
+          "carrot",
+          "egg"
+        ],
+        "category": "savory",
+        "top3": [
+          "th_294",
+          "th_297",
+          "th_031"
+        ],
+        "n_returned": 3,
+        "results_available": 73,
+        "zero_results": false,
+        "leaked_ids": [],
+        "category_leak_rate": 0.0,
+        "totals_uncapped": [
+          5,
+          5,
+          4
+        ],
+        "mean_total_uncapped": 4.6667,
+        "lenient_share_uncapped": 1.0,
+        "strict_share_uncapped": 1.0,
+        "capped_reported": true,
+        "totals_capped": [
+          5,
+          5,
+          4
+        ],
+        "mean_total_capped": 4.6667,
+        "top3_same_as_paired_all": true
+      },
+      {
+        "id": "G6",
+        "paired_with": "B8",
+        "ingredients": [
+          "cabbage",
+          "carrot",
+          "egg"
+        ],
+        "category": "dessert",
+        "top3": [
+          "th_215",
+          "th_096",
+          "th_108"
+        ],
+        "n_returned": 3,
+        "results_available": 24,
+        "zero_results": false,
+        "leaked_ids": [],
+        "category_leak_rate": 0.0,
+        "totals_uncapped": [
+          3,
+          4,
+          4
+        ],
+        "mean_total_uncapped": 3.6667,
+        "lenient_share_uncapped": 1.0,
+        "strict_share_uncapped": 0.6667,
+        "capped_reported": false,
+        "capped_note": "For dessert-mode queries only the uncapped variant is reported: DESSERT_TOTAL_CAP (2) is below both pass lines (3 and 4), so a capped variant can never pass a dessert.",
+        "top3_same_as_paired_all": false
+      }
+    ],
+    "mean_category_leak_rate": 0.0,
+    "n_zero_results": 0
+  },
+  "zero_result_note": "Expected behavior, not a bug. Counts of recipes with a positive match in the 390-recipe catalog: dessert mode returns 0 recipes for the ingredient sets of A2 (chicken), A3 (pork), A4 (shrimp), A5 (tofu), A6 (minced_meat), B4 (shrimp, lemongrass, galangal), B5 (fish, ginger), B6 (beef, basil) and E3 (rice_noodle); savory mode returns 0 for E1 (banana) and only 2 for E5 (glutinous_rice, banana). Group G uses only sets that have both categories: A1 egg (48 savory / 23 dessert), E2 coconut + pumpkin (7 / 18), B8 cabbage + carrot + egg (73 / 24).",
+  "rule_rubric_groups": {
+    "F": {
+      "n_queries": 8,
+      "n_queries_short": 0,
+      "n_queries_empty": 0,
+      "n_queries_in_precision_mean": 8,
+      "variants": {
+        "total_capped": {
+          "mean_total": 4.0833,
+          "lenient": {
+            "precision_at_3": 0.9167,
+            "hit_at_3": 1.0
+          },
+          "strict": {
+            "precision_at_3": 0.875,
+            "hit_at_3": 1.0
+          }
+        },
+        "total_uncapped": {
+          "mean_total": 4.25,
+          "lenient": {
+            "precision_at_3": 1.0,
+            "hit_at_3": 1.0
+          },
+          "strict": {
+            "precision_at_3": 0.9583,
+            "hit_at_3": 1.0
+          }
+        },
+        "total_system_violation_only": {
+          "mean_total": 4.0833,
+          "lenient": {
+            "precision_at_3": 0.9167,
+            "hit_at_3": 1.0
+          },
+          "strict": {
+            "precision_at_3": 0.875,
+            "hit_at_3": 1.0
+          }
+        }
+      },
+      "independent": {
+        "distinct_recipes": 24,
+        "catalog_size": 390,
+        "catalog_coverage": 0.0615,
+        "dessert_items": 2,
+        "total_items": 24,
+        "dessert_share_pooled": 0.0833,
+        "dessert_share_mean_per_query": 0.0833,
+        "intra_list_diversity_mean": 0.6435,
+        "mean_system_score": 0.8467
+      }
+    },
+    "G": {
+      "n_queries": 6,
+      "n_queries_short": 0,
+      "n_queries_empty": 0,
+      "n_queries_in_precision_mean": 6,
+      "variants": {
+        "total_capped": {
+          "mean_total": 3.1667,
+          "lenient": {
+            "precision_at_3": 0.5,
+            "hit_at_3": 0.5
+          },
+          "strict": {
+            "precision_at_3": 0.3889,
+            "hit_at_3": 0.5
+          }
+        },
+        "total_uncapped": {
+          "mean_total": 4.0556,
+          "lenient": {
+            "precision_at_3": 1.0,
+            "hit_at_3": 1.0
+          },
+          "strict": {
+            "precision_at_3": 0.7778,
+            "hit_at_3": 1.0
+          }
+        },
+        "total_system_violation_only": {
+          "mean_total": 3.1667,
+          "lenient": {
+            "precision_at_3": 0.5,
+            "hit_at_3": 0.5
+          },
+          "strict": {
+            "precision_at_3": 0.3889,
+            "hit_at_3": 0.5
+          }
+        }
+      },
+      "independent": {
+        "distinct_recipes": 16,
+        "catalog_size": 390,
+        "catalog_coverage": 0.041,
+        "dessert_items": 9,
+        "total_items": 18,
+        "dessert_share_pooled": 0.5,
+        "dessert_share_mean_per_query": 0.5,
+        "intra_list_diversity_mean": 0.5714,
+        "mean_system_score": 0.7117
+      }
+    }
+  },
+  "paired_consistency_mismatches": []
+}

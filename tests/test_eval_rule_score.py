@@ -130,12 +130,73 @@ def test_a_1_case_totals():
     assert s["total_capped"] == 2
 
 
-def test_optional_only_violation_zeroes_the_totals_but_not_the_system_only_variant():
+def test_v1_optional_only_violation_zeroes_the_totals_but_not_the_system_only_variant():
+    """Pins the ORIGINAL rubric (v1), which stays selectable so the old results remain reproducible."""
     r = recipe(main=["egg"], optional=["chili"])
-    s = ers.score_recipe(r, query(ingredients=["egg"], excluded=["chili"]))
+    s = ers.score_recipe(r, query(ingredients=["egg"], excluded=["chili"]), rubric_version="v1")
     assert s["violation_system_rule"] is False and s["violation_with_optional"] is True
     assert s["total_capped"] == 0 and s["total_uncapped"] == 0
     assert s["total_system_violation_only"] == 5
+
+
+# --- rubric v2 (default): an excluded ingredient that is only optional is not a violation ---
+
+def test_v2_is_the_default_rubric_version():
+    assert ers.RUBRIC_VERSION == "v2"
+    assert ers.RUBRIC_VERSIONS == ("v1", "v2")
+    r, q = recipe(main=["egg"], optional=["chili"]), query(ingredients=["egg"], excluded=["chili"])
+    assert ers.score_recipe(r, q) == ers.score_recipe(r, q, rubric_version="v2")
+
+
+def test_v2_excluded_ingredient_only_optional_is_not_zeroed():
+    r = recipe(main=["egg"], optional=["chili"])
+    s = ers.score_recipe(r, query(ingredients=["egg"], excluded=["chili"]), rubric_version="v2")
+    assert s["violation_system_rule"] is False and s["violation_with_optional"] is True   # flags unchanged
+    assert s["total_capped"] == s["total_uncapped"] == s["total_system_violation_only"] == 5
+
+
+def test_v2_excluded_ingredient_as_main_is_zeroed():
+    s = ers.score_recipe(recipe(main=["egg", "pork"]), query(ingredients=["egg"], excluded=["pork"]),
+                         rubric_version="v2")
+    assert s["total_capped"] == s["total_uncapped"] == s["total_system_violation_only"] == 0
+
+
+def test_v2_excluded_ingredient_as_seasoning_is_zeroed():
+    s = ers.score_recipe(recipe(main=["egg"], seasonings=["fish_sauce"]),
+                         query(ingredients=["egg"], excluded=["fish_sauce"]), rubric_version="v2")
+    assert s["total_capped"] == s["total_uncapped"] == s["total_system_violation_only"] == 0
+
+
+def test_v2_health_tag_violation_still_zeroes():
+    s = ers.score_recipe(recipe(main=["egg"], health_tags=["clean"]),
+                         query(ingredients=["egg"], health_tags=["keto"]), rubric_version="v2")
+    assert s["total_capped"] == s["total_uncapped"] == s["total_system_violation_only"] == 0
+
+
+def test_v2_optional_only_dessert_is_still_capped_but_not_zeroed():
+    r = recipe(main=["banana"], optional=["chili"], category="dessert")
+    s = ers.score_recipe(r, query(ingredients=["banana"], excluded=["chili"]), rubric_version="v2")
+    assert s["total_uncapped"] == 4 and s["total_capped"] == 2
+
+
+def test_the_module_constant_switches_the_rubric(monkeypatch):
+    r, q = recipe(main=["egg"], optional=["chili"]), query(ingredients=["egg"], excluded=["chili"])
+    monkeypatch.setattr(ers, "RUBRIC_VERSION", "v1")
+    assert ers.score_recipe(r, q)["total_capped"] == 0
+    monkeypatch.setattr(ers, "RUBRIC_VERSION", "v2")
+    assert ers.score_recipe(r, q)["total_capped"] == 5
+
+
+def test_an_unknown_rubric_version_raises():
+    with pytest.raises(ValueError):
+        ers.score_recipe(recipe(), query(), rubric_version="v3")
+
+
+def test_compute_records_the_rubric_version():
+    q = baseline_query("D1", [result(1, "r1", main=["egg"], optional=["chili"])], ingredients=["egg"], excluded=["chili"])
+    out = ers.compute({"meta": {"catalog_size": 400}, "queries": [q]})
+    assert out["constants"]["RUBRIC_VERSION"] == "v2"
+    assert out["queries"][0]["variants"]["total_capped"]["totals"] == [5]
 
 
 def test_a_system_rule_violation_zeroes_every_variant():
@@ -215,3 +276,38 @@ def test_differing_violations_lists_optional_only_cases():
     q = baseline_query("D1", [result(1, "r1", main=["egg"], optional=["chili"])], ingredients=["egg"], excluded=["chili"])
     out = ers.differing_violations([ers.query_metrics(q)])
     assert [(d["query"], d["recipe_id"]) for d in out] == [("D1", "r1")]
+
+
+# ---------------------------------------------------------------------------
+# groups F and G (the extra test set) appear only when such queries exist
+# ---------------------------------------------------------------------------
+
+def _group_baseline(*group_letters):
+    queries = [
+        baseline_query(f"{g}1", [result(1, f"r{g}", main=["egg"])], ingredients=["egg"])
+        for g in group_letters
+    ]
+    return {"meta": {"catalog_size": 400}, "queries": queries}
+
+
+def test_groups_include_f_and_g():
+    assert ers.GROUPS == ("A", "B", "C", "D", "E", "F", "G")
+
+
+def test_f_and_g_appear_in_the_group_table_when_present():
+    out = ers.compute(_group_baseline("A", "F", "G"))
+    assert list(out["groups"]) == ["A", "F", "G"]
+    md = ers.to_markdown(out)
+    assert "## Group F" in md and "## Group G" in md and "## Group A" in md
+
+
+def test_f_and_g_are_absent_when_only_a_to_e_are_present():
+    out = ers.compute(_group_baseline("A", "B", "C", "D", "E"))
+    assert list(out["groups"]) == ["A", "B", "C", "D", "E"]
+    md = ers.to_markdown(out)
+    assert "## Group F" not in md and "## Group G" not in md
+
+
+def test_a_group_with_no_queries_is_not_listed():
+    out = ers.compute(_group_baseline("F"))
+    assert list(out["groups"]) == ["F"]

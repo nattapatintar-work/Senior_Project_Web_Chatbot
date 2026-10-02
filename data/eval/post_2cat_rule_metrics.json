@@ -1,0 +1,3634 @@
+{
+  "constants": {
+    "A_POINTS_MAIN": 2,
+    "A_POINTS_OPTIONAL_ONLY": 1,
+    "B_POINTS_ALL_HAVE": 2,
+    "B_POINTS_PARTIAL": 1,
+    "B_PARTIAL_SHARE": 0.5,
+    "C_POINTS_NON_DESSERT": 1,
+    "C_POINTS_DESSERT": 0,
+    "DESSERT_TOTAL_CAP": 2,
+    "PASS_LENIENT": 3,
+    "PASS_STRICT": 4,
+    "TOP_K": 3,
+    "note": "every value above is a definition we chose, not derived from data"
+  },
+  "overall": {
+    "n_queries": 30,
+    "n_queries_short": 1,
+    "n_queries_empty": 0,
+    "n_queries_in_precision_mean": 30,
+    "variants": {
+      "total_capped": {
+        "mean_total": 3.7333,
+        "lenient": {
+          "precision_at_3": 0.7667,
+          "hit_at_3": 0.8667
+        },
+        "strict": {
+          "precision_at_3": 0.7,
+          "hit_at_3": 0.8333
+        }
+      },
+      "total_uncapped": {
+        "mean_total": 4.0889,
+        "lenient": {
+          "precision_at_3": 0.9667,
+          "hit_at_3": 1.0
+        },
+        "strict": {
+          "precision_at_3": 0.8556,
+          "hit_at_3": 0.9667
+        }
+      },
+      "total_system_violation_only": {
+        "mean_total": 3.8333,
+        "lenient": {
+          "precision_at_3": 0.7889,
+          "hit_at_3": 0.8667
+        },
+        "strict": {
+          "precision_at_3": 0.7222,
+          "hit_at_3": 0.8333
+        }
+      }
+    },
+    "independent": {
+      "distinct_recipes": 58,
+      "catalog_size": 390,
+      "catalog_coverage": 0.1487,
+      "dessert_items": 19,
+      "total_items": 89,
+      "dessert_share_pooled": 0.2135,
+      "dessert_share_mean_per_query": 0.2111,
+      "intra_list_diversity_mean": 0.6276,
+      "mean_system_score": 0.6791
+    }
+  },
+  "groups": {
+    "A": {
+      "n_queries": 6,
+      "n_queries_short": 0,
+      "n_queries_empty": 0,
+      "n_queries_in_precision_mean": 6,
+      "variants": {
+        "total_capped": {
+          "mean_total": 4.1111,
+          "lenient": {
+            "precision_at_3": 0.8889,
+            "hit_at_3": 1.0
+          },
+          "strict": {
+            "precision_at_3": 0.8333,
+            "hit_at_3": 1.0
+          }
+        },
+        "total_uncapped": {
+          "mean_total": 4.3333,
+          "lenient": {
+            "precision_at_3": 1.0,
+            "hit_at_3": 1.0
+          },
+          "strict": {
+            "precision_at_3": 0.9444,
+            "hit_at_3": 1.0
+          }
+        },
+        "total_system_violation_only": {
+          "mean_total": 4.1111,
+          "lenient": {
+            "precision_at_3": 0.8889,
+            "hit_at_3": 1.0
+          },
+          "strict": {
+            "precision_at_3": 0.8333,
+            "hit_at_3": 1.0
+          }
+        }
+      },
+      "independent": {
+        "distinct_recipes": 18,
+        "catalog_size": 390,
+        "catalog_coverage": 0.0462,
+        "dessert_items": 2,
+        "total_items": 18,
+        "dessert_share_pooled": 0.1111,
+        "dessert_share_mean_per_query": 0.1111,
+        "intra_list_diversity_mean": 0.6105,
+        "mean_system_score": 0.75
+      }
+    },
+    "B": {
+      "n_queries": 8,
+      "n_queries_short": 0,
+      "n_queries_empty": 0,
+      "n_queries_in_precision_mean": 8,
+      "variants": {
+        "total_capped": {
+          "mean_total": 4.0417,
+          "lenient": {
+            "precision_at_3": 0.9167,
+            "hit_at_3": 1.0
+          },
+          "strict": {
+            "precision_at_3": 0.875,
+            "hit_at_3": 1.0
+          }
+        },
+        "total_uncapped": {
+          "mean_total": 4.2083,
+          "lenient": {
+            "precision_at_3": 1.0,
+            "hit_at_3": 1.0
+          },
+          "strict": {
+            "precision_at_3": 0.9583,
+            "hit_at_3": 1.0
+          }
+        },
+        "total_system_violation_only": {
+          "mean_total": 4.0417,
+          "lenient": {
+            "precision_at_3": 0.9167,
+            "hit_at_3": 1.0
+          },
+          "strict": {
+            "precision_at_3": 0.875,
+            "hit_at_3": 1.0
+          }
+        }
+      },
+      "independent": {
+        "distinct_recipes": 23,
+        "catalog_size": 390,
+        "catalog_coverage": 0.059,
+        "dessert_items": 2,
+        "total_items": 24,
+        "dessert_share_pooled": 0.0833,
+        "dessert_share_mean_per_query": 0.0833,
+        "intra_list_diversity_mean": 0.5978,
+        "mean_system_score": 0.6042
+      }
+    },
+    "C": {
+      "n_queries": 6,
+      "n_queries_short": 0,
+      "n_queries_empty": 0,
+      "n_queries_in_precision_mean": 6,
+      "variants": {
+        "total_capped": {
+          "mean_total": 3.7778,
+          "lenient": {
+            "precision_at_3": 0.7222,
+            "hit_at_3": 0.8333
+          },
+          "strict": {
+            "precision_at_3": 0.6667,
+            "hit_at_3": 0.8333
+          }
+        },
+        "total_uncapped": {
+          "mean_total": 4.0556,
+          "lenient": {
+            "precision_at_3": 0.9444,
+            "hit_at_3": 1.0
+          },
+          "strict": {
+            "precision_at_3": 0.7222,
+            "hit_at_3": 1.0
+          }
+        },
+        "total_system_violation_only": {
+          "mean_total": 3.7778,
+          "lenient": {
+            "precision_at_3": 0.7222,
+            "hit_at_3": 0.8333
+          },
+          "strict": {
+            "precision_at_3": 0.6667,
+            "hit_at_3": 0.8333
+          }
+        }
+      },
+      "independent": {
+        "distinct_recipes": 18,
+        "catalog_size": 390,
+        "catalog_coverage": 0.0462,
+        "dessert_items": 5,
+        "total_items": 18,
+        "dessert_share_pooled": 0.2778,
+        "dessert_share_mean_per_query": 0.2778,
+        "intra_list_diversity_mean": 0.6806,
+        "mean_system_score": 0.6744
+      }
+    },
+    "D": {
+      "n_queries": 4,
+      "n_queries_short": 0,
+      "n_queries_empty": 0,
+      "n_queries_in_precision_mean": 4,
+      "variants": {
+        "total_capped": {
+          "mean_total": 3.9167,
+          "lenient": {
+            "precision_at_3": 0.8334,
+            "hit_at_3": 1.0
+          },
+          "strict": {
+            "precision_at_3": 0.8334,
+            "hit_at_3": 1.0
+          }
+        },
+        "total_uncapped": {
+          "mean_total": 4.0834,
+          "lenient": {
+            "precision_at_3": 0.9167,
+            "hit_at_3": 1.0
+          },
+          "strict": {
+            "precision_at_3": 0.9167,
+            "hit_at_3": 1.0
+          }
+        },
+        "total_system_violation_only": {
+          "mean_total": 4.25,
+          "lenient": {
+            "precision_at_3": 0.9167,
+            "hit_at_3": 1.0
+          },
+          "strict": {
+            "precision_at_3": 0.9167,
+            "hit_at_3": 1.0
+          }
+        }
+      },
+      "independent": {
+        "distinct_recipes": 11,
+        "catalog_size": 390,
+        "catalog_coverage": 0.0282,
+        "dessert_items": 1,
+        "total_items": 12,
+        "dessert_share_pooled": 0.0833,
+        "dessert_share_mean_per_query": 0.0833,
+        "intra_list_diversity_mean": 0.7537,
+        "mean_system_score": 0.6458
+      }
+    },
+    "E": {
+      "n_queries": 6,
+      "n_queries_short": 1,
+      "n_queries_empty": 0,
+      "n_queries_in_precision_mean": 6,
+      "variants": {
+        "total_capped": {
+          "mean_total": 2.7778,
+          "lenient": {
+            "precision_at_3": 0.4445,
+            "hit_at_3": 0.5
+          },
+          "strict": {
+            "precision_at_3": 0.2778,
+            "hit_at_3": 0.3333
+          }
+        },
+        "total_uncapped": {
+          "mean_total": 3.7222,
+          "lenient": {
+            "precision_at_3": 0.9444,
+            "hit_at_3": 1.0
+          },
+          "strict": {
+            "precision_at_3": 0.7222,
+            "hit_at_3": 0.8333
+          }
+        },
+        "total_system_violation_only": {
+          "mean_total": 3.0556,
+          "lenient": {
+            "precision_at_3": 0.5,
+            "hit_at_3": 0.5
+          },
+          "strict": {
+            "precision_at_3": 0.3333,
+            "hit_at_3": 0.3333
+          }
+        }
+      },
+      "independent": {
+        "distinct_recipes": 16,
+        "catalog_size": 390,
+        "catalog_coverage": 0.041,
+        "dessert_items": 9,
+        "total_items": 17,
+        "dessert_share_pooled": 0.5294,
+        "dessert_share_mean_per_query": 0.5,
+        "intra_list_diversity_mean": 0.5472,
+        "mean_system_score": 0.735
+      }
+    }
+  },
+  "differing_violations": [
+    {
+      "query": "D2",
+      "rank": 3,
+      "recipe_id": "th_170",
+      "name_th": "หมูผัดขึ้นฉ่าย",
+      "violation_system_rule": false,
+      "violation_with_optional": true
+    },
+    {
+      "query": "E6",
+      "rank": 2,
+      "recipe_id": "th_293",
+      "name_th": "เต้าหู้ทอดซอสมะขาม",
+      "violation_system_rule": false,
+      "violation_with_optional": true
+    }
+  ],
+  "system_rule_violations_in_returned_items": 0,
+  "queries": [
+    {
+      "id": "A1",
+      "group": "A",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            5,
+            2,
+            2
+          ],
+          "mean_total": 3.0,
+          "lenient": {
+            "passing": 1,
+            "precision_at_3": 0.3333,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 1,
+            "precision_at_3": 0.3333,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            5,
+            4,
+            4
+          ],
+          "mean_total": 4.3333,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            5,
+            2,
+            2
+          ],
+          "mean_total": 3.0,
+          "lenient": {
+            "passing": 1,
+            "precision_at_3": 0.3333,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 1,
+            "precision_at_3": 0.3333,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 1.0,
+      "dessert_share": 0.6667,
+      "diversity": 0.0,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_002",
+          "name_th": "ไข่ต้ม",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 2,
+          "id": "th_096",
+          "name_th": "ทองหยอด",
+          "category": "dessert",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 0,
+          "total_capped": 2,
+          "total_uncapped": 4,
+          "total_system_violation_only": 2
+        },
+        {
+          "rank": 3,
+          "id": "th_108",
+          "name_th": "ฝอยทอง",
+          "category": "dessert",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 0,
+          "total_capped": 2,
+          "total_uncapped": 4,
+          "total_system_violation_only": 2
+        }
+      ]
+    },
+    {
+      "id": "A2",
+      "group": "A",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            5,
+            5,
+            5
+          ],
+          "mean_total": 5.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            5,
+            5,
+            5
+          ],
+          "mean_total": 5.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            5,
+            5,
+            5
+          ],
+          "mean_total": 5.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.8467,
+      "dessert_share": 0.0,
+      "diversity": 0.7222,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_011",
+          "name_th": "ไก่อบซอส",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 2,
+          "id": "th_007",
+          "name_th": "แกงพะแนงไก่",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 3,
+          "id": "th_014",
+          "name_th": "ผัดเผ็ดไก่",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        }
+      ]
+    },
+    {
+      "id": "A3",
+      "group": "A",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            4,
+            4,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            4,
+            4,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            4,
+            4,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.6533,
+      "dessert_share": 0.0,
+      "diversity": 0.8413,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_021",
+          "name_th": "ต้มพะโล้",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 2,
+          "id": "th_166",
+          "name_th": "แกงคั่วซี่โครงหมูใบมะกรูด",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 3,
+          "id": "th_176",
+          "name_th": "หมูผัดพริกหยวก",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        }
+      ]
+    },
+    {
+      "id": "A4",
+      "group": "A",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            5,
+            4,
+            5
+          ],
+          "mean_total": 4.6667,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            5,
+            4,
+            5
+          ],
+          "mean_total": 4.6667,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            5,
+            4,
+            5
+          ],
+          "mean_total": 4.6667,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.6633,
+      "dessert_share": 0.0,
+      "diversity": 0.8167,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_022",
+          "name_th": "ทอดมันกุ้ง",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 2,
+          "id": "th_296",
+          "name_th": "กะหล่ำปลีผัดกุ้ง",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 3,
+          "id": "th_157",
+          "name_th": "ก้อยกุ้ง",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        }
+      ]
+    },
+    {
+      "id": "A5",
+      "group": "A",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            5,
+            4,
+            3
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            5,
+            4,
+            3
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            5,
+            4,
+            3
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.7533,
+      "dessert_share": 0.0,
+      "diversity": 0.6603,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_293",
+          "name_th": "เต้าหู้ทอดซอสมะขาม",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 2,
+          "id": "th_291",
+          "name_th": "เต้าหู้ยัดไส้นึ่งซีอิ๊ว",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 3,
+          "id": "th_292",
+          "name_th": "กะเพราเต้าหู้",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 0,
+          "C": 1,
+          "total_capped": 3,
+          "total_uncapped": 3,
+          "total_system_violation_only": 3
+        }
+      ]
+    },
+    {
+      "id": "A6",
+      "group": "A",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            4,
+            4,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            4,
+            4,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            4,
+            4,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.5833,
+      "dessert_share": 0.0,
+      "diversity": 0.6222,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_298",
+          "name_th": "ผัดแครอทใส่หมูสับ",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 2,
+          "id": "th_168",
+          "name_th": "หมูสับผัดโหระพา",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 3,
+          "id": "th_290",
+          "name_th": "ขึ้นฉ่ายผัดหมูสับ",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        }
+      ]
+    },
+    {
+      "id": "B1",
+      "group": "B",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            5,
+            2,
+            2
+          ],
+          "mean_total": 3.0,
+          "lenient": {
+            "passing": 1,
+            "precision_at_3": 0.3333,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 1,
+            "precision_at_3": 0.3333,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            5,
+            4,
+            4
+          ],
+          "mean_total": 4.3333,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            5,
+            2,
+            2
+          ],
+          "mean_total": 3.0,
+          "lenient": {
+            "passing": 1,
+            "precision_at_3": 0.3333,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 1,
+            "precision_at_3": 0.3333,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.55,
+      "dessert_share": 0.6667,
+      "diversity": 0.0,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_002",
+          "name_th": "ไข่ต้ม",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 2,
+          "id": "th_096",
+          "name_th": "ทองหยอด",
+          "category": "dessert",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 0,
+          "total_capped": 2,
+          "total_uncapped": 4,
+          "total_system_violation_only": 2
+        },
+        {
+          "rank": 3,
+          "id": "th_108",
+          "name_th": "ฝอยทอง",
+          "category": "dessert",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 0,
+          "total_capped": 2,
+          "total_uncapped": 4,
+          "total_system_violation_only": 2
+        }
+      ]
+    },
+    {
+      "id": "B2",
+      "group": "B",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            4,
+            4,
+            5
+          ],
+          "mean_total": 4.3333,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            4,
+            4,
+            5
+          ],
+          "mean_total": 4.3333,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            4,
+            4,
+            5
+          ],
+          "mean_total": 4.3333,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.6433,
+      "dessert_share": 0.0,
+      "diversity": 0.8244,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_029",
+          "name_th": "ข้าวราดไก่ผัดใบกะเพรา",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 2,
+          "id": "th_203",
+          "name_th": "ข้าวหมกไก่",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 3,
+          "id": "th_011",
+          "name_th": "ไก่อบซอส",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        }
+      ]
+    },
+    {
+      "id": "B3",
+      "group": "B",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            4,
+            4,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            4,
+            4,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            4,
+            4,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.5967,
+      "dessert_share": 0.0,
+      "diversity": 0.4667,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_170",
+          "name_th": "หมูผัดขึ้นฉ่าย",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 2,
+          "id": "th_188",
+          "name_th": "คะน้าหมูกรอบ",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 3,
+          "id": "th_328",
+          "name_th": "หมูย่างเกาหลีห่อผักสลัดคอส",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        }
+      ]
+    },
+    {
+      "id": "B4",
+      "group": "B",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            4,
+            4,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            4,
+            4,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            4,
+            4,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.6533,
+      "dessert_share": 0.0,
+      "diversity": 0.3056,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_019",
+          "name_th": "ต้มยำกุ้ง",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 2,
+          "id": "th_020",
+          "name_th": "ต้มยำไก่",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 3,
+          "id": "th_018",
+          "name_th": "ต้มข่าไก่",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        }
+      ]
+    },
+    {
+      "id": "B5",
+      "group": "B",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            4,
+            4,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            4,
+            4,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            4,
+            4,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.6067,
+      "dessert_share": 0.0,
+      "diversity": 0.6174,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_396",
+          "name_th": "ปลาทับทิมนึ่งขิง",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 2,
+          "id": "th_171",
+          "name_th": "ปลากระพงผัดขึ้นฉ่าย",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 3,
+          "id": "th_172",
+          "name_th": "ปลานึ่งมะนาว",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        }
+      ]
+    },
+    {
+      "id": "B6",
+      "group": "B",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            5,
+            3,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            5,
+            3,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            5,
+            3,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.5967,
+      "dessert_share": 0.0,
+      "diversity": 0.8857,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_235",
+          "name_th": "เนื้อผัดน้ำมันหอย",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 2,
+          "id": "th_336",
+          "name_th": "แกงเผ็ดเนื้อ",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 0,
+          "C": 1,
+          "total_capped": 3,
+          "total_uncapped": 3,
+          "total_system_violation_only": 3
+        },
+        {
+          "rank": 3,
+          "id": "th_269",
+          "name_th": "ไข่เจียวใบโหระพา",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        }
+      ]
+    },
+    {
+      "id": "B7",
+      "group": "B",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            4,
+            5,
+            4
+          ],
+          "mean_total": 4.3333,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            4,
+            5,
+            4
+          ],
+          "mean_total": 4.3333,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            4,
+            5,
+            4
+          ],
+          "mean_total": 4.3333,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.47,
+      "dessert_share": 0.0,
+      "diversity": 0.8889,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_251",
+          "name_th": "มะเขือยาวผัดหมูสับ",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 2,
+          "id": "th_002",
+          "name_th": "ไข่ต้ม",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 3,
+          "id": "th_056",
+          "name_th": "หอยลายผัดพริกเผา",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        }
+      ]
+    },
+    {
+      "id": "B8",
+      "group": "B",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            5,
+            5,
+            4
+          ],
+          "mean_total": 4.6667,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            5,
+            5,
+            4
+          ],
+          "mean_total": 4.6667,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            5,
+            5,
+            4
+          ],
+          "mean_total": 4.6667,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.7167,
+      "dessert_share": 0.0,
+      "diversity": 0.7937,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_294",
+          "name_th": "กะหล่ำปลีผัดไข่",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 2,
+          "id": "th_297",
+          "name_th": "แครอทไข่",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 3,
+          "id": "th_031",
+          "name_th": "ผัดผักรวมมิตร",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        }
+      ]
+    },
+    {
+      "id": "C1",
+      "group": "C",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            5,
+            4,
+            4
+          ],
+          "mean_total": 4.3333,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            5,
+            4,
+            4
+          ],
+          "mean_total": 4.3333,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            5,
+            4,
+            4
+          ],
+          "mean_total": 4.3333,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.6367,
+      "dessert_share": 0.0,
+      "diversity": 0.8,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_014",
+          "name_th": "ผัดเผ็ดไก่",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 2,
+          "id": "th_023",
+          "name_th": "ผัดพริกขิงไก่ใส่ถั่วฝักยาว",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 3,
+          "id": "th_364",
+          "name_th": "ผัดกุยช่ายใส่ไก่ต้ม",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "group": "C",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            5,
+            5,
+            5
+          ],
+          "mean_total": 5.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            5,
+            5,
+            5
+          ],
+          "mean_total": 5.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            5,
+            5,
+            5
+          ],
+          "mean_total": 5.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.8733,
+      "dessert_share": 0.0,
+      "diversity": 0.5,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_002",
+          "name_th": "ไข่ต้ม",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 2,
+          "id": "th_001",
+          "name_th": "ไข่เจียว",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 3,
+          "id": "th_003",
+          "name_th": "ไข่ตุ๋น",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "group": "C",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            4,
+            5,
+            3
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            4,
+            5,
+            3
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            4,
+            5,
+            3
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.6267,
+      "dessert_share": 0.0,
+      "diversity": 0.7444,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_372",
+          "name_th": "ผัดผักกวางตุ้งมังสวิรัติใส่เต้าหู้เห็ดหอม",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 2,
+          "id": "th_293",
+          "name_th": "เต้าหู้ทอดซอสมะขาม",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 3,
+          "id": "th_292",
+          "name_th": "กะเพราเต้าหู้",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 0,
+          "C": 1,
+          "total_capped": 3,
+          "total_uncapped": 3,
+          "total_system_violation_only": 3
+        }
+      ]
+    },
+    {
+      "id": "C4",
+      "group": "C",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            4,
+            2,
+            2
+          ],
+          "mean_total": 2.6667,
+          "lenient": {
+            "passing": 1,
+            "precision_at_3": 0.3333,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 1,
+            "precision_at_3": 0.3333,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            4,
+            3,
+            2
+          ],
+          "mean_total": 3.0,
+          "lenient": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 1,
+            "precision_at_3": 0.3333,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            4,
+            2,
+            2
+          ],
+          "mean_total": 2.6667,
+          "lenient": {
+            "passing": 1,
+            "precision_at_3": 0.3333,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 1,
+            "precision_at_3": 0.3333,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.4333,
+      "dessert_share": 0.6667,
+      "diversity": 0.5833,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_297",
+          "name_th": "แครอทไข่",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 2,
+          "id": "th_233",
+          "name_th": "ตะโก้แครอท",
+          "category": "dessert",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 0,
+          "total_capped": 2,
+          "total_uncapped": 3,
+          "total_system_violation_only": 2
+        },
+        {
+          "rank": 3,
+          "id": "th_215",
+          "name_th": "เค้กแครอท",
+          "category": "dessert",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 0,
+          "C": 0,
+          "total_capped": 2,
+          "total_uncapped": 2,
+          "total_system_violation_only": 2
+        }
+      ]
+    },
+    {
+      "id": "C5",
+      "group": "C",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            5,
+            4,
+            5
+          ],
+          "mean_total": 4.6667,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            5,
+            4,
+            5
+          ],
+          "mean_total": 4.6667,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            5,
+            4,
+            5
+          ],
+          "mean_total": 4.6667,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.6633,
+      "dessert_share": 0.0,
+      "diversity": 0.8167,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_022",
+          "name_th": "ทอดมันกุ้ง",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 2,
+          "id": "th_296",
+          "name_th": "กะหล่ำปลีผัดกุ้ง",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 3,
+          "id": "th_157",
+          "name_th": "ก้อยกุ้ง",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        }
+      ]
+    },
+    {
+      "id": "C6",
+      "group": "C",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            2,
+            2,
+            2
+          ],
+          "mean_total": 2.0,
+          "lenient": {
+            "passing": 0,
+            "precision_at_3": 0.0,
+            "hit_at_3": 0
+          },
+          "strict": {
+            "passing": 0,
+            "precision_at_3": 0.0,
+            "hit_at_3": 0
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            4,
+            3,
+            3
+          ],
+          "mean_total": 3.3333,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 1,
+            "precision_at_3": 0.3333,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            2,
+            2,
+            2
+          ],
+          "mean_total": 2.0,
+          "lenient": {
+            "passing": 0,
+            "precision_at_3": 0.0,
+            "hit_at_3": 0
+          },
+          "strict": {
+            "passing": 0,
+            "precision_at_3": 0.0,
+            "hit_at_3": 0
+          }
+        }
+      },
+      "mean_system_score": 0.8133,
+      "dessert_share": 1.0,
+      "diversity": 0.6389,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_101",
+          "name_th": "แกงบวดฟักทอง",
+          "category": "dessert",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 0,
+          "total_capped": 2,
+          "total_uncapped": 4,
+          "total_system_violation_only": 2
+        },
+        {
+          "rank": 2,
+          "id": "th_232",
+          "name_th": "ฟักทองทอด",
+          "category": "dessert",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 0,
+          "total_capped": 2,
+          "total_uncapped": 3,
+          "total_system_violation_only": 2
+        },
+        {
+          "rank": 3,
+          "id": "th_053",
+          "name_th": "แกงบวดเผือก",
+          "category": "dessert",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 0,
+          "total_capped": 2,
+          "total_uncapped": 3,
+          "total_system_violation_only": 2
+        }
+      ]
+    },
+    {
+      "id": "D1",
+      "group": "D",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            5,
+            5,
+            4
+          ],
+          "mean_total": 4.6667,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            5,
+            5,
+            4
+          ],
+          "mean_total": 4.6667,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            5,
+            5,
+            4
+          ],
+          "mean_total": 4.6667,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.69,
+      "dessert_share": 0.0,
+      "diversity": 0.7222,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_011",
+          "name_th": "ไก่อบซอส",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 2,
+          "id": "th_007",
+          "name_th": "แกงพะแนงไก่",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 3,
+          "id": "th_329",
+          "name_th": "ซีซาร์สลัดอกไก่ไข่ต้ม",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        }
+      ]
+    },
+    {
+      "id": "D2",
+      "group": "D",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            4,
+            4,
+            0
+          ],
+          "mean_total": 2.6667,
+          "lenient": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            4,
+            4,
+            0
+          ],
+          "mean_total": 2.6667,
+          "lenient": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            4,
+            4,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.6167,
+      "dessert_share": 0.0,
+      "diversity": 0.8016,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_021",
+          "name_th": "ต้มพะโล้",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 2,
+          "id": "th_176",
+          "name_th": "หมูผัดพริกหยวก",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 3,
+          "id": "th_170",
+          "name_th": "หมูผัดขึ้นฉ่าย",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": true,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 0,
+          "total_uncapped": 0,
+          "total_system_violation_only": 4
+        }
+      ]
+    },
+    {
+      "id": "D3",
+      "group": "D",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            5,
+            5,
+            2
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            5,
+            5,
+            4
+          ],
+          "mean_total": 4.6667,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            5,
+            5,
+            2
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.6333,
+      "dessert_share": 0.3333,
+      "diversity": 0.6667,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_022",
+          "name_th": "ทอดมันกุ้ง",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 2,
+          "id": "th_002",
+          "name_th": "ไข่ต้ม",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 3,
+          "id": "th_096",
+          "name_th": "ทองหยอด",
+          "category": "dessert",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 0,
+          "total_capped": 2,
+          "total_uncapped": 4,
+          "total_system_violation_only": 2
+        }
+      ]
+    },
+    {
+      "id": "D4",
+      "group": "D",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            4,
+            4,
+            5
+          ],
+          "mean_total": 4.3333,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            4,
+            4,
+            5
+          ],
+          "mean_total": 4.3333,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            4,
+            4,
+            5
+          ],
+          "mean_total": 4.3333,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.6433,
+      "dessert_share": 0.0,
+      "diversity": 0.8244,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_029",
+          "name_th": "ข้าวราดไก่ผัดใบกะเพรา",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 2,
+          "id": "th_203",
+          "name_th": "ข้าวหมกไก่",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 3,
+          "id": "th_011",
+          "name_th": "ไก่อบซอส",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        }
+      ]
+    },
+    {
+      "id": "E1",
+      "group": "E",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            2,
+            2,
+            2
+          ],
+          "mean_total": 2.0,
+          "lenient": {
+            "passing": 0,
+            "precision_at_3": 0.0,
+            "hit_at_3": 0
+          },
+          "strict": {
+            "passing": 0,
+            "precision_at_3": 0.0,
+            "hit_at_3": 0
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            4,
+            4,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            2,
+            2,
+            2
+          ],
+          "mean_total": 2.0,
+          "lenient": {
+            "passing": 0,
+            "precision_at_3": 0.0,
+            "hit_at_3": 0
+          },
+          "strict": {
+            "passing": 0,
+            "precision_at_3": 0.0,
+            "hit_at_3": 0
+          }
+        }
+      },
+      "mean_system_score": 1.0,
+      "dessert_share": 1.0,
+      "diversity": 0.0,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_049",
+          "name_th": "กล้วยบวชชี",
+          "category": "dessert",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 0,
+          "total_capped": 2,
+          "total_uncapped": 4,
+          "total_system_violation_only": 2
+        },
+        {
+          "rank": 2,
+          "id": "th_092",
+          "name_th": "กล้วยเชื่อม",
+          "category": "dessert",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 0,
+          "total_capped": 2,
+          "total_uncapped": 4,
+          "total_system_violation_only": 2
+        },
+        {
+          "rank": 3,
+          "id": "th_103",
+          "name_th": "กล้วยปิ้ง",
+          "category": "dessert",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 0,
+          "total_capped": 2,
+          "total_uncapped": 4,
+          "total_system_violation_only": 2
+        }
+      ]
+    },
+    {
+      "id": "E2",
+      "group": "E",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            2,
+            2,
+            2
+          ],
+          "mean_total": 2.0,
+          "lenient": {
+            "passing": 0,
+            "precision_at_3": 0.0,
+            "hit_at_3": 0
+          },
+          "strict": {
+            "passing": 0,
+            "precision_at_3": 0.0,
+            "hit_at_3": 0
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            4,
+            3,
+            4
+          ],
+          "mean_total": 3.6667,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            2,
+            2,
+            2
+          ],
+          "mean_total": 2.0,
+          "lenient": {
+            "passing": 0,
+            "precision_at_3": 0.0,
+            "hit_at_3": 0
+          },
+          "strict": {
+            "passing": 0,
+            "precision_at_3": 0.0,
+            "hit_at_3": 0
+          }
+        }
+      },
+      "mean_system_score": 0.69,
+      "dessert_share": 1.0,
+      "diversity": 0.8333,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_101",
+          "name_th": "แกงบวดฟักทอง",
+          "category": "dessert",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 0,
+          "total_capped": 2,
+          "total_uncapped": 4,
+          "total_system_violation_only": 2
+        },
+        {
+          "rank": 2,
+          "id": "th_095",
+          "name_th": "สังขยาฟักทอง",
+          "category": "dessert",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 0,
+          "total_capped": 2,
+          "total_uncapped": 3,
+          "total_system_violation_only": 2
+        },
+        {
+          "rank": 3,
+          "id": "th_214",
+          "name_th": "มะพร้าวแก้ว",
+          "category": "dessert",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 0,
+          "total_capped": 2,
+          "total_uncapped": 4,
+          "total_system_violation_only": 2
+        }
+      ]
+    },
+    {
+      "id": "E3",
+      "group": "E",
+      "n_returned": 2,
+      "short": true,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            3,
+            3
+          ],
+          "mean_total": 3.0,
+          "lenient": {
+            "passing": 2,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 0,
+            "precision_at_3": 0.0,
+            "hit_at_3": 0
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            3,
+            3
+          ],
+          "mean_total": 3.0,
+          "lenient": {
+            "passing": 2,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 0,
+            "precision_at_3": 0.0,
+            "hit_at_3": 0
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            3,
+            3
+          ],
+          "mean_total": 3.0,
+          "lenient": {
+            "passing": 2,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 0,
+            "precision_at_3": 0.0,
+            "hit_at_3": 0
+          }
+        }
+      },
+      "mean_system_score": 0.65,
+      "dessert_share": 0.0,
+      "diversity": 0.6667,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_026",
+          "name_th": "ก๋วยเตี๋ยวผัดขี้เมา",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 0,
+          "C": 1,
+          "total_capped": 3,
+          "total_uncapped": 3,
+          "total_system_violation_only": 3
+        },
+        {
+          "rank": 2,
+          "id": "th_027",
+          "name_th": "ก๋วยเตี๋ยวเส้นใหญ่ผัดซีอิ๊วหมู",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 0,
+          "C": 1,
+          "total_capped": 3,
+          "total_uncapped": 3,
+          "total_system_violation_only": 3
+        }
+      ]
+    },
+    {
+      "id": "E4",
+      "group": "E",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            5,
+            5,
+            5
+          ],
+          "mean_total": 5.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            5,
+            5,
+            5
+          ],
+          "mean_total": 5.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            5,
+            5,
+            5
+          ],
+          "mean_total": 5.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.5433,
+      "dessert_share": 0.0,
+      "diversity": 0.6278,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_297",
+          "name_th": "แครอทไข่",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 2,
+          "id": "th_021",
+          "name_th": "ต้มพะโล้",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 3,
+          "id": "th_003",
+          "name_th": "ไข่ตุ๋น",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 5,
+          "total_uncapped": 5,
+          "total_system_violation_only": 5
+        }
+      ]
+    },
+    {
+      "id": "E5",
+      "group": "E",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            2,
+            2,
+            2
+          ],
+          "mean_total": 2.0,
+          "lenient": {
+            "passing": 0,
+            "precision_at_3": 0.0,
+            "hit_at_3": 0
+          },
+          "strict": {
+            "passing": 0,
+            "precision_at_3": 0.0,
+            "hit_at_3": 0
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            4,
+            4,
+            4
+          ],
+          "mean_total": 4.0,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            2,
+            2,
+            2
+          ],
+          "mean_total": 2.0,
+          "lenient": {
+            "passing": 0,
+            "precision_at_3": 0.0,
+            "hit_at_3": 0
+          },
+          "strict": {
+            "passing": 0,
+            "precision_at_3": 0.0,
+            "hit_at_3": 0
+          }
+        }
+      },
+      "mean_system_score": 0.9067,
+      "dessert_share": 1.0,
+      "diversity": 0.3333,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_120",
+          "name_th": "ข้าวต้มมัด",
+          "category": "dessert",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 0,
+          "total_capped": 2,
+          "total_uncapped": 4,
+          "total_system_violation_only": 2
+        },
+        {
+          "rank": 2,
+          "id": "th_124",
+          "name_th": "ข้าวเหนียวปิ้ง",
+          "category": "dessert",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 0,
+          "total_capped": 2,
+          "total_uncapped": 4,
+          "total_system_violation_only": 2
+        },
+        {
+          "rank": 3,
+          "id": "th_049",
+          "name_th": "กล้วยบวชชี",
+          "category": "dessert",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 2,
+          "C": 0,
+          "total_capped": 2,
+          "total_uncapped": 4,
+          "total_system_violation_only": 2
+        }
+      ]
+    },
+    {
+      "id": "E6",
+      "group": "E",
+      "n_returned": 3,
+      "short": false,
+      "empty": false,
+      "variants": {
+        "total_capped": {
+          "totals": [
+            4,
+            0,
+            4
+          ],
+          "mean_total": 2.6667,
+          "lenient": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          }
+        },
+        "total_uncapped": {
+          "totals": [
+            4,
+            0,
+            4
+          ],
+          "mean_total": 2.6667,
+          "lenient": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 2,
+            "precision_at_3": 0.6667,
+            "hit_at_3": 1
+          }
+        },
+        "total_system_violation_only": {
+          "totals": [
+            4,
+            5,
+            4
+          ],
+          "mean_total": 4.3333,
+          "lenient": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          },
+          "strict": {
+            "passing": 3,
+            "precision_at_3": 1.0,
+            "hit_at_3": 1
+          }
+        }
+      },
+      "mean_system_score": 0.62,
+      "dessert_share": 0.0,
+      "diversity": 0.8222,
+      "items": [
+        {
+          "rank": 1,
+          "id": "th_372",
+          "name_th": "ผัดผักกวางตุ้งมังสวิรัติใส่เต้าหู้เห็ดหอม",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        },
+        {
+          "rank": 2,
+          "id": "th_293",
+          "name_th": "เต้าหู้ทอดซอสมะขาม",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": true,
+          "A": 2,
+          "B": 2,
+          "C": 1,
+          "total_capped": 0,
+          "total_uncapped": 0,
+          "total_system_violation_only": 5
+        },
+        {
+          "rank": 3,
+          "id": "th_042",
+          "name_th": "ผัดถั่วงอกหัวโตเต้าหู้",
+          "category": "savory",
+          "violation_system_rule": false,
+          "violation_with_optional": false,
+          "A": 2,
+          "B": 1,
+          "C": 1,
+          "total_capped": 4,
+          "total_uncapped": 4,
+          "total_system_violation_only": 4
+        }
+      ]
+    }
+  ]
+}

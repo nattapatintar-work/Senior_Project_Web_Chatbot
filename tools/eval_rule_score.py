@@ -24,10 +24,20 @@ RUBRIC (per recommended recipe)
   B  share = (# main not in the user's ingredients) / (# main);
      2 if share == 0; 1 if share <= B_PARTIAL_SHARE; else 0.
   C  0 if category == "dessert", else 1.
-  total_capped                   0 if violation_with_optional, else A+B+C, and
-                                 min(total, DESSERT_TOTAL_CAP) when C == 0.
-  total_uncapped                 0 if violation_with_optional, else A+B+C.
-  total_system_violation_only    like total_capped, but with violation_system_rule.
+  total_capped                   0 if the zeroing violation applies (see RUBRIC_VERSION), else
+                                 A+B+C, and min(total, DESSERT_TOTAL_CAP) when C == 0.
+  total_uncapped                 0 if the zeroing violation applies, else A+B+C.
+  total_system_violation_only    like total_capped, but always zeroed by violation_system_rule.
+
+RUBRIC_VERSION (which violation zeroes total_capped and total_uncapped)
+-----------------------------------------------------------------------
+  "v2" (default)  violation_system_rule: an excluded ingredient that is ONLY optional does not
+                  zero an item, because recommend() itself keeps such a dish
+                  (recommender/recommend.py _passes_excluded_filter). A main or seasoning match,
+                  or a health-tag problem, still zeroes it. Under v2 total_system_violation_only
+                  equals total_capped.
+  "v1"            violation_with_optional: the original rule, kept so the old results stay
+                  reproducible (score_recipe(..., rubric_version="v1")).
 """
 
 import json
@@ -54,10 +64,12 @@ DESSERT_TOTAL_CAP = 2        # definition we chose: a dessert's total is capped 
 PASS_LENIENT = 3             # definition we chose: "lenient" pass line, total >= this
 PASS_STRICT = 4              # definition we chose: "strict" pass line, total >= this
 TOP_K = 3                    # definition we chose: list length evaluated (matches /recommend's first page)
+RUBRIC_VERSIONS = ("v1", "v2")
+RUBRIC_VERSION = "v2"        # definition we chose: v2 = an optional-only excluded ingredient is not a violation; v1 = it is
 
 VARIANTS = ("total_capped", "total_uncapped", "total_system_violation_only")
 PASS_LINES = {"lenient": PASS_LENIENT, "strict": PASS_STRICT}
-GROUPS = ("A", "B", "C", "D", "E")
+GROUPS = ("A", "B", "C", "D", "E", "F", "G")    # F, G = data/eval/test_set_extra_v1.json; a group appears only if it has queries
 
 
 # ---------------------------------------------------------------------------
@@ -102,9 +114,19 @@ def points_c(recipe: dict) -> int:
     return C_POINTS_DESSERT if recipe["category"] == "dessert" else C_POINTS_NON_DESSERT
 
 
-def score_recipe(recipe: dict, query: dict) -> dict:
-    """Every deterministic rubric component for one recommended recipe."""
+def score_recipe(recipe: dict, query: dict, rubric_version: str | None = None) -> dict:
+    """
+    Every deterministic rubric component for one recommended recipe.
+
+    rubric_version (default: the module's RUBRIC_VERSION) picks the violation that zeroes
+    total_capped and total_uncapped: "v1" = violation_with_optional (the original rule),
+    "v2" = violation_system_rule (an optional-only excluded ingredient is not a violation).
+    """
+    version = rubric_version or RUBRIC_VERSION
+    if version not in RUBRIC_VERSIONS:
+        raise ValueError(f"rubric_version must be one of {RUBRIC_VERSIONS}, got {version!r}")
     v_system, v_optional = violations(recipe, query)
+    zeroed = v_optional if version == "v1" else v_system
     a, b, c = points_a(recipe, query), points_b(recipe, query), points_c(recipe)
     raw = a + b + c
     capped = min(raw, DESSERT_TOTAL_CAP) if c == C_POINTS_DESSERT else raw
@@ -114,8 +136,8 @@ def score_recipe(recipe: dict, query: dict) -> dict:
         "A": a,
         "B": b,
         "C": c,
-        "total_capped": 0 if v_optional else capped,
-        "total_uncapped": 0 if v_optional else raw,
+        "total_capped": 0 if zeroed else capped,
+        "total_uncapped": 0 if zeroed else raw,
         "total_system_violation_only": 0 if v_system else capped,
     }
 
@@ -245,6 +267,7 @@ def compute(baseline: dict) -> dict:
             "B_PARTIAL_SHARE": B_PARTIAL_SHARE, "C_POINTS_NON_DESSERT": C_POINTS_NON_DESSERT,
             "C_POINTS_DESSERT": C_POINTS_DESSERT, "DESSERT_TOTAL_CAP": DESSERT_TOTAL_CAP,
             "PASS_LENIENT": PASS_LENIENT, "PASS_STRICT": PASS_STRICT, "TOP_K": TOP_K,
+            "RUBRIC_VERSION": RUBRIC_VERSION,
             "note": "every value above is a definition we chose, not derived from data",
         },
         "overall": overall,
@@ -297,6 +320,8 @@ def to_markdown(result: dict) -> str:
         "",
         f"Definitions we chose (not derived from data): B partial share <= {c['B_PARTIAL_SHARE']}, "
         f"dessert total cap {c['DESSERT_TOTAL_CAP']}, pass lines lenient >= {c['PASS_LENIENT']} / strict >= {c['PASS_STRICT']}.",
+        f"Rubric version: {c.get('RUBRIC_VERSION', 'v1')} (v1: an excluded ingredient that is only optional zeroes "
+        "total_capped and total_uncapped; v2: it does not).",
         "Means are macro means over queries. Precision@3 divides by the number of results returned and skips "
         "queries with none; Hit@3 counts every query (an empty result is a miss).",
         "",
