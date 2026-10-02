@@ -130,7 +130,7 @@
     "nutrition_source": "Thai FCD (INMU), food code S37",
     "notes": "Vegan and vegetarian — nothing animal-derived — but deliberately NOT clean, because it is deep-fried. A dish can be perfectly fine for a diet and still not be 'clean'; the four tags answer different questions.",
     "recipe_source_url": "https://www.pholfoodmafia.com/recipe/crispy-fluffy-fries-%E0%B9%80%E0%B8%9F%E0%B8%A3%E0%B8%99%E0%B8%8A%E0%B9%8C%E0%B8%9F%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%AA%E0%B9%8C%E0%B8%81%E0%B8%A3%E0%B8%AD%E0%B8%9A%E0%B8%99%E0%B8%AD%E0%B8%81/",
-    "category": "snack"
+    "category": "savory"
   },
   {
     "id": "th_005",
@@ -1463,7 +1463,7 @@
     "nutrition_source": "Thai FCD (INMU), computed from B9",
     "notes": "The one computed recipe with no modelling in it at all — B9 is already the steamed value, so the only assumption is the 150 g portion. Not keto: 41 g of carbohydrate, and sweet potato is a starch staple regardless. recipe_source_url points to a general reference rather than a dedicated recipe: steaming a whole sweet potato with nothing added has no single-ingredient 'recipe' as such online (every search hit was a composite dessert using sweet potato as one ingredient among several), so citing an unrelated composite recipe would misrepresent the dish.",
     "recipe_source_url": "https://en.wikipedia.org/wiki/Sweet_potato",
-    "category": "snack"
+    "category": "dessert"
   },
   {
     "id": "th_038",
@@ -3120,7 +3120,7 @@
     "recipe_source_url": "https://www.theworldofstreetfood.com/2023/08/thai-street-corn-or-khao-pod-klook-noey.html",
     "notes": "Coverage dish for corn. A Thai night-market street snack (khao pod klook noey), not plain boiled corn -- the milk-butter-sugar coating is the point of the dish.",
     "id": "th_075",
-    "category": "snack"
+    "category": "savory"
   },
   {
     "name_th": "ผัดผักปลังน้ำมันหอย",
@@ -3421,7 +3421,7 @@
     "recipe_source_url": "https://hot-thai-kitchen.com/miang-kham/",
     "notes": "Coverage dish for piper_lolot. Built without dried shrimp, which the classic topping list includes but which is absent from the dictionary -- ginger, shallot, lime and coconut cover the rest of the traditional toppings as optional.",
     "id": "th_081",
-    "category": "snack"
+    "category": "savory"
   },
   {
     "name_th": "ไก่ห่อใบเตยทอด",
@@ -3856,46 +3856,6 @@
     "notes": "Coverage dish for rambutan (previously unused despite having real Thai FCD data). Salt (traditional, a pinch) omitted from nutrition_basis: no Thai FCD salt record, and table salt is genuinely ~0 kcal/protein/fat/carb.",
     "id": "th_090",
     "category": "dessert"
-  },
-  {
-    "name_th": "มะขามคลุก",
-    "main_ingredients": [
-      "tamarind",
-      "chili"
-    ],
-    "optional_ingredients": [],
-    "seasonings": [
-      "sugar"
-    ],
-    "health_tags": [
-      "vegetarian",
-      "vegan"
-    ],
-    "excluded_for": [],
-    "serving_g": 120,
-    "cook_time_min": 10,
-    "nutrition": {
-      "kcal": 379.0,
-      "protein": 3.2,
-      "fat": 0.1,
-      "carb": 87.6
-    },
-    "nutrition_method": "computed",
-    "nutrition_basis": {
-      "tamarind": 100,
-      "chili": 5,
-      "sugar": 15
-    },
-    "basis_refs": {
-      "tamarind": "STD:750",
-      "chili": "STD:545",
-      "sugar": "STD:1391"
-    },
-    "nutrition_source": "Thai FCD (INMU), computed from sweet tamarind (STD:750), bird's eye chili (STD:545), sugar (STD:1391)",
-    "recipe_source_url": "https://foodof.com/Spicy%20and%20Sweet%20Tamarind%20-%20Cookery%20of%20Thailand",
-    "notes": "Coverage dish for tamarind (previously unused -- the dictionary's tamarind_paste entry is a different product, the concentrated cooking paste, not the fresh sweet fruit). Salt (traditional) omitted from nutrition_basis: no Thai FCD record, genuinely ~0 macros.",
-    "id": "th_091",
-    "category": "snack"
   },
   {
     "name_th": "กล้วยเชื่อม",
@@ -4433,7 +4393,7 @@
     "recipe_source_url": "https://www.cookingwithnart.com/fried-sugared-taro/",
     "notes": "Deep-fried then tossed in caramelized sugar -- a snack, not the baked custard above.",
     "id": "th_104",
-    "category": "snack"
+    "category": "savory"
   },
   {
     "name_th": "มันทอด",
@@ -4473,90 +4433,7 @@
     "recipe_source_url": "https://www.pholfoodmafia.com/recipe/fried-sweet-potato-with-sweet-and-sour-sauce-%E0%B8%A1%E0%B8%B1%E0%B8%99%E0%B8%97%E0%B8%AD%E0%B8%94%E0%B8%AA%E0%B8%B2%E0%B8%A1%E0%B8%A3%E0%B8%AA/",
     "notes": "The candied/syrup-glazed style specifically -- fried sweet potato pieces coated in hot syrup until crisp-shelled, distinct from the pumpkin/taro chip snacks below.",
     "id": "th_105",
-    "category": "snack"
-  },
-  {
-    "name_th": "สับปะรดจิ้มพริกเกลือ",
-    "main_ingredients": [
-      "pineapple",
-      "chili"
-    ],
-    "optional_ingredients": [],
-    "seasonings": [
-      "sugar"
-    ],
-    "health_tags": [
-      "vegetarian",
-      "vegan"
-    ],
-    "excluded_for": [],
-    "serving_g": 163,
-    "cook_time_min": 5,
-    "nutrition": {
-      "kcal": 117.0,
-      "protein": 0.9,
-      "fat": 0.1,
-      "carb": 26.7
-    },
-    "nutrition_method": "computed",
-    "nutrition_basis": {
-      "pineapple": 150,
-      "chili": 3,
-      "sugar": 10
-    },
-    "basis_refs": {
-      "pineapple": "STD:814",
-      "chili": "STD:545",
-      "sugar": "STD:1391"
-    },
-    "nutrition_source": "Thai FCD (INMU), computed from pineapple (STD:814), bird's eye chili (STD:545), sugar (STD:1391)",
-    "recipe_source_url": "https://beinspired.au/recipes/fresh-fruit-with-spicy-thai-salt/",
-    "notes": "Prik-kab-klua (chili-salt) fruit dip, the same treatment already applied to tamarind (th_091) -- salt itself omitted from nutrition_basis (no Thai FCD record; genuinely ~0 macros).",
-    "id": "th_106",
-    "category": "snack"
-  },
-  {
-    "name_th": "มะม่วงน้ำปลาหวาน",
-    "main_ingredients": [
-      "mango"
-    ],
-    "optional_ingredients": [],
-    "seasonings": [
-      "fish_sauce",
-      "sugar",
-      "shrimp_paste"
-    ],
-    "health_tags": [],
-    "excluded_for": [
-      "vegetarian",
-      "vegan"
-    ],
-    "serving_g": 193,
-    "cook_time_min": 10,
-    "nutrition": {
-      "kcal": 201.0,
-      "protein": 3.1,
-      "fat": 0.4,
-      "carb": 43.2
-    },
-    "nutrition_method": "computed",
-    "nutrition_basis": {
-      "mango": 150,
-      "fish_sauce": 15,
-      "sugar": 20,
-      "shrimp_paste": 8
-    },
-    "basis_refs": {
-      "mango": "STD:759",
-      "fish_sauce": "STD:291",
-      "sugar": "STD:1391",
-      "shrimp_paste": "STD:254"
-    },
-    "nutrition_source": "Thai FCD (INMU), computed from unripe green mango (STD:759), fish sauce (STD:291), sugar (STD:1391), shrimp paste (STD:254)",
-    "recipe_source_url": "https://hot-thai-kitchen.com/nampla-waan/",
-    "notes": "A sweet-salty fruit dip, not a plain dessert -- the mango is tart/unripe (STD:759, a different record from the ripe mango STD:765 used in th_050/th_091/th_094 below), so its own macros are meaningfully different (lower sugar, more starch). Dried shrimp, part of the traditional dip, is not in the dictionary and is omitted.",
-    "id": "th_107",
-    "category": "snack"
+    "category": "savory"
   },
   {
     "name_th": "ฝอยทอง",
@@ -4749,7 +4626,7 @@
     "recipe_source_url": "https://www.thaicookbook.tv/thai-food-ingredients/fruits-and-nuts/jackfruit-thai-khanun/",
     "notes": "Thinly-sliced jackfruit, deep-fried into chips. CORRECTED (Batch 7): previously priced against STD:416 (young/unripe jackfruit, the curry variety used in th_048), with notes incorrectly claiming Thai FCD has no ripe-jackfruit record. STD:701 (ripe jackfruit) does exist and is the correct record for this dessert -- found while sourcing th_229. Nutrition recomputed accordingly; health tags re-derived since ripe jackfruit carries far more carbohydrate than the unripe curry variety.",
     "id": "th_112",
-    "category": "snack"
+    "category": "dessert"
   },
   {
     "name_th": "กล้วยฉาบ",
@@ -4789,7 +4666,7 @@
     "recipe_source_url": "https://hungryinthailand.com/fried-banana-chips/",
     "notes": "Deep-fried banana chips, sugar-glazed variant. One of three parallel real, independently sold Thai chip snacks in this batch (banana/taro/sweet-potato ฉาบ).",
     "id": "th_113",
-    "category": "snack"
+    "category": "dessert"
   },
   {
     "name_th": "เผือกฉาบ",
@@ -4829,7 +4706,7 @@
     "recipe_source_url": "https://krua.co/recipe/crispy-taro",
     "notes": "Taro chip snack, sugar-glazed -- distinct product from เผือกทอด above (thicker cut, chip-style vs. fritter-style).",
     "id": "th_114",
-    "category": "snack"
+    "category": "dessert"
   },
   {
     "name_th": "มันฉาบ",
@@ -4869,7 +4746,7 @@
     "recipe_source_url": "https://www.thaisnackonline.com/post/thai-sweet-potato-chips-sweet-crunchy-snack-diy-snacks",
     "notes": "Third of the three parallel ฉาบ chip snacks (banana/taro/sweet-potato).",
     "id": "th_115",
-    "category": "snack"
+    "category": "dessert"
   },
   {
     "name_th": "ลิ้นจี่ลอยแก้ว",
@@ -7476,81 +7353,6 @@
     "category": "savory"
   },
   {
-    "id": "th_173",
-    "name_th": "มะนาวดอง",
-    "main_ingredients": [
-      "lime"
-    ],
-    "optional_ingredients": [],
-    "seasonings": [
-      "salt",
-      "sugar"
-    ],
-    "health_tags": [
-      "vegan",
-      "vegetarian"
-    ],
-    "excluded_for": [],
-    "serving_g": 158,
-    "cook_time_min": 20,
-    "nutrition": {
-      "kcal": 100.0,
-      "protein": 0.8,
-      "fat": 0.2,
-      "carb": 23.8
-    },
-    "nutrition_method": "computed",
-    "nutrition_basis": {
-      "lime": 150,
-      "sugar": 8
-    },
-    "basis_refs": {
-      "lime": "STD:306",
-      "sugar": "STD:1391"
-    },
-    "nutrition_source": "Thai FCD (INMU), computed from pickled lime (STD:306), sugar (STD:1391)",
-    "recipe_source_url": "https://www.sanook.com/women/260449/",
-    "notes": "Second coverage dish for lime, sole main ingredient by design -- a real traditional Thai preserve (whole limes brined in salt water, used as a condiment with grilled meats or added to soups/tom yum for a mellow sourness), not invented to pad ingredient usage. Salt is the brine base and mostly stays in the soaking liquid rather than being eaten, so it is listed as a seasoning but not counted in nutrition_basis; STD:306 (pickled lime) is a direct match to this preparation, unlike th_172 where it stands in for fresh lime.",
-    "category": "condiment"
-  },
-  {
-    "id": "th_174",
-    "name_th": "หอมเจียว",
-    "main_ingredients": [
-      "shallot"
-    ],
-    "optional_ingredients": [],
-    "seasonings": [
-      "vegetable_oil",
-      "salt"
-    ],
-    "health_tags": [
-      "keto",
-      "vegan",
-      "vegetarian"
-    ],
-    "excluded_for": [],
-    "serving_g": 60,
-    "cook_time_min": 15,
-    "nutrition": {
-      "kcal": 38.0,
-      "protein": 1.5,
-      "fat": 0.0,
-      "carb": 7.2
-    },
-    "nutrition_method": "computed",
-    "nutrition_basis": {
-      "shallot": 60
-    },
-    "basis_refs": {
-      "shallot": "STD:251"
-    },
-    "nutrition_source": "Thai FCD (INMU), computed from shallot (STD:251)",
-    "recipe_source_url": "https://cookpad.com/th/recipes/13771310",
-    "notes": "Coverage dish for shallot as sole main ingredient -- a real, commonly-made Thai topping/condiment (crispy fried shallots), sprinkled over rice dishes, noodle soups, and salads, not invented to pad ingredient usage. Frying oil not modelled per project convention (cooking oil absorption is not tracked anywhere in this database); nutrition reflects the raw shallot only, which understates the fried product's actual fat/kcal -- disclosed here since, unusually for this database, oil absorption is the majority of this particular dish's calories rather than a minor omission.",
-    "category": "condiment"
-  },
-  {
     "id": "th_175",
     "name_th": "ไก่ผัดขิงกับเห็ดหูหนู",
     "main_ingredients": [
@@ -9768,47 +9570,6 @@
     "category": "savory"
   },
   {
-    "id": "th_221",
-    "name_th": "น้ำจิ้มผักชี",
-    "main_ingredients": [
-      "coriander"
-    ],
-    "optional_ingredients": [
-      "garlic",
-      "chili"
-    ],
-    "seasonings": [
-      "sugar",
-      "salt"
-    ],
-    "health_tags": [
-      "vegan",
-      "vegetarian"
-    ],
-    "excluded_for": [],
-    "serving_g": 75,
-    "cook_time_min": 10,
-    "nutrition": {
-      "kcal": 76.0,
-      "protein": 1.5,
-      "fat": 0.2,
-      "carb": 16.2
-    },
-    "nutrition_method": "computed",
-    "nutrition_basis": {
-      "coriander": 60,
-      "sugar": 15
-    },
-    "basis_refs": {
-      "coriander": "STD:498",
-      "sugar": "STD:1391"
-    },
-    "nutrition_source": "Thai FCD (INMU), computed from coriander (STD:498), sugar (STD:1391)",
-    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/6fa0155bb2c24efa92006e10f44b9a89",
-    "notes": "Coverage dish for coriander -- a blended dipping sauce/chutney (coriander, garlic, chili, lime, sugar, salt), not a cooked main dish, following the same condiment-as-recipe precedent already established by th_174 (หอมเจียว). Lime juice is a squeeze quantity, excluded from nutrition_basis per the convention used for lime throughout this database (except th_172/th_173, where lime was the deliberate bulk main).",
-    "category": "condiment"
-  },
-  {
     "id": "th_222",
     "name_th": "ต้มจืดน้ำเต้าหมูสับ",
     "main_ingredients": [
@@ -10134,7 +9895,7 @@
     "nutrition_source": "Thai FCD (INMU), computed from durian (STD:736)",
     "recipe_source_url": "https://food.trueid.net/detail/q5jbP2PJAva5",
     "notes": "Third coverage dish for durian, genuinely distinct from th_051 (sticky rice) and th_110 (durian paste): thin durian slices deep-fried until crisp, salted. Frying oil not modelled, per project convention.",
-    "category": "snack"
+    "category": "dessert"
   },
   {
     "id": "th_229",
@@ -10711,44 +10472,6 @@
     "category": "savory"
   },
   {
-    "id": "th_242",
-    "name_th": "น้ำมะนาว",
-    "main_ingredients": [
-      "lime"
-    ],
-    "optional_ingredients": [],
-    "seasonings": [
-      "sugar",
-      "salt"
-    ],
-    "health_tags": [
-      "vegan",
-      "vegetarian"
-    ],
-    "excluded_for": [],
-    "serving_g": 90,
-    "cook_time_min": 5,
-    "nutrition": {
-      "kcal": 133.0,
-      "protein": 0.5,
-      "fat": 0.1,
-      "carb": 31.5
-    },
-    "nutrition_method": "computed",
-    "nutrition_basis": {
-      "lime": 60,
-      "sugar": 30
-    },
-    "basis_refs": {
-      "lime": "EXT:usda-lime-juice-raw",
-      "sugar": "STD:1391"
-    },
-    "nutrition_source": "USDA FoodData Central (lime juice, no Thai FCD record -- see data/NUTRITION_SOURCE.md and data/external_nutrition.json), Thai FCD (INMU) for sugar (STD:1391)",
-    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/162ec430d9e14d4dad4a6d4e1945bda8",
-    "notes": "Third coverage dish for lime -- a drink, distinct from th_172/th_173 (both savory). Thai FCD has no raw/fresh lime record at all; uses the USDA fallback (EXT:usda-lime-juice-raw, fresh lime juice) rather than STD:306 (pickled lime), which is a genuine mismatch for this dish -- th_173 is the pickled-lime dish that record actually belongs to.",
-    "category": "drink"
-  },
-  {
     "id": "th_243",
     "name_th": "มันสำปะหลังปิ้งราดน้ำกะทิ",
     "main_ingredients": [
@@ -10830,45 +10553,6 @@
     "recipe_source_url": "https://aroifin.com/recipes/thai-preserved-mango-recipe/",
     "notes": "Fifth coverage dish for mango, genuinely distinct from all existing uses (sticky rice, fish-sauce salad, boiled paste, cheesecake): unripe mango brined and preserved into a sweet-tart-crisp snack. STD:844 is a direct record for this specific product, not an approximation.",
     "category": "dessert"
-  },
-  {
-    "id": "th_245",
-    "name_th": "น้ำลิ้นจี่",
-    "main_ingredients": [
-      "lychee"
-    ],
-    "optional_ingredients": [
-      "pandan_leaf"
-    ],
-    "seasonings": [
-      "sugar"
-    ],
-    "health_tags": [
-      "vegan",
-      "vegetarian"
-    ],
-    "excluded_for": [],
-    "serving_g": 230,
-    "cook_time_min": 15,
-    "nutrition": {
-      "kcal": 242.0,
-      "protein": 2.2,
-      "fat": 0.3,
-      "carb": 56.4
-    },
-    "nutrition_method": "computed",
-    "nutrition_basis": {
-      "lychee": 200,
-      "sugar": 30
-    },
-    "basis_refs": {
-      "lychee": "STD:785",
-      "sugar": "STD:1391"
-    },
-    "nutrition_source": "Thai FCD (INMU), computed from lychee (STD:785), sugar (STD:1391)",
-    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/311a358ffce14a7eb1808acaa70602c1",
-    "notes": "Third coverage dish for lychee, genuinely distinct from th_054/th_116 (whole fruit desserts): lychee flesh simmered into a sweet drink/syrup, served chilled. STD:785 (whole fresh lychee) used rather than the commercial 25%-juice record (STD:1419), since this recipe simmers real fruit, not a diluted drink product.",
-    "category": "drink"
   },
   {
     "id": "th_246",
@@ -11738,52 +11422,6 @@
     "category": "savory"
   },
   {
-    "id": "th_263",
-    "name_th": "อาจาด",
-    "main_ingredients": [
-      "cucumber"
-    ],
-    "optional_ingredients": [
-      "carrot",
-      "chili"
-    ],
-    "seasonings": [
-      "vinegar",
-      "sugar",
-      "salt"
-    ],
-    "health_tags": [
-      "vegan",
-      "vegetarian"
-    ],
-    "excluded_for": [],
-    "serving_g": 160,
-    "cook_time_min": 15,
-    "nutrition": {
-      "kcal": 89.0,
-      "protein": 1.4,
-      "fat": 0.2,
-      "carb": 18.8
-    },
-    "nutrition_method": "computed",
-    "nutrition_basis": {
-      "cucumber": 100,
-      "carrot": 30,
-      "vinegar": 15,
-      "sugar": 15
-    },
-    "basis_refs": {
-      "cucumber": "STD:441",
-      "carrot": "STD:429",
-      "vinegar": "EXT:usda-vinegar-distilled",
-      "sugar": "STD:1391"
-    },
-    "nutrition_source": "Thai FCD (INMU) for cucumber (STD:441), carrot (STD:429), and sugar (STD:1391); USDA FoodData Central for vinegar (EXT:usda-vinegar-distilled) -- disclosed fallback, Thai FCD has no vinegar record of any kind (confirmed by repeated search, plain and under the Thai term).",
-    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/aeae0e2d37804e65a2021c234f7cb299",
-    "notes": "Coverage dish for cucumber (2->3 main_ingredients uses). A sweet-sour pickled condiment typically served alongside fried dishes (satay, fish cakes) rather than eaten as a standalone main; chili listed as optional garnish, not counted in nutrition_basis.",
-    "category": "condiment"
-  },
-  {
     "id": "th_264",
     "name_th": "บัวลอยใบเตยนมสด",
     "main_ingredients": [
@@ -12595,43 +12233,6 @@
     "notes": "Boiled cassava tossed hot in sugar, shaped into balls, coated in a rice-flour-and-slaked-lime-water batter, then deep-fried -- distinct from th_052 (candied/syrup-simmered, no frying, coconut milk sauce), th_208 (steamed with coconut, no frying), and th_243 (grilled on skewers, no coating, no frying). CORRECTION vs. the pre-approval assumption: re-fetching the source ingredient list directly shows the coating flour is แป้งข้าวจ้าว (rice flour, dictionary key rice_flour), not tapioca starch as the dish's working title implied -- verified by name, no แป้งมันสำปะหลัง anywhere in the source's ingredient list. main_ingredients set to [cassava, rice_flour] accordingly; this does NOT collide with th_105's ['sweet_potato'] set (confirmed: th_105 is มันทอดน้ำตาล, candied fried sweet potato -- same name_th 'มันทอด' as a substring, completely different main ingredient, no coating flour at all). Slaked lime water (น้ำปูนใส, a texture agent with no real caloric content) has no dictionary entry and is omitted from nutrition_basis, same convention as salt/lime-water treatments elsewhere in this batch.",
     "id": "th_280",
     "category": "dessert"
-  },
-  {
-    "name_th": "น้ำมะขาม",
-    "main_ingredients": [
-      "tamarind"
-    ],
-    "optional_ingredients": [],
-    "seasonings": [
-      "sugar"
-    ],
-    "health_tags": [
-      "vegan",
-      "vegetarian"
-    ],
-    "excluded_for": [],
-    "serving_g": 55,
-    "cook_time_min": 10,
-    "nutrition": {
-      "kcal": 192.0,
-      "protein": 1.1,
-      "fat": 0.0,
-      "carb": 45.8
-    },
-    "nutrition_method": "computed",
-    "nutrition_basis": {
-      "tamarind": 30,
-      "sugar": 25
-    },
-    "basis_refs": {
-      "tamarind": "STD:750",
-      "sugar": "STD:1391"
-    },
-    "nutrition_source": "Thai FCD (INMU), computed from sweet tamarind (STD:750), sugar (STD:1391)",
-    "recipe_source_url": "https://www.wongnai.com/recipes/ugc/c3f07dd243b44c4c84bab2c063b34fa0",
-    "notes": "Drink format, distinct from th_091 (มะขามคลุก, dry loose fresh-fruit candy) and th_231 (มะขามแก้ว, cooked-down crystallized candy balls): tamarind concentrate dissolved in hot water, sweetened, served over ice. Source uses a branded Knorr wet tamarind paste as the entire drink's sole bulk ingredient with no amount given (\"to taste\"); mapped onto the tamarind (fresh-fruit) dictionary key rather than tamarind_paste, since it plays the same 'star ingredient at real bulk quantity' role that th_091/th_231 already establish for that key -- th_091's own note explains tamarind_paste is reserved for the small-dash curry-souring product, not this. Because the source gives no gram amount for tamarind or exact sugar ('to taste'), the basis below is a disclosed reasonable estimate (~30g concentrate + 25g sugar per 250ml glass) based on standard nam-makham proportions for a 3-cup-water batch serving about 4 glasses. Salt ('a small amount') omitted from nutrition_basis, same convention as th_091's salt omission. Water/ice (the diluting medium) contributes no tracked weight, matching the DB-wide convention of not modelling non-caloric liquid dilution (e.g. th_043, th_078, th_080, th_154).",
-    "id": "th_281",
-    "category": "drink"
   },
   {
     "name_th": "ขนมสอดไส้",
@@ -16755,7 +16356,7 @@
     "recipe_source_url": "https://www.wongnai.com/recipes/ugc/e70ffb2bf11349499288d298b3a51eb7",
     "notes": "SOURCE (fetched): เห็ดเข็มทอง, แป้งโกกิ, น้ำเย็น, น้ำมัน, น้ำจิ้มไก่; 2-3 people; mushrooms shredded into thin strands, coated in a thin batter and DEEP-FRIED until crisp. The page gives NO quantities. INGREDIENT-TYPE CALL: แป้งโกกิ is a tempura-style batter flour (wheat-based); the fetch tool's gloss said 'tapioca flour' and was ignored. It is priced as wheat flour, the same stand-in used for th_330. DISTINCT: {enoki} alone is a new main set (th_078 and th_181 are multi-mushroom mixes). NUTRITION METHOD (weak spot): computed; ALL amounts are assumptions: 2 packs of enoki (about 240 g) and about 60 g of flour for 2.5 servings; oil absorbed by deep-frying is assumed 20 g per serving. The sweet-chilli chicken dipping sauce is omitted (sugary - understates carbs). Deep-fried, so never clean. No animal product: eligible for vegan. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because it is deep-fried; keto: no, 20.1 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand - this dish qualifies as vegan.",
     "id": "th_355",
-    "category": "snack"
+    "category": "savory"
   },
   {
     "name_th": "เห็ดเข็มทองผัดไข่หมูยอ",
@@ -18329,7 +17930,7 @@
     "recipe_source_url": "https://www.wongnai.com/recipes/ugc/3ae5fd0917b4401c9e5d0e054092b46e",
     "notes": "SOURCE (fetched, Wongnai): หัวปลี 2 หัว, แป้งทอดกรอบพอให้เข้ากัน, พริกแกง 1 ช้อนชา, ผงปรุงรสคนอร์ 1-2 ช้อนชา, น้ำเปล่าพอประมาณ, น้ำมันพืชสำหรับทอด; 1 plate (prep 15 + cook 10 min). Banana-flower strips in a seasoned batter, deep-fried. INGREDIENT-TYPE CALLS: แป้งทอดกรอบ (ready-made tempura/crispy-fry batter mix) has no key and is priced as plain wheat flour (disclosed stand-in; the amount is 'enough to combine', so 100 g is my assumption). พริกแกง is not specified further and is priced as red curry paste (stand-in, keyed animal). The Knorr powder is omitted. DEEP-FRIED: so it is NOT tagged clean. DISTINCT: {banana_flower} alone is a new main set; this is batter-fried strips, not the patties of th_206 ทอดมันหัวปลี. NUTRITION METHOD (weak spot): computed; the page says '1 plate', which is assumed to be 2 servings; the oil is my ASSUMPTION of about 40 g absorbed across the plate (frying oil absorption is not otherwise modelled). Only banana flower, batter flour, paste and absorbed oil are counted. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because it is deep-fried; keto: no, 39.1 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
     "id": "th_384",
-    "category": "snack"
+    "category": "savory"
   },
   {
     "name_th": "หน่อไม้ฝรั่งผัดน้ำมันหอย",
@@ -19219,7 +18820,7 @@
     "recipe_source_url": "https://www.wongnai.com/recipes/ugc/f13a66b05e8647b59acbcd27f04f4cd9",
     "notes": "SOURCE (fetched, Wongnai): กระเจี๊ยบเขียว 20 ฝัก, แป้งทอดกรอบ 8 ช้อนโต๊ะ, ไข่ไก่ 1 ฟอง, เกลือ 1 1/2 ช้อนชา, น้ำมัน 1 ถ้วย; prep 10 + cook 15 min. The pods are cut into 1 cm rounds, boiled 2 minutes in salted water, then coated in batter and deep-fried. DEEP-FRIED: so it is NOT tagged clean. MAIN vs OPTIONAL (judgment call): okra is the dish; the batter flour and the egg in the batter are coatings, so they are optional (their grams ARE counted in the nutrition). The egg is a keyed animal ingredient even though it is optional, so the tool correctly excludes the dish for vegan; egg is vegetarian-OK, as in th_072/th_195, so vegetarian stays allowed. This keeps {okra} alone distinct from th_072/th_195 ({okra, egg} ผัดไข่) - a different technique, not another egg stir-fry. DISTINCT: {okra} alone is a new main set. NUTRITION METHOD: computed; servings ASSUMED 2 (not stated). 20 pods assumed about 12 g each = 240 g; the crisp-batter mix (8 tbsp) is priced as about 60 g of plain wheat flour (stand-in); only about 25 g of the 1 cup of frying oil is assumed absorbed (my assumption; oil absorption is not otherwise modelled). Okra uses the Thai FCD raw young-pod record (STD:399); boiling is not modelled. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: no, because it is deep-fried; keto: no, 24.9 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand.",
     "id": "th_400",
-    "category": "snack"
+    "category": "savory"
   },
   {
     "name_th": "ทอดมันปลากรายใส่ถั่วพู",
@@ -19375,6 +18976,6 @@
     "recipe_source_url": "https://www.sanook.com/women/174805/",
     "notes": "SOURCE (fetched, Sanook): แป้งเอนกประสงค์ 2 ถ้วย, แป้งขนมปัง 1/2 ถ้วย, น้ำ 1 ถ้วย, เกลือ 1/4 ช้อนชา, ต้นหอมซอยละเอียด 3-4 ต้น, น้ำมันพืช 1/2 ถ้วย; makes 4-5 pieces (no time given). The dough is rolled thin, brushed with oil, sprinkled with chopped spring onion, rolled up, coiled, flattened and pan-fried in layers. INTERNATIONAL DISH (judgment call): this is a Chinese-style scallion pancake written up in Thai, like the other internationally-inspired dishes already in the database (fried rice, spaghetti). ต้นหอมซอย is the defining ingredient (it is in the name). DISTINCT: {green_onion, wheat_flour} is a new main set (the other green_onion mains are ลาบเนื้อ, ไก่ผัดขิง and ไข่เจียวต้นหอม). Pan-fried in oil, not deep-fried. NUTRITION METHOD: computed; servings ASSUMED 4 (4-5 pieces) and cook time ASSUMED 30 min (not stated). Both flours are priced as plain wheat flour (STD:193), about 315 g (2 cups about 250 g + 1/2 cup about 65 g); 3-4 spring onions finely chopped about 40 g; the 1/2 cup of oil is mostly brushed on and left in the pan, so only about 40 g is assumed absorbed. The water carries no macros. VEGAN CHECK: flour, spring onion, salt and oil only - no animal ingredient anywhere, so the vegan and vegetarian tags from the tool are genuine. HEALTH TAGS (auto-checked against data/HEALTH_TAGS.md): clean: yes (not deep-fried, no sugar, no coconut milk, no processed meat); keto: no, 56.8 g carb is over the 10 g limit; vegetarian/vegan tags come from tools/derive_diet_tags.py (from is_animal_product), not typed by hand - this dish qualifies as vegan.",
     "id": "th_403",
-    "category": "snack"
+    "category": "savory"
   }
 ]

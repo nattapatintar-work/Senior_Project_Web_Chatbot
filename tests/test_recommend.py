@@ -332,81 +332,81 @@ def test_display_fields_do_not_change_scores_or_ranking():
 
 
 # ---------------------------------------------------------------------------
-# Category filter: a condiment is never recommended (EXCLUDED_CATEGORIES)
+# Categories: the data has exactly two (savory, dessert)
+#
+# On 2026-10-02 the category field was reduced from five values to two and ten recipes were
+# removed (backup: data/backup_recipes_pre_2cat.json). These tests replace the older
+# condiment / snack / drink tests and keep the same coverage for the two-value data.
 # ---------------------------------------------------------------------------
 
 import pytest
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 from recommender import recommend as rec_module
 
-CONDIMENT_IDS = {"th_173", "th_174", "th_221", "th_263"}   # มะนาวดอง, หอมเจียว, น้ำจิ้มผักชี, อาจาด
+# Removed on 2026-10-02: 3 drinks, 4 condiments and 3 fruit snacks.
+DELETED_IDS = {
+    "th_242", "th_245", "th_281",                  # drinks
+    "th_173", "th_174", "th_221", "th_263",        # condiments
+    "th_091", "th_106", "th_107",                  # fruit snacks
+}
+
+# Relabeled on 2026-10-02 from "snack": id -> new category.
+RELABELED = {
+    **{recipe_id: "savory" for recipe_id in (
+        "th_004", "th_081", "th_104", "th_105", "th_355", "th_384", "th_400", "th_403", "th_075")},
+    **{recipe_id: "dessert" for recipe_id in (
+        "th_112", "th_113", "th_114", "th_115", "th_228", "th_037")},
+}
 
 
 def _category_by_id() -> dict[str, str]:
     return {recipe["id"]: recipe["category"] for recipe in load_recipes()}
 
 
-def test_the_four_condiment_recipes_are_labelled_condiment():
-    """Guards the data these tests rely on: if a label changes, the tests below stop proving anything."""
-    categories = _category_by_id()
-    assert {i for i, c in categories.items() if c == "condiment"} == CONDIMENT_IDS
+def _categories_of(results: list[dict]) -> set[str]:
+    by_id = _category_by_id()
+    return {by_id[i] for i in _ids(results)}
 
 
-def test_a_condiment_never_appears_even_as_a_perfect_ingredient_match(monkeypatch):
-    # th_174 (หอมเจียว) has shallot as its only main ingredient: a perfect match for ["shallot"].
-    assert "th_174" not in _ids(recommend(["shallot"], top_k=400))
-
-    # every condiment, queried with exactly its own main ingredients, stays out of the results
-    by_id = {recipe["id"]: recipe for recipe in load_recipes()}
-    for condiment_id in CONDIMENT_IDS:
-        results = recommend(by_id[condiment_id]["main_ingredients"], top_k=400)
-        assert not (CONDIMENT_IDS & _ids(results)), condiment_id
-
-    # ...and it is the filter that removes them: switched off, th_174 is returned for the same query
-    monkeypatch.setattr(rec_module, "EXCLUDED_CATEGORIES", set())
-    assert "th_174" in _ids(recommend(["shallot"], top_k=400))
+def test_the_data_has_only_savory_and_dessert_recipes():
+    """Guards the data these tests rely on: if a third category comes back, the tests below stop proving enough."""
+    assert set(_category_by_id().values()) == {"savory", "dessert"}
 
 
-@pytest.mark.parametrize(
-    "recipe_id, category, query",
-    [
-        ("th_001", "savory", ["egg"]),          # ไข่เจียว
-        ("th_049", "dessert", ["banana"]),      # กล้วยบวชชี
-        ("th_004", "snack", ["potato"]),        # มันฝรั่งทอด
-        ("th_242", "drink", ["lime"]),          # น้ำมะนาว
-    ],
-)
-def test_savory_dessert_snack_and_drink_recipes_still_appear(recipe_id, category, query):
+def test_the_deleted_recipes_are_gone_and_never_returned():
+    assert not (DELETED_IDS & set(_category_by_id()))
+    # queries built from the deleted recipes' own main ingredients, in every category mode
+    queries = (["lime"], ["shallot"], ["coriander"], ["cucumber"], ["tamarind"], ["lychee"],
+               ["pineapple", "chili"], ["mango"])
+    for query in queries:
+        for mode in (None, "all", "savory", "dessert"):
+            assert not (DELETED_IDS & _ids(recommend(query, top_k=400, category=mode))), (query, mode)
+
+
+@pytest.mark.parametrize("recipe_id, category", sorted(RELABELED.items()))
+def test_a_relabeled_recipe_has_its_new_category(recipe_id, category):
     assert _category_by_id()[recipe_id] == category
-    assert recipe_id in _ids(recommend(query, top_k=400))
 
 
-def test_a_recipe_with_no_category_field_is_not_excluded(monkeypatch):
-    recipe = next(r for r in rec_module._RECIPES if r["id"] == "th_174")       # currently a condiment
-    assert "th_174" not in _ids(recommend(["shallot"], top_k=400))
-    monkeypatch.delitem(recipe, "category")                                      # restored after the test
-    assert "category" not in recipe
-    assert "th_174" in _ids(recommend(["shallot"], top_k=400))
+# a recipe from the relabeled table must still be recommendable in the mode matching its new label
+@pytest.mark.parametrize(
+    "recipe_id, query",
+    [("th_004", ["potato"]), ("th_113", ["banana"]), ("th_037", ["sweet_potato"]), ("th_403", ["wheat_flour"])],
+)
+def test_a_relabeled_recipe_appears_in_its_own_mode_only(recipe_id, query):
+    own = RELABELED[recipe_id]
+    other = "dessert" if own == "savory" else "savory"
+    assert recipe_id in _ids(recommend(query, top_k=400, category=own))
+    assert recipe_id in _ids(recommend(query, top_k=400, category="all"))
+    assert recipe_id not in _ids(recommend(query, top_k=400, category=other))
 
-
-def test_category_filter_helper_and_constant():
-    assert rec_module.EXCLUDED_CATEGORIES == {"condiment"}
-    assert rec_module._passes_category_filter({"category": "condiment"}) is False
-    for category in ("savory", "dessert", "snack", "drink", None):
-        assert rec_module._passes_category_filter({"category": category}) is True
-    assert rec_module._passes_category_filter({}) is True
-
-
-# ---------------------------------------------------------------------------
-# Category picker: recommend(category=...) is a hard filter applied before scoring
-# ---------------------------------------------------------------------------
 
 PICKER_QUERIES = (["egg"], ["pork"], ["banana"], ["chicken", "egg"], ["potato"], ["lime"], ["pineapple"])
 
 
-def _categories_of(results: list[dict]) -> set[str]:
-    by_id = _category_by_id()
-    return {by_id[i] for i in _ids(results)}
+def test_all_mode_returns_both_savory_and_dessert_when_both_exist():
+    assert _categories_of(recommend(["egg"], top_k=400, category="all")) == {"savory", "dessert"}
 
 
 def test_savory_mode_returns_only_savory_recipes():
@@ -421,33 +421,10 @@ def test_dessert_mode_returns_only_dessert_recipes():
         assert _categories_of(recommend(query, top_k=400, category="dessert")) <= {"dessert"}, query
 
 
-def test_all_mode_can_return_savory_dessert_snack_and_drink():
-    seen = set()
+def test_all_mode_is_the_union_of_savory_and_dessert_results():
     for query in PICKER_QUERIES:
-        seen |= _categories_of(recommend(query, top_k=400, category="all"))
-    assert seen == {"savory", "dessert", "snack", "drink"}          # and never condiment
-
-
-def test_snack_and_drink_recipes_appear_only_in_all_mode():
-    assert "th_004" in _ids(recommend(["potato"], top_k=400, category="all"))        # snack
-    assert "th_242" in _ids(recommend(["lime"], top_k=400, category="all"))          # drink
-    for mode in ("savory", "dessert"):
-        assert not ({"th_004", "th_242"} & _ids(recommend(["potato", "lime"], top_k=400, category=mode)))
-
-
-def test_all_mode_is_the_union_of_savory_dessert_snack_and_drink_results():
-    results = {mode: _ids(recommend(["banana"], top_k=400, category=mode)) for mode in ("all", "savory", "dessert")}
-    assert results["savory"] | results["dessert"] <= results["all"]
-    extra = results["all"] - results["savory"] - results["dessert"]
-    assert extra and {_category_by_id()[i] for i in extra} <= {"snack", "drink"}
-
-
-@pytest.mark.parametrize("category", [None, "all", "savory", "dessert"])
-def test_a_condiment_never_appears_in_any_category_mode(category):
-    by_id = {recipe["id"]: recipe for recipe in load_recipes()}
-    for condiment_id in CONDIMENT_IDS:
-        results = recommend(by_id[condiment_id]["main_ingredients"], top_k=400, category=category)
-        assert not (CONDIMENT_IDS & _ids(results)), (category, condiment_id)
+        results = {mode: _ids(recommend(query, top_k=400, category=mode)) for mode in ("all", "savory", "dessert")}
+        assert results["all"] == results["savory"] | results["dessert"], query
 
 
 def test_the_default_is_identical_to_all_and_to_not_passing_the_argument():
@@ -464,16 +441,56 @@ def test_an_unknown_category_raises(bad):
         recommend(["egg"], category=bad)
 
 
-def test_a_recipe_without_a_category_key_matches_all_mode_only(monkeypatch):
-    recipe = next(r for r in rec_module._RECIPES if r["id"] == "th_174")       # a condiment today
-    monkeypatch.delitem(recipe, "category")
-    assert "th_174" in _ids(recommend(["shallot"], top_k=400, category="all"))
-    assert "th_174" in _ids(recommend(["shallot"], top_k=400))
-    for mode in ("savory", "dessert"):
-        assert "th_174" not in _ids(recommend(["shallot"], top_k=400, category=mode))
-
-
 def test_the_category_filter_runs_before_scoring_so_it_cannot_change_scores():
     everything = {d["id"]: d["score"] for d in recommend(["egg"], top_k=400, category="all")}
     savory = {d["id"]: d["score"] for d in recommend(["egg"], top_k=400, category="savory")}
     assert savory and all(everything[i] == score for i, score in savory.items())
+
+
+# ---------------------------------------------------------------------------
+# EXCLUDED_CATEGORIES is kept as a safeguard: no recipe has an excluded category today,
+# so these tests build a tiny synthetic situation to prove it still works.
+# ---------------------------------------------------------------------------
+
+def test_category_filter_helper_and_constant():
+    assert rec_module.EXCLUDED_CATEGORIES == {"condiment"}
+    assert rec_module._passes_category_filter({"category": "condiment"}) is False
+    for category in ("savory", "dessert", None):
+        assert rec_module._passes_category_filter({"category": category}) is True
+    assert rec_module._passes_category_filter({}) is True
+
+
+def _with_synthetic_recipe(monkeypatch, **overrides) -> dict:
+    """Add a copy of th_004 (potato) to the recommender's catalog, refitting its matrix, restored after the test."""
+    base = next(r for r in rec_module._RECIPES if r["id"] == "th_004")
+    synthetic = {**base, "id": "th_synthetic", **overrides}
+    recipes = rec_module._RECIPES + [synthetic]
+    vectorizer = TfidfVectorizer(analyzer=lambda doc: doc)
+    matrix = vectorizer.fit_transform([rec_module._recipe_document(r) for r in recipes])
+    monkeypatch.setattr(rec_module, "_RECIPES", recipes)
+    monkeypatch.setattr(rec_module, "_VECTORIZER", vectorizer)
+    monkeypatch.setattr(rec_module, "_RECIPE_MATRIX", matrix)
+    return synthetic
+
+
+def test_a_recipe_in_an_excluded_category_is_still_filtered_out(monkeypatch):
+    _with_synthetic_recipe(monkeypatch, category="condiment")
+    for mode in (None, "all", "savory", "dessert"):
+        results = _ids(recommend(["potato"], top_k=400, category=mode))
+        assert "th_synthetic" not in results, mode
+    assert "th_004" in _ids(recommend(["potato"], top_k=400, category="all"))
+
+    # ...and it is the filter that removes it: switched off, the same query returns it
+    monkeypatch.setattr(rec_module, "EXCLUDED_CATEGORIES", set())
+    assert "th_synthetic" in _ids(recommend(["potato"], top_k=400, category="all"))
+
+
+def test_a_recipe_without_a_category_key_matches_all_mode_only(monkeypatch):
+    recipe = next(r for r in rec_module._RECIPES if r["id"] == "th_004")       # savory today
+    assert "th_004" in _ids(recommend(["potato"], top_k=400, category="savory"))
+    monkeypatch.delitem(recipe, "category")                                      # restored after the test
+    assert "category" not in recipe
+    assert "th_004" in _ids(recommend(["potato"], top_k=400, category="all"))
+    assert "th_004" in _ids(recommend(["potato"], top_k=400))
+    for mode in ("savory", "dessert"):
+        assert "th_004" not in _ids(recommend(["potato"], top_k=400, category=mode))

@@ -11,90 +11,64 @@ web/
   css/styles.css      the design's tokens/components (+ clearly marked "extension" rules)
   js/config.js        API_BASE (the one file you normally edit)
   js/data.js          GENERATED: 26 seasoning tiles + key -> Thai name map (from data/ingredients.json)
-  js/logic.js         pure decisions (chips, cards, error mapping, "show more") - unit-tested under Node
+  js/logic.js         pure decisions (chips, cards, error mapping, "show more", confirm corrections) - unit-tested under Node
   js/api.js           fetch wrapper: timeouts, multipart, one normalised error shape
   js/images.js        photo prep: decode, downscale to <=1600 px JPEG, thumbnails
   js/app.js           state, rendering, the conversation flow
   tests/*.test.js     node --test (no dependencies)
 ```
 
+## How it works
+
+```
+browser (this page) -> nginx -> FastAPI (api/app.py, one uvicorn worker)
+```
+
+| User does | Route | What the backend runs |
+|---|---|---|
+| Ticks seasonings, confirms | `POST /seasoning` | creates the session; locked once the chat starts |
+| Sends photos | `POST /detect` | YOLO (`api/mock_cv.py`); the confidence cutoff is `data/thresholds.yaml` |
+| Sends text | `POST /extract_bert` | **BERT NER first** (`nlp/extract_bert.py`). If BERT finds nothing or is unsure, **a Claude model** (default `claude-sonnet-5`, env `EXTRACTION_LLM_MODEL`) is asked instead. If the model folder is missing, or the LLM call fails or there is no API key, the **keyword extractor** (`nlp/extract.py`) answers. Words tagged as ingredients that the dictionary does not know come back in `unknown`. |
+| Replies to "is this list right?" | `POST /confirm` | **Claude Haiku 4.5** classifies the reply (confirm / reject / confirm+correction / unclear); the keyword classifier answers when there is no key or the call fails. |
+| Ticks wrong items / adds text after a reject | `POST /correct` | keyword `extract()` for the added text |
+| Confirms the list | `POST /recommend` | TF-IDF + cosine with the diet filter (`recommender/recommend.py`); no LLM |
+| (page load / monitoring) | `GET /health` | `{"status","detector","bert"}` |
+
+`POST /extract` (the keyword extractor alone) is not called by the UI; it stays available as a manual fallback (switch the string in `js/api.js`).
+
+Rules the UI mirrors from the backend:
+- The LLM never writes the reply text and never picks the menu; replies are templates in `js/app.js`.
+- Only typed "no X" (for example "ไม่เอาหมู") bans dishes, and only those appear under the "ไม่เอา" chip group. Taking an ingredient out at the confirm step, or ticking it in the checklist, just removes it from the list (shown as a struck-through chip) and does **not** ban dishes.
+- Words the dictionary does not know are listed in a short note under the bubble; the confirm flow carries on.
+- The category picker (ทั้งหมด / อาหารคาว / ขนมหวาน, shown with the ingredient list) is sent as `category` on `POST /recommend` (no new route): `savory` and `dessert` are hard filters, `all` applies no category filter (the data has only savory and dessert recipes, so it is their union), and the choice resets to `all` every round.
+
+## Configuration
+
+**Frontend:** `js/config.js` holds `API_BASE`. `""` means same origin (nginx serves the page and the API on one address), a URL points to another server. `?api=<url>` overrides it for one page load.
+
+**Backend environment variables** (names only; defaults, meaning and what breaks without them are in `.env.example` and `docs/DEPLOY.md`):
+`ANTHROPIC_API_KEY`, `EXTRACTION_LLM_MODEL`, `BERT_NER_MODEL_PATH`, `SESSION_TTL_SECONDS`, `CORS_ORIGINS`, `TRUST_FORWARDED_FOR`.
+The app runs without any of them: with no API key it uses the keyword classifier/extractor, and without the BERT weights it uses the keyword extractor.
+
 ## Run it locally
 
 **Against a local backend (recommended for development)**
 
 ```bash
-# terminal 1 - backend; CORS_ORIGINS lets the page on :8080 call it
+# terminal 1 - backend, from the repo root; CORS_ORIGINS lets the page on :8080 call it
 CORS_ORIGINS=http://localhost:8080 python -m uvicorn api.app:app --port 8000
 # terminal 2 - static files
 cd web && python -m http.server 8080
 ```
 
-Open <http://localhost:8080/?api=http://localhost:8000>. The `?api=` parameter overrides `API_BASE` for that page load,
-so nothing needs editing. (PowerShell: `$env:CORS_ORIGINS="http://localhost:8080"` before starting uvicorn.)
+Open <http://localhost:8080/?api=http://localhost:8000>. (PowerShell: `$env:CORS_ORIGINS="http://localhost:8080"` before starting uvicorn.)
 
-**Against the deployed EC2 backend from your machine**
+- Put a real `ANTHROPIC_API_KEY` in `.env` (copy `.env.example`) to use the LLM paths; leave it out to run on the keyword paths.
+- `models/bert_ner/model.safetensors` and the YOLO `.pt` file are git-ignored. Without the first, text goes through the keyword extractor; without the second, `/detect` answers 503 (`GET /health` shows both states).
+- Use a single uvicorn worker: chat sessions and rate limits live in that process's memory.
+- Don't open `index.html` by double-clicking (`file://`): the page's origin becomes `null`, which browsers block for API calls.
 
-`API_BASE` already defaults to `http://15.135.217.132`. A page served from `localhost:8080` is a different origin from that
-server, so the server must allow it: add `Environment=CORS_ORIGINS=http://localhost:8080` to
-`/etc/systemd/system/foodfridgegreen-api.service`, then `sudo systemctl daemon-reload && sudo systemctl restart foodfridgegreen-api`.
-(The `GET` method is now in the CORS allow-list too, so a browser can call `/health`.) Serving the page from the EC2 itself
-(next section) avoids CORS altogether.
-
-Don't open `index.html` by double-clicking (`file://`): the page's origin becomes `null`, which browsers block for API calls.
-
-## Serve it from the same EC2 instance (existing nginx)
-
-Same origin as the API, no CORS, and the page and API share one address.
-
-1. **Backend first.** This frontend needs the enriched `/recommend` (adds `cook_time_min`, `recipe_source_url`,
-   `main_ingredients`, `seasonings` per recipe):
-   ```bash
-   ssh -i <key.pem> ubuntu@15.135.217.132
-   cd ~/app && git pull && sudo systemctl restart foodfridgegreen-api
-   ```
-2. **Copy the static files somewhere nginx can read.** `/home/ubuntu` is `drwxr-x---`, so nginx (`www-data`) cannot read `~/app/web`
-   directly; publish a copy (repeat this after every `git pull` that changes `web/`):
-   ```bash
-   sudo mkdir -p /var/www/foodfridgegreen
-   sudo cp -r ~/app/web/. /var/www/foodfridgegreen/
-   sudo rm -rf /var/www/foodfridgegreen/tests /var/www/foodfridgegreen/README.md   # optional: not needed at runtime
-   ```
-3. **nginx** (`/etc/nginx/sites-available/foodfridgegreen`): serve the files at `/`, proxy only the API paths.
-   ```nginx
-   server {
-       listen 80 default_server;
-       listen [::]:80 default_server;
-       server_name _;
-       client_max_body_size 45m;               # photo uploads (5 x 8 MB)
-
-       root /var/www/foodfridgegreen;
-       index index.html;
-
-       location / {
-           try_files $uri $uri/ =404;
-           add_header Cache-Control "no-cache";  # a redeploy shows up on the next refresh
-       }
-
-       location ~ ^/(health|detect|extract|confirm|correct|seasoning|recommend)$ {
-           proxy_pass http://127.0.0.1:8000;
-           proxy_set_header Host $host;
-           proxy_set_header X-Real-IP $remote_addr;
-           proxy_set_header X-Forwarded-For $remote_addr;   # overwrite, so the rate limiter can't be spoofed
-           proxy_set_header X-Forwarded-Proto $scheme;
-           proxy_read_timeout 60s;
-       }
-   }
-   ```
-   ```bash
-   sudo nginx -t && sudo systemctl reload nginx
-   ```
-4. Open `http://15.135.217.132/`. Because the page and the API are now the same origin, you can set
-   `API_BASE: ""` in `web/js/config.js` (same-origin, works if the IP changes); the default absolute IP also works.
-
-Note: with this config the API is only reachable at those seven paths (FastAPI's `/docs` is no longer proxied).
-
-**Separate hosting** (S3, Netlify, GitHub Pages, ...): set `API_BASE` to the API's address and add the page's origin to
-`CORS_ORIGINS` on the server. An `https://` page cannot call this `http://` API (browsers block mixed content) until the API has TLS.
+**Deploying** (nginx, systemd, model files, environment, smoke tests, rollback): see `docs/DEPLOY.md`. The nginx rule must list every route above, including `/extract_bert`.
 
 ## What follows the design, and what is added
 
@@ -103,7 +77,7 @@ confirm/pending/locked states, the gate ("ยืนยันเครื่อ�
 (plain / struck / +added), recipe cards (rank, minutes, kcal, tags, ดูสูตร, main-ingredient and seasoning have/miss chips), the
 composer with thumbnails, and the design's scroll-anchoring rule.
 
-Real behavior the mock only pretended: every step calls the backend (`/seasoning`, `/detect`, `/extract`, `/confirm`, `/correct`,
+Real behavior the mock only pretended: every step calls the backend (`/seasoning`, `/detect`, `/extract_bert`, `/confirm`, `/correct`,
 `/recommend`), the seasoning tab locks when the server locks it, "new chat" keeps your ticks (localStorage) but needs a re-confirm.
 
 Additions the design does not show (built in the same visual language, marked `extension` in the CSS):
@@ -111,9 +85,10 @@ Additions the design does not show (built in the same visual language, marked `e
 | Addition | Why |
 |---|---|
 | Correction checklist (tap wrong items, add text, "อัปเดตรายการ") | the backend's `reject` -> `/correct` loop has no design |
-| "ไม่เอา" and "เงื่อนไข" chip groups | text-derived exclusions and health tags are central to the backend |
+| "ไม่เอา" and "เงื่อนไข" chip groups | typed exclusions and health tags are central to the backend |
 | A corrected/edited list is shown and confirmed again | real stage is `awaiting_confirm`; the mock jumped to results |
 | Re-ask bubble for an `unclear` reply | the classifier's fourth intent |
+| Note for ingredient words the dictionary does not know | `ExtractResponse.unknown` |
 | "ขอเพิ่ม"/"more" only when it is the whole message | the mock's `/เพิ่ม/` also matched "เพิ่มกระเทียม" |
 | Up to 5 photos, paste-to-attach, downscale to <=1600 px JPEG | backend limit is 5 x 8 MB; phone photos are often bigger |
 | Error bubbles with "ลองอีกครั้ง", session-expiry recovery, toast | network failure, 429, 404 session gone, 503, 413, 422 |
@@ -122,18 +97,21 @@ Additions the design does not show (built in the same visual language, marked `e
 ## Tests
 
 ```bash
-node --test "web/tests/*.test.js"          # logic + API wrapper (34 tests, no dependencies)
-python -m pytest tests/test_web_data.py    # data.js still matches data/ingredients.json
-python tools/gen_web_data.py               # regenerate data.js after editing the ingredient dictionary
+node --test web/tests/*.test.js              # logic + API wrapper, no dependencies (list the files: a bare directory fails on Node 24)
+python -m pytest -q                          # whole backend suite (no real API calls: tests/conftest.py blocks them)
+python -m pytest tests/test_web_api.py tests/test_web_data.py   # the web API contract and data.js sync
+python tools/gen_web_data.py                 # regenerate data.js after editing the ingredient dictionary
 ```
 
 ## Known limits
 
 - Chat history lives in the page; a refresh starts a new chat (the seasoning ticks are remembered, the server session is not resumed).
-- Server sessions expire after 1 hour idle; the UI rebuilds one silently and asks you to resend.
-- Rate limits are per IP: `/detect` 5/min, everything else 10/min. The UI shows a "ส่งถี่เกินไป" bubble with retry.
-- Text like "ไม่เอาหมู" typed into the checklist's add field is applied by the server, but `/correct` does not echo the exclusion list,
-  so that bubble may not show a "ไม่เอา" chip for it. The recommendations still honor it.
+- Server sessions expire after 1 hour idle and are lost on a restart; the UI rebuilds one silently and asks you to resend.
+- Rate limits are per client address: `/detect` 5/min, everything else 10/min. The UI shows a "ส่งถี่เกินไป" bubble with retry. Behind nginx `TRUST_FORWARDED_FOR=1` is required, otherwise all visitors share one bucket.
+- The first text message after a server restart is slow (the BERT model is loaded then).
+- Text like "ไม่เอาหมู" typed into the checklist's add field is applied and banned by the server, but `/correct` does not echo the exclusion list, so that bubble does not show a "ไม่เอา" chip for it. The recommendations still honor it.
+- The "ไม่เอา" chips only grow within a chat; the server clears its exclusions when a finished round restarts (and un-bans an item the user later adds again), so a stale chip can remain until "new chat".
+- Ingredient words typed into `/confirm` replies or the checklist that the dictionary does not know are dropped without a note (the `unknown` note only covers the main text box).
 - HEIC photos can't be decoded by desktop Chrome; the UI asks for a JPG. (iOS/Safari converts on pick.)
 - Thai is the design language: negation detection on the server is Thai-only by design (`ไม่เอา…`).
 - The font (Anuphan) loads from Google Fonts; offline it falls back to Noto Sans Thai / the system Thai font.

@@ -51,3 +51,12 @@ desktop.ini
 # ---------------------------------------------------------------------------
 # Throwaway experimentation, not meant to enter permanent history.
 Experiment/
+
+# added 2026-10-02 (security audit)
+*.pem
+id_rsa*
+credentials*
+*.p12
+*.pfx
+tmp/
+scratch/

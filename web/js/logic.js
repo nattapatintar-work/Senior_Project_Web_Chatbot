@@ -99,7 +99,7 @@
 
   // ---------------------------------------------------------------------
   // Category picker (all / savory / dessert): the hard filter POST /recommend applies before scoring.
-  // "all" is the only mode that includes snack and drink recipes; condiments are never shown.
+  // "all" applies no category filter (savory and dessert recipes alike); the data has only those two categories.
   // ---------------------------------------------------------------------
 
   /** [value, Thai label] in display order; the values are exactly what the backend accepts. */

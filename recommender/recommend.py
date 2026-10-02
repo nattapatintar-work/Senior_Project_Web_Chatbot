@@ -74,14 +74,15 @@ RECIPES_PATH = Path(__file__).parent.parent / "data" / "recipes.json"
 # can be tuned without touching the scoring logic.
 SEASONING_WEIGHT = 0.3
 
-# Recipe `category` values that recommend() never returns. A condiment (a sauce, a pickle, a
-# crispy-shallot topping) is something served WITH a dish, not a dish a user asks for, so it is
-# dropped before scoring however well its ingredients match. Always on, not a parameter.
+# Recipe `category` values that recommend() never returns. The data now has only two categories
+# (savory, dessert), so this set matches no recipe today; it is kept as a harmless safeguard: a
+# recipe later given a category listed here (for example a sauce or pickle labelled "condiment")
+# is dropped before scoring however well its ingredients match. Always on, not a parameter.
 # Recipes with no `category` field are never excluded.
 EXCLUDED_CATEGORIES = {"condiment"}
 
 # What recommend()'s `category` argument accepts. "all" (or None) applies no category filter, so
-# snack and drink recipes are returned only then; "savory" / "dessert" keep only recipes whose
+# savory and dessert recipes are both returned; "savory" / "dessert" keep only recipes whose
 # `category` equals it. EXCLUDED_CATEGORIES applies in every mode.
 CATEGORY_CHOICES = ("all", "savory", "dessert")
 
@@ -211,9 +212,10 @@ def recommend(
                      keys passed here are ignored.
         category:    the user's category choice, a hard filter applied before
                      scoring (see CATEGORY_CHOICES): None or "all" = no filter
-                     (the only mode that returns snack and drink recipes),
+                     (savory and dessert recipes alike),
                      "savory" / "dessert" = only recipes of that category.
-                     Condiments are never returned. Any other value raises
+                     A recipe whose category is in EXCLUDED_CATEGORIES is never
+                     returned (none today). Any other value raises
                      ValueError. With the default, results are exactly what
                      they were before this argument existed.
 

@@ -9,6 +9,9 @@
 
 ## 🛠️ Working Style
 
+- **Always answer the user in English**, even when the user's message or the
+  data being discussed is in Thai. (Thai ingredient names, dish names and code
+  identifiers stay as-is; only the surrounding prose is English.)
 - **Show actual diffs/data, not prose summaries.** When reporting a change for
   review (a recipe edit, an ingredient field, a tag fix), show the exact
   before/after values or JSON — not a description of what changed. The user
@@ -203,15 +206,21 @@ Rules:
 Fields: `is_seasoning` (bool), `is_animal_product` (bool), `yolo_class_id`
 (100 non-null; `null` = text-only), `synonyms[]`, `confusable_with[]`, plus `name_th`.
 
-**`data/recipes.json` — 400 recipes**, IDs `th_001`–`th_403` with **gaps at th_059,
-th_060, th_073** (IDs are never reused). Fields: `main_ingredients[]`,
-`optional_ingredients[]`, `seasonings[]`, `health_tags[]`, `excluded_for[]`, nutrition
-data (+ `nutrition_source`, `cook_time_min`, `recipe_source_url`).
+**`data/recipes.json` — 390 recipes**, IDs `th_001`–`th_403` with **gaps at th_059,
+th_060, th_073, th_091, th_106, th_107, th_173, th_174, th_221, th_242, th_245, th_263,
+th_281** (IDs are never reused). Fields: `main_ingredients[]`,
+`optional_ingredients[]`, `seasonings[]`, `health_tags[]`, `excluded_for[]`, `category`
+(`savory` or `dessert` only: 292 / 98), nutrition data (+ `nutrition_source`,
+`cook_time_min`, `recipe_source_url`).
+
+> 📝 2026-10-02: `category` was reduced from 5 values (savory, dessert, snack, drink,
+> condiment) to 2 (savory, dessert); 10 drink/condiment/fruit-snack recipes were removed and
+> 15 snacks relabeled. The pre-change file is `data/backup_recipes_pre_2cat.json`.
 
 **Health tags in use:** `clean`, `keto`, `vegetarian`, `vegan`.
 
 **Diet filter source of truth:** `excluded_for` (single field read). Verified 100%
-consistent with the `is_animal_product` derivation across all 400 recipes, zero
+consistent with the `is_animal_product` derivation across all 390 recipes, zero
 mismatches. **Keep `is_animal_product` as a validator** for future recipe additions to
 catch human error.
 

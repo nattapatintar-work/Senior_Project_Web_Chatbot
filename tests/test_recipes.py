@@ -245,7 +245,7 @@ def test_every_recipe_cites_where_its_ingredient_list_came_from():
         assert url.startswith("http"), f"{recipe['id']}: recipe_source_url '{url}' is not a URL"
 
 
-CATEGORIES = ("savory", "dessert", "snack", "drink", "condiment")
+CATEGORIES = ("savory", "dessert")
 
 
 def test_every_recipe_has_a_valid_category():
@@ -254,16 +254,26 @@ def test_every_recipe_has_a_valid_category():
     the only way to answer "how many desserts are there" was to hand-count
     recipe ID ranges from build logs, which isn't a real, checkable field and
     would silently go stale the next time a recipe is added without updating
-    that manual tracking. It was savory/dessert only; snack, drink and
-    condiment were added after a re-audit found drinks, fried snacks and
-    sauces sitting in the dessert and savory buckets. recommend() never
-    returns a condiment (recommender.recommend.EXCLUDED_CATEGORIES).
+    that manual tracking. The allowed set is exactly savory and dessert: it was
+    widened to five values (snack, drink, condiment added) and reduced back to
+    two on 2026-10-02, when ten recipes were removed and fifteen relabeled
+    (backup: data/backup_recipes_pre_2cat.json).
     """
     for recipe in load_recipes():
         assert "category" in recipe, f"{recipe['id']} has no category"
         assert recipe["category"] in CATEGORIES, (
             f"{recipe['id']}: category '{recipe['category']}' is not one of {CATEGORIES}"
         )
+
+
+def test_the_recipe_count_after_the_2026_10_02_two_category_change_is_390():
+    """
+    The one place a fixed recipe count is pinned. 400 recipes became 390 on 2026-10-02 when the
+    category field was reduced to savory/dessert and ten drink, condiment and fruit-snack recipes
+    were removed (backup: data/backup_recipes_pre_2cat.json). Adding a recipe later means
+    updating this number on purpose; test_there_are_at_least_seventy_recipes is the floor.
+    """
+    assert len(load_recipes()) == 390
 
 
 def test_nutrition_method_is_declared_and_computed_recipes_show_their_working():
