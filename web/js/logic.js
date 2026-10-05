@@ -263,6 +263,18 @@
     return out;
   };
 
+  /**
+   * The client's copy of the health tags after one message, mirroring the server's rule
+   * (api/state.py SessionState.apply_text_result): the tags are REPLACED by the latest parse that
+   * mentions at least one; a message that mentions none leaves the current tags alone. Duplicates in
+   * the incoming list are dropped, order kept. (unionInOrder would accumulate "keto" then "vegan"
+   * into both, while the server holds only "vegan".) Always returns a new array.
+   */
+  logic.nextHealthTags = function (current, incoming) {
+    var fresh = logic.unionInOrder([], incoming);
+    return fresh.length ? fresh : (current || []).slice();
+  };
+
   // ---------------------------------------------------------------------
   // Recipe card view-model
   // ---------------------------------------------------------------------

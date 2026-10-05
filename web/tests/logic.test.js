@@ -200,6 +200,55 @@ test("buildCard: other tags are unaffected by the keto caveat", () => {
   assert.deepEqual(L.buildCard(other, 1, NAMES, []).tags, ["clean", "vegan"]);
 });
 
+// ---------------------------------------------------------------- health tags: replace like the server
+// api/state.py SessionState.apply_text_result: the latest parse that mentions a tag REPLACES the tags;
+// a message with no tag leaves them alone.
+test("nextHealthTags: the first tags are set", () => {
+  assert.deepEqual(L.nextHealthTags([], ["keto"]), ["keto"]);
+});
+
+test("nextHealthTags: a second tag REPLACES the first (keto then vegan -> vegan only)", () => {
+  assert.deepEqual(L.nextHealthTags(["keto"], ["vegan"]), ["vegan"]);
+});
+
+test("nextHealthTags: a message with no tags leaves the tags unchanged", () => {
+  assert.deepEqual(L.nextHealthTags(["keto"], []), ["keto"]);
+  assert.deepEqual(L.nextHealthTags(["keto"], undefined), ["keto"]);
+  assert.deepEqual(L.nextHealthTags(["keto"], null), ["keto"]);
+});
+
+test("nextHealthTags: duplicates in one message are dropped, order preserved", () => {
+  assert.deepEqual(L.nextHealthTags([], ["vegan", "keto", "vegan", "keto"]), ["vegan", "keto"]);
+  assert.deepEqual(L.nextHealthTags(["clean"], ["keto", "keto", "vegan"]), ["keto", "vegan"]);
+});
+
+test("nextHealthTags: empty incoming on an empty state stays empty", () => {
+  assert.deepEqual(L.nextHealthTags([], []), []);
+  assert.deepEqual(L.nextHealthTags(undefined, undefined), []);
+  assert.deepEqual(L.nextHealthTags(null, []), []);
+});
+
+test("nextHealthTags: always returns a new array and never mutates its inputs", () => {
+  const current = ["keto"];
+  const incoming = ["vegan", "vegan"];
+  assert.notEqual(L.nextHealthTags(current, []), current);
+  assert.notEqual(L.nextHealthTags(current, incoming), incoming);
+  assert.deepEqual(current, ["keto"]);
+  assert.deepEqual(incoming, ["vegan", "vegan"]);
+});
+
+test("nextHealthTags: the repro sequence (keto, then vegan, then a message with no tag)", () => {
+  let tags = [];
+  tags = L.nextHealthTags(tags, ["keto"]);            // "มีไข่ อยากกินคีโต"
+  assert.deepEqual(tags, ["keto"]);
+  tags = L.nextHealthTags(tags, ["vegan"]);           // "เปลี่ยนเป็นวีแกน"
+  assert.deepEqual(tags, ["vegan"], "the server holds only vegan, so the chips must not still show keto");
+  tags = L.nextHealthTags(tags, []);                  // "มีไก่" mentions no tag
+  assert.deepEqual(tags, ["vegan"]);
+  // what the old accumulating merge produced for the same two messages
+  assert.deepEqual(L.unionInOrder(L.unionInOrder([], ["keto"]), ["vegan"]), ["keto", "vegan"]);
+});
+
 test("safeUrl only lets http(s) links through", () => {
   assert.equal(L.safeUrl("https://a.com/x"), "https://a.com/x");
   assert.equal(L.safeUrl("http://a.com"), "http://a.com");

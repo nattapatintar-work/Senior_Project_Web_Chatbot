@@ -640,7 +640,8 @@
         S.locked = true;
         S.textKeys = L.unionInOrder(S.textKeys, extracted.include);
         S.excluded = L.unionInOrder(S.excluded, extracted.exclude);
-        S.healthTags = L.unionInOrder(S.healthTags, extracted.health_tags);
+        // /extract answers with only the tags parsed from THIS message, so apply the server's replace rule here.
+        S.healthTags = L.nextHealthTags(S.healthTags, extracted.health_tags);
         S.combined = extracted.ingredients;
       }
 
@@ -731,8 +732,8 @@
     replaceTyping([{
       id: nid("r"), role: "bot", kind: "results",
       text: first ? (slice.length < L.PAGE_SIZE ? "เมนูที่ทำได้จากของที่มี" : "เมนูที่ทำได้จากของที่มี 3 อันดับแรก") : "เมนูถัดไปที่ใกล้เคียง",
-      // The tags the SERVER filtered on (resp.used.health_tags). S.healthTags is not used here: the client
-      // accumulates tags (unionInOrder) while the server replaces them, so the two can differ.
+      // The tags the SERVER filtered on (resp.used.health_tags): the one value that is exactly what recommend()
+      // used, so it is read here instead of the client's own S.healthTags copy.
       cards: slice.map(function (r, i) { return L.buildCard(r, L.PAGE_SIZE * page + i + 1, NAMES, resp.used && resp.used.health_tags); }),
       cardFooter: S.moreAvailable ? "อยากดูเมนูอื่น พิมพ์ “ขอเพิ่ม” ได้เลย" : "",
     }]);
@@ -755,7 +756,8 @@
       guard(st);
       m.done = true;
       S.combined = resp.ingredients;
-      S.healthTags = L.unionInOrder(S.healthTags, resp.health_tags);
+      // /correct answers with the SESSION's current tags (api/app.py correct_endpoint), so take them as they are.
+      S.healthTags = L.unionInOrder([], resp.health_tags);
       S.textKeys = L.unionInOrder(S.textKeys, resp.added);
 
       var out;

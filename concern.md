@@ -592,6 +592,15 @@ are not modelled.
 > (`api/state.py`, `SessionState.apply_text_result`), so after "keto" then "vegan" the "เงื่อนไข" chips can
 > still list keto although recommend() filtered on vegan only. The caveat reads the server's
 > `used.health_tags` (`api/app.py` `/recommend`), so it is not affected.
+> **Update 2026-10-05 (later) — the client/server health-tag mismatch above is resolved.**
+> `web/js/logic.js` now has `nextHealthTags(current, incoming)`, which applies the server's rule (replace
+> with the latest parse that mentions a tag, otherwise keep). `web/js/app.js` uses it where `/extract` and
+> `/extract_bert` answers are merged (only that message's tags come back), and takes `/correct`'s answer
+> as it is (that response carries the session's current tags). `L.unionInOrder` is unchanged and still
+> used for ingredients. Tests: `web/tests/logic.test.js` ("nextHealthTags: ..."). Remaining difference, not
+> changed because resets were left alone: after a finished round the server clears the tags on the next
+> input (`start_new_round()`), while the client clears `S.healthTags` only on "start over", so a tag-less
+> message in a new round can still show the previous round's chip.
 
 **Original entry follows.**
 
