@@ -576,6 +576,23 @@ are not modelled.
 > tests still pass — no test pinned `format_reply()`'s output text, so nothing else
 > needed updating.
 
+> **Update 2026-10-05 — the fix was lost in `1c8af19` and has been restored in the web layer.**
+> The 2026-09-15 fix lived in `api/main.py`'s `format_reply()`, which is the LINE reply path.
+> Commit `1c8af19` (2026-09-26, LINE code removal) replaced `format_reply()` and dropped the logic
+> (no `requested_health_tags` and no "ไม่รวมข้าว" in `api/main.py` at that commit or at HEAD), and the
+> web app never used `format_reply()`. So for the web app C15 was open again: a keto-tagged card showed a
+> plain "keto" even when the user never asked for keto. Restored in the web UI: `web/js/logic.js`
+> (`shouldShowKetoCaveat()`, `KETO_CAVEAT_LABEL`, `buildCard(..., requestedTags)` -> `ketoCaveat`),
+> `web/js/app.js` (`renderCard()` shows "คีโต (ไม่รวมข้าว)" in place of "keto" on that card only;
+> `recommendPage()` passes the server's `resp.used.health_tags`) and `web/tests/logic.test.js`. Same rule
+> as 2026-09-15: the qualifier appears only when the dish is `keto`-tagged AND keto is among the health tags
+> the user currently wants. `recommend()`, `nlp/extract.py` and the tagging rules are untouched.
+> Related client/server mismatch, deliberately not changed here: the client accumulates health tags
+> (`L.unionInOrder` at `web/js/app.js:643` and `:758`) while the server replaces them
+> (`api/state.py`, `SessionState.apply_text_result`), so after "keto" then "vegan" the "เงื่อนไข" chips can
+> still list keto although recommend() filtered on vegan only. The caveat reads the server's
+> `used.health_tags` (`api/app.py` `/recommend`), so it is not affected.
+
 **Original entry follows.**
 
 > **Update 2026-08-10 (Week 7 session):** Decided — deferred to Week 8, not handled in

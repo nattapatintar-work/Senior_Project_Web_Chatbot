@@ -336,7 +336,11 @@
     var meta = [];
     if (c.time !== null) meta.push(h("span", { class: "time" }, [svg("clock", 14, 1.8), h("span", { text: c.time + " นาที" })]));
     if (c.kcal !== null) meta.push(h("span", { text: c.kcal + " kcal" }));
-    c.tags.forEach(function (t) { meta.push(h("span", { class: "tag", text: t })); });
+    c.tags.forEach(function (t) {
+      // C15: "keto" becomes "คีโต (ไม่รวมข้าว)" only when the user asked for keto (decided in logic.js).
+      var label = t === "keto" && c.ketoCaveat ? L.KETO_CAVEAT_LABEL : t;
+      meta.push(h("span", { class: "tag", text: label }));
+    });
 
     var head = [h("div", { class: "card-title-col" }, [
       h("div", { class: "card-title", text: c.rank + ". " + c.name }),
@@ -727,7 +731,9 @@
     replaceTyping([{
       id: nid("r"), role: "bot", kind: "results",
       text: first ? (slice.length < L.PAGE_SIZE ? "เมนูที่ทำได้จากของที่มี" : "เมนูที่ทำได้จากของที่มี 3 อันดับแรก") : "เมนูถัดไปที่ใกล้เคียง",
-      cards: slice.map(function (r, i) { return L.buildCard(r, L.PAGE_SIZE * page + i + 1, NAMES); }),
+      // The tags the SERVER filtered on (resp.used.health_tags). S.healthTags is not used here: the client
+      // accumulates tags (unionInOrder) while the server replaces them, so the two can differ.
+      cards: slice.map(function (r, i) { return L.buildCard(r, L.PAGE_SIZE * page + i + 1, NAMES, resp.used && resp.used.health_tags); }),
       cardFooter: S.moreAvailable ? "อยากดูเมนูอื่น พิมพ์ “ขอเพิ่ม” ได้เลย" : "",
     }]);
     S.anchor = S.lastListId;

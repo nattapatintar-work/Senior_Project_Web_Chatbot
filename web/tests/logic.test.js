@@ -156,6 +156,50 @@ test("buildCard says ครบ when every seasoning is ticked, and tolerates mis
   assert.deepEqual(bare.main, []);
 });
 
+// ---------------------------------------------------------------- C15 keto caveat
+// A dish's keto tag is per dish, but a Thai meal comes with rice, so the qualifier is shown only when
+// the user asked for keto. The requested tags are the SERVER's (used.health_tags of /recommend).
+test("keto caveat: the label is exactly คีโต (ไม่รวมข้าว)", () => {
+  assert.equal(L.KETO_CAVEAT_LABEL, "คีโต (ไม่รวมข้าว)");
+});
+
+test("keto caveat: keto dish + keto requested -> caveat", () => {
+  assert.equal(L.shouldShowKetoCaveat(["keto"], ["keto"]), true);
+  assert.equal(L.shouldShowKetoCaveat(["clean", "keto"], ["keto", "clean"]), true);
+});
+
+test("keto caveat: keto dish + nothing requested -> no caveat", () => {
+  assert.equal(L.shouldShowKetoCaveat(["keto"], []), false);
+  assert.equal(L.shouldShowKetoCaveat(["keto"], undefined), false);
+  assert.equal(L.shouldShowKetoCaveat(["keto"], null), false);
+});
+
+test("keto caveat: keto dish + only vegan requested -> no caveat", () => {
+  assert.equal(L.shouldShowKetoCaveat(["keto", "vegan"], ["vegan"]), false);
+});
+
+test("keto caveat: non-keto dish + keto requested -> no caveat", () => {
+  assert.equal(L.shouldShowKetoCaveat(["vegan", "clean"], ["keto"]), false);
+  assert.equal(L.shouldShowKetoCaveat([], ["keto"]), false);
+  assert.equal(L.shouldShowKetoCaveat(undefined, ["keto"]), false);
+});
+
+test("buildCard: ketoCaveat follows the requested tags and the raw tags are never changed", () => {
+  assert.equal(L.buildCard(RECIPE, 1, NAMES, ["keto"]).ketoCaveat, true);
+  assert.equal(L.buildCard(RECIPE, 1, NAMES, []).ketoCaveat, false);
+  assert.equal(L.buildCard(RECIPE, 1, NAMES, ["vegan"]).ketoCaveat, false);
+  assert.equal(L.buildCard(RECIPE, 1, NAMES).ketoCaveat, false);          // an old server without `used`
+  assert.deepEqual(L.buildCard(RECIPE, 1, NAMES, ["keto"]).tags, ["keto"]);
+});
+
+test("buildCard: other tags are unaffected by the keto caveat", () => {
+  const other = { ...RECIPE, health_tags: ["clean", "vegan"] };
+  const c = L.buildCard(other, 1, NAMES, ["clean", "keto"]);
+  assert.deepEqual(c.tags, ["clean", "vegan"]);
+  assert.equal(c.ketoCaveat, false);
+  assert.deepEqual(L.buildCard(other, 1, NAMES, []).tags, ["clean", "vegan"]);
+});
+
 test("safeUrl only lets http(s) links through", () => {
   assert.equal(L.safeUrl("https://a.com/x"), "https://a.com/x");
   assert.equal(L.safeUrl("http://a.com"), "http://a.com");

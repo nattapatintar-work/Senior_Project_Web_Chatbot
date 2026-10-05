@@ -273,13 +273,29 @@
     return u.trim();
   };
 
+  // C15 (concern.md): a dish's `keto` tag is computed per dish, but a Thai meal is served with rice
+  // (~60 g carbohydrate), so a bare "keto" label is misleading. The qualifier is shown only when the
+  // user actually asked for keto; a dish that is merely keto-tagged keeps the plain tag.
+  logic.KETO_CAVEAT_LABEL = "คีโต (ไม่รวมข้าว)";
+
+  /**
+   * Whether a recipe card shows the keto qualifier: the recipe has `keto` AND `keto` is among the
+   * health tags the user currently wants. `requestedTags` must be the SERVER's view (the
+   * `used.health_tags` of the /recommend response), which is what recommend() really filtered on.
+   */
+  logic.shouldShowKetoCaveat = function (recipeTags, requestedTags) {
+    return (recipeTags || []).indexOf("keto") !== -1 && (requestedTags || []).indexOf("keto") !== -1;
+  };
+
   /**
    * One /recommend recipe -> everything the card template needs.
    * `have` from the server includes optional ingredients, so main-ingredient
    * chips are the recipe's mains checked against it; seasoning chips are the
    * recipe's own seasonings checked against `seasonings_matched` (the user's ticked subset).
+   * `requestedTags` (optional): the health tags the server used for this request; it only decides
+   * `ketoCaveat`. `tags` always stays the recipe's raw tags.
    */
-  logic.buildCard = function (recipe, rank, names) {
+  logic.buildCard = function (recipe, rank, names, requestedTags) {
     var haveSet = {};
     (recipe.have || []).forEach(function (k) { haveSet[k] = true; });
     var matched = {};
@@ -301,6 +317,7 @@
       time: recipe.cook_time_min == null ? null : Math.round(recipe.cook_time_min),
       kcal: kcal == null ? null : Math.round(kcal),
       tags: (recipe.health_tags || []).slice(),
+      ketoCaveat: logic.shouldShowKetoCaveat(recipe.health_tags, requestedTags),
       url: logic.safeUrl(recipe.recipe_source_url),
       main: main,
       haveMain: haveMain,
