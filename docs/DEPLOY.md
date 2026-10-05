@@ -22,7 +22,7 @@ Tick every line before restarting the service.
 - [ ] Nothing else is required. The `LINE_*` and `DEBOUNCE_SECONDS` variables belong to the legacy LINE bot and are not needed.
 
 **Model ids**
-- [ ] `python tools/check_llm_models.py` prints `OK` for both ids (it makes exactly 2 real API calls). The extraction id defaults to `claude-sonnet-5`, which has not been verified against any account. If it fails, set `EXTRACTION_LLM_MODEL`. The intent id (`claude-haiku-4-5-20251001`) is hard-coded in `api/web_config.py`; if it fails, that file has to be edited.
+- [ ] `python tools/check_llm_models.py` prints `OK` for both ids (it makes exactly 2 real API calls). The extraction id defaults to `claude-sonnet-5`. The pairwise LLM-judge run used the same id and 123 of its 124 calls returned a valid answer (`data/eval/judge_f_v1/run_summary.json`, `raw_calls.jsonl`), but those calls used different request parameters and the account is not recorded, so it has not been verified against the deployment server's own API account. If it fails, set `EXTRACTION_LLM_MODEL`. The intent id (`claude-haiku-4-5-20251001`) is hard-coded in `api/web_config.py`; if it fails, that file has to be edited.
 
 **Config**
 - [ ] `data/thresholds.yaml` `default:` is the real YOLO cutoff. It was `0.01` (marked TEMPORARY in the file) at the time of writing; Person 1 owns that value.
@@ -97,7 +97,7 @@ All routes the web UI calls (`web/js/api.js`) plus `/extract`, the keyword route
 | `/correct` | POST | yes |
 | `/recommend` | POST | yes |
 
-**Easy to miss:** `/extract` and `/extract_bert` share a prefix. An anchored regex such as `^/(...|extract|...)$` matches `/extract` only, so the older documented rule silently dropped `/extract_bert` and the UI got nginx's 404. List both names.
+**Easy to miss:** `/extract` and `/extract_bert` share a prefix. An anchored regex such as `^/(...|extract|...)$` matches `/extract` only and would silently drop `/extract_bert`, so the UI would get nginx's 404. List both names.
 
 `/etc/nginx/sites-available/foodfridgegreen`:
 
