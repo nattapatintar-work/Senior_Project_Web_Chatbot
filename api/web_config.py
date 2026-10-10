@@ -89,8 +89,9 @@ CONFIDENCE_THRESHOLD = _load_confidence_threshold()
 # Where the exported fine-tuned WangchanBERTa NER model lives: model weights
 # (.safetensors/.bin), tokenizer files, and label_config.json. Not committed
 # to git (see .gitignore) -- copy the exported model folder here, or point
-# this elsewhere with the env var. Missing folder does not crash the app: it
-# only makes /extract_bert return 503 (same non-fatal posture as the
+# this elsewhere with the env var. Missing folder does not crash the app and
+# /extract_bert does not return an error: extract_bert() falls back to the
+# keyword extractor and logs one line (same non-fatal posture as the
 # threshold/API-key config above).
 BERT_NER_MODEL_PATH = Path(
     os.getenv("BERT_NER_MODEL_PATH", str(PROJECT_ROOT / "models" / "bert_ner"))

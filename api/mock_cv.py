@@ -38,10 +38,12 @@ measurements taken on this machine before writing this file:
     First call (cold, pays model-warmup cost)   CPU: 5.7s   GPU: 2.0s
     Steady-state (warm)                         CPU: 81ms  GPU: 29ms
 
-The cold-start cost is real and would blow a chunk of the ~30s reply-token
-budget if paid on a live user's first request. _warm_up() below pays it
-once at import time instead, on a throwaway synthetic image, before the
-Flask server ever starts accepting requests.
+The cold-start cost is real and would make a live user's first request slow
+(it was written against the LINE track's ~30s reply-token budget, which no
+longer applies; the web track has no such limit, but its default request
+timeout is 30s). _warm_up() below pays it once at import time instead, on a
+throwaway synthetic image, before the FastAPI app (api/app.py, which imports
+this module when it starts) accepts requests.
 """
 
 from pathlib import Path
@@ -99,10 +101,11 @@ def _warm_up(model: YOLO) -> None:
 
 
 # Loaded once at import time, not per request — same principle as
-# nlp/extract.py's Trie and recommender/recommend.py's TF-IDF matrix: this
-# runs on the ~30s reply-token path, so paying model-load-and-warmup cost per
-# message would be wasteful, and on this machine's numbers, would blow the
-# budget outright on a cold CPU run.
+# nlp/extract.py's Trie and recommender/recommend.py's TF-IDF matrix: paying
+# model-load-and-warmup cost per request would be wasteful (api/app.py's /detect
+# calls detect() on every upload), and on this machine's numbers a cold CPU run
+# takes seconds. (Originally written for the LINE track's ~30s reply-token path,
+# which no longer applies.)
 _MODEL = YOLO(str(MODEL_PATH))
 _verify_class_mapping(_MODEL)
 print(
@@ -123,22 +126,24 @@ def detect(image_path: str) -> list[dict]:
     Returns:
         A list of {"ingredient": str, "confidence": float} dicts, sorted
         highest-confidence first — the exact shape the mock this replaces
-        always returned, so api/main.py's confidence filter and everything
-        downstream needs nothing else to change.
+        always returned, so the confidence filter in api/app.py
+        (_detect_one_image) and everything downstream needs nothing else to
+        change.
 
     conf=0.001 (ultralytics' own "val" mode default, per
     ultralytics/cfg/default.yaml) is passed explicitly here. Without it,
     ultralytics silently applies its own hidden conf=0.25 floor inside
     predict() -- confirmed both from that same config file and empirically
     (model.predictor.args.conf == 0.25 when unset) -- discarding detections
-    below 0.25 before api/main.py's own config.CONFIDENCE_THRESHOLD (0.5)
-    ever runs. Harmless today (0.5 > 0.25, so nothing our own threshold
-    would keep was ever lost), but a latent trap if thresholds.yaml's
-    default is ever tuned below 0.25, and it made an accurate "raw
-    detections" log impossible -- a call without conf= can't reveal
-    anything ultralytics already threw away. This does not change what
-    detect() returns to callers; api/main.py's own >= CONFIDENCE_THRESHOLD
-    filter still does all the real filtering, exactly as before.
+    below 0.25 before the app's own threshold (web_config.CONFIDENCE_THRESHOLD,
+    read from data/thresholds.yaml) ever runs. When this was written the
+    threshold was 0.5, so the floor was harmless; data/thresholds.yaml currently
+    holds the temporary 0.01, which is below 0.25, so passing conf= explicitly
+    now matters. It also made an accurate "raw detections" log possible -- a
+    call without conf= can't reveal anything ultralytics already threw away.
+    This does not change what detect() returns to callers; the app's own
+    >= CONFIDENCE_THRESHOLD filter in api/app.py (_detect_one_image) still does
+    all the real filtering.
     """
     results = _MODEL.predict(image_path, verbose=False, device=_DEVICE, conf=0.001)[0]
 

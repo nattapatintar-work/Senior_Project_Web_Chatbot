@@ -142,8 +142,9 @@ def _get_model_and_config():
     """
     One shared model/tokenizer/label_config (thread-safe), built on first use.
     Imports are lazy so the app still boots without transformers/torch
-    installed or the model folder present -- the failure then surfaces as a
-    503 from POST /extract_bert instead of at startup.
+    installed or the model folder present -- the failure is then raised here
+    and caught by extract_bert(), which falls back to the keyword extractor,
+    instead of failing at startup.
     """
     global _model, _tokenizer, _label_config, _load_failure
     with _model_lock:
@@ -314,8 +315,9 @@ def _get_client():
 
 def predict_entities_llm(text: str) -> list[dict]:
     """
-    Claude Sonnet 5 fallback, same prompt/parsing validated in the Colab
-    ablation (F1 0.774, 0% hallucination on the "unclear" category).
+    Claude Sonnet 5 fallback, same prompt/parsing as the Colab ablation. The
+    ablation's F1 0.774 was measured for a Claude Haiku zero-shot baseline; this
+    Sonnet fallback has no measurement in the repo (unverified).
 
     A valid answer of [] means "no entities". Anything unusable -- not JSON,
     not a list of {"value","type"} objects -- raises _BadLLMResponse, and so

@@ -137,10 +137,11 @@ def load_health_terms() -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Built once at import time, not per call. extract() runs on the LINE
+# Built once at import time, not per call. extract() originally ran on the LINE
 # reply-token path (concern C11: the token lives ~30s), so rebuilding a Trie
 # out of 300+ synonyms on every message would be a wasteful place to lose
-# time.
+# time. (LINE track dropped; web is the only deliverable, so the token limit no
+# longer applies, but building once is still cheaper per request.)
 # ---------------------------------------------------------------------------
 
 def _build_synonym_index(ingredients: dict, health_terms: dict) -> dict:

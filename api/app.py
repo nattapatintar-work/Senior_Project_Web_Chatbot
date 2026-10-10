@@ -8,7 +8,7 @@ approved.
 
 Run:   uvicorn api.app:app --port 8000
 
-THE FLOW THESE SIX ENDPOINTS SERVE  (see Claude.md §3)
+THE FLOW THESE EIGHT ROUTES SERVE  (see Claude.md §3)
 --------------------------------------------------------
     POST /seasoning     tick seasonings (before the chat starts; then locked)
     POST /detect        photo(s)  -> ingredients          } either or both;

@@ -1,9 +1,10 @@
 # 🍳 FoodFridgeGreen — Web Chatbot Track
 
 > A static-web, ChatGPT-style chatbot (FastAPI backend) that recommends Thai recipes
-> from ingredient photos + text. This is a **parallel track** to the LINE OA capstone,
-> **not a replacement for it**. This repo does **not** target LINE (see the Legacy
-> appendix at the bottom).
+> from ingredient photos + text. It was originally planned as a **parallel track** to the
+> LINE OA capstone; the LINE OA track has since been **dropped**, and this web chatbot is
+> the only deliverable. This repo does **not** target LINE (see the Legacy appendix at the
+> bottom).
 
 ---
 
@@ -39,11 +40,11 @@ People open the fridge, see a pile of random ingredients, and don't know what to
 Ingredients expire and get thrown away — a convenience problem and a household
 food-waste problem.
 
-### 1.2 This track vs. the LINE OA capstone
+### 1.2 This track vs. the (dropped) LINE OA capstone
 
 | | Source |
 |---|---|
-| **Reused 100% from the LINE OA work** | NLP pipeline (dictionary + fuzzy matching + Trie + negation), TF-IDF recommender, `detect()` interface (YOLO/Gemini wrapper), recipe database |
+| **Carried over from the LINE OA work, then modified** | NLP pipeline (dictionary + fuzzy matching + Trie + negation; `nlp/extract.py` gained `resolve_token()` and `NEGATION_CUES` for the BERT path, see §7), TF-IDF recommender (`recommender/recommend.py` gained the seasoning bonus, card display fields, category filters and a usage blend, see §7), `detect()` interface (YOLO wrapper; the Gemini fallback is not built), recipe database |
 | **Newly built here** | Frontend chat UI, backend REST API layer (replaces the LINE webhook), new session/state management (no LINE reply token / push API), AWS deployment |
 
 ### 1.3 Parent research context
@@ -67,7 +68,9 @@ baseline, consistency or nutrition experiments. It is the product track.
 
 ```
 browser (static UI) ⇄ FastAPI ─┬─ detect()           YOLO11 → Gemini fallback
-                               ├─ extract()          dictionary/fuzzy/Trie/negation
+                               ├─ extract_bert()     BERT NER → (low confidence / empty) LLM fallback
+                               │                     → keyword extract() as last resort
+                               │                     → negation cue rule → ingredients.json keys
                                ├─ intent classifier  LLM (confirm / reject / correction)
                                └─ recommend()        TF-IDF + cosine + diet filter
 ```
@@ -130,15 +133,30 @@ else:
   detections are discarded to avoid false positives. Values come from `thresholds.yaml`
   (defaults if absent).
 
-### 4.2 NLP — `extract()`
+### 4.2 NLP — `extract_bert()` (live) and `extract()` (last-resort fallback)
 ```
 Input:  "I have shrimp and egg, want clean, no pork"
 Output: {"ingredients": ["shrimp","egg"], "health_tags": ["clean"], "excluded": ["pork"]}
 ```
-Pipeline: dictionary lookup → fuzzy matching (**threshold 85**) → **Trie** (prefix
-collisions) → negation detection. No trained NER model (labeling cost not worth it for
-a fixed vocabulary). English typos are recovered reliably; Thai typo recovery is a
-documented limitation (see `concern.md`).
+**Live path** (`web/js/api.js` calls `POST /extract_bert`; `nlp/extract_bert.py`):
+1. A fine-tuned BERT token classifier (`models/bert_ner/`) with **5 labels**: `O`,
+   `B/I-ING`, `B/I-HEALTH`. There is no EXC label.
+2. If BERT finds no entity, or any entity's confidence is below the threshold in
+   `label_config.json` (**0.8**), its result is discarded and an LLM fallback
+   (`EXTRACTION_LLM_MODEL`, default `claude-sonnet-5`) extracts the entities instead.
+3. If the model is missing, there is no API key, or the LLM call fails, the keyword
+   `extract()` below is used.
+4. Entity text is resolved to `ingredients.json` keys with the same dictionary/fuzzy
+   lookup as `extract()`.
+5. **Negation is a rule, not a model output:** the cues `ไม่เอา`, `ไม่ใส่`, `ไม่มี`
+   within 10 characters before an ING span move it to `excluded`. Other phrasings
+   (e.g. `ไม่กิน`) are not recognized. **Health-tag negation is not handled:**
+   "ไม่เอาคีโต" adds the tag `keto`.
+
+**Keyword path** `extract()` (`nlp/extract.py`): dictionary lookup → fuzzy matching
+(**threshold 85**) → **Trie** (prefix collisions) → negation detection. No trained model.
+English typos are recovered reliably; Thai typo recovery is a documented limitation
+(see `concern.md`).
 
 ### 4.3 Intent classifier (NEW)
 - **Input:** the user's free-text reply to the confirm-ingredients prompt.
@@ -151,7 +169,7 @@ documented limitation (see `concern.md`).
 
 ### 4.4 Recommender
 - TF-IDF + cosine similarity between the user's ingredient set and each recipe's
-  ingredient profile (scales fine to 400 recipes). Scoring is partial — a user is
+  ingredient profile (390 recipes today). Scoring is partial — a user is
   never required to have every ingredient.
 - **Diet filter first:** filter recipes by `excluded_for` *before* computing similarity.
   AND across requested tags. An excluded ingredient drops a dish only via
@@ -160,11 +178,16 @@ documented limitation (see `concern.md`).
 - **Seasoning — Option A (decided):** seasonings the user ticked are **optional/bonus
   only**. A recipe missing a wanted seasoning is still recommended, just scored lower
   than one that matches the seasonings too.
-  > ⚠️ **Pending code change:** `recommender/recommend.py` (docstring ~line 35,
-  > `_recipe_document` ~line 95) still strips seasonings from both the recipe document
-  > and the user's list. That is the *old* rule and must be changed to implement
-  > Option A. The seasoning **weight** relative to main ingredients is **not decided**
-  > (open item).
+  > ✅ **Implemented** in `recommender/recommend.py`. The recipe document and the typed
+  > list still exclude seasonings; ticked seasonings enter only as an additive bonus:
+  > `score = min(1, (1 - w) * cosine + w * usage + 0.3 * seasoning_overlap)`, rounded to
+  > 2 decimals, where `usage = |main ingredients ∩ user set| / |user set|` and
+  > `w = USAGE_WEIGHT = 0.15`. The recipe document repeats main ingredients ×2 and
+  > optional ×1.
+  > ⚠️ **Self-chosen values, not validated with human labels:** main ×2, `w = 0.15`,
+  > `SEASONING_WEIGHT = 0.3` and the 2-decimal rounding. `w` came from a 4-value sweep
+  > scored by the repo's own rubric; 0.3 has only a small LLM-judge run
+  > (`docs/NUMBERS.md`). The seasoning **weight** stays an open item.
 - > 📝 **TODO, not yet implemented:** `recommend()`'s TF-IDF vectorizer treats every
   > ingredient key identically, regardless of whether it's photo-detectable
   > (`yolo_class_id` set) or text-only (`null`). The idea, never built: weight
@@ -249,8 +272,8 @@ catch human error.
 | Path | Status |
 |---|---|
 | `data/ingredients.json`, `data/recipes.json` | **Reused as-is** |
-| `nlp/extract.py` | **Reused as-is** |
-| `recommender/recommend.py` | **Reused**, except the seasoning change in §4.4 |
+| `nlp/extract.py` | **Reused, then extended:** public `resolve_token()` wrapper (`86b72c0`) and `NEGATION_CUES` (`580c65f`) for `nlp/extract_bert.py`; `extract()` itself is the BERT path's last-resort fallback |
+| `recommender/recommend.py` | **Reused, then modified:** seasoning bonus (`08b21bf`), card display fields (`eaecd9e`), `EXCLUDED_CATEGORIES` and category filters (`ffd5dc2`, `0618189`, `f2e718d`), usage blend `USAGE_WEIGHT = 0.15` (uncommitted when this was written) — see §4.4 |
 | `api/main.py` | **Legacy — LINE webhook; to be replaced** by the FastAPI REST layer |
 | `api/session.py` | **Legacy — 2.5s debounce buffer; to be replaced** (processing is now Enter-triggered) |
 | `api/confirmation.py` | **Legacy — Quick Reply "anything else?" state; to be replaced** by the free-text intent-classifier loop |
@@ -266,11 +289,11 @@ don't fix them yourself.**
 
 # PART B — WEB TRACK MILESTONES
 
-- [x] FastAPI endpoints (image upload multipart, chat turn, seasoning list) — `api/app.py`: /detect, /extract, /confirm, /correct, /seasoning, /recommend + /health
-- [ ] Frontend chat UI with image paste → thumbnails in input box, Enter-to-send
-- [ ] Seasoning tab (tick before chat, locked mid-conversation)
+- [x] FastAPI endpoints (image upload multipart, chat turn, seasoning list) — `api/app.py`: /detect, /extract, /extract_bert (the route the UI calls; /extract is kept but unused by the UI), /confirm, /correct, /seasoning, /recommend + /health
+- [x] Frontend chat UI with image paste → thumbnails in input box, Enter-to-send — *code present in `web/js/app.js`; not browser-verified in this audit*
+- [x] Seasoning tab (tick before chat, locked mid-conversation) — *code present in `web/js/app.js`; not browser-verified in this audit*
 - [x] Intent classifier (LLM) + ambiguity handling — `api/intent.py`, Claude Haiku 4.5, `unclear` intent, keyword fallback
-- [ ] Confirm/reject loop UI (checklist + add-text field → re-confirm)
+- [x] Confirm/reject loop UI (checklist + add-text field → re-confirm) — *code present in `web/js/app.js`; not browser-verified in this audit*
 - [ ] Seasoning Option A implemented in `recommend.py` (+ weight decided) — *implemented (additive bonus); `SEASONING_WEIGHT = 0.3` is still a placeholder, so this stays open*
 - [x] Per-conversation state machine (extract → confirm → reject-edit → recommend) — `api/state.py`, in-memory, 1 h idle TTL
 - [ ] Swap `mock_cv` for real `detect()` + `thresholds.yaml` — *`/detect` already runs the real YOLO wrapper and reads `thresholds.yaml`; open until Person 1 sets the real threshold (file currently at the temporary 0.01) and the Gemini fallback exists*
@@ -322,7 +345,8 @@ file (already present).
 
 # APPENDIX — Legacy: LINE OA Track (NOT targeted by this repo)
 
-> Kept as historical reference only. Nothing below describes what this repo builds.
+> Kept as historical reference only. The LINE OA track was dropped; nothing below describes
+> what this repo builds.
 
 ### L1. LINE production flow
 ```
