@@ -114,7 +114,7 @@
 
   // ---- messages ----------------------------------------------------------------------------------
   var GREETING = "สวัสดี! ส่งรูปวัตถุดิบในตู้เย็น หรือพิมพ์บอกได้เลยว่ามีอะไรบ้าง";
-  var CONFIRM_PROMPT = "ถูกต้องไหม? ตอบกลับได้เลย เช่น “ใช่” หรือ “เอา…ออก เพิ่ม…”";
+  var CONFIRM_PROMPT = L.CONFIRM_PROMPT;
 
   function botText(text, extra) { return Object.assign({ id: nid("b"), role: "bot", kind: "text", text: text }, extra || {}); }
   function typingMsg() { return { id: "typing", role: "bot", kind: "typing" }; }
@@ -609,9 +609,8 @@
     S.anchor = null;
     $("fg-composer").value = "";
 
-    var replyToConfirm = !atts.length && (S.phase === "await_confirm" || S.phase === "await_correction");
-    var wantsMore = !atts.length && S.phase === "results" && L.isMoreRequest(text);
-    runOp(replyToConfirm ? opConfirm(text) : wantsMore ? opMore() : opInput(text, atts));
+    var route = L.sendRoute(S.phase, atts.length > 0, text);
+    runOp(route === "confirm" ? opConfirm(text) : route === "more" ? opMore() : opInput(text, atts));
   }
 
   // Each op* returns a function so a retry can run it again. Work already done stays done (detect is never repeated).
@@ -622,6 +621,8 @@
       await ensureSession();
       // New input after results were shown starts a new round (the server resets its copy in start_new_round()).
       if (L.shouldResetCategory(S.phase)) { S.category = L.DEFAULT_CATEGORY; S.categoryEmpty = false; }
+      var round = L.startRound(S);          // a new round also starts with no held "no X" / tags, like the server
+      S.excluded = round.excluded; S.healthTags = round.healthTags;
       if (atts.length && !detected) {
         var d = await api.detect(S.sid, atts.map(function (a) { return a.blob; }));
         guard(st);
@@ -639,9 +640,10 @@
         S.sid = extracted.session_id;
         S.locked = true;
         S.textKeys = L.unionInOrder(S.textKeys, extracted.include);
-        S.excluded = L.unionInOrder(S.excluded, extracted.exclude);
-        // /extract answers with only the tags parsed from THIS message, so apply the server's replace rule here.
-        S.healthTags = L.nextHealthTags(S.healthTags, extracted.health_tags);
+        // /extract answers with only THIS message's exclusions and tags, so merge them like the server does.
+        var held = L.applyExtract(S, extracted);
+        S.excluded = held.excluded;
+        S.healthTags = held.healthTags;
         S.combined = extracted.ingredients;
       }
 
@@ -654,12 +656,18 @@
 
       S.page = 0;
       S.moreAvailable = false;
-      if (!S.combined.length) {
-        S.phase = "compose";
+      // Decided from THIS response's exclude/tags, not the accumulated S.excluded / S.healthTags.
+      var view = L.firstReplyView(S.combined, extracted && extracted.exclude, extracted && extracted.health_tags);
+      S.phase = view.phase;
+      if (view.kind === "empty") {
         out.push(botText("ยังไม่พบวัตถุดิบเลย ลองพิมพ์ชื่อวัตถุดิบ หรือถ่ายรูปให้ชัดขึ้นแล้วส่งอีกครั้งนะ"));
+      } else if (view.kind === "conditions") {
+        // No ingredient group, and no lastListId: the category picker belongs to the confirm card only.
+        // Every condition the session holds (earlier messages + this one), not just this message's.
+        var cond = { excluded: S.excluded, healthTags: S.healthTags, combined: [] };
+        out.push({ id: nid("list"), role: "bot", kind: "list", text: view.text, groups: L.buildGroups(cond, {}, NAMES, S.extraNames), footer: view.footer });
       } else {
-        S.phase = "await_confirm";
-        var list = { id: nid("list"), role: "bot", kind: "list", text: "เจอวัตถุดิบเหล่านี้", groups: L.buildGroups(S, {}, NAMES, S.extraNames), footer: CONFIRM_PROMPT };
+        var list = { id: nid("list"), role: "bot", kind: "list", text: view.text, groups: L.buildGroups(S, {}, NAMES, S.extraNames), footer: view.footer };
         S.lastListId = list.id;
         out.push(list);
       }

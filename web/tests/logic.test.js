@@ -111,6 +111,179 @@ test("buildGroups: a listed ingredient neither source explains is still shown", 
   assert.deepEqual(g[0].items, [{ label: "กระเทียม", mode: "plain" }]);
 });
 
+// ---------------------------------------------------------------- first reply: six message categories
+// (mocked /extract_bert answers; app.js applies view.phase and renders view.text / view.footer)
+const NOTHING_FOUND = { kind: "empty", phase: "compose", text: "", footer: "" };
+const CONDITIONS = { kind: "conditions", phase: "compose", text: "รับทราบเงื่อนไขแล้วนะ", footer: "ตอนนี้มีวัตถุดิบอะไรบ้าง? พิมพ์บอกได้เลย" };
+const LIST = { kind: "list", phase: "await_confirm", text: "เจอวัตถุดิบเหล่านี้", footer: L.CONFIRM_PROMPT };
+
+test("firstReplyView A: nothing at all -> the nothing-found message, phase stays compose", () => {
+  assert.deepEqual(L.firstReplyView([], [], []), NOTHING_FOUND);
+  assert.deepEqual(L.firstReplyView(undefined, undefined, undefined), NOTHING_FOUND);
+});
+
+test("firstReplyView B: ingredients only -> the unchanged confirm card", () => {
+  assert.deepEqual(L.firstReplyView(["egg", "pork"], [], []), LIST);
+  assert.equal(L.CONFIRM_PROMPT, "ถูกต้องไหม? ตอบกลับได้เลย เช่น “ใช่” หรือ “เอา…ออก เพิ่ม…”");
+});
+
+test("firstReplyView C: exclude only -> conditions card, phase compose (next message is new input)", () => {
+  assert.deepEqual(L.firstReplyView([], ["pork"], []), CONDITIONS);
+});
+
+test("firstReplyView D: ingredients + exclude -> the unchanged confirm card", () => {
+  assert.deepEqual(L.firstReplyView(["egg"], ["pork"], []), LIST);
+});
+
+test("firstReplyView E: health tag only -> conditions card, phase compose", () => {
+  assert.deepEqual(L.firstReplyView([], [], ["keto"]), CONDITIONS);
+});
+
+test("firstReplyView F: tag + exclude without ingredients -> conditions card; with ingredients -> confirm card", () => {
+  assert.deepEqual(L.firstReplyView([], ["pork"], ["keto"]), CONDITIONS);
+  assert.deepEqual(L.firstReplyView(["egg"], ["pork"], ["keto"]), LIST);
+  assert.deepEqual(L.firstReplyView(["egg"], [], ["keto"]), LIST);
+});
+
+test("conditions card groups: only ไม่เอา / เงื่อนไข, no ingredient group", () => {
+  const g = L.buildGroups({ excluded: ["egg"], healthTags: ["keto"], combined: [] }, {}, NAMES);
+  assert.deepEqual(g.map((x) => [x.source, x.label]), [["excluded", "ไม่เอา"], ["tags", "เงื่อนไข"]]);
+  assert.deepEqual(L.buildGroups({ excluded: ["egg"], healthTags: [], combined: [] }, {}, NAMES).map((x) => x.source), ["excluded"]);
+  assert.deepEqual(L.buildGroups({ excluded: [], healthTags: ["keto"], combined: [] }, {}, NAMES).map((x) => x.source), ["tags"]);
+});
+
+test("firstReplyView reads only its arguments: stale accumulated lists cannot change the answer", () => {
+  const stale = { excluded: ["pork"], healthTags: ["keto"] };   // what S would still hold from an earlier round
+  assert.deepEqual(L.firstReplyView([], [], []), NOTHING_FOUND);
+  assert.equal(stale.excluded.length + stale.healthTags.length, 2);
+});
+
+// ---------------------------------------------------------------- one session, stubbed /extract_bert answers
+// turn() composes the same pure functions in the same order as app.js opInput(); the DOM/network wiring itself
+// (rendering, runOp, the real send()) is not exercised here.
+const NAMES2 = Object.assign({ pork: "หมู", kang_kong: "ผักบุ้ง", egg: "ไข่ไก่" }, NAMES);
+
+function newSession() {
+  return { phase: "compose", photoKeys: [], textKeys: [], excluded: [], healthTags: [], combined: [], lastListId: null };
+}
+
+/** `answer` is a stubbed /extract_bert body; `ingredients` is the stub's merged list. Returns what the chat would show. */
+function turn(S, text, answer) {
+  const route = L.sendRoute(S.phase, false, text);
+  if (route !== "input") return { route };
+  const round = L.startRound(S);
+  S.excluded = round.excluded; S.healthTags = round.healthTags;
+  S.textKeys = L.unionInOrder(S.textKeys, answer.include);
+  const held = L.applyExtract(S, answer);
+  S.excluded = held.excluded; S.healthTags = held.healthTags;
+  S.combined = answer.ingredients;
+  const view = L.firstReplyView(S.combined, answer.exclude, answer.health_tags);
+  S.phase = view.phase;
+  let groups = null;
+  if (view.kind === "conditions") groups = L.buildGroups({ excluded: S.excluded, healthTags: S.healthTags, combined: [] }, {}, NAMES2);
+  else if (view.kind === "list") { groups = L.buildGroups(S, {}, NAMES2); S.lastListId = "list1"; }
+  return { route, view, groups };
+}
+const ans = (include, exclude, health_tags, ingredients) => ({ include, exclude, health_tags, ingredients: ingredients || include });
+const labels = (groups, source) => (groups.find((g) => g.source === source) || { items: [] }).items.map((i) => i.label);
+
+test("session 1: 'สวัสดีครับ' -> nothing-found, phase compose", () => {
+  const S = newSession();
+  const r = turn(S, "สวัสดีครับ", ans([], [], []));
+  assert.equal(r.view.kind, "empty");
+  assert.equal(S.phase, "compose");
+  assert.equal(r.groups, null);
+});
+
+test("session 2: 'ไม่เอาหมู' -> conditions card, only the ไม่เอา group, no picker, phase compose", () => {
+  const S = newSession();
+  const r = turn(S, "ไม่เอาหมู", ans([], ["pork"], []));
+  assert.equal(r.view.kind, "conditions");
+  assert.equal(r.view.text, "รับทราบเงื่อนไขแล้วนะ");
+  assert.equal(r.view.footer, "ตอนนี้มีวัตถุดิบอะไรบ้าง? พิมพ์บอกได้เลย");
+  assert.deepEqual(r.groups.map((g) => g.source), ["excluded"]);
+  assert.deepEqual(labels(r.groups, "excluded"), ["หมู"]);
+  assert.equal(S.lastListId, null);          // app.js shows the category picker only for the newest list id
+  assert.equal(S.phase, "compose");
+});
+
+test("session 3: after the conditions card, the next message is a NEW extract (not /confirm) and keeps the held 'no X'", () => {
+  const S = newSession();
+  turn(S, "ไม่เอาหมู", ans([], ["pork"], []));
+  const r = turn(S, "มีไข่กับผักบุ้ง", ans(["egg", "kang_kong"], [], []));
+  assert.equal(r.route, "input");
+  assert.equal(L.sendRoute("compose", false, "ใช่"), "input");     // even "ใช่" is new input while in compose
+  assert.equal(r.view.kind, "list");
+  assert.equal(r.view.phase, "await_confirm");
+  assert.equal(S.phase, "await_confirm");
+  assert.deepEqual(labels(r.groups, "text"), ["ไข่ไก่", "ผักบุ้ง"]);
+  assert.deepEqual(labels(r.groups, "excluded"), ["หมู"]);          // the server still holds it
+  assert.equal(S.lastListId, "list1");
+  assert.equal(L.sendRoute(S.phase, false, "ใช่"), "confirm");      // and only now does a reply go to /confirm
+});
+
+test("session 4: a new session 'อยากกินคีโต' -> เงื่อนไข: keto, ingredients requested, phase compose", () => {
+  const S = newSession();
+  const r = turn(S, "อยากกินคีโต", ans([], [], ["keto"]));
+  assert.equal(r.view.kind, "conditions");
+  assert.deepEqual(r.groups.map((g) => g.source), ["tags"]);
+  assert.deepEqual(labels(r.groups, "tags"), ["keto"]);
+  assert.equal(r.view.footer, "ตอนนี้มีวัตถุดิบอะไรบ้าง? พิมพ์บอกได้เลย");
+  assert.equal(S.phase, "compose");
+});
+
+test("session 5: 'ไม่เอาหมู' then 'อยากกินคีโต' in one session -> the card shows BOTH conditions", () => {
+  const S = newSession();
+  turn(S, "ไม่เอาหมู", ans([], ["pork"], []));
+  const r = turn(S, "อยากกินคีโต", ans([], [], ["keto"]));       // this answer carries only keto
+  assert.equal(r.view.kind, "conditions");
+  assert.deepEqual(r.groups.map((g) => g.source), ["excluded", "tags"]);
+  assert.deepEqual(labels(r.groups, "excluded"), ["หมู"]);
+  assert.deepEqual(labels(r.groups, "tags"), ["keto"]);
+});
+
+test("session 6: a nothing-found message after a conditions card is still 'nothing found'", () => {
+  const S = newSession();
+  turn(S, "ไม่เอาหมู", ans([], ["pork"], []));
+  const r = turn(S, "สวัสดีครับ", ans([], [], []));
+  assert.equal(r.view.kind, "empty");
+  assert.deepEqual(S.excluded, ["pork"]);                            // still held for the next message
+});
+
+test("session 7: input after results starts a new round: held conditions are cleared, none leak into the card", () => {
+  const S = newSession();
+  turn(S, "มีไข่ ไม่เอาหมู อยากกินคีโต", ans(["egg"], ["pork"], ["keto"]));
+  S.phase = "results";                                               // confirmed and recommended
+  const r = turn(S, "ไม่เอาไข่", ans([], ["egg"], []));
+  assert.equal(r.view.kind, "conditions");
+  assert.deepEqual(labels(r.groups, "excluded"), ["ไข่ไก่"]);        // not หมู
+  assert.deepEqual(r.groups.map((g) => g.source), ["excluded"]);     // keto from round 1 is gone too
+});
+
+test("startRound keeps the held conditions outside the results phase and returns fresh arrays after it", () => {
+  const s = { phase: "await_confirm", excluded: ["pork"], healthTags: ["keto"] };
+  assert.deepEqual(L.startRound(s), { excluded: ["pork"], healthTags: ["keto"] });
+  assert.deepEqual(L.startRound(Object.assign({}, s, { phase: "results" })), { excluded: [], healthTags: [] });
+});
+
+test("sendRoute: confirm replies, 'ขอเพิ่ม' after results, images always start new input", () => {
+  assert.equal(L.sendRoute("await_confirm", false, "ใช่"), "confirm");
+  assert.equal(L.sendRoute("await_correction", false, "เอาออก"), "confirm");
+  assert.equal(L.sendRoute("results", false, "ขอเพิ่ม"), "more");
+  assert.equal(L.sendRoute("results", false, "มีไข่"), "input");
+  assert.equal(L.sendRoute("await_confirm", true, ""), "input");
+  assert.equal(L.sendRoute("compose", false, "มีไข่"), "input");
+});
+
+test("applyExtract: exclusions accumulate, a tag-less message keeps the tags, a new tag replaces them", () => {
+  let s = { excluded: [], healthTags: [] };
+  s = L.applyExtract(s, { exclude: ["pork"], health_tags: ["keto"] });
+  s = L.applyExtract(s, { exclude: ["egg"], health_tags: [] });
+  assert.deepEqual(s, { excluded: ["pork", "egg"], healthTags: ["keto"] });
+  s = L.applyExtract(s, { exclude: [], health_tags: ["vegan"] });
+  assert.deepEqual(s, { excluded: ["pork", "egg"], healthTags: ["vegan"] });
+});
+
 test("unionInOrder keeps first-seen order without duplicates", () => {
   assert.deepEqual(L.unionInOrder(["a", "b"], ["b", "c", "a", "d"]), ["a", "b", "c", "d"]);
   assert.deepEqual(L.unionInOrder(undefined, ["x"]), ["x"]);

@@ -257,6 +257,59 @@
     return "ไม่พบวัตถุดิบเหล่านี้ในระบบ: " + shown.join(", ") + more;
   };
 
+  /**
+   * What the first reply to a message looks like, decided from THIS response only (never from the
+   * accumulated excluded/healthTags lists):
+   *   "empty"       nothing at all came back          -> "nothing found" message, phase stays compose
+   *   "list"        at least one ingredient           -> the confirm card, phase await_confirm
+   *   "conditions"  no ingredient, but a "no X" or a  -> the same card without an ingredient group, then ask
+   *                 health tag was understood            for ingredients; phase stays compose (the next message
+   *                                                      is new input, not a reply to /confirm)
+   */
+  logic.CONFIRM_PROMPT = "ถูกต้องไหม? ตอบกลับได้เลย เช่น “ใช่” หรือ “เอา…ออก เพิ่ม…”";
+  logic.firstReplyView = function (ingredients, exclude, healthTags) {
+    if ((ingredients || []).length) {
+      return { kind: "list", phase: "await_confirm", text: "เจอวัตถุดิบเหล่านี้", footer: logic.CONFIRM_PROMPT };
+    }
+    if ((exclude || []).length || (healthTags || []).length) {
+      return { kind: "conditions", phase: "compose", text: "รับทราบเงื่อนไขแล้วนะ", footer: "ตอนนี้มีวัตถุดิบอะไรบ้าง? พิมพ์บอกได้เลย" };
+    }
+    return { kind: "empty", phase: "compose", text: "", footer: "" };
+  };
+
+  /**
+   * Which operation a sent message triggers: "confirm" (a text-only reply to the confirm prompt),
+   * "more" ("ขอเพิ่ม" after results), or "input" (a new /detect + /extract_bert round).
+   */
+  logic.sendRoute = function (phase, hasImages, text) {
+    if (!hasImages && (phase === "await_confirm" || phase === "await_correction")) return "confirm";
+    if (!hasImages && phase === "results" && logic.isMoreRequest(text)) return "more";
+    return "input";
+  };
+
+  /**
+   * The conditions the session holds at the start of an input. New input after results begins a new round and
+   * the server clears its exclusions and tags (api/state.py start_new_round), so the client's copies are
+   * cleared too; in any other phase they are kept.
+   */
+  logic.startRound = function (s) {
+    return logic.shouldResetCategory(s.phase)
+      ? { excluded: [], healthTags: [] }
+      : { excluded: s.excluded, healthTags: s.healthTags };
+  };
+
+  /**
+   * The client's copy of the held conditions after one /extract_bert answer. The answer carries only THIS
+   * message's `exclude` / `health_tags`, so they are merged like the server does (exclusions accumulate, tags are
+   * replaced by the latest message that names any).
+   */
+  logic.applyExtract = function (s, extracted) {
+    return {
+      excluded: logic.unionInOrder(s.excluded, extracted.exclude),
+      healthTags: logic.nextHealthTags(s.healthTags, extracted.health_tags),
+    };
+  };
+
   logic.unionInOrder = function (base, more) {
     var out = (base || []).slice();
     (more || []).forEach(function (k) { if (out.indexOf(k) === -1) out.push(k); });
